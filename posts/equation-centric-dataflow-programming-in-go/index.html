@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Equation-centric dataflow programming in Go | Living Systems</title>
+
+      <link rel="stylesheet" href="/css/main.min.f3a5991997d3edfa6612acd25887dbae0ca5be329567cceb3054217da27f5132.css" integrity="sha256-86WZGZfT7fpmEqzSWIfbrgylvjKVZ8zrMFQhfaJ/UTI=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>Equation-centric dataflow programming in Go</h1>
+
+  
+  
+  <time datetime="2017-12-27T14:05:00&#43;01:00">December 27, 2017</time>
+
+  <h2 id="mathematical-notation-and-dataflow-programming">Mathematical notation and dataflow programming</h2>
+<p>Even though computations done on computers are very often based on some
+type of math, it is striking that the notation used in math to express
+equations and relations is not always very readily converted into
+programming code. Outside of purely <a href="https://en.wikipedia.org/wiki/Symbolic_programming">symbolic
+programming</a>
+languages like <a href="http://www.sagemath.org/">sage math</a> or the
+(proprietary) <a href="https://www.wolfram.com/language">Wolfram language</a>,
+there seem to always be quite a divide between the mathematical notation
+and the numerical implementation.</p>
+<p>I'm generelly interested in how we can go towards a more declarative
+way of specifying relations between entities, to minimize the amount of
+coding we have to do when modelling systems. I find it especially
+interesting with approaches that are easy to implement in mainstream
+programming environments, so that existing knowledge, third party
+library ecosystems and performance optimizations having gone into these
+systems can be re-used.</p>
+<p>Optimal is if we can fluently convert such declarative coding approaches
+into <a href="https://en.wikipedia.org/wiki/Dataflow">dataflow</a>-, or even
+<a href="https://en.wikipedia.org/wiki/Flow-based_programming">flow-based
+programming</a>
+programs, since these approaches are a pretty good fit for today's
+multicore CPU chips, where the inherent pipeline parallelism makes good
+use of multiple computing cores without too much hoops, except we
+express the computations as pipelines of asynchronously running
+processing components.</p>
+<h2 id="enter-go-generator-functions">Enter Go generator functions</h2>
+<p>Pondering the fact that Go's concurrency primitives (go-routines and
+channels) combined into the generator pattern (<a href="https://talks.golang.org/2012/concurrency.slide#25">see Rob Pike's slides
+here</a>), is pretty
+much dataflow in a pretty functional style, it struck me that Go
+generator functions might be useful for expressing computation in a way
+that resembles mathematical equations.</p>
+<p>If you haven't seen Go generator functions, check the link above to
+Rob's slides. Otherwise, in short, they are functions which, instead of
+returning a finished value, return a channel, from which one or more
+values can be retrieved. Internally, the generator function will start a
+go-routine which will produce the values for you <em>lazily</em>, or,
+<em>concurrently</em> while you read from the channel (or it might pre-compute
+some values if the channel is buffered).</p>
+<p>Said and done. This turned out to be easier than expected. With the help
+of one or two helper functions, I could easily implement various numeric
+operators like &quot;Add&quot; and &quot;Div&quot; in the form of generator functions
+that operate on a stream of numbers, and in turn returns a stream of
+integers or numbers. Since the returned channel represents the output of
+each operator function, it becomes possible to nest these operator
+function calls in a way that somehow mimics a mathematical formula
+chosen to implement.</p>
+<p>As example formula for my experiment, I wanted something with simple
+operators (mostly &quot;Add&quot;, &quot;Sub&quot;, &quot;Mul&quot; and &quot;Div), but complex
+enough that it is relevant to make the formula as readable as possible.
+The monthly payment formula from <a href="http://www.math.utah.edu/~pa/math/equations/equations.html">this
+page</a> seemed
+like a good fit:</p>
+<p><p class="image">
+    <img src="loan.gif" alt=""  />
+</p>
+</p>
+<p>It expresses what your monthly payment, m, will be, given that you
+borrow an amount L of dollars and pay it back over N months, with an
+annual interest rate of p percent.</p>
+<p>With a few generator functions for division, addition, multiplication
+and exponentiation, we can now implement this formula as a nested tree
+of such generation functions. The formula expressed in this way looks
+like this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#000">monthlyPaymentUSD</span> <span style="color:#000">:=</span> <span style="color:#000">Mul</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#000">Div</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#000">Mul</span>(
+</span></span><span style="display:flex;"><span>            <span style="color:#000">Div</span>(<span style="color:#000">Val</span>(<span style="color:#000">rate</span>),
+</span></span><span style="display:flex;"><span>                <span style="color:#000">Val</span>(<span style="color:#1c01ce">1200.0</span>)),
+</span></span><span style="display:flex;"><span>            <span style="color:#000">Exp</span>(
+</span></span><span style="display:flex;"><span>                <span style="color:#000">Add</span>(
+</span></span><span style="display:flex;"><span>                    <span style="color:#000">Val</span>(<span style="color:#1c01ce">1.0</span>),
+</span></span><span style="display:flex;"><span>                    <span style="color:#000">Div</span>(
+</span></span><span style="display:flex;"><span>                        <span style="color:#000">Val</span>(<span style="color:#000">rate</span>),
+</span></span><span style="display:flex;"><span>                        <span style="color:#000">Val</span>(<span style="color:#1c01ce">1200.0</span>))),
+</span></span><span style="display:flex;"><span>                <span style="color:#000">Val</span>(<span style="color:#000">months</span>))),
+</span></span><span style="display:flex;"><span>        <span style="color:#000">Sub</span>(
+</span></span><span style="display:flex;"><span>            <span style="color:#000">Exp</span>(
+</span></span><span style="display:flex;"><span>                <span style="color:#000">Add</span>(
+</span></span><span style="display:flex;"><span>                    <span style="color:#000">Val</span>(<span style="color:#1c01ce">1.0</span>),
+</span></span><span style="display:flex;"><span>                    <span style="color:#000">Div</span>(
+</span></span><span style="display:flex;"><span>                        <span style="color:#000">Val</span>(<span style="color:#000">rate</span>),
+</span></span><span style="display:flex;"><span>                        <span style="color:#000">Val</span>(<span style="color:#1c01ce">1200.0</span>))),
+</span></span><span style="display:flex;"><span>                <span style="color:#000">Val</span>(<span style="color:#000">months</span>)),
+</span></span><span style="display:flex;"><span>            <span style="color:#000">Val</span>(<span style="color:#1c01ce">1.0</span>))),
+</span></span><span style="display:flex;"><span>    <span style="color:#000">borrowedAmount</span>)
+</span></span></code></pre></div><p>As you can see, there are some peculiarities, like that we have to wrap
+constants in &quot;Val()&quot; functions, to make these values into a stream of
+their values, rather than just constants (since all of the generator
+functions take streams of values rather than pure values).</p>
+<p>The full Go code can be found below, and in the bottom you will find the
+implementaiton of the operator functions, and the Val functions. In this
+example, they all build on the Apply2() function further below, which
+takes two input streams of values, and a function, and applies that
+function on the stream of values, returning a single stream of values.
+(For more complex functions, we might need Apply1, Apply3, etc):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">package</span> <span style="color:#000">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#177500">// Source code for this experiment: https://github.com/samuell/gormula
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;math&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// --------------------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#177500">// Monthly Payment Formula
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#177500">// --------------------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#177500">// Implementing the loan payments formula from here:
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#177500">// http://www.math.utah.edu/~pa/math/equations/equations.html
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#177500">// --------------------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// We try the formula over a sequence of values from 1000 to 10,000 USD
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#000">borrowedAmount</span> <span style="color:#000">:=</span> <span style="color:#000">Seq</span>(<span style="color:#1c01ce">1000.0</span>, <span style="color:#1c01ce">1000.0</span>, <span style="color:#1c01ce">10000.0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Some initializations
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#000">rate</span> <span style="color:#000">:=</span> <span style="color:#1c01ce">2.0</span> <span style="color:#177500">// Percent
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#000">months</span> <span style="color:#000">:=</span> <span style="color:#1c01ce">24.0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// The formula
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#000">monthlyPaymentUSD</span> <span style="color:#000">:=</span> <span style="color:#000">Mul</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#000">Div</span>(
+</span></span><span style="display:flex;"><span>            <span style="color:#000">Mul</span>(
+</span></span><span style="display:flex;"><span>                <span style="color:#000">Div</span>(<span style="color:#000">Val</span>(<span style="color:#000">rate</span>),
+</span></span><span style="display:flex;"><span>                    <span style="color:#000">Val</span>(<span style="color:#1c01ce">1200.0</span>)),
+</span></span><span style="display:flex;"><span>                <span style="color:#000">Exp</span>(
+</span></span><span style="display:flex;"><span>                    <span style="color:#000">Add</span>(
+</span></span><span style="display:flex;"><span>                        <span style="color:#000">Val</span>(<span style="color:#1c01ce">1.0</span>),
+</span></span><span style="display:flex;"><span>                        <span style="color:#000">Div</span>(
+</span></span><span style="display:flex;"><span>                            <span style="color:#000">Val</span>(<span style="color:#000">rate</span>),
+</span></span><span style="display:flex;"><span>                            <span style="color:#000">Val</span>(<span style="color:#1c01ce">1200.0</span>))),
+</span></span><span style="display:flex;"><span>                    <span style="color:#000">Val</span>(<span style="color:#000">months</span>))),
+</span></span><span style="display:flex;"><span>            <span style="color:#000">Sub</span>(
+</span></span><span style="display:flex;"><span>                <span style="color:#000">Exp</span>(
+</span></span><span style="display:flex;"><span>                    <span style="color:#000">Add</span>(
+</span></span><span style="display:flex;"><span>                        <span style="color:#000">Val</span>(<span style="color:#1c01ce">1.0</span>),
+</span></span><span style="display:flex;"><span>                        <span style="color:#000">Div</span>(
+</span></span><span style="display:flex;"><span>                            <span style="color:#000">Val</span>(<span style="color:#000">rate</span>),
+</span></span><span style="display:flex;"><span>                            <span style="color:#000">Val</span>(<span style="color:#1c01ce">1200.0</span>))),
+</span></span><span style="display:flex;"><span>                    <span style="color:#000">Val</span>(<span style="color:#000">months</span>)),
+</span></span><span style="display:flex;"><span>                <span style="color:#000">Val</span>(<span style="color:#1c01ce">1.0</span>))),
+</span></span><span style="display:flex;"><span>        <span style="color:#000">borrowedAmount</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Print out all the resulting monthly payments:
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#000">borrowedAmountForPrint</span> <span style="color:#000">:=</span> <span style="color:#000">Seq</span>(<span style="color:#1c01ce">1000.0</span>, <span style="color:#1c01ce">100.0</span>, <span style="color:#1c01ce">10000.0</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">for</span> <span style="color:#000">monthPay</span> <span style="color:#000">:=</span> <span style="color:#a90d91">range</span> <span style="color:#000">monthlyPaymentUSD</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#000">borrowed</span> <span style="color:#000">:=</span> <span style="color:#000">&lt;-</span><span style="color:#000">borrowedAmountForPrint</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">fmt</span>.<span style="color:#000">Printf</span>(<span style="color:#c41a16">&#34;Monthly payment for 24 months, when borrowing %.2f USD: %.2f USD\n&#34;</span>, <span style="color:#000">borrowed</span>, <span style="color:#000">monthPay</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#177500">// --------------------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#177500">// Components
+</span></span></span><span style="display:flex;"><span><span style="color:#177500">// --------------------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">type</span> <span style="color:#000">valstream</span> <span style="color:#a90d91">chan</span> <span style="color:#a90d91">float64</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">Add</span>(<span style="color:#000">x</span> <span style="color:#000">valstream</span>, <span style="color:#000">y</span> <span style="color:#000">valstream</span>) <span style="color:#000">valstream</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">Apply2</span>(<span style="color:#a90d91">func</span>(<span style="color:#000">x</span> <span style="color:#a90d91">float64</span>, <span style="color:#000">y</span> <span style="color:#a90d91">float64</span>) <span style="color:#a90d91">float64</span> { <span style="color:#a90d91">return</span> <span style="color:#000">x</span> <span style="color:#000">+</span> <span style="color:#000">y</span> }, <span style="color:#000">x</span>, <span style="color:#000">y</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">Sub</span>(<span style="color:#000">x</span> <span style="color:#000">valstream</span>, <span style="color:#000">y</span> <span style="color:#000">valstream</span>) <span style="color:#000">valstream</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">Apply2</span>(<span style="color:#a90d91">func</span>(<span style="color:#000">x</span> <span style="color:#a90d91">float64</span>, <span style="color:#000">y</span> <span style="color:#a90d91">float64</span>) <span style="color:#a90d91">float64</span> { <span style="color:#a90d91">return</span> <span style="color:#000">x</span> <span style="color:#000">-</span> <span style="color:#000">y</span> }, <span style="color:#000">x</span>, <span style="color:#000">y</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">Mul</span>(<span style="color:#000">x</span> <span style="color:#000">valstream</span>, <span style="color:#000">y</span> <span style="color:#000">valstream</span>) <span style="color:#000">valstream</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">Apply2</span>(<span style="color:#a90d91">func</span>(<span style="color:#000">x</span> <span style="color:#a90d91">float64</span>, <span style="color:#000">y</span> <span style="color:#a90d91">float64</span>) <span style="color:#a90d91">float64</span> { <span style="color:#a90d91">return</span> <span style="color:#000">x</span> <span style="color:#000">*</span> <span style="color:#000">y</span> }, <span style="color:#000">x</span>, <span style="color:#000">y</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">Div</span>(<span style="color:#000">x</span> <span style="color:#000">valstream</span>, <span style="color:#000">y</span> <span style="color:#000">valstream</span>) <span style="color:#000">valstream</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">Apply2</span>(<span style="color:#a90d91">func</span>(<span style="color:#000">x</span> <span style="color:#a90d91">float64</span>, <span style="color:#000">y</span> <span style="color:#a90d91">float64</span>) <span style="color:#a90d91">float64</span> { <span style="color:#a90d91">return</span> <span style="color:#000">x</span> <span style="color:#000">/</span> <span style="color:#000">y</span> }, <span style="color:#000">x</span>, <span style="color:#000">y</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">Exp</span>(<span style="color:#000">x</span> <span style="color:#000">valstream</span>, <span style="color:#000">y</span> <span style="color:#000">valstream</span>) <span style="color:#000">valstream</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">Apply2</span>(<span style="color:#a90d91">func</span>(<span style="color:#000">x</span> <span style="color:#a90d91">float64</span>, <span style="color:#000">y</span> <span style="color:#a90d91">float64</span>) <span style="color:#a90d91">float64</span> { <span style="color:#a90d91">return</span> <span style="color:#000">math</span>.<span style="color:#000">Pow</span>(<span style="color:#000">x</span>, <span style="color:#000">y</span>) }, <span style="color:#000">x</span>, <span style="color:#000">y</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">Apply2</span>(<span style="color:#000">fn</span> <span style="color:#a90d91">func</span>(<span style="color:#000">x</span> <span style="color:#a90d91">float64</span>, <span style="color:#000">y</span> <span style="color:#a90d91">float64</span>) <span style="color:#a90d91">float64</span>, <span style="color:#000">xs</span> <span style="color:#000">valstream</span>, <span style="color:#000">ys</span> <span style="color:#000">valstream</span>) <span style="color:#000">valstream</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">zs</span> <span style="color:#000">:=</span> <span style="color:#a90d91">make</span>(<span style="color:#000">valstream</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">go</span> <span style="color:#a90d91">func</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">defer</span> <span style="color:#a90d91">close</span>(<span style="color:#000">zs</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">for</span> <span style="color:#000">x</span> <span style="color:#000">:=</span> <span style="color:#a90d91">range</span> <span style="color:#000">xs</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#000">y</span> <span style="color:#000">:=</span> <span style="color:#000">&lt;-</span><span style="color:#000">ys</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000">zs</span> <span style="color:#000">&lt;-</span> <span style="color:#000">fn</span>(<span style="color:#000">x</span>, <span style="color:#000">y</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }()
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">zs</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">Val</span>(<span style="color:#000">x</span> <span style="color:#a90d91">float64</span>) <span style="color:#000">valstream</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">xs</span> <span style="color:#000">:=</span> <span style="color:#a90d91">make</span>(<span style="color:#000">valstream</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">go</span> <span style="color:#a90d91">func</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">defer</span> <span style="color:#a90d91">close</span>(<span style="color:#000">xs</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">for</span> <span style="color:#000">i</span> <span style="color:#000">:=</span> <span style="color:#1c01ce">0</span>; <span style="color:#000">i</span> &lt; <span style="color:#1c01ce">10</span>; <span style="color:#000">i</span><span style="color:#000">++</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#000">xs</span> <span style="color:#000">&lt;-</span> <span style="color:#000">x</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }()
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">xs</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">Seq</span>(<span style="color:#000">start</span> <span style="color:#a90d91">float64</span>, <span style="color:#000">step</span> <span style="color:#a90d91">float64</span>, <span style="color:#000">end</span> <span style="color:#a90d91">float64</span>) <span style="color:#000">valstream</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">res</span> <span style="color:#000">:=</span> <span style="color:#a90d91">make</span>(<span style="color:#000">valstream</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">go</span> <span style="color:#a90d91">func</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">defer</span> <span style="color:#a90d91">close</span>(<span style="color:#000">res</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#000">val</span> <span style="color:#000">:=</span> <span style="color:#000">start</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">for</span> (<span style="color:#000">end</span> <span style="color:#000">+</span> <span style="color:#000">val</span> <span style="color:#000">-</span> <span style="color:#000">val</span>) &gt; <span style="color:#1c01ce">0.001</span> { <span style="color:#177500">// Same as val &lt;= end, but take care of propagating float errors
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>            <span style="color:#000">res</span> <span style="color:#000">&lt;-</span> <span style="color:#000">val</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000">val</span> = <span style="color:#000">val</span> <span style="color:#000">+</span> <span style="color:#000">step</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }()
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">res</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>You can view and run an experiment demonstrating this <a href="https://play.golang.org/p/C3OovxjcMU">on the go
+playground</a>.</p>
+<h2 id="limitations-and-concluding-remarks">Limitations and concluding remarks</h2>
+<p>So, as you see, it is indeed possible to express dataflow computations
+in a quite an equation-centric way in Go.</p>
+<p>Now, there are some limits to this approach. For example, we have had to
+decide in which direction the computation goes: From inputs to outputs.
+Perhaps it is possible to express this in a more generic way, since Go
+channels are after all bi-directional, unless they are explicitly made
+uni-directional?</p>
+<p>We also get into territory where Go's lack of generics is giving some
+consequences. In order to keep the above code example reasonably short,
+we have limited outselves to streams of float values. Extending this to
+arbitrary combinations of floats, integers, and of all the sizes, would
+lead to quite an explosion in code duplication, and be far less fun to
+implement.</p>
+<p>Anyways, hope this little experiement can spur some ideas on ways to
+merge declarative, relation-centric programming into mainstream
+programming environments.</p>
+<h2 id="notes">Notes</h2>
+<ul>
+<li><em>This post has been discussed <a href="https://www.reddit.com/r/golang/comments/7meypm/equationcentric_dataflow_programming_in_go/">in a thread on
+reddit</a></em></li>
+</ul>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright &copy; 2024 Living Systems. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

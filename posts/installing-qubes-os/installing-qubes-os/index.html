@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Installing Qubes OS | Living Systems</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+
+      <script src="/js/main.js"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>Installing Qubes OS</h1>
+
+  <img src="qubes-installed.jpg">
+
+  
+  
+  <time datetime="2021-12-29T06:59:00&#43;01:00">December 29, 2021</time>
+
+  <p>I just switched to <a href="https://www.qubes-os.org/">Qubes OS</a> as operating
+system on my main work laptop (a Dell Latitude). Or in fact, one of the
+reasons was to be able to combine work and private hobby coding
+projects, that's increasinbly been happening on the same machine.
+Anyways, these are my experiences and notes, as a way to document
+caveats and quirks in case I need to do this again, while possibly also
+being of use for others.</p>
+<h3 id="what-is-qubes-os">What is Qubes OS?</h3>
+<p>Qubes OS is an operating system that tries to provide &quot;reasonable
+security&quot; to users by means of compartmenalization. By using
+virtualization technologies, it makes it easy to create multiple virtual
+machines that co-exist on the same computer. Now, couldn't you just use
+multiple VirtualBoxes, you might ask? Well, Qubes makes the whole
+process a lot more smooth and integrated than that. For example:</p>
+<ul>
+<li>You can seamlessly have windows from multiple VMs open at the same
+time, and tile them as you want (only they will have a dedicated
+color in the outer frame to make sure you don't mix them up).</li>
+<li>Multiple so called &quot;App VMs&quot; can share the same &quot;Base VM&quot; where
+you do all the installation of software etc, which means it is a lot
+less work to keep them updated with the latest packages.</li>
+<li>Routing of various appliances such as webcams, mics, USB-keybards
+and the like is done manually (though easily) for each App VM, so as
+not to accidentally open up attack vectors ... all for increased
+compartmentalization and thus security.</li>
+</ul>
+<p>If you are still not convinced, you might be when you learn that Qubes
+is <a href="https://twitter.com/Snowden/status/781493632293605376">recommeded by Edward
+Snowden</a> :)</p>
+<h3 id="preliminaries">Preliminaries</h3>
+<p>The first thing I did was to try and install Qubes in a virtual machine
+in Virtual Box. It did warn a lot about various hardware drivers though:</p>
+<p><img src="/site/assets/files/1113/qubesmissingfeatures.jpg" alt="The message as text: Unsupported Hardware Detected - This hardware
+lacks features required by Qubes OS: Missing features: HVM/VT-x/AMD-V,
+IOMMU/VT-d/AMD-Vi, HAP/SLAT/EPT/RVI, Interrupt Remapping. Without these
+features, Qubes OS will not function normally. It is recommended that
+only developers and power users proceed with the installation. Fore more
+information on supported hardware, please refer to
+">{width=&ldquo;545&rdquo;}</p>
+<p>Thus, trying out Qubes fully in VirtualBox didn't seem like an option.
+Based on this info, you should also probably go though your BIOS
+settings and make sure that these settings are turned on if you plan on
+installing it &quot;on metal&quot;. In particular VT-x use to be possible to
+turn on/off in BIOS I think.</p>
+<p>I still managed to install the base system in virtualbox though, but I
+reckon the actual boxes, or &quot;qubes&quot; would not work that well:</p>
+<p><img src="/site/assets/files/1113/qubes_vbox.jpg" alt="">{width=&ldquo;930&rdquo;}</p>
+<h3 id="creating-an-installable-media">Creating an installable media</h3>
+<p>Anyways, on to the installation on metal. I first tried creating a USB
+stick with the Qubes OS .iso file using the popular UNetBootin software
+in Ubuntu, but that did not work. There was a warning about that during
+the installation. Thus, you need to instead use the dd tool to copy the
+image to the USB stick. BE WARNED though that this will completely erase
+all other data on the USB stick, so make sure to move away any data you
+might have there first!</p>
+<p>The command is something like:</p>
+<pre><code>lang-bash
+dd bs=4M if=/path/to/qubesos.iso of=/dev/sdb
+</code></pre>
+<p>WARNING: Check first that sdb is actually your usb drive! This can be
+done using a software such as gparted.</p>
+<h3 id="no-bootable-device-found">&quot;No bootable device found&quot;</h3>
+<p>After booting up the computer and installing Qubes OS through the
+graphical installer, with most settings set to default (a pretty easy
+and painless process), when restarting the computer, I got the message:</p>
+<p>No bootable device found.</p>
+<p>Not so fun. On the other hand, it turned out to be pretty easily fixed,
+by booting up the computer with a Live Ubuntu USB stick, and fixing the
+file paths in the UEFI partition according to <a href="https://www.qubes-os.org/doc/uefi-troubleshooting/#boot-device-not-recognized-after-installing">this advice in the Qubes
+Docs</a>.
+Copying the instructions here for backup:</p>
+<p>Some firmware will not recognize the default Qubes EFI configuration. As
+such, it will have to be manually edited to be bootable. This will need
+to be done after every kernel and Xen update to ensure you use the most
+recently installed versions.</p>
+<ol>
+<li>
+<p>Copy the <code>/boot/efi/EFI/qubes/</code>{.language-plaintext
+.highlighter-rouge} directory to
+<code>/boot/efi/EFI/BOOT/</code>{.language-plaintext .highlighter-rouge} (the
+contents of <code>/boot/efi/EFI/BOOT</code>{.language-plaintext
+.highlighter-rouge} should be identical to
+<code>/boot/efi/EFI/qubes</code>{.language-plaintext .highlighter-rouge}
+besides what is described in steps 2 and 3):</p>
+<p>::: {.language-plaintext .highlighter-rouge}
+::: {.highlight}</p>
+<pre tabindex="0"><code> cp -r /boot/efi/EFI/qubes/. /boot/efi/EFI/BOOT
+</code></pre><p>:::
+:::</p>
+</li>
+<li>
+<p>Rename <code>/boot/efi/EFI/BOOT/xen.cfg</code>{.language-plaintext
+.highlighter-rouge} to
+<code>/boot/efi/EFI/BOOT/BOOTX64.cfg</code>{.language-plaintext
+.highlighter-rouge}:</p>
+<p>::: {.language-plaintext .highlighter-rouge}
+::: {.highlight}</p>
+<pre tabindex="0"><code> mv /boot/efi/EFI/BOOT/xen.cfg /boot/efi/EFI/BOOT/BOOTX64.cfg
+</code></pre><p>:::
+:::</p>
+</li>
+<li>
+<p>Copy <code>/boot/efi/EFI/qubes/xen-*.efi</code>{.language-plaintext
+.highlighter-rouge} to
+<code>/boot/efi/EFI/qubes/xen.efi</code>{.language-plaintext
+.highlighter-rouge} and
+<code>/boot/efi/EFI/BOOT/BOOTX64.efi</code>{.language-plaintext
+.highlighter-rouge}. For example, with Xen 4.8.3 (you may need to
+confirm file overwrite):</p>
+<p>::: {.language-plaintext .highlighter-rouge}
+::: {.highlight}</p>
+<pre tabindex="0"><code> cp /boot/efi/EFI/qubes/xen-4.8.3.efi /boot/efi/EFI/qubes/xen.efi
+ cp /boot/efi/EFI/qubes/xen-4.8.3.efi /boot/efi/EFI/BOOT/BOOTX64.efi
+</code></pre><p>:::
+:::</p>
+</li>
+</ol>
+<p>It works!</p>
+<h3 id="some-caveats">Some caveats</h3>
+<p>After doing this and rebooting, it just works! What followed is just the
+normal setting up of things in Qubes OS. There were some things I
+learned that were not obvious from the start, and which can be useful to
+know though:</p>
+<ul>
+<li>I can not use my USB-connected keyboard to control the main
+interface (a.k.a. &quot;dom0&quot;). What I can do though, is to manually
+connect the keyboard to individual boxes by clicking the status icon
+in the top right corner (the one that looks like a gzip-icon). This
+is apparently due to some security concerns. The USB mouse works
+everywhere though. For keyboard use in dom0, I have to rely on the
+laptop's built-in keyboard.</li>
+<li>For switching the USB keyboard between qubes I require two clicks:
+One to disconnect it from the current qube, and one to connect it to
+the new one. This means I'll want to somehow minimize the number of
+qubes I need to switch between often. It would be nice to at least
+require just one click, or even better, be able to switch to another
+qube by e.g. right-clicking on a window belonging to that qube and
+selecting e.g. &quot;connect keyboard to this qube&quot;.</li>
+<li>Software installations have to be done in the &quot;base qubes&quot;, such
+as Fedora 32, Debian 10/11 etc. Software installations in &quot;app
+VMs&quot; won't persist after rebooting. (For content in the home
+folder this seems to be reversed though: Stuff in the home folder is
+kept in the app VMs, but not in the base VMs).</li>
+<li>To have the newly installed software appear in an app VM after
+installing in the base VM, one will need to turn off both of them,
+and then start the App VM again.</li>
+<li>I did not manage to change font sizes in VMs if they were based on
+the Debian 10 or Debian 11 base images. I have <a href="https://forum.qubes-os.org/t/dark-mode-in-debian-10-vm/3855/17?u=shl">written about it in
+the forum
+here</a>
+(I DID manage to activate dark mode, as my forum message states).
+Thus, I have had to resort to using Fedora 32 as base image rather
+than Debian 11, which is a bit disappointing, as I'm much more used
+to Debian/Ubuntu-based distros.</li>
+<li>The base system is based on XFCE, and so is highly customizable. I
+was able to adjust it to be much more good-looking than the default
+config, in my opinion, using the &quot;Adwaita-dark&quot; theme, and some
+smaller fonts (More specifically: &quot;Liberation Sans 10&quot; for normal
+application content, set in the &quot;appearance&quot; app, and &quot;Sans 10&quot;
+for window titles and the like, set in the &quot;Window manager&quot; app).</li>
+</ul>
+<p>Apart from these caveats though, everything works surprisingly well! The
+whole concept and implementation is very very impressive!</p>
+<p><a href="/site/assets/files/1113/qubes-installed.jpg"><img src="/site/assets/files/1113/qubes-installed.1200x0-is.jpg" alt="">{width=&ldquo;1200&rdquo;}</a></p>
+<h3 id="further-reading">Further reading</h3>
+<ul>
+<li>I found Qubes founder <a href="https://blog.invisiblethings.org/2011/03/13/partitioning-my-digital-life-into.html">Joanna Rutkowska's blog about how she set up
+the OS for her own
+workflow</a>
+very useful in getting to think about how to best use the features
+for your own use cases. I have personally went with a much simpler
+set up for the time being, but the post helped me to clarify my own
+plan for this.</li>
+</ul>
+<p>Samuel</p>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright 2024. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

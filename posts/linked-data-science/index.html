@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Linked Data Science - For improved understandability of computer-aided research | Living Systems</title>
+
+      <link rel="stylesheet" href="/css/main.min.f3a5991997d3edfa6612acd25887dbae0ca5be329567cceb3054217da27f5132.css" integrity="sha256-86WZGZfT7fpmEqzSWIfbrgylvjKVZ8zrMFQhfaJ/UTI=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>Linked Data Science - For improved understandability of computer-aided research</h1>
+
+  
+  
+  <time datetime="2018-09-21T01:43:00&#43;02:00">September 21, 2018</time>
+
+  <p><em>This is an excerpt from the &quot;future outlook&quot; section of my thesis
+titled <a href="http://uu.diva-portal.org/smash/record.jsf?pid=diva2%3A1242336&amp;dswid=2522">&quot;Reproducible Data Analysis in Drug Discovery with Scientific
+Workflows and the Semantic
+Web&quot;</a>
+(click for the open access full text), which aims to provide various
+putative ways towards improved reproducibility, understandability and
+verifiability of computer-aided research.</em></p>
+<hr>
+<p><a href="linkeddatascience.png"><p class="image">
+    <img src="linkeddatascience.png" alt=""  />
+</p>
+</a></p>
+<p>Historically, something of a divide has developed between the metadata
+rich datasets and approaches in the world of Semantic
+Web/Ontologies/Linked Data, versus in the Big Data field in particular,
+which has been at least initially mostly focused on large unstructured
+datasets.</p>
+<p>Even today&rsquo;s focus on data science and development of predictive models
+using technologies like deep learning, is to a large extent focusing on
+data sets with a relatively non-complex structure (2D-images), and not
+so much on merging knowledge stored in opaque deep learning models with
+explicit knowledge stored in ontologies and knowledge bases of different
+kinds.</p>
+<p>In order to ripe the fruits of the recent boom in developments of
+machine learning technologies also in other fields with much more
+complex and rich data but without large numbers of very similar
+examples, it seems we will need to link Big Data science with <em>smart</em>
+data science. That is, state-of-the-art methods and tools from data
+science, Big Data and machine learning, with semantic data modelling,
+such as with technologies in Semantic Web, Linked Data and Logic
+Programming.</p>
+<p>Personally, I think it is particularly the <em>reasoning</em> capabilities
+around linked/semantic data, that need further development. Based on
+<a href="http://uu.diva-portal.org/smash/record.jsf?pid=diva2:398839">very positive experience of using SWI-Prolog to implement lookup
+methods in
+cheminformatics</a>,
+I am personally a strong believer in using logic programming approaches
+as a very practical approach to implement extremely intelligent
+reasoning systems that can still be easy to understand.</p>
+<p>At the <a href="https://lankadedata.se/LDSV/2018/index.html">Linked Data Sweden
+symposium</a> in Uppsala in
+April 2018, <a href="http://bionics.it/posts/semantic-web-data-science-my-talk-at-linked-data-sweden-2018">I presented these
+ideas</a>
+and suggested that <a href="http://www.swi-prolog.org/">SWI-Prolog</a> in
+particular might be a suitable integration platform for what we could
+call <em>linked data science</em>, or <em>linked big data science</em> (<a href="http://bionics.it/posts/semantic-web-data-science-my-talk-at-linked-data-sweden-2018">slides and
+video for the presentation
+here</a>).</p>
+<p><a href="http://www.swi-prolog.org/">SWI-Prolog</a> is a mature, well-maintained
+and high quality open source Prolog implementation, with an extensive
+set of libraries, including top-class support for interacting with RDF
+datasets and SPARQL endpoints. The main drawback of SWI-Prolog for large
+datasets has been that it has lacked a generic disk based storage
+solution. Instead, full datasets have had to be loaded into memory
+before doing complex queries upon them. A recently developed plugin for
+the <a href="http://rdfhdt.org">RDF-HDT</a> format seems to provide an interesting
+way to solve this problem, at least for read-only access to large
+datasets. Since RDF-HDT is an indexed format, it allows doing queries
+against its data by only loading the index into memory, not the full
+dataset. Since SWI-Prolog also can fluently incorporate SPARQL queries
+into logic programming queries, this also provides an ability to
+interact with many large-scale datasets such as
+<a href="https://www.wikidata.org">Wikidata</a>, not to mention <a href="https://www.semantic-mediawiki.org">Semantic
+MediaWiki</a>s with the
+<a href="https://github.com/rdfio/RDFIO">RDFIO</a> extension that we developed in
+paper III. In the release notes for RDFIO <a href="https://github.com/rdfio/RDFIO/releases/tag/v3.0.1">version
+3.0.1</a> and
+<a href="https://github.com/rdfio/RDFIO/releases/tag/v3.0.2">3.0.2</a> we provided
+screenshots demonstrating the ability to query Semantic MediaWiki data
+via the SPARQL endpoint provided with RDFIO, from SWI-Prolog. SWI-Prolog
+also provides a web based notebook quite similar to Jupyter notebooks
+called <a href="https://swish.swi-prolog.org">SWISH</a>, allowing to use the
+notebook paradigm for interactive data exploration.</p>
+<p>The described vision is illustrated in the figure above, which
+illustrates how SWI-Prolog can be used as an interactive integration
+workbench for accessing and fluently integrating knowledge from external
+linked datasets. Data sources that can be accessed include SPARQL
+endpoints (e.g. RDFIO powered Semantic MediaWikis) or RDF-HDT data
+files. These can be fluently integrated into the logic programming
+environment, via rules or queries, which can be used as building blocks
+for further rules or queries. While the SWISH screenshot is here used
+only for illustration purposes and shows toy example code, the terminal
+screenshot in the background is a real-world one, showing how SWI-Prolog
+is interacting with an external SPARQL endpoint of an RDFIO-powered
+Semantic MediaWiki.</p>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright &copy; 2024 Living Systems. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

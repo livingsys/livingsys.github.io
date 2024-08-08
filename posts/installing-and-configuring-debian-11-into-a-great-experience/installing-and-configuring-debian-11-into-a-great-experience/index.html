@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Random notes from installing Debian 11 with separate accounts for work and private | Living Systems</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+
+      <script src="/js/main.js"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>Random notes from installing Debian 11 with separate accounts for work and private</h1>
+
+  <img src="">
+
+  
+  
+  <time datetime="2022-03-24T04:50:00&#43;01:00">March 24, 2022</time>
+
+  <!-- raw HTML omitted -->
+<p>See especially the end for info about how to set up a nice integration
+between the work and private accounts, such that one can e.g.
+occasionally start the mail client or web browser from the private
+account from the work one etc.</p>
+<h3 id="caveats-when-installing-debian-11">Caveats when installing Debian 11</h3>
+<ul>
+<li>Make sure that an EFI partition is created (when I manually modified
+the partition table I accidentally deleted it, and had to reinstall
+to get it created properly again).</li>
+<li>Had to turn off safe boot in BIOS</li>
+<li>Had to set SATA settings to AHCI</li>
+<li>Had to manually create a boot option with the path to
+\EFI\debian\grubx64.efi in BIOS settings</li>
+</ul>
+<h3 id="instructions-for-configuring-debian-to-my-liking">Instructions for configuring Debian to my liking</h3>
+<ul>
+<li>Add current user to sudo
+<ul>
+<li>Switch user to root<br>
+<code>usermod -aG sudo &lt;username&gt;</code></li>
+<li>Log out and back the user</li>
+</ul>
+</li>
+<li>Uncomment CDROM remotes in /etc/apt/sources.list</li>
+<li>Change default search engine in firefox to duckduckgo</li>
+<li>Replace applications menu with whiskers menu</li>
+<li>Install some packages<br>
+sudo apt install vim git tig tmux curl tree rsync gparted
+ecryptfs-utils redshift bash-completion bluez blueman</li>
+<li>Clone rc folder<br>
+git clone <a href="https://github.com/samuell/rc.git">https://github.com/samuell/rc.git</a></li>
+<li>Link rc files<br>
+ln -s rc/.{b,v,t}* .</li>
+<li>Create empty .bash_aliases_local<br>
+touch ~/.bash_aliases_local</li>
+<li>Activate in bashrc<br>
+cat 'if [ -f ~/.bashrc_mods ]; then . ~/.bashrc_mods;
+fi' &gt;&gt; ~/.bashrc &amp;&amp; source ~/.bashrc</li>
+<li>Install vim-plug<br>
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+<a href="https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim">https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim</a></li>
+<li>Run :PlugInstall in vim<br>
+vim -c &quot;:PlugInstall&quot; -c &quot;qa!&quot;</li>
+<li>In &quot;Keyboard settings &gt; Application shortcuts&quot; add two
+shortcuts:<br>
+xfce4-popup-whiskermenu # Ctrl+Esc<br>
+xfce4-terminal --drop-down # Super+Space</li>
+<li>Open the terminal with Win+Space, and configure:
+<ul>
+<li>Set width to 100%</li>
+<li>Uncheck always show tabs</li>
+<li>Uncheck show menubar in new windows</li>
+<li>Configure color to more pastel like colors according to my new
+method</li>
+</ul>
+</li>
+<li>In Appearance...
+<ul>
+<li>Set style to Adwaita-dark</li>
+<li>Set fonts to Adwaita</li>
+<li>Set main font to Sans Regular 8</li>
+<li>Let main monospace font be Monospace Regular 10</li>
+</ul>
+</li>
+<li>In terminal preferences, set font to Monospace Regular 10</li>
+<li>In Window manager, set shortcuts:
+<ul>
+<li>Tile window up/down/left/right : Super up/down/left/right</li>
+<li>Move window Ctrl+Alt+F</li>
+<li>Resize window Ctrl+Alt+R</li>
+</ul>
+</li>
+<li>Install and configure Brave browser</li>
+<li>Encrypt home folder</li>
+</ul>
+<h3 id="set-up-separate-work-and-private-accounts">Set up separate work and private accounts</h3>
+<ul>
+<li>Create the separate accounts</li>
+<li>Encrypt folder of both</li>
+</ul>
+<p>In order to run private commands from the work account and vice versa:</p>
+<ul>
+<li>Make sure both users are logged in on the system (so that home
+folders are unencrypted)</li>
+<li>Run:<br>
+xhost local:&lt;other-user&gt;; sudo -i -u &lt;other-user&gt;</li>
+<li>Now you have a terminal for the other user, and can start
+applications such as Thunderbird:<br>
+thunderbird &amp;</li>
+</ul>
+<h3 id="how-to-fix-broken-grub">How to fix broken grub</h3>
+<p>From time to time, I seem to have my grub broken. It could be due to a
+harddrive failure perhaps.</p>
+<p>The procedure to fix this is quite generally useful though :</p>
+<ul>
+<li>Boot with a live stick (could be even an ubuntu stick)</li>
+<li>sudo su</li>
+<li>Given that /dev/sda2 is your main partition and /dev/sda1 your boot
+partition:
+<ul>
+<li>mount /dev/sda2 /mnt</li>
+<li>mount /dev/sda1 /mnt/boot/efi</li>
+</ul>
+</li>
+<li>for i in proc sys dev; do mount --bind $i /mnt/$i; done</li>
+<li>chroot /mnt</li>
+<li>apt install grub-pc-bin grub-efi</li>
+<li>Possibly run: fsck -f /dev/sda1</li>
+<li>grub-install --target=x86_64-efi /dev/sda1</li>
+<li>Reboot</li>
+</ul>
+<p>Then, the efi location seem to easily be lost in BIOS, especially if the
+BIOS battery is bad. If so:</p>
+<ul>
+<li>Get into BIOS (F2 key on boo)</li>
+<li>Settings &gt; General &gt; Boot sequence</li>
+<li>Click &quot;Add Boot Option&quot;</li>
+<li>Add a name, e.g. &quot;Debian&quot;</li>
+<li>On File Name, click the &quot;...&quot; button to locate
+\EFI\debian\grubx64.efi</li>
+<li>Save and reboot</li>
+</ul>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright 2024. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

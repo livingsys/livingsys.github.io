@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>(E)BNF parser for parts of the Galaxy ToolConfig syntax with ANTLR | Living Systems</title>
+
+      <link rel="stylesheet" href="/css/main.min.f3a5991997d3edfa6612acd25887dbae0ca5be329567cceb3054217da27f5132.css" integrity="sha256-86WZGZfT7fpmEqzSWIfbrgylvjKVZ8zrMFQhfaJ/UTI=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>(E)BNF parser for parts of the Galaxy ToolConfig syntax with ANTLR</h1>
+
+  
+  
+  <time datetime="2011-07-28T09:46:00&#43;02:00">July 28, 2011</time>
+
+  <p>As
+<a href="http://saml.rilspace.com/fims-project-status-update-thinking-about-cli-wrapper-xml-formats">blogged</a>
+earlier, I'm currently into parsing the syntax of some definitions for
+the parameters and stuff of command line tools. As said in the linked
+blog post, I was pondering whether to use the <a href="https://bitbucket.org/galaxy/galaxy-central/wiki/ToolConfigSyntax">Galaxy
+Toolconfig</a>
+format or the <a href="http://www.docbook.org/tdg/en/html/cmdsynopsis.html">DocBook CmdSynopsis
+format</a>. It turned
+out though Well, that cmdsynopsis lacks the option to specify a list of
+valid choices, for a parameter, as is possible in the Galaxy ToolConfig
+format (see
+<a href="http://wiki.g2.bx.psu.edu/Admin/Tools/Tool%20Config%20Syntax#A.3Coptions.3E_tag_set">here</a>),
+and thus can be used to generate drop-down lists in wizards etc. which
+is basically what I want to do ... so, now I'm going with the Galaxy
+format after all.</p>
+<p>Enter the Galaxy format then. Look at an example code snippet:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#000">&lt;tool</span> <span style="color:#836c28">id=</span><span style="color:#c41a16">&#34;sam_to_bam&#34;</span> <span style="color:#836c28">name=</span><span style="color:#c41a16">&#34;SAM-to-BAM&#34;</span> <span style="color:#836c28">version=</span><span style="color:#c41a16">&#34;1.1.1&#34;</span><span style="color:#000">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;description&gt;</span>converts SAM format to BAM format<span style="color:#000">&lt;/description&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;requirements&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">&lt;requirement</span> <span style="color:#836c28">type=</span><span style="color:#c41a16">&#34;package&#34;</span><span style="color:#000">&gt;</span>samtools<span style="color:#000">&lt;/requirement&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;/requirements&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;command</span> <span style="color:#836c28">interpreter=</span><span style="color:#c41a16">&#34;python&#34;</span><span style="color:#000">&gt;</span>
+</span></span><span style="display:flex;"><span>    sam_to_bam.py
+</span></span><span style="display:flex;"><span>      --input1=$source.input1
+</span></span><span style="display:flex;"><span>      --dbkey=${input1.metadata.dbkey}
+</span></span><span style="display:flex;"><span>      #if $source.index_source == &#34;history&#34;:
+</span></span><span style="display:flex;"><span>        --ref_file=$source.ref_file
+</span></span><span style="display:flex;"><span>      #else
+</span></span><span style="display:flex;"><span>        --ref_file=&#34;None&#34;
+</span></span><span style="display:flex;"><span>      #end if
+</span></span><span style="display:flex;"><span>      --output1=$output1
+</span></span><span style="display:flex;"><span>      --index_dir=${GALAXY_DATA_INDEX_DIR}
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;/command&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;inputs&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">&lt;conditional</span> <span style="color:#836c28">name=</span><span style="color:#c41a16">&#34;source&#34;</span><span style="color:#000">&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">&lt;param</span> <span style="color:#836c28">name=</span><span style="color:#c41a16">&#34;index_source&#34;</span> <span style="color:#836c28">type=</span><span style="color:#c41a16">&#34;select&#34;</span> <span style="color:#836c28">label=</span><span style="color:#c41a16">&#34;Choose the source for the reference list&#34;</span><span style="color:#000">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">&lt;option</span> <span style="color:#836c28">value=</span><span style="color:#c41a16">&#34;cached&#34;</span><span style="color:#000">&gt;</span>Locally cached<span style="color:#000">&lt;/option&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">&lt;option</span> <span style="color:#836c28">value=</span><span style="color:#c41a16">&#34;history&#34;</span><span style="color:#000">&gt;</span>History<span style="color:#000">&lt;/option&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">&lt;/param&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">&lt;when</span> <span style="color:#836c28">value=</span><span style="color:#c41a16">&#34;cached&#34;</span><span style="color:#000">&gt;</span>
+</span></span><span style="display:flex;"><span>      ... cont ...
+</span></span></code></pre></div><p>Here I've got some challenges. XML parsing is easy, even in Java (I use
+the Java XPath libs for that). But look inside the <code>&lt;command&gt;</code> tag ...
+that's some really non-xml stuff, no? (it is instructions for a python
+based template library, used in galaxy). I have to parse this though, in
+order to replicate the logic of it ... so what to do? ... well, I
+turned to the <a href="http://www.antlr.org/">ANTLR Parser Generator</a>.</p>
+<h3 id="toc0">ANTLRWorks works nicely out of the box</h3>
+<p>I heard a lot of good things about <a href="http://www.antlr.org/">ANTLR</a>, like
+that it is more easily debugged than typical BNF parsers etc, so the
+choice wasn't that hard. I tried the ANTLR for Eclipse, but though it
+looks nice, it that was quite buggy, and I couldnt get it to work
+properly in neither Eclipse 3.5 or 3.6. So, finally I went with the easy
+option and developed my EBNF grammar in
+<a href="http://www.antlr.org/works/index.html">ANTLRWorks</a>, which is an
+integrated Java App, with the correct ANTLR lib already installed etc.
+Turned out to work really good!</p>
+<p>The grammar I came up with so far (only for the syntax inside the
+&lt;command&gt; tag so far, though!) is <a href="https://github.com/samuell/galaxy-toolconfig-bnf/blob/master/GalaxyToolConfig.g">available on
+GitHub</a>
+... and below (in condensed syntax to save some space), for you
+convenience :)</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bnf" data-lang="bnf"><span style="display:flex;"><span>grammar GalaxyToolConfig;
+</span></span><span style="display:flex;"><span>options {output=AST;}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>command    : binary (ifstatement param+ (ELSE param+)? ENDIF | param)*;
+</span></span><span style="display:flex;"><span>binary     : WORD;
+</span></span><span style="display:flex;"><span>ifstatement
+</span></span><span style="display:flex;"><span>        : IF (STRING|VARIABLE) EQTEST (STRING|VARIABLE) COLON;
+</span></span><span style="display:flex;"><span>param   : DBLDASH WORD* EQ (VARIABLE|STRING);
+</span></span><span style="display:flex;"><span>WORD    : (&#39;a&#39;..&#39;z&#39;|&#39;A&#39;..&#39;Z&#39;)(&#39;a&#39;..&#39;z&#39;|&#39;A&#39;..&#39;Z&#39;|&#39;.&#39;|&#39;_&#39;|&#39;0&#39;..&#39;9&#39;)*;
+</span></span><span style="display:flex;"><span>VARIABLE
+</span></span><span style="display:flex;"><span>        : &#39;$&#39;(&#39;{&#39;)?WORD(&#39;}&#39;)?;
+</span></span><span style="display:flex;"><span>STRING  : &#39;&#34;&#39;(&#39;a&#39;..&#39;z&#39;|&#39;A&#39;..&#39;Z&#39;)+&#39;&#34;&#39;;
+</span></span><span style="display:flex;"><span>IF      : &#39;#if&#39;;
+</span></span><span style="display:flex;"><span>ELSE    : &#39;#else&#39;;
+</span></span><span style="display:flex;"><span>ENDIF   : &#39;#end if&#39;;
+</span></span><span style="display:flex;"><span>EQ      : &#39;=&#39;;
+</span></span><span style="display:flex;"><span>EQTEST  : &#39;==&#39;;
+</span></span><span style="display:flex;"><span>DBLDASH : &#39;--&#39;;
+</span></span><span style="display:flex;"><span>COLON   : &#39;:&#39;;
+</span></span><span style="display:flex;"><span>WS      : (&#39; &#39;|&#39;\t&#39;|&#39;\r&#39;|&#39;\n&#39;) {$channel=HIDDEN;};
+</span></span></code></pre></div><p>Suggestions for improvements? :) ... Then go ahead and mail me ...
+samuel dot lampa at gmail dot com)</p>
+<p>Also, see a little screenshot from ANTLRWorks below:</p>
+<p><a href="screenshot-antlrworks_1_4_2.png"><p class="image">
+    <img src="screenshot-antlrworks_1_4_2.png" alt=""  />
+</p>
+</a></p>
+<p><em>As you can see in the screenshot, the different parts have correctly
+been identified as &quot;param&quot;, &quot;if statement&quot; and so forth. You can se
+also how I can click in the test syntax, to see where in the parse tree
+that actual part appears.</em></p>
+<p>When done, I just exported the resulting parser code in ANTLRWorks with
+<em>&quot;Generate &gt; Generate Code&quot;</em>, copied the code from the &quot;output&quot;
+folder into my Eclipse project, added the antlr-3.3 jar into the build
+path of it, and then ran the __Test__.java file that comes with the
+output.</p>
+<p>I wanted to do a little more parsing in my test though, so I ended up
+with this little test code:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a90d91">package</span> <span style="color:#000">net.bioclipse.uppmax.galaxytoolconfigparser</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">org.antlr.grammar.v3.*</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">org.antlr.runtime.ANTLRStringStream</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">org.antlr.runtime.CharStream</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">org.antlr.runtime.CommonTokenStream</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">org.antlr.runtime.RecognitionException</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">org.antlr.runtime.TokenStream</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">org.antlr.runtime.tree.CommonTree</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">org.antlr.runtime.tree.DOTTreeGenerator</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">org.antlr.runtime.tree.Tree</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">org.antlr.runtime.tree.TreeAdaptor</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">org.antlr.stringtemplate.StringTemplate</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">public</span> <span style="color:#a90d91">class</span> <span style="color:#3f6e75">ParseTest</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Generated stuff from ANTLR, which I can use to recognize token types</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">public</span> <span style="color:#a90d91">static</span> <span style="color:#a90d91">final</span> <span style="color:#a90d91">int</span> <span style="color:#000">EOF</span><span style="color:#000">=-</span><span style="color:#000">1</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">public</span> <span style="color:#a90d91">static</span> <span style="color:#a90d91">final</span> <span style="color:#a90d91">int</span> <span style="color:#000">ELSE</span><span style="color:#000">=</span><span style="color:#000">4</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">public</span> <span style="color:#a90d91">static</span> <span style="color:#a90d91">final</span> <span style="color:#a90d91">int</span> <span style="color:#000">ENDIF</span><span style="color:#000">=</span><span style="color:#000">5</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">public</span> <span style="color:#a90d91">static</span> <span style="color:#a90d91">final</span> <span style="color:#a90d91">int</span> <span style="color:#000">WORD</span><span style="color:#000">=</span><span style="color:#000">6</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">public</span> <span style="color:#a90d91">static</span> <span style="color:#a90d91">final</span> <span style="color:#a90d91">int</span> <span style="color:#000">IF</span><span style="color:#000">=</span><span style="color:#000">7</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">public</span> <span style="color:#a90d91">static</span> <span style="color:#a90d91">final</span> <span style="color:#a90d91">int</span> <span style="color:#000">STRING</span><span style="color:#000">=</span><span style="color:#000">8</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">public</span> <span style="color:#a90d91">static</span> <span style="color:#a90d91">final</span> <span style="color:#a90d91">int</span> <span style="color:#000">VARIABLE</span><span style="color:#000">=</span><span style="color:#000">9</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">public</span> <span style="color:#a90d91">static</span> <span style="color:#a90d91">final</span> <span style="color:#a90d91">int</span> <span style="color:#000">EQTEST</span><span style="color:#000">=</span><span style="color:#000">10</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">public</span> <span style="color:#a90d91">static</span> <span style="color:#a90d91">final</span> <span style="color:#a90d91">int</span> <span style="color:#000">COLON</span><span style="color:#000">=</span><span style="color:#000">11</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">public</span> <span style="color:#a90d91">static</span> <span style="color:#a90d91">final</span> <span style="color:#a90d91">int</span> <span style="color:#000">DBLDASH</span><span style="color:#000">=</span><span style="color:#000">12</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">public</span> <span style="color:#a90d91">static</span> <span style="color:#a90d91">final</span> <span style="color:#a90d91">int</span> <span style="color:#000">EQ</span><span style="color:#000">=</span><span style="color:#000">13</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">public</span> <span style="color:#a90d91">static</span> <span style="color:#a90d91">final</span> <span style="color:#a90d91">int</span> <span style="color:#000">WS</span><span style="color:#000">=</span><span style="color:#000">14</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">public</span> <span style="color:#a90d91">static</span> <span style="color:#a90d91">void</span> <span style="color:#000">main</span>(<span style="color:#000">String</span><span style="color:#000">[]</span> <span style="color:#000">args</span>) <span style="color:#a90d91">throws</span> <span style="color:#000">RecognitionException</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#000">String</span> <span style="color:#000">testString</span> <span style="color:#000">=</span> <span style="color:#c41a16">&#34;    sam_to_bam.py&#34;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">+</span> <span style="color:#c41a16">&#34;      --input1=$source.input1\n&#34;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">+</span> <span style="color:#c41a16">&#34;      --dbkey=${input1.metadata.dbkey}\n&#34;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">+</span> <span style="color:#c41a16">&#34;      #if $source.index_source == \&#34;history\&#34;:\n&#34;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">+</span> <span style="color:#c41a16">&#34;        --ref_file=$source.ref_file\n&#34;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">+</span> <span style="color:#c41a16">&#34;      #else\n&#34;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">+</span> <span style="color:#c41a16">&#34;        --ref_file=\&#34;None\&#34;\n&#34;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">+</span> <span style="color:#c41a16">&#34;      #end if\n&#34;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">+</span> <span style="color:#c41a16">&#34;      --output1=$output1\n&#34;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">+</span> <span style="color:#c41a16">&#34;      --index_dir=${GALAXY_DATA_INDEX_DIR}\n&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#000">CharStream</span> <span style="color:#000">charStream</span> <span style="color:#000">=</span> <span style="color:#a90d91">new</span> <span style="color:#000">ANTLRStringStream</span>(<span style="color:#000">testString</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#000">GalaxyToolConfigLexer</span> <span style="color:#000">lexer</span> <span style="color:#000">=</span> <span style="color:#a90d91">new</span> <span style="color:#000">GalaxyToolConfigLexer</span>(<span style="color:#000">charStream</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#000">TokenStream</span> <span style="color:#000">tokenStream</span> <span style="color:#000">=</span> <span style="color:#a90d91">new</span> <span style="color:#000">CommonTokenStream</span>(<span style="color:#000">lexer</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#000">GalaxyToolConfigParser</span> <span style="color:#000">parser</span> <span style="color:#000">=</span> <span style="color:#a90d91">new</span> <span style="color:#000">GalaxyToolConfigParser</span>(<span style="color:#000">tokenStream</span>, <span style="color:#a90d91">null</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">System</span>.<span style="color:#836c28">out</span>.<span style="color:#836c28">println</span>(<span style="color:#c41a16">&#34;Starting to parse ...&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#177500">// GalaxyToolConfigParser.command_return command = parser.command();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">CommonTree</span> <span style="color:#000">tree</span> <span style="color:#000">=</span> (<span style="color:#000">CommonTree</span>)<span style="color:#000">parser</span>.<span style="color:#836c28">command</span>().<span style="color:#836c28">getTree</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#000">System</span>.<span style="color:#836c28">out</span>.<span style="color:#836c28">println</span>(<span style="color:#c41a16">&#34;Done parsing ...&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">int</span> <span style="color:#000">i</span> <span style="color:#000">=</span> <span style="color:#000">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">while</span> (<span style="color:#000">i</span><span style="color:#000">&lt;</span><span style="color:#000">tree</span>.<span style="color:#836c28">getChildCount</span>()) {
+</span></span><span style="display:flex;"><span>            <span style="color:#000">Tree</span> <span style="color:#000">subTree</span> <span style="color:#000">=</span> <span style="color:#000">tree</span>.<span style="color:#836c28">getChild</span>(<span style="color:#000">i</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#000">System</span>.<span style="color:#836c28">out</span>.<span style="color:#836c28">println</span>(<span style="color:#c41a16">&#34;Tree child: &#34;</span> <span style="color:#000">+</span> <span style="color:#000">subTree</span>.<span style="color:#836c28">getText</span>() <span style="color:#000">+</span> <span style="color:#c41a16">&#34;, (Token type: &#34;</span> <span style="color:#000">+</span> <span style="color:#000">subTree</span>.<span style="color:#836c28">getType</span>() <span style="color:#000">+</span> <span style="color:#c41a16">&#34;)&#34;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#000">i</span><span style="color:#000">++</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#177500">// Generate DOT Syntax tree</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#177500">//DOTTreeGenerator gen = new DOTTreeGenerator();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#177500">//StringTemplate st = gen.toDOT(tree);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#177500">//System.out.println(&#34;Tree: \n&#34; + st);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">System</span>.<span style="color:#836c28">out</span>.<span style="color:#836c28">println</span>(<span style="color:#c41a16">&#34;Done!&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>... generating this output:</p>
+<pre tabindex="0"><code class="language-log" data-lang="log">Starting ...
+Done executing command ...
+Subtree text: sam_to_bam.py, (Token type: 6)
+Subtree text: --, (Token type: 12)
+Subtree text: input1, (Token type: 6)
+Subtree text: =, (Token type: 13)
+Subtree text: $source.input1, (Token type: 9)
+Subtree text: --, (Token type: 12)
+Subtree text: dbkey, (Token type: 6)
+Subtree text: =, (Token type: 13)
+Subtree text: ${input1.metadata.dbkey}, (Token type: 9)
+Subtree text: #if, (Token type: 7)
+Subtree text: $source.index_source, (Token type: 9)
+Subtree text: ==, (Token type: 10)
+Subtree text: &#34;history&#34;, (Token type: 8)
+Subtree text: :, (Token type: 11)
+Subtree text: --, (Token type: 12)
+Subtree text: ref_file, (Token type: 6)
+Subtree text: =, (Token type: 13)
+Subtree text: $source.ref_file, (Token type: 9)
+Subtree text: #else, (Token type: 4)
+Subtree text: --, (Token type: 12)
+Subtree text: ref_file, (Token type: 6)
+Subtree text: =, (Token type: 13)
+Subtree text: &#34;None&#34;, (Token type: 8)
+Subtree text: #end if, (Token type: 5)
+Subtree text: --, (Token type: 12)
+Subtree text: output1, (Token type: 6)
+Subtree text: =, (Token type: 13)
+Subtree text: $output1, (Token type: 9)
+Subtree text: --, (Token type: 12)
+Subtree text: index_dir, (Token type: 6)
+Subtree text: =, (Token type: 13)
+Subtree text: ${GALAXY_DATA_INDEX_DIR}, (Token type: 9)
+Done!
+</code></pre><p>... seemingly I have the stuff I need, for doing some logic parsing
+now! :)</p>
+<h3 id="toc1">Some words about BNF</h3>
+<p>ANTLR is an (E)BNF parser generator. I had heard a little about BNF
+before, and was more or less scared off from the topic, thinking it
+looked too advanced, but really, I found it isn't that hard at all!</p>
+<p>It strikes me that BNF is quite much <em>RegEx</em> but with functions added,
+which allows for recursive pattern matching, which you'll need for
+anything more advanced, such as nested braces/xml tags etc ... but as
+you can see in the example above also, much of the pattern matching
+syntax actually has big similarities to RegEx.</p>
+<p>In terms of tutorials, for the (E)BNF/ANTLR combo at least, I'd highly
+recommend <a href="http://vimeo.com/groups/29150/videos/8137747">this set of screencasts on using ANTLR in
+Eclipse</a>. Though I didn't
+use the Eclipse version, these screencasts quickly give you an idea of
+how it all works ... I watched at least a bunch of them, and I'm happy
+I did.</p>
+<h3 id="toc2">Links</h3>
+<ul>
+<li>The EBNF I came up with so far is available on
+<a href="https://github.com/samuell/galaxy-toolconfig-bnf/blob/master/GalaxyToolConfig.g">GitHub</a></li>
+<li>The generated parser <a href="https://github.com/bioclipse/bioclipse.uppmax/tree/master/plugins/net.bioclipse.uppmax/src/net/bioclipse/uppmax/galaxytoolconfigparser">is,
+too</a>
+(Though in another github project)</li>
+</ul>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright &copy; 2024 Living Systems. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

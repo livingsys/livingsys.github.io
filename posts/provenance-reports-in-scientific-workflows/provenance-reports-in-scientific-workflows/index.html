@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>On Provenance Reports in Scientific Workflows | Living Systems</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+
+      <script src="/js/main.js"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>On Provenance Reports in Scientific Workflows</h1>
+
+  <img src="">
+
+  
+  
+  <time datetime="2017-10-19T11:44:00&#43;02:00">October 19, 2017</time>
+
+  <!-- raw HTML omitted -->
+<p>One of the more important tasks for a scientific workflow is to keep
+track of so called &quot;provenance information&quot; about its data outputs -
+information about how each data file was created. This is important so
+other researchers can easily replicate the study (re-run it with the
+same software and tools). It should also help for anyone wanting to
+reproduce it (re-run the same study design, possibly with other software
+and tools).</p>
+<p>In workflows in cheminformatics and especially bioinformatics these
+days, such provenance information typically contains a list of exact
+shell commands executed to create all the intermediate output files in
+and possible extra metadata such as parameters in a more structured
+form, execution times, and the like. Optimally we also would like to
+include the exact versions of the software used.</p>
+<h2 id="how-do-other-workflow-tools-do-this">How do other workflow tools do this</h2>
+<p>The above seems like a pretty straight-forward receipe for how to create
+audit- or provenance reports for workflow runs. Still, in our
+experience, there is to not that much of consensus about how to do it in
+the most used tools. I've been looking hard for prior art here, and
+from what I understand from googling and some experimentation (please
+correct any misconceptions here!):</p>
+<ul>
+<li>I understand Galaxy stores quite a lot of metadata information about
+workflow runs internally, which are viewable via jobs in the UI, but
+not so sure about any specific reporting facility.</li>
+<li>I know <a href="http://docs.bpipe.org">bpipe</a> has some type of <a href="http://docs.bpipe.org/Guides/Reports/">HTML
+report</a>,</li>
+<li>Unsure about the situation in <a href="https://www.nextflow.io/">NextFlow</a>
+(don't remember seeing an explicit reporting function), and
+<a href="http://snakemake.readthedocs.io">Snakemake</a>.</li>
+</ul>
+<p>Pardon my hand-waving unsurity here, but again, my point is just that
+there doesn't seem to be much consensus about it yet. Also, in the
+cases where a report is provided, it seems to be more likely to be as a
+formatted text or HTML document, that a structured data document, or an
+executable one.</p>
+<p>Now, it should be said that the workflow code itself is a very accurate
+and executable documentation of all its outputs, if the outputs can be
+linked to a specific version of the code (git commit). Still, linking
+workflow outputs to specific git versions seems to come with its own
+problems, such as finding the right repository, making sure that all
+dependencies are also equally well versioned and available, etc etc, so
+not sure that is the ultimate solution.</p>
+<h2 id="we-can-do-better">We can do better</h2>
+<p>Thus, I think there is room for improvement. Below I go in to some
+detail about how we do this in SciPipe, hoping to spur some
+brainstorming on the topic.</p>
+<h2 id="how-scipipe-does-it">How SciPipe does it</h2>
+<p>SciPipe is designed quite heavily around being able to customize
+completely up to your liking how to name both intermediate and final
+outputs from the workflow, with <a href="http://scipipe.org/writing_workflows/#formatting-output-file-paths">helper
+methods</a>,
+or <a href="http://scipipe.org/writing_workflows/#even-more-control-over-file-formatting">providing your own anonymous
+function</a>
+to generate the path. This makes it manageable to browse through
+intermediate output file for manual sanity checking for example.</p>
+<p>Thus, wouldn't it be great if we could have the provenance information
+handy together with the workflow output files? That is exactly what
+SciPipe does. For every output in the workflow it creates a
+corresponding file named like the file but with the extention
+&quot;.audit.json&quot;. This makes it really easy to find the exact commands
+used to produce an output, should one find anything that looks funny.,
+etc. This has already been very helpful for debugging subtle errors in
+our workflows.</p>
+<h2 id="the-scipipe-audit-log-format">The SciPipe audit log format</h2>
+<p>Now to the format of the file.</p>
+<p>Some workflow tools provide a linear representation of the list of
+commands that were run in a workflow run. It turns out though that for
+every output in a workflow, one actually has a tree structure of
+upstream commands that were run, and for each of the inputs of <em>that</em>
+command, further upstream commands that were run to produce them, with
+their own inputs, and corresponding upstream commands, and ... until
+you get to your raw data aquisition scripts.</p>
+<p>Let's illustrate the data structure with a simple HTML list, for the
+file workflow_output.tsv:</p>
+<ul>
+<li>Command:
+<code>my-nice-command -i input_data.tsv,another_input.tsv &gt; workflow_output.tsv</code>
+<ul>
+<li>Inputs:
+<ul>
+<li><code>input_data.tsv</code>:
+<ul>
+<li>Command:
+<code>curl -O http://some-longurl.com/datasets/input_data.tsv</code></li>
+</ul>
+</li>
+<li><code>another_input.tsv</code>:
+<ul>
+<li>Command:
+<code>sed 's/typo/correct-word/' rawdata.tsv &gt; another_input.tsv</code>
+<ul>
+<li>Inputs:
+<ul>
+<li><code>rawdata.tsv</code>:
+<ul>
+<li>Command:
+<code>curl -O ftp://some-archive.org/rawdata.tsv</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>If we look at &quot;another_input.tsv&quot; here, we see how there can actually
+be an indefinitely large tree of upstream commands that produced a
+certain input, etc etc. In other words, far from a linear list of
+commands. This is exactly what SciPipe stores for every file. The
+concrete data serialization format used is JSON, and to give you a sense
+for how this looks in practice, this is a real-world audit file from one
+of our workflows (only slightly cleaned of tabs and newlines):</p>
+<pre><code>lang-json
+{
+    &quot;Command&quot;: &quot;java -jar ../../bin/cpsign-0.6.2.jar train --license ../../bin/cpsign.lic --cptype 1 --modelfile dat/slc6a4/slc6a4.tsv.precomp --labels A, N --impl liblinear --nr-models 10 --cost 1 --model-out dat/final_models/slc6a4_liblin_c1_nrmdl10.mdl.tmp --model-name \&quot;SLC6A4 target profile\&quot; # Efficiency: 0.183&quot;,
+    &quot;Params&quot;: {
+        &quot;cost&quot;: &quot;1&quot;,
+        &quot;efficiency&quot;: &quot;0.183&quot;,
+        &quot;gene&quot;: &quot;SLC6A4&quot;,
+        &quot;nrmdl&quot;: &quot;10&quot;
+    },
+    &quot;ExecTimeMS&quot;: 26828,
+    &quot;Upstream&quot;: {
+        &quot;dat/slc6a4/slc6a4.tsv.precomp&quot;: {
+            &quot;Command&quot;: &quot;java -jar ../../bin/cpsign-0.6.2.jar precompute --license ../../bin/cpsign.lic --cptype 1 --trainfile dat/slc6a4/slc6a4.tsv --labels A, N --model-out dat/slc6a4/slc6a4.tsv.precomp.tmp --model-name \&quot;SLC6A4 target profile\&quot;&quot;,
+            &quot;Params&quot;: {},
+            &quot;ExecTimeMS&quot;: 22637,
+            &quot;Upstream&quot;: {
+                &quot;dat/slc6a4/slc6a4.tsv&quot;: {
+                    &quot;Command&quot;: &quot;awk -F\&quot;&quot; '$9 == \&quot;SLC6A4\&quot; { print $12\&quot;&quot;$4 }' ../../raw/pubchem.chembl.dataset4publication_inchi_smiles.tsv \u003e dat/slc6a4/slc6a4.tsv.tmp&quot;,
+                    &quot;Params&quot;: {},
+                    &quot;ExecTimeMS&quot;: 2437035,
+                    &quot;Upstream&quot;: {
+                        &quot;../../raw/pubchem.chembl.dataset4publication_inchi_smiles.tsv&quot;: {
+                            &quot;Command&quot;: &quot;xzcat dat/pubchem.chembl.dataset4publication_inchi_smiles.tsv.xz \u003e dat/pubchem.chembl.dataset4publication_inchi_smiles.tsv.tmp&quot;,
+                            &quot;Params&quot;: {},
+                            &quot;ExecTimeMS&quot;: 0,
+                            &quot;Upstream&quot;: null
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<p>Now, based on this structured information, we actually have all the
+information to easily generate:</p>
+<ul>
+<li>A bash script to re-run everything from scratch</li>
+<li>A HTML/PDF/Markdown report</li>
+<li>Anything else you can come up with?</li>
+</ul>
+<p>Another nice aspect of storing this info as structured data together
+with the main workflow output, is that it can easily be used as inputs
+in the workflow itself. This has already been a life-saver for us in
+some tricky workflow constructs.</p>
+<p>It also highlights a fact that it took us a few to realize:</p>
+<blockquote>
+<p><strong>application logs != provenance logs</strong></p>
+</blockquote>
+<p>Application logs tend to contain much more low-level technical
+information, and also be so unstructured and unreliably stored, that it
+is hardly useful as input for the workflow itself.</p>
+<h3 id="known-limitations">Known limitations</h3>
+<p>As this is work in progress, there are some things we haven't got to
+yet, such as software versioning. We still need to find a robust and
+universal method to store that.</p>
+<p>What are your thoughts? Our thinking right now is that the optimal will
+always be to include installation or building of the software itself
+from sources in the workflow specification itself, but in the meanwhile,
+perhaps just providing a way in the workflow to specify how to run a
+command to get the version string from it would suffice?</p>
+<p>Something like:</p>
+<pre><code>lang-go
+myProcess := workflow.NewProc(&quot;my_process&quot;, &quot;awk '{ print }' ...&quot; ...)
+myProcess.SetVersionCommand(&quot;awk --version&quot;)
+</code></pre>
+<p>? Guess we'll have to try and see. Comments welcome!</p>
+<p><em><strong>Update:</strong> See some discussion in <a href="https://www.reddit.com/r/bioinformatics/comments/77e5ga/some_thoughts_on_provenance_reports_in_scientific/?ref=share&amp;ref_source=link">this reddit
+thread</a></em></p>
+<p><em><strong>Edit, Oct 19, 13:50 CET:</strong> Updated wording to make reading more
+fluent</em></p>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright 2024. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

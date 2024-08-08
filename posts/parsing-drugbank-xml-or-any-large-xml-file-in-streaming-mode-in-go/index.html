@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Parsing DrugBank XML (or any large XML file) in streaming mode in Go | Living Systems</title>
+
+      <link rel="stylesheet" href="/css/main.min.f3a5991997d3edfa6612acd25887dbae0ca5be329567cceb3054217da27f5132.css" integrity="sha256-86WZGZfT7fpmEqzSWIfbrgylvjKVZ8zrMFQhfaJ/UTI=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>Parsing DrugBank XML (or any large XML file) in streaming mode in Go</h1>
+
+  
+  
+  <time datetime="2018-03-15T15:19:00&#43;01:00">March 15, 2018</time>
+
+  <!-- raw HTML omitted -->
+<p>While Go's XML stream-parsing support is great, the details of how to
+do that in a streaming fashion was not immediately clear from the docs,
+and I was thus saved by <a href="http://blog.davidsingleton.org/parsing-huge-xml-files-with-go/">this blog
+post</a> by
+<a href="http://twitter.com/dps">David Singleton</a>. Basically, you could use his
+blog post as a starting point, but I wanted to write up my own post to
+document some specifics and peculiarities I figured out.</p>
+<h2 id="idea-parse-drugbank-xml-to-tsv">Idea: Parse DrugBank XML to TSV</h2>
+<p>So in short, we want to parse the DrugBank XML, which contains tons of
+hierarchical information about each drug in the dataset, and extract
+just a few fields, and output that into a nicely formatted tab-separated
+(.tsv) file.</p>
+<p>The fields which we want to extract in this example (which is based on
+my real world problem mentioned above) for each drug are:</p>
+<ul>
+<li>InchiKey (a hashed ID representing a chemical structure)</li>
+<li>Approved/Withdrawn status</li>
+<li>ChEMBL ID (for the compound)</li>
+<li>PubChem Compound ID (CID)</li>
+<li>PubChem Substance ID (SID)</li>
+</ul>
+<h2 id="the-drugbank-xml-format">The DrugBank XML format</h2>
+<p>The DrugBank XML format is a pretty simple one on its highest level: It
+is basically a lot of &lt;drug&gt;&lt;/drug&gt; elements thrown into a
+&lt;drugbank&gt;&lt;/drugbank&gt; enclosing tag. The relative complexity comes
+within the &lt;drug&gt; tag. But because of how Go parses XML to structs
+using tags, we can just skip most of that info, and only focus on the
+parts we are interested in.</p>
+<p>A schematic example of the DrugBank XML containing only the fields we
+are interested could look like this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#633820">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">&lt;drugbank</span> <span style="color:#836c28">xmlns=</span><span style="color:#c41a16">&#34;http://www.drugbank.ca&#34;</span> <span style="color:#836c28">xmlns:xsi=</span><span style="color:#c41a16">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span> <span style="color:#836c28">xsi:schemaLocation=</span><span style="color:#c41a16">&#34;http://www.drugbank.ca http://www.drugbank.ca/docs/drugbank.xsd&#34;</span> <span style="color:#836c28">version=</span><span style="color:#c41a16">&#34;5.0&#34;</span> <span style="color:#836c28">exported-on=</span><span style="color:#c41a16">&#34;2017-12-20&#34;</span><span style="color:#000">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">&lt;drug</span> <span style="color:#836c28">type=</span><span style="color:#c41a16">&#34;small molecule&#34;</span> <span style="color:#836c28">created=</span><span style="color:#c41a16">&#34;2005-06-13&#34;</span> <span style="color:#836c28">updated=</span><span style="color:#c41a16">&#34;2017-12-19&#34;</span><span style="color:#000">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;name&gt;</span>Bivalirudin<span style="color:#000">&lt;/name&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;groups&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">&lt;group&gt;</span>approved<span style="color:#000">&lt;/group&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">&lt;group&gt;</span>investigational<span style="color:#000">&lt;/group&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;/groups&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;external-identifiers&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">&lt;external-identifier&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">&lt;resource&gt;</span>PubChem Compound<span style="color:#000">&lt;/resource&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">&lt;identifier&gt;</span>16129704<span style="color:#000">&lt;/identifier&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">&lt;/external-identifier&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">&lt;external-identifier&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">&lt;resource&gt;</span>PubChem Substance<span style="color:#000">&lt;/resource&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">&lt;identifier&gt;</span>46507415<span style="color:#000">&lt;/identifier&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">&lt;/external-identifier&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">&lt;external-identifier&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">&lt;resource&gt;</span>ChEMBL<span style="color:#000">&lt;/resource&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">&lt;identifier&gt;</span>CHEMBL2103749<span style="color:#000">&lt;/identifier&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">&lt;/external-identifier&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;/external-identifiers&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;calculated-properties&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">&lt;property&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">&lt;kind&gt;</span>InChIKey<span style="color:#000">&lt;/kind&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">&lt;value&gt;</span>OIRCOABEOLEUMC-GEJPAHFPSA-N<span style="color:#000">&lt;/value&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">&lt;source&gt;</span>ChemAxon<span style="color:#000">&lt;/source&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;/calculated-properties&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">&lt;/drug&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">&lt;/drugbank&gt;</span>
+</span></span></code></pre></div><p>(In reality, each &lt;drug&gt; element is far far many more lines than this,
+which really necessitates proper XML parsing tools).</p>
+<h2 id="mapping-xml-to-go-structs">Mapping XML to Go Structs</h2>
+<p>The parsing strategy for XML in Go, is the same as for other formats
+such as JSON: Define one or more structs into which we parse certain XML
+elements and attributes. The mapping between XML (or JSON) and the
+struct fields are done using so called &quot;tags&quot; which are added within
+back-quotes after the fields in the struct definition. Thus, defining
+sensible structs and XML element-to-struct field mappings is the core of
+the work, and will directly influence how easy your code will be to work
+with.</p>
+<p>Below you can see the struct-structure (sounds just right, right?) I
+defined to be able to parse out the data I'm interested in:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">type</span> <span style="color:#000">Drugbank</span> <span style="color:#a90d91">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">XMLName</span> <span style="color:#000">xml</span>.<span style="color:#000">Name</span> <span style="color:#c41a16">`xml:&#34;drugbank&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">Drugs</span>   []<span style="color:#000">Drug</span>   <span style="color:#c41a16">`xml:&#34;drug&#34;`</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">type</span> <span style="color:#000">Drug</span> <span style="color:#a90d91">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">XMLName</span>              <span style="color:#000">xml</span>.<span style="color:#000">Name</span>             <span style="color:#c41a16">`xml:&#34;drug&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">Name</span>                 <span style="color:#a90d91">string</span>               <span style="color:#c41a16">`xml:&#34;name&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">Groups</span>               []<span style="color:#a90d91">string</span>             <span style="color:#c41a16">`xml:&#34;groups&gt;group&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">CalculatedProperties</span> []<span style="color:#000">Property</span>           <span style="color:#c41a16">`xml:&#34;calculated-properties&gt;property&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">ExternalIdentifiers</span>  []<span style="color:#000">ExternalIdentifier</span> <span style="color:#c41a16">`xml:&#34;external-identifiers&gt;external-identifier&#34;`</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">type</span> <span style="color:#000">Property</span> <span style="color:#a90d91">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">XMLName</span> <span style="color:#000">xml</span>.<span style="color:#000">Name</span> <span style="color:#c41a16">`xml:&#34;property&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">Kind</span>    <span style="color:#a90d91">string</span>   <span style="color:#c41a16">`xml:&#34;kind&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">Value</span>   <span style="color:#a90d91">string</span>   <span style="color:#c41a16">`xml:&#34;value&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">Source</span>  <span style="color:#a90d91">string</span>   <span style="color:#c41a16">`xml:&#34;source&#34;`</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">type</span> <span style="color:#000">ExternalIdentifier</span> <span style="color:#a90d91">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">XMLName</span>    <span style="color:#000">xml</span>.<span style="color:#000">Name</span> <span style="color:#c41a16">`xml:&#34;external-identifier&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">Resource</span>   <span style="color:#a90d91">string</span>   <span style="color:#c41a16">`xml:&#34;resource&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">Identifier</span> <span style="color:#a90d91">string</span>   <span style="color:#c41a16">`xml:&#34;identifier&#34;`</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>We can note the following:</p>
+<ul>
+<li>As said, the stuff within back-quotes represent the structure in the
+XML to be mapped to a certain field.</li>
+<li>Note how, for nested hierarchies, we need multiple struct types,
+such as the &quot;Property&quot; and &quot;ExternalIdentifier&quot; ones ... which
+are then linked to from the main &quot;Drug&quot; struct&quot;.</li>
+<li>We also need a struct for the highest level element, &lt;drugbank&gt;.</li>
+<li>Each struct needs to have a field of xml.Name type (named XMLName
+for simplicity), that defines its name in the XML, so that we have
+somewhere to add our XML-mapping tag.</li>
+<li>Note, when we have a slice (&quot;list&quot;) of things, such as the
+&quot;CalculatedProperties&quot; field in the &quot;Drug&quot; struct, how we need
+to specify a two level path
+(`xml:&quot;calculated-properties**&gt;**property&quot;`) into the XML
+structure, so that we get down to the individual &quot;property&quot; XML
+elements which are placed inside a grouping
+&quot;calculated-properties&quot; element.</li>
+</ul>
+<p>With that set up, we can create our Go code to loop over our XML file in
+a streaming fashion, along the lines of David's <a href="http://blog.davidsingleton.org/parsing-huge-xml-files-with-go/">blog
+post</a>,
+while also creating a TSV writer, which we use to stream-write our
+extracted output into a new file, drugbank_extracted.tsv (imports and
+main function left out for brevity):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#000">xmlFile</span>, <span style="color:#000">err</span> <span style="color:#000">:=</span> <span style="color:#000">os</span>.<span style="color:#000">Open</span>(<span style="color:#c41a16">&#34;drugbank.xml&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">if</span> <span style="color:#000">err</span> <span style="color:#000">!=</span> <span style="color:#a90d91">nil</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">panic</span>(<span style="color:#c41a16">&#34;Could not open file: drugbank.xml&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">tsvFile</span>, <span style="color:#000">err</span> <span style="color:#000">:=</span> <span style="color:#000">os</span>.<span style="color:#000">Create</span>(<span style="color:#c41a16">&#34;drugbank_extracted.tsv&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">if</span> <span style="color:#000">err</span> <span style="color:#000">!=</span> <span style="color:#a90d91">nil</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">panic</span>(<span style="color:#c41a16">&#34;Could not create file: drugbank_extracted.tsv&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">tsvWrt</span> <span style="color:#000">:=</span> <span style="color:#000">csv</span>.<span style="color:#000">NewWriter</span>(<span style="color:#000">tsvFile</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000">tsvWrt</span>.<span style="color:#000">Comma</span> = <span style="color:#2300ce">&#39;\t&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">tsvHeader</span> <span style="color:#000">:=</span> []<span style="color:#a90d91">string</span>{<span style="color:#c41a16">&#34;inchikey&#34;</span>, <span style="color:#c41a16">&#34;status&#34;</span>, <span style="color:#c41a16">&#34;chembl_id&#34;</span>, <span style="color:#c41a16">&#34;pubchem_sid&#34;</span>, <span style="color:#c41a16">&#34;pubchem_cid&#34;</span>}
+</span></span><span style="display:flex;"><span><span style="color:#000">tsvWrt</span>.<span style="color:#000">Write</span>(<span style="color:#000">tsvHeader</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#177500">// Implement a streaming XML parser according to guide in
+</span></span></span><span style="display:flex;"><span><span style="color:#177500">// http://blog.davidsingleton.org/parsing-huge-xml-files-with-go
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span><span style="color:#000">xmlDec</span> <span style="color:#000">:=</span> <span style="color:#000">xml</span>.<span style="color:#000">NewDecoder</span>(<span style="color:#000">xmlFile</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">for</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">t</span>, <span style="color:#000">tokenErr</span> <span style="color:#000">:=</span> <span style="color:#000">xmlDec</span>.<span style="color:#000">Token</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">if</span> <span style="color:#000">tokenErr</span> <span style="color:#000">!=</span> <span style="color:#a90d91">nil</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">if</span> <span style="color:#000">tokenErr</span> <span style="color:#000">==</span> <span style="color:#000">io</span>.<span style="color:#000">EOF</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">break</span>
+</span></span><span style="display:flex;"><span>        } <span style="color:#a90d91">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">panic</span>(<span style="color:#c41a16">&#34;Failed to read token:&#34;</span> <span style="color:#000">+</span> <span style="color:#000">tokenErr</span>.<span style="color:#000">Error</span>())
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">switch</span> <span style="color:#000">startElem</span> <span style="color:#000">:=</span> <span style="color:#000">t</span>.(<span style="color:#a90d91">type</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">case</span> <span style="color:#000">xml</span>.<span style="color:#000">StartElement</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">if</span> <span style="color:#000">startElem</span>.<span style="color:#000">Name</span>.<span style="color:#000">Local</span> <span style="color:#000">==</span> <span style="color:#c41a16">&#34;drug&#34;</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">var</span> <span style="color:#000">status</span> <span style="color:#a90d91">string</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">var</span> <span style="color:#000">inchiKey</span> <span style="color:#a90d91">string</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">var</span> <span style="color:#000">chemblID</span> <span style="color:#a90d91">string</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">var</span> <span style="color:#000">pubchemSID</span> <span style="color:#a90d91">string</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">var</span> <span style="color:#000">pubchemCID</span> <span style="color:#a90d91">string</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000">drug</span> <span style="color:#000">:=</span> <span style="color:#000">&amp;</span><span style="color:#000">Drug</span>{}
+</span></span><span style="display:flex;"><span>            <span style="color:#000">decErr</span> <span style="color:#000">:=</span> <span style="color:#000">xmlDec</span>.<span style="color:#000">DecodeElement</span>(<span style="color:#000">drug</span>, <span style="color:#000">&amp;</span><span style="color:#000">startElem</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">if</span> <span style="color:#000">err</span> <span style="color:#000">!=</span> <span style="color:#a90d91">nil</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#a90d91">panic</span>(<span style="color:#c41a16">&#34;Could not decode element&#34;</span> <span style="color:#000">+</span> <span style="color:#000">decErr</span>.<span style="color:#000">Error</span>())
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">for</span> <span style="color:#000">_</span>, <span style="color:#000">g</span> <span style="color:#000">:=</span> <span style="color:#a90d91">range</span> <span style="color:#000">drug</span>.<span style="color:#000">Groups</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#a90d91">if</span> <span style="color:#000">g</span> <span style="color:#000">==</span> <span style="color:#c41a16">&#34;approved&#34;</span> {
+</span></span><span style="display:flex;"><span>                    <span style="color:#000">status</span> = <span style="color:#c41a16">&#34;A&#34;</span>
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#177500">// Withdrawn till &#34;shadow&#34; (what&#39;s the correct term?) approved status
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>                <span style="color:#a90d91">if</span> <span style="color:#000">g</span> <span style="color:#000">==</span> <span style="color:#c41a16">&#34;withdrawn&#34;</span> {
+</span></span><span style="display:flex;"><span>                    <span style="color:#000">status</span> = <span style="color:#c41a16">&#34;W&#34;</span>
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">for</span> <span style="color:#000">_</span>, <span style="color:#000">p</span> <span style="color:#000">:=</span> <span style="color:#a90d91">range</span> <span style="color:#000">drug</span>.<span style="color:#000">CalculatedProperties</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#a90d91">if</span> <span style="color:#000">p</span>.<span style="color:#000">Kind</span> <span style="color:#000">==</span> <span style="color:#c41a16">&#34;InChIKey&#34;</span> {
+</span></span><span style="display:flex;"><span>                    <span style="color:#000">inchiKey</span> = <span style="color:#000">p</span>.<span style="color:#000">Value</span>
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">for</span> <span style="color:#000">_</span>, <span style="color:#000">eid</span> <span style="color:#000">:=</span> <span style="color:#a90d91">range</span> <span style="color:#000">drug</span>.<span style="color:#000">ExternalIdentifiers</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#a90d91">if</span> <span style="color:#000">eid</span>.<span style="color:#000">Resource</span> <span style="color:#000">==</span> <span style="color:#c41a16">&#34;ChEMBL&#34;</span> {
+</span></span><span style="display:flex;"><span>                    <span style="color:#000">chemblID</span> = <span style="color:#000">eid</span>.<span style="color:#000">Identifier</span>
+</span></span><span style="display:flex;"><span>                } <span style="color:#a90d91">else</span> <span style="color:#a90d91">if</span> <span style="color:#000">eid</span>.<span style="color:#000">Resource</span> <span style="color:#000">==</span> <span style="color:#c41a16">&#34;PubChem Substance&#34;</span> {
+</span></span><span style="display:flex;"><span>                    <span style="color:#000">pubchemSID</span> = <span style="color:#000">eid</span>.<span style="color:#000">Identifier</span>
+</span></span><span style="display:flex;"><span>                } <span style="color:#a90d91">else</span> <span style="color:#a90d91">if</span> <span style="color:#000">eid</span>.<span style="color:#000">Resource</span> <span style="color:#000">==</span> <span style="color:#c41a16">&#34;PubChem Compound&#34;</span> {
+</span></span><span style="display:flex;"><span>                    <span style="color:#000">pubchemCID</span> = <span style="color:#000">eid</span>.<span style="color:#000">Identifier</span>
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000">tsvWrt</span>.<span style="color:#000">Write</span>([]<span style="color:#a90d91">string</span>{<span style="color:#000">inchiKey</span>, <span style="color:#000">status</span>, <span style="color:#000">chemblID</span>, <span style="color:#000">pubchemSID</span>, <span style="color:#000">pubchemCID</span>})
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">case</span> <span style="color:#000">xml</span>.<span style="color:#000">EndElement</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">continue</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#000">tsvWrt</span>.<span style="color:#000">Flush</span>()
+</span></span><span style="display:flex;"><span><span style="color:#000">xmlFile</span>.<span style="color:#000">Close</span>()
+</span></span><span style="display:flex;"><span><span style="color:#000">tsvFile</span>.<span style="color:#000">Close</span>()
+</span></span></code></pre></div><h2 id="turn-into-a-reproducible-workflow-with-scipipe">Turn into a reproducible workflow with SciPipe</h2>
+<p>Now, we could use SciPipe (Go-based workflow library I'm developing) to
+put this into a little workflow, where we also automaticalyl download
+the DrugBank data, Unzip it, and run the XML-to-TSV code. See <a href="https://gist.github.com/samuell/fc82fad39e7efda7987fc18173777f7f">this
+gist</a>
+for the full workflow code.</p>
+<p>To run the Go file in the gist, in short, what you need to do is:</p>
+<ul>
+<li>Create a file drugbank_userinfo.txt, containing your DrugBank
+website username and password, on the form: USERNAME:PASSWORD</li>
+<li>Install Go</li>
+<li>Install scipipe with<br>
+<code>go get github.com/scipipe/scipipe/...</code></li>
+<li>Make sure you have curl installed. On Ubuntu:<br>
+<code>sudo apt-get install curl</code></li>
+</ul>
+<p>Then, you should be able to run it, with:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    go run drugbank_xml_to_tsv_with_scipipe.go
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Full SciPipe workflow code example
+</span></span><span style="display:flex;"><span>----------------------------------
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>I<span style="color:#c41a16">\&#39;</span>m including the full SciPipe workflow code below as well, <span style="color:#a90d91">for</span> the day
+</span></span><span style="display:flex;"><span>when Github is down ;<span style="color:#000">)</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">```</span>go
+</span></span><span style="display:flex;"><span>package main
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>import <span style="color:#000">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;encoding/csv&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;encoding/xml&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;io&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;os&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    sp <span style="color:#c41a16">&#34;github.com/scipipe/scipipe&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>// --------------------------------------------------------------------------------
+</span></span><span style="display:flex;"><span>// Workflow definition
+</span></span><span style="display:flex;"><span>// --------------------------------------------------------------------------------
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>func main<span style="color:#000">()</span> <span style="color:#000">{</span>
+</span></span><span style="display:flex;"><span>    wf :<span style="color:#000">=</span> sp.NewWorkflow<span style="color:#000">(</span><span style="color:#c41a16">&#34;exvsdb&#34;</span>, 2<span style="color:#000">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    // DrugBank XML
+</span></span><span style="display:flex;"><span>    // Note: We need to prepend <span style="color:#c41a16">&#39;../&#39;</span> to the file drugbank_userinfo.txt, because the workflow will be run in a subfolder
+</span></span><span style="display:flex;"><span>    download :<span style="color:#000">=</span> wf.NewProc<span style="color:#000">(</span><span style="color:#c41a16">&#34;download&#34;</span>, <span style="color:#c41a16">&#34;curl -Lfv -o {o:zip} -u </span><span style="color:#a90d91">$(</span>cat ../drugbank_userinfo.txt<span style="color:#a90d91">)</span><span style="color:#c41a16"> https://www.drugbank.ca/releases/5-0-11/downloads/all-full-database&#34;</span><span style="color:#000">)</span>
+</span></span><span style="display:flex;"><span>    download.SetOut<span style="color:#000">(</span><span style="color:#c41a16">&#34;zip&#34;</span>, <span style="color:#c41a16">&#34;dat/drugbank.zip&#34;</span><span style="color:#000">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    unzip :<span style="color:#000">=</span> wf.NewProc<span style="color:#000">(</span><span style="color:#c41a16">&#34;unzip&#34;</span>, <span style="color:#c41a16">`</span>unzip -d dat/ <span style="color:#000">{</span>i:zip<span style="color:#000">}</span>; mv <span style="color:#c41a16">&#34;dat/full database.xml&#34;</span> <span style="color:#000">{</span>o:xml<span style="color:#000">}</span><span style="color:#c41a16">`</span><span style="color:#000">)</span>
+</span></span><span style="display:flex;"><span>    unzip.SetOut<span style="color:#000">(</span><span style="color:#c41a16">&#34;xml&#34;</span>, <span style="color:#c41a16">&#34;dat/drugbank.xml&#34;</span><span style="color:#000">)</span>
+</span></span><span style="display:flex;"><span>    unzip.In<span style="color:#000">(</span><span style="color:#c41a16">&#34;zip&#34;</span><span style="color:#000">)</span>.From<span style="color:#000">(</span>download.Out<span style="color:#000">(</span><span style="color:#c41a16">&#34;zip&#34;</span><span style="color:#000">))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    xmlToTSV :<span style="color:#000">=</span> wf.NewProc<span style="color:#000">(</span><span style="color:#c41a16">&#34;xml2tsv&#34;</span>, <span style="color:#c41a16">&#34;# Custom Go code with input: {i:xml} and output: {o:tsv}&#34;</span><span style="color:#000">)</span>
+</span></span><span style="display:flex;"><span>    xmlToTSV.SetOut<span style="color:#000">(</span><span style="color:#c41a16">&#34;tsv&#34;</span>, <span style="color:#c41a16">&#34;{i:xml}.extr.tsv&#34;</span><span style="color:#000">)</span>
+</span></span><span style="display:flex;"><span>    xmlToTSV.In<span style="color:#000">(</span><span style="color:#c41a16">&#34;xml&#34;</span><span style="color:#000">)</span>.From<span style="color:#000">(</span>unzip.Out<span style="color:#000">(</span><span style="color:#c41a16">&#34;xml&#34;</span><span style="color:#000">))</span>
+</span></span><span style="display:flex;"><span>    xmlToTSV.CustomExecute <span style="color:#000">=</span> NewXMLToTSVFunc<span style="color:#000">()</span> // Getting the custom Go <span style="color:#a90d91">function</span> in a factory method <span style="color:#a90d91">for</span> readability
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    wf.Run<span style="color:#000">()</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>// --------------------------------------------------------------------------------
+</span></span><span style="display:flex;"><span>// DrugBank struct definitions
+</span></span><span style="display:flex;"><span>// --------------------------------------------------------------------------------
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">type</span> Drugbank struct <span style="color:#000">{</span>
+</span></span><span style="display:flex;"><span>    XMLName xml.Name <span style="color:#c41a16">`</span>xml:<span style="color:#c41a16">&#34;drugbank&#34;</span><span style="color:#c41a16">`</span>
+</span></span><span style="display:flex;"><span>    Drugs   <span style="color:#000">[]</span>Drug   <span style="color:#c41a16">`</span>xml:<span style="color:#c41a16">&#34;drug&#34;</span><span style="color:#c41a16">`</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">type</span> Drug struct <span style="color:#000">{</span>
+</span></span><span style="display:flex;"><span>    XMLName              xml.Name             <span style="color:#c41a16">`</span>xml:<span style="color:#c41a16">&#34;drug&#34;</span><span style="color:#c41a16">`</span>
+</span></span><span style="display:flex;"><span>    Name                 string               <span style="color:#c41a16">`</span>xml:<span style="color:#c41a16">&#34;name&#34;</span><span style="color:#c41a16">`</span>
+</span></span><span style="display:flex;"><span>    Groups               <span style="color:#000">[]</span>string             <span style="color:#c41a16">`</span>xml:<span style="color:#c41a16">&#34;groups&gt;group&#34;</span><span style="color:#c41a16">`</span>
+</span></span><span style="display:flex;"><span>    CalculatedProperties <span style="color:#000">[]</span>Property           <span style="color:#c41a16">`</span>xml:<span style="color:#c41a16">&#34;calculated-properties&gt;property&#34;</span><span style="color:#c41a16">`</span>
+</span></span><span style="display:flex;"><span>    ExternalIdentifiers  <span style="color:#000">[]</span>ExternalIdentifier <span style="color:#c41a16">`</span>xml:<span style="color:#c41a16">&#34;external-identifiers&gt;external-identifier&#34;</span><span style="color:#c41a16">`</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">type</span> Property struct <span style="color:#000">{</span>
+</span></span><span style="display:flex;"><span>    XMLName xml.Name <span style="color:#c41a16">`</span>xml:<span style="color:#c41a16">&#34;property&#34;</span><span style="color:#c41a16">`</span>
+</span></span><span style="display:flex;"><span>    Kind    string   <span style="color:#c41a16">`</span>xml:<span style="color:#c41a16">&#34;kind&#34;</span><span style="color:#c41a16">`</span>
+</span></span><span style="display:flex;"><span>    Value   string   <span style="color:#c41a16">`</span>xml:<span style="color:#c41a16">&#34;value&#34;</span><span style="color:#c41a16">`</span>
+</span></span><span style="display:flex;"><span>    Source  string   <span style="color:#c41a16">`</span>xml:<span style="color:#c41a16">&#34;source&#34;</span><span style="color:#c41a16">`</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">type</span> ExternalIdentifier struct <span style="color:#000">{</span>
+</span></span><span style="display:flex;"><span>    XMLName    xml.Name <span style="color:#c41a16">`</span>xml:<span style="color:#c41a16">&#34;external-identifier&#34;</span><span style="color:#c41a16">`</span>
+</span></span><span style="display:flex;"><span>    Resource   string   <span style="color:#c41a16">`</span>xml:<span style="color:#c41a16">&#34;resource&#34;</span><span style="color:#c41a16">`</span>
+</span></span><span style="display:flex;"><span>    Identifier string   <span style="color:#c41a16">`</span>xml:<span style="color:#c41a16">&#34;identifier&#34;</span><span style="color:#c41a16">`</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>// --------------------------------------------------------------------------------
+</span></span><span style="display:flex;"><span>// Components
+</span></span><span style="display:flex;"><span>// --------------------------------------------------------------------------------
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>// NewXMLToTSVFunc returns a CustomExecute <span style="color:#a90d91">function</span> to be used by the XML to TSV
+</span></span><span style="display:flex;"><span>// component in the workflow above
+</span></span><span style="display:flex;"><span>func NewXMLToTSVFunc<span style="color:#000">()</span> func<span style="color:#000">(</span>t *sp.Task<span style="color:#000">)</span> <span style="color:#000">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> func<span style="color:#000">(</span>t *sp.Task<span style="color:#000">)</span> <span style="color:#000">{</span>
+</span></span><span style="display:flex;"><span>        fh, err :<span style="color:#000">=</span> os.Open<span style="color:#000">(</span>t.InPath<span style="color:#000">(</span><span style="color:#c41a16">&#34;xml&#34;</span><span style="color:#000">))</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">if</span> err !<span style="color:#000">=</span> nil <span style="color:#000">{</span>
+</span></span><span style="display:flex;"><span>            sp.Fail<span style="color:#000">(</span><span style="color:#c41a16">&#34;Could not open file&#34;</span>, t.InPath<span style="color:#000">(</span><span style="color:#c41a16">&#34;xml&#34;</span><span style="color:#000">))</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        tsvWrt :<span style="color:#000">=</span> csv.NewWriter<span style="color:#000">(</span>t.OutIP<span style="color:#000">(</span><span style="color:#c41a16">&#34;tsv&#34;</span><span style="color:#000">)</span>.OpenWriteTemp<span style="color:#000">())</span>
+</span></span><span style="display:flex;"><span>        tsvWrt.Comma <span style="color:#000">=</span> <span style="color:#c41a16">&#39;\t&#39;</span>
+</span></span><span style="display:flex;"><span>        tsvHeader :<span style="color:#000">=</span> <span style="color:#000">[]</span>string<span style="color:#000">{</span><span style="color:#c41a16">&#34;inchikey&#34;</span>, <span style="color:#c41a16">&#34;status&#34;</span>, <span style="color:#c41a16">&#34;chembl_id&#34;</span>, <span style="color:#c41a16">&#34;pubchem_sid&#34;</span>, <span style="color:#c41a16">&#34;pubchem_cid&#34;</span><span style="color:#000">}</span>
+</span></span><span style="display:flex;"><span>        tsvWrt.Write<span style="color:#000">(</span>tsvHeader<span style="color:#000">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        // Implement a streaming XML parser according to guide in
+</span></span><span style="display:flex;"><span>        // http://blog.davidsingleton.org/parsing-huge-xml-files-with-go
+</span></span><span style="display:flex;"><span>        xmlDec :<span style="color:#000">=</span> xml.NewDecoder<span style="color:#000">(</span>fh<span style="color:#000">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">for</span> <span style="color:#000">{</span>
+</span></span><span style="display:flex;"><span>            t, tokenErr :<span style="color:#000">=</span> xmlDec.Token<span style="color:#000">()</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">if</span> tokenErr !<span style="color:#000">=</span> nil <span style="color:#000">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#a90d91">if</span> <span style="color:#000">tokenErr</span> <span style="color:#000">==</span> io.EOF <span style="color:#000">{</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#a90d91">break</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">}</span> <span style="color:#a90d91">else</span> <span style="color:#000">{</span>
+</span></span><span style="display:flex;"><span>                    sp.Fail<span style="color:#000">(</span><span style="color:#c41a16">&#34;Failed to read token:&#34;</span>, tokenErr<span style="color:#000">)</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000">}</span>
+</span></span><span style="display:flex;"><span>            switch startElem :<span style="color:#000">=</span> t.<span style="color:#000">(</span><span style="color:#a90d91">type</span><span style="color:#000">)</span> <span style="color:#000">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">case</span> xml.StartElement:
+</span></span><span style="display:flex;"><span>                <span style="color:#a90d91">if</span> startElem.Name.Local <span style="color:#000">==</span> <span style="color:#c41a16">&#34;drug&#34;</span> <span style="color:#000">{</span>
+</span></span><span style="display:flex;"><span>                    var status string
+</span></span><span style="display:flex;"><span>                    var inchiKey string
+</span></span><span style="display:flex;"><span>                    var chemblID string
+</span></span><span style="display:flex;"><span>                    var pubchemSID string
+</span></span><span style="display:flex;"><span>                    var pubchemCID string
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    drug :<span style="color:#000">=</span> &amp;Drug<span style="color:#000">{}</span>
+</span></span><span style="display:flex;"><span>                    decErr :<span style="color:#000">=</span> xmlDec.DecodeElement<span style="color:#000">(</span>drug, &amp;startElem<span style="color:#000">)</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#a90d91">if</span> err !<span style="color:#000">=</span> nil <span style="color:#000">{</span>
+</span></span><span style="display:flex;"><span>                        sp.Fail<span style="color:#000">(</span><span style="color:#c41a16">&#34;Could not decode element&#34;</span>, decErr<span style="color:#000">)</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#000">}</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#a90d91">for</span> _, g :<span style="color:#000">=</span> range drug.Groups <span style="color:#000">{</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#a90d91">if</span> <span style="color:#000">g</span> <span style="color:#000">==</span> <span style="color:#c41a16">&#34;approved&#34;</span> <span style="color:#000">{</span>
+</span></span><span style="display:flex;"><span>                            <span style="color:#000">status</span> <span style="color:#000">=</span> <span style="color:#c41a16">&#34;A&#34;</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#000">}</span>
+</span></span><span style="display:flex;"><span>                        // Withdrawn till <span style="color:#c41a16">&#34;shadow&#34;</span> <span style="color:#000">(</span>what<span style="color:#000">&#39;</span>s the correct term?<span style="color:#000">)</span> approved status
+</span></span><span style="display:flex;"><span>                        <span style="color:#a90d91">if</span> <span style="color:#000">g</span> <span style="color:#000">==</span> <span style="color:#c41a16">&#34;withdrawn&#34;</span> <span style="color:#000">{</span>
+</span></span><span style="display:flex;"><span>                            <span style="color:#000">status</span> <span style="color:#000">=</span> <span style="color:#c41a16">&#34;W&#34;</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#000">}</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#000">}</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#a90d91">for</span> _, p :<span style="color:#000">=</span> range drug.CalculatedProperties <span style="color:#000">{</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#a90d91">if</span> p.Kind <span style="color:#000">==</span> <span style="color:#c41a16">&#34;InChIKey&#34;</span> <span style="color:#000">{</span>
+</span></span><span style="display:flex;"><span>                            <span style="color:#000">inchiKey</span> <span style="color:#000">=</span> p.Value
+</span></span><span style="display:flex;"><span>                        <span style="color:#000">}</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#000">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#a90d91">for</span> _, eid :<span style="color:#000">=</span> range drug.ExternalIdentifiers <span style="color:#000">{</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#a90d91">if</span> eid.Resource <span style="color:#000">==</span> <span style="color:#c41a16">&#34;ChEMBL&#34;</span> <span style="color:#000">{</span>
+</span></span><span style="display:flex;"><span>                            <span style="color:#000">chemblID</span> <span style="color:#000">=</span> eid.Identifier
+</span></span><span style="display:flex;"><span>                        <span style="color:#000">}</span> <span style="color:#a90d91">else</span> <span style="color:#a90d91">if</span> eid.Resource <span style="color:#000">==</span> <span style="color:#c41a16">&#34;PubChem Substance&#34;</span> <span style="color:#000">{</span>
+</span></span><span style="display:flex;"><span>                            <span style="color:#000">pubchemSID</span> <span style="color:#000">=</span> eid.Identifier
+</span></span><span style="display:flex;"><span>                        <span style="color:#000">}</span> <span style="color:#a90d91">else</span> <span style="color:#a90d91">if</span> eid.Resource <span style="color:#000">==</span> <span style="color:#c41a16">&#34;PubChem Compound&#34;</span> <span style="color:#000">{</span>
+</span></span><span style="display:flex;"><span>                            <span style="color:#000">pubchemCID</span> <span style="color:#000">=</span> eid.Identifier
+</span></span><span style="display:flex;"><span>                        <span style="color:#000">}</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#000">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    tsvWrt.Write<span style="color:#000">([]</span>string<span style="color:#000">{</span>inchiKey, status, chemblID, pubchemSID, pubchemCID<span style="color:#000">})</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">case</span> xml.EndElement:
+</span></span><span style="display:flex;"><span>                <span style="color:#a90d91">continue</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">}</span>
+</span></span><span style="display:flex;"><span>        tsvWrt.Flush<span style="color:#000">()</span>
+</span></span><span style="display:flex;"><span>        fh.Close<span style="color:#000">()</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">}</span>
+</span></span></code></pre></div><p>(Code license: <a href="https://unlicense.org/">Public Domain</a>)</p>
+<p><em><strong>Note I (2018-03-21):</strong> <a href="https://twitter.com/yokofakun">Pierre
+Lindenbaum</a> <a href="https://twitter.com/yokofakun/status/976488405654736896">kindly
+suggested</a> an
+<a href="https://gist.github.com/lindenb/5a76d95397a86b860386cdf3976726a2">alternative
+approach</a>
+using the
+<a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/xjc.html">xjc</a>
+tool to generate Java code, and a Makefile to provide for workflow
+functionality (<a href="https://gist.github.com/lindenb/5a76d95397a86b860386cdf3976726a2">see
+code</a>).
+He also <a href="https://twitter.com/yokofakun/status/976515166002204673">provided a
+version</a>
+implemented with XSLT (<a href="https://gist.github.com/lindenb/63c85ee0e8c21b6cc3e7d44b77dd93db">see
+code</a>).</em></p>
+<p><em><strong>Note II (2018-03-21):</strong> <a href="https://www.reddit.com/r/golang/comments/854zl8/data_science_parsing_drugbank_xml_or_any_large">Some comments on the post on
+reddit</a>.</em></p>
+<p><em><strong>Edit 2018-03-20:</strong> Clarification of general usefulness of parsing the
+DrugBank XML in the intro.</em></p>
+<p><em><strong>Edit 2018-06-16:</strong> Update code examples to new <a href="https://github.com/scipipe/scipipe/releases/tag/v0.7">SciPipe 0.7
+API</a> (Use From()
+instead of Connect() for connections)</em></p>
+<p><em><strong>Edit 2019-03-02:</strong> Update code examples to new <a href="https://github.com/scipipe/scipipe/releases/tag/v0.8.0">SciPipe 0.8
+API</a> (Use
+SetOut() instead of SetPathStatic(), SetPathExtend() etc)</em></p>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright &copy; 2024 Living Systems. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

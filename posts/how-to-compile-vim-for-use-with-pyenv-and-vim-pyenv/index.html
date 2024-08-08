@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>How to compile vim for use with pyenv and vim-pyenv | Living Systems</title>
+
+      <link rel="stylesheet" href="/css/main.min.f3a5991997d3edfa6612acd25887dbae0ca5be329567cceb3054217da27f5132.css" integrity="sha256-86WZGZfT7fpmEqzSWIfbrgylvjKVZ8zrMFQhfaJ/UTI=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>How to compile vim for use with pyenv and vim-pyenv</h1>
+
+  
+  
+  <time datetime="2015-08-20T08:05:00&#43;02:00">August 20, 2015</time>
+
+  <!-- raw HTML omitted -->
+<p>This manifested itself in a bunch of error message from the python
+module in vim, ending with:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000">AttributeError</span>: <span style="color:#c41a16">&#39;module&#39;</span> <span style="color:#a90d91">object</span> <span style="color:#000">has</span> <span style="color:#000">no</span> <span style="color:#000">attribute</span> <span style="color:#c41a16">&#39;vars&#39;</span>
+</span></span></code></pre></div><p>I first thought it was an error in vim-pyenv and <a href="https://github.com/lambdalisue/vim-pyenv/issues/14">reported
+it</a> (see that issue
+for more in-depth details). In summary it turns out that older versions
+of VIM indeed lack some attributes in its python module, so I figured I
+had to compile my own version, below are just my notes about how to do
+this, for future reference:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#177500"># Go to home directory</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">cd</span>
+</span></span><span style="display:flex;"><span>mkdir src
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">cd</span> src
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Download and unpack</span>
+</span></span><span style="display:flex;"><span>wget ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2
+</span></span><span style="display:flex;"><span>tar -jxvf vim-7.4.tar.bz2
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Configure</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">cd</span> vim74
+</span></span><span style="display:flex;"><span>./configure --disable-gui --enable-pythoninterp --prefix<span style="color:#000">=</span><span style="color:#000">$HOME</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Compile</span>
+</span></span><span style="display:flex;"><span>make
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Install</span>
+</span></span><span style="display:flex;"><span>make install
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Make sure the bin folder in your home folder is in your PATH</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">echo</span> <span style="color:#c41a16">&#39;export PATH=&#34;~/bin:$PATH&#34;&#39;</span> &gt;&gt; ~/.bashrc
+</span></span></code></pre></div><p>Now you should have a shiny new VIM 7.4, in which you can install the
+above mentioned plugins!</p>
+<p>The main important thing here is to use a recent verison of VIM, and
+compile it with python support (thus the --enable-pythoninterp flag).
+The --disable-gui is just since I only use vim in the terminal any way,
+so I'd rather have VIM start faster, than supporting a GUI that I
+don't use.</p>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright &copy; 2024 Living Systems. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

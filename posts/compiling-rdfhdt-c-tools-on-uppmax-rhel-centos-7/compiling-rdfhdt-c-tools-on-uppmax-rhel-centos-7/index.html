@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Compiling RDFHDT C&#43;&#43; tools on UPPMAX (RHEL/CentOS 7) | Living Systems</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+
+      <script src="/js/main.js"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>Compiling RDFHDT C&#43;&#43; tools on UPPMAX (RHEL/CentOS 7)</h1>
+
+  <img src="">
+
+  
+  
+  <time datetime="2017-09-13T18:04:00&#43;02:00">September 13, 2017</time>
+
+  <!-- raw HTML omitted -->
+<p>At <a href="http://pharmb.io">pharmb.io</a> we are researching how to use semantic
+technologies to push the boundaries for what can be done with
+intelligent data processing, often of large datasets (see e.g. our
+<a href="http://dx.doi.org/10.1186/2041-1480-2-S1-S6">paper on linking RDF to cheminformatics and
+proteomics</a>, and <a href="http://dx.doi.org/10.1186/s13326-017-0136-y">our work
+on the RDFIO software
+suite</a>). Thus, for us,
+RDFHDT opens new possibilites. As we are heavy users of the <a href="http://www.uppmax.uu.se">UPPMAX HPC
+center</a> for our computations, and so, we need
+to have the HDT tools available there. This post will outline the steps
+to compile the <a href="https://github.com/rdfhdt/hdt-cpp">C++ HDT commandline tool
+suite</a> from source.</p>
+<h2 id="dependencies">Dependencies</h2>
+<p>Firstly, we should specify the system on which we are running this. We
+are running on CentOS 7.3, or more exactly, 7.3.1611, which can be seen
+with this command:</p>
+<pre><code>lang-bash
+$ cat /etc/redhat-release 
+CentOS Linux release 7.3.1611 (Core)
+</code></pre>
+<p>You will also need the following yum packages installed (install with
+yum install &lt;package-name&gt;):</p>
+<ul>
+<li>yum-utils (for the yumdownloader tool used below)</li>
+</ul>
+<h2 id="compiling">Compiling</h2>
+<p>The steps we took are as follows:</p>
+<p>1. Clone from git</p>
+<pre><code>lang-bash
+git clone https://github.com/rdfhdt/hdt-cpp.git
+</code></pre>
+<p>2. Go into hdt-lib inside the cloned directory:</p>
+<pre><code>lang-bash
+cd hdt-cpp/hdt-lib
+</code></pre>
+<p>3. Download raptor and yalj libraries:</p>
+<pre><code>lang-bash
+yumdownloader raptor2.x86_64 raptor2-devel.x86_64 yajl.x86_64 yajl-devel.x86_64
+</code></pre>
+<p>4. Unpack all the .rpm files:</p>
+<pre><code>lang-bash
+for f in *.rpm; do
+   rpm2cpio $f | cpio -idmv;
+done;
+</code></pre>
+<p>5. Download the serd library:</p>
+<pre><code>lang-bash
+wget http://download.drobilla.net/serd-0.28.0.tar.bz2
+</code></pre>
+<p>6. Unpack the serd library:</p>
+<pre><code>lang-bash
+tar -jxvf serd-0.28.0.tar.bz2
+</code></pre>
+<p>7. Rename the serd folder to serd-0:</p>
+<pre><code>lang-bash
+mv serd-0.28.0 serd-0
+</code></pre>
+<p>8. Enter the serd folder:</p>
+<pre><code>lang-bash
+cd serd-0
+</code></pre>
+<p>9. Compile the serd library:</p>
+<pre><code>lang-bash
+./waf configure
+​./waf
+</code></pre>
+<p>(The generated .so file will be put in a &quot;build&quot; folder under the serd
+folder)</p>
+<p>10. Exit the serd folder, back into the hdt-lib folder:</p>
+<pre><code>lang-bash
+cd ..
+</code></pre>
+<p>11. Then edit the Makefile as follows:</p>
+<pre><code>lang-diff
+--- a/hdt-lib/Makefile
++++ b/hdt-lib/Makefile
+@@ -17,14 +17,14 @@ FLAGS=-O3 -Wno-deprecated -Wall -Wextra -Wno-unused-parameter -Wno-sign-compare
+ endif
+ 
+ INCLUDES=-I $(LIBCDSPATH)/includes/ -I /usr/local/include -I ./include -I /opt/local/include -I /usr/include
+-LDFLAGS=
++LDFLAGS=-Lusr/lib64 -Lserd-0/build
+ DOXYGEN=doxygen
+ DEFINES= -DHAVE_CDS
+ LIB=$(LIBCDSPATH)/lib/libcds.a -L/usr/local/lib -lstdc++
+ 
+ ifeq ($(RAPTOR_SUPPORT), true)
+ DEFINES:=$(DEFINES) -DHAVE_RAPTOR
+-LIB:=$(LIB) -lraptor2
++LIB:=$(LIB) -lraptor2 -lyajl
+ endif
+ 
+ ifeq ($(KYOTO_SUPPORT), true)
+</code></pre>
+<p>12. Compile the RDF HDT tools:</p>
+<pre><code>lang-bash
+make
+</code></pre>
+<p>13. Done! The generated tools should now be available in the &quot;tools&quot;
+folder under your &quot;hdt-lib&quot; folder:</p>
+<pre><code>lang-bash
+$ ls -1X tools/
+hdt2rdf
+hdtInfo
+hdtSearch
+modifyHeader
+rdf2hdt
+replaceHeader
+searchHeader
+hdt2rdf.cpp
+hdtInfo.cpp
+hdtSearch.cpp
+modifyHeader.cpp
+rdf2hdt.cpp
+replaceHeader.cpp
+searchHeader.cpp
+</code></pre>
+<h2 id="installing">Installing</h2>
+<p>Now, to have these tools available everywhere, you might want to put
+them in some folder under your home directory, and include them in your
+PATH variable. You will also need to include the relevant library paths
+in your LD_LIBRARY_PATH variable.</p>
+<p>Given that you install them in ~/usr/bin like I did, this is how to do
+that:</p>
+<p>1. Copy the usr folder created in the hdt-lib folder when unpacking the
+.rpm files, into your home folder:</p>
+<pre><code>lang-bash
+cp -r usr ~/
+</code></pre>
+<p>2. Put the newly compiled HDT tools into the ~/usr/bin folder too:</p>
+<pre><code>lang-bash
+cp tools/* ~/usr/bin/
+</code></pre>
+<p>3. Add the following lines to the end of your ~/.bashrc file (adapted
+from <a href="https://unix.stackexchange.com/questions/2117/install-development-files-locally-to-build-on-system-without-root-access">this
+thread</a>),
+so that the binary and library search paths are always accessible in
+your shell, so that you can run the hdt tools from anywhere on the file
+system:</p>
+<pre><code>lang-bash
+# Load local bin and library directories
+export PATH=~/usr/bin:$PATH
+export LD_LIBRARY_PATH=~/usr/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=~/usr/lib64:$LD_LIBRARY_PATH
+export C_INCLUDE_PATH=~/usr/include:$C_INCLUDE_PATH
+export CPLUS_INCLUDE_PATH=~/usr/include:$CPLUS_INCLUDE_PATH
+</code></pre>
+<p>4. Reload the ~/.bashrc file:</p>
+<pre><code>lang-bash
+source ~/.bashrc
+</code></pre>
+<p>5. Done! Now you should be able to run a tool like rdf2hdt (for
+converting RDF dat to HDT format) from anywhere in the file system:</p>
+<pre><code>lang-bash
+​$ rdf2hdt
+ERROR: You must supply an input and output
+
+$ rdf2hdt [options] &lt;rdf input file&gt; &lt;hdt output file&gt; 
+        -h                      This help
+        -i              Also generate index to solve all triple patterns.
+        -c      &lt;configfile&gt;    HDT Config options file
+        -o      &lt;options&gt;       HDT Additional options (option1=value1;option2=value2;...)
+        -f      &lt;format&gt;        Format of the RDF input (ntriples, nquad, n3, turtle, rdfxml)
+        -B      &quot;&lt;base URI&gt;&quot;    Base URI of the dataset.
+        -V      Prints the HDT version number
+</code></pre>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright 2024. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

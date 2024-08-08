@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>The unexpected convenience of JSON on the commandline | Living Systems</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+
+      <script src="/js/main.js"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>The unexpected convenience of JSON on the commandline</h1>
+
+  <img src="json_vector_logo_svg.png">
+
+  
+  
+  <time datetime="2015-12-08T07:10:00&#43;01:00">December 8, 2015</time>
+
+  <p>I was working with a migration from <a href="http://drupal.org">drupal</a> to
+<a href="http://processwire.com">processwire</a> CMS:es, where I wanted to be able
+to pipe data, including the body field with HTML formatting and all,
+through multiple processing steps in a flexible manner. I'd start with
+an extraction SQL query, through a few components to replace and massage
+the data, and finally over to an import command using processwire's
+<a href="http://wireshell.pw">wireshell tool</a>. So, basically I needed a flexible
+format for structured data that could be sent as one &quot;data object&quot; per
+line, to work nicely with linux commandline tools like grep, sed and
+awk.</p>
+<p>CSV didn't seem that suitable, because of the unpredictable HTML
+formatting of the body field (though I never really tried) ... and I
+don't even know how to wrap up YAML into one-liners.</p>
+<p>But then it struck me how well JSON is suited for this.</p>
+<p>I've heard folks using it before, and it is by no means any news to
+experienced data wranglers, I'm sure, but I just hadn't thought about
+it.</p>
+<p>JSON has excellent escaping of any kind of characters, and can be
+formatted as one object per line, making it perfect for piping on the
+commandline. What's more, working with JSON in python, is extremely
+convenient, since all the typical python data structures (lists, tuples
+and dicts) map directly to counterparts in JSON. This means that you can
+just use json.dumps() or json.loads() to convert a nested python data
+structure to and from a JSON string.</p>
+<p>Although this is for sure no news for experienced commandline data
+wranglers, I just wanted to illustrate just how easy this is:</p>
+<p>So, for example, reading some basic info and the body field (of Drupal
+7) from MySQL is as easy as:</p>
+<pre><code>lang-python
+import MySQLdb as mdb
+import json
+from sys import stdout
+
+con = mdb.connect([HOST], [USER], [PASS], [DB])
+cur = con.cursor()
+query = '''
+        SELECT n.nid, n.type, n.created, n.title, fdb.body_value
+        FROM node AS n 
+        LEFT JOIN field_data_body AS fdb ON n.vid = fdb.revision_id 
+        '''
+cur.execute(query)
+rows = cur.fetchall()
+for row in rows:
+    rowinfo = [i.decode('latin-1') if type(i) is str else i for i in row]
+    pageinfo = {
+            'Nid': rowinfo[0],
+            'NodeType': rowinfo[1],
+            'Created': rowinfo[2],
+            'Title': rowinfo[3],
+            'Body': rowinfo[4],
+    }
+    stdout.write(json.dumps(pageinfo) + '\n') # The newline is important here!
+</code></pre>
+<p>But now, this is mostly MySQL stuff, so a smaller component might better
+demonstrate how little is needed to read from json. So, say that we want
+to change all occurances of &quot;node&quot; in NodeType to &quot;page&quot; (which is
+the more commonly used term for what Drupal calls a node):</p>
+<pre><code>lang-python
+from sys import stdin, stdout
+import json
+
+for row in stdin:
+    r = json.loads(row)
+    r['NodeType'] = r['NodeType'].replace('node', 'page')
+    stdout.write(json.dumps(r) + '\n')
+</code></pre>
+<p>So, this is what little is required to create a pipeable component
+working with JSON data, using python!<br>
+<br>
+So, now, we can use these two components together by just piping them,
+and using the normal linux commandline tools for convenient browsing on
+the commandline (such as my favorite <strong>less -Si</strong> for scrolling without
+wrapping lines:</p>
+<pre><code>lang-shell
+$ python extractsql.py | python replace.py | less -Si
+</code></pre>
+<p>But, even better than custom python components, is that you have the <a href="https://stedolan.github.io/jq/">jq
+tool</a> available, which fits perfectly
+into this workflow. In short, <strong>jq</strong> can replace all of sed, awk and
+grep, in one combined package for working with json objects.</p>
+<p>A more detailed foray into using jq is material for another post, but
+just a simple example that would be usable here is to filter out just
+the NodeType field, to see that it became correctly replaced. This is
+easily achieved with jq:</p>
+<pre><code>lang-shell
+$ python extractsql.py | python replace.py | jq '.NodeType' | less -Si
+</code></pre>
+<p>As simple as that. Check the <a href="https://stedolan.github.io/jq/manual/">jq
+manual</a> for more usage info on
+jq.</p>
+<p>I'm sure I will use JSON for piping structured data on the commandline
+a lot more from now on.</p>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright 2024. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

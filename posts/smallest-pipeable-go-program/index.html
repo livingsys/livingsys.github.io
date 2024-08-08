@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>The smallest pipeable go program | Living Systems</title>
+
+      <link rel="stylesheet" href="/css/main.min.f3a5991997d3edfa6612acd25887dbae0ca5be329567cceb3054217da27f5132.css" integrity="sha256-86WZGZfT7fpmEqzSWIfbrgylvjKVZ8zrMFQhfaJ/UTI=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>The smallest pipeable go program</h1>
+
+  
+  
+  <time datetime="2014-12-18T20:43:00&#43;01:00">December 18, 2014</time>
+
+  <!-- raw HTML omitted -->
+<p>import (
+&ldquo;io&rdquo;
+&ldquo;os&rdquo;
+)</p>
+<p>func main() {
+io.Copy(os.Stdout, os.Stdin)
+}</p>
+<pre tabindex="0"><code>
+\... or (credits: [Roger Peppe](https://twitter.com/rogpeppe)):
+
+```go
+package main
+
+import (
+    &#34;bufio&#34;
+    &#34;fmt&#34;
+    &#34;os&#34;
+)
+
+func main() {
+    for scan := bufio.NewScanner(os.Stdin); scan.Scan(); {
+        fmt.Printf(&#34;%s\n&#34;, scan.Text())
+    }
+}
+</code></pre><p>Ah, I just realized that the &quot;smallest pipeable&quot;
+<a href="http://golang.org">Go</a>(lang) program is rather small, if using my
+<a href="https://github.com/samuell/glow">little library of minimalistic streaming
+components</a>. Nothing more than:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">package</span> <span style="color:#000">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;github.com/samuell/glow&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">inchan</span> <span style="color:#000">:=</span> <span style="color:#a90d91">make</span>(<span style="color:#a90d91">chan</span> []<span style="color:#a90d91">byte</span>, <span style="color:#1c01ce">16</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#000">glow</span>.<span style="color:#000">NewStdInReader</span>(<span style="color:#000">inchan</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">for</span> <span style="color:#000">line</span> <span style="color:#000">:=</span> <span style="color:#a90d91">range</span> <span style="color:#000">inchan</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#000">fmt</span>.<span style="color:#000">Println</span>(<span style="color:#a90d91">string</span>(<span style="color:#000">line</span>))
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Naturally, you would want ot fill in the doSomething() function with
+something more fancy.</p>
+<p>But then, you can pipe any output through the program, and it will
+process the input (in this case just forward it):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">[</span>samuel glowtest<span style="color:#000">]</span>$ go build glowtest.go
+</span></span><span style="display:flex;"><span><span style="color:#000">[</span>samuel glowtest<span style="color:#000">]</span>$ ls -l | ./glowtest
+</span></span><span style="display:flex;"><span>total 2,0M
+</span></span><span style="display:flex;"><span>-rwxrwxr-x <span style="color:#1c01ce">1</span> samuel samuel 2,0M dec <span style="color:#1c01ce">18</span> 19:04 glowtest
+</span></span><span style="display:flex;"><span>-rw-rw-r-- <span style="color:#1c01ce">1</span> samuel samuel  <span style="color:#1c01ce">291</span> dec <span style="color:#1c01ce">18</span> 19:03 glowtest.go
+</span></span></code></pre></div>
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright &copy; 2024 Living Systems. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

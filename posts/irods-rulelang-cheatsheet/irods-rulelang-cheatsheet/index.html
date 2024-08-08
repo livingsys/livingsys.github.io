@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>A cheatsheet for the iRODS rule language | Living Systems</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+
+      <script src="/js/main.js"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>A cheatsheet for the iRODS rule language</h1>
+
+  <img src="irodsrules_p1.png">
+
+  
+  
+  <time datetime="2015-06-11T01:55:00&#43;02:00">June 11, 2015</time>
+
+  <p><img src="/site/assets/files/1050/irods-logo.200x0-is.png" alt="">{.align_right}<a href="http://irods.org/">iRODS</a>,
+the &quot;integrated rule oriented data system&quot; is a super cool system for
+managing datasets consisting of files, from smallish ones, to really
+large ones counted in petabytes, and possibly spanning multiple
+continents.</p>
+<p>There's a lot to be said about iRODS (up for another blog post) but the
+one most interesting feature, in my opinion, is the <em>rule language</em>,
+which allows to define custom rules and policies for how data should be
+handled, totally automatically, depending on a lot of factors. For
+example &quot;if data if untouched for three months, transparently migrate
+it from fast disk storage to archival tape storage&quot;, etc etc.</p>
+<p>The rule language is - as the name suggests - a whole language on its
+own though, and can be a bit daunting to quickly learn or get a good
+overview of. There is <a href="https://wiki.irods.org/index.php/Changes_and_Improvements_to_the_Rule_Language_and_the_Rule_Engine">some
+documentation</a>
+on the wiki, but it is not exactly eaily overviewed (great work is going
+on to improve the situation).</p>
+<p>Thus, in a project I recently participated, with the aim to set up a
+data federation for proteomics data between <a href="http://irods.org/">BILS Bioinformatics
+Infrastructure</a> in Sweden and the <a href="http://www.ebi.ac.uk/">European
+Bioinformatics Institute</a> in the UK (<a href="https://github.com/BILS/irods-b2safe-vagrant">documented
+as a runnable vagrant
+box</a>), I realized I had to
+do something about the situation. So, I created a <a href="https://github.com/samuell/irods-rulelang-cheatsheet#readme">2-page A4 cheat
+sheet</a>. It
+is <a href="https://github.com/samuell/irods-rulelang-cheatsheet#readme">available on
+github</a>,
+and I include images below as well, as a preview:</p>
+<p><strong>Page 1</strong></p>
+<p><img src="/site/assets/files/1050/irodsrules_p1.png" alt=""></p>
+<p><strong>Page 2</strong></p>
+<p><img src="/site/assets/files/1050/irodsrules_p2.png" alt=""></p>
+<p>The raw format of the cheat sheet is HTML with inline CSS, as I could
+not find anything else that would give me the right control over fonts,
+formatting and coloring (probably possible with LaTeX, but it seemed to
+require too much work).</p>
+<p>Hope you enjoy, and make sure to fork and improve if you see
+possibilities for that!</p>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright 2024. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

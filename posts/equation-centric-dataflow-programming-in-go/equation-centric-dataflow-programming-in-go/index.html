@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Equation-centric dataflow programming in Go | Living Systems</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+
+      <script src="/js/main.js"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>Equation-centric dataflow programming in Go</h1>
+
+  <img src="loan.gif">
+
+  
+  
+  <time datetime="2017-12-27T14:05:00&#43;01:00">December 27, 2017</time>
+
+  <h2 id="mathematical-notation-and-dataflow-programming">Mathematical notation and dataflow programming</h2>
+<p>Even though computations done on computers are very often based on some
+type of math, it is striking that the notation used in math to express
+equations and relations is not always very readily converted into
+programming code. Outside of purely <a href="https://en.wikipedia.org/wiki/Symbolic_programming">symbolic
+programming</a>
+languages like <a href="http://www.sagemath.org/">sage math</a> or the
+(proprietary) <a href="https://www.wolfram.com/language">Wolfram language</a>,
+there seem to always be quite a divide between the mathematical notation
+and the numerical implementation.</p>
+<p>I'm generelly interested in how we can go towards a more declarative
+way of specifying relations between entities, to minimize the amount of
+coding we have to do when modelling systems. I find it especially
+interesting with approaches that are easy to implement in mainstream
+programming environments, so that existing knowledge, third party
+library ecosystems and performance optimizations having gone into these
+systems can be re-used.</p>
+<p>Optimal is if we can fluently convert such declarative coding approaches
+into <a href="https://en.wikipedia.org/wiki/Dataflow">dataflow</a>-, or even
+<a href="https://en.wikipedia.org/wiki/Flow-based_programming">flow-based
+programming</a>
+programs, since these approaches are a pretty good fit for today's
+multicore CPU chips, where the inherent pipeline parallelism makes good
+use of multiple computing cores without too much hoops, except we
+express the computations as pipelines of asynchronously running
+processing components.</p>
+<h2 id="enter-go-generator-functions">Enter Go generator functions</h2>
+<p>Pondering the fact that Go's concurrency primitives (go-routines and
+channels) combined into the generator pattern (<a href="https://talks.golang.org/2012/concurrency.slide#25">see Rob Pike's slides
+here</a>), is pretty
+much dataflow in a pretty functional style, it struck me that Go
+generator functions might be useful for expressing computation in a way
+that resembles mathematical equations.</p>
+<p>If you haven't seen Go generator functions, check the link above to
+Rob's slides. Otherwise, in short, they are functions which, instead of
+returning a finished value, return a channel, from which one or more
+values can be retrieved. Internally, the generator function will start a
+go-routine which will produce the values for you <em>lazily</em>, or,
+<em>concurrently</em> while you read from the channel (or it might pre-compute
+some values if the channel is buffered).</p>
+<p>Said and done. This turned out to be easier than expected. With the help
+of one or two helper functions, I could easily implement various numeric
+operators like &quot;Add&quot; and &quot;Div&quot; in the form of generator functions
+that operate on a stream of numbers, and in turn returns a stream of
+integers or numbers. Since the returned channel represents the output of
+each operator function, it becomes possible to nest these operator
+function calls in a way that somehow mimics a mathematical formula
+chosen to implement.</p>
+<p>As example formula for my experiment, I wanted something with simple
+operators (mostly &quot;Add&quot;, &quot;Sub&quot;, &quot;Mul&quot; and &quot;Div), but complex
+enough that it is relevant to make the formula as readable as possible.
+The monthly payment formula from <a href="http://www.math.utah.edu/~pa/math/equations/equations.html">this
+page</a> seemed
+like a good fit:</p>
+<p><img src="/site/assets/files/1081/loan.gif" alt="">{width=&ldquo;291&rdquo; height=&ldquo;95&rdquo;}</p>
+<p>It expresses what your monthly payment, m, will be, given that you
+borrow an amount L of dollars and pay it back over N months, with an
+annual interest rate of p percent.</p>
+<p>With a few generator functions for division, addition, multiplication
+and exponentiation, we can now implement this formula as a nested tree
+of such generation functions. The formula expressed in this way looks
+like this:</p>
+<pre><code>lang-go
+monthlyPaymentUSD := Mul(
+    Div(
+        Mul(
+            Div(Val(rate),
+                Val(1200.0)),
+            Exp(
+                Add(
+                    Val(1.0),
+                    Div(
+                        Val(rate),
+                        Val(1200.0))),
+                Val(months))),
+        Sub(
+            Exp(
+                Add(
+                    Val(1.0),
+                    Div(
+                        Val(rate),
+                        Val(1200.0))),
+                Val(months)),
+            Val(1.0))),
+    borrowedAmount)
+</code></pre>
+<p>As you can see, there are some peculiarities, like that we have to wrap
+constants in &quot;Val()&quot; functions, to make these values into a stream of
+their values, rather than just constants (since all of the generator
+functions take streams of values rather than pure values).</p>
+<p>The full Go code can be found below, and in the bottom you will find the
+implementaiton of the operator functions, and the Val functions. In this
+example, they all build on the Apply2() function further below, which
+takes two input streams of values, and a function, and applies that
+function on the stream of values, returning a single stream of values.
+(For more complex functions, we might need Apply1, Apply3, etc):</p>
+<pre><code>lang-go
+package main
+
+// Source code for this experiment: https://github.com/samuell/gormula
+
+import (
+    &quot;fmt&quot;
+    &quot;math&quot;
+)
+
+func main() {
+    // --------------------------------------------------------------------------------
+    // Monthly Payment Formula
+    // --------------------------------------------------------------------------------
+    // Implementing the loan payments formula from here:
+    // http://www.math.utah.edu/~pa/math/equations/equations.html
+    // --------------------------------------------------------------------------------
+
+    // We try the formula over a sequence of values from 1000 to 10,000 USD
+    borrowedAmount := Seq(1000.0, 1000.0, 10000.0)
+
+    // Some initializations
+    rate := 2.0 // Percent
+    months := 24.0
+
+    // The formula
+    monthlyPaymentUSD := Mul(
+        Div(
+            Mul(
+                Div(Val(rate),
+                    Val(1200.0)),
+                Exp(
+                    Add(
+                        Val(1.0),
+                        Div(
+                            Val(rate),
+                            Val(1200.0))),
+                    Val(months))),
+            Sub(
+                Exp(
+                    Add(
+                        Val(1.0),
+                        Div(
+                            Val(rate),
+                            Val(1200.0))),
+                    Val(months)),
+                Val(1.0))),
+        borrowedAmount)
+
+    // Print out all the resulting monthly payments:
+    borrowedAmountForPrint := Seq(1000.0, 100.0, 10000.0)
+    for monthPay := range monthlyPaymentUSD {
+        borrowed := &lt;-borrowedAmountForPrint
+        fmt.Printf(&quot;Monthly payment for 24 months, when borrowing %.2f USD: %.2f USD\n&quot;, borrowed, monthPay)
+    }
+}
+
+// --------------------------------------------------------------------------------
+// Components
+// --------------------------------------------------------------------------------
+
+type valstream chan float64
+
+func Add(x valstream, y valstream) valstream {
+    return Apply2(func(x float64, y float64) float64 { return x + y }, x, y)
+}
+
+func Sub(x valstream, y valstream) valstream {
+    return Apply2(func(x float64, y float64) float64 { return x - y }, x, y)
+}
+
+func Mul(x valstream, y valstream) valstream {
+    return Apply2(func(x float64, y float64) float64 { return x * y }, x, y)
+}
+
+func Div(x valstream, y valstream) valstream {
+    return Apply2(func(x float64, y float64) float64 { return x / y }, x, y)
+}
+
+func Exp(x valstream, y valstream) valstream {
+    return Apply2(func(x float64, y float64) float64 { return math.Pow(x, y) }, x, y)
+}
+
+func Apply2(fn func(x float64, y float64) float64, xs valstream, ys valstream) valstream {
+    zs := make(valstream)
+    go func() {
+        defer close(zs)
+        for x := range xs {
+            y := &lt;-ys
+            zs &lt;- fn(x, y)
+        }
+    }()
+    return zs
+}
+
+func Val(x float64) valstream {
+    xs := make(valstream)
+    go func() {
+        defer close(xs)
+        for i := 0; i &lt; 10; i++ {
+            xs &lt;- x
+        }
+    }()
+    return xs
+}
+
+func Seq(start float64, step float64, end float64) valstream {
+    res := make(valstream)
+    go func() {
+        defer close(res)
+        val := start
+        for (end + val - val) &gt; 0.001 { // Same as val &lt;= end, but take care of propagating float errors
+            res &lt;- val
+            val = val + step
+        }
+    }()
+    return res
+}
+</code></pre>
+<p>You can view and run an experiment demonstrating this <a href="https://play.golang.org/p/C3OovxjcMU">on the go
+playground</a>.</p>
+<h2 id="limitations-and-concluding-remarks">Limitations and concluding remarks</h2>
+<p>So, as you see, it is indeed possible to express dataflow computations
+in a quite an equation-centric way in Go.</p>
+<p>Now, there are some limits to this approach. For example, we have had to
+decide in which direction the computation goes: From inputs to outputs.
+Perhaps it is possible to express this in a more generic way, since Go
+channels are after all bi-directional, unless they are explicitly made
+uni-directional?</p>
+<p>We also get into territory where Go's lack of generics is giving some
+consequences. In order to keep the above code example reasonably short,
+we have limited outselves to streams of float values. Extending this to
+arbitrary combinations of floats, integers, and of all the sizes, would
+lead to quite an explosion in code duplication, and be far less fun to
+implement.</p>
+<p>Anyways, hope this little experiement can spur some ideas on ways to
+merge declarative, relation-centric programming into mainstream
+programming environments.</p>
+<h2 id="notes">Notes</h2>
+<ul>
+<li><em>This post has been discussed <a href="https://www.reddit.com/r/golang/comments/7meypm/equationcentric_dataflow_programming_in_go/">in a thread on
+reddit</a></em></li>
+</ul>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright 2024. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

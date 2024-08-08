@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>First production run with SciPipe - A Go-based scientific workflow tool | Living Systems</title>
+
+      <link rel="stylesheet" href="/css/main.min.f3a5991997d3edfa6612acd25887dbae0ca5be329567cceb3054217da27f5132.css" integrity="sha256-86WZGZfT7fpmEqzSWIfbrgylvjKVZ8zrMFQhfaJ/UTI=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>First production run with SciPipe - A Go-based scientific workflow tool</h1>
+
+  
+  
+  <time datetime="2017-09-28T19:32:00&#43;02:00">September 28, 2017</time>
+
+  <p>Today marked the day when we ran the very first production workflow with
+<a href="http://scipipe.org">SciPipe</a>, the <a href="https://golang.org/">Go</a>-based
+<a href="https://en.wikipedia.org/wiki/Scientific_workflow_system">scientific workflow
+tool</a> we've
+been working on over the last couple of years. Yay! :)</p>
+<p>This is how it looked (no fancy GUI or such yet, sorry):</p>
+<p><p class="image">
+    <img src="terminal_411.png" alt=""  />
+</p>
+</p>
+<p>The first result we got in this very very first job was a list of counts
+of ligands (chemical compounds) in the <a href="https://jcheminf.springeropen.com/articles/10.1186/s13321-017-0203-5">ExcapeDB
+dataset</a>
+(<a href="https://zenodo.org/record/173258">download here</a>) interacting with the
+44 protein/gene targets <a href="http://dx.doi.org/10.1038/nrd3845">identified by Bowes et
+al</a> as a good baseline set for
+identifying hazardous side-effects effects in the body (that is, any
+chemical compounds binding these proteins, will never become an approved
+drug).</p>
+<p>The resulting data still needs some closer review (some gene names were
+not available in the dataset etc), so right now just including a preview
+screenshot:</p>
+<p><p class="image">
+    <img src="selection_413.png" alt=""  />
+</p>
+</p>
+<p>Fun! :) This is only the very beginning of this project, for which
+scipipe was actually designed from the start. So a lot more workflow
+coding is going to happen. There are also still many plans for polish
+and improvements amassed in the <a href="https://github.com/scipipe/scipipe/issues">issue
+queue</a>, but it is fun to be
+able to say that it has now been solving real world problems.</p>
+<p>On a personal note, I found it enlightening to note the shift in
+perspective happening when starting to use an API to solve real world
+problems versus sitting and over-obsessing over small details based on
+imaginary use cases. Suddenly a very clear prioritization of what to
+really fix, and what to really not, emerged :)</p>
+<h2 id="why-not-continue-with-sciluigi">Why not continue with SciLuigi?</h2>
+<p>Previous <a href="https://jcheminf.springeropen.com/articles/10.1186/s13321-016-0151-5">data analysis
+projects</a>
+have been done using Spotify's
+<a href="https://github.com/spotify/luigi">Luigi</a> in combination with our helper
+tool <a href="https://github.com/pharmbio/sciluigi">SciLuigi</a> which we released
+a <a href="http://jcheminf.springeropen.com/articles/10.1186/s13321-016-0179-6">pretty detailed
+paper</a>
+about, so let me add a few words about why we developed this new tool.</p>
+<p>We had some success with SciLuigi and were pretty happy with it, until
+some of the problems with how Python is implemented started to show up:</p>
+<ul>
+<li>Firstly, since Python is an untyped, interpreted language we
+sometimes had HPC cluster jobs failing seven days into a seven day
+HPC job, because of a simple KeyError.</li>
+<li>Secondly, our way of keeping track of HPC jobs with one Luigi worker
+per job already when queuing it up in the SLURM resource manager
+with the blocking salloc command, created some problems. The fact
+that Luigi creates separate processes for each worker, which
+communicate with the central Luigi scheduler via HTTP over the
+network lead to robustness problems over around 64 workers, with
+HTTP-timeouts and other similar glitches.</li>
+</ul>
+<p>Thus, I'm very excited we are now running our Go-based tool. While it
+takes a lot of inspiration from both Luigi and SciLuigi, such as
+Luigi's very powerful file naming strategy and the named port ideas we
+developed in SciLuigi, it also solves both of the mentioned problems
+above:</p>
+<ul>
+<li>Firstly, Go is a typed and compiled language that will almost always
+warn about simple errors already at the compilation step.</li>
+<li>Go does not need spawn separate processes for keeping track of
+external commands, only threads, and communication and coordination
+is done completely inside the Go binary.</li>
+</ul>
+<p>SciPipe further adds even more improvements such as full dataflow
+behaviour, meaning that construction of the tree of concrete tasks to
+execute doesn't need to be done before leaving over to the execution
+engine. Instead, tasks are scheduled on-the-fly while the engine is
+running, based on data fed into processes. This will greatly simplify
+some workflow constructs we had problems with in SciLuigi.</p>
+<p>One such example is when there is a parameter to be used in a component
+further down in the workflow, where this parameter is itself a result of
+a calculation in some upstream component. Since Luigi strictly separates
+scheduling and execution it was not possible to handle this in
+Luigi/SciLuigi without having the main workflow to fire up new Luigi
+instances using the parameters obtained in the first workflow. The
+latter case is exactly what we ended up doing with SciLuigi, but
+resulted in multiple log files and many other issues that made running
+it quite a mess. This, among many other things should now be a breeze to
+implement with SciPipe because of its
+<a href="https://en.wikipedia.org/wiki/Dataflow">DataFlow</a> + <a href="http://en.wikipedia.org/wiki/Flow-based%20programming">Flow-Based
+Programming</a>
+approach.</p>
+<h2 id="for-something-more-stable---consider-nextflow">For something more stable - consider NextFlow</h2>
+<p>Note though: For those who'd prefer a more mature, stable, and
+supported solution with a bigger established community, note that
+<a href="https://www.nextflow.io/">NextFlow</a> (see also <a href="http://dx.doi.org/10.1038/nbt.3820">the
+paper</a>) has the same benefits in
+this case, as also being based on dataflow. Let me thus say a few words
+of why we are still developing our own solution.</p>
+<p>The reason is primarily because find the named ports concept in
+<a href="https://en.wikipedia.org/wiki/Flow-based%20programming">Flow-based
+Programming</a> to
+be crucial for our vision of creating a library of re-usable workflow
+components for our use cases. In concrete terms, this means that <a href="http://bionics.it/posts/fbp-data-flow-syntax#comment-2140898697">inputs
+and outputs are defined as fields (&quot;ports&quot;) bound to
+components</a>,
+rather than being unbound variables shared between components in the
+workflow scope, as is the case in NextFlow. We think this is important
+in order to make re-usable components self-contained and
+self-documentary, and also helps with things like autocompletion (type
+&quot;componentname.&lt;tab&gt;&quot; and you will get a list of the available
+ports). <a href="http://bionics.it/posts/fbp-data-flow-syntax#comment-2141038801">Nextflow takes a slightly different view
+here</a>
+and instead <a href="http://bionics.it/posts/fbp-data-flow-syntax#comment-2141038801">treats the commandline program being integrated, as the
+re-usable
+component</a>,
+which seems to be a reasonable assumption in the Genomics field which it
+is focused on.</p>
+<p>What is perhaps a more interesting note here though, is that in all the
+very fruitful discussions I've had with NextFlow creator <a href="https://twitter.com/PaoloDiTommaso">Paolo Di
+Tommaso</a> we both whole-heartedly
+agree about the power and ease of use of the dataflow paradigm.
+Hopefully we can eventually get support for some of the dataflow
+specialities in the <a href="http://commonwl.org">Common Workflow Language</a>.
+Let's continue to explore how the process of writing workflows can be
+made even more fluent, flexible and fun. :)</p>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright &copy; 2024 Living Systems. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

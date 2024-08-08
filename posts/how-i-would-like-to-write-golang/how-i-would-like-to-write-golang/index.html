@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>How I would like to write Go programs | Living Systems</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+
+      <script src="/js/main.js"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>How I would like to write Go programs</h1>
+
+  <img src="selection_301.png">
+
+  
+  
+  <time datetime="2015-07-18T02:34:00&#43;02:00">July 18, 2015</time>
+
+  <p><img src="/site/assets/files/1057/selection_301.640x0-is.png" alt=""></p>
+<p>Some time ago I got a <a href="http://blog.gopheracademy.com/composable-pipelines-pattern">post published on
+GopherAcademy</a>,
+outlining in detail how I think a <a href="http://www.jpaulmorrison.com/fbp">flow-based
+programming</a> inspired syntax can
+strongly help to create clearer, easier-to-maintain, and more
+declarative Go programs.</p>
+<p>These ideas have since became clearer, and we (<a href="http://twitter.com/ola_spjuth">Ola
+Spjuth</a>'s <a href="http://www.farmbio.uu.se/research/researchgroups/pb/">research group at
+pharmbio</a>) have
+successfully used them to make the workflow syntax for
+<a href="https://github.com/spotify/luigi">Luigi</a> (Spotify's great workflow
+engine by <a href="http://twitter.com/fulhack">Erik Bernhardsson</a> &amp; co)
+workflows easier, as implemented in the <a href="https://github.com/samuell/sciluigi#readme">SciLuigi helper
+library</a>.</p>
+<p>I even <a href="http://bionics.it/posts/fbp-data-flow-syntax">blogged the other
+day</a>, about how I think
+this kind of syntax would help untangle the syntax used in most
+functional languages. But the final code example in that blog post was a
+toy example in python, that didn't work, since python doesn't have the
+required concurrent features to make it work.</p>
+<p>So, the idea struck me tonight that it might be easy enough to implement
+the same example in Go, using the most up-to-date ideas for the syntax.
+One hour later, I have a working Go example!</p>
+<p>Find it in <a href="https://gist.github.com/samuell/4d9625dbc3623fed771d#file-dataflow_syntax_example-go-L16-L32">this
+gist</a>,
+<a href="http://play.golang.org/p/2_uJwnk7zS">golang play</a> or in the pasted
+version just below! Watch out especially for those lines connecting the
+(asynchronous) processes together. That is, these lines:</p>
+<pre><code>lang-go
+split.In  = hisay.Out
+lower.In  = split.OutLeft
+upper.In  = split.OutRight
+zippr.In1 = lower.Out
+zippr.In2 = upper.Out
+prntr.In  = zippr.Out
+</code></pre>
+<p>In summary: This is how I want to write composable Go programs!
+(Especially if I can find a nicer way to drive the network, than a
+hard-coded for-loop ;) - ideas welcome)</p>
+<p>And so the full code example:</p>
+<pre><code>lang-go
+package main
+
+import (
+    &quot;fmt&quot;
+    &quot;math&quot;
+    &quot;strings&quot;
+)
+
+const (
+    BUFSIZE = 16
+)
+
+// ======= Main =======
+
+func main() {
+    // Init processes
+    hisay := NewHiSayer()
+    split := NewStringSplitter()
+    lower := NewLowerCaser()
+    upper := NewUpperCaser()
+    zippr := NewZipper()
+    prntr := NewPrinter()
+
+    // Network definition *** This is where to look! ***
+    split.In = hisay.Out
+    lower.In = split.OutLeft
+    upper.In = split.OutRight
+    zippr.In1 = lower.Out
+    zippr.In2 = upper.Out
+    prntr.In = zippr.Out
+
+    // Set up processes for running (spawn go-routines)
+    go hisay.Run()
+    go split.Run()
+    go lower.Run()
+    go upper.Run()
+    go zippr.Run()
+    prntr.Run()
+
+    println(&quot;Finished program!&quot;)
+}
+
+// ======= HiSayer =======
+
+type hiSayer struct {
+    Out chan string
+}
+
+func NewHiSayer() *hiSayer {
+    return &amp;hiSayer{Out: make(chan string, BUFSIZE)}
+}
+
+func (proc *hiSayer) Run() {
+    defer close(proc.Out)
+    for _, i := range []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10} {
+        proc.Out &lt;- fmt.Sprintf(&quot;Hi for the %d:th time!&quot;, i)
+    }
+}
+
+// ======= StringSplitter =======
+
+type stringSplitter struct {
+    In       chan string
+    OutLeft  chan string
+    OutRight chan string
+}
+
+func NewStringSplitter() *stringSplitter {
+    return &amp;stringSplitter{
+        OutLeft:  make(chan string, BUFSIZE),
+        OutRight: make(chan string, BUFSIZE),
+    }
+}
+
+func (proc *stringSplitter) Run() {
+    defer close(proc.OutLeft)
+    defer close(proc.OutRight)
+    for s := range proc.In {
+        halfLen := int(math.Floor(float64(len(s)) / float64(2)))
+        proc.OutLeft &lt;- s[0:halfLen]
+        proc.OutRight &lt;- s[halfLen:len(s)]
+    }
+}
+
+// ======= LowerCaser =======
+
+type lowerCaser struct {
+    In  chan string
+    Out chan string
+}
+
+func NewLowerCaser() *lowerCaser {
+    return &amp;lowerCaser{Out: make(chan string, BUFSIZE)}
+}
+
+func (proc *lowerCaser) Run() {
+    defer close(proc.Out)
+    for s := range proc.In {
+        proc.Out &lt;- strings.ToLower(s)
+    }
+}
+
+// ======= UpperCaser =======
+
+type upperCaser struct {
+    In  chan string
+    Out chan string
+}
+
+func NewUpperCaser() *upperCaser {
+    return &amp;upperCaser{Out: make(chan string, BUFSIZE)}
+}
+
+func (proc *upperCaser) Run() {
+    defer close(proc.Out)
+    for s := range proc.In {
+        proc.Out &lt;- strings.ToUpper(s)
+    }
+}
+
+// ======= Merger =======
+
+type zipper struct {
+    In1 chan string
+    In2 chan string
+    Out chan string
+}
+
+func NewZipper() *zipper {
+    return &amp;zipper{Out: make(chan string, BUFSIZE)}
+}
+
+func (proc *zipper) Run() {
+    defer close(proc.Out)
+    for {
+        s1, ok1 := &lt;-proc.In1
+        s2, ok2 := &lt;-proc.In2
+        if !ok1 &amp;&amp; !ok2 {
+            break
+        }
+        proc.Out &lt;- fmt.Sprint(s1, s2)
+    }
+}
+
+// ======= Printer =======
+
+type printer struct {
+    In chan string
+}
+
+func NewPrinter() *printer {
+    return &amp;printer{}
+}
+
+func (proc *printer) Run() {
+    for s := range proc.In {
+        fmt.Println(s)
+    }
+}
+</code></pre>
+<p>And if we run it, we get:</p>
+<pre><code>lang-bash
+$ go run dataflow_syntax_test.go
+hi for the  1:TH TIME!
+hi for the  2:TH TIME!
+hi for the  3:TH TIME!
+hi for the  4:TH TIME!
+hi for the  5:TH TIME!
+hi for the  6:TH TIME!
+hi for the  7:TH TIME!
+hi for the  8:TH TIME!
+hi for the  9:TH TIME!
+hi for the  10:TH TIME!
+Finished program!
+</code></pre>
+<hr>
+<p><em><strong>Note I:</strong> See also <a href="https://plus.google.com/u/0/+SamuelLampa/posts/GKgBLeeJXdX">this very interesting discussion on
+Google+</a>.<br>
+<strong>Note II:</strong> ... and also <a href="https://groups.google.com/forum/#!topic/golang-nuts/vgj_d-MjUHA">this super-interesting discussion on
+golang-nuts mailing
+list</a>
+(See especially <a href="https://groups.google.com/d/msg/golang-nuts/vgj_d-MjUHA/T9sE64Yrcq0J">the example and mini-FBP-framework
+suggested</a>
+by <a href="http://twitter.com/egonelbre">Egon Elbre</a>)<br>
+<strong>Note III:</strong> For clarity, I should mention that I'm fully aware of
+<a href="http://twitter.com/sibiroff">Vladimir Sibiroff</a>'s great
+<a href="https://github.com/trustmaster/goflow">GoFlow</a> library, which <a href="http://github.com/samuell/blow">I've
+been playing with</a>, and the development
+of which I'm following closely. But I have wanted to see how far one
+can go without a framework at all, just using an FBP-like pattern and
+syntax, since I think a few FBP-inspired ideas can benefit also those
+programs that need to stay away from frameworks for one reason or
+another. This post presents what I have came up with so far (very much
+inspired by GoFlow by the way!).<br>
+<strong>Note IV</strong> (Jul 19, '15, 3:49 CET): Have updated the code examples
+with some of the great suggestions by</em> <a href="http://twitter.com/egonelbre">Egon
+Elbre</a><em>, now allowing to skip the
+&quot;driving loop&quot;. To demonstrate this more nicely, I have added a
+&quot;zipper&quot; and &quot;printer&quot; component, that are more suited as
+terminating processes. See the</em> <a href="https://groups.google.com/d/msg/golang-nuts/vgj_d-MjUHA/qQMij-plrgQJ">mailing list
+thread</a>
+<em>for more info.</em></p>
+<hr>
+<p><em><strong>Edit I:</strong> Made code example terser, after feedback from <a href="https://twitter.com/rolflampa">Rolf
+Lampa</a>.<br>
+<strong>Edit II:</strong> Added missing channel close statements.</em><br>
+<em><strong>Edit III:</strong> Fix data races introduced by switching channels after a
+go-routine had started reading from it (Spotted by <a href="https://plus.google.com/+YannHodique/posts">Yann
+Hodique</a> in <a href="https://plus.google.com/+SamuelLampa/posts/GKgBLeeJXdX">this
+thread</a>,
+thanks!)</em><br>
+<em><strong>Edit IV:</strong> Defer the channel closeing to avoid prematurely closing
+channels, as pointed out by <a href="http://twitter.com/egonelbre">Egon Elbre</a>
+in <a href="https://groups.google.com/d/msg/golang-nuts/vgj_d-MjUHA/T9sE64Yrcq0J">this
+thread</a>.<br>
+<strong>Edit V:</strong> A better &quot;driver loop&quot;, using the ok-values from read
+channels.</em></p>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright 2024. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

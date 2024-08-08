@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>To make computational lab note-taking happen, make the journal into a todo-list (a &#34;Todournal&#34;) | Living Systems</title>
+
+      <link rel="stylesheet" href="/css/main.min.f3a5991997d3edfa6612acd25887dbae0ca5be329567cceb3054217da27f5132.css" integrity="sha256-86WZGZfT7fpmEqzSWIfbrgylvjKVZ8zrMFQhfaJ/UTI=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>To make computational lab note-taking happen, make the journal into a todo-list (a &#34;Todournal&#34;)</h1>
+
+  
+  
+  <time datetime="2018-04-13T16:15:00&#43;02:00">April 13, 2018</time>
+
+  <h2 id="good-lab-note-taking-is-hard">Good lab note-taking is hard</h2>
+<p>Good note-taking is in my opinion as important for computational
+research as for wet lab research. For computational research it is much
+easier though to forget doing it, since you might not have a physical
+notebook lying on your desk staring at you, but rather might need to
+open a specific software or file, to write the notes. I think this is
+one reason why lab note taking seems to happen a lot less among
+computational scientists than among wet lab ditto.</p>
+<p>Another factor which affects wet and &quot;dry&quot; researchers alike, which
+can hamper good note-taking, is that after you have performed a number
+of actions, your thoughts are already on to the next few steps you'll
+need to take. Thus, stepping back and reviewing what you just did and
+writing that down, can easily distract the flow of thought.</p>
+<h2 id="the-solution-todo-lists--journals">The solution: TODO-lists + journals</h2>
+<p>I think I've found a solution to this, which so far seems to work
+really well for me: Make your journal into a todo-list!</p>
+<p>Concretely what I do is:</p>
+<ul>
+<li>Keep a journal file (in markdown format, for interoperability and
+version control friendliness) in my experiment folder<br>
+(more on how I organize my computational experiments <a href="http://bionics.it/posts/organizing-compbio-projects">in a previous
+blog post</a>)</li>
+<li>Keep this file open in a window besides my main coding window (using
+split panels in <a href="https://code.visualstudio.com">VSCode</a>, or a
+separate panel in <a href="https://tmux.github.io">tmux</a>. See screenshots
+below)</li>
+<li>Continuously fill in this journal with new concrete &quot;next-steps&quot;,
+in the form of unfilled checkboxes<br>
+(markdown supports this with the <strong>- [ ]</strong> bullet point syntax).</li>
+<li>As soon as I have done or implemented a certain such task, check it
+off with an x (so, <strong>- [x]</strong> in markdown), and include this change
+in the todo/journal in the code commit where the change was done.</li>
+</ul>
+<p>Let's call this a &quot;Todournal&quot; :o)</p>
+<h2 id="what-does-this-look-like-in-real-life">What does this look like in real life?</h2>
+<p>This is how it can look when using this strategy in Visual Studio Code,
+which is my go to editor for most things these days, besides vim:</p>
+<p><a href="journal_md_-_ptp_-_visual_studio_code_624-1.png"><p class="image">
+    <img src="journal_md_-_ptp_-_visual_studio_code_624-1.png" alt=""  />
+</p>
+</a></p>
+<p>On GitHub, this gets formatted into a nice list of checkboxes:</p>
+<p><p class="image">
+    <img src="selection_623.png" alt=""  />
+</p>
+</p>
+<h2 id="benefits">Benefits</h2>
+<p>I'm noticing a number of interesting benefits of this approach:</p>
+<ul>
+<li>I'm now writing down concrete action steps as soon as I think about
+them, not after I already did them and started think about something
+else.</li>
+<li>&quot;Taking notes&quot; after the fact is now so easy: Just check a
+checkbox.</li>
+<li>By including the checking of the checkboxes in the same git commit
+as the corresponding code change, I get the relevant journal line
+into the same commit.</li>
+<li>I don't need to maintain a separate todo list, in a separate app,
+and can work completely inside my editor or terminal.</li>
+<li>Every time coming back to my editor, I'm immediately reminded about
+exactly where I am in the process: What I just did, and what is the
+next step. This is surprisingly important in the distracted
+environment of a shared office.</li>
+</ul>
+<p>Overall, this now just seems like the obvious way to do journalling, and
+I can't believe I haven't seen this recommended anywhere before
+(although I'm sure it is somewhere).</p>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright &copy; 2024 Living Systems. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Workflow tool makers: Allow defining data flow, not just task dependencies | Living Systems</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+
+      <script src="/js/main.js"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>Workflow tool makers: Allow defining data flow, not just task dependencies</h1>
+
+  <img src="peptide_workflow.png">
+
+  
+  
+  <time datetime="2015-06-10T12:03:00&#43;02:00">June 10, 2015</time>
+
+  <h3 id="upsurge-in-workflow-tools">Upsurge in workflow tools</h3>
+<p><img src="/site/assets/files/1049/selection_201.300x0-is.png" alt="Workflow tool
+logos">{.align_right}There
+seem to be a little upsurge in light-weight - often python-based -
+workflow tools for data pipelines in the last couple of years:
+Spotify's <a href="https://github.com/spotify/luigi">Luigi</a>, OpenStack's
+<a href="https://wiki.openstack.org/wiki/Mistral">Mistral</a>, Pinterest's
+<a href="https://github.com/pinterest/pinball">Pinball</a>, and recently AirBnb's
+<a href="https://github.com/airbnb/airflow">Airflow</a>, to name a few. These are
+all interesting tools, and it is an interesting trend for us at
+<a href="http://www.farmbio.uu.se/research/researchgroups/pb/?languageId=1">pharmbio</a>,
+who try to see how we can use workflow tools to automate bio- and
+cheminformatics tasks on compute clusters.</p>
+<h3 id="something-missing-">Something missing ...</h3>
+<p>Something I consistently see among the tools though, and which surprises
+me quite some, is this: <strong>Most of these tools specify dependencies
+between tasks, rather than between the outputs and inputs of these
+tasks</strong>.</p>
+<p>As far as I have understood the code examples and screenshots, this is
+the case for almost all these tools. In the case of Luigi though, at
+least it was extensible enough that it was very easy to add a small
+workaround to allow dependency definition between these instead of tasks
+(we're in the process of packaging this up in the <a href="http://github.com/samuell/sciluigi">sciluigi
+library</a>).</p>
+<p>Maybe this has something to do with the nature of typical hadoop
+workflows, which seem to be the primary goal of most of these tools. But
+it is still unfortunate that this subtle design decision highly limits
+the applicability of these tools in such a big domain as scientific
+workflows.</p>
+<h3 id="lets-look-at-an-example">Let's look at an example</h3>
+<p>Let's for example compare one of these tools with another very common
+platform in bioinformatics, which ships with workflow support built-in:
+the <a href="http://galaxyproject.org/">Galaxy platform</a>. Let's compare for
+example how Airflow defines dependencies directly between tasks, and how
+Galaxy properly defines connections between inputs and outputs, by
+looking at the graphical representation of the workflows.</p>
+<p><img src="/site/assets/files/1049/selection_200.825x0-is.png" alt=""></p>
+<p><em><strong>Airflow dependency graph</strong> (Image from the <a href="http://pythonhosted.org/airflow">AirFlow
+docs</a>)</em></p>
+<p><img src="/site/assets/files/1049/peptide_workflow.png" alt=""></p>
+<p><em><strong>Galaxy &quot;dependency graph&quot;, or &quot;data flow network&quot;</strong>
+(<a href="https://github.com/bgruening/presentations/blob/master/shared/resources/img/peptide_workflow.png">Screenshot</a>
+creds: <a href="https://github.com/bgruening">Björn Grüning</a>)</em></p>
+<p>Do you see how the explicitly named inputs and outputs in the Galaxy
+example makes this workflow so much clearer.</p>
+<p>Now, these are of course only graphs, and might not tell the full truth
+about how the tool works, but you just have to look at a few code
+examples, to see that this really is the case. For example, for AirFlow,
+you can find an example of setting up dependencies
+<a href="http://pythonhosted.org/airflow/tutorial.html#setting-up-dependencies">here</a>.
+Or, see below:</p>
+<pre><code>lang-python
+# ... code for instantiating tasks t1 and t2 ...
+t2.set_upstream(t1)
+# This means that t2 will depend on t1
+# running successfully to run
+</code></pre>
+<p>Do you see how you set the dependencies directly between the tasks (t1
+and t2), without any info about inputs and outputs?</p>
+<p>In the case of Galaxy, you don't define this in code, but you can draw
+the connections between named outports and inports graphically.</p>
+<p>And, for an example of a library that allows to do this in code, see for
+example our little helper library for luigi, sciluigi, that allows this:</p>
+<pre><code>lang-python
+# Run the same task on the two splits
+t1 = Task1()
+t2 = Task1()
+t3 = Task2(
+        in1 = t1.outspec('out1')
+        in2 = t1.outspec('out2')
+        in3 = t2.outspec('out1')
+        in4 = t2.outspec('out2'))
+</code></pre>
+<p>Do you see how this enables us to receive multiple outputs (out1, out2)
+from multiple upstream tasks (t1, t2), into task t3 in a very clear and
+explicit way?</p>
+<h3 id="an-example-from-the-real-world">An example from the real world</h3>
+<p>If you still don't believe that this is important, have a look at this
+example workflow from a real world bioinformatics (Next Generation
+Sequencing) workflow, given in a
+<a href="http://uppnex.se/twiki/do/view/Courses/NgsIntro1502">course</a> at
+<a href="http://www.scilifelab.se/">SciLifeLab</a> here in Uppsala/Stockholm
+(implemented in a predecessor to our sciluigi library, <a href="https://github.com/samuell/luigis_monkey_wrench">luigi's monkey
+wrench</a>). Look
+especially for all the &quot;inports&quot; and &quot;outport&quot; parts in the code:</p>
+<pre><code>lang-python
+import luigi
+from luigis_monkey_wrench import *
+
+REF='human_17_v37.fasta'
+INDIVIDUALS=['NA06984','NA07000']
+SAMPLES=['1','2']
+BASENAME='.ILLUMINA.low_coverage.17q_'
+PICARDDIR='/sw/apps/bioinfo/picard/1.69/kalkyl/'
+KNOWNSITES='/proj/g2014207/labs/gatk/ALL.chr17.phase1_integrated_calls.20101123.snps_indels_svs.genotypes.vcf'
+
+class GATKWorkflow(WorkflowTask):
+
+    def requires(self):
+        for i in INDIVIDUALS:
+            # Workflow definition
+            # ---------------------------------------------------------------------------------
+            # files() will return a pseudo task that just outputs an existing file,
+            #         while not running anything.
+            # shell() will create a new task with a command that can take inputs
+            #         and outputs.
+            fq1 = file('fastq:{i}/{i}{b}1.fq'.format(i=i,b=BASENAME))
+            fq2 = file('fastq:{i}/{i}{b}2.fq'.format(i=i,b=BASENAME))
+
+            # Step 2 in [1]--------------------------------------------------------------------
+            aln1 = shell('bwa aln {ref} &lt;i:fastq&gt; &gt; &lt;o:sai:&lt;i:fastq&gt;.sai&gt;'.format(ref=REF))
+            aln1.inports['fastq'] = fq1.outport('fastq')
+
+            aln2 = shell('bwa aln {ref} &lt;i:fastq&gt; &gt; &lt;o:sai:&lt;i:fastq&gt;.sai&gt;'.format(ref=REF))
+            aln2.inports['fastq'] = fq2.outport('fastq')
+
+            # Step 3 in [1]--------------------------------------------------------------------
+            merg = shell('bwa sampe {ref} &lt;i:sai1&gt; &lt;i:sai2&gt; &lt;i:fq1&gt; &lt;i:fq2&gt; &gt; &lt;o:merged:{i}/{i}{b}.merged.sam&gt;'.format(
+                ref=REF,
+                i=i,
+                b=BASENAME))
+            merg.inports['sai1'] = aln1.outport('sai')
+            merg.inports['sai2'] = aln2.outport('sai')
+            merg.inports['fq1'] = fq1.outport('fastq')
+            merg.inports['fq2'] = fq2.outport('fastq')
+
+            # Step 4a in [1]------------------------------------------------------------------
+            mergbam = shell('''
+            java -Xmx2g -jar {p}/AddOrReplaceReadGroups.jar
+                INPUT=&lt;i:sam&gt;
+                OUTPUT=&lt;o:bam:&lt;i:sam&gt;.bam&gt;
+                SORT_ORDER=coordinate
+                RGID={sample}-id
+                RGLB={sample}-lib
+                RGPL=ILLUMINA
+                RGPU={sample}-01
+                RGSM={sample}
+            '''.format(
+                 p=PICARDDIR,
+                 sample=i))
+            mergbam.inports['sam'] = merg.outport('merged')
+
+            # Step 4b in [1] -----------------------------------------------------------------
+            index_mergbam = shell('''
+            java -Xmx2g -jar
+                /sw/apps/bioinfo/picard/1.69/kalkyl/BuildBamIndex.jar
+                INPUT=&lt;i:bamr
+                # &lt;o:bai:&lt;i:bam:.bam|.bai&gt;&gt;
+            ''')
+            index_mergbam.inports['bam'] = mergbam.outport('bam')
+
+            # Step 5a in [1]------------------------------------------------------------------
+            local_realign = shell('''
+            java -Xmx2g -jar /sw/apps/bioinfo/GATK/1.5.21/GenomeAnalysisTK.jar
+                -I &lt;i:bam&gt;
+                -R {ref}
+                -T RealignerTargetCreator
+                -o &lt;o:intervals:&lt;i:bam&gt;.intervals&gt;
+            '''.format(
+               ref=REF))
+            local_realign.inports['bam'] = mergbam.outport('bam')
+
+            # Step 5b in [1]-----------------------------------------------------------------
+            actual_realign = shell('''
+            java -Xmx2g -jar /sw/apps/bioinfo/GATK/1.5.21/GenomeAnalysisTK.jar
+                -I &lt;i:bam&gt;
+                -R {ref}
+                -T IndelRealigner
+                -o &lt;o:realigned_bam:&lt;i:intervals&gt;.realign.bam&gt;
+                -targetIntervals &lt;i:intervals&gt;
+                # &lt;o:realigned_bai:&lt;i:intervals&gt;.realign.bai&gt;
+            '''.format(
+                ref=REF))
+            actual_realign.inports['bam'] = mergbam.outport('bam')
+            actual_realign.inports['intervals'] = local_realign.outport('intervals')
+
+            # Step 5c in [1]-----------------------------------------------------------------
+            mark_dupes = shell('''
+            java -Xmx2g -jar /sw/apps/bioinfo/picard/1.69/kalkyl/MarkDuplicates.jar '
+                INPUT=&lt;i:bam&gt; '
+                OUTPUT=&lt;o:marked_bam:&lt;i:bam&gt;.marked.bam&gt; '
+                METRICS_FILE=&lt;o:metrics:&lt;i:bam&gt;.marked.metrics&gt;
+            ''')
+            mark_dupes.inports['bam'] = actual_realign.outport('realigned_bam')
+
+            # Step 5d in [1], Index bam (picard does not do that automatically)---------------
+            index_marked_bam = shell(('java -Xmx2g -jar /sw/apps/bioinfo/picard/1.69/kalkyl/BuildBamIndex.jar '
+                                 'INPUT=&lt;i:bam&gt; '
+                                 '# &lt;o:bai:&lt;i:bam:.bam|.bai&gt;&gt;'))
+            index_marked_bam.inports['bam'] = mark_dupes.outport('marked_bam')
+
+            # Step 5e in [1], quality recalibration with GATK---------------------------------
+            count_covar = shell('''
+            java -Xmx2g -jar /sw/apps/bioinfo/GATK/1.5.21/GenomeAnalysisTK.jar
+                -T CountCovariates -I &lt;i:bam&gt;
+                -R {ref}
+                -knownSites {sites}
+                -cov ReadGroupCovariate
+                -cov CycleCovariate
+                -cov DinucCovariate
+                -cov QualityScoreCovariate
+                -recalFile &lt;o:covariate:&lt;i:bam&gt;.covar&gt;
+            '''.format(
+                ref=REF,
+                sites=KNOWNSITES))
+            count_covar.inports['bam'] = mark_dupes.outport('marked_bam')
+
+            # Step 5f in [1]-----------------------------------------------------------------
+            table_recalib = shell('''
+            java -Xmx2g -jar /sw/apps/bioinfo/GATK/1.5.21/GenomeAnalysisTK.jar
+                -T TableRecalibration
+                -I &lt;i:bam&gt;
+                -R {ref}
+                -recalFile &lt;i:calib&gt;
+                -o &lt;o:calibrated_bam:&lt;i:calib&gt;.bam&gt;
+            '''.format(ref=REF))
+            table_recalib.inports['bam'] = mark_dupes.outport('marked_bam')
+            table_recalib.inports['calib'] = count_covar.outport('covariate')
+
+            yield table_recalib
+
+if __name__ == '__main__':
+    luigi.run()
+</code></pre>
+<p>I think in this example it becomes clear that the actual <strong>data flow</strong>
+in the system, is much more intricate than just the <strong>dependencies
+between tasks,</strong> and that the latter, tasks dependencies only, don't
+naturally capture the detail of the problem in practice. Thus, to get
+the proper level of control, we need to be able to define the data flow
+in the system, from input/inport of one task, to output/outport of
+another. The task dependencies can easily be computed by the dataflow
+wiring anyway!</p>
+<h3 id="take-home-message">Take home message</h3>
+<p>​So, please, tool makers, remember:</p>
+<ul>
+<li>Tasks need to support multiple, explicitly named inputs and outputs
+(&quot;in-ports&quot; and &quot;out-ports&quot; in <a href="http://en.wikipedia.org/wiki/Flow-based_programming">Flow-based
+programming</a>
+lingo).</li>
+<li>The dependency graph definition should define connections between
+inputs and outputs, not between tasks.</li>
+</ul>
+<p>So again, in summary: <strong>Let's focus more on [allowing to define] the
+data flow in the system, than the dependencies between tasks</strong>.</p>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright 2024. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

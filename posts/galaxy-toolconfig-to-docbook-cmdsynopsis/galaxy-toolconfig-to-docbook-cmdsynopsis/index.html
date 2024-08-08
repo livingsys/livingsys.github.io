@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Partial Galaxy ToolConfig to DocBook CmdSynopsis conversion with XSLT RegEx | Living Systems</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+
+      <script src="/js/main.js"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>Partial Galaxy ToolConfig to DocBook CmdSynopsis conversion with XSLT RegEx</h1>
+
+  <img src="">
+
+  
+  
+  <time datetime="2011-07-21T01:33:00&#43;02:00">July 21, 2011</time>
+
+  <!-- raw HTML omitted -->
+<pre><code>lang-xml
+&lt;tool id=&quot;sam_to_bam&quot; name=&quot;SAM-to-BAM&quot; version=&quot;1.1.1&quot;&gt;
+  &lt;description&gt;converts SAM format to BAM format&lt;/description&gt;
+  &lt;requirements&gt;
+    &lt;requirement type=&quot;package&quot;&gt;samtools&lt;/requirement&gt;
+  &lt;/requirements&gt;
+  &lt;command interpreter=&quot;python&quot;&gt;
+    sam_to_bam.py
+      --input1=$source.input1
+      --dbkey=${input1.metadata.dbkey} 
+      #if $source.index_source == &quot;history&quot;:
+        --ref_file=$source.ref_file
+      #else
+        --ref_file=&quot;None&quot;
+      #end if
+      --output1=$output1
+      --index_dir=${GALAXY_DATA_INDEX_DIR}
+  &lt;/command&gt;
+  &lt;inputs&gt;
+    &lt;conditional name=&quot;source&quot;&gt;
+      &lt;param name=&quot;index_source&quot; type=&quot;select&quot; label=&quot;Choose the source for the reference list&quot;&gt;
+        &lt;option value=&quot;cached&quot;&gt;Locally cached&lt;/option&gt;
+        &lt;option value=&quot;history&quot;&gt;History&lt;/option&gt;
+      &lt;/param&gt;
+      &lt;when value=&quot;cached&quot;&gt;
+        &lt;param name=&quot;input1&quot; type=&quot;data&quot; format=&quot;sam&quot; label=&quot;SAM File to Convert&quot;&gt;
+           &lt;validator type=&quot;unspecified_build&quot; /&gt;
+           &lt;validator type=&quot;dataset_metadata_in_file&quot; filename=&quot;sam_fa_indices.loc&quot; metadata_name=&quot;dbkey&quot; metadata_column=&quot;1&quot; message=&quot;Sequences are not currently available for the specified build.&quot; line_startswith=&quot;index&quot; /&gt;
+        &lt;/param&gt;
+      &lt;/when&gt;
+      &lt;when value=&quot;history&quot;&gt;
+        &lt;param name=&quot;input1&quot; type=&quot;data&quot; format=&quot;sam&quot; label=&quot;Convert SAM file&quot; /&gt;
+        &lt;param name=&quot;ref_file&quot; type=&quot;data&quot; format=&quot;fasta&quot; label=&quot;Using reference file&quot; /&gt;
+      &lt;/when&gt;
+    &lt;/conditional&gt;
+  &lt;/inputs&gt;
+  &lt;outputs&gt;
+    &lt;data format=&quot;bam&quot; name=&quot;output1&quot; label=&quot;${tool.name} on ${on_string}: converted BAM&quot; /&gt;
+  &lt;/outputs&gt;
+&lt;/xml&gt;
+</code></pre>
+<p>... you see that in the <strong>command</strong> tag, the actual syntax of the
+command is specified in a kind of &quot;free text&quot; format ... This might
+not be exactly what one might think to use XSLT transformations for, but
+together with the regex functionality in XSLT 2.0 you definitely has
+this option too. Helped by <a href="http://www.xml.com/pub/a/2003/06/04/tr.html">this
+article</a> on xml.com, I put
+together this little XSLT stylesheet for parsing up the free text
+content of that command tag (haven't got to the more detailed config
+inside the inputs-tag in the galaxy format, but might not need either,
+if staying with the galaxy format anyway):</p>
+<pre><code>lang-xslt
+&lt;?xml version=&quot;1.0&quot;?&gt;
+ 
+&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;2.0&quot;&gt;
+ 
+    &lt;xsl:output method=&quot;xml&quot; indent=&quot;yes&quot; encoding=&quot;UTF-8&quot; /&gt;
+ 
+    &lt;xsl:template match=&quot;/&quot;&gt;
+        &lt;cmdsynopsis&gt;
+            &lt;xsl:apply-templates select=&quot;tool/command&quot; /&gt;
+        &lt;/cmdsynopsis&gt;
+    &lt;/xsl:template&gt;
+ 
+    &lt;xsl:template match=&quot;tool/command&quot;&gt;
+        &lt;command&gt;
+            &lt;xsl:value-of select=&quot;@interpreter&quot; /&gt;
+        &lt;/command&gt;
+        &lt;xsl:for-each select='tokenize(
+                                    replace(
+                                        replace(
+                                            replace(
+                                                replace(
+                                                    .,
+                                                    &quot;[ ]+&quot;,
+                                                    &quot;&quot;),
+                                                &quot;\n#[^\s]+&quot;,
+                                                &quot;&quot;),
+                                            &quot;\n+&quot;,
+                                            &quot; &quot;),
+                                        &quot;(^\s+|\s+$)&quot;,
+                                        &quot;&quot;),
+                                    &quot;\s&quot;)'&gt;
+        &lt;xsl:if test='matches(.,&quot;\{&quot;)!=true()'&gt;
+            &lt;arg&gt;
+                &lt;xsl:value-of select='replace(.,&quot;=.*&quot;,&quot;&quot;)'&gt;&lt;/xsl:value-of&gt;
+                &lt;xsl:if test='matches(.,&quot;.*=.*&quot;)'&gt;
+                    &lt;xsl:text&gt; &lt;/xsl:text&gt;
+                    &lt;replaceable&gt;
+                        &lt;xsl:value-of select='replace(.,&quot;.*=\s*\$?&quot;,&quot;&quot;)'&gt;&lt;/xsl:value-of&gt;
+                    &lt;/replaceable&gt;
+                &lt;/xsl:if&gt;
+            &lt;/arg&gt;
+        &lt;/xsl:if&gt;
+        &lt;/xsl:for-each&gt;
+    &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;
+</code></pre>
+<p>... a bit crazy with all these nested regex replace function calls, no?
+:) ... but, I can tell you, it actually works very good! Found it
+easier to work with than many other regex implementations (i.e. matching
+newlines could be done with &quot;\n&quot;, which I think you can't do by
+default in some other ones).</p>
+<p>I can also mention that the <em>tokenize</em> function splits a string into an
+&quot;array&quot; of the parts between the parts that is matched by the
+expression given to tokenize (similar to &quot;split&quot; in some other
+languages, like python).</p>
+<p>The result of the transoformation? Here it goes:</p>
+<pre><code>lang-xml
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;cmdsynopsis&gt;
+   &lt;command&gt;python&lt;/command&gt;
+   &lt;arg&gt;sam_to_bam.py&lt;/arg&gt;
+   &lt;arg&gt;--input1 &lt;replaceable&gt;source.input1&lt;/replaceable&gt;
+   &lt;/arg&gt;
+   &lt;arg&gt;--ref_file &lt;replaceable&gt;source.ref_file&lt;/replaceable&gt;
+   &lt;/arg&gt;
+   &lt;arg&gt;--ref_file &lt;replaceable&gt;&quot;None&quot;&lt;/replaceable&gt;
+   &lt;/arg&gt;
+   &lt;arg&gt;--output1 &lt;replaceable&gt;output1&lt;/replaceable&gt;
+   &lt;/arg&gt;
+&lt;/cmdsynopsis&gt;
+</code></pre>
+<p>Not perfect (there are double &quot;--ref_file&quot; arguments still), but at
+least it has parsed up the different arguments, removed some galaxy
+specific stuff (the parts enclosed by &quot;{}&quot;) and the conditional
+statements. At least I think it shows that xslt + regex is actually an
+option, don't you think? :)</p>
+<p>A caveat here though: I found out that most of the XSLT processor tools
+for Ubuntu (xsltproc, xalan, the one built into php5) don't accept XSLT
+2.0 features such as regex, so I ended up using the java based <a href="http://saxon.sourceforge.net/">saxon
+processor</a>.</p>
+<p>To call it for doing a transformation, you simply go (when using the
+open source &quot;home edition&quot;):</p>
+<pre><code>lang-bash
+java -jar saxon9he.jar [xml-file] [xslt-file] &gt; [output-file]
+</code></pre>
+<p>Works good! (does a good job of formatting the XML too).</p>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright 2024. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

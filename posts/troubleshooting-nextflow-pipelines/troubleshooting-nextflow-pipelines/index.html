@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Troubleshooting Nextflow pipelines | Living Systems</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+
+      <script src="/js/main.js"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>Troubleshooting Nextflow pipelines</h1>
+
+  <img src="">
+
+  
+  
+  <time datetime="2023-11-01T11:47:00&#43;01:00">November 1, 2023</time>
+
+  <!-- raw HTML omitted -->
+<p>We have been evaluating Nextflow before in my work at
+<a href="https://pharmb.io">pharmb.io</a>, but that was before
+<a href="https://www.nextflow.io/docs/latest/dsl1.html">DSL2</a> and the support
+for re-usable modules (which was one reason we needed to develop our own
+tools to support our challenges, as explained <a href="https://doi.org/10.1093/gigascience/giz044">in the
+paper</a>). Thus, there's
+definitely some stuff to get into.</p>
+<p>Based on my years in bioinformatics and data science, I've seen that
+the number one skill that you need to develop is to be able to
+effectively troubleshoot things, because things will invariably fail in
+all kinds of ways. And in the process, you will probably learn a lot
+about the technology stack you are using.</p>
+<p>You need to be pretty intentional about developing this skill though, as
+it is a skill that is seldomly taught properly in undergraduate
+programs, if ever. This means it is far too often treated as a
+trial-and-error practice, perhaps combined with some informed guessing.
+While this can work, there are far more efficient ways.</p>
+<p>Anyways, this is why I'm writing this post. I wanted to document some
+key troubleshooting techniques I have just picked up for working with
+Nextflow. Some is available in the Documentation, but I didn't find a
+coherent summary of them all, and I also learned some further tricks
+through experimentation that can perhaps be contributed somewhere else
+later. But to start with, they are published below. Feel free to give
+feedback, and also let me know about your own favorite tips in the
+comments!</p>
+<h3 id="existing-troubleshooting-resources">Existing troubleshooting resources</h3>
+<p>As said, Nextflow has some information on troubleshooting tools and
+techniques, and the idea here is not to re-iterate them, so I'll start
+with pointing out some of the most important ones here.</p>
+<ol>
+<li>Perhaps the most similar page to this one, is the <a href="https://training.nextflow.io/basic_training/debugging/">troubleshooting
+guide</a> on
+the Nextflow Training website.</li>
+<li>There is also some <a href="https://nextflow.io/docs/latest/developer/index.html#debugging">info on avialable debugging
+tools</a>
+in the overview page in the main Nextflow docs.</li>
+<li>The doc page on <a href="https://www.nextflow.io/docs/latest/tracing.html">Tracing &amp;
+visualisation</a>
+provides info on some very useful tools to understand what your
+pipeline does.</li>
+<li>The <a href="https://www.nextflow.io/docs/latest/metadata.html">workflow introspection
+page</a> also
+contains tips on how you can inspect especially the objects in the
+DSL/Groovy part of the pipeline.</li>
+<li>A search for &quot;troubleshooting&quot; in the Nextflow docs gives a <a href="https://nextflow.io/docs/latest/search.html?q=troubleshooting&amp;check_keywords=yes&amp;area=default">few
+pages specific to various execution
+platforms</a>,
+as well as on <a href="https://nextflow.io/docs/latest/cache-and-resume.html#troubleshooting">caching and
+resuming</a>,
+which should be generally useful.</li>
+<li><a href="https://twitter.com/arcane_mahesh">Mahesh Binzer-Panchal</a> started
+<a href="https://github.com/carpentries-incubator/workflows-nextflow/issues/64">an issue to collect various common errors in
+Nextflow</a>.</li>
+<li>This seems to be now collected into <a href="https://midnighter.github.io/nextflow-gotchas/">this website with gotchas and
+common errors</a>.</li>
+<li>Apart from the <a href="https://www.nextflow.io/slack-invite.html">Slack</a>,
+there is now also a <a href="https://community.seqera.io/c/nextflow/5">community
+forum</a>, where you can
+search for previous issues and ask about your own.</li>
+<li>Last but definitely not least, the <a href="https://nf-co.re/join">nf-core
+community</a> contains a super-vibrant
+community, with an even more active Slack server, and lots of other
+community resources.</li>
+</ol>
+<h3 id="some-further-troubleshooting-tips">Some further troubleshooting tips</h3>
+<h4 id="1-the-execution-log">1. The execution log</h4>
+<p>Primarily, Nextflow provides some pretty good tips itself, when an error
+occurs.</p>
+<p>The first thing to note, is if you get your terminal filled with error
+output, and don't manage to read it all before it flushes by, you can
+always find the latest log in a file named <code>.nextflow.log</code> inside your
+execution folder.</p>
+<p>To scroll through this file in a searchable way, without wrapping long
+lines, I recommend to use the <code>less -S</code> command:</p>
+<pre><code>lang-bash
+less -S ~/.nextflow.log
+</code></pre>
+<p>Using less, you can search by typing <code>/</code> followed by the search phrase,
+step through the search results with <code>n</code> for next find, and <code>N</code> for
+previous find, scroll using arrows or PageDown/PageUp, or vim commands
+for the same, as well as quit using <code>q</code>.</p>
+<p>Sometimes it is easier to just &quot;grep&quot; through the file, for example
+searching case-insensitively for &quot;error&quot;, and perhaps piping that to
+<code>less -S</code>:</p>
+<pre><code>lang-bash
+grep -i error .nextflow.log | less -S
+</code></pre>
+<h4 id="2-the-work-folder">2. The work folder</h4>
+<p>At least for jobs executed locally, in the execution log mentioned
+above, Nextflow typically points out the path to the &quot;work folder&quot;.
+Depending on your configuration, it typically involves the word &quot;work&quot;
+and ends with a long random string of letters and numbers called a
+&quot;hash&quot;, for example <code>/tmp/nf/work/a3/0e2ea68c421ced4797e00de9e73155</code>.
+It is a good idea to cd into this folder and exploring it, when you have
+a hard to track down-bug, so in this example:</p>
+<pre><code>lang-bash
+cd /tmp/nf/work/a3/0e2ea68c421ced4797e00de9e73155
+ls -1a
+</code></pre>
+<p>The <code>-1a</code> flags, or in particular <code>-1tra</code> are very useful, and have the
+following function:</p>
+<ul>
+<li><code>-1</code> (the number) lists the files vertically instead of
+horizontally, making it easier to read. If you also want more
+details like timestamps and permissions, use <code>-l</code> (the letter)
+instead.</li>
+<li><code>-t</code> sorts the list by time</li>
+<li><code>-r</code> reverses the the time-based sorting from <code>-t</code>, so that the last
+files are located last (if the list is long, these will be the only
+ones immediately visible on the screen)</li>
+<li><code>-a</code> lists &quot;all&quot; files, meaning also hidden files, that is, those
+starting with a <code>.</code> in the name.</li>
+</ul>
+<p>Since the <code>-t</code> and <code>-r</code> flags are not strictly needed, we will skip them
+below though for simplicity.</p>
+<p>As you will see, the folder contains a number of hidden files, viewable
+only with the <code>-a</code> flag to <code>ls</code>, that contain some key information on
+how the job is being executed:</p>
+<pre><code>lang-bash
+$ ls -1a
+.
+..
+.command.begin
+.command.err
+.command.log
+.command.out
+.command.run
+.command.sh
+.exitcode
+&lt;some more files not relevant here&gt;
+</code></pre>
+<p>These files are very useful to acquaint yourself more with. Their
+function is, in summary:</p>
+<ul>
+<li><code>.command.begin</code></li>
+<li><code>.command.err</code> - Everything written to
+<a href="https://en.wikipedia.org/wiki/Standard_streams#Standard_error_(stderr)">stderr</a>
+from the command. Will typically be errors, but some commands are
+ill-behaved and write out other stuff here as well, that might be
+potentially useful for debugging.</li>
+<li><code>.command.log</code> - Log output from the command</li>
+<li><code>.command.out</code> - Everything written to
+<a href="https://en.wikipedia.org/wiki/Standard_streams#Standard_output_(stdout)">stdout</a></li>
+<li><code>.command.run</code> - This is a scaffold script that contains various
+bash functions to create temporary folder, stage files, execute the
+.command.sh script, and clean up. We will look closer at it below.</li>
+<li><code>.command.sh</code> - This script contains the main command run by the
+task in question. It is thus very useful to check that it looks as
+expected.</li>
+<li><code>.exitcode</code> - This file will contain the exit code, or
+&quot;returncode&quot; of the command. It is an integer value with various
+meanings that can be looked up on the internet, but the most
+important thing to know is that a 0 means the command has completed
+successfully, and anything else (Typically 1 or above) means it has
+failed in some way.</li>
+</ul>
+<h4 id="3-debugging-a-command-in-the-work-folder">3. Debugging a command in the work folder</h4>
+<p>If you have a tricky failing task that you don't really understand why
+it fails, it might be a good idea to manually execute task scripts.</p>
+<p>You will typically need to do that by executing the <code>.command.run</code>
+script, which in turn executes <code>.command.sh</code>, since the former will
+create the temporary directories, stage files etc that is needed for the
+task to run properly.</p>
+<p>So, you would do:</p>
+<pre><code>lang-bash
+bash .command.run
+</code></pre>
+<p>... and watch for any detailed output that might give you hints.</p>
+<h4 id="make-all-commands-visible-with-set--x">Make all commands visible with set -x</h4>
+<p>The problem with the above is that the <code>.command.run</code> script does a lot
+of &quot;magic&quot; and setup grunt work that you don't see.</p>
+<p>Thus, to make everything it does more clear, what you can do is to add
+the commands <code>set -x</code> in the top of both the <code>.command.run</code> and
+<code>.command.sh</code> scripts, using a text editor (the nano terminal based text
+is available on most systems, and is more user-friendly than vim for new
+users: <code>nano .command.run</code> ... save with <code>Ctrl+W</code>, and exit with
+<code>Ctrl+X</code>).</p>
+<p>Then you can execute it again:</p>
+<pre><code>lang-bash
+bash .command.run
+</code></pre>
+<p>But even better is, if you pipe all the output to a file, so that you
+can later read this at your own pace:</p>
+<pre><code>lang-bash
+bash .command.run &amp;&gt; out.log
+</code></pre>
+<p>(The <code>&amp;</code> in <code>&amp;&gt;</code> will make sure that both stdout and stderr are
+redirected to the file)</p>
+<p>Even better, is to BOTH redirect to a file, but also pipe it to
+something like <code>less -S</code>, so you can see and scroll the output
+immediately:</p>
+<pre><code>lang-bash
+bash .command.run |&amp; tee out.log | less -S
+</code></pre>
+<p>Here, the <code>|&amp;</code> will pipe both stderr and stdout to the next command,
+which less <code>tee</code>, which will both take a filename where it writes its
+output, and also forward the output to the next command, which is here
+<code>less -S</code>.</p>
+<h4 id="4-turning-off-the-cleanup-parts-to-explore-temporary-folders">4. Turning off the cleanup parts, to explore temporary folders</h4>
+<p>One caveat when running the <code>.command.run</code> script is that it will always
+clean up temporary folders after it is finished. This means certain
+subtle errors might be harder to detect, since you can't explore these
+temporary folders manually.</p>
+<p>One way to get around this though is to comment out those parts in the
+.command.run file before running it (In bash, you can comment it out by
+adding a <code>#</code> - character at the beginning of the line).</p>
+<p>In particular, check the <code>on_exit()</code> function, which might look like so:</p>
+<pre><code>lang-bash
+on_exit() {
+    exit_status=${nxf_main_ret:=$?}
+    printf $exit_status &gt; /tmp/nf/work/a3/0e2ea68c421ced4797e00de9e73155/.exitcode
+    set +u
+    [[ &quot;$tee1&quot; ]] &amp;&amp; kill $tee1 2&gt;/dev/null
+    [[ &quot;$tee2&quot; ]] &amp;&amp; kill $tee2 2&gt;/dev/null
+    [[ &quot;$ctmp&quot; ]] &amp;&amp; rm -rf $ctmp || true
+    rm -rf $NXF_SCRATCH || true
+    sync || true
+    exit $exit_status
+}
+</code></pre>
+<p>Here, you could comment our for example the
+<code>rm -rf $NXF_SCRATCH || true</code> line, if you want the temporary folder to
+remain existing (typically put in <code>/tmp</code> and named something like
+<code>/tmp/nxf.XXXXXXXXX</code>. If you add <code>set -x</code> to the beginning of the script
+as explained above, you should be able to see the exact path of this
+one, when executing the command).</p>
+<p>You can also have a look around the <code>nxf_main()</code> , and the
+<code>nxf_launch()</code> functions. <code>nxf_main()</code> is located in the bottom of the
+script and is the over-arching function, calling the other sub-functions
+(the <code>on_exit()</code> is not explicitly called though, but is set up to be
+called whenever the <code>nxf_main()</code> function is returning or interrupted),
+while <code>nxf_launch()</code> is the one executing the .command.sh script,
+together with some environment variables, setup for containers etc,
+which is a somewhat common source of some errors.</p>
+<p>Its content should be visible in the script output when you add <code>set -x</code>
+to the script and run it, but it might also be good to examine it
+manually!</p>
+<p>If you want to be able to quickly enable these two adjustments when in a
+work folder, you can add the following bash function to your
+<code>~/.bash_aliases</code> file:</p>
+<pre><code>lang-bash
+function debugnf() {
+    sed -i '2s/^/set -x\n/' .command.{run,sh};
+    sed -i 's/rm /#rm /g' .command.run;
+}
+</code></pre>
+<p>Then, when in a work folder, you can just run <code>debugnf</code> before running
+any of the .command.run or .command.sh files manually.</p>
+<h3 id="summary">Summary</h3>
+<p>Hope you were able to learn something from the tips in this post! And,
+perhaps you know some further great tips for debugging? Feel free to
+share them, or at least a link to them, in the comments below!</p>
+<h3 id="changelog">Changelog</h3>
+<ul>
+<li>2023-11-01 13:37 CET: Added section &quot;Turning off the cleanup parts,
+to explore temporary folders&quot;</li>
+<li>2023-11-01 14:20 CET: Added pointer about nxf_launch(), on tip from
+<a href="https://twitter.com/gau">Maxime Garcia</a>.</li>
+<li>2023-11-01 21:30 CET: Added link to troubleshooting guide at the
+Nextflow Training website.</li>
+</ul>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright 2024. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

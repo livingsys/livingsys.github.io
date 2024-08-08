@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Crystal: Go-like concurrency with easier syntax | Living Systems</title>
+
+      <link rel="stylesheet" href="/css/main.min.f3a5991997d3edfa6612acd25887dbae0ca5be329567cceb3054217da27f5132.css" integrity="sha256-86WZGZfT7fpmEqzSWIfbrgylvjKVZ8zrMFQhfaJ/UTI=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>Crystal: Go-like concurrency with easier syntax</h1>
+
+  
+  
+  <time datetime="2020-09-05T15:36:00&#43;02:00">September 5, 2020</time>
+
+  <p>I have been playing around a lot with concurrency in Go over the years,
+resulting in libraries such as <a href="https://scipipe.org/">SciPipe</a>,
+<a href="http://flowbase.org/">FlowBase</a> and
+<a href="https://github.com/rdfio/rdf2smw/">rdf2smw</a>. My main motivation for
+looking into Go has been the possibility to use it as a more performant,
+scaleable and type-safe alternative to Python for data heavy scripting
+tasks in bioinformatics and other fields I've been dabbling in.
+Especially as it makes it so easy to write concurrent and parallel code
+in it. Be warned that this context is surely giving me some biases.</p>
+<p>I find the concurrency features of Go - with its lightweight goroutines
+and channels - to be hard to beat in that it also provides true
+parallelism by mapping the goroutines onto physical operating system
+threads automatically in the background. Few if any other mainstream
+languages does that. It lifts off a lot of concerns that you as a
+developer don't need to deal with.</p>
+<p>Still, the Go syntax has always felt rather complex. After 5+ years, I
+have still not learned how to open up a file and reading from it line by
+line, and need to check up the syntax on a site like
+<a href="https://gobyexample.com">gobyexample.com</a>. This task also requires
+importing two different libraries (os, and bufio), which you have to
+remember.</p>
+<p>With this background, I found it interesting when a new
+language on the block, <a href="https://crystal-lang.org/">Crystal</a>, <a href="https://crystal-lang.org/2019/09/06/parallelism-in-crystal.html">touts to
+provide the same concurrency
+features</a>,
+still in a language with static typing and ahead-of-time compiling, with
+a much more scriptlike and clean syntax.</p>
+<p>In this post, I take a brief look at Crystal by implementing a pattern I
+have been using a lot in Go: A simple pipeline, where one go-routine
+does something like read from a file, feeding of the data to another
+goroutine over a channel to do more work. I this post I will do this by
+implementing an extremely simple pipeline that does just that, in both
+of the languages, and then do some observations about the differences
+between the languages. In more concrete terms, what the program does is:
+let one go-routine read from a file line by line, and another one
+calculate the frequency of G and C:s over all of A, T, G, Cs in a
+DNA-file in the FASTA format.</p>
+<p>You can find <a href="ftp://ftp.ensembl.org/pub/release-67/fasta/homo_sapiens/dna/Homo_sapiens.GRCh37.67.dna_rm.chromosome.Y.fa.gz">the (68MB) file I'm using
+here</a>.</p>
+<p>You can find both of the below code files <a href="https://github.com/samuell/experiments/tree/master/govscr">on GitHub
+here</a>.</p>
+<h3 id="go-implementation">Go implementation</h3>
+<p>Here is the Go implementation:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">package</span> <span style="color:#000">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;bufio&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;os&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">lineChan</span> <span style="color:#000">:=</span> <span style="color:#a90d91">make</span>(<span style="color:#a90d91">chan</span> <span style="color:#a90d91">string</span>, <span style="color:#1c01ce">16</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// ------------------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#177500">// Loop over the input file in a separate fiber
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#177500">// ------------------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#a90d91">go</span> <span style="color:#a90d91">func</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">defer</span> <span style="color:#a90d91">close</span>(<span style="color:#000">lineChan</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">gcFile</span>, <span style="color:#000">err</span> <span style="color:#000">:=</span> <span style="color:#000">os</span>.<span style="color:#000">Open</span>(<span style="color:#c41a16">&#34;Homo_sapiens.GRCh37.67.dna_rm.chromosome.Y.fa&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">defer</span> <span style="color:#000">gcFile</span>.<span style="color:#000">Close</span>()
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">if</span> <span style="color:#000">err</span> <span style="color:#000">!=</span> <span style="color:#a90d91">nil</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">panic</span>(<span style="color:#000">err</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">scan</span> <span style="color:#000">:=</span> <span style="color:#000">bufio</span>.<span style="color:#000">NewScanner</span>(<span style="color:#000">gcFile</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">for</span> <span style="color:#000">scan</span>.<span style="color:#000">Scan</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#000">line</span> <span style="color:#000">:=</span> <span style="color:#000">scan</span>.<span style="color:#000">Text</span>()
+</span></span><span style="display:flex;"><span>            <span style="color:#000">lineChan</span> <span style="color:#000">&lt;-</span> <span style="color:#000">line</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">at</span> <span style="color:#000">:=</span> <span style="color:#1c01ce">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">gc</span> <span style="color:#000">:=</span> <span style="color:#1c01ce">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">for</span> <span style="color:#000">line</span> <span style="color:#000">:=</span> <span style="color:#a90d91">range</span> <span style="color:#000">lineChan</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">if</span> <span style="color:#000">line</span>[<span style="color:#1c01ce">0</span>] <span style="color:#000">==</span> <span style="color:#2300ce">&#39;&gt;&#39;</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">continue</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">for</span> <span style="color:#000">_</span>, <span style="color:#000">chr</span> <span style="color:#000">:=</span> <span style="color:#a90d91">range</span> <span style="color:#000">line</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">switch</span> <span style="color:#000">chr</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">case</span> <span style="color:#2300ce">&#39;A&#39;</span>, <span style="color:#2300ce">&#39;T&#39;</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#000">at</span> <span style="color:#000">+=</span> <span style="color:#1c01ce">1</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#a90d91">continue</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">case</span> <span style="color:#2300ce">&#39;G&#39;</span>, <span style="color:#2300ce">&#39;C&#39;</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#000">gc</span> <span style="color:#000">+=</span> <span style="color:#1c01ce">1</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#a90d91">continue</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">var</span> <span style="color:#000">gcFrac</span> <span style="color:#a90d91">float64</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">gcFrac</span> = <span style="color:#a90d91">float64</span>(<span style="color:#000">gc</span>) <span style="color:#000">/</span> <span style="color:#a90d91">float64</span>(<span style="color:#000">at</span><span style="color:#000">+</span><span style="color:#000">gc</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fmt</span>.<span style="color:#000">Printf</span>(<span style="color:#c41a16">&#34;GC fraction: %f\n&#34;</span>, <span style="color:#000">gcFrac</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Compile and run with e.g.:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">GOMAXPROCS</span><span style="color:#000">=</span>4; go build -o gcgo gc.go
+</span></span><span style="display:flex;"><span>./gcgo
+</span></span></code></pre></div><h3 id="crystal-implementation">Crystal implementation</h3>
+<p>&hellip; and here is the same functionality, implemented in Crystal:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-crystal" data-lang="crystal"><span style="display:flex;"><span><span style="color:#000">lines_chan</span> <span style="color:#000">=</span> <span style="color:#a90d91">Channel</span>(<span style="color:#a90d91">String</span>)<span style="color:#000">.</span><span style="color:#000">new</span>(<span style="color:#1c01ce">16</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># ------------------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Loop over the input file in a separate fiber (and thread, if you set the</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># CRYSTAL_WORKERS count to something larger than 1), and send its output on a</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># channel</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># ------------------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span><span style="color:#5b269a">spawn</span> <span style="color:#a90d91">do</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">gcfile</span> <span style="color:#000">=</span> <span style="color:#a90d91">File</span><span style="color:#000">.</span><span style="color:#000">new</span>(<span style="color:#c41a16">&#34;Homo_sapiens.GRCh37.67.dna_rm.chromosome.Y.fa&#34;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#000">gcfile</span><span style="color:#000">.</span><span style="color:#000">each_line</span>() <span style="color:#a90d91">do</span> <span style="color:#000">|</span><span style="color:#000">line</span><span style="color:#000">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">lines_chan</span><span style="color:#000">.</span><span style="color:#000">send</span>(<span style="color:#000">line</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">end</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">gcfile</span><span style="color:#000">.</span><span style="color:#000">close</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">ensure</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">lines_chan</span><span style="color:#000">.</span><span style="color:#000">close</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">end</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># ------------------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Loop over the lines on the channel in the main thread, and count GC fraction.</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># ------------------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">at</span> <span style="color:#000">=</span> <span style="color:#1c01ce">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">gc</span> <span style="color:#000">=</span> <span style="color:#1c01ce">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">while</span> <span style="color:#000">line</span> <span style="color:#000">=</span> <span style="color:#000">lines_chan</span><span style="color:#000">.</span><span style="color:#000">receive?</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">if</span> <span style="color:#000">line</span><span style="color:#000">.</span><span style="color:#000">starts_with?</span>(<span style="color:#2300ce">&#39;&gt;&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">next</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">end</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">line</span><span style="color:#000">.</span><span style="color:#000">each_byte</span>() <span style="color:#a90d91">do</span> <span style="color:#000">|</span><span style="color:#000">chr</span><span style="color:#000">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">case</span> <span style="color:#000">chr</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">when</span> <span style="color:#2300ce">&#39;A&#39;</span>, <span style="color:#2300ce">&#39;T&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">at</span> <span style="color:#000">+=</span> <span style="color:#1c01ce">1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a90d91">next</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">when</span> <span style="color:#2300ce">&#39;G&#39;</span>, <span style="color:#2300ce">&#39;C&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">gc</span> <span style="color:#000">+=</span> <span style="color:#1c01ce">1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a90d91">next</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">end</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">end</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">end</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># ------------------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Output results</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># ------------------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">gcfrac</span> <span style="color:#000">=</span> <span style="color:#000">gc</span> <span style="color:#000">/</span> (<span style="color:#000">gc</span> <span style="color:#000">+</span> <span style="color:#000">at</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">puts</span> <span style="color:#c41a16">&#34;GC fraction: </span><span style="color:#c41a16">#{</span><span style="color:#000">gcfrac</span><span style="color:#c41a16">}</span><span style="color:#c41a16">&#34;</span>
+</span></span></code></pre></div><p>Note that to run the Crystal program with true multi-threading, you have
+to send a flag: <code>-Dpreview\_mt</code>, to use it.</p>
+<p>Compile and run with e.g.:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">CRYSTAL_WORKERS</span><span style="color:#000">=</span>4; crystal build --release -Dpreview_mt -o gccr gc.cr
+</span></span><span style="display:flex;"><span>./gccr
+</span></span></code></pre></div><h3 id="some-differences">Some differences</h3>
+<p>We can note a few differences:</p>
+<ul>
+<li>The Crystal code is considerably shorter.</li>
+<li>I find the Crystal code easier to read.</li>
+<li>Crystal does not need to create a main()-function, but can include
+code directly in the file, similar to Python and Ruby.</li>
+<li>In Crystal you don't need to import multiple packages to open a
+file, and to loop over it.</li>
+<li>In Crystal, as seen in the code, we use
+&quot;<a href="https://crystal-lang.org/reference/syntax_and_semantics/exception_handling.html#ensure">ensure</a>&quot;,
+between any two &quot;begin/end&quot; clauses, in a similar way as Go:s
+&quot;defer&quot;, to ensure something is done as the very last thing before
+existing the function.</li>
+<li>In my tests, the Go implementation has always outperformed the
+Crystal one, so far. This might change with time of course.</li>
+<li>Truly static binary deployments seem to not be fully supported in
+Crystal just yet (see <a href="https://github.com/crystal-lang/crystal/issues/9285">Issue
+#9285</a>).</li>
+</ul>
+<h3 id="conclusion">Conclusion</h3>
+<p>I think it is a bit early to draw to hard conclusions between the two
+langauges, as Crystal is so new, and this is just a very first test by
+me. But I find it interesting to have two languages with a similar set
+of concurrency primitives, to be able to compare various factors, as
+well as approaches taken.</p>
+<p>Crystal looks like a promising alternative to Go, for concurrency use
+cases which allows writing in a much more script-like syntax. This could
+potentially make it a really interesting language for scientific fields
+such as bioinformatics, something that bioinformatics luminary <a href="https://twitter.com/lh3lh3">Heng
+Li</a> <a href="https://lh3.github.io/2020/05/17/fast-high-level-programming-languages">has been blogging
+about</a>
+(and <a href="https://github.com/crystal-lang/crystal/issues/9285">pointed out a problematic area for
+deployment</a>,
+currently).</p>
+<p>I'm still worried about whether Crystal will manage to provide the same
+level of extremely portable, statically linked binaries though (EDIT:
+<a href="https://crystal-lang.org/2020/02/02/alpine-based-docker-images.html">there's a workaround, using alpine
+linux</a>),
+and this might turn out to be a real dealbreaker. Also, with the
+upcoming generics implementation in Go, some of the complexities of Go
+might be possible to hide away for end-users of some libraries, by
+providing high-level abstractions over typical complex tasks. One can of
+course also wonder if Crystal will be able to reach the level of
+popularity and size of ecosystem as Go, without a large industry backer
+(maybe if they can leverage the large number of Ruby-developers looking
+for a new compiled, fast language?).</p>
+<p>It will be interesting to see what happens, as Crystal gets closer to
+1.0, and Go soon gets generics into the language. What can be said for
+sure, is that we will soon have more options, for writing concurrent,
+performant code.</p>
+<p><strong>Samuel</strong> (Twitter: <a href="https://twitter.com/smllmp">@smllmp</a>)</p>
+<p><strong>Note:</strong> Some discussions on the post is/has been happening <a href="https://www.reddit.com/r/crystal_programming/comments/in80a9/crystal_concurrency_with_easier_syntax_than_go/">on
+reddit</a>,
+and <a href="https://forum.crystal-lang.org/t/blog-crystal-concurrency-with-easier-syntax-than-go/2505/4">on the crystal
+forum</a>.</p>
+<p><em><strong>Edit Sep 5, 2020, 19:45 CET:</strong> Update code to use &quot;ensure&quot;, after
+<a href="https://forum.crystal-lang.org/t/blog-crystal-concurrency-with-easier-syntax-than-go/2505/2?u=shl">feedback from
+@asterite</a>.</em><br>
+<em><strong>Edit Sep 7, 2020, 08:35 CET:</strong> Clarify about how to compile optimized
+Crystal code.</em><br>
+<em><strong>Edit Sep 7, 2020, 08:57 CET:</strong> Add note about linking statically on
+alpine linux.</em></p>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright &copy; 2024 Living Systems. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

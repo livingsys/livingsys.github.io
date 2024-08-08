@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>New paper on RDFIO for interoperable biomedical data management in Semantic MediaWiki | Living Systems</title>
+
+      <link rel="stylesheet" href="/css/main.min.f3a5991997d3edfa6612acd25887dbae0ca5be329567cceb3054217da27f5132.css" integrity="sha256-86WZGZfT7fpmEqzSWIfbrgylvjKVZ8zrMFQhfaJ/UTI=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>New paper on RDFIO for interoperable biomedical data management in Semantic MediaWiki</h1>
+
+  
+  
+  <time datetime="2017-09-11T15:57:00&#43;02:00">September 11, 2017</time>
+
+  <p>As my collaborator and M.Sc. supervisor <a href="https://twitter.com/egonwillighagen">Egon
+Willighagen</a> already
+<a href="http://chem-bla-ics.blogspot.nl/2017/09/new-paper-rdfio-extending-semantic.html">blogged</a>,
+we just released a paper titled: &quot;<a href="https://jbiomedsem.biomedcentral.com/articles/10.1186/s13326-017-0136-y">RDFIO: extending Semantic MediaWiki
+for interoperable biomedical data
+management</a>&quot;,
+with uses cases from Egon and <a href="https://twitter.com/pkohonen">Pekka
+Kohonen</a>, coding help from <a href="https://twitter.com/ali_king">Ali
+King</a> and project supervision from <a href="https://twitter.com/vrandezo">Denny
+Vrandečić</a>, <a href="https://www.linkedin.com/in/roland-grafstr%C3%B6m-a86b3b2">Roland
+Grafström</a> and
+<a href="https://twitter.com/ola_spjuth">Ola Spjuth</a>.</p>
+<p>See the picture below (from the paper) for an overview of all the newly
+developed functionality (drawn in black), as related to the previously
+existing functionality (drawn in grey):</p>
+<p><p class="image">
+    <img src="selection_388-1.png" alt="Overview picture of the RDFIO tool suite"  />
+</p>
+</p>
+<p>The story goes back about seven years, when I had just finished my
+<a href="http://urn.kb.se/resolve?urn=urn:nbn:se:uu:diva-146738">M.Sc. thesis</a>
+on using Prolog for Semantic Web in <a href="http://bioclipse.net/">Bioclipse</a>,
+supervised by Egon. Egon had introduced me to the <a href="https://developers.google.com/open-source/gsoc/">Google Summer of
+Code</a> program and
+stipend, paid to students contributing to open source software projects
+over a summer. This came at a very suitable time as I was looking for
+summer work to fill up the summer until I could find a proper job.</p>
+<p>The suggestion turned out to come at a suitable time in other aspects
+too. As Egon and I were playing around with RDF data in Bioclipse, and
+we also were sporadic users of <a href="http://www.semantic-mediawiki.org">Semantic
+MediaWiki</a> (SMW), I at some point
+wanted to import some RDF data into SMW, but realized there was no
+general solution for that. I applied a suggestion to work on addressing
+this to WikiMedia, through the Semantic MediaWiki community. Luckily, it
+turned out <a href="https://twitter.com/vrandezo">Denny</a> already had similar
+ideas, and also had some developed ideas about how to implement this
+already. He had developed the &quot;SMWWriter&quot; extension (no longer
+available), which could write facts to SMW via the <a href="https://www.mediawiki.org/wiki/API:Main_page">MediaWiki
+API</a>, and also pointed me
+to Benjamin (<a href="https://twitter.com/bengee">bengee</a>) Nowack's widely used
+<a href="https://github.com/semsol/arc2">ARC2 library</a> which provides various
+functionality for working with RDF in PHP, including a pure PHP SPARQL
+endpoint. This previous work and pointers greatly helped me get up to
+speed with the project fast, despite rather shallow coding experience at
+the time.</p>
+<p>The project was not an overly simple one though, and although I finished
+a working verison of the <a href="https://www.mediawiki.org/wiki/Extension:RDFIO">RDFIO
+extension</a> on time, it
+has been plagued by a lack of time to fix bugs and code maintenance over
+the years.</p>
+<p>With this background, I'm very happy, that, seven years later, with
+important contributions and code improvements by
+<a href="https://twitter.com/ali_king">Ali</a>, and then further massive code
+clean-up and refactoring, we were able to release the paper about RDFIO,
+and in the process also improving code quality, test coverage and
+continuous integration setup. We even created a <a href="https://doi.org/10.6084/m9.figshare.5383966.v1">ready-to-use virtual
+machine with RDFIO
+installed</a>, to make it
+maximally easy to try it out. A screenshot showing how easy it is to
+start RDFIO in the VM and access one of its components (the SPARQL
+endpoint in this case) is shown below:</p>
+<p><p class="image">
+    <img src="mediawiki_smw_rdfio_3_0_2_running_-_oracle_vm_virtualbox_387_shadow.png" alt=""  />
+</p>
+</p>
+<h2 id="so-now-what">So now what?</h2>
+<p>So, what are we gonna use this for, after all? <a href="https://github.com/rdfio/RDFIO/releases/tag/v3.0.1">One of the latest
+releases of RDFIO</a>
+contains a screenshot providing some hints about future prospects:
+SPARQLing Semantic MediaWikis from SWI-Prolog! Le me provide with the
+teaser inline:</p>
+<p><p class="image">
+    <img src="29423651-d1bf48f6-837c-11e7-9793-a9e3adc2000b.png" alt=""  />
+</p>
+</p>
+<p>Expect more posts on this topic in the near future.</p>
+<h2 id="main-links">Main links</h2>
+<ul>
+<li>Check out the paper at
+<a href="https://jbiomedsem.biomedcentral.com/articles/10.1186/s13326-017-0136-y">10.1186/s13326-017-0136-y</a></li>
+<li><a href="https://pharmb.io/project/rdfio/">The RDFIO project page</a> contains
+all relevant links to the software. project and paper.</li>
+</ul>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright &copy; 2024 Living Systems. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

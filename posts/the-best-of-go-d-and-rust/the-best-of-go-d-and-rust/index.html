@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Combining the best of Go, D and Rust? | Living Systems</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+
+      <script src="/js/main.js"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>Combining the best of Go, D and Rust?</h1>
+
+  <img src="">
+
+  
+  
+  <time datetime="2016-06-11T14:24:00&#43;02:00">June 11, 2016</time>
+
+  <!-- raw HTML omitted -->
+<p>I've been following the development of <a href="http://dlang.org">D</a>,
+<a href="http://golang.org">Go</a> and <a href="https://www.rust-lang.org/">Rust</a> (and also
+<a href="http://www.freepascal.org/">FreePascal</a> for <a href="https://github.com/NBISweden/mdc-file-export">some use
+cases</a>) for some years
+(<a href="http://saml.rilspace.org/moar-languagez-gc-content-in-python-d-fpc-c-and-c">been into some benchmarking for bioinfo
+tasks</a>),
+and now we finally have three (four, with fpc) stable statically
+compiled languages with some momentum behind them, meaning they all are
+past 1.0.</p>
+<p>While I have went with Go for <a href="http://scipipe.org">current projects</a>, I
+still have a hard time &quot;totally falling in love&quot; with any single of
+these languages. They all fulfill different subsets of my wishlist for
+an optimal compiled data munging language.</p>
+<p>So, in my backhead I'm now starting to ask: Who will create a language
+that combines the best parts of each, into the super-language that
+everybody can use for everything? :)</p>
+<p>Let me start off this with my own wishlist: Let's have a language with:</p>
+<ul>
+<li>The performance of D and Rust</li>
+<li>The smallness of executables from D and Rust</li>
+<li>The concurrency primitives from Go (channels and lightweight threads
+multiplexed on cpu cores)</li>
+<li>The simple, pseudo-code-like code (and thus productivity) of D
+<ul>
+<li>Compare e.g. this
+<a href="https://gist.github.com/samuell/5589994">D-code</a> and this
+<a href="https://gist.github.com/samuell/5591369">Go-code</a>, with
+<a href="http://saml.rilspace.org/moar-languagez-gc-content-in-python-d-fpc-c-and-c">similar
+performance</a></li>
+</ul>
+</li>
+<li>The smallness of the language from Go</li>
+<li>The <a href="http://www.cs.loyola.edu/~binkley/papers/icpc09-clouds.pdf">objectively more
+readable</a>
+snake_case syntax of Rust</li>
+<li>The order of variable name and type from Go and FreePascal (name
+first)</li>
+<li>The great tooling from Go (The go and go tool subcommands, etc)</li>
+<li>The great standard library of Go</li>
+<li>The amazing cross-platform GUI builder and IDE of FreePascal:
+<a href="http://www.lazarus-ide.org/">Lazarus</a> (Not a language feature, but
+worth a shout-out either way).</li>
+</ul>
+<p>Bonus points if it can also include:</p>
+<ul>
+<li>A powerful REPL, like Scala or Julia, or Python of course.</li>
+<li>Non-indentation based syntax (not fun in some use cases, when
+wrapping a lot of tools in tools, as happens).</li>
+</ul>
+<p>Can we haz something like this? :) Or is there some existing language
+that's already getting close?</p>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright 2024. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

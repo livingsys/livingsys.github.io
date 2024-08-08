@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>(Almost) ranging over multiple Go channels simultaneously | Living Systems</title>
+
+      <link rel="stylesheet" href="/css/main.min.f3a5991997d3edfa6612acd25887dbae0ca5be329567cceb3054217da27f5132.css" integrity="sha256-86WZGZfT7fpmEqzSWIfbrgylvjKVZ8zrMFQhfaJ/UTI=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>(Almost) ranging over multiple Go channels simultaneously</h1>
+
+  
+  
+  <time datetime="2017-10-05T10:23:00&#43;02:00">October 5, 2017</time>
+
+  <!-- raw HTML omitted -->
+<p>Thus, optimally, one would want to use Go's handy <strong>range</strong> keyword for
+looping over multiple channels, since <strong>range</strong> takes care of closing
+the for-loop at the right time (when the inbound channel is closed). So
+something like this (<strong>N.B:</strong> non-working code!):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">for</span> <span style="color:#000">a</span>, <span style="color:#000">b</span>, <span style="color:#000">c</span> <span style="color:#000">:=</span> <span style="color:#a90d91">range</span> <span style="color:#000">chA</span>, <span style="color:#000">chB</span>, <span style="color:#000">chC</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">doSomething</span>(<span style="color:#000">a</span>, <span style="color:#000">b</span>, <span style="color:#000">c</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Unfortunately this is not possible, and probably for good reason (how
+would it know whether to close the loop when the first, or all of the
+channels are closed? etc).</p>
+<p>Anyways, I started a <a href="https://twitter.com/smllmp/status/915581420143349760">twitter
+thread</a> to discuss
+this. Then, I read <a href="https://dave.cheney.net/2014/03/19/channel-axioms">this
+post</a> by Dave Cheney
+which explains what the range keyword does under the hood when looping
+over channels. He pointed out that this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">for</span> <span style="color:#000">a</span> <span style="color:#000">:=</span> <span style="color:#a90d91">range</span> <span style="color:#000">chA</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">doSomething</span>(<span style="color:#000">a</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>... is actually the same as this more detailed code:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">for</span> <span style="color:#000">a</span>, <span style="color:#000">ok</span> <span style="color:#000">:=</span> <span style="color:#000">&lt;-</span><span style="color:#000">chA</span>; <span style="color:#000">ok</span>; <span style="color:#000">a</span>, <span style="color:#000">ok</span> = <span style="color:#000">&lt;-</span><span style="color:#000">chA</span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">doSomething</span>(<span style="color:#000">a</span>, <span style="color:#000">b</span>, <span style="color:#000">c</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>... which is using one variant of Go's for-syntax, which is:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">for</span> <span style="color:#000">init</span> <span style="color:#000">variables</span>; <span style="color:#000">condition</span> <span style="color:#a90d91">for</span> <span style="color:#000">continuing</span>; <span style="color:#000">what</span> <span style="color:#000">to</span> <span style="color:#000">do</span> <span style="color:#000">after</span> <span style="color:#000">each</span> <span style="color:#000">iteration</span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">doSomething</span>(<span style="color:#000">a</span>, <span style="color:#000">b</span>, <span style="color:#000">c</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>See the <a href="https://golang.org/doc/effective_go.html#for">relevant section in Effective
+Go</a> for more info.</p>
+<p>Together with a <a href="https://twitter.com/inancgumus/status/915735236402716673">tweet by Inanc
+Gumus</a> in the
+mentioned thread, I realized one can do something like this with a bit
+of helper functions:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">package</span> <span style="color:#000">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#c41a16">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">bufSize</span> <span style="color:#000">:=</span> <span style="color:#1c01ce">1</span> <span style="color:#177500">// Try changing this to 0, and see what happens!
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#000">ch1</span>, <span style="color:#000">ch2</span>, <span style="color:#000">ch3</span> <span style="color:#000">:=</span> <span style="color:#a90d91">make</span>(<span style="color:#a90d91">chan</span> <span style="color:#a90d91">int</span>, <span style="color:#000">bufSize</span>), <span style="color:#a90d91">make</span>(<span style="color:#a90d91">chan</span> <span style="color:#a90d91">int</span>, <span style="color:#000">bufSize</span>), <span style="color:#a90d91">make</span>(<span style="color:#a90d91">chan</span> <span style="color:#a90d91">int</span>, <span style="color:#000">bufSize</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">go</span> <span style="color:#a90d91">func</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">defer</span> <span style="color:#a90d91">close</span>(<span style="color:#000">ch1</span>); <span style="color:#a90d91">defer</span> <span style="color:#a90d91">close</span>(<span style="color:#000">ch2</span>); <span style="color:#a90d91">defer</span> <span style="color:#a90d91">close</span>(<span style="color:#000">ch3</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#000">ch1</span> <span style="color:#000">&lt;-</span> <span style="color:#1c01ce">1</span>; <span style="color:#000">ch2</span> <span style="color:#000">&lt;-</span> <span style="color:#1c01ce">2</span>; <span style="color:#000">ch3</span> <span style="color:#000">&lt;-</span> <span style="color:#1c01ce">3</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">ch3</span> <span style="color:#000">&lt;-</span> <span style="color:#1c01ce">6</span>; <span style="color:#000">ch2</span> <span style="color:#000">&lt;-</span> <span style="color:#1c01ce">5</span>; <span style="color:#000">ch1</span> <span style="color:#000">&lt;-</span> <span style="color:#1c01ce">4</span> <span style="color:#177500">// Notice the reversed order of sends(!)
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    }()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// THIS IS WHERE TO LOOK:
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#a90d91">for</span> <span style="color:#000">rs</span>, <span style="color:#000">oks</span> <span style="color:#000">:=</span> <span style="color:#000">readOnce</span>(<span style="color:#000">ch1</span>, <span style="color:#000">ch2</span>, <span style="color:#000">ch3</span>); <span style="color:#000">allTrue</span>(<span style="color:#000">oks</span>); <span style="color:#000">rs</span>, <span style="color:#000">oks</span> = <span style="color:#000">readOnce</span>(<span style="color:#000">ch1</span>, <span style="color:#000">ch2</span>, <span style="color:#000">ch3</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#000">fmt</span>.<span style="color:#000">Println</span>(<span style="color:#000">rs</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#177500">// -------------------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#177500">// Helper functions
+</span></span></span><span style="display:flex;"><span><span style="color:#177500">// -------------------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">readOnce</span>(<span style="color:#000">chs</span> <span style="color:#000">...</span><span style="color:#a90d91">chan</span> <span style="color:#a90d91">int</span>) ([]<span style="color:#a90d91">int</span>, []<span style="color:#a90d91">bool</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">rs</span> <span style="color:#000">:=</span> []<span style="color:#a90d91">int</span>{}
+</span></span><span style="display:flex;"><span>    <span style="color:#000">oks</span> <span style="color:#000">:=</span> []<span style="color:#a90d91">bool</span>{}
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">for</span> <span style="color:#000">_</span>, <span style="color:#000">ch</span> <span style="color:#000">:=</span> <span style="color:#a90d91">range</span> <span style="color:#000">chs</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#000">r</span>, <span style="color:#000">ok</span> <span style="color:#000">:=</span> <span style="color:#000">&lt;-</span><span style="color:#000">ch</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">rs</span> = <span style="color:#a90d91">append</span>(<span style="color:#000">rs</span>, <span style="color:#000">r</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#000">oks</span> = <span style="color:#a90d91">append</span>(<span style="color:#000">oks</span>, <span style="color:#000">ok</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">rs</span>, <span style="color:#000">oks</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">allTrue</span>(<span style="color:#000">vs</span> []<span style="color:#a90d91">bool</span>) <span style="color:#a90d91">bool</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">for</span> <span style="color:#000">_</span>, <span style="color:#000">v</span> <span style="color:#000">:=</span> <span style="color:#a90d91">range</span> <span style="color:#000">vs</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">if</span> !<span style="color:#000">v</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">return</span> <span style="color:#a90d91">false</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#a90d91">true</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li><a href="https://play.golang.org/p/RHnA_4Dxcl">Run this code on the Go
+playground</a></li>
+</ul>
+<p>If we zoom in again on the interesting part:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">for</span> <span style="color:#000">rs</span>, <span style="color:#000">oks</span> <span style="color:#000">:=</span> <span style="color:#000">readOnce</span>(<span style="color:#000">ch1</span>, <span style="color:#000">ch2</span>, <span style="color:#000">ch3</span>); <span style="color:#000">allTrue</span>(<span style="color:#000">oks</span>); <span style="color:#000">rs</span>, <span style="color:#000">oks</span> = <span style="color:#000">readOnce</span>(<span style="color:#000">ch1</span>, <span style="color:#000">ch2</span>, <span style="color:#000">ch3</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fmt</span>.<span style="color:#000">Println</span>(<span style="color:#000">rs</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>... we can see that this is pretty close to the more detailed version
+of the range-loop that Dave Cheney showed above.</p>
+<p>We can also note that this will work for any number of channels provided
+to readOnce(), as long as it is channels of type int, and that you're
+fine with getting one set of (int) results back, one array at a time, in
+the loop.</p>
+<p>One must keep in mind that the close condition in the loop has to be
+thought-through carefully. In this example I have created the function
+allTrue() that just checks that all booleans in the input array are
+true, and otherwise returns false. This will close the for loop as soon
+as the first channel is closed. This might be OK if we are sure that all
+inbound channels will contain the same input items. If not, one will
+need to adapt the close condition accordingly.</p>
+<p>Anyways, I think this is at least some progress towards something as
+generic as possible for reading from multiple channels simultanously and
+synchronosly.</p>
+<p>Also, if you have further ideas on how to make this more succinct and
+generic, please let me know!</p>
+<h2 id="wrap-the-range-like-code-up-in-a-helper-function">Wrap the range-like code up in a helper function</h2>
+<p><em><strong>Edit:</strong> This section was added on Oct 6, 2017, 17:33 CEST</em></p>
+<p>Naturally, we can now also create a helper function that wraps the
+somewhat messy for-loop above, so instead we would have something like
+this (see the syncRead() function):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">package</span> <span style="color:#000">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#c41a16">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">bufSize</span> <span style="color:#000">:=</span> <span style="color:#1c01ce">1</span> <span style="color:#177500">// Try changing this to 0, and see what happens!
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#000">ch1</span>, <span style="color:#000">ch2</span>, <span style="color:#000">ch3</span> <span style="color:#000">:=</span> <span style="color:#a90d91">make</span>(<span style="color:#a90d91">chan</span> <span style="color:#a90d91">int</span>, <span style="color:#000">bufSize</span>), <span style="color:#a90d91">make</span>(<span style="color:#a90d91">chan</span> <span style="color:#a90d91">int</span>, <span style="color:#000">bufSize</span>), <span style="color:#a90d91">make</span>(<span style="color:#a90d91">chan</span> <span style="color:#a90d91">int</span>, <span style="color:#000">bufSize</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">go</span> <span style="color:#a90d91">func</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">defer</span> <span style="color:#a90d91">close</span>(<span style="color:#000">ch1</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">defer</span> <span style="color:#a90d91">close</span>(<span style="color:#000">ch2</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">defer</span> <span style="color:#a90d91">close</span>(<span style="color:#000">ch3</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#000">ch1</span> <span style="color:#000">&lt;-</span> <span style="color:#1c01ce">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">ch2</span> <span style="color:#000">&lt;-</span> <span style="color:#1c01ce">2</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">ch3</span> <span style="color:#000">&lt;-</span> <span style="color:#1c01ce">3</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">ch3</span> <span style="color:#000">&lt;-</span> <span style="color:#1c01ce">6</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">ch2</span> <span style="color:#000">&lt;-</span> <span style="color:#1c01ce">5</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">ch1</span> <span style="color:#000">&lt;-</span> <span style="color:#1c01ce">4</span> <span style="color:#177500">// Notice the reversed order of sends(!)
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    }()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// THIS GOT A BIT NICER NOW, RIGHT?:
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#a90d91">for</span> <span style="color:#000">rs</span> <span style="color:#000">:=</span> <span style="color:#a90d91">range</span> <span style="color:#000">syncRead</span>(<span style="color:#000">ch1</span>, <span style="color:#000">ch2</span>, <span style="color:#000">ch3</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#000">fmt</span>.<span style="color:#000">Println</span>(<span style="color:#000">rs</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#177500">// -- Helper funcs --------------------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">syncRead</span>(<span style="color:#000">chs</span> <span style="color:#000">...</span><span style="color:#a90d91">chan</span> <span style="color:#a90d91">int</span>) <span style="color:#a90d91">chan</span> []<span style="color:#a90d91">int</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">outChan</span> <span style="color:#000">:=</span> <span style="color:#a90d91">make</span>(<span style="color:#a90d91">chan</span> []<span style="color:#a90d91">int</span>, <span style="color:#1c01ce">16</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">go</span> <span style="color:#a90d91">func</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">defer</span> <span style="color:#a90d91">close</span>(<span style="color:#000">outChan</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">for</span> <span style="color:#000">rs</span>, <span style="color:#000">oks</span> <span style="color:#000">:=</span> <span style="color:#000">recvOneEach</span>(<span style="color:#000">chs</span><span style="color:#000">...</span>); <span style="color:#000">allTrue</span>(<span style="color:#000">oks</span>); <span style="color:#000">rs</span>, <span style="color:#000">oks</span> = <span style="color:#000">recvOneEach</span>(<span style="color:#000">chs</span><span style="color:#000">...</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#000">outChan</span> <span style="color:#000">&lt;-</span> <span style="color:#000">rs</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }()
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">outChan</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">recvOneEach</span>(<span style="color:#000">chs</span> <span style="color:#000">...</span><span style="color:#a90d91">chan</span> <span style="color:#a90d91">int</span>) ([]<span style="color:#a90d91">int</span>, []<span style="color:#a90d91">bool</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">rs</span> <span style="color:#000">:=</span> []<span style="color:#a90d91">int</span>{}
+</span></span><span style="display:flex;"><span>    <span style="color:#000">oks</span> <span style="color:#000">:=</span> []<span style="color:#a90d91">bool</span>{}
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">for</span> <span style="color:#000">_</span>, <span style="color:#000">ch</span> <span style="color:#000">:=</span> <span style="color:#a90d91">range</span> <span style="color:#000">chs</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#000">r</span>, <span style="color:#000">ok</span> <span style="color:#000">:=</span> <span style="color:#000">&lt;-</span><span style="color:#000">ch</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">rs</span> = <span style="color:#a90d91">append</span>(<span style="color:#000">rs</span>, <span style="color:#000">r</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#000">oks</span> = <span style="color:#a90d91">append</span>(<span style="color:#000">oks</span>, <span style="color:#000">ok</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">rs</span>, <span style="color:#000">oks</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">allTrue</span>(<span style="color:#000">vs</span> []<span style="color:#a90d91">bool</span>) <span style="color:#a90d91">bool</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">for</span> <span style="color:#000">_</span>, <span style="color:#000">v</span> <span style="color:#000">:=</span> <span style="color:#a90d91">range</span> <span style="color:#000">vs</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">if</span> !<span style="color:#000">v</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">return</span> <span style="color:#a90d91">false</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#a90d91">true</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li><a href="https://play.golang.org/p/C1SsmxwIlb">Run this code on the Go
+playground</a></li>
+</ul>
+<h2 id="even-better-avoid-the-alltrue-method">Even better: Avoid the allTrue method</h2>
+<p><em><strong>Edit:</strong> This section was added on Dec 1, 2017, 21:56 CEST</em></p>
+<p>Thanks to the suggestion by <a href="https://disqus.com/by/ar3s3ru/">ar3s3ru</a> in
+the comments below, we can now also remove the allTrue helper method,
+and so make the code even more succinct:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">package</span> <span style="color:#000">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#c41a16">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">bufSize</span> <span style="color:#000">:=</span> <span style="color:#1c01ce">1</span> <span style="color:#177500">// Try changing this to 0, and see what happens!
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#000">ch1</span>, <span style="color:#000">ch2</span>, <span style="color:#000">ch3</span> <span style="color:#000">:=</span> <span style="color:#a90d91">make</span>(<span style="color:#a90d91">chan</span> <span style="color:#a90d91">int</span>, <span style="color:#000">bufSize</span>), <span style="color:#a90d91">make</span>(<span style="color:#a90d91">chan</span> <span style="color:#a90d91">int</span>, <span style="color:#000">bufSize</span>), <span style="color:#a90d91">make</span>(<span style="color:#a90d91">chan</span> <span style="color:#a90d91">int</span>, <span style="color:#000">bufSize</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">go</span> <span style="color:#a90d91">func</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">defer</span> <span style="color:#a90d91">close</span>(<span style="color:#000">ch1</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">defer</span> <span style="color:#a90d91">close</span>(<span style="color:#000">ch2</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">defer</span> <span style="color:#a90d91">close</span>(<span style="color:#000">ch3</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#000">ch1</span> <span style="color:#000">&lt;-</span> <span style="color:#1c01ce">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">ch2</span> <span style="color:#000">&lt;-</span> <span style="color:#1c01ce">2</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">ch3</span> <span style="color:#000">&lt;-</span> <span style="color:#1c01ce">3</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">ch3</span> <span style="color:#000">&lt;-</span> <span style="color:#1c01ce">6</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">ch2</span> <span style="color:#000">&lt;-</span> <span style="color:#1c01ce">5</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">ch1</span> <span style="color:#000">&lt;-</span> <span style="color:#1c01ce">4</span> <span style="color:#177500">// Notice the reversed order of sends(!)
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    }()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// THIS GOT A BIT NICER NOW, RIGHT?:
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#a90d91">for</span> <span style="color:#000">rs</span> <span style="color:#000">:=</span> <span style="color:#a90d91">range</span> <span style="color:#000">syncRead</span>(<span style="color:#000">ch1</span>, <span style="color:#000">ch2</span>, <span style="color:#000">ch3</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#000">fmt</span>.<span style="color:#000">Println</span>(<span style="color:#000">rs</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#177500">// -- Helper funcs --------------------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">syncRead</span>(<span style="color:#000">chs</span> <span style="color:#000">...</span><span style="color:#a90d91">chan</span> <span style="color:#a90d91">int</span>) <span style="color:#a90d91">chan</span> []<span style="color:#a90d91">int</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">outChan</span> <span style="color:#000">:=</span> <span style="color:#a90d91">make</span>(<span style="color:#a90d91">chan</span> []<span style="color:#a90d91">int</span>, <span style="color:#1c01ce">16</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">go</span> <span style="color:#a90d91">func</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">defer</span> <span style="color:#a90d91">close</span>(<span style="color:#000">outChan</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">for</span> <span style="color:#000">rs</span>, <span style="color:#000">ok</span> <span style="color:#000">:=</span> <span style="color:#000">recvOneEach</span>(<span style="color:#000">chs</span><span style="color:#000">...</span>); <span style="color:#000">ok</span>; <span style="color:#000">rs</span>, <span style="color:#000">ok</span> = <span style="color:#000">recvOneEach</span>(<span style="color:#000">chs</span><span style="color:#000">...</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#000">outChan</span> <span style="color:#000">&lt;-</span> <span style="color:#000">rs</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }()
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">outChan</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">recvOneEach</span>(<span style="color:#000">chs</span> <span style="color:#000">...</span><span style="color:#a90d91">chan</span> <span style="color:#a90d91">int</span>) (<span style="color:#000">rs</span> []<span style="color:#a90d91">int</span>, <span style="color:#000">ok</span> <span style="color:#a90d91">bool</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">ok</span> = <span style="color:#a90d91">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">for</span> <span style="color:#000">_</span>, <span style="color:#000">ch</span> <span style="color:#000">:=</span> <span style="color:#a90d91">range</span> <span style="color:#000">chs</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#000">r</span>, <span style="color:#000">ok2</span> <span style="color:#000">:=</span> <span style="color:#000">&lt;-</span><span style="color:#000">ch</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">rs</span>, <span style="color:#000">ok</span> = <span style="color:#a90d91">append</span>(<span style="color:#000">rs</span>, <span style="color:#000">r</span>), <span style="color:#000">ok</span> <span style="color:#000">&amp;&amp;</span> <span style="color:#000">ok2</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">rs</span>, <span style="color:#000">ok</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li><a href="https://play.golang.org/p/-DmXytk_hh">Run this code on the Go
+playground</a></li>
+</ul>
+<p>The only limitation to this is of course that the the helper functions
+work only for channels of type int (and also all of them need to be of
+the same type), so you would need to create separate implementations for
+each type, or of course, fall back to use the empty interface (aka <a href="https://www.nivenly.com/finally-an-elegant-solutions-to-generics-in-go/">the
+G
+package</a>)
+:o)</p>
+<p><strong>Keywords:</strong> Go, Golang, Pipelines, Patterns</p>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright &copy; 2024 Living Systems. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

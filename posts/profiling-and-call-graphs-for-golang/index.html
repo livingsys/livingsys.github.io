@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Profiling and creating call graphs for Go programs | Living Systems</title>
+
+      <link rel="stylesheet" href="/css/main.min.f3a5991997d3edfa6612acd25887dbae0ca5be329567cceb3054217da27f5132.css" integrity="sha256-86WZGZfT7fpmEqzSWIfbrgylvjKVZ8zrMFQhfaJ/UTI=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>Profiling and creating call graphs for Go programs</h1>
+
+  
+  
+  <time datetime="2013-08-08T01:13:00&#43;02:00">August 8, 2013</time>
+
+  <p>In trying to get my head around the code of the very interesting
+<a href="https://github.com/trustmaster/goflow">GoFlow</a> library, (for flow-based
+programming in Go), and the accompanying <a href="https://github.com/samuell/blow">flow-based bioinformatics
+library</a> I started hacking on, I needed
+to get some kind of visualization (like a call graph) ... something
+like this:</p>
+<p><p class="image">
+    <img src="basecompl_blow_callgraph_1.png" alt=""  />
+</p>
+</p>
+<p>(And in the end, that is what I got ... read on ... ) :)</p>
+<p>I then found out about the go tool pprof command, for which the Go team
+published a <a href="http://blog.golang.org/profiling-go-programs">blog post</a> on
+<a href="http://blog.golang.org/profiling-go-programs">here</a>.</p>
+<p>Being a Go newbie, I must admit I had quite a hard time deciphering the
+blog post though. Maybe it was just a psychological barrier because of
+all the technological anechdotes, that made it look harder than it
+actually was. Anyhow, it didn't help that &quot;go run pprof&quot; didn't
+produce any output if I didn't run processing on a large enough file
+that it would have time to collect data.</p>
+<p>Anyways, with this in mind I wanted to make a slightly easier-to-follow
+instruction for newbies like me, on how to use &quot;go tool pprof&quot; for
+profiling and producing call graphs ... but then after I published this
+post, <a href="http://twitter.com/davecheney">Dave Cheney</a> pinged me about his
+excellent
+<strong><a href="http://dave.cheney.net/2013/07/07/introducing-profile-super-simple-profiling-for-go-programs">profile</a></strong>
+package, which makes the process even easier, so I went away and updated
+the blog post to include how to do it both with the profile package, AND
+with the pprof library itself! :)</p>
+<p>Ok, so enough blather, let's get started:</p>
+<h2 id="toc0">Easy option: Profiling Go programs with the profile package</h2>
+<h3 id="toc1">Easy option Overview: What you will do</h3>
+<ul>
+<li>First you will need to put a very small code snippet in your code,
+that will output a profile-file (named [something].pprof in your
+/tmp/ folder) when you run your program.</li>
+<li>This profile file can then be used with the &quot;go run pprof&quot; command
+to do various things like output reports of top functions taking
+time, and not the least, producing a <strong>graphical call graph</strong>, which
+is what I was most interested in here.</li>
+</ul>
+<h3 id="toc2">Easy option Step 0: Install profile</h3>
+<p>If you have your GOROOT and GOPATH environment variables correctly
+setup, you should be able to install it with this simple command:</p>
+<pre><code>go get github.com/davecheney/profile
+</code></pre>
+<p>... otherwise you'll have to install it manually from
+<a href="http://github.com/davecheney/profile">http://github.com/davecheney/profile</a></p>
+<h3 id="toc3">Easy option Step 1: Add a line of code, to produce a profile file</h3>
+<ul>
+<li>
+<p>Add &quot;github.com/davecheney/profile&quot; to your import statement.
+Something like:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">import</span> (
+</span></span><span style="display:flex;"><span>        <span style="color:#000">...</span> <span style="color:#000">your</span> <span style="color:#000">other</span> <span style="color:#000">imports</span> <span style="color:#000">...</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#c41a16">&#34;github.com/davecheney/profile&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div></li>
+<li>
+<p>Add the following line <strong>at the beginning</strong> of your main() function:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">defer</span> <span style="color:#000">profile</span>.<span style="color:#000">Start</span>(<span style="color:#000">profile</span>.<span style="color:#000">CPUProfile</span>).<span style="color:#000">Stop</span>()
+</span></span></code></pre></div></li>
+</ul>
+<p>&hellip; the result should be something like:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">defer</span> <span style="color:#000">profile</span>.<span style="color:#000">Start</span>(<span style="color:#000">profile</span>.<span style="color:#000">CPUProfile</span>).<span style="color:#000">Stop</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// ... your main code here ...
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>}
+</span></span></code></pre></div><h3 id="toc4">Easy option Step 2: Build your program as usual</h3>
+<p>Something like:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">go</span> <span style="color:#000">build</span> [<span style="color:#000">your</span> <span style="color:#000">program</span>].<span style="color:#a90d91">go</span>
+</span></span></code></pre></div><h3 id="toc5">Easy option, Step 3: Run your program long enough to get some profiling data</h3>
+<ul>
+<li>
+<p>Now run your program as usual</p>
+<ul>
+<li>Note: Make sure it rung long enough to gather data! I had to run
+my DNA-processing code on a 58MB file rather than my 7.8KB test
+file I was using first, to get predictable results.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./<span style="color:#000">[</span>your program<span style="color:#000">]</span>
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="toc6">Easy option, Step 4: Copy the cpu.pprof file from /tmp/...</h3>
+<p>When running the program in the previous step, you will have seen some
+output like this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>2013/08/08 16:45:58 profile: cpu profiling enabled, /tmp/profile882806532/cpu.pprof
+</span></span></code></pre></div><p>Copy this file to where you are standing right now, with:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cp /tmp/profile<span style="color:#000">[</span>some number<span style="color:#000">]</span>/cpu.pprof .
+</span></span></code></pre></div><p><em>Read on from <a href="http://saml.rilspace.com/profiling-and-creating-call-graphs-for-go-programs-with-go-tool-pprof#rest">step
+4</a>,
+for the rest of the steps ...</em></p>
+<h2 id="toc7">Hard option: Using the pprof library directly</h2>
+<h3 id="toc8">Hard option Overview: What you will do</h3>
+<ul>
+<li>First you will need to put in some code snippets (more than in the
+easy option) in your code, that will output a profile-file (named
+[something].pprof) when you run your program.</li>
+<li>This profile file can then be used with the &quot;go run pprof&quot; command
+to do various things like output reports of top functions taking
+time, and not the least, producing a <strong>graphical call graph</strong>, which
+is what I was most interested in here.</li>
+</ul>
+<h3 id="toc9">Hard option Step 1: Add some code snippets to your code, to produce a profile file</h3>
+<ul>
+<li>Add &quot;runtime/pprof&quot; to your import statement. Something like:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">import</span> (
+</span></span><span style="display:flex;"><span>        <span style="color:#000">...</span> <span style="color:#000">your</span> <span style="color:#000">other</span> <span style="color:#000">imports</span> <span style="color:#000">...</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#c41a16">&#34;flag&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#c41a16">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#c41a16">&#34;runtime/pprof&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><ul>
+<li>
+<p>Add this <strong>just before</strong> your main() function:</p>
+<pre tabindex="0"><code>// Profiling stuff ... from http://blog.golang.org/profiling-go-programs
+var cpuprofile = flag.String(&#34;cpuprofile&#34;, &#34;&#34;, &#34;write cpu profile to file&#34;)
+</code></pre></li>
+<li>
+<p>Add the following code <strong>at the beginning</strong> of your main() function:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#000">flag</span>.<span style="color:#000">Parse</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">if</span> <span style="color:#000">*</span><span style="color:#000">cpuprofile</span> <span style="color:#000">!=</span> <span style="color:#c41a16">&#34;&#34;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">f</span>, <span style="color:#000">err</span> <span style="color:#000">:=</span> <span style="color:#000">os</span>.<span style="color:#000">Create</span>(<span style="color:#000">*</span><span style="color:#000">cpuprofile</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">if</span> <span style="color:#000">err</span> <span style="color:#000">!=</span> <span style="color:#a90d91">nil</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#000">fmt</span>.<span style="color:#000">Println</span>(<span style="color:#c41a16">&#34;Error: &#34;</span>, <span style="color:#000">err</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#000">pprof</span>.<span style="color:#000">StartCPUProfile</span>(<span style="color:#000">f</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">defer</span> <span style="color:#000">pprof</span>.<span style="color:#000">StopCPUProfile</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+<p>... the result should be something like:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#177500">// Profiling stuff ... from http://blog.golang.org/profiling-go-programs
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span><span style="color:#a90d91">var</span> <span style="color:#000">cpuprofile</span> = <span style="color:#000">flag</span>.<span style="color:#000">String</span>(<span style="color:#c41a16">&#34;cpuprofile&#34;</span>, <span style="color:#c41a16">&#34;&#34;</span>, <span style="color:#c41a16">&#34;write cpu profile to file&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">flag</span>.<span style="color:#000">Parse</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">if</span> <span style="color:#000">*</span><span style="color:#000">cpuprofile</span> <span style="color:#000">!=</span> <span style="color:#c41a16">&#34;&#34;</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#000">f</span>, <span style="color:#000">err</span> <span style="color:#000">:=</span> <span style="color:#000">os</span>.<span style="color:#000">Create</span>(<span style="color:#000">*</span><span style="color:#000">cpuprofile</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">if</span> <span style="color:#000">err</span> <span style="color:#000">!=</span> <span style="color:#a90d91">nil</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#000">fmt</span>.<span style="color:#000">Println</span>(<span style="color:#c41a16">&#34;Error: &#34;</span>, <span style="color:#000">err</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#000">pprof</span>.<span style="color:#000">StartCPUProfile</span>(<span style="color:#000">f</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">defer</span> <span style="color:#000">pprof</span>.<span style="color:#000">StopCPUProfile</span>()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>       <span style="color:#177500">// ... your main code here ...
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>}
+</span></span></code></pre></div><p>This will add a command line flag &quot;-cpuprofile&quot;, which you can later
+use to specify a filename where to write the profiling data.</p>
+<h3 id="toc10">Hard option Step 2: Build your program as usual</h3>
+<p>Something like:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>go build <span style="color:#000">[</span>your program<span style="color:#000">]</span>.go
+</span></span></code></pre></div><h3 id="toc11">Hard option Step 3: Run your program long enough to get some profiling data</h3>
+<ul>
+<li>
+<p>Now run your program, specifying a filename to the -cpuprofile flag,
+where to store the profiling data</p>
+<ul>
+<li>Note: Make sure it rung long enough to gather data! I had to run
+my DNA-processing code on a 58MB file rather than my 7.8KB test
+file I was using first, to get predictable results.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./<span style="color:#000">[</span>your program<span style="color:#000">]</span> -cpuprofile<span style="color:#000">=</span>cpu.pprof
+</span></span></code></pre></div></li>
+</ul>
+<h2 id="toc12">The rest (Same for easy and hard option!)</h2>
+<h3 id="toc13">Step 4: Get some nice output from your profile data</h3>
+<ul>
+<li>
+<p>Now comes the fun part, where you can do nice stuff with your
+profile data.</p>
+</li>
+<li>
+<p>My favourite here was to output the callgraph as a PDF file:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>go tool pprof --pdf <span style="color:#000">[</span>my program<span style="color:#000">]</span> cpu.pprof &gt; callgraph.pdf
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="toc14">Step 5: Enjoy your callgraph</h3>
+<p>Let's see what that looks like:</p>
+<p><p class="image">
+    <img src="basecompl_blow_callgraph_crop.png" alt=""  />
+</p>
+</p>
+<p>Not too bad, no? (Find the PDF version below as well)</p>
+<h3 id="toc15">Step 6: Try some other commands</h3>
+<p>Some other output you might want to do:</p>
+<ul>
+<li>
+<p>A textual report:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>go tool pprof --text <span style="color:#000">[</span>my program<span style="color:#000">]</span> cpu.pprof &gt; report.txt
+</span></span></code></pre></div></li>
+<li>
+<p>Check the outher options:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>go tool pprof 2&gt;&amp;1|less
+</span></span></code></pre></div></li>
+</ul>
+<p>(Isn't there a nicer way to get a paginated help screen?)</p>
+<h3 id="toc16">Step 7: Go back to the Go team blog post and learn the advanced options</h3>
+<p>Now, this might have been an easier start if you are a newbie, but then
+Dave Cheney's post on <strong>profile</strong>, and the Go team blog post on
+<strong>runtime/pprof</strong> contains info on more advanced use of the pprof tool,
+so be sure to go back and study it:</p>
+<ul>
+<li><a href="http://dave.cheney.net/2013/07/07/introducing-profile-super-simple-profiling-for-go-programs">Dave Cheney - Introducing profile, super simple profiling for Go
+programs</a></li>
+<li><a href="http://blog.golang.org/profiling-go-programs">The Go Programming Language Blog - Profiling Go
+Programs</a></li>
+</ul>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright &copy; 2024 Living Systems. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

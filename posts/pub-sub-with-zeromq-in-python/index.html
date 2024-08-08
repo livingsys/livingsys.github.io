@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Basic PUB/SUB connection with ZeroMQ in Python | Living Systems</title>
+
+      <link rel="stylesheet" href="/css/main.min.f3a5991997d3edfa6612acd25887dbae0ca5be329567cceb3054217da27f5132.css" integrity="sha256-86WZGZfT7fpmEqzSWIfbrgylvjKVZ8zrMFQhfaJ/UTI=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>Basic PUB/SUB connection with ZeroMQ in Python</h1>
+
+  
+  
+  <time datetime="2019-11-13T11:56:00&#43;01:00">November 13, 2019</time>
+
+  <!-- raw HTML omitted -->
+<p>First, to install ZeroMQ in python, use <code>conda install pyzmq</code> or
+<code>pip install pyzmq</code> depending on which python package manager you use.</p>
+<h3 id="the-publisher-pubpy">The publisher (pub.py)</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">zmq</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">time</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">ctx</span> <span style="color:#000">=</span> <span style="color:#000">zmq</span><span style="color:#000">.</span><span style="color:#000">Context</span>()
+</span></span><span style="display:flex;"><span><span style="color:#000">sock</span> <span style="color:#000">=</span> <span style="color:#000">ctx</span><span style="color:#000">.</span><span style="color:#000">socket</span>(<span style="color:#000">zmq</span><span style="color:#000">.</span><span style="color:#000">PUB</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000">sock</span><span style="color:#000">.</span><span style="color:#000">bind</span>(<span style="color:#c41a16">&#34;tcp://*:1234&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">print</span>(<span style="color:#c41a16">&#34;Starting loop...&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000">i</span> <span style="color:#000">=</span> <span style="color:#1c01ce">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">while</span> <span style="color:#a90d91">True</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#000">msg</span> <span style="color:#000">=</span> <span style="color:#c41a16">&#34;Hi for the </span><span style="color:#c41a16">%d</span><span style="color:#c41a16">:th time...&#34;</span> <span style="color:#000">%</span> <span style="color:#000">i</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">sock</span><span style="color:#000">.</span><span style="color:#000">send_string</span>(<span style="color:#000">msg</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">print</span>(<span style="color:#c41a16">&#34;Sent string: </span><span style="color:#c41a16">%s</span><span style="color:#c41a16"> ...&#34;</span> <span style="color:#000">%</span> <span style="color:#000">msg</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#000">i</span> <span style="color:#000">+=</span> <span style="color:#1c01ce">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">time</span><span style="color:#000">.</span><span style="color:#000">sleep</span>(<span style="color:#1c01ce">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">sock</span><span style="color:#000">.</span><span style="color:#000">close</span>()
+</span></span><span style="display:flex;"><span><span style="color:#000">ctx</span><span style="color:#000">.</span><span style="color:#000">term</span>()
+</span></span></code></pre></div><h3 id="the-subscriber-subpy">The subscriber (sub.py)</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">zmq</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">time</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">ctx</span> <span style="color:#000">=</span> <span style="color:#000">zmq</span><span style="color:#000">.</span><span style="color:#000">Context</span>()
+</span></span><span style="display:flex;"><span><span style="color:#000">sock</span> <span style="color:#000">=</span> <span style="color:#000">ctx</span><span style="color:#000">.</span><span style="color:#000">socket</span>(<span style="color:#000">zmq</span><span style="color:#000">.</span><span style="color:#000">SUB</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000">sock</span><span style="color:#000">.</span><span style="color:#000">connect</span>(<span style="color:#c41a16">&#34;tcp://127.0.0.1:1234&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000">sock</span><span style="color:#000">.</span><span style="color:#000">subscribe</span>(<span style="color:#c41a16">&#34;&#34;</span>) <span style="color:#177500"># Subscribe to all topics</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">print</span>(<span style="color:#c41a16">&#34;Starting receiver loop ...&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">while</span> <span style="color:#a90d91">True</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#000">msg</span> <span style="color:#000">=</span> <span style="color:#000">sock</span><span style="color:#000">.</span><span style="color:#000">recv_string</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">print</span>(<span style="color:#c41a16">&#34;Received string: </span><span style="color:#c41a16">%s</span><span style="color:#c41a16"> ...&#34;</span> <span style="color:#000">%</span> <span style="color:#000">msg</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">sock</span><span style="color:#000">.</span><span style="color:#000">close</span>()
+</span></span><span style="display:flex;"><span><span style="color:#000">ctx</span><span style="color:#000">.</span><span style="color:#000">term</span>()
+</span></span></code></pre></div><p>Then, if you run these on the same machines, you can leave the
+IP-addresses as is. On the other hand, if you put these on different
+machines, you will need to change the IP address given to
+&quot;sock.connect()&quot; in the subscriber script to the IP-address of the
+machine where the publisher script is located.</p>
+<p>Then you just run these two scripts in a terminal and hope to see the
+same string that the publisher sends, being output on the subscriber
+side too.</p>
+<p>If you run this in MSYS2 on Windows (<a href="https://bionics.it/posts/linux-like-non-wsl-terminal-env-on-windows">as I have blogged about
+before</a>),
+note that you need to run python through winpty:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ winpty python pub.py
+</span></span><span style="display:flex;"><span>Starting loop...
+</span></span><span style="display:flex;"><span>Sent string: Hi <span style="color:#a90d91">for</span> the 1:th time... ...
+</span></span><span style="display:flex;"><span>Sent string: Hi <span style="color:#a90d91">for</span> the 2:th time... ...
+</span></span><span style="display:flex;"><span>Sent string: Hi <span style="color:#a90d91">for</span> the 3:th time... ...
+</span></span><span style="display:flex;"><span>Sent string: Hi <span style="color:#a90d91">for</span> the 4:th time... ...
+</span></span><span style="display:flex;"><span>Sent string: Hi <span style="color:#a90d91">for</span> the 5:th time... ...
+</span></span><span style="display:flex;"><span>Sent string: Hi <span style="color:#a90d91">for</span> the 6:th time... ...
+</span></span><span style="display:flex;"><span>Sent string: Hi <span style="color:#a90d91">for</span> the 7:th time... ...
+</span></span></code></pre></div><p>... and:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ winpty python sub.py
+</span></span><span style="display:flex;"><span>Starting receiver loop ...
+</span></span><span style="display:flex;"><span>Received string: Hi <span style="color:#a90d91">for</span> the 2:th time... ...
+</span></span><span style="display:flex;"><span>Received string: Hi <span style="color:#a90d91">for</span> the 3:th time... ...
+</span></span><span style="display:flex;"><span>Received string: Hi <span style="color:#a90d91">for</span> the 4:th time... ...
+</span></span><span style="display:flex;"><span>Received string: Hi <span style="color:#a90d91">for</span> the 5:th time... ...
+</span></span><span style="display:flex;"><span>Received string: Hi <span style="color:#a90d91">for</span> the 6:th time... ...
+</span></span><span style="display:flex;"><span>Received string: Hi <span style="color:#a90d91">for</span> the 7:th time... ...
+</span></span></code></pre></div><p><strong>Samuel</strong> (<a href="https://twitter.com/smllmp">@smllmp</a>)</p>
+<hr>
+<p><strong>Updates<br>
+<em>2020-02-11:</em></strong> <em>Fixed broken code example (some lines had ended up in
+the wrong code example).</em></p>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright &copy; 2024 Living Systems. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

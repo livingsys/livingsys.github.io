@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>A &amp;quot;Hello World&amp;quot; program in SWI-Prolog | Living Systems</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+
+      <script src="/js/main.js"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>A &amp;quot;Hello World&amp;quot; program in SWI-Prolog</h1>
+
+  <img src="">
+
+  
+  
+  <time datetime="2009-09-22T17:04:00&#43;02:00">September 22, 2009</time>
+
+  <!-- raw HTML omitted -->
+<p>Then you can load the program from inside prolog after you've started
+it.</p>
+<p>So, let's start the prolog interactive GUI:</p>
+<pre><code>lang-prolog
+prolog
+</code></pre>
+<p>Then, in the Prolog GUI, load the file test.pl like so:</p>
+<pre><code>lang-prolog
+?- [test].
+</code></pre>
+<p>Now, if you had some prolog clauses in the test.pl file, you will be
+able to extract that information by querying.</p>
+<p>A very simple test program that you could create is:</p>
+<pre><code>lang-prolog
+/* Some facts about parent relationships */
+parent(sam,mark).
+parent(mark,jim).
+/* A general rule */
+grandparent(Grandparent,Child) :-
+parent(Grandparent,Parent),  
+parent(Parent,Child).
+</code></pre>
+<p>If you write this in test.pl, and load test.pl according to the
+instructions above, you'll now be able to query prolog for the
+grandparent of jim in the following way:</p>
+<pre><code>lang-prolog
+?- grandparent(WHO,jim).
+WHO = sam ;
+false.
+</code></pre>
+<h3 id="toc0">Notes</h3>
+<ul>
+<li>&quot;false.&quot; here just means that after the first occurence of a
+matching item, it didn't find anymore items.</li>
+<li>words starting with a Capital letter are treated as <em>variables</em>,
+while all-lowercase words are treated as <em>atoms</em>.</li>
+</ul>
+<p>More explanations about how Prolog works can be found elsewhere. This is
+just how to get going</p>
+<p>When you want to exit the Prolog GUI, type:</p>
+<pre><code>lang-prolog
+?- halt.
+</code></pre>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright 2024. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

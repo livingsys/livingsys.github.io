@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Answering questions without answers - by wrapping simulations in semantics | Living Systems</title>
+
+      <link rel="stylesheet" href="/css/main.min.f3a5991997d3edfa6612acd25887dbae0ca5be329567cceb3054217da27f5132.css" integrity="sha256-86WZGZfT7fpmEqzSWIfbrgylvjKVZ8zrMFQhfaJ/UTI=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>Answering questions without answers - by wrapping simulations in semantics</h1>
+
+  
+  
+  <time datetime="2010-02-17T01:45:00&#43;01:00">February 17, 2010</time>
+
+  <!-- raw HTML omitted -->
+<p>There are lots of things that can't be answered by a computer from data
+alone. Maybe the majority of what we humans perceive as knowledge is
+inferred from a combination of data (simple fact statements about
+reality) and rules that tell how facts can be combined together to allow
+making <em>implicit</em> knowledge (knowledge that is not persisted as facts
+anywhere, but has to be <em>inferred</em> from other facts and rules) become
+<em>explicit</em>.</p>
+<p>One can easily imagine though, that storing every single piece of
+knowledge that could be stated, as an explicit fact, would require more
+storage than can probably ever be made available in this universe.</p>
+<h3 id="toc1">Simulations can make knowledge explicit, from first princples</h3>
+<p>It is not too hard to come up with some processes which are just too
+complex and involves too much variability^1^ that it is unrealistic to
+try to capture every imaginable state of of that system or process in
+explicit facts. Instead we must seek the &quot;first principles&quot; that
+define the process, and through <em>simulations</em> make explicit any
+knowledge we are looking for, at the time we need it (one can of course
+<em>cache</em> often accessed knowledge).</p>
+<p>So; Simulations can (temporarily ) <em>make explicit</em>, the knowledge we are
+looking for, but which <em>does not</em> exist in explicit form.</p>
+<h3 id="toc2">Simulations should be automated</h3>
+<p>There are lots of simulation software for biological systems out there
+... deterministic, stochastic and agent-based ones to mention a few
+categories. The plethora of different systems to choose from does not
+make life easier for the bench scientist. And in order to improve that
+situation, and provide some automation, a standardized way to deal with
+simulations is needed.</p>
+<h3 id="toc3">What is done already?</h3>
+<p>There are some efforts to increase interoperability, most notably
+through the <a href="http://sbml.org/">SBML</a> standard, a standard file format
+for molecular biology models (pathways, gene regulatory networks, and
+the like). But how to make things more &quot;automatable&quot;, as is one of the
+main goals of semantic web?</p>
+<p>Interestingly, <a href="http://github.com/egonw">Egon</a> hinted about a <a href="http://neilswainston.blogspot.com/2010/02/computational-tools-for-annotation-of.html">blog
+post</a>
+about a very semantic annotation of SBML models! Nice indeed that SBML
+and semantic tech can now be integrated.</p>
+<h3 id="toc4">Still more to do</h3>
+<p>I'm thinking whether that is still enough though. If wanting to
+automate knowledge discovery using these kind of systems, one needs to
+capture in a computer-readable way also the <em>outcome</em> of simulations,
+not only the underlying model^2^.</p>
+<p>So, all in all, I think there is some work to be done in wrapping
+simulation software into a &quot;semantic shell&quot; that knows all it needs to
+understand the the language of incoming data (it might even need to be
+able to produce such data, from semantic queries), and also can analyze
+the simulation results, and provide the questioner with an answer in a
+semantic way.</p>
+<p>Thus, by <em>wrapping simulations in semantics</em>, one might be able to
+<em>automate answering of questionswith no answers</em>! (at least, that's the
+idea :) )</p>
+<h3 id="update-march-2010-building-blocks-already-there">Update (March 2010): Building blocks already there</h3>
+<p>I was at <a href="http://www.ebi.ac.uk/">EBI</a> last week for PhD interview. As
+kindly hinted to by <a href="http://www.chenli.info/">Chen Li</a>, I learned to
+know the <a href="http://www.biomodels.net/">BioModels</a> initiative, which
+they're directing in the <a href="http://www.ebi.ac.uk/compneur-srv/">Le
+Novère</a> group at EBI.</p>
+<p>When I wrote the post above, I had not imagined that the building blocks
+for this was already done, which is what I realized when looking at the
+picture at the bottom of the page on the
+<a href="http://www.biomodels.net/">BioModels</a> website.</p>
+<p>The BioModels initiative itself (which collects systems biology models
+which can be used by others) is highly interesting, but what I found
+extra interesting was that obviously they have both <em>data formats</em> and
+<em>ontologies</em> for the three main parts which probably need to be
+addressed, for wrapping simulations in semantics:</p>
+<ol>
+<li>Model description (Format: <a href="http://sbml.org/">SBML</a>,
+<a href="http://sbgn.org/">SBGN</a> | Ontology:
+<a href="http://www.biomodels.net/sbo/">SBO</a>)</li>
+<li>Simulation description (Format:
+<a href="http://www.biomodels.net/sed-ml/">SED-ML</a> | Ontology:
+<a href="http://www.biomodels.net/kisao/">KiSAO</a>)</li>
+<li>Simulation results description (Format:
+<a href="http://www.comp-sys-bio.org/tiki-index.php?page=SBRML">SBRML</a> |
+Ontology: <a href="http://www.biomodels.net/teddy/">TEDDY</a>)</li>
+</ol>
+<p>So, it seems that the idea (wrapping simulations in semantics to create
+an automated system for answering questions whose answers are hidden in
+simulation results) might not be so unrealistic after all.</p>
+<hr>
+<ul>
+<li><del>1.\ ''Think\ of\ the\ embryonic\ development\ process\ for\ example,\ and\ then\ add\ dimensions\ like;\ species,\ environmental\ factors,\ mutations\ etc.\ etc.\ Say\ for\ example\ that\ we\ are\ looking\ for\ the\ expression\ level\ of\ gene\ X,\ in\ the\ compartment\ Y,\ in\ the\ species\ Z,\ after\ A\ days\ of\ growth,\ with\ a\ temperature\ that\ goes\ from\ +17\ C\ to +\ 4\ C\ in\ a\ gradient\ during\ that\ A-day\ period''.\ You\ can\ easily\ see\ that\ there\ are\ quite\ some\ possible\ combinations\ of\ factors\ affecting\ the\ state\ of\ the\ system\ in\ every\ time\ step\ ...\ .</del></li>
+<li><del>2.\ Most\ probably,\ principles\ from\ the\ [http://sadiframework.org/\ SADI\ framework],\ will\ come\ useful\ here</del></li>
+</ul>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright &copy; 2024 Living Systems. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

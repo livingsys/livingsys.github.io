@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Basic PUB/SUB connection with ZeroMQ in Python | Living Systems</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+
+      <script src="/js/main.js"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>Basic PUB/SUB connection with ZeroMQ in Python</h1>
+
+  <img src="">
+
+  
+  
+  <time datetime="2019-11-13T11:56:00&#43;01:00">November 13, 2019</time>
+
+  <!-- raw HTML omitted -->
+<p>First, to install ZeroMQ in python, use <code>conda install pyzmq</code> or
+<code>pip install pyzmq</code> depending on which python package manager you use.</p>
+<h3 id="the-publisher-pubpy">The publisher (pub.py)</h3>
+<pre><code>lang-python
+import zmq
+import time
+
+ctx = zmq.Context()
+sock = ctx.socket(zmq.PUB)
+sock.bind(&quot;tcp://*:1234&quot;)
+
+print(&quot;Starting loop...&quot;)
+i = 1
+while True:
+    msg = &quot;Hi for the %d:th time...&quot; % i
+    sock.send_string(msg)
+    print(&quot;Sent string: %s ...&quot; % msg)
+    i += 1
+    time.sleep(1)
+
+sock.close()
+ctx.term()
+</code></pre>
+<h3 id="the-subscriber-subpy">The subscriber (sub.py)</h3>
+<pre><code>lang-python
+import zmq
+import time
+
+ctx = zmq.Context()
+sock = ctx.socket(zmq.SUB)
+sock.connect(&quot;tcp://127.0.0.1:1234&quot;)
+sock.subscribe(&quot;&quot;) # Subscribe to all topics
+
+print(&quot;Starting receiver loop ...&quot;)
+while True:
+    msg = sock.recv_string()
+    print(&quot;Received string: %s ...&quot; % msg)
+
+sock.close()
+ctx.term()
+</code></pre>
+<p>Then, if you run these on the same machines, you can leave the
+IP-addresses as is. On the other hand, if you put these on different
+machines, you will need to change the IP address given to
+&quot;sock.connect()&quot; in the subscriber script to the IP-address of the
+machine where the publisher script is located.</p>
+<p>Then you just run these two scripts in a terminal and hope to see the
+same string that the publisher sends, being output on the subscriber
+side too.</p>
+<p>If you run this in MSYS2 on Windows (<a href="https://bionics.it/posts/linux-like-non-wsl-terminal-env-on-windows">as I have blogged about
+before</a>),
+note that you need to run python through winpty:</p>
+<pre><code>lang-bash
+$ winpty python pub.py
+Starting loop...
+Sent string: Hi for the 1:th time... ...
+Sent string: Hi for the 2:th time... ...
+Sent string: Hi for the 3:th time... ...
+Sent string: Hi for the 4:th time... ...
+Sent string: Hi for the 5:th time... ...
+Sent string: Hi for the 6:th time... ...
+Sent string: Hi for the 7:th time... ...
+</code></pre>
+<p>... and:</p>
+<pre><code>lang-bash
+$ winpty python sub.py
+Starting receiver loop ...
+Received string: Hi for the 2:th time... ...
+Received string: Hi for the 3:th time... ...
+Received string: Hi for the 4:th time... ...
+Received string: Hi for the 5:th time... ...
+Received string: Hi for the 6:th time... ...
+Received string: Hi for the 7:th time... ...
+</code></pre>
+<p><strong>Samuel</strong> (<a href="https://twitter.com/smllmp">@smllmp</a>)</p>
+<hr>
+<p><strong>Updates<br>
+<em>2020-02-11:</em></strong> <em>Fixed broken code example (some lines had ended up in
+the wrong code example).</em></p>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright 2024. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

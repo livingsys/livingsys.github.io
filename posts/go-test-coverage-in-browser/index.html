@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Viewing Go test coverage in the browser with one command | Living Systems</title>
+
+      <link rel="stylesheet" href="/css/main.min.f3a5991997d3edfa6612acd25887dbae0ca5be329567cceb3054217da27f5132.css" integrity="sha256-86WZGZfT7fpmEqzSWIfbrgylvjKVZ8zrMFQhfaJ/UTI=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>Viewing Go test coverage in the browser with one command</h1>
+
+  
+  
+  <time datetime="2020-08-20T23:47:00&#43;02:00">August 20, 2020</time>
+
+  <p>Go has some really nice tools for running tests and analyzing code. One
+of these functionalities is that you can generate coverage information
+when running tests, that can later be viewed in a browser using the
+<code>go tool cover</code> command. It turns out though, since doing it requires
+executing multiple commands after each other, it might be hard to
+remember the exact commands.</p>
+<p>To this end, I created a bash alias that does everything in one command,
+<code>gocov</code>. It looks like this (to be placed in your <code>~/.bash_aliases</code> file
+or similar:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#a90d91">alias</span> <span style="color:#000">gocov</span><span style="color:#000">=</span><span style="color:#c41a16">&#39;go test -coverprofile=.cover.out; \
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">    go tool cover -html=.cover.out -o coverage.html; \
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">    brave-browser coverage.html; \
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">    sleep 1; \
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">    rm .cover.out coverage.html;&#39;</span>
+</span></span></code></pre></div><p>What is does in turn, is:</p>
+<ol>
+<li>Run Go test while creating a cover profile, saved to the file
+.cover.out</li>
+<li>Run the Go cover tool to generate an HTML file that can be shown in
+a browser.</li>
+<li>Open the file in a browser (Brave in this case)</li>
+<li>Sleep a few seconds, so the browser has time to open the file</li>
+<li>Remove the generated files, so they don't mess up git repositories
+or are later mistaken for updated files.</li>
+</ol>
+<p>Doing this, you get a nice HTML view that shows which lines of your code
+is covered by tests (green) or not covered (red), like in the screenshot
+shown below:</p>
+<p><p class="image">
+    <img src="selection_150.png" alt=""  />
+</p>
+</p>
+<p>Using this information, you can try to extend your tests so that they
+cover also the code paths shown in red.</p>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright &copy; 2024 Living Systems. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

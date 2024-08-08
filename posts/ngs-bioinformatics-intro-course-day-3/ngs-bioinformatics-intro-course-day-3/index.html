@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>NGS Bioinformatics Course Day 3: New Luigi helper tool, &amp;quot;real-world&amp;quot; NGS pipelines | Living Systems</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+
+      <script src="/js/main.js"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>NGS Bioinformatics Course Day 3: New Luigi helper tool, &amp;quot;real-world&amp;quot; NGS pipelines</h1>
+
+  <img src="ngsintro-coding.jpg">
+
+  
+  
+  <time datetime="2015-03-03T20:45:00&#43;01:00">March 3, 2015</time>
+
+  <p><img src="/site/assets/files/1021/ngsintro-coding.jpg" alt=""></p>
+<p>It turned out I didn't have the time and strength to blog every day at
+the NGS Bioinformatics Intro course, so here comes a wrap up with some
+random notes and tidbits from the last days, including any concluding
+remarks!</p>
+<p>These days we started working on a more realistic NGS pipeline, on
+analysing re-sequencing samples
+(<a href="http://uppnex.se/twiki/pub/Courses/NgsIntro1502/Schedule/NGS_course_AJ_20150211.pdf">slides</a>,
+<a href="http://uppnex.se/twiki/do/view/Courses/NgsIntro1502/ResequencingAnalysis">tutorial</a>).</p>
+<h2 id="first-some-outcome-from-this-tutorial">First some outcome from this tutorial</h2>
+<p>What do I mean with &quot;outcome&quot;? Well, as I tried to manually copy and
+paste the <a href="http://uppnex.se/twiki/do/view/Courses/NgsIntro1502/ResequencingAnalysis.html">bag of hairy nasty long bash commandline strings in the
+tutorial
+pages</a>,
+that all depended upon each other, I got so frustrated that I decided to
+try to encode them in a workflow language / tool.</p>
+<p>I quickly tried out
+<a href="https://bitbucket.org/johanneskoester/snakemake">SnakeMake</a>, and was in
+fact impressed by the quality and robustness of this tool, but I figured
+it would take too long to properly grok the make-inspired way of
+thinking in this tool, for me to finish the labs in time. Instead I set
+out to use <a href="https://github.com/spotify/luigi">spotify's luigi tool</a>,
+which I'm intimately familiar with already.</p>
+<p>Only problem now, was that the relatively extreme amounts of boilerplate
+that needs to be written for each luigi task (really it's not that bad,
+but compared to just running a shell command, it is).</p>
+<p>This resulted in that I realised some ideas I've been pondering on for
+a long time, on how a little bit of Flow-based programming inspired
+ideas could be implemented in Luigi, and so I created a little (50 LOC)
+<a href="https://github.com/samuell/luigis_monkey_wrench">helper library</a> for
+doing just this! <a href="https://github.com/samuell/luigis_monkey_wrench">The lib, called &quot;Luigi's monkey wrench&quot; is
+available on github</a>.</p>
+<p>And, of course I had to encode the tutorial in it too! You can find the
+<a href="https://gist.github.com/samuell/6da9a7c1e03912fde62e">luigi's-monkey-wrench code for the tutorial in this
+gist</a>!</p>
+<p>Let's just include a small snippet, to give you a taste for how the
+code looks with this helper:</p>
+<pre><code>lang-python
+import luigi
+from luigis_monkey_wrench import *
+ 
+REF='human_17_v37.fasta'
+INDIVIDUALS=['NA06984','NA07000']
+SAMPLES=['1','2']
+BASENAME='.ILLUMINA.low_coverage.17q_'
+PICARDDIR='/sw/apps/bioinfo/picard/1.69/kalkyl/'
+KNOWNSITES=('/proj/g2014207/labs/gatk/'
+            'ALL.chr17.phase1_integrated_calls.20101123.snps_indels_svs.genotypes.vcf')
+ 
+class GATKWorkflow(WorkflowTask):
+ 
+    def requires(self):
+        for i in INDIVIDUALS:
+            # Workflow definition
+            # ---------------------------------------------------------------------
+            # files() will return a pseudo task that just outputs an existing file,
+            #         while not running anything.
+            # shell() will create a new task with a command that can take inputs
+            #         and outputs.
+            fq1 = file('fastq:{i}/{i}{b}1.fq'.format(i=i,b=BASENAME))
+            fq2 = file('fastq:{i}/{i}{b}2.fq'.format(i=i,b=BASENAME))
+ 
+            # Step 2 in [1]--------------------------------------------------------
+            aln1 = shell('bwa aln {ref} &lt;i:fastq&gt; &gt; &lt;o:sai:&lt;i:fastq&gt;.sai&gt;'.format(
+                ref=REF))
+            aln1.inports['fastq'] = fq1.outport('fastq')
+ 
+            aln2 = shell('bwa aln {ref} &lt;i:fastq&gt; &gt; &lt;o:sai:&lt;i:fastq&gt;.sai&gt;'.format(
+                ref=REF))
+            aln2.inports['fastq'] = fq2.outport('fastq')
+ 
+            # ... and so the script continues ...
+</code></pre>
+<p>For a closer look, have a look at:</p>
+<ul>
+<li><a href="https://github.com/samuell/luigis_monkey_wrench">The tool on
+github</a></li>
+<li><a href="https://gist.github.com/samuell/6da9a7c1e03912fde62e">The full resulting code from this
+tutorial</a></li>
+</ul>
+<h2 id="overall-structure-of-tutorial">Overall structure of tutorial</h2>
+<p>The overall structure of the task was something like:</p>
+<ol>
+<li>Setup data</li>
+<li>Map reads to a reference (generating .bam file)</li>
+<li>Re-calibrate (new .bam file)</li>
+<li>Identify (&quot;call&quot;) variants (resulting in .vcf file, &quot;variant
+calling file&quot;)</li>
+</ol>
+<h3 id="the-mapping-step">The mapping step</h3>
+<p>Regarding the mapping step, it was mentioned about some popular mapping
+tools:</p>
+<ul>
+<li><a href="http://maq.sourceforge.net/">Maq</a></li>
+<li><a href="http://bio-bwa.sourceforge.net/">BWA</a></li>
+<li><a href="http://bowtie-bio.sourceforge.net/index.shtml">Bowtie</a></li>
+<li><a href="https://code.google.com/p/mosaik-aligner/">Mosaik</a></li>
+</ul>
+<p>... then, interestingly, it was mentioned a bit of what kind of
+computation tricks they use to do the mapping in an efficient way:</p>
+<ul>
+<li>Hashtable (Maq, Eland, SOAP, Shrimp, Zoom)</li>
+<li>Suffix trees: (BWA, ...)</li>
+<li>Burrows-Wheeler transofrm, for file compression (Many tools?)</li>
+</ul>
+<h3 id="the-re-calibration-step">The re-calibration step</h3>
+<p>For the re-calibration step, the more detailed steps was:</p>
+<ol>
+<li>Local re-aliagnment
+<ol>
+<li>(Loosely defined as: &quot;Using all the reads in a section of the
+genome, to get a better hint of which variant is probably the
+'correct' one&quot;)</li>
+</ol>
+</li>
+<li>Removal of duplicates</li>
+<li>Re-calibration (adjust for biases)
+<ol>
+<li>Reported vs. empirical quality score</li>
+<li>(Biaes from which cycle in the machine etc)</li>
+</ol>
+</li>
+</ol>
+<p>Typical software in this section was:</p>
+<ul>
+<li><a href="http://samtools.sourceforge.net/">Samtools</a> - Tools for working
+with the Short-read Alignments (SAM) format (and the binary BAM
+counterpart)</li>
+<li><a href="http://samtools.sourceforge.net/">Picard</a> - Java based tool for
+working with SAM/BAM formats</li>
+<li><a href="https://www.broadinstitute.org/gatk/">GATK</a> - Genome Analysis
+Toolkit</li>
+<li><a href="http://www.broadinstitute.org/igv/">IGV</a> - Integrated Genomics
+Viewer</li>
+</ul>
+<h3 id="the-variant-calling-step">The variant calling step</h3>
+<p>Some unsorted notes:</p>
+<ul>
+<li><a href="https://github.com/ekg/freebayes">FreeBayes</a> - Bayesian SNP calling</li>
+<li>Bayesian methods instead of a simple pileup.</li>
+<li>Population-based calling.</li>
+</ul>
+<h2 id="discovery-of-structural-variants">Discovery of structural variants</h2>
+<p>We had some discussion on discovery of structural variants too. Find
+some random notes below:</p>
+<ul>
+<li>Harder (than SNP calling)</li>
+<li>No perfect way to do this</li>
+<li>Different methods depending on data and type of variant that you
+want to find.</li>
+</ul>
+<p>Some methods used to do this:</p>
+<ul>
+<li>Read depth analysis <em>(Differences in coverage depth (how many times
+a certain sequence appear to have been sequenced) might indicate
+duplicattions etc)</em></li>
+<li>Mate pair sequencing <em>(To know the approximate distance between
+&quot;pair&quot; of known sequences, on longer distances than the typical
+read length)</em></li>
+<li>Long-reads <em>(Goes without saying, that longer reads will identify
+large-scale differences easier ... the problem is just to get long
+enough reads)</em></li>
+<li>De Novo assembly <em>(Really hard, but when it works, it gives a really
+clear picture)</em></li>
+</ul>
+<h2 id="see-abbreviations">See abbreviations</h2>
+<ul>
+<li>PGM - Personal Genome Machine</li>
+<li>WGS - Whole Genome Study (as opposed to Exome study, which skips the
+Introns)</li>
+</ul>
+<h2 id="common-commands">Common commands</h2>
+<pre><code>lang-bash
+bwa aln -a bwtsw # Align with bwtsw algorithm
+samtools faidx
+bwa sampe        # Generate alignments in SAM format given paired-end reads
+</code></pre>
+<h2 id="some-common-file-types">Some common file types</h2>
+<ul>
+<li><strong>.fastq</strong> - FASTA format with quality scores.</li>
+<li><strong>.sam</strong> - Short-read alignment file format</li>
+<li><strong>.bam</strong> - Binary SAM format (for compression)</li>
+<li><strong>.sai</strong> - SAM file index</li>
+<li><strong>.gtf / .gff / .bed</strong> - Annotation file formats</li>
+</ul>
+<h2 id="see-also">See also</h2>
+<ul>
+<li><a href="/posts/ngs-intro-course-day-1/">NGS Bioinformatics Intro Course Day
+1</a></li>
+<li><a href="/posts/ngs-bioinformatics-intro-course-day-2/">NGS Bioinformatics Intro Course Day
+2</a></li>
+</ul>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright 2024. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>
