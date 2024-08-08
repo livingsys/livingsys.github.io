@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>The matrix transformation as a model for declarative atomic data flow operations | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -41,9 +41,11 @@
   
   <time datetime="2015-11-09T19:45:00&#43;01:00">November 9, 2015</time>
 
-  <p><em>After just <a href="https://news.ycombinator.com/item?id=10532957">reading on Hacker
-News</a> about Google's
-newly released <a href="http://tensorflow.org/">TensorFlow library</a>, for deep
+  <p><em>After just <a href="https://news.ycombinator.com/item?id=10532957" target="_blank" rel="noopener">reading on Hacker
+News</a>
+ about Google's
+newly released <a href="http://tensorflow.org/" target="_blank" rel="noopener">TensorFlow library</a>
+, for deep
 learning based on tensors and data flow, I realized I wrote in a draft
 post back in 2013 that:</em></p>
 <blockquote>
@@ -88,8 +90,9 @@ effectively a kind of atomic data flow (the output will be produced
 fully only after the full input is produced, and no meaningful
 intermediate state will be passed in between).</p>
 <p>It should thus be very interesting to research how this analogy could be
-used in the area of dataflow / <a href="http://www.jpaulmorrison.com/fbp/">flow based
-programming</a>, to make the data
+used in the area of dataflow / <a href="http://www.jpaulmorrison.com/fbp/" target="_blank" rel="noopener">flow based
+programming</a>
+, to make the data
 transformations happening in the processes to be more declarative.</p>
 <p><em>What if one could have a fully declarative &ldquo;matrix language&rdquo; in which
 all data transformations ever needed could be declaratively defined in a
@@ -101,8 +104,9 @@ idea:</p>
 <ul>
 <li>
 <p>Could this make it easier to make transformations more easily run in
-parallel, using so called <a href="http://en.wikipedia.org/wiki/SIMD">SIMD
-instructions</a> in the CPU? The
+parallel, using so called <a href="http://en.wikipedia.org/wiki/SIMD" target="_blank" rel="noopener">SIMD
+instructions</a>
+ in the CPU? The
 fact that the transformations are atomic should help to this end.</p>
 </li>
 <li>

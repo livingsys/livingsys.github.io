@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>Why didn&#39;t Go get a breakthrough in bioinformatics (yet)? | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -46,8 +46,9 @@
 bioinformatics"  />
 </p>
 </p>
-<p>As we are - <a href="https://a16z.com/the-century-of-biology/">according to some expert
-opinions</a> - living in the
+<p>As we are - <a href="https://a16z.com/the-century-of-biology/" target="_blank" rel="noopener">according to some expert
+opinions</a>
+ - living in the
 Century of Biology, I found it interesting to reflect on Go's usage
 within the field.</p>
 <p>Go has some great features that make it really well suited for biology,
@@ -70,23 +71,32 @@ for writing user interfaces and web servers.</li>
 <p>Go has in fact garnered some use for bioinformatics tools over the
 years, with some indications that its use is increasing. Examples of
 popular tools and toolkits are SeqKit (a veritable <em>swiss army knife</em>
-for bioinformatics), the <a href="https://github.com/biogo/biogo">BioGo
-toolkit</a>, lately the <a href="https://github.com/pbenner/gonetics">Gonetics
-package</a>, and not the least the
-<a href="https://github.com/bebop/poly">Poly</a> package for synthetic biology. And
+for bioinformatics), the <a href="https://github.com/biogo/biogo" target="_blank" rel="noopener">BioGo
+toolkit</a>
+, lately the <a href="https://github.com/pbenner/gonetics" target="_blank" rel="noopener">Gonetics
+package</a>
+, and not the least the
+<a href="https://github.com/bebop/poly" target="_blank" rel="noopener">Poly</a>
+ package for synthetic biology. And
 this is besides heavy use in infrastructure-oriented projects like the
-<a href="https://www.benthos.dev">Benthos</a> stream processing tool, the <a href="https://github.com/grailbio/reflow">Reflow
-pipeline tool</a> and <a href="https://pachyderm.io/">Pachyderm
-orchestration suite</a>.</p>
+<a href="https://www.benthos.dev" target="_blank" rel="noopener">Benthos</a>
+ stream processing tool, the <a href="https://github.com/grailbio/reflow" target="_blank" rel="noopener">Reflow
+pipeline tool</a>
+ and <a href="https://pachyderm.io/" target="_blank" rel="noopener">Pachyderm
+orchestration suite</a>
+.</p>
 <p>Still, Go has far from had anything like a breakthrough in
-bioinformatics, which is surprising given its <a href="https://twitter.com/lemire/status/1783203657426809136">incredible growth in
+bioinformatics, which is surprising given its <a href="https://twitter.com/lemire/status/1783203657426809136" target="_blank" rel="noopener">incredible growth in
 popularity outside the
-field</a>.
+field</a>
+.
 CS-oriented bioinformatics folks seem to prefer the much more
 complicated Rust language for implementing new tools (See e.g. this
-<a href="https://www.nature.com/articles/d41586-020-03382-2">Nature articlee</a>
-and <a href="https://lh3.github.io/2024/03/05/what-high-performance-language-to-learn">Heng Li's
-post</a>).</p>
+<a href="https://www.nature.com/articles/d41586-020-03382-2" target="_blank" rel="noopener">Nature articlee</a>
+
+and <a href="https://lh3.github.io/2024/03/05/what-high-performance-language-to-learn" target="_blank" rel="noopener">Heng Li's
+post</a>
+).</p>
 <p>This is to me quite surprising, as I know that for a large part of the
 bioinformatics community, learning a language like Rust will pretty much
 remain elusive because of the excessively steep learning curve, leading
@@ -104,11 +114,13 @@ to start from the beginning though, with a small personal lookback.</p>
 found myself looking for a good compiled language to learn as a
 completent to Python, for when the speed of a scripting language would
 not be enough.</p>
-<p>I scoured the web for languages, and even organized some <a href="https://docs.google.com/spreadsheets/d/1BAiJR026ih1U8HoRw__nzbCSFnnHicWrjxpW5l6-O3w/edit?usp=sharing">crowd-sourcing
+<p>I scoured the web for languages, and even organized some <a href="https://docs.google.com/spreadsheets/d/1BAiJR026ih1U8HoRw__nzbCSFnnHicWrjxpW5l6-O3w/edit?usp=sharing" target="_blank" rel="noopener">crowd-sourcing
 of languages to
-watch</a>,
-as well as later some <a href="https://github.com/samuell/gccontent-benchmark#readme">benchmarking of a few of these
-languages</a>.</p>
+watch</a>
+,
+as well as later some <a href="https://github.com/samuell/gccontent-benchmark#readme" target="_blank" rel="noopener">benchmarking of a few of these
+languages</a>
+.</p>
 <p>What I was looking for was something that would be close to the feel of
 Python where it is really easy to just open a file and read it line by
 line, and write the output to another file, but that would be compiled
@@ -127,10 +139,13 @@ the syntax for reading files felt so fluent and natural:</p>
 because of the Google backing, I ended up heavily invested in Go
 instead. I eventually found a fascination with the concurrency
 primitives of Go which I played around with a lot, which resulted in
-libraries like <a href="https://scipipe.org/">SciPipe</a> and
-<a href="https://github.com/flowbase/flowbase">FlowBase</a>, and also some
-<a href="https://bionics.it/posts/crystal-concurrency-easier-syntax-than-golang">comparisons with other languages with similar features like with
-Crystal</a>.</p>
+libraries like <a href="https://scipipe.org/" target="_blank" rel="noopener">SciPipe</a>
+ and
+<a href="https://github.com/flowbase/flowbase" target="_blank" rel="noopener">FlowBase</a>
+, and also some
+<a href="https://bionics.it/posts/crystal-concurrency-easier-syntax-than-golang" target="_blank" rel="noopener">comparisons with other languages with similar features like with
+Crystal</a>
+.</p>
 <p>And the concurrency primitives is also why I eventually stuck with Go as
 one of my go-to languages. This is because it seems that a lot of
 bioinformatics problems are naturally modelled as pipelines of
@@ -182,27 +197,34 @@ lot of bioinformatics workfloads excellently.</p>
 reading and writing files, easy in a future version of Go?</p>
 <h3 id="addendum-i-why-not-crystal">Addendum I: Why not Crystal?</h3>
 <p>I realize I should comment a bit about why I haven't gone with
-<a href="https://crystal-lang.org/">Crystal</a>. Crystal is a super curious
+<a href="https://crystal-lang.org/" target="_blank" rel="noopener">Crystal</a>
+. Crystal is a super curious
 language in that it has the kind of fluent syntax I'm looking for
-(heavily inspired by Ruby), <a href="https://lh3.github.io/2020/05/17/fast-high-level-programming-languages">has performed pretty well in some
-comparisons</a>,
-and also sports Go-like concurrency primitives, as demonstrated by <a href="https://bionics.it/posts/crystal-concurrency-easier-syntax-than-golang">my
+(heavily inspired by Ruby), <a href="https://lh3.github.io/2020/05/17/fast-high-level-programming-languages" target="_blank" rel="noopener">has performed pretty well in some
+comparisons</a>
+,
+and also sports Go-like concurrency primitives, as demonstrated by <a href="https://bionics.it/posts/crystal-concurrency-easier-syntax-than-golang" target="_blank" rel="noopener">my
 previous
-comparisons</a>,
+comparisons</a>
+,
 but is plagued by seemingly inherently exponentially long compile times
-hindering effective development of larger projects, and <a href="https://github.com/crystal-lang/crystal/issues/9285">limitations in
+hindering effective development of larger projects, and <a href="https://github.com/crystal-lang/crystal/issues/9285" target="_blank" rel="noopener">limitations in
 its cross-platform
-compatibility</a>. If
+compatibility</a>
+. If
 these issues could be addressed, I'd be very interested in
 re-evaluating it!</p>
 <h3 id="addendum-ii-what-are-some-other-contenders">Addendum II: What are some other contenders?</h3>
 <p>Apart from Rust and Crystal, and as you can see from my list of compiled
 languages, there are a lot of potential alternatives for a go-to
 compiled, fast language for bioinformatics. One of the most interesting
-ones I'm aware of right now are <a href="https://www.julialang.org/">Julia</a> and
-<a href="https://ziglang.org/">Zig</a>. While Julia <a href="https://www.nature.com/articles/s41592-023-01832-z">has been picking up usage in
+ones I'm aware of right now are <a href="https://www.julialang.org/" target="_blank" rel="noopener">Julia</a>
+ and
+<a href="https://ziglang.org/" target="_blank" rel="noopener">Zig</a>
+. While Julia <a href="https://www.nature.com/articles/s41592-023-01832-z" target="_blank" rel="noopener">has been picking up usage in
 biology quite a
-bit</a>, it isn't a
+bit</a>
+, it isn't a
 properly compiled language though, but rather a scripting language
 providing speedups via just-in-time compilation. It doesn't to my
 knowledge (yet) have a great story for ahead-of-time compilation of
@@ -211,22 +233,29 @@ its very close integration with the C programming language (C programs
 are also valid Zig programs, which means you can even just use Zig as a
 more modern compiler and toolchain for compiling C code). I think we
 have yet to see any major uptake of Zig in the bioinformatics community
-too. And, then there is <a href="https://docs.modular.com/mojo">Mojo</a>. But I
+too. And, then there is <a href="https://docs.modular.com/mojo" target="_blank" rel="noopener">Mojo</a>
+. But I
 think Mojo is way to young to say anything with confidence about how it
 will develop or be able to gain a foothold in bioinformatics.</p>
-<p>Samuel Lampa (<a href="https://twitter.com/smllmp">@smllmp</a>)</p>
+<p>Samuel Lampa (<a href="https://twitter.com/smllmp" target="_blank" rel="noopener">@smllmp</a>
+)</p>
 <p><strong>Note:</strong> Some discussion is happening around the post on
-<a href="https://x.com/smllmp/status/1790800748508311681">Twitter</a> and
-<a href="https://www.reddit.com/r/golang/comments/1ctj5q1/why_didnt_go_get_a_breakthrough_in_bioinformatics/">Reddit</a></p>
+<a href="https://x.com/smllmp/status/1790800748508311681" target="_blank" rel="noopener">Twitter</a>
+ and
+<a href="https://www.reddit.com/r/golang/comments/1ctj5q1/why_didnt_go_get_a_breakthrough_in_bioinformatics/" target="_blank" rel="noopener">Reddit</a>
+</p>
 <hr>
 <p><strong>Edit history:</strong><br>
 Edit 2024-05-15, 20:07: Added mention of Benthos<br>
 Edit 2024-05-16, 19:08: Correction: processes -&gt; goroutines (Thanks
-<a href="https://twitter.com/MihaiTodor">Mihai Todor</a>!)<br>
-Edit 2024-05-16, 19:31: Added addendum about Crystal (Thanks <a href="https://twitter.com/alexanderadam__">Alexander
-Adam</a> for raising the question!)<br>
+<a href="https://twitter.com/MihaiTodor" target="_blank" rel="noopener">Mihai Todor</a>
+!)<br>
+Edit 2024-05-16, 19:31: Added addendum about Crystal (Thanks <a href="https://twitter.com/alexanderadam__" target="_blank" rel="noopener">Alexander
+Adam</a>
+ for raising the question!)<br>
 Edit 2024-05-16, 19:45: Added addendum about Julia and Zig too (Thanks
-again to <a href="https://twitter.com/MihaiTodor">Mihai Todor</a> for bringing up
+again to <a href="https://twitter.com/MihaiTodor" target="_blank" rel="noopener">Mihai Todor</a>
+ for bringing up
 Zig!)<br>
 Edit 2024-05-16, 19:50~: Added comment about Mojo.<br>
 Edit 2024-05-16, 20:02: Improved intro.<br>

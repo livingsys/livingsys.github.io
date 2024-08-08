@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>Crystal: Go-like concurrency with easier syntax | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -42,9 +42,12 @@
   <time datetime="2020-09-05T15:36:00&#43;02:00">September 5, 2020</time>
 
   <p>I have been playing around a lot with concurrency in Go over the years,
-resulting in libraries such as <a href="https://scipipe.org/">SciPipe</a>,
-<a href="http://flowbase.org/">FlowBase</a> and
-<a href="https://github.com/rdfio/rdf2smw/">rdf2smw</a>. My main motivation for
+resulting in libraries such as <a href="https://scipipe.org/" target="_blank" rel="noopener">SciPipe</a>
+,
+<a href="http://flowbase.org/" target="_blank" rel="noopener">FlowBase</a>
+ and
+<a href="https://github.com/rdfio/rdf2smw/" target="_blank" rel="noopener">rdf2smw</a>
+. My main motivation for
 looking into Go has been the possibility to use it as a more performant,
 scaleable and type-safe alternative to Python for data heavy scripting
 tasks in bioinformatics and other fields I've been dabbling in.
@@ -59,13 +62,16 @@ developer don't need to deal with.</p>
 <p>Still, the Go syntax has always felt rather complex. After 5+ years, I
 have still not learned how to open up a file and reading from it line by
 line, and need to check up the syntax on a site like
-<a href="https://gobyexample.com">gobyexample.com</a>. This task also requires
+<a href="https://gobyexample.com" target="_blank" rel="noopener">gobyexample.com</a>
+. This task also requires
 importing two different libraries (os, and bufio), which you have to
 remember.</p>
 <p>With this background, I found it interesting when a new
-language on the block, <a href="https://crystal-lang.org/">Crystal</a>, <a href="https://crystal-lang.org/2019/09/06/parallelism-in-crystal.html">touts to
+language on the block, <a href="https://crystal-lang.org/" target="_blank" rel="noopener">Crystal</a>
+, <a href="https://crystal-lang.org/2019/09/06/parallelism-in-crystal.html" target="_blank" rel="noopener">touts to
 provide the same concurrency
-features</a>,
+features</a>
+,
 still in a language with static typing and ahead-of-time compiling, with
 a much more scriptlike and clean syntax.</p>
 <p>In this post, I take a brief look at Crystal by implementing a pattern I
@@ -79,9 +85,11 @@ let one go-routine read from a file line by line, and another one
 calculate the frequency of G and C:s over all of A, T, G, Cs in a
 DNA-file in the FASTA format.</p>
 <p>You can find <a href="ftp://ftp.ensembl.org/pub/release-67/fasta/homo_sapiens/dna/Homo_sapiens.GRCh37.67.dna_rm.chromosome.Y.fa.gz">the (68MB) file I'm using
-here</a>.</p>
-<p>You can find both of the below code files <a href="https://github.com/samuell/experiments/tree/master/govscr">on GitHub
-here</a>.</p>
+here</a>
+.</p>
+<p>You can find both of the below code files <a href="https://github.com/samuell/experiments/tree/master/govscr" target="_blank" rel="noopener">on GitHub
+here</a>
+.</p>
 <h3 id="go-implementation">Go implementation</h3>
 <p>Here is the Go implementation:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#00f">package</span> main
@@ -201,15 +209,17 @@ code directly in the file, similar to Python and Ruby.</li>
 <li>In Crystal you don't need to import multiple packages to open a
 file, and to loop over it.</li>
 <li>In Crystal, as seen in the code, we use
-&quot;<a href="https://crystal-lang.org/reference/syntax_and_semantics/exception_handling.html#ensure">ensure</a>&quot;,
+&quot;<a href="https://crystal-lang.org/reference/syntax_and_semantics/exception_handling.html#ensure" target="_blank" rel="noopener">ensure</a>
+&quot;,
 between any two &quot;begin/end&quot; clauses, in a similar way as Go:s
 &quot;defer&quot;, to ensure something is done as the very last thing before
 existing the function.</li>
 <li>In my tests, the Go implementation has always outperformed the
 Crystal one, so far. This might change with time of course.</li>
 <li>Truly static binary deployments seem to not be fully supported in
-Crystal just yet (see <a href="https://github.com/crystal-lang/crystal/issues/9285">Issue
-#9285</a>).</li>
+Crystal just yet (see <a href="https://github.com/crystal-lang/crystal/issues/9285" target="_blank" rel="noopener">Issue
+#9285</a>
+).</li>
 </ul>
 <h3 id="conclusion">Conclusion</h3>
 <p>I think it is a bit early to draw to hard conclusions between the two
@@ -220,16 +230,20 @@ well as approaches taken.</p>
 <p>Crystal looks like a promising alternative to Go, for concurrency use
 cases which allows writing in a much more script-like syntax. This could
 potentially make it a really interesting language for scientific fields
-such as bioinformatics, something that bioinformatics luminary <a href="https://twitter.com/lh3lh3">Heng
-Li</a> <a href="https://lh3.github.io/2020/05/17/fast-high-level-programming-languages">has been blogging
+such as bioinformatics, something that bioinformatics luminary <a href="https://twitter.com/lh3lh3" target="_blank" rel="noopener">Heng
+Li</a>
+ <a href="https://lh3.github.io/2020/05/17/fast-high-level-programming-languages" target="_blank" rel="noopener">has been blogging
 about</a>
-(and <a href="https://github.com/crystal-lang/crystal/issues/9285">pointed out a problematic area for
-deployment</a>,
+
+(and <a href="https://github.com/crystal-lang/crystal/issues/9285" target="_blank" rel="noopener">pointed out a problematic area for
+deployment</a>
+,
 currently).</p>
 <p>I'm still worried about whether Crystal will manage to provide the same
 level of extremely portable, statically linked binaries though (EDIT:
-<a href="https://crystal-lang.org/2020/02/02/alpine-based-docker-images.html">there's a workaround, using alpine
-linux</a>),
+<a href="https://crystal-lang.org/2020/02/02/alpine-based-docker-images.html" target="_blank" rel="noopener">there's a workaround, using alpine
+linux</a>
+),
 and this might turn out to be a real dealbreaker. Also, with the
 upcoming generics implementation in Go, some of the complexities of Go
 might be possible to hide away for end-users of some libraries, by
@@ -242,14 +256,18 @@ for a new compiled, fast language?).</p>
 1.0, and Go soon gets generics into the language. What can be said for
 sure, is that we will soon have more options, for writing concurrent,
 performant code.</p>
-<p><strong>Samuel</strong> (Twitter: <a href="https://twitter.com/smllmp">@smllmp</a>)</p>
-<p><strong>Note:</strong> Some discussions on the post is/has been happening <a href="https://www.reddit.com/r/crystal_programming/comments/in80a9/crystal_concurrency_with_easier_syntax_than_go/">on
-reddit</a>,
-and <a href="https://forum.crystal-lang.org/t/blog-crystal-concurrency-with-easier-syntax-than-go/2505/4">on the crystal
-forum</a>.</p>
+<p><strong>Samuel</strong> (Twitter: <a href="https://twitter.com/smllmp" target="_blank" rel="noopener">@smllmp</a>
+)</p>
+<p><strong>Note:</strong> Some discussions on the post is/has been happening <a href="https://www.reddit.com/r/crystal_programming/comments/in80a9/crystal_concurrency_with_easier_syntax_than_go/" target="_blank" rel="noopener">on
+reddit</a>
+,
+and <a href="https://forum.crystal-lang.org/t/blog-crystal-concurrency-with-easier-syntax-than-go/2505/4" target="_blank" rel="noopener">on the crystal
+forum</a>
+.</p>
 <p><em><strong>Edit Sep 5, 2020, 19:45 CET:</strong> Update code to use &quot;ensure&quot;, after
-<a href="https://forum.crystal-lang.org/t/blog-crystal-concurrency-with-easier-syntax-than-go/2505/2?u=shl">feedback from
-@asterite</a>.</em><br>
+<a href="https://forum.crystal-lang.org/t/blog-crystal-concurrency-with-easier-syntax-than-go/2505/2?u=shl" target="_blank" rel="noopener">feedback from
+@asterite</a>
+.</em><br>
 <em><strong>Edit Sep 7, 2020, 08:35 CET:</strong> Clarify about how to compile optimized
 Crystal code.</em><br>
 <em><strong>Edit Sep 7, 2020, 08:57 CET:</strong> Add note about linking statically on

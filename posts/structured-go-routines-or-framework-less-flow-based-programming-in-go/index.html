@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>Structured Go-routines or framework-less Flow-Based Programming in Go | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -48,10 +48,12 @@ surprised to not find more people using this kind of pattern, which has
 been so extremely helpful to us, so I thought to take this opportunity
 to re-iterate it again, in the hopes that more people might get aware of
 it.</p>
-<p>The pattern is very pedagogically explained by <a href="https://github.com/eapache">Evan
-Huus</a> (twitter handle anyone?) in his talk about complex pipeline patterns in
-Go (also from 2015), <a href="https://youtu.be/2HOO5gIgyMg?t=1855">starting from
-30:55</a> and just 1&ndash;2 minutes onward. He explains it very
+<p>The pattern is very pedagogically explained by <a href="https://github.com/eapache" target="_blank" rel="noopener">Evan
+Huus</a>
+ (twitter handle anyone?) in his talk about complex pipeline patterns in
+Go (also from 2015), <a href="https://youtu.be/2HOO5gIgyMg?t=1855" target="_blank" rel="noopener">starting from
+30:55</a>
+ and just 1&ndash;2 minutes onward. He explains it very
 neatly in just a few slides, so I urge you to have a look:</p>
 <p>... where this slide summarizes Evan's Idea:</p>
 <p><p class="image">
@@ -59,23 +61,32 @@ neatly in just a few slides, so I urge you to have a look:</p>
 </p>
 </p>
 <p>This is pretty much exactly the idea I have suggested in a
-<a href="https://blog.gopheracademy.com/composable-pipelines-pattern/">post</a>, and a <a href="https://blog.gopheracademy.com/advent-2015/composable-pipelines-improvements/">follow-up
-post</a> on GopherAcademy in 2015, and later packaged up in a
+<a href="https://blog.gopheracademy.com/composable-pipelines-pattern/" target="_blank" rel="noopener">post</a>
+, and a <a href="https://blog.gopheracademy.com/advent-2015/composable-pipelines-improvements/" target="_blank" rel="noopener">follow-up
+post</a>
+ on GopherAcademy in 2015, and later packaged up in a
 helper library I&rsquo;ve called
-<a href="http://flowbase.org">FlowBase</a>. It
+<a href="http://flowbase.org" target="_blank" rel="noopener">FlowBase</a>
+. It
 is also the exact idea is also the basis of the
-<a href="http://scipipe.org/">SciPipe</a>
-(<a href="https://github.com/scipipe/scipipe">Github</a>) batch workflow / pipeline library, for which we
-recently published a <a href="https://www.biorxiv.org/content/10.1101/380808v1">technical preprint
-paper</a>.</p>
-<p>I presented these ideas and results at the <a href="https://eventbrite.com/e/go-stockholm-conference-tickets-49325007425">Go Stockholm conference
-2018</a>.
+<a href="http://scipipe.org/" target="_blank" rel="noopener">SciPipe</a>
+
+(<a href="https://github.com/scipipe/scipipe" target="_blank" rel="noopener">Github</a>
+) batch workflow / pipeline library, for which we
+recently published a <a href="https://www.biorxiv.org/content/10.1101/380808v1" target="_blank" rel="noopener">technical preprint
+paper</a>
+.</p>
+<p>I presented these ideas and results at the <a href="https://eventbrite.com/e/go-stockholm-conference-tickets-49325007425" target="_blank" rel="noopener">Go Stockholm conference
+2018</a>
+.
 You can find my slides below, titled <a href="//www.slideshare.net/SamuelLampa/using-flowbased-programming-to-write-tools-and-workflows-for-scientific-computing-in-go" title="Using Flow-based programming to write tools and workflows for Scientific
 Computing in Go">Using Flow-based programming to write
 tools and workflows for Scientific Computing in
-Go</a>:</p>
-<p>There is also a <a href="https://pharmb.io/blog/saml-gostockholm2018/">longer post putting the presentation in context, over
-att pharmb.io</a>.</p>
+Go</a>
+:</p>
+<p>There is also a <a href="https://pharmb.io/blog/saml-gostockholm2018/" target="_blank" rel="noopener">longer post putting the presentation in context, over
+att pharmb.io</a>
+.</p>
 
   
 

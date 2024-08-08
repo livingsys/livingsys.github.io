@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>Setting up a reasonable and light-weight Linux-like (non-WSL) terminal environment on Windows | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -46,9 +46,10 @@ possible solution to running my normal Bash-based workflow inside the
 main Windows filesystem, interacting with the Windows world. Turns out
 there are some solutions. Read on for more info on that.</p>
 <h2 id="windows-subsystem-for-linux-too-heavy">Windows Subsystem for Linux too heavy</h2>
-<p>First, I must mention the impressive work by Microsoft on the <a href="https://docs.microsoft.com/en-us/windows/wsl/about">Windows
+<p>First, I must mention the impressive work by Microsoft on the <a href="https://docs.microsoft.com/en-us/windows/wsl/about" target="_blank" rel="noopener">Windows
 Subsystem for Linux (aka.
-WSL)</a>, which more or
+WSL)</a>
+, which more or
 less lets you run an almost full-blown distribution of popular Linux
 distros like Ubuntu and Fedora. WSL is awesome, but also kind of heavy,
 easily taking something closer to an hour to install. It also has some
@@ -60,14 +61,17 @@ it clear that this is not the light-weight simple solution I was looking
 for. WSL is awesome, but too heavy that I will be comfortable to quickly
 install it on any Windows machine I need to spend time working on.</p>
 <h2 id="enter-git-bash-and-msys2">Enter Git-Bash and MSYS2</h2>
-<p>Thus, I continued my search. I found Git-Bash, which is part of the <a href="https://git-scm.com/downloads">Git
-package for Windows</a>. It provides a
+<p>Thus, I continued my search. I found Git-Bash, which is part of the <a href="https://git-scm.com/downloads" target="_blank" rel="noopener">Git
+package for Windows</a>
+. It provides a
 simple bash environment with git pre-installed and configured, and works
 extremely well for simple tasks.</p>
 <p>The main drawback I found with Git-Bash was that it does not contain or
 allow an easy route to install my favorite terminal multiplexer / window
-manager: <a href="https://en.wikipedia.org/wiki/Tmux">tmux</a>. <a href="https://blog.pjsen.eu/?p=440">One nice blog
-post</a> mentioned the system that Git-Bash
+manager: <a href="https://en.wikipedia.org/wiki/Tmux" target="_blank" rel="noopener">tmux</a>
+. <a href="https://blog.pjsen.eu/?p=440" target="_blank" rel="noopener">One nice blog
+post</a>
+ mentioned the system that Git-Bash
 builds upon, and that it sports a package manager which can install a
 lot more software: MSYS2. Long story short: I tried MSYS2, and now I'm
 (figuratively) in love. With a few (fixable) caveats I now can run
@@ -80,7 +84,8 @@ Linux-like bash environment in Windows.</p>
 <h2 id="how-to-set-up-a-nice-environment-based-on-msys2">How to set up a nice environment based on MSYS2</h2>
 <ul>
 <li>Install MSYS2 by following the instructions
-<a href="https://www.msys2.org/">here</a>.</li>
+<a href="https://www.msys2.org/" target="_blank" rel="noopener">here</a>
+.</li>
 <li>Start MSYS2 from the start menu in Windows.</li>
 <li>Run upgrades of packages with the pacman packager:
 <ul>
@@ -116,9 +121,11 @@ but check in with Linux style ditto:
 </ul>
 </li>
 <li>For Python development,</li>
-<li>Install the <a href="https://chocolatey.org/">Chocolatey package manager</a>,
+<li>Install the <a href="https://chocolatey.org/" target="_blank" rel="noopener">Chocolatey package manager</a>
+,
 for installing many open source programs via the commandline, by
-following <a href="https://chocolatey.org/install">these instructions.</a></li>
+following <a href="https://chocolatey.org/install" target="_blank" rel="noopener">these instructions.</a>
+</li>
 <li>If you run Windows in VirtualBox, make sure to enable bidirectional
 clipboard in VirtualBox, by right clicking on the virtual machine
 and choosing:<br>
@@ -131,7 +138,8 @@ environment like this:</p>
 <p><a href="selection_029.png"><p class="image">
     <img src="selection_029.png" alt=""  />
 </p>
-</a></p>
+</a>
+</p>
 <p>So far, I'm super pleased with this setup.</p>
 <h2 id="some-caveats">Some caveats</h2>
 <p>I noticed the following caveats:</p>

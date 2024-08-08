@@ -13,7 +13,7 @@
       <link>https://livingsystems.se/posts/ebnf-parser-for-galaxy-toolconfig-syntax-with-antlr/</link>
       <pubDate>Thu, 28 Jul 2011 09:46:00 +0200</pubDate>
       <guid>https://livingsystems.se/posts/ebnf-parser-for-galaxy-toolconfig-syntax-with-antlr/</guid>
-      <description>As blogged earlier, I&#39;m currently into parsing the syntax of some definitions for the parameters and stuff of command line tools. As said in the linked blog post, I was pondering whether to use the Galaxy Toolconfig format or the DocBook CmdSynopsis format. It turned out though Well, that cmdsynopsis lacks the option to specify a list of valid choices, for a parameter, as is possible in the Galaxy ToolConfig format (see here), and thus can be used to generate drop-down lists in wizards etc.</description>
+      <description>As blogged earlier, I&#39;m currently into parsing the syntax of some definitions for the parameters and stuff of command line tools. As said in the linked blog post, I was pondering whether to use the Galaxy Toolconfig format or the DocBook CmdSynopsis format . It turned out though Well, that cmdsynopsis lacks the option to specify a list of valid choices, for a parameter, as is possible in the Galaxy ToolConfig format (see here ), and thus can be used to generate drop-down lists in wizards etc.</description>
     </item>
     <item>
       <title>Partial Galaxy ToolConfig to DocBook CmdSynopsis conversion with XSLT RegEx</title>

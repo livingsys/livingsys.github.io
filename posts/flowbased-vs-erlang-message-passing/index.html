@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>Flow-based programming and Erlang style message passing - A Biology-inspired idea of how they fit together | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -48,10 +48,13 @@ flow-based programming</strong></p>
     <img src="erlang_logo.png" alt="Erlang logo"  class="align_right" />
 </p>
 Just
-back from a one day visit to <a href="http://www.erlang-factory.com/euc2015">Erlang User
-Conference</a>. I find the
-<a href="http://www.erlang.org/">Erlang</a> virtual machine fascinating. And with
-the new <a href="http://elixir-lang.org/">Elixir language</a> built on top of it to
+back from a one day visit to <a href="http://www.erlang-factory.com/euc2015" target="_blank" rel="noopener">Erlang User
+Conference</a>
+. I find the
+<a href="http://www.erlang.org/" target="_blank" rel="noopener">Erlang</a>
+ virtual machine fascinating. And with
+the new <a href="http://elixir-lang.org/" target="_blank" rel="noopener">Elixir language</a>
+ built on top of it to
 fix some of the pain points with <em>Erlang the language</em>, the eco-system
 has got even more interesting.</p>
 <p>What I find exciting about Erlang/Elixir and its virtual machine, is its
@@ -62,7 +65,9 @@ computing&quot;. <a href="fbp_general_interactive_application.png"><p class="ima
 http://jpaulmorrison.com/fbp/examples.html"  class="align_right" />
 </p>
 </a>
-But then, <a href="http://www.jpaulmorrison.com/fbp/">Flow-based programming</a> (FBP) are
+
+But then, <a href="http://www.jpaulmorrison.com/fbp/" target="_blank" rel="noopener">Flow-based programming</a>
+ (FBP) are
 often pitched for basically the same purposes: good at running things in
 parallel in general. So, how do these two paradigms compare?</p>
 <h3 id="flow-based-programming-and-erlangelixir-seems-like-a-great-fit">Flow-based programming and Erlang/Elixir seems like a great fit?</h3>
@@ -73,8 +78,10 @@ sending messages to the mail boxes of other processes, would have a lot
 of overlap in functionality. One would think the architecture of one of
 the systems should be easy enough to implement in the other system.
 There is actually at least one such project trying to implement FBP in
-Elixir, by <a href="http://twitter.com/petercmarks">Peter C Marks</a>, the
-<a href="http://www.elixirfbp.org/">elixirfbp</a> project (worth checking out!).</p>
+Elixir, by <a href="http://twitter.com/petercmarks" target="_blank" rel="noopener">Peter C Marks</a>
+, the
+<a href="http://www.elixirfbp.org/" target="_blank" rel="noopener">elixirfbp</a>
+ project (worth checking out!).</p>
 <p>Looking closer, it turns out there are a number of challenges though.
 E.g. back-pressure is not as easily supported implicitly in
 Erlang/Elixir as in FBP languages where the bounded-buffer channels
@@ -94,37 +101,46 @@ probably require creating even further specialized Erlang/Elixir
 processes. Maybe you need one for each in-port/out-port, which would
 mean even more data copying.</p>
 <p><em><strong>These architectural differences were by the way something that was
-touched upon in highly recommended a <a href="http://www.erlang-factory.com/euc2014/paul-butcher">talk by Paul Butcher at
-EUC2014</a> last year
+touched upon in highly recommended a <a href="http://www.erlang-factory.com/euc2014/paul-butcher" target="_blank" rel="noopener">talk by Paul Butcher at
+EUC2014</a>
+ last year
 (See
-<a href="http://www.erlang-factory.com/static/upload/media/1403178373396314paulbutchereuc2014.pdf">Slides</a>
-and <a href="https://vimeo.com/102707745">Video</a>)</strong></em></p>
+<a href="http://www.erlang-factory.com/static/upload/media/1403178373396314paulbutchereuc2014.pdf" target="_blank" rel="noopener">Slides</a>
+
+and <a href="https://vimeo.com/102707745" target="_blank" rel="noopener">Video</a>
+)</strong></em></p>
 <p>One thing I'm still wondering about though, is whether the overhead of
 this copying might not be such a big problem since you now will have
 pipeline parallelism in Elixir, as José
-<a href="http://www.erlang-factory.com/euc2015/jose-valim">presented</a>:</p>
+<a href="http://www.erlang-factory.com/euc2015/jose-valim" target="_blank" rel="noopener">presented</a>
+:</p>
 <p><p class="image">
     <img src="elixir-pipeline-parallellism-crop.jpg" alt=""  />
 </p>
 </p>
 <p>(See original
-<a href="https://twitter.com/smllmp/status/609306287516610560">tweet</a>, and the
-<a href="http://www.erlang-factory.com/euc2015/jose-valim">info page for the
-talk</a> where slides and
+<a href="https://twitter.com/smllmp/status/609306287516610560" target="_blank" rel="noopener">tweet</a>
+, and the
+<a href="http://www.erlang-factory.com/euc2015/jose-valim" target="_blank" rel="noopener">info page for the
+talk</a>
+ where slides and
 video will show up)</p>
 <h3 id="further-differences-between-the-paradigms">Further differences between the paradigms</h3>
 <p>Anyways, there is a whole other set of aspects that make FBP and the
 Erlang VM quite different though.</p>
-<p>For example, despite the great work on the <a href="https://www.it.uu.se/research/group/hipe/">HiPE
-VM</a> for compiled Erlang code,
+<p>For example, despite the great work on the <a href="https://www.it.uu.se/research/group/hipe/" target="_blank" rel="noopener">HiPE
+VM</a>
+ for compiled Erlang code,
 and the work going on with JIT-compilation for Erlang (Mentioned in the
-<a href="http://www.erlang-factory.com/euc2015/kenneth-lundin">&quot;News from the OTP team&quot;
-session</a> at the
+<a href="http://www.erlang-factory.com/euc2015/kenneth-lundin" target="_blank" rel="noopener">&quot;News from the OTP team&quot;
+session</a>
+ at the
 EUC2015), Erlang is in it's current state kind of slow for many types
 of computations. It is scalable yes, but slow. For example I tried some
 simple string processing algorithm in Elixir recently, which I've used
-to <a href="http://saml.rilspace.org/moar-languagez-gc-content-in-python-d-fpc-c-and-c">benchmark a bunch of other languages
-before</a>,
+to <a href="http://saml.rilspace.org/moar-languagez-gc-content-in-python-d-fpc-c-and-c" target="_blank" rel="noopener">benchmark a bunch of other languages
+before</a>
+,
 and found that Elixir was something like 3 times slower than
 un-optimized, vanilla python for the same task, which is itself around
 2-3 times slower than most compiled languages for the same task (I
@@ -143,8 +159,9 @@ as C, if your computation demands are large while cost/energy efficiency
 is also of importance.</p>
 <p>Combining Erlang with a faster language for the actual processing, is
 actually exactly what is done at the company where Erlang was born in
-the first place, Ericsson. At the <a href="http://www.erlang-factory.com/euc2015/anders-danne">&quot;Embedded Erlang&quot; talk on
-EUC2015</a>, Anders
+the first place, Ericsson. At the <a href="http://www.erlang-factory.com/euc2015/anders-danne" target="_blank" rel="noopener">&quot;Embedded Erlang&quot; talk on
+EUC2015</a>
+, Anders
 Danne of Ericsson revealed details about an interesting project which
 just resulted in a new product (a base station), where Erlang was the
 control plane while the real crunching code was implemented in/with C
@@ -272,18 +289,24 @@ problem, while solving Flow-based programming's problem with
 least. And yeah, why not also test this out in practice! :)</p>
 <hr>
 <p><em><strong>Note I:</strong> Interesting discussions on the post is happening on
-<a href="https://news.ycombinator.com/item?id=9718868">HackerNews</a>, and the
-<a href="https://groups.google.com/d/msg/flow-based-programming/6LMw6JukILY/C9SmQdlMKm8J">Flow-based programming mailing
-list</a></em><br>
-<em><strong>Note II:</strong> ElixirFBP creator Peter C Marks <a href="http://www.elixirfbp.org/2015/06/a-couple-of-things.html">blogged a
-comment</a> of
-this post and the discussion it triggered <a href="http://www.elixirfbp.org/2015/06/a-couple-of-things.html">Check it out
-elixirfbp.org</a></em><br>
+<a href="https://news.ycombinator.com/item?id=9718868" target="_blank" rel="noopener">HackerNews</a>
+, and the
+<a href="https://groups.google.com/d/msg/flow-based-programming/6LMw6JukILY/C9SmQdlMKm8J" target="_blank" rel="noopener">Flow-based programming mailing
+list</a>
+</em><br>
+<em><strong>Note II:</strong> ElixirFBP creator Peter C Marks <a href="http://www.elixirfbp.org/2015/06/a-couple-of-things.html" target="_blank" rel="noopener">blogged a
+comment</a>
+ of
+this post and the discussion it triggered <a href="http://www.elixirfbp.org/2015/06/a-couple-of-things.html" target="_blank" rel="noopener">Check it out
+elixirfbp.org</a>
+</em><br>
 <em><strong>Note III:</strong> The slowness of Erlang/Elixir that I mention, is
-disputed! See discussion on</em> <a href="http://www.meetup.com/stockholm-elixir/events/203279212/">this meetup
-page</a><em>, and in
-particular Johan Lind's</em> <a href="https://gist.github.com/samuell/dbea9f759dced60a7d0b#comment-1311551">improvements on the code example
-here</a></p>
+disputed! See discussion on</em> <a href="http://www.meetup.com/stockholm-elixir/events/203279212/" target="_blank" rel="noopener">this meetup
+page</a>
+<em>, and in
+particular Johan Lind's</em> <a href="https://gist.github.com/samuell/dbea9f759dced60a7d0b#comment-1311551" target="_blank" rel="noopener">improvements on the code example
+here</a>
+</p>
 
   
 

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>SMWCon Fall 2016 - My talk on large RDF imports | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -41,65 +41,87 @@
   
   <time datetime="2016-10-07T11:50:00&#43;02:00">October 7, 2016</time>
 
-  <p>[I was invited to give a talk at ]<a href="https://www.semantic-mediawiki.org/wiki/SMWCon_Fall_2016/Conference_Days">Semantic MediaWiki (SMW)
-conference</a>[
+  <p>[I was invited to give a talk at ]<a href="https://www.semantic-mediawiki.org/wiki/SMWCon_Fall_2016/Conference_Days" target="_blank" rel="noopener">Semantic MediaWiki (SMW)
+conference</a>
+[
 (SMWCon) in Frankfurt last week, on our work on enabling import of RDF datasets
-into ]<a href="https://www.semantic-mediawiki.org">SMW</a>[.  I have presented at SMWCon
+into ]<a href="https://www.semantic-mediawiki.org" target="_blank" rel="noopener">SMW</a>
+[.  I have presented at SMWCon
 before as well (2011:
-]<a href="http://saml.rilspace.com/smwcon-fall-2011-impressions">blog</a>[,
-]<a href="http://www.slideshare.net/SamuelLampa/hooking-up-semantic-mediawiki-with-external-tools-via-sparql">slides</a>[,
-]<a href="https://www.youtube.com/watch?v=3US0G5dDynM">video</a>[, 2013:
-]<a href="http://www.slideshare.net/SamuelLampa/20131030-smw-con">slides</a>[), so it was
+]<a href="http://saml.rilspace.com/smwcon-fall-2011-impressions" target="_blank" rel="noopener">blog</a>
+[,
+]<a href="http://www.slideshare.net/SamuelLampa/hooking-up-semantic-mediawiki-with-external-tools-via-sparql" target="_blank" rel="noopener">slides</a>
+[,
+]<a href="https://www.youtube.com/watch?v=3US0G5dDynM" target="_blank" rel="noopener">video</a>
+[, 2013:
+]<a href="http://www.slideshare.net/SamuelLampa/20131030-smw-con" target="_blank" rel="noopener">slides</a>
+[), so it was
 nice to re-connect with some old friends, and to get up to date about how SMW
 is developing, as well as share about our own contributions.]</p>
-<p><em><strong>Note:</strong> See also the <a href="https://storify.com/smllmp/semantic-mediawiki-conference-fall-2016">SMWCon 2016 twitter
+<p><em><strong>Note:</strong> See also the <a href="https://storify.com/smllmp/semantic-mediawiki-conference-fall-2016" target="_blank" rel="noopener">SMWCon 2016 twitter
 storyboard</a>
+
 for a nice overview of the event.</em></p>
 <h2 id="the-talk---on-rdf-import-in-semantic-mediawiki">The Talk - on RDF Import in Semantic MediaWiki</h2>
 <p>[My talk this year was titled &quot;Batch import of large RDF datasets using
 RDFIO or the new rdf2smw tool&quot;. More info can be found on the
-]<a href="https://www.semantic-mediawiki.org/wiki/SMWCon_Fall_2016/Batch_import_of_large_RDF_datasets_using_RDFIO_or_the_new_rdf2smw_tool">talk
-page</a>[.
-S]lides are <a href="http://www.slideshare.net/SamuelLampa/batch-import-of-large-rdf-datasets-into-semantic-mediawiki">available on
-slideshare</a>
-(video to appear on the <a href="https://www.semantic-mediawiki.org/wiki/SMWCon_Fall_2016/Batch_import_of_large_RDF_datasets_using_RDFIO_or_the_new_rdf2smw_tool">talk
+]<a href="https://www.semantic-mediawiki.org/wiki/SMWCon_Fall_2016/Batch_import_of_large_RDF_datasets_using_RDFIO_or_the_new_rdf2smw_tool" target="_blank" rel="noopener">talk
 page</a>
+[.
+S]lides are <a href="http://www.slideshare.net/SamuelLampa/batch-import-of-large-rdf-datasets-into-semantic-mediawiki" target="_blank" rel="noopener">available on
+slideshare</a>
+
+(video to appear on the <a href="https://www.semantic-mediawiki.org/wiki/SMWCon_Fall_2016/Batch_import_of_large_RDF_datasets_using_RDFIO_or_the_new_rdf2smw_tool" target="_blank" rel="noopener">talk
+page</a>
+
 later):</p>
 <p>I will refer to the slides and the talk page for more info on the talk
 itself, and just leave the links to the softwares discussed here below:</p>
 <ul>
-<li><a href="http://github.com/rdfio/rdfio">The RDFIO extension</a> - Pure PHP RDF
+<li><a href="http://github.com/rdfio/rdfio" target="_blank" rel="noopener">The RDFIO extension</a>
+ - Pure PHP RDF
 import and SPARQL endpoint for SMW</li>
-<li><a href="http://github.com/rdfio/rdfio-vagrantbox">RDFIO Vagrantbox</a> -
+<li><a href="http://github.com/rdfio/rdfio-vagrantbox" target="_blank" rel="noopener">RDFIO Vagrantbox</a>
+ -
 Automated setup of a virtual machine with an SMW wiki with RDFIO</li>
-<li><a href="https://github.com/samuell/rdf2smw">The rdf2smw tool</a> - Converts
+<li><a href="https://github.com/samuell/rdf2smw" target="_blank" rel="noopener">The rdf2smw tool</a>
+ - Converts
 RDF to MediaWiki XML</li>
-<li><a href="http://flowbase.org">FlowBase</a> - My flow-based programming inspired
+<li><a href="http://flowbase.org" target="_blank" rel="noopener">FlowBase</a>
+ - My flow-based programming inspired
 micro-framework, used to build rdf2smw</li>
 </ul>
 <h2 id="smw-and-smwcon">SMW and SMWCon</h2>
 <p>Firstly, just for info, note that I and a few others tweeted quite
 extensively during the conference, summarized in this
-<a href="https://storify.com/smllmp/semantic-mediawiki-conference-fall-2016">storyboard</a>.</p>
+<a href="https://storify.com/smllmp/semantic-mediawiki-conference-fall-2016" target="_blank" rel="noopener">storyboard</a>
+.</p>
 <h2 id="the-state-of-smw">The state of SMW</h2>
 <p>I otherwise find SMW and SMWCon to have quite an interesting
 development. Eventhough being a technology developed more than 10 years
-ago (the <a href="http://dx.doi.org/10.1007/11926078_68">SMW paper</a> was
+ago (the <a href="http://dx.doi.org/10.1007/11926078_68" target="_blank" rel="noopener">SMW paper</a>
+ was
 published 10 years ago), it is still a thriving community with an active
 group of developers, (although it turns out the majority of core
-development is done by one person, &quot;<a href="http://github.com/mwjames">JamesHK /
-MWJames</a>&quot;). Many other softwares coming from
+development is done by one person, &quot;<a href="http://github.com/mwjames" target="_blank" rel="noopener">JamesHK /
+MWJames</a>
+&quot;). Many other softwares coming from
 the same time seem to have been slowly dying to a much larger extent.</p>
-<p>Reflecting on the reasons for this fact, I think <a href="https://storify.com/smllmp/semantic-mediawiki-conference-fall-2016">Markus
+<p>Reflecting on the reasons for this fact, I think <a href="https://storify.com/smllmp/semantic-mediawiki-conference-fall-2016" target="_blank" rel="noopener">Markus
 Glaser</a>
+
 summarized one reason pretty well:</p>
 <blockquote>
 <p>&quot;MediaWiki is like a white sheet of paper for data.&quot; -
-<a href="https://twitter.com/mrglaser">@mrglaser</a>
-<a href="https://twitter.com/hashtag/SMWCon?src=hash">#SMWCon</a></p>
-<p>&mdash; WikiWorks (<a href="http://twitter.com/wikiworks">@wikiworks</a>) <a href="https://twitter.com/wikiworks/status/781775961213763584">30
+<a href="https://twitter.com/mrglaser" target="_blank" rel="noopener">@mrglaser</a>
+
+<a href="https://twitter.com/hashtag/SMWCon?src=hash" target="_blank" rel="noopener">#SMWCon</a>
+</p>
+<p>&mdash; WikiWorks (<a href="http://twitter.com/wikiworks" target="_blank" rel="noopener">@wikiworks</a>
+) <a href="https://twitter.com/wikiworks/status/781775961213763584" target="_blank" rel="noopener">30
 september
-2016</a></p>
+2016</a>
+</p>
 </blockquote>
 <p>This goes well along my own reflections, that MediaWiki with its very
 stable platform (it has to support Wikipedia for many decades to come)
@@ -119,18 +141,23 @@ development environments purely text-based at their core, which enables
 using powerful version control software such as git, as well as makes it
 easy to automate development workflows. Interestingly, in the last talk
 of the conference (which I sadly missed due to an early flight) I heard
-that <a href="http://twitter.com/hexmode">Mark A. Herschberger</a> showed some nice
-integration of MediaWiki and git. Looking forward to see the video <a href="https://www.semantic-mediawiki.org/wiki/SMWCon_Fall_2016/Multilateral,_asynchronous,_bidirectional_synchronisation_of_wikis">show
+that <a href="http://twitter.com/hexmode" target="_blank" rel="noopener">Mark A. Herschberger</a>
+ showed some nice
+integration of MediaWiki and git. Looking forward to see the video <a href="https://www.semantic-mediawiki.org/wiki/SMWCon_Fall_2016/Multilateral,_asynchronous,_bidirectional_synchronisation_of_wikis" target="_blank" rel="noopener">show
 up here
-later</a>.</p>
+later</a>
+.</p>
 <h2 id="smw-for-biology-labs">SMW for biology labs</h2>
 <p>For me as a life science researcher-to-be, it was nice to see I was not
-the only life scientist at the conference. I enjoyed listening to <a href="https://twitter.com/toniher">Toni
-Hermoso's</a> talk &quot;<a href="https://www.semantic-mediawiki.org/wiki/SMWCon_Fall_2016/Semantic_MediaWiki_as_a_platform_for_lab_management_and_biological_annotation">Semantic MediaWiki as a
+the only life scientist at the conference. I enjoyed listening to <a href="https://twitter.com/toniher" target="_blank" rel="noopener">Toni
+Hermoso's</a>
+ talk &quot;<a href="https://www.semantic-mediawiki.org/wiki/SMWCon_Fall_2016/Semantic_MediaWiki_as_a_platform_for_lab_management_and_biological_annotation" target="_blank" rel="noopener">Semantic MediaWiki as a
 platform for lab management and biological
-annotation</a>&quot;
-(<a href="http://slides.com/similis/semantic-mediawiki-as-a-platform-for-lab-management-and#/">slides
-here</a>).
+annotation</a>
+&quot;
+(<a href="http://slides.com/similis/semantic-mediawiki-as-a-platform-for-lab-management-and#/" target="_blank" rel="noopener">slides
+here</a>
+).
 Interestingly, they have integrated common tools for next-gen sequenging
 analysis into a wiki, including FASTA and GFF viewers, and, a genome
 browser(!):</p>
@@ -138,31 +165,40 @@ browser(!):</p>
     <img src="smw_genome_browser.jpg" alt=""  />
 </p>
 </p>
-<p>... and, they have a really nice <a href="http://proteowiki.crg.eu/">lab website powered by
-SMW</a> too :)</p>
+<p>... and, they have a really nice <a href="http://proteowiki.crg.eu/" target="_blank" rel="noopener">lab website powered by
+SMW</a>
+ too :)</p>
 <p>Toni's full slides:</p>
 <h3 id="more-random-notes-and-links">More random notes and links</h3>
 <p>[I will end this post with a few random links and notes I found
 interesting:]</p>
 <ul>
-<li><a href="https://twitter.com/khoffmeyer">Karsten Hoffmeyer</a>, mentioned that
+<li><a href="https://twitter.com/khoffmeyer" target="_blank" rel="noopener">Karsten Hoffmeyer</a>
+, mentioned that
 SMW 2.5 will come with support for adding provenance info to the
 semantic facts, to be able to track where info comes from!</li>
-<li><a href="https://twitter.com/nightrose">Lydia Pintcher</a> of the very
+<li><a href="https://twitter.com/nightrose" target="_blank" rel="noopener">Lydia Pintcher</a>
+ of the very
 interesting wikidata project (making the data in wikipedia machine
-readable etc) highlighted that <a href="http://wikiba.se">the software behind wikidata,
+readable etc) highlighted that <a href="http://wikiba.se" target="_blank" rel="noopener">the software behind wikidata,
 wikibase is fully open source, and avilable to
-download</a>.</li>
-<li><a href="https://twitter.com/SoerenAuer">Sören Auer</a>, in his talk &quot;<a href="https://www.semantic-mediawiki.org/wiki/SMWCon_Fall_2016/Semantic_MediaWiki_and_Open_Scholarly_Communication">SMW and
+download</a>
+.</li>
+<li><a href="https://twitter.com/SoerenAuer" target="_blank" rel="noopener">Sören Auer</a>
+, in his talk &quot;<a href="https://www.semantic-mediawiki.org/wiki/SMWCon_Fall_2016/Semantic_MediaWiki_and_Open_Scholarly_Communication" target="_blank" rel="noopener">SMW and
 Open Scholarly
-Communication</a>&quot;
-mentioned <a href="https://dokie.li/">dokie.li</a>, a decentralized paper
+Communication</a>
+&quot;
+mentioned <a href="https://dokie.li/" target="_blank" rel="noopener">dokie.li</a>
+, a decentralized paper
 editor with support for cool things like SPARQL queries, right in
 your manuscript!</li>
-<li>Sören mentioned also <a href="http://slidewiki.org/">SlideWiki</a> - for
+<li>Sören mentioned also <a href="http://slidewiki.org/" target="_blank" rel="noopener">SlideWiki</a>
+ - for
 collaboratively creating slides for educational use</li>
 <li>Sören finally also mentioned
-<a href="http://openresearch.org">OpenResearch.org</a> - an SMW powered wiki
+<a href="http://openresearch.org" target="_blank" rel="noopener">OpenResearch.org</a>
+ - an SMW powered wiki
 that tries to aggregate scholarly events, organizations, people,
 journals and more.</li>
 </ul>

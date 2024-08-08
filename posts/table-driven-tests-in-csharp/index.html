@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>Table-driven tests in C# | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -42,9 +42,11 @@
   <time datetime="2019-11-02T21:24:00&#43;01:00">November 2, 2019</time>
 
   <p>Folks in the Go community have championed so called table-driven tests
-(see e.g. <a href="https://dave.cheney.net/2019/05/07/prefer-table-driven-tests">this post by Dave
+(see e.g. <a href="https://dave.cheney.net/2019/05/07/prefer-table-driven-tests" target="_blank" rel="noopener">this post by Dave
 Cheney</a>
-and the <a href="https://github.com/golang/go/wiki/TableDrivenTests">Go wiki</a>)
+
+and the <a href="https://github.com/golang/go/wiki/TableDrivenTests" target="_blank" rel="noopener">Go wiki</a>
+)
 as a way to quickly and easily writing up a bunch of complete test cases
 with inputs and corresponding expected outputs, and looping over them to
 execute the function being tested. In short, the idea is to suggest a
@@ -89,7 +91,8 @@ initializing it with values. Then we loop over this array of structs and
 use the data to drive the testing. The anonymous struct initialization
 helps keep code short and succinct.</p>
 <p>Anyways, given that in my current work at
-<a href="http://www.savanticab.com/en">Savantic</a> I have happened to write a lot
+<a href="http://www.savanticab.com/en" target="_blank" rel="noopener">Savantic</a>
+ I have happened to write a lot
 of C# over the last year, I was interested in whether I could write
 such succinct enumerations of test cases in C# too. It turns out that
 with some new syntax introduced in C# 7, it is quite possible!</p>
@@ -157,7 +160,8 @@ some smaller amounts of data (e.g. various kinds of default data) that
 needs to be initiated into an object structure and where you want an
 easy way to edit the actual data, and want to avoid repeating possibly
 more complex code for setting up the object structure.</p>
-<p><strong>Samuel</strong> <a href="https://twitter.com/smllmp">@smllmp</a></p>
+<p><strong>Samuel</strong> <a href="https://twitter.com/smllmp" target="_blank" rel="noopener">@smllmp</a>
+</p>
 
   
 

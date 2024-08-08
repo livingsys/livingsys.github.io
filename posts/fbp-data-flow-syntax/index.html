@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>FBP inspired data flow syntax: The missing piece for the success of functional programming? | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -45,9 +45,11 @@
     <img src="selection_288.png" alt=""  />
 </p>
 </p>
-<p>Often when I suggest people have a look at <a href="http://www.jpaulmorrison.com/fbp/">Flow-based
-Programming</a> (FBP) or <a href="https://en.wikipedia.org/wiki/Dataflow">Data
-Flow</a> for one reason or another,
+<p>Often when I suggest people have a look at <a href="http://www.jpaulmorrison.com/fbp/" target="_blank" rel="noopener">Flow-based
+Programming</a>
+ (FBP) or <a href="https://en.wikipedia.org/wiki/Dataflow" target="_blank" rel="noopener">Data
+Flow</a>
+ for one reason or another,
 people are often put off by the strong connection between these concepts
 and graphical programming. That is, the idea that programs will be
 easier to understand if expressed and developed in a visual notation.</p>
@@ -178,17 +180,21 @@ defined between functions</em>, but <em>between inputs and outputs of functions
 channel objects</em> which goes from from the output of one task to the
 input of another one.</p>
 <p>There are various ways to define the network declaratively (See the
-<a href="https://github.com/trustmaster/goflow">GoFlow code examples</a> for one
+<a href="https://github.com/trustmaster/goflow" target="_blank" rel="noopener">GoFlow code examples</a>
+ for one
 recent example). I have came to like a certain style that is as similar
 as possible to normal procedural code, by using single-assignments to
 connect outputs of one process (or &quot;function&quot;), to other processes.</p>
 <p>I haven't yet implemented anything like that in pure python (don't
 even know how easy it would be ... maybe possible using co-routines),
-but have <a href="http://blog.gopheracademy.com/composable-pipelines-pattern">done it in
-Go</a>, and for
-the python-based <a href="https://github.com/spotify/luigi#readme">Luigi</a>
-workflow tool by Spotify (<a href="https://github.com/samuell/sciluigi">See our SciLuigi library for code
-examples</a>). I propose checking
+but have <a href="http://blog.gopheracademy.com/composable-pipelines-pattern" target="_blank" rel="noopener">done it in
+Go</a>
+, and for
+the python-based <a href="https://github.com/spotify/luigi#readme" target="_blank" rel="noopener">Luigi</a>
+
+workflow tool by Spotify (<a href="https://github.com/samuell/sciluigi" target="_blank" rel="noopener">See our SciLuigi library for code
+examples</a>
+). I propose checking
 those two links for concrete real-world code examples, but just to
 illustrate how to the above toy code example could look like in vanilla
 python, with a little imagination:</p>
@@ -262,12 +268,14 @@ split.left_part part of the code example above).</p>
 <p><em><strong>[EDIT] Note:</strong> This is not a working example, since that would
 require some kind of concurrent features that is not available in
 vanilla python (it seems something like stackless python is required).
-Any way, for the sake of proof-of-concept, <a href="http://bionics.it/posts/how-i-would-like-to-write-golang">I have implemented this same
+Any way, for the sake of proof-of-concept, <a href="http://bionics.it/posts/how-i-would-like-to-write-golang" target="_blank" rel="noopener">I have implemented this same
 code in Go, blogged about in this follow-up
-post</a> (Where
-the ideas behind that syntax is explained in detail in my <a href="http://blog.gopheracademy.com/composable-pipelines-pattern">blog post
+post</a>
+ (Where
+the ideas behind that syntax is explained in detail in my <a href="http://blog.gopheracademy.com/composable-pipelines-pattern" target="_blank" rel="noopener">blog post
 outlining how to write using this syntax in Go, on
-GopherAcademy</a>).</em></p>
+GopherAcademy</a>
+).</em></p>
 <h3 id="concluding-remarks"><strong>Concluding remarks</strong></h3>
 <p>So, in conclusion, it seems like the flow-based programming inspired
 syntax presented above, does away with two of the main problems in
@@ -285,24 +293,31 @@ process to the inports of another.</p>
 some solution to the problems above in some functional programming
 language, as well as constructive feedback in general!</p>
 <h3 id="notes-in-text">Notes in text</h3>
-<p>[1] Note how this is very much related to a <a href="http://bionics.it/posts/workflows-dataflow-not-task-deps">previous post of mine,
+<p>[1] Note how this is very much related to a <a href="http://bionics.it/posts/workflows-dataflow-not-task-deps" target="_blank" rel="noopener">previous post of mine,
 touching on the same issue for workflow
-tools</a>.</p>
+tools</a>
+.</p>
 <h3 id="general-notes">General notes</h3>
-<p><em><strong>Note I:</strong> See <a href="https://twitter.com/peteramstutz/status/621773806948888577">this discussion on
-twitter</a>,
+<p><em><strong>Note I:</strong> See <a href="https://twitter.com/peteramstutz/status/621773806948888577" target="_blank" rel="noopener">this discussion on
+twitter</a>
+,
 about combining data from multiple ports.<br>
-<strong>Note II:</strong> See also <a href="https://news.ycombinator.com/item?id=9899493">discussion on Hacker
-News</a>.</em><br>
-<em><strong>Note III:</strong> See also <a href="https://www.reddit.com/r/programming/comments/3djimr/fbp_inspired_data_flow_syntax_the_missing_piece/">discussion on
-Reddit</a>.</em><br>
-<em><strong>Note IV:</strong> See especially <a href="https://www.reddit.com/r/programming/comments/3djimr/fbp_inspired_data_flow_syntax_the_missing_piece/ct60oqc">this excellent
+<strong>Note II:</strong> See also <a href="https://news.ycombinator.com/item?id=9899493" target="_blank" rel="noopener">discussion on Hacker
+News</a>
+.</em><br>
+<em><strong>Note III:</strong> See also <a href="https://www.reddit.com/r/programming/comments/3djimr/fbp_inspired_data_flow_syntax_the_missing_piece/" target="_blank" rel="noopener">discussion on
+Reddit</a>
+.</em><br>
+<em><strong>Note IV:</strong> See especially <a href="https://www.reddit.com/r/programming/comments/3djimr/fbp_inspired_data_flow_syntax_the_missing_piece/ct60oqc" target="_blank" rel="noopener">this excellent
 comment</a>
-in the <a href="https://www.reddit.com/r/programming/comments/3djimr/fbp_inspired_data_flow_syntax_the_missing_piece/">Reddit
-thread</a>.</em><br>
+
+in the <a href="https://www.reddit.com/r/programming/comments/3djimr/fbp_inspired_data_flow_syntax_the_missing_piece/" target="_blank" rel="noopener">Reddit
+thread</a>
+.</em><br>
 <em><strong>Note V:</strong> Have added link to a working example in Go(lang), of the
-final non-working python example code. See <a href="http://bionics.it/posts/how-i-would-like-to-write-golang">this follow-up post with the
-Go example</a>!</em></p>
+final non-working python example code. See <a href="http://bionics.it/posts/how-i-would-like-to-write-golang" target="_blank" rel="noopener">this follow-up post with the
+Go example</a>
+!</em></p>
 
   
 

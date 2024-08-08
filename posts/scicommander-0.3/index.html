@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>SciCommander - track provenance of any shell command | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -42,15 +42,18 @@
   <time datetime="2023-11-09T18:38:00&#43;01:00">November 9, 2023</time>
 
   <p>I haven't written much about a new tool I've been working on in some
-extra time: <a href="https://github.com/samuell/scicommander">SciCommander</a>.</p>
-<p>I just presented a poster about it at the <a href="https://sbw2023.nu">Swedish Bioinformatics
-Workshop 2023</a> , so perhaps let me first present you
+extra time: <a href="https://github.com/samuell/scicommander" target="_blank" rel="noopener">SciCommander</a>
+.</p>
+<p>I just presented a poster about it at the <a href="https://sbw2023.nu" target="_blank" rel="noopener">Swedish Bioinformatics
+Workshop 2023</a>
+ , so perhaps let me first present you
 the poster instead of re-iterating what it is (click to view large
 version):</p>
 <p><a href="scicmd-poster-export-007.png"><p class="image">
     <img src="scicmd-poster-export-007.png" alt=""  />
 </p>
-</a></p>
+</a>
+</p>
 <h3 id="new-version-not-requiring-running-the-scicmd-command">New version not requiring running the scicmd command</h3>
 <p>I got a lot of great feedback from numerous people at the conference,
 most of who pointed out that it would be great if one could start
@@ -61,9 +64,10 @@ parts of the command are input- and output files, so that one would not
 need to specify that with i: and o: markers.</p>
 <p>Today, I managed to implement a solution for the first of these wishes,
 by using some clever Bash tricks that people out on the internet
-recommended. These are published in the last <a href="https://pypi.org/project/scicommander/0.3.3/">version 0.3.3, out on the
+recommended. These are published in the last <a href="https://pypi.org/project/scicommander/0.3.3/" target="_blank" rel="noopener">version 0.3.3, out on the
 Python Package Index
-(PyPI)</a> now!</p>
+(PyPI)</a>
+ now!</p>
 <p>So now, given that you have a bash environment, you can install the
 latest SciCommander with:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install -U scicommander

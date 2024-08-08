@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>Posts | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -44,7 +44,7 @@
 <a href="/posts/ahc2024/"><img src="/posts/ahc2024//dsc_4779_2.jpg" class="post-img-list"></a>
 
 <h2><a href="/posts/ahc2024/">A few notes from the Applied Hologenomics Conference 2024</a></h2>
-I&rsquo;m just back from the Applied Hologenomics Conference in 2024 (See also #AHC2024 on Twitter) in Copenhagen and thought to reflect a little on the conference and highlight the bits that particularly stuck with me.
+I&rsquo;m just back from the Applied Hologenomics Conference in 2024 (See also #AHC2024 on Twitter ) in Copenhagen and thought to reflect a little on the conference and highlight the bits that particularly stuck with me.
 The first thing I want to say is that a paradigm shift is happening here.
 I think what is happening here is a step away from the reductionist view of the past that goes beyond the systems biology approach that has been establishing itself during the last 10-20 years.
 </div>
@@ -76,7 +76,7 @@ A relatively simple language that can be learned in a short time even for people
 <a href="/posts/scipipe-at-nasa/"><img src="/posts/scipipe-at-nasa//nasa-paper.png" class="post-img-list"></a>
 
 <h2><a href="/posts/scipipe-at-nasa/">SciPipe used at NASA Glenn Research Center</a></h2>
-I was happy to see the publication finally going online, of work done at NASA Glenn Research Center, where SciPipe has been used to process and track provenance of the analyses, &quot;Modeling the impact of thoracic pressure on intracranial pressure&quot;. I've known the work existed for a couple of years, after getting some extraordinarily useful contributions from Drayton fixing some bugs I'm not sure I'd ever find otherwise, but cool to now also see it published!
+I was happy to see the publication finally going online , of work done at NASA Glenn Research Center , where SciPipe has been used to process and track provenance of the analyses, &quot;Modeling the impact of thoracic pressure on intracranial pressure&quot;. I've known the work existed for a couple of years, after getting some extraordinarily useful contributions from Drayton fixing some bugs I'm not sure I'd ever find otherwise, but cool to now also see it published!
 </div>
 
   
@@ -89,7 +89,7 @@ I'm working on a static reporting tool using the Jinja2 templating engine for Py
 I was trying to figure out a way to enter into the Jinja templating code with the pdb/ipdb commandline debugger.
 I tried creating an .ipdbrc file in my local directory with the line:
 path/to/template.html:&lt;lineno&gt; ... but that didn't work.
-What worked was to figure out the line that says:
+What worked was to figure out the line that says :
 return self.environment.concat(self.root_render_func(ctx)) ... inside the the jinja codebase, and put a breakpoint on that (which for me was on line 1299, but might vary depending on version):
 </div>
 
@@ -99,7 +99,7 @@ return self.environment.concat(self.root_render_func(ctx)) ... inside the the ji
 <a href="/posts/scicommander-0.3/"><img src="/posts/scicommander-0.3//scicmd-poster-export-007.png" class="post-img-list"></a>
 
 <h2><a href="/posts/scicommander-0.3/">SciCommander - track provenance of any shell command</a></h2>
-I haven't written much about a new tool I've been working on in some extra time: SciCommander.
+I haven't written much about a new tool I've been working on in some extra time: SciCommander .
 I just presented a poster about it at the Swedish Bioinformatics Workshop 2023 , so perhaps let me first present you the poster instead of re-iterating what it is (click to view large version):
 New version not requiring running the scicmd command I got a lot of great feedback from numerous people at the conference, most of who pointed out that it would be great if one could start scicommander as a kind of subshell, inside which one can run commands as usual, instead of running them via the scicmd -c command.
 </div>
@@ -108,7 +108,7 @@ New version not requiring running the scicmd command I got a lot of great feedba
     <div class="post-card">
 
 <h2><a href="/posts/troubleshooting-nextflow-pipelines/">Troubleshooting Nextflow pipelines</a></h2>
-We have been evaluating Nextflow before in my work at pharmb.io, but that was before DSL2 and the support for re-usable modules (which was one reason we needed to develop our own tools to support our challenges, as explained in the paper). Thus, there's definitely some stuff to get into.
+We have been evaluating Nextflow before in my work at pharmb.io , but that was before DSL2 and the support for re-usable modules (which was one reason we needed to develop our own tools to support our challenges, as explained in the paper ). Thus, there's definitely some stuff to get into.
 Based on my years in bioinformatics and data science, I've seen that the number one skill that you need to develop is to be able to effectively troubleshoot things, because things will invariably fail in all kinds of ways.
 </div>
 
@@ -144,7 +144,7 @@ What strikes me as one of the biggest elephants in the room regarding FP, is tha
 <a href="/posts/crystal-concurrency-easier-syntax-than-golang/"><img src="/posts/crystal-concurrency-easier-syntax-than-golang//selection_161-1.png" class="post-img-list"></a>
 
 <h2><a href="/posts/crystal-concurrency-easier-syntax-than-golang/">Crystal: Go-like concurrency with easier syntax</a></h2>
-I have been playing around a lot with concurrency in Go over the years, resulting in libraries such as SciPipe, FlowBase and rdf2smw. My main motivation for looking into Go has been the possibility to use it as a more performant, scaleable and type-safe alternative to Python for data heavy scripting tasks in bioinformatics and other fields I've been dabbling in. Especially as it makes it so easy to write concurrent and parallel code in it.
+I have been playing around a lot with concurrency in Go over the years, resulting in libraries such as SciPipe , FlowBase and rdf2smw . My main motivation for looking into Go has been the possibility to use it as a more performant, scaleable and type-safe alternative to Python for data heavy scripting tasks in bioinformatics and other fields I've been dabbling in. Especially as it makes it so easy to write concurrent and parallel code in it.
 </div>
 
   
@@ -179,8 +179,7 @@ The publisher (pub.py) import zmq import time ctx = zmq.Context() sock = ctx.soc
 <a href="/posts/table-driven-tests-in-csharp/"><img src="/posts/table-driven-tests-in-csharp//selection_0023.png" class="post-img-list"></a>
 
 <h2><a href="/posts/table-driven-tests-in-csharp/">Table-driven tests in C#</a></h2>
-Folks in the Go community have championed so called table-driven tests (see e.g. this post by Dave Cheney and the Go wiki) as a way to quickly and easily writing up a bunch of complete test cases with inputs and corresponding expected outputs, and looping over them to execute the function being tested. In short, the idea is to suggest a maximally short and convenient syntax to do this.
-For example, given that we have a function like this in mylibrary.
+Folks in the Go community have championed so called table-driven tests (see e.g. this post by Dave Cheney and the Go wiki ) as a way to quickly and easily writing up a bunch of complete test cases with inputs and corresponding expected outputs, and looping over them to execute the function being tested. In short, the idea is to suggest a maximally short and convenient syntax to do this.
 </div>
 
   
@@ -209,7 +208,7 @@ I was so happy the other day to find someone else who found the great benefits o
 
 <h2><a href="/posts/linux-like-non-wsl-terminal-env-on-windows/">Setting up a reasonable and light-weight Linux-like (non-WSL) terminal environment on Windows</a></h2>
 I was looking for was a no-fuss, lightweight, robust and as simple as possible solution to running my normal Bash-based workflow inside the main Windows filesystem, interacting with the Windows world. Turns out there are some solutions. Read on for more info on that.
-Windows Subsystem for Linux too heavy First, I must mention the impressive work by Microsoft on the Windows Subsystem for Linux (aka. WSL), which more or less lets you run an almost full-blown distribution of popular Linux distros like Ubuntu and Fedora.
+Windows Subsystem for Linux too heavy First, I must mention the impressive work by Microsoft on the Windows Subsystem for Linux (aka. WSL) , which more or less lets you run an almost full-blown distribution of popular Linux distros like Ubuntu and Fedora.
 </div>
 
   
@@ -228,7 +227,7 @@ Historically, something of a divide has developed between the metadata rich data
 <a href="/posts/scipipe-preprint/"><img src="/posts/scipipe-preprint//selection_864.png" class="post-img-list"></a>
 
 <h2><a href="/posts/scipipe-preprint/">Preprint on SciPipe - Go-based scientific workflow library</a></h2>
-A pre-print for our Go-based workflow libarary SciPipe, is out, with the title SciPipe - A workflow library for agile development of complex and dynamic bioinformatics pipelines, co-authored by me and colleagues at pharmb.io: Martin Dahlö, Jonathan Alvarsson and Ola Spjuth. Access it here.
+A pre-print for our Go-based workflow libarary SciPipe , is out, with the title SciPipe - A workflow library for agile development of complex and dynamic bioinformatics pipelines , co-authored by me and colleagues at pharmb.io : Martin Dahlö , Jonathan Alvarsson and Ola Spjuth . Access it here .
 It has been more than three years since the first commit on the SciPipe Git repository in March, 2015, and development has been going in various degrees of intensity during these years, often besides other duties at pharmb.
 </div>
 
@@ -255,7 +254,7 @@ Good lab note-taking is hard Good note-taking is in my opinion as important for 
 <a href="/posts/semantic-web-data-science-my-talk-at-linked-data-sweden-2018/"><img src="/posts/semantic-web-data-science-my-talk-at-linked-data-sweden-2018//selection_610.png" class="post-img-list"></a>
 
 <h2><a href="/posts/semantic-web-data-science-my-talk-at-linked-data-sweden-2018/">Semantic Web ❤ Data Science? My talk at Linked Data Sweden 2018</a></h2>
-During the last months, I have had the pleasure work together with Matthias Palmér (MetaSolutions AB) and Fernanda Dórea (National Veterinary Institute), to prepare for and organize this year's version of the annual Linked Data Sweden event, which this year was held in Uppsala hosted by the SciLifeLab Data Centre.
+During the last months, I have had the pleasure work together with Matthias Palmér (MetaSolutions AB ) and Fernanda Dórea (National Veterinary Institute ), to prepare for and organize this year's version of the annual Linked Data Sweden event , which this year was held in Uppsala hosted by the SciLifeLab Data Centre .
 Thanks to engaged speakers and attendees, it turned into an interesting day with great discussions, new contacts, and a lot of new impressions and insights.
 </div>
 
@@ -263,7 +262,7 @@ Thanks to engaged speakers and attendees, it turned into an interesting day with
     <div class="post-card">
 
 <h2><a href="/posts/parsing-drugbank-xml-or-any-large-xml-file-in-streaming-mode-in-go/">Parsing DrugBank XML (or any large XML file) in streaming mode in Go</a></h2>
-While Go's XML stream-parsing support is great, the details of how to do that in a streaming fashion was not immediately clear from the docs, and I was thus saved by this blog post by David Singleton. Basically, you could use his blog post as a starting point, but I wanted to write up my own post to document some specifics and peculiarities I figured out.
+While Go's XML stream-parsing support is great, the details of how to do that in a streaming fashion was not immediately clear from the docs, and I was thus saved by this blog post by David Singleton . Basically, you could use his blog post as a starting point, but I wanted to write up my own post to document some specifics and peculiarities I figured out.
 Idea: Parse DrugBank XML to TSV So in short, we want to parse the DrugBank XML, which contains tons of hierarchical information about each drug in the dataset, and extract just a few fields, and output that into a nicely formatted tab-separated (.
 </div>
 
@@ -273,7 +272,7 @@ Idea: Parse DrugBank XML to TSV So in short, we want to parse the DrugBank XML, 
 <a href="/posts/equation-centric-dataflow-programming-in-go/"><img src="/posts/equation-centric-dataflow-programming-in-go//loan.gif" class="post-img-list"></a>
 
 <h2><a href="/posts/equation-centric-dataflow-programming-in-go/">Equation-centric dataflow programming in Go</a></h2>
-Mathematical notation and dataflow programming Even though computations done on computers are very often based on some type of math, it is striking that the notation used in math to express equations and relations is not always very readily converted into programming code. Outside of purely symbolic programming languages like sage math or the (proprietary) Wolfram language, there seem to always be quite a divide between the mathematical notation and the numerical implementation.
+Mathematical notation and dataflow programming Even though computations done on computers are very often based on some type of math, it is striking that the notation used in math to express equations and relations is not always very readily converted into programming code. Outside of purely symbolic programming languages like sage math or the (proprietary) Wolfram language , there seem to always be quite a divide between the mathematical notation and the numerical implementation.
 </div>
 
   
@@ -283,8 +282,7 @@ Mathematical notation and dataflow programming Even though computations done on 
 
 <h2><a href="/posts/what-is-a-scientific-batch-workflow/">What is a scientific (batch) workflow?</a></h2>
 Workflows and DAGs - Confusion about the concepts Jörgen Brandt tweeted a comment that got me thinking again on something I've pondered a lot lately:
-&quot;A workflow is a DAG.&quot; is really a weak definition. That's like saying &quot;A love letter is a sequence of characters.&quot; representation ≠ meaning\ @joergenbr
-Jörgen makes a good point. A Directed Acyclic Graph (DAG) does not by any means capture the full semantic content included in a computational workflow.
+&quot;A workflow is a DAG.&quot; is really a weak definition. That's like saying &quot;A love letter is a sequence of characters.&quot; representation ≠ meaning\ @joergenbr Jörgen makes a good point. A Directed Acyclic Graph (DAG) does not by any means capture the full semantic content included in a computational workflow.
 </div>
 
   
@@ -293,9 +291,8 @@ Jörgen makes a good point. A Directed Acyclic Graph (DAG) does not by any means
 <a href="/posts/golang-growing-in-bioinformatics-workflows/"><img src="/posts/golang-growing-in-bioinformatics-workflows//gopher_thinking_workflows.png" class="post-img-list"></a>
 
 <h2><a href="/posts/golang-growing-in-bioinformatics-workflows/">Go is growing in bioinformatics workflow tools</a></h2>
-TL;DR: We wrote a post on gopherdata.io, about the growing ecosystem of Go-based workflow tools in bioinformatics. Go read it here
-It is interesting to note how Google's Go programming language seems to increase in popularity in bioinformatics.
-Just to give a sample of some of the Go based bioinformatics tools I've stumbled upon, there is since a few years back, the biogo library, providing common functionality for bioinformatics tasks.
+TL;DR: We wrote a post on gopherdata.io, about the growing ecosystem of Go-based workflow tools in bioinformatics. Go read it here It is interesting to note how Google's Go programming language seems to increase in popularity in bioinformatics.
+Just to give a sample of some of the Go based bioinformatics tools I've stumbled upon, there is since a few years back, the biogo library , providing common functionality for bioinformatics tasks.
 </div>
 
   
@@ -303,7 +300,7 @@ Just to give a sample of some of the Go based bioinformatics tools I've stumbled
 
 <h2><a href="/posts/my-frustration-with-the-state-of-note-taking-tools/">The frustrating state of note taking tools</a></h2>
 As I'm constantly digging into a wide variety of topics, reading, thinking, and also trying to memorize a bit, it sometimes seems paper might not completely cut it - primarily since paper is not searchable. As the collection of notes grow, it also becomes unprohibitive to lug around piles of paper-notebooks just to have them handy when needing to check something up.
-What I've been doing so far is to combine paper-based notebooks for thinking and developing ideas, with a markdown based solution, for keeping a daily journal, as well as having a folder of such markdown files organized more according to topic, remotely like a wiki.
+What I've been doing so far is to combine paper-based notebooks for thinking and developing ideas, with a markdown based solution , for keeping a daily journal, as well as having a folder of such markdown files organized more according to topic, remotely like a wiki.
 </div>
 
   
@@ -312,7 +309,7 @@ What I've been doing so far is to combine paper-based notebooks for thinking and
 <a href="/posts/how-to-learn/"><img src="/posts/how-to-learn//amfn.jpg" class="post-img-list"></a>
 
 <h2><a href="/posts/how-to-learn/">Learning how to learn</a></h2>
-I'm reading A mind for numbers, by Barbara Oakley. Firstly, it is a very interesting book, but the main lesson I've already learned from this book seems so paramount that I have to write it down, so I don't forget it (some meta-connotations in that statement ;) ). I found the book through Barbara's coursera course &quot;Learning how to Learn&quot;, and to me it seems learning in general is the topic of the book too, more than numbers specifically - but I still have to read it through, so stay tuned.
+I'm reading A mind for numbers , by Barbara Oakley. Firstly, it is a very interesting book, but the main lesson I've already learned from this book seems so paramount that I have to write it down, so I don't forget it (some meta-connotations in that statement ;) ). I found the book through Barbara's coursera course &quot;Learning how to Learn &quot;, and to me it seems learning in general is the topic of the book too, more than numbers specifically - but I still have to read it through, so stay tuned.
 </div>
 
   
@@ -336,16 +333,16 @@ for a, b, c := range chA, chB, chC { doSomething(a, b, c) } Unfortunately this i
 <a href="/posts/first-production-workflow-run-with-scipipe/"><img src="/posts/first-production-workflow-run-with-scipipe//terminal_411.png" class="post-img-list"></a>
 
 <h2><a href="/posts/first-production-workflow-run-with-scipipe/">First production run with SciPipe - A Go-based scientific workflow tool</a></h2>
-Today marked the day when we ran the very first production workflow with SciPipe, the Go-based scientific workflow tool we've been working on over the last couple of years. Yay! :)
+Today marked the day when we ran the very first production workflow with SciPipe , the Go -based scientific workflow tool we've been working on over the last couple of years. Yay! :)
 This is how it looked (no fancy GUI or such yet, sorry):
-The first result we got in this very very first job was a list of counts of ligands (chemical compounds) in the ExcapeDB dataset (download here) interacting with the 44 protein/gene targets identified by Bowes et al as a good baseline set for identifying hazardous side-effects effects in the body (that is, any chemical compounds binding these proteins, will never become an approved drug).
+The first result we got in this very very first job was a list of counts of ligands (chemical compounds) in the ExcapeDB dataset (download here ) interacting with the 44 protein/gene targets identified by Bowes et al as a good baseline set for identifying hazardous side-effects effects in the body (that is, any chemical compounds binding these proteins, will never become an approved drug).
 </div>
 
   
     <div class="post-card">
 
 <h2><a href="/posts/compiling-rdfhdt-c-tools-on-uppmax-rhel-centos-7/">Compiling RDFHDT C&#43;&#43; tools on UPPMAX (RHEL/CentOS 7)</a></h2>
-At pharmb.io we are researching how to use semantic technologies to push the boundaries for what can be done with intelligent data processing, often of large datasets (see e.g. our paper on linking RDF to cheminformatics and proteomics, and our work on the RDFIO software suite). Thus, for us, RDFHDT opens new possibilites. As we are heavy users of the UPPMAX HPC center for our computations, and so, we need to have the HDT tools available there.
+At pharmb.io we are researching how to use semantic technologies to push the boundaries for what can be done with intelligent data processing, often of large datasets (see e.g. our paper on linking RDF to cheminformatics and proteomics , and our work on the RDFIO software suite ). Thus, for us, RDFHDT opens new possibilites. As we are heavy users of the UPPMAX HPC center for our computations, and so, we need to have the HDT tools available there.
 </div>
 
   
@@ -354,7 +351,7 @@ At pharmb.io we are researching how to use semantic technologies to push the bou
 <a href="/posts/new-paper-on-rdfio-for-interoperable-biomedical-datamanagement-in-semantic-mediawiki/"><img src="/posts/new-paper-on-rdfio-for-interoperable-biomedical-datamanagement-in-semantic-mediawiki//selection_388-1.png" class="post-img-list"></a>
 
 <h2><a href="/posts/new-paper-on-rdfio-for-interoperable-biomedical-datamanagement-in-semantic-mediawiki/">New paper on RDFIO for interoperable biomedical data management in Semantic MediaWiki</a></h2>
-As my collaborator and M.Sc. supervisor Egon Willighagen already blogged, we just released a paper titled: &quot;RDFIO: extending Semantic MediaWiki for interoperable biomedical data management&quot;, with uses cases from Egon and Pekka Kohonen, coding help from Ali King and project supervision from Denny Vrandečić, Roland Grafström and Ola Spjuth.
+As my collaborator and M.Sc. supervisor Egon Willighagen already blogged , we just released a paper titled: &quot;RDFIO: extending Semantic MediaWiki for interoperable biomedical data management &quot;, with uses cases from Egon and Pekka Kohonen , coding help from Ali King and project supervision from Denny Vrandečić , Roland Grafström and Ola Spjuth .
 See the picture below (from the paper) for an overview of all the newly developed functionality (drawn in black), as related to the previously existing functionality (drawn in grey):
 </div>
 
@@ -364,8 +361,7 @@ See the picture below (from the paper) for an overview of all the newly develope
 <a href="/posts/launching-kubernetes-jobs-from-the-go-api-notes-from-a-beginner/"><img src="/posts/launching-kubernetes-jobs-from-the-go-api-notes-from-a-beginner//selection_117.png" class="post-img-list"></a>
 
 <h2><a href="/posts/launching-kubernetes-jobs-from-the-go-api-notes-from-a-beginner/">Notes on launching kubernetes jobs from the Go API</a></h2>
-This post is also published on medium
-My current work at pharmb.io entails adding kubernetes support to my light-weight Go-based scientific workflow engine, scipipe (kubernetes, or k8s for short, is Google&rsquo;s open source project for orchestrating container based compute clusters), which should take scipipe from a simple &ldquo;run it on your laptop&rdquo; workflow system with HPC support still in the work, to something that can power scientific workflows on any set of networked computers that can run kubernetes, which is quite a few (AWS, GCE, Azure, your Raspberry Phi cluster etc etc).
+This post is also published on medium My current work at pharmb.io entails adding kubernetes support to my light-weight Go-based scientific workflow engine, scipipe (kubernetes, or k8s for short, is Google&rsquo;s open source project for orchestrating container based compute clusters), which should take scipipe from a simple &ldquo;run it on your laptop&rdquo; workflow system with HPC support still in the work, to something that can power scientific workflows on any set of networked computers that can run kubernetes, which is quite a few (AWS, GCE, Azure, your Raspberry Phi cluster etc etc).
 </div>
 
   
@@ -374,7 +370,7 @@ My current work at pharmb.io entails adding kubernetes support to my light-weigh
 <a href="/posts/smwcon-fall-2016/"><img src="/posts/smwcon-fall-2016//smwcon_intro.jpg" class="post-img-list"></a>
 
 <h2><a href="/posts/smwcon-fall-2016/">SMWCon Fall 2016 - My talk on large RDF imports</a></h2>
-[I was invited to give a talk at ]Semantic MediaWiki (SMW) conference[ (SMWCon) in Frankfurt last week, on our work on enabling import of RDF datasets into ]SMW[. I have presented at SMWCon before as well (2011: ]blog[, ]slides[, ]video[, 2013: ]slides[), so it was nice to re-connect with some old friends, and to get up to date about how SMW is developing, as well as share about our own contributions.
+[I was invited to give a talk at ]Semantic MediaWiki (SMW) conference [ (SMWCon) in Frankfurt last week, on our work on enabling import of RDF datasets into ]SMW [. I have presented at SMWCon before as well (2011: ]blog [, ]slides [, ]video [, 2013: ]slides [), so it was nice to re-connect with some old friends, and to get up to date about how SMW is developing, as well as share about our own contributions.
 </div>
 
   
@@ -383,8 +379,8 @@ My current work at pharmb.io entails adding kubernetes support to my light-weigh
 <a href="/posts/luigi-tutorial/"><img src="/posts/luigi-tutorial//luigi_screenshot.png" class="post-img-list"></a>
 
 <h2><a href="/posts/luigi-tutorial/">Tutorial: Luigi for Scientific Workflows</a></h2>
-This is a Luigi tutorial I held at the e-Infrastructures for Massively parallel sequencing workshop (Video archive) at SciLifeLab Uppsala in January 2015, moved here for future reference.
-What is Luigi? Luigi is a batch workflow system written in Python and developed by Erik Bernhardson and others at Spotify, where it is used to compute machine-learning powered music recommendation lists, top lists etc.
+This is a Luigi tutorial I held at the e-Infrastructures for Massively parallel sequencing workshop (Video archive ) at SciLifeLab Uppsala in January 2015, moved here for future reference.
+What is Luigi? Luigi is a batch workflow system written in Python and developed by Erik Bernhardson and others at Spotify , where it is used to compute machine-learning powered music recommendation lists, top lists etc.
 Luigi is one of not-too-many batch workflow systems that supports running both normal command line jobs and Hadoop jobs in the same (in this tutorial, we will focus only on the command line part).
 </div>
 
@@ -392,8 +388,8 @@ Luigi is one of not-too-many batch workflow systems that supports running both n
     <div class="post-card">
 
 <h2><a href="/posts/the-best-of-go-d-and-rust/">Combining the best of Go, D and Rust?</a></h2>
-I've been following the development of D, Go and Rust (and also FreePascal for some use cases) for some years (been into some benchmarking for bioinfo tasks), and now we finally have three (four, with fpc) stable statically compiled languages with some momentum behind them, meaning they all are past 1.0.
-While I have went with Go for current projects, I still have a hard time &quot;totally falling in love&quot; with any single of these languages.
+I've been following the development of D , Go and Rust (and also FreePascal for some use cases ) for some years (been into some benchmarking for bioinfo tasks ), and now we finally have three (four, with fpc) stable statically compiled languages with some momentum behind them, meaning they all are past 1.0.
+While I have went with Go for current projects , I still have a hard time &quot;totally falling in love&quot; with any single of these languages.
 </div>
 
   
@@ -412,7 +408,7 @@ I used to have a very hard time getting an overview of my current work, and prio
 <a href="/posts/the-unexpected-usefullness-of-json-on-the-commandline/"><img src="/posts/the-unexpected-usefullness-of-json-on-the-commandline//json_vector_logo_svg.png" class="post-img-list"></a>
 
 <h2><a href="/posts/the-unexpected-usefullness-of-json-on-the-commandline/">The unexpected convenience of JSON on the commandline</a></h2>
-I was working with a migration from drupal to processwire CMS:es, where I wanted to be able to pipe data, including the body field with HTML formatting and all, through multiple processing steps in a flexible manner. I'd start with an extraction SQL query, through a few components to replace and massage the data, and finally over to an import command using processwire's wireshell tool. So, basically I needed a flexible format for structured data that could be sent as one &quot;data object&quot; per line, to work nicely with linux commandline tools like grep, sed and awk.
+I was working with a migration from drupal to processwire CMS:es, where I wanted to be able to pipe data, including the body field with HTML formatting and all, through multiple processing steps in a flexible manner. I'd start with an extraction SQL query, through a few components to replace and massage the data, and finally over to an import command using processwire's wireshell tool . So, basically I needed a flexible format for structured data that could be sent as one &quot;data object&quot; per line, to work nicely with linux commandline tools like grep, sed and awk.
 </div>
 
   
@@ -421,7 +417,7 @@ I was working with a migration from drupal to processwire CMS:es, where I wanted
 <a href="/posts/matrix-transformation-as-model-for-data-flow-operations/"><img src="/posts/matrix-transformation-as-model-for-data-flow-operations//matrix01.png" class="post-img-list"></a>
 
 <h2><a href="/posts/matrix-transformation-as-model-for-data-flow-operations/">The matrix transformation as a model for declarative atomic data flow operations</a></h2>
-After just reading on Hacker News about Google's newly released TensorFlow library, for deep learning based on tensors and data flow, I realized I wrote in a draft post back in 2013 that:
+After just reading on Hacker News about Google's newly released TensorFlow library , for deep learning based on tensors and data flow, I realized I wrote in a draft post back in 2013 that:
 &quot;What if one could have a fully declarative &ldquo;matrix language&rdquo; in which all data transformations ever needed could be declaratively defined in a way that is very easy to comprehend?&quot;
 ... so, I thought this is a good time to post this draft, to see whether it spurs any further ideas.
 </div>
@@ -432,8 +428,7 @@ After just reading on Hacker News about Google's newly released TensorFlow libra
 <a href="/posts/dynamic-workflow-scheduling/"><img src="/posts/dynamic-workflow-scheduling//scheduling_unsplash-1.jpg" class="post-img-list"></a>
 
 <h2><a href="/posts/dynamic-workflow-scheduling/">Wanted: Dynamic workflow scheduling</a></h2>
-Photo credits: Matthew Smith / Unsplash
-In our work on automating machine learning computations in cheminformatics with scientific workflow tools, we have came to realize something; Dynamic scheduling in scientific workflow tools is very important and sometimes badly needed.
+Photo credits: Matthew Smith / Unsplash In our work on automating machine learning computations in cheminformatics with scientific workflow tools , we have came to realize something; Dynamic scheduling in scientific workflow tools is very important and sometimes badly needed.
 What I mean is that new tasks should be able to be scheduled during the execution of a workflow, not just in its scheduling phase.
 What is striking is that far from all workflow tools allow this.
 </div>
@@ -469,8 +464,8 @@ AttributeError: &#39;module&#39; object has no attribute &#39;vars&#39; I first 
 <a href="/posts/how-i-would-like-to-write-golang/"><img src="/posts/how-i-would-like-to-write-golang//selection_301.png" class="post-img-list"></a>
 
 <h2><a href="/posts/how-i-would-like-to-write-golang/">How I would like to write Go programs</a></h2>
-Some time ago I got a post published on GopherAcademy, outlining in detail how I think a flow-based programming inspired syntax can strongly help to create clearer, easier-to-maintain, and more declarative Go programs.
-These ideas have since became clearer, and we (Ola Spjuth's research group at pharmbio) have successfully used them to make the workflow syntax for Luigi (Spotify's great workflow engine by Erik Bernhardsson &amp; co) workflows easier, as implemented in the SciLuigi helper library.
+Some time ago I got a post published on GopherAcademy , outlining in detail how I think a flow-based programming inspired syntax can strongly help to create clearer, easier-to-maintain, and more declarative Go programs.
+These ideas have since became clearer, and we (Ola Spjuth 's research group at pharmbio ) have successfully used them to make the workflow syntax for Luigi (Spotify's great workflow engine by Erik Bernhardsson &amp; co) workflows easier, as implemented in the SciLuigi helper library .
 </div>
 
   
@@ -479,7 +474,7 @@ These ideas have since became clearer, and we (Ola Spjuth's research group at ph
 <a href="/posts/terminator-middle-way/"><img src="/posts/terminator-middle-way//samuel_milou2--proj-b2013262-nobackup-workflows-workflows_296-1.png" class="post-img-list"></a>
 
 <h2><a href="/posts/terminator-middle-way/">Terminator as a middle-way between floating and tiling window managers</a></h2>
-I have tried hard to improve my linux desktop productivity by learning to do as much as possible using keyboard shortcuts, aliases for terminal commands etc etc (I even produced an online course on linux commandline productivity).
+I have tried hard to improve my linux desktop productivity by learning to do as much as possible using keyboard shortcuts, aliases for terminal commands etc etc (I even produced an online course on linux commandline productivity ).
 In this spirit, I naturally tried out a so called tiling window manager (aka tiling wm). In short, a tiling wm organizes all open windows on the screen (or on the current desktop) into a &quot;tiled&quot; grid of frames.
 </div>
 
@@ -510,7 +505,7 @@ Directory structure matters The importance of a good directory structure seems t
 
 <h2><a href="/posts/flowbased-vs-erlang-message-passing/">Flow-based programming and Erlang style message passing - A Biology-inspired idea of how they fit together</a></h2>
 I think Erlang/Elixir fits great as control plane or service-to-service messaging layer for distributing services built with flow-based programming
-Just back from a one day visit to Erlang User Conference. I find the Erlang virtual machine fascinating. And with the new Elixir language built on top of it to fix some of the pain points with Erlang the language, the eco-system has got even more interesting.
+Just back from a one day visit to Erlang User Conference . I find the Erlang virtual machine fascinating. And with the new Elixir language built on top of it to fix some of the pain points with Erlang the language, the eco-system has got even more interesting.
 What I find exciting about Erlang/Elixir and its virtual machine, is its ability to utilize multiple CPU:s on computers, and doing this across multiple computers, in what is commonly referred to as &quot;distributed computing&quot;.
 </div>
 
@@ -520,7 +515,7 @@ What I find exciting about Erlang/Elixir and its virtual machine, is its ability
 <a href="/posts/irods-rulelang-cheatsheet/"><img src="/posts/irods-rulelang-cheatsheet//irodsrules_p1.png" class="post-img-list"></a>
 
 <h2><a href="/posts/irods-rulelang-cheatsheet/">A cheatsheet for the iRODS rule language</a></h2>
-iRODS, the &quot;integrated rule oriented data system&quot; is a super cool system for managing datasets consisting of files, from smallish ones, to really large ones counted in petabytes, and possibly spanning multiple continents.
+iRODS , the &quot;integrated rule oriented data system&quot; is a super cool system for managing datasets consisting of files, from smallish ones, to really large ones counted in petabytes, and possibly spanning multiple continents.
 There's a lot to be said about iRODS (up for another blog post) but the one most interesting feature, in my opinion, is the rule language, which allows to define custom rules and policies for how data should be handled, totally automatically, depending on a lot of factors.
 </div>
 
@@ -530,7 +525,7 @@ There's a lot to be said about iRODS (up for another blog post) but the one most
 <a href="/posts/workflows-dataflow-not-task-deps/"><img src="/posts/workflows-dataflow-not-task-deps//peptide_workflow.png" class="post-img-list"></a>
 
 <h2><a href="/posts/workflows-dataflow-not-task-deps/">Workflow tool makers: Allow defining data flow, not just task dependencies</a></h2>
-Upsurge in workflow tools There seem to be a little upsurge in light-weight - often python-based - workflow tools for data pipelines in the last couple of years: Spotify's Luigi, OpenStack's Mistral, Pinterest's Pinball, and recently AirBnb's Airflow, to name a few. These are all interesting tools, and it is an interesting trend for us at pharmbio, who try to see how we can use workflow tools to automate bio- and cheminformatics tasks on compute clusters.
+Upsurge in workflow tools There seem to be a little upsurge in light-weight - often python-based - workflow tools for data pipelines in the last couple of years: Spotify's Luigi , OpenStack's Mistral , Pinterest's Pinball , and recently AirBnb's Airflow , to name a few. These are all interesting tools, and it is an interesting trend for us at pharmbio , who try to see how we can use workflow tools to automate bio- and cheminformatics tasks on compute clusters.
 </div>
 
   
@@ -539,7 +534,7 @@ Upsurge in workflow tools There seem to be a little upsurge in light-weight - of
 <a href="/posts/patterns-for-composable-concurrent-pipelines-in-go/"><img src="/posts/patterns-for-composable-concurrent-pipelines-in-go//selection_212.png" class="post-img-list"></a>
 
 <h2><a href="/posts/patterns-for-composable-concurrent-pipelines-in-go/">Patterns for composable concurrent pipelines in Go</a></h2>
-I realize I didn't have a link to my blog on Gopher Academy, on patterns for compoasable concurrent pipelines in Go(lang), so here it goes:
+I realize I didn't have a link to my blog on Gopher Academy , on patterns for compoasable concurrent pipelines in Go(lang), so here it goes:
 blog.gopheracademy.com/composable-pipelines-pattern 
 </div>
 
@@ -560,7 +555,7 @@ Have you thought about how testing, in its essence, is: Wrapping complex code, w
 <a href="/posts/the-problem-with-make-for-scientific-workflows/"><img src="/posts/the-problem-with-make-for-scientific-workflows//selection_131.png" class="post-img-list"></a>
 
 <h2><a href="/posts/the-problem-with-make-for-scientific-workflows/">The problem with make for scientific workflows</a></h2>
-The workflow problem solved once and for all in 1979? As soon as the topic of scientific workflows is brought up, there are always a few make fans fervently insisting that the problem of workflows is solved once and for all with GNU make, written first in the 70's :)
+The workflow problem solved once and for all in 1979? As soon as the topic of scientific workflows is brought up, there are always a few make fans fervently insisting that the problem of workflows is solved once and for all with GNU make , written first in the 70's :)
 Personally I haven't been so sure. On the one hand, I know the tool solves a lot of problems for many people.
 </div>
 
@@ -570,7 +565,7 @@ Personally I haven't been so sure. On the one hand, I know the tool solves a lot
 <a href="/posts/dynamic-navigation-for-higher-performance/"><img src="/posts/dynamic-navigation-for-higher-performance//01_truck_combination_with_trip_1_bmp.png" class="post-img-list"></a>
 
 <h2><a href="/posts/dynamic-navigation-for-higher-performance/">Dynamic Navigation for Higher Performance</a></h2>
-Improving performance in Delphi Bold MDA applications by replacing navigation code with derived links in the model This post on Model Driven Architecture in Delphi and Bold, by Rolf Lampa, has been previously published on howtodothings.com.
+Improving performance in Delphi Bold MDA applications by replacing navigation code with derived links in the model This post on Model Driven Architecture in Delphi and Bold , by Rolf Lampa , has been previously published on howtodothings.com .
 Modeling class structures takes some thinking, and when done the thinking and the drawing and after that starting up using the model, then you'll spend awful lots of code traversing links in order to retrieve trivial info in a given object structure.
 </div>
 
@@ -581,8 +576,8 @@ Modeling class structures takes some thinking, and when done the thinking and th
 
 <h2><a href="/posts/ngs-bioinformatics-intro-course-day-3/">NGS Bioinformatics Course Day 3: New Luigi helper tool, &#34;real-world&#34; NGS pipelines</a></h2>
 It turned out I didn't have the time and strength to blog every day at the NGS Bioinformatics Intro course, so here comes a wrap up with some random notes and tidbits from the last days, including any concluding remarks!
-These days we started working on a more realistic NGS pipeline, on analysing re-sequencing samples (slides, tutorial).
-First some outcome from this tutorial What do I mean with &quot;outcome&quot;? Well, as I tried to manually copy and paste the bag of hairy nasty long bash commandline strings in the tutorial pages, that all depended upon each other, I got so frustrated that I decided to try to encode them in a workflow language / tool.
+These days we started working on a more realistic NGS pipeline, on analysing re-sequencing samples (slides , tutorial ).
+First some outcome from this tutorial What do I mean with &quot;outcome&quot;?
 </div>
 
   
@@ -599,8 +594,8 @@ First some outcome from this tutorial What do I mean with &quot;outcome&quot;? W
 
 <h2><a href="/posts/our-experiences-using-spotifys-luigi-for-bioinformatics-workflows/">Links: Our experiences using Spotify&#39;s Luigi for Bioinformatics Workflows</a></h2>
 Fig 1: A screenshot of Luigi's web UI, of a real-world (although rather simple) workflow implemented in Luigi:
-Update May 5, 2016: Most of the below material is more or less outdated. Our latest work has resulted in the SciLuigi helper library, which we have used in production and will be focus of further developments.
-In the Bioclipse / Pharmaceutical Bioinformatics group at Dept of Pharm. Biosciences att UU, we are quite heavy users of Spotify's Luigi workflow library, to automate workflows, mainly doing Machine Learning heavy lifting.
+Update May 5, 2016: Most of the below material is more or less outdated. Our latest work has resulted in the SciLuigi helper library , which we have used in production and will be focus of further developments.
+In the Bioclipse / Pharmaceutical Bioinformatics group at Dept of Pharm. Biosciences att UU, we are quite heavy users of Spotify's Luigi workflow library , to automate workflows, mainly doing Machine Learning heavy lifting.
 </div>
 
   
@@ -610,7 +605,7 @@ In the Bioclipse / Pharmaceutical Bioinformatics group at Dept of Pharm. Bioscie
 
 <h2><a href="/posts/ngs-bioinformatics-intro-course-day-2/">NGS Bioinformatics Intro Course Day 2</a></h2>
 Today was the second day of the introductory course in NGS bioinformatics that I'm taking as part of my PhD studies.
-For me it started with a substantial oversleep, probably due to a combination of an annoying cold and the ~2 hour commute from south Stockholm to Uppsala and BMC. Thus I missed some really interesting material (and tutorial) on file types in NGS analysis, but will make sure to go through that in my free time during the week.
+For me it started with a substantial oversleep, probably due to a combination of an annoying cold and the ~2 hour commute from south Stockholm to Uppsala and BMC . Thus I missed some really interesting material (and tutorial ) on file types in NGS analysis, but will make sure to go through that in my free time during the week.
 </div>
 
   
@@ -627,7 +622,7 @@ Today's content was mostly introductions to the linux commandline in general, an
     <div class="post-card">
 
 <h2><a href="/posts/introductory-course-in-bioinformatics-for-ngs-data/">Taking a one week introductory course in Bioinformatics for NGS data</a></h2>
-Right now I'm sitting on the train and trying to get my head around some of the pre-course materials.
+Right now I'm sitting on the train and trying to get my head around some of the pre-course materials .
 </div>
 
   
@@ -643,8 +638,8 @@ Right now I'm sitting on the train and trying to get my head around some of the 
 <h2><a href="/posts/smallest-pipeable-go-program/">The smallest pipeable go program</a></h2>
 import ( &ldquo;io&rdquo; &ldquo;os&rdquo; )
 func main() { io.Copy(os.Stdout, os.Stdin) }
-... or (credits: [Roger Peppe](https://twitter.com/rogpeppe)): ```go package main import ( &#34;bufio&#34; &#34;fmt&#34; &#34;os&#34; ) func main() { for scan := bufio.NewScanner(os.Stdin); scan.Scan(); { fmt.Printf(&#34;%s\n&#34;, scan.Text()) } } Ah, I just realized that the &quot;smallest pipeable&quot; Go(lang) program is rather small, if using my little library of minimalistic streaming components. Nothing more than:
-package main import ( &#34;fmt&#34; &#34;github.com/samuell/glow&#34; ) func main() { inchan := make(chan []byte, 16) glow.
+... or (credits: [Roger Peppe](https://twitter.com/rogpeppe)): ```go package main import ( &#34;bufio&#34; &#34;fmt&#34; &#34;os&#34; ) func main() { for scan := bufio.NewScanner(os.Stdin); scan.Scan(); { fmt.Printf(&#34;%s\n&#34;, scan.Text()) } } Ah, I just realized that the &quot;smallest pipeable&quot; Go (lang) program is rather small, if using my little library of minimalistic streaming components . Nothing more than:
+package main import ( &#34;fmt&#34; &#34;github.
 </div>
 
   
@@ -655,7 +650,7 @@ package main import ( &#34;fmt&#34; &#34;github.com/samuell/glow&#34; ) func mai
 <h2><a href="/posts/profiling-and-call-graphs-for-golang/">Profiling and creating call graphs for Go programs</a></h2>
 In trying to get my head around the code of the very interesting GoFlow library, (for flow-based programming in Go), and the accompanying flow-based bioinformatics library I started hacking on, I needed to get some kind of visualization (like a call graph) ... something like this:
 (And in the end, that is what I got ... read on ... ) :)
-I then found out about the go tool pprof command, for which the Go team published a blog post on here.
+I then found out about the go tool pprof command, for which the Go team published a blog post on here .
 </div>
 
   
@@ -664,7 +659,7 @@ I then found out about the go tool pprof command, for which the Go team publishe
 <a href="/posts/ebnf-parser-for-galaxy-toolconfig-syntax-with-antlr/"><img src="/posts/ebnf-parser-for-galaxy-toolconfig-syntax-with-antlr//screenshot-antlrworks_1_4_2.png" class="post-img-list"></a>
 
 <h2><a href="/posts/ebnf-parser-for-galaxy-toolconfig-syntax-with-antlr/">(E)BNF parser for parts of the Galaxy ToolConfig syntax with ANTLR</a></h2>
-As blogged earlier, I'm currently into parsing the syntax of some definitions for the parameters and stuff of command line tools. As said in the linked blog post, I was pondering whether to use the Galaxy Toolconfig format or the DocBook CmdSynopsis format. It turned out though Well, that cmdsynopsis lacks the option to specify a list of valid choices, for a parameter, as is possible in the Galaxy ToolConfig format (see here), and thus can be used to generate drop-down lists in wizards etc.
+As blogged earlier, I'm currently into parsing the syntax of some definitions for the parameters and stuff of command line tools. As said in the linked blog post, I was pondering whether to use the Galaxy Toolconfig format or the DocBook CmdSynopsis format . It turned out though Well, that cmdsynopsis lacks the option to specify a list of valid choices, for a parameter, as is possible in the Galaxy ToolConfig format (see here ), and thus can be used to generate drop-down lists in wizards etc.
 </div>
 
   

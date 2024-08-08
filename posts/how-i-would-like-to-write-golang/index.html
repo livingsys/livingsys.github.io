@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>How I would like to write Go programs | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -45,22 +45,30 @@
     <img src="selection_301.png" alt=""  />
 </p>
 </p>
-<p>Some time ago I got a <a href="http://blog.gopheracademy.com/composable-pipelines-pattern">post published on
-GopherAcademy</a>,
-outlining in detail how I think a <a href="http://www.jpaulmorrison.com/fbp">flow-based
-programming</a> inspired syntax can
+<p>Some time ago I got a <a href="http://blog.gopheracademy.com/composable-pipelines-pattern" target="_blank" rel="noopener">post published on
+GopherAcademy</a>
+,
+outlining in detail how I think a <a href="http://www.jpaulmorrison.com/fbp" target="_blank" rel="noopener">flow-based
+programming</a>
+ inspired syntax can
 strongly help to create clearer, easier-to-maintain, and more
 declarative Go programs.</p>
-<p>These ideas have since became clearer, and we (<a href="http://twitter.com/ola_spjuth">Ola
-Spjuth</a>'s <a href="http://www.farmbio.uu.se/research/researchgroups/pb/">research group at
-pharmbio</a>) have
+<p>These ideas have since became clearer, and we (<a href="http://twitter.com/ola_spjuth" target="_blank" rel="noopener">Ola
+Spjuth</a>
+'s <a href="http://www.farmbio.uu.se/research/researchgroups/pb/" target="_blank" rel="noopener">research group at
+pharmbio</a>
+) have
 successfully used them to make the workflow syntax for
-<a href="https://github.com/spotify/luigi">Luigi</a> (Spotify's great workflow
-engine by <a href="http://twitter.com/fulhack">Erik Bernhardsson</a> &amp; co)
-workflows easier, as implemented in the <a href="https://github.com/samuell/sciluigi#readme">SciLuigi helper
-library</a>.</p>
-<p>I even <a href="http://bionics.it/posts/fbp-data-flow-syntax">blogged the other
-day</a>, about how I think
+<a href="https://github.com/spotify/luigi" target="_blank" rel="noopener">Luigi</a>
+ (Spotify's great workflow
+engine by <a href="http://twitter.com/fulhack" target="_blank" rel="noopener">Erik Bernhardsson</a>
+ &amp; co)
+workflows easier, as implemented in the <a href="https://github.com/samuell/sciluigi#readme" target="_blank" rel="noopener">SciLuigi helper
+library</a>
+.</p>
+<p>I even <a href="http://bionics.it/posts/fbp-data-flow-syntax" target="_blank" rel="noopener">blogged the other
+day</a>
+, about how I think
 this kind of syntax would help untangle the syntax used in most
 functional languages. But the final code example in that blog post was a
 toy example in python, that didn't work, since python doesn't have the
@@ -68,9 +76,11 @@ required concurrent features to make it work.</p>
 <p>So, the idea struck me tonight that it might be easy enough to implement
 the same example in Go, using the most up-to-date ideas for the syntax.
 One hour later, I have a working Go example!</p>
-<p>Find it in <a href="https://gist.github.com/samuell/4d9625dbc3623fed771d#file-dataflow_syntax_example-go-L16-L32">this
-gist</a>,
-<a href="http://play.golang.org/p/2_uJwnk7zS">golang play</a> or in the pasted
+<p>Find it in <a href="https://gist.github.com/samuell/4d9625dbc3623fed771d#file-dataflow_syntax_example-go-L16-L32" target="_blank" rel="noopener">this
+gist</a>
+,
+<a href="http://play.golang.org/p/2_uJwnk7zS" target="_blank" rel="noopener">golang play</a>
+ or in the pasted
 version just below! Watch out especially for those lines connecting the
 (asynchronous) processes together. That is, these lines:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>split.In  = hisay.Out
@@ -256,18 +266,25 @@ hard-coded for-loop ;) - ideas welcome)</p>
 </span></span><span style="display:flex;"><span>hi <span style="color:#00f">for</span> the  10:TH TIME!
 </span></span><span style="display:flex;"><span>Finished program!
 </span></span></code></pre></div><hr>
-<p><em><strong>Note I:</strong> See also <a href="https://plus.google.com/u/0/+SamuelLampa/posts/GKgBLeeJXdX">this very interesting discussion on
-Google+</a>.<br>
-<strong>Note II:</strong> ... and also <a href="https://groups.google.com/forum/#!topic/golang-nuts/vgj_d-MjUHA">this super-interesting discussion on
+<p><em><strong>Note I:</strong> See also <a href="https://plus.google.com/u/0/&#43;SamuelLampa/posts/GKgBLeeJXdX" target="_blank" rel="noopener">this very interesting discussion on
+Google+</a>
+.<br>
+<strong>Note II:</strong> ... and also <a href="https://groups.google.com/forum/#!topic/golang-nuts/vgj_d-MjUHA" target="_blank" rel="noopener">this super-interesting discussion on
 golang-nuts mailing
 list</a>
-(See especially <a href="https://groups.google.com/d/msg/golang-nuts/vgj_d-MjUHA/T9sE64Yrcq0J">the example and mini-FBP-framework
+
+(See especially <a href="https://groups.google.com/d/msg/golang-nuts/vgj_d-MjUHA/T9sE64Yrcq0J" target="_blank" rel="noopener">the example and mini-FBP-framework
 suggested</a>
-by <a href="http://twitter.com/egonelbre">Egon Elbre</a>)<br>
+
+by <a href="http://twitter.com/egonelbre" target="_blank" rel="noopener">Egon Elbre</a>
+)<br>
 <strong>Note III:</strong> For clarity, I should mention that I'm fully aware of
-<a href="http://twitter.com/sibiroff">Vladimir Sibiroff</a>'s great
-<a href="https://github.com/trustmaster/goflow">GoFlow</a> library, which <a href="http://github.com/samuell/blow">I've
-been playing with</a>, and the development
+<a href="http://twitter.com/sibiroff" target="_blank" rel="noopener">Vladimir Sibiroff</a>
+'s great
+<a href="https://github.com/trustmaster/goflow" target="_blank" rel="noopener">GoFlow</a>
+ library, which <a href="http://github.com/samuell/blow" target="_blank" rel="noopener">I've
+been playing with</a>
+, and the development
 of which I'm following closely. But I have wanted to see how far one
 can go without a framework at all, just using an FBP-like pattern and
 syntax, since I think a few FBP-inspired ideas can benefit also those
@@ -275,26 +292,33 @@ programs that need to stay away from frameworks for one reason or
 another. This post presents what I have came up with so far (very much
 inspired by GoFlow by the way!).<br>
 <strong>Note IV</strong> (Jul 19, '15, 3:49 CET): Have updated the code examples
-with some of the great suggestions by</em> <a href="http://twitter.com/egonelbre">Egon
-Elbre</a><em>, now allowing to skip the
+with some of the great suggestions by</em> <a href="http://twitter.com/egonelbre" target="_blank" rel="noopener">Egon
+Elbre</a>
+<em>, now allowing to skip the
 &quot;driving loop&quot;. To demonstrate this more nicely, I have added a
 &quot;zipper&quot; and &quot;printer&quot; component, that are more suited as
-terminating processes. See the</em> <a href="https://groups.google.com/d/msg/golang-nuts/vgj_d-MjUHA/qQMij-plrgQJ">mailing list
+terminating processes. See the</em> <a href="https://groups.google.com/d/msg/golang-nuts/vgj_d-MjUHA/qQMij-plrgQJ" target="_blank" rel="noopener">mailing list
 thread</a>
+
 <em>for more info.</em></p>
 <hr>
-<p><em><strong>Edit I:</strong> Made code example terser, after feedback from <a href="https://twitter.com/rolflampa">Rolf
-Lampa</a>.<br>
+<p><em><strong>Edit I:</strong> Made code example terser, after feedback from <a href="https://twitter.com/rolflampa" target="_blank" rel="noopener">Rolf
+Lampa</a>
+.<br>
 <strong>Edit II:</strong> Added missing channel close statements.</em><br>
 <em><strong>Edit III:</strong> Fix data races introduced by switching channels after a
-go-routine had started reading from it (Spotted by <a href="https://plus.google.com/+YannHodique/posts">Yann
-Hodique</a> in <a href="https://plus.google.com/+SamuelLampa/posts/GKgBLeeJXdX">this
-thread</a>,
+go-routine had started reading from it (Spotted by <a href="https://plus.google.com/&#43;YannHodique/posts" target="_blank" rel="noopener">Yann
+Hodique</a>
+ in <a href="https://plus.google.com/&#43;SamuelLampa/posts/GKgBLeeJXdX" target="_blank" rel="noopener">this
+thread</a>
+,
 thanks!)</em><br>
 <em><strong>Edit IV:</strong> Defer the channel closeing to avoid prematurely closing
-channels, as pointed out by <a href="http://twitter.com/egonelbre">Egon Elbre</a>
-in <a href="https://groups.google.com/d/msg/golang-nuts/vgj_d-MjUHA/T9sE64Yrcq0J">this
-thread</a>.<br>
+channels, as pointed out by <a href="http://twitter.com/egonelbre" target="_blank" rel="noopener">Egon Elbre</a>
+
+in <a href="https://groups.google.com/d/msg/golang-nuts/vgj_d-MjUHA/T9sE64Yrcq0J" target="_blank" rel="noopener">this
+thread</a>
+.<br>
 <strong>Edit V:</strong> A better &quot;driver loop&quot;, using the ok-values from read
 channels.</em></p>
 

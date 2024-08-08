@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>Equation-centric dataflow programming in Go | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -45,10 +45,13 @@
 <p>Even though computations done on computers are very often based on some
 type of math, it is striking that the notation used in math to express
 equations and relations is not always very readily converted into
-programming code. Outside of purely <a href="https://en.wikipedia.org/wiki/Symbolic_programming">symbolic
+programming code. Outside of purely <a href="https://en.wikipedia.org/wiki/Symbolic_programming" target="_blank" rel="noopener">symbolic
 programming</a>
-languages like <a href="http://www.sagemath.org/">sage math</a> or the
-(proprietary) <a href="https://www.wolfram.com/language">Wolfram language</a>,
+
+languages like <a href="http://www.sagemath.org/" target="_blank" rel="noopener">sage math</a>
+ or the
+(proprietary) <a href="https://www.wolfram.com/language" target="_blank" rel="noopener">Wolfram language</a>
+,
 there seem to always be quite a divide between the mathematical notation
 and the numerical implementation.</p>
 <p>I'm generelly interested in how we can go towards a more declarative
@@ -59,9 +62,11 @@ programming environments, so that existing knowledge, third party
 library ecosystems and performance optimizations having gone into these
 systems can be re-used.</p>
 <p>Optimal is if we can fluently convert such declarative coding approaches
-into <a href="https://en.wikipedia.org/wiki/Dataflow">dataflow</a>-, or even
-<a href="https://en.wikipedia.org/wiki/Flow-based_programming">flow-based
+into <a href="https://en.wikipedia.org/wiki/Dataflow" target="_blank" rel="noopener">dataflow</a>
+-, or even
+<a href="https://en.wikipedia.org/wiki/Flow-based_programming" target="_blank" rel="noopener">flow-based
 programming</a>
+
 programs, since these approaches are a pretty good fit for today's
 multicore CPU chips, where the inherent pipeline parallelism makes good
 use of multiple computing cores without too much hoops, except we
@@ -69,8 +74,9 @@ express the computations as pipelines of asynchronously running
 processing components.</p>
 <h2 id="enter-go-generator-functions">Enter Go generator functions</h2>
 <p>Pondering the fact that Go's concurrency primitives (go-routines and
-channels) combined into the generator pattern (<a href="https://talks.golang.org/2012/concurrency.slide#25">see Rob Pike's slides
-here</a>), is pretty
+channels) combined into the generator pattern (<a href="https://talks.golang.org/2012/concurrency.slide#25" target="_blank" rel="noopener">see Rob Pike's slides
+here</a>
+), is pretty
 much dataflow in a pretty functional style, it struck me that Go
 generator functions might be useful for expressing computation in a way
 that resembles mathematical equations.</p>
@@ -92,8 +98,9 @@ chosen to implement.</p>
 <p>As example formula for my experiment, I wanted something with simple
 operators (mostly &quot;Add&quot;, &quot;Sub&quot;, &quot;Mul&quot; and &quot;Div), but complex
 enough that it is relevant to make the formula as readable as possible.
-The monthly payment formula from <a href="http://www.math.utah.edu/~pa/math/equations/equations.html">this
-page</a> seemed
+The monthly payment formula from <a href="http://www.math.utah.edu/~pa/math/equations/equations.html" target="_blank" rel="noopener">this
+page</a>
+ seemed
 like a good fit:</p>
 <p><p class="image">
     <img src="loan.gif" alt=""  />
@@ -256,8 +263,9 @@ function on the stream of values, returning a single stream of values.
 </span></span><span style="display:flex;"><span>    }()
 </span></span><span style="display:flex;"><span>    <span style="color:#00f">return</span> res
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>You can view and run an experiment demonstrating this <a href="https://play.golang.org/p/C3OovxjcMU">on the go
-playground</a>.</p>
+</span></span></code></pre></div><p>You can view and run an experiment demonstrating this <a href="https://play.golang.org/p/C3OovxjcMU" target="_blank" rel="noopener">on the go
+playground</a>
+.</p>
 <h2 id="limitations-and-concluding-remarks">Limitations and concluding remarks</h2>
 <p>So, as you see, it is indeed possible to express dataflow computations
 in a quite an equation-centric way in Go.</p>
@@ -277,8 +285,9 @@ merge declarative, relation-centric programming into mainstream
 programming environments.</p>
 <h2 id="notes">Notes</h2>
 <ul>
-<li><em>This post has been discussed <a href="https://www.reddit.com/r/golang/comments/7meypm/equationcentric_dataflow_programming_in_go/">in a thread on
-reddit</a></em></li>
+<li><em>This post has been discussed <a href="https://www.reddit.com/r/golang/comments/7meypm/equationcentric_dataflow_programming_in_go/" target="_blank" rel="noopener">in a thread on
+reddit</a>
+</em></li>
 </ul>
 
   

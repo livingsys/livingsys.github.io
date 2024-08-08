@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>Notes on launching kubernetes jobs from the Go API | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -41,12 +41,16 @@
   
   <time datetime="2017-02-15T00:01:00&#43;01:00">February 15, 2017</time>
 
-  <p><em>This post is <a href="https://medium.com/@saml/launching-kubernetes-jobs-from-the-go-api-notes-from-a-beginner-2b34fbc502c0">also published on
-medium</a></em></p>
-<p>My current work at <a href="http://pharmb.io/">pharmb.io</a> entails adding
-<a href="http://kubernetes.io/">kubernetes</a> support to my light-weight Go-based
+  <p><em>This post is <a href="https://medium.com/@saml/launching-kubernetes-jobs-from-the-go-api-notes-from-a-beginner-2b34fbc502c0" target="_blank" rel="noopener">also published on
+medium</a>
+</em></p>
+<p>My current work at <a href="http://pharmb.io/" target="_blank" rel="noopener">pharmb.io</a>
+ entails adding
+<a href="http://kubernetes.io/" target="_blank" rel="noopener">kubernetes</a>
+ support to my light-weight Go-based
 scientific workflow engine,
-<a href="https://github.com/scipipe/scipipe">scipipe</a> (kubernetes, or <em>k8s</em> for
+<a href="https://github.com/scipipe/scipipe" target="_blank" rel="noopener">scipipe</a>
+ (kubernetes, or <em>k8s</em> for
 short, is Google&rsquo;s open source project for orchestrating container based
 compute clusters), which should take scipipe from a simple &ldquo;run it on
 your laptop&rdquo; workflow system with HPC support still in the work, to
@@ -54,8 +58,9 @@ something that can power scientific workflows on any set of networked
 computers that can run kubernetes, which is quite a few (AWS, GCE,
 Azure, your Raspberry Phi cluster etc etc).</p>
 <p>As scipipe is itself written in Go it seemed natural to go with the
-officially supported <a href="https://github.com/kubernetes/client-go">programmatic Go
-API</a> to kubernetes. This turned
+officially supported <a href="https://github.com/kubernetes/client-go" target="_blank" rel="noopener">programmatic Go
+API</a>
+ to kubernetes. This turned
 out to be less than a smooth ride though, at least to start with. Thus,
 I thought it worthwhile to jot down a few of the observations I did as a
 complete newcomer to kubernetes and this style of writing programming
@@ -64,31 +69,37 @@ give kubernetes developers a few hints on where to focus efforts in
 documenting the API.</p>
 <h3 id="documentation---or-not">Documentation &mdash; or not</h3>
 <p>The first thing I noted, when looking for documentation for the
-programmatic access to the API, is that there wasn&rsquo;t much, except for <a href="https://kubernetes.io/docs/user-guide/accessing-the-cluster/#programmatic-access-to-the-api">a
+programmatic access to the API, is that there wasn&rsquo;t much, except for <a href="https://kubernetes.io/docs/user-guide/accessing-the-cluster/#programmatic-access-to-the-api" target="_blank" rel="noopener">a
 minimal section in the user
-guide</a>,
-and <a href="https://github.com/kubernetes/client-go#how-to-use-it">two possibly even more minimal code
-examples</a>. None
+guide</a>
+,
+and <a href="https://github.com/kubernetes/client-go#how-to-use-it" target="_blank" rel="noopener">two possibly even more minimal code
+examples</a>
+. None
 of those showed specifically how to work with the (batch) jobs API
 though, so I was still left in the dark in that regard.</p>
-<p>I also, somewhere down the line found the <a href="https://github.com/kubernetes/client-go/blob/master/pkg/apis/batch/types.go">code file where most of the
+<p>I also, somewhere down the line found the <a href="https://github.com/kubernetes/client-go/blob/master/pkg/apis/batch/types.go" target="_blank" rel="noopener">code file where most of the
 API types for the batch job API were
-defined</a>.
+defined</a>
+.
 But since the types were all spread out, and depending on each other in
 very complex ways, without a clear starting point, it was not too
 helpful for a newcomer.</p>
 <p>A few guiding words on the principles, or how to find stuff, would have
 helped tons here.</p>
-<p>Well, finally, by surfing around lots and lots, I stumbled upon the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md">API
+<p>Well, finally, by surfing around lots and lots, I stumbled upon the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md" target="_blank" rel="noopener">API
 conventions
-document</a>,
+document</a>
+,
 which in fact gives a few hints about the thinking behind the API
 structure. That helped to get some kind of idea of the thinking behind
 the API (link this document more prominently maybe?).</p>
 <p>And, what finally made me get forward, was when I found an example of a
-3rd party library that created kubernetes jobs, <a href="https://github.com/pachyderm/pachyderm/blob/805e63/src/server/pps/server/api_server.go#L480">in the
+3rd party library that created kubernetes jobs, <a href="https://github.com/pachyderm/pachyderm/blob/805e63/src/server/pps/server/api_server.go#L480" target="_blank" rel="noopener">in the
 code</a>
-of <a href="http://pachyderm.io/">Pachyderm</a>(Pachyderm is cool cool stuff, but
+
+of <a href="http://pachyderm.io/" target="_blank" rel="noopener">Pachyderm</a>
+(Pachyderm is cool cool stuff, but
 more on that in another post perhaps).</p>
 <p>I was still heavy scared by stuff like these import statements:</p>
 <p><p class="image">
@@ -110,12 +121,16 @@ is not that hard to find the right type to use for a field: The type of
 the value that will populate a field, is typically named the same as the
 field name itself, so one can typically just assume that, and start
 typing <code>SomeFieldName: api.SomeFieldType...</code> in a Go editor with good
-autocompletion support (such as <a href="http://code.visualstudio.com/">VSCode</a>
-with Luke Hoban&rsquo;s <a href="https://github.com/Microsoft/vscode-go">great great Go
-plugin</a>, or Vim with Fatih&rsquo;s
-<a href="https://github.com/fatih/vim-go">awesome Vim-Go plugin</a>), and you will
-find it (see <a href="https://github.com/samuell/k8s-experiments/blob/0ada4a53c9e19d29f129960b5d278afe99cdb67f/k8sexp.go#L43-L90">my working code
+autocompletion support (such as <a href="http://code.visualstudio.com/" target="_blank" rel="noopener">VSCode</a>
+
+with Luke Hoban&rsquo;s <a href="https://github.com/Microsoft/vscode-go" target="_blank" rel="noopener">great great Go
+plugin</a>
+, or Vim with Fatih&rsquo;s
+<a href="https://github.com/fatih/vim-go" target="_blank" rel="noopener">awesome Vim-Go plugin</a>
+), and you will
+find it (see <a href="https://github.com/samuell/k8s-experiments/blob/0ada4a53c9e19d29f129960b5d278afe99cdb67f/k8sexp.go#L43-L90" target="_blank" rel="noopener">my working code
 example</a>
+
 mentioned at the very end of the post, for a look at how this looks in
 reality).</p>
 <p>Finally, the<code>unversioned</code> and <code>batch</code> API files seems to be used only in
@@ -123,20 +138,26 @@ a few special cases, so the main <code>api</code> endpoint
 (k8s.io/kubernetes/pkg/api) seems to be where to look most of the time.</p>
 <p>All in all, after I get the idea behind this, with the hierarchy of
 typed structs. It all kind of starts to make sense, as you get the
-safety and all. And most importantly, I finally managed to <a href="https://github.com/samuell/k8s-experiments/blob/0ada4a53c9e19d29f129960b5d278afe99cdb67f/k8sexp.go#L43-L90">start my
+safety and all. And most importantly, I finally managed to <a href="https://github.com/samuell/k8s-experiments/blob/0ada4a53c9e19d29f129960b5d278afe99cdb67f/k8sexp.go#L43-L90" target="_blank" rel="noopener">start my
 first kubernetes job via the Go
-API</a>!
-:) Now it just remains to <a href="https://github.com/scipipe/scipipe/issues/32">get it integrated in
-scipipe</a> soon enough.</p>
+API</a>
+!
+:) Now it just remains to <a href="https://github.com/scipipe/scipipe/issues/32" target="_blank" rel="noopener">get it integrated in
+scipipe</a>
+ soon enough.</p>
 <p><em><strong>UPDATE:</strong> There we go, two working examples implemented (Tested only
-on MiniKube so far though): A <a href="https://github.com/scipipe/scipipe/blob/feature/k8s-support/examples/k8s_minimal/k8s_minimal.go">minimal
+on MiniKube so far though): A <a href="https://github.com/scipipe/scipipe/blob/feature/k8s-support/examples/k8s_minimal/k8s_minimal.go" target="_blank" rel="noopener">minimal
 example</a>
-(<a href="https://github.com/scipipe/scipipe/blob/feature/k8s-support/examples/k8s_minimal/k8s_jobspec.yml">accompanying jobspec
-file</a>),
-and <a href="https://github.com/scipipe/scipipe/blob/feature/k8s-support/examples/k8s_openms/k8s_openms.go">one running the OpenMS metabolomics
+
+(<a href="https://github.com/scipipe/scipipe/blob/feature/k8s-support/examples/k8s_minimal/k8s_jobspec.yml" target="_blank" rel="noopener">accompanying jobspec
+file</a>
+),
+and <a href="https://github.com/scipipe/scipipe/blob/feature/k8s-support/examples/k8s_openms/k8s_openms.go" target="_blank" rel="noopener">one running the OpenMS metabolomics
 software</a>
-(<a href="https://github.com/scipipe/scipipe/blob/feature/k8s-support/examples/k8s_openms/k8s_jobspec.yml">jobspec
-file</a>).</em></p>
+
+(<a href="https://github.com/scipipe/scipipe/blob/feature/k8s-support/examples/k8s_openms/k8s_jobspec.yml" target="_blank" rel="noopener">jobspec
+file</a>
+).</em></p>
 
   
 

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>New paper on RDFIO for interoperable biomedical data management in Semantic MediaWiki | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -41,18 +41,26 @@
   
   <time datetime="2017-09-11T15:57:00&#43;02:00">September 11, 2017</time>
 
-  <p>As my collaborator and M.Sc. supervisor <a href="https://twitter.com/egonwillighagen">Egon
-Willighagen</a> already
-<a href="http://chem-bla-ics.blogspot.nl/2017/09/new-paper-rdfio-extending-semantic.html">blogged</a>,
-we just released a paper titled: &quot;<a href="https://jbiomedsem.biomedcentral.com/articles/10.1186/s13326-017-0136-y">RDFIO: extending Semantic MediaWiki
+  <p>As my collaborator and M.Sc. supervisor <a href="https://twitter.com/egonwillighagen" target="_blank" rel="noopener">Egon
+Willighagen</a>
+ already
+<a href="http://chem-bla-ics.blogspot.nl/2017/09/new-paper-rdfio-extending-semantic.html" target="_blank" rel="noopener">blogged</a>
+,
+we just released a paper titled: &quot;<a href="https://jbiomedsem.biomedcentral.com/articles/10.1186/s13326-017-0136-y" target="_blank" rel="noopener">RDFIO: extending Semantic MediaWiki
 for interoperable biomedical data
-management</a>&quot;,
-with uses cases from Egon and <a href="https://twitter.com/pkohonen">Pekka
-Kohonen</a>, coding help from <a href="https://twitter.com/ali_king">Ali
-King</a> and project supervision from <a href="https://twitter.com/vrandezo">Denny
-Vrandečić</a>, <a href="https://www.linkedin.com/in/roland-grafstr%C3%B6m-a86b3b2">Roland
-Grafström</a> and
-<a href="https://twitter.com/ola_spjuth">Ola Spjuth</a>.</p>
+management</a>
+&quot;,
+with uses cases from Egon and <a href="https://twitter.com/pkohonen" target="_blank" rel="noopener">Pekka
+Kohonen</a>
+, coding help from <a href="https://twitter.com/ali_king" target="_blank" rel="noopener">Ali
+King</a>
+ and project supervision from <a href="https://twitter.com/vrandezo" target="_blank" rel="noopener">Denny
+Vrandečić</a>
+, <a href="https://www.linkedin.com/in/roland-grafstr%c3%b6m-a86b3b2" target="_blank" rel="noopener">Roland
+Grafström</a>
+ and
+<a href="https://twitter.com/ola_spjuth" target="_blank" rel="noopener">Ola Spjuth</a>
+.</p>
 <p>See the picture below (from the paper) for an overview of all the newly
 developed functionality (drawn in black), as related to the previously
 existing functionality (drawn in grey):</p>
@@ -61,44 +69,55 @@ existing functionality (drawn in grey):</p>
 </p>
 </p>
 <p>The story goes back about seven years, when I had just finished my
-<a href="http://urn.kb.se/resolve?urn=urn:nbn:se:uu:diva-146738">M.Sc. thesis</a>
-on using Prolog for Semantic Web in <a href="http://bioclipse.net/">Bioclipse</a>,
-supervised by Egon. Egon had introduced me to the <a href="https://developers.google.com/open-source/gsoc/">Google Summer of
-Code</a> program and
+<a href="http://urn.kb.se/resolve?urn=urn:nbn:se:uu:diva-146738" target="_blank" rel="noopener">M.Sc. thesis</a>
+
+on using Prolog for Semantic Web in <a href="http://bioclipse.net/" target="_blank" rel="noopener">Bioclipse</a>
+,
+supervised by Egon. Egon had introduced me to the <a href="https://developers.google.com/open-source/gsoc/" target="_blank" rel="noopener">Google Summer of
+Code</a>
+ program and
 stipend, paid to students contributing to open source software projects
 over a summer. This came at a very suitable time as I was looking for
 summer work to fill up the summer until I could find a proper job.</p>
 <p>The suggestion turned out to come at a suitable time in other aspects
 too. As Egon and I were playing around with RDF data in Bioclipse, and
-we also were sporadic users of <a href="http://www.semantic-mediawiki.org">Semantic
-MediaWiki</a> (SMW), I at some point
+we also were sporadic users of <a href="http://www.semantic-mediawiki.org" target="_blank" rel="noopener">Semantic
+MediaWiki</a>
+ (SMW), I at some point
 wanted to import some RDF data into SMW, but realized there was no
 general solution for that. I applied a suggestion to work on addressing
 this to WikiMedia, through the Semantic MediaWiki community. Luckily, it
-turned out <a href="https://twitter.com/vrandezo">Denny</a> already had similar
+turned out <a href="https://twitter.com/vrandezo" target="_blank" rel="noopener">Denny</a>
+ already had similar
 ideas, and also had some developed ideas about how to implement this
 already. He had developed the &quot;SMWWriter&quot; extension (no longer
-available), which could write facts to SMW via the <a href="https://www.mediawiki.org/wiki/API:Main_page">MediaWiki
-API</a>, and also pointed me
-to Benjamin (<a href="https://twitter.com/bengee">bengee</a>) Nowack's widely used
-<a href="https://github.com/semsol/arc2">ARC2 library</a> which provides various
+available), which could write facts to SMW via the <a href="https://www.mediawiki.org/wiki/API:Main_page" target="_blank" rel="noopener">MediaWiki
+API</a>
+, and also pointed me
+to Benjamin (<a href="https://twitter.com/bengee" target="_blank" rel="noopener">bengee</a>
+) Nowack's widely used
+<a href="https://github.com/semsol/arc2" target="_blank" rel="noopener">ARC2 library</a>
+ which provides various
 functionality for working with RDF in PHP, including a pure PHP SPARQL
 endpoint. This previous work and pointers greatly helped me get up to
 speed with the project fast, despite rather shallow coding experience at
 the time.</p>
 <p>The project was not an overly simple one though, and although I finished
-a working verison of the <a href="https://www.mediawiki.org/wiki/Extension:RDFIO">RDFIO
-extension</a> on time, it
+a working verison of the <a href="https://www.mediawiki.org/wiki/Extension:RDFIO" target="_blank" rel="noopener">RDFIO
+extension</a>
+ on time, it
 has been plagued by a lack of time to fix bugs and code maintenance over
 the years.</p>
 <p>With this background, I'm very happy, that, seven years later, with
 important contributions and code improvements by
-<a href="https://twitter.com/ali_king">Ali</a>, and then further massive code
+<a href="https://twitter.com/ali_king" target="_blank" rel="noopener">Ali</a>
+, and then further massive code
 clean-up and refactoring, we were able to release the paper about RDFIO,
 and in the process also improving code quality, test coverage and
-continuous integration setup. We even created a <a href="https://doi.org/10.6084/m9.figshare.5383966.v1">ready-to-use virtual
+continuous integration setup. We even created a <a href="https://doi.org/10.6084/m9.figshare.5383966.v1" target="_blank" rel="noopener">ready-to-use virtual
 machine with RDFIO
-installed</a>, to make it
+installed</a>
+, to make it
 maximally easy to try it out. A screenshot showing how easy it is to
 start RDFIO in the VM and access one of its components (the SPARQL
 endpoint in this case) is shown below:</p>
@@ -107,8 +126,9 @@ endpoint in this case) is shown below:</p>
 </p>
 </p>
 <h2 id="so-now-what">So now what?</h2>
-<p>So, what are we gonna use this for, after all? <a href="https://github.com/rdfio/RDFIO/releases/tag/v3.0.1">One of the latest
+<p>So, what are we gonna use this for, after all? <a href="https://github.com/rdfio/RDFIO/releases/tag/v3.0.1" target="_blank" rel="noopener">One of the latest
 releases of RDFIO</a>
+
 contains a screenshot providing some hints about future prospects:
 SPARQLing Semantic MediaWikis from SWI-Prolog! Le me provide with the
 teaser inline:</p>
@@ -120,8 +140,10 @@ teaser inline:</p>
 <h2 id="main-links">Main links</h2>
 <ul>
 <li>Check out the paper at
-<a href="https://jbiomedsem.biomedcentral.com/articles/10.1186/s13326-017-0136-y">10.1186/s13326-017-0136-y</a></li>
-<li><a href="https://pharmb.io/project/rdfio/">The RDFIO project page</a> contains
+<a href="https://jbiomedsem.biomedcentral.com/articles/10.1186/s13326-017-0136-y" target="_blank" rel="noopener">10.1186/s13326-017-0136-y</a>
+</li>
+<li><a href="https://pharmb.io/project/rdfio/" target="_blank" rel="noopener">The RDFIO project page</a>
+ contains
 all relevant links to the software. project and paper.</li>
 </ul>
 

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>NGS Bioinformatics Course Day 3: New Luigi helper tool, &#34;real-world&#34; NGS pipelines | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -51,21 +51,26 @@ random notes and tidbits from the last days, including any concluding
 remarks!</p>
 <p>These days we started working on a more realistic NGS pipeline, on
 analysing re-sequencing samples
-(<a href="http://uppnex.se/twiki/pub/Courses/NgsIntro1502/Schedule/NGS_course_AJ_20150211.pdf">slides</a>,
-<a href="http://uppnex.se/twiki/do/view/Courses/NgsIntro1502/ResequencingAnalysis">tutorial</a>).</p>
+(<a href="http://uppnex.se/twiki/pub/Courses/NgsIntro1502/Schedule/NGS_course_AJ_20150211.pdf" target="_blank" rel="noopener">slides</a>
+,
+<a href="http://uppnex.se/twiki/do/view/Courses/NgsIntro1502/ResequencingAnalysis" target="_blank" rel="noopener">tutorial</a>
+).</p>
 <h2 id="first-some-outcome-from-this-tutorial">First some outcome from this tutorial</h2>
 <p>What do I mean with &quot;outcome&quot;? Well, as I tried to manually copy and
-paste the <a href="http://uppnex.se/twiki/do/view/Courses/NgsIntro1502/ResequencingAnalysis.html">bag of hairy nasty long bash commandline strings in the
+paste the <a href="http://uppnex.se/twiki/do/view/Courses/NgsIntro1502/ResequencingAnalysis.html" target="_blank" rel="noopener">bag of hairy nasty long bash commandline strings in the
 tutorial
-pages</a>,
+pages</a>
+,
 that all depended upon each other, I got so frustrated that I decided to
 try to encode them in a workflow language / tool.</p>
 <p>I quickly tried out
-<a href="https://bitbucket.org/johanneskoester/snakemake">SnakeMake</a>, and was in
+<a href="https://bitbucket.org/johanneskoester/snakemake" target="_blank" rel="noopener">SnakeMake</a>
+, and was in
 fact impressed by the quality and robustness of this tool, but I figured
 it would take too long to properly grok the make-inspired way of
 thinking in this tool, for me to finish the labs in time. Instead I set
-out to use <a href="https://github.com/spotify/luigi">spotify's luigi tool</a>,
+out to use <a href="https://github.com/spotify/luigi" target="_blank" rel="noopener">spotify's luigi tool</a>
+,
 which I'm intimately familiar with already.</p>
 <p>Only problem now, was that the relatively extreme amounts of boilerplate
 that needs to be written for each luigi task (really it's not that bad,
@@ -73,12 +78,15 @@ but compared to just running a shell command, it is).</p>
 <p>This resulted in that I realised some ideas I've been pondering on for
 a long time, on how a little bit of Flow-based programming inspired
 ideas could be implemented in Luigi, and so I created a little (50 LOC)
-<a href="https://github.com/samuell/luigis_monkey_wrench">helper library</a> for
-doing just this! <a href="https://github.com/samuell/luigis_monkey_wrench">The lib, called &quot;Luigi's monkey wrench&quot; is
-available on github</a>.</p>
+<a href="https://github.com/samuell/luigis_monkey_wrench" target="_blank" rel="noopener">helper library</a>
+ for
+doing just this! <a href="https://github.com/samuell/luigis_monkey_wrench" target="_blank" rel="noopener">The lib, called &quot;Luigi's monkey wrench&quot; is
+available on github</a>
+.</p>
 <p>And, of course I had to encode the tutorial in it too! You can find the
-<a href="https://gist.github.com/samuell/6da9a7c1e03912fde62e">luigi's-monkey-wrench code for the tutorial in this
-gist</a>!</p>
+<a href="https://gist.github.com/samuell/6da9a7c1e03912fde62e" target="_blank" rel="noopener">luigi's-monkey-wrench code for the tutorial in this
+gist</a>
+!</p>
 <p>Let's just include a small snippet, to give you a taste for how the
 code looks with this helper:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00f">import</span> luigi
@@ -117,10 +125,12 @@ code looks with this helper:</p>
 </span></span><span style="display:flex;"><span>            <span style="color:#008000"># ... and so the script continues ...</span>
 </span></span></code></pre></div><p>For a closer look, have a look at:</p>
 <ul>
-<li><a href="https://github.com/samuell/luigis_monkey_wrench">The tool on
-github</a></li>
-<li><a href="https://gist.github.com/samuell/6da9a7c1e03912fde62e">The full resulting code from this
-tutorial</a></li>
+<li><a href="https://github.com/samuell/luigis_monkey_wrench" target="_blank" rel="noopener">The tool on
+github</a>
+</li>
+<li><a href="https://gist.github.com/samuell/6da9a7c1e03912fde62e" target="_blank" rel="noopener">The full resulting code from this
+tutorial</a>
+</li>
 </ul>
 <h2 id="overall-structure-of-tutorial">Overall structure of tutorial</h2>
 <p>The overall structure of the task was something like:</p>
@@ -135,10 +145,14 @@ calling file&quot;)</li>
 <p>Regarding the mapping step, it was mentioned about some popular mapping
 tools:</p>
 <ul>
-<li><a href="http://maq.sourceforge.net/">Maq</a></li>
-<li><a href="http://bio-bwa.sourceforge.net/">BWA</a></li>
-<li><a href="http://bowtie-bio.sourceforge.net/index.shtml">Bowtie</a></li>
-<li><a href="https://code.google.com/p/mosaik-aligner/">Mosaik</a></li>
+<li><a href="http://maq.sourceforge.net/" target="_blank" rel="noopener">Maq</a>
+</li>
+<li><a href="http://bio-bwa.sourceforge.net/" target="_blank" rel="noopener">BWA</a>
+</li>
+<li><a href="http://bowtie-bio.sourceforge.net/index.shtml" target="_blank" rel="noopener">Bowtie</a>
+</li>
+<li><a href="https://code.google.com/p/mosaik-aligner/" target="_blank" rel="noopener">Mosaik</a>
+</li>
 </ul>
 <p>... then, interestingly, it was mentioned a bit of what kind of
 computation tricks they use to do the mapping in an efficient way:</p>
@@ -167,20 +181,25 @@ genome, to get a better hint of which variant is probably the
 </ol>
 <p>Typical software in this section was:</p>
 <ul>
-<li><a href="http://samtools.sourceforge.net/">Samtools</a> - Tools for working
+<li><a href="http://samtools.sourceforge.net/" target="_blank" rel="noopener">Samtools</a>
+ - Tools for working
 with the Short-read Alignments (SAM) format (and the binary BAM
 counterpart)</li>
-<li><a href="http://samtools.sourceforge.net/">Picard</a> - Java based tool for
+<li><a href="http://samtools.sourceforge.net/" target="_blank" rel="noopener">Picard</a>
+ - Java based tool for
 working with SAM/BAM formats</li>
-<li><a href="https://www.broadinstitute.org/gatk/">GATK</a> - Genome Analysis
+<li><a href="https://www.broadinstitute.org/gatk/" target="_blank" rel="noopener">GATK</a>
+ - Genome Analysis
 Toolkit</li>
-<li><a href="http://www.broadinstitute.org/igv/">IGV</a> - Integrated Genomics
+<li><a href="http://www.broadinstitute.org/igv/" target="_blank" rel="noopener">IGV</a>
+ - Integrated Genomics
 Viewer</li>
 </ul>
 <h3 id="the-variant-calling-step">The variant calling step</h3>
 <p>Some unsorted notes:</p>
 <ul>
-<li><a href="https://github.com/ekg/freebayes">FreeBayes</a> - Bayesian SNP calling</li>
+<li><a href="https://github.com/ekg/freebayes" target="_blank" rel="noopener">FreeBayes</a>
+ - Bayesian SNP calling</li>
 <li>Bayesian methods instead of a simple pileup.</li>
 <li>Population-based calling.</li>
 </ul>
@@ -228,9 +247,11 @@ Introns)</li>
 <h2 id="see-also">See also</h2>
 <ul>
 <li><a href="/posts/ngs-intro-course-day-1/">NGS Bioinformatics Intro Course Day
-1</a></li>
+1</a>
+</li>
 <li><a href="/posts/ngs-bioinformatics-intro-course-day-2/">NGS Bioinformatics Intro Course Day
-2</a></li>
+2</a>
+</li>
 </ul>
 
   

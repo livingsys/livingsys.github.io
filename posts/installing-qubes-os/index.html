@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>Installing Qubes OS | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -41,7 +41,8 @@
   
   <time datetime="2021-12-29T06:59:00&#43;01:00">December 29, 2021</time>
 
-  <p>I just switched to <a href="https://www.qubes-os.org/">Qubes OS</a> as operating
+  <p>I just switched to <a href="https://www.qubes-os.org/" target="_blank" rel="noopener">Qubes OS</a>
+ as operating
 system on my main work laptop (a Dell Latitude). Or in fact, one of the
 reasons was to be able to combine work and private hobby coding
 projects, that's increasinbly been happening on the same machine.
@@ -68,8 +69,9 @@ not to accidentally open up attack vectors ... all for increased
 compartmentalization and thus security.</li>
 </ul>
 <p>If you are still not convinced, you might be when you learn that Qubes
-is <a href="https://twitter.com/Snowden/status/781493632293605376">recommeded by Edward
-Snowden</a> :)</p>
+is <a href="https://twitter.com/Snowden/status/781493632293605376" target="_blank" rel="noopener">recommeded by Edward
+Snowden</a>
+ :)</p>
 <h3 id="preliminaries">Preliminaries</h3>
 <p>The first thing I did was to try and install Qubes in a virtual machine
 in Virtual Box. It did warn a lot about various hardware drivers though:</p>
@@ -80,7 +82,8 @@ IOMMU/VT-d/AMD-Vi, HAP/SLAT/EPT/RVI, Interrupt Remapping. Without these
 features, Qubes OS will not function normally. It is recommended that
 only developers and power users proceed with the installation. Fore more
 information on supported hardware, please refer to
-&lt;a href=&#34;https://www.qubes-os.org/doc/system-requirements/&#34;&gt;https://www.qubes-os.org/doc/system-requirements/&lt;/a&gt;"  />
+&lt;a href=&#34;https://www.qubes-os.org/doc/system-requirements/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.qubes-os.org/doc/system-requirements/&lt;/a&gt;
+"  />
 </p>
 </p>
 <p>Thus, trying out Qubes fully in VirtualBox didn't seem like an option.
@@ -113,8 +116,9 @@ and painless process), when restarting the computer, I got the message:</p>
 <p>No bootable device found.</p>
 <p>Not so fun. On the other hand, it turned out to be pretty easily fixed,
 by booting up the computer with a Live Ubuntu USB stick, and fixing the
-file paths in the UEFI partition according to <a href="https://www.qubes-os.org/doc/uefi-troubleshooting/#boot-device-not-recognized-after-installing">this advice in the Qubes
-Docs</a>.
+file paths in the UEFI partition according to <a href="https://www.qubes-os.org/doc/uefi-troubleshooting/#boot-device-not-recognized-after-installing" target="_blank" rel="noopener">this advice in the Qubes
+Docs</a>
+.
 Copying the instructions here for backup:</p>
 <p>Some firmware will not recognize the default Qubes EFI configuration. As
 such, it will have to be manually edited to be bootable. This will need
@@ -180,9 +184,10 @@ kept in the app VMs, but not in the base VMs).</li>
 installing in the base VM, one will need to turn off both of them,
 and then start the App VM again.</li>
 <li>I did not manage to change font sizes in VMs if they were based on
-the Debian 10 or Debian 11 base images. I have <a href="https://forum.qubes-os.org/t/dark-mode-in-debian-10-vm/3855/17?u=shl">written about it in
+the Debian 10 or Debian 11 base images. I have <a href="https://forum.qubes-os.org/t/dark-mode-in-debian-10-vm/3855/17?u=shl" target="_blank" rel="noopener">written about it in
 the forum
 here</a>
+
 (I DID manage to activate dark mode, as my forum message states).
 Thus, I have had to resort to using Fedora 32 as base image rather
 than Debian 11, which is a bit disappointing, as I'm much more used
@@ -199,12 +204,14 @@ whole concept and implementation is very very impressive!</p>
 <p><a href="qubes-installed.jpg"><p class="image">
     <img src="qubes-installed.jpg" alt=""  />
 </p>
-</a></p>
+</a>
+</p>
 <h3 id="further-reading">Further reading</h3>
 <ul>
-<li>I found Qubes founder <a href="https://blog.invisiblethings.org/2011/03/13/partitioning-my-digital-life-into.html">Joanna Rutkowska's blog about how she set up
+<li>I found Qubes founder <a href="https://blog.invisiblethings.org/2011/03/13/partitioning-my-digital-life-into.html" target="_blank" rel="noopener">Joanna Rutkowska's blog about how she set up
 the OS for her own
 workflow</a>
+
 very useful in getting to think about how to best use the features
 for your own use cases. I have personally went with a much simpler
 set up for the time being, but the post helped me to clarify my own

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>Partial Galaxy ToolConfig to DocBook CmdSynopsis conversion with XSLT RegEx | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -85,8 +85,9 @@
 command is specified in a kind of &quot;free text&quot; format ... This might
 not be exactly what one might think to use XSLT transformations for, but
 together with the regex functionality in XSLT 2.0 you definitely has
-this option too. Helped by <a href="http://www.xml.com/pub/a/2003/06/04/tr.html">this
-article</a> on xml.com, I put
+this option too. Helped by <a href="http://www.xml.com/pub/a/2003/06/04/tr.html" target="_blank" rel="noopener">this
+article</a>
+ on xml.com, I put
 together this little XSLT stylesheet for parsing up the free text
 content of that command tag (haven't got to the more detailed config
 inside the inputs-tag in the galaxy format, but might not need either,
@@ -166,8 +167,9 @@ statements. At least I think it shows that xslt + regex is actually an
 option, don't you think? :)</p>
 <p>A caveat here though: I found out that most of the XSLT processor tools
 for Ubuntu (xsltproc, xalan, the one built into php5) don't accept XSLT
-2.0 features such as regex, so I ended up using the java based <a href="http://saxon.sourceforge.net/">saxon
-processor</a>.</p>
+2.0 features such as regex, so I ended up using the java based <a href="http://saxon.sourceforge.net/" target="_blank" rel="noopener">saxon
+processor</a>
+.</p>
 <p>To call it for doing a transformation, you simply go (when using the
 open source &quot;home edition&quot;):</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -jar saxon9he.jar [xml-file] [xslt-file] &gt; [output-file]

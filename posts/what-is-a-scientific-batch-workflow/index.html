@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>What is a scientific (batch) workflow? | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -44,22 +44,28 @@
   <h2 id="dependency-graph-in-luigi---a-dag-representing-tasks-not-processes-or-workflow-stepsdependencygraphnew_without_shadow-1pngdependencygraphnew_without_shadow-1png"><a href="dependencygraphnew_without_shadow-1.png"><p class="image">
     <img src="dependencygraphnew_without_shadow-1.png" alt="Dependency graph in Luigi - A DAG representing tasks (not processes or workflow steps)"  />
 </p>
-</a></h2>
+</a>
+</h2>
 <h2 id="workflows-and-dags---confusion-about-the-concepts">Workflows and DAGs - Confusion about the concepts</h2>
-<p><a href="https://twitter.com/joergenbr">Jörgen Brandt</a> <a href="https://twitter.com/joergenbr/status/907626987333746688">tweeted a
-comment</a> that
+<p><a href="https://twitter.com/joergenbr" target="_blank" rel="noopener">Jörgen Brandt</a>
+ <a href="https://twitter.com/joergenbr/status/907626987333746688" target="_blank" rel="noopener">tweeted a
+comment</a>
+ that
 got me thinking again on something I've pondered a lot lately:</p>
 <blockquote>
 <h2 id="meaning">&quot;A workflow is a DAG.&quot; is really a weak definition. That's like
 saying &quot;A love letter is a sequence of characters.&quot; representation ≠
 meaning\</h2>
-<p><a href="https://twitter.com/joergenbr/status/907626987333746688">@joergenbr</a></p>
+<p><a href="https://twitter.com/joergenbr/status/907626987333746688" target="_blank" rel="noopener">@joergenbr</a>
+</p>
 </blockquote>
-<p>Jörgen makes a good point. A <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">Directed Acyclic Graph
-(DAG)</a> does not by
+<p>Jörgen makes a good point. A <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph" target="_blank" rel="noopener">Directed Acyclic Graph
+(DAG)</a>
+ does not by
 any means capture the full semantic content included in a computational
-workflow. I think <a href="http://www.worldscientific.com/doi/pdf/10.1142/9789814508728_0001">Werner Gitt's <em>universal information</em>
+workflow. I think <a href="http://www.worldscientific.com/doi/pdf/10.1142/9789814508728_0001" target="_blank" rel="noopener">Werner Gitt's <em>universal information</em>
 model</a>
+
 is highly relevant here, suggesting that information comes in at least
 five abstraction layers: statistics (signals, number of symbols), syntax
 (set of symbols, grammar), semantics (meaning), pragmatics (action),
@@ -88,14 +94,17 @@ workflow definitions, across the most popular shell-based scientific
 batch workflows used in bioinformatics today</em>.</p>
 <h2 id="some-context">Some context</h2>
 <p>Firstly, just some assumptions. In this context, what I mean with a
-scientific workflow, or <a href="https://en.wikipedia.org/wiki/Scientific_workflow_system">scientific workflow system or
-tool</a> is a set
+scientific workflow, or <a href="https://en.wikipedia.org/wiki/Scientific_workflow_system" target="_blank" rel="noopener">scientific workflow system or
+tool</a>
+ is a set
 of shell commands producing outputs, where the commands are depending on
 each other in such a way that one command can only start after some
 other command has finished. This is how a lot of bioinformatics in
 high-throughput disciplines such as Next-Generation Sequencing is done,
-at least here at <a href="https://www.scilifelab.se/">scilifelab</a> or
-<a href="https://pharmb.io/">pharmb.io</a> for example. This definition leaves out
+at least here at <a href="https://www.scilifelab.se/" target="_blank" rel="noopener">scilifelab</a>
+ or
+<a href="https://pharmb.io/" target="_blank" rel="noopener">pharmb.io</a>
+ for example. This definition leaves out
 a lot of details though, so we will need to dig a little bit deeper
 below.</p>
 <p>Secondly we also have to distinguish between the <em>workflow definition</em>,
@@ -132,15 +141,23 @@ and <strong>workflow component</strong>, typically are all variations of the sam
 thing, namely <em><strong>templates for generating unique program invocation
 definitions.</strong></em> In other words, <em><strong>templates for generating tasks</strong>.</em></p>
 <p>It turns out that such vastly different approaches to workflow design as
-<a href="https://www.gnu.org/software/make/">GNU Make</a> and its successors such
-as <a href="http://snakemake.readthedocs.io">Snakemake</a>, dataflow-centric tools
-like <a href="http://nextflow.io">Nextflow</a> or <a href="http://scipipe.org/">SciPipe</a>,
+<a href="https://www.gnu.org/software/make/" target="_blank" rel="noopener">GNU Make</a>
+ and its successors such
+as <a href="http://snakemake.readthedocs.io" target="_blank" rel="noopener">Snakemake</a>
+, dataflow-centric tools
+like <a href="http://nextflow.io" target="_blank" rel="noopener">Nextflow</a>
+ or <a href="http://scipipe.org/" target="_blank" rel="noopener">SciPipe</a>
+,
 other push-based but non-dataflow-based tools and paradigms like
-<a href="http://www.cuneiform-lang.org/">Galaxy</a>,
-<a href="http://pachyderm.io/">Pachyderm</a> or the <a href="http://www.commonwl.org/">Common Workflow Language
-(CWL)</a>, or tools wrapping commandline
+<a href="http://www.cuneiform-lang.org/" target="_blank" rel="noopener">Galaxy</a>
+,
+<a href="http://pachyderm.io/" target="_blank" rel="noopener">Pachyderm</a>
+ or the <a href="http://www.commonwl.org/" target="_blank" rel="noopener">Common Workflow Language
+(CWL)</a>
+, or tools wrapping commandline
 execution in a functional language like
-<a href="http://www.cuneiform-lang.org/">Cuneiform</a>, are all &quot;just&quot; variations
+<a href="http://www.cuneiform-lang.org/" target="_blank" rel="noopener">Cuneiform</a>
+, are all &quot;just&quot; variations
 on the same thing: A templating mechanism for concrete program
 invocation definitions, augmented with mechanisms for populating those
 templates.</p>
@@ -169,8 +186,9 @@ dependencies: It provides a static connection which will serve as the
 mechanism to generate any concrete dependencies on upstream files for
 specific tasks. The other push-based systems work somewhat similarly to
 dataflow systems, except with a more restricted model of how the
-concrete dependencies are generated, as they typically lack <a href="http://bionics.it/posts/dynamic-workflow-scheduling">dynamic
-scheduling</a> (one
+concrete dependencies are generated, as they typically lack <a href="http://bionics.it/posts/dynamic-workflow-scheduling" target="_blank" rel="noopener">dynamic
+scheduling</a>
+ (one
 component does not typically produce more than one output per set of
 inputs, for example, as could be the case for a dataflow-component).
 Finally, in functional languages, the function call graph itself is the
@@ -180,8 +198,9 @@ only in terms of the finishing of tasks, not on the availability of the
 outputs of that task, thus leaving out data flow specification from the
 workflow definition. This is often problematic as it requires task
 definitions to include internals of upstream tasks, in order to navigate
-to the right output files. <a href="http://bionics.it/posts/dynamic-workflow-scheduling">I have blogged about it
-here</a>, but in
+to the right output files. <a href="http://bionics.it/posts/dynamic-workflow-scheduling" target="_blank" rel="noopener">I have blogged about it
+here</a>
+, but in
 summary, it is generally recommendable to specify the dependencies in
 terms of data, not just task finish status.</p>
 <h2 id="and-the-sum-of-all-this-is">And the sum of all this is?</h2>
@@ -227,7 +246,8 @@ nodes.</li>
 </li>
 </ul>
 <p>So, if coming back to Jörgen's
-<a href="https://twitter.com/joergenbr/status/907626987333746688">tweet</a>, I
+<a href="https://twitter.com/joergenbr/status/907626987333746688" target="_blank" rel="noopener">tweet</a>
+, I
 think it is fair to say that &quot;a workflow is [just] a DAG&quot; is a bit
 of a over-simplification. An over-simplification in more than one way,
 it seems :)</p>

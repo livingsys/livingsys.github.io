@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>Preprint on SciPipe - Go-based scientific workflow library | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -42,35 +42,48 @@
   <time datetime="2018-08-02T01:01:00&#43;02:00">August 2, 2018</time>
 
   <p>A pre-print for our Go-based workflow libarary
-<a href="http://scipipe.org">SciPipe</a>, is out, with the title <em><a href="https://www.biorxiv.org/content/early/2018/08/01/380808">SciPipe - A
+<a href="http://scipipe.org" target="_blank" rel="noopener">SciPipe</a>
+, is out, with the title <em><a href="https://www.biorxiv.org/content/early/2018/08/01/380808" target="_blank" rel="noopener">SciPipe - A
 workflow library for agile development of complex and dynamic
 bioinformatics
-pipelines</a>,</em>
-co-authored by me and colleagues at <a href="https://pharmb.io/">pharmb.io</a>:
-<a href="https://pharmb.io/people/dahlo/">Martin Dahlö</a>, <a href="https://pharmb.io/people/jonalv/">Jonathan
-Alvarsson</a> and <a href="https://pharmb.io/people/olas/">Ola
-Spjuth</a>. Access it
-<a href="https://www.biorxiv.org/content/early/2018/08/01/380808">here</a>.</p>
-<p><a href="https://www.biorxiv.org/content/early/2018/08/01/380808"><p class="image">
+pipelines</a>
+,</em>
+co-authored by me and colleagues at <a href="https://pharmb.io/" target="_blank" rel="noopener">pharmb.io</a>
+:
+<a href="https://pharmb.io/people/dahlo/" target="_blank" rel="noopener">Martin Dahlö</a>
+, <a href="https://pharmb.io/people/jonalv/" target="_blank" rel="noopener">Jonathan
+Alvarsson</a>
+ and <a href="https://pharmb.io/people/olas/" target="_blank" rel="noopener">Ola
+Spjuth</a>
+. Access it
+<a href="https://www.biorxiv.org/content/early/2018/08/01/380808" target="_blank" rel="noopener">here</a>
+.</p>
+<p><a href="https://www.biorxiv.org/content/early/2018/08/01/380808" target="_blank" rel="noopener"><p class="image">
     <img src="selection_864.png" alt=""  />
 </p>
-</a></p>
-<p>It has been more than three years since the first commit on the <a href="https://github.com/scipipe/scipipe">SciPipe
-Git repository</a> in March, 2015, and
+</a>
+</p>
+<p>It has been more than three years since the first commit on the <a href="https://github.com/scipipe/scipipe" target="_blank" rel="noopener">SciPipe
+Git repository</a>
+ in March, 2015, and
 development has been going in various degrees of intensity during these
-years, often besides other duties at <a href="https://pharmb.io/">pharmb.io</a> and
-<a href="https://nbis.se/">NBIS</a>, and often at a lower pace than I might have
+years, often besides other duties at <a href="https://pharmb.io/" target="_blank" rel="noopener">pharmb.io</a>
+ and
+<a href="https://nbis.se/" target="_blank" rel="noopener">NBIS</a>
+, and often at a lower pace than I might have
 wished. On the other hand, this might also have helped to let design
 ideas mature well before implementing them.</p>
 <p>There is definitely no lack of workflow tools in bioinformatics, which
-lists <a href="https://github.com/pditommaso/awesome-pipeline">like this</a> attest
+lists <a href="https://github.com/pditommaso/awesome-pipeline" target="_blank" rel="noopener">like this</a>
+ attest
 to, and there are also a core bunch of tools that have crystallized as
 popular tools among a wide range of users. So why would we still spend
 all this time on developing yeat another workflow library?</p>
 <p>Well, let me start with saying that I think development of new tools and
 libraries can serve more than one purpose. Despite the many tools
-available, <a href="http://dx.doi.org/10.1186/s13062-015-0071-8">many users of these still experience many limitations with
-them</a>. Furthermore I think
+available, <a href="http://dx.doi.org/10.1186/s13062-015-0071-8" target="_blank" rel="noopener">many users of these still experience many limitations with
+them</a>
+. Furthermore I think
 development of new tools and approaches doesn't need to be seen as
 necessarily new competitors to other tools, or fragmenting the existing
 tool landscape, but rather as experimentation. Successful approaches
@@ -85,8 +98,9 @@ easiest is to briefly tell the story of our use and research in workflow
 tools over the last couple of years. Here comes.</p>
 <p>We have spent the last couple of years using workflow tools to build
 predictive machine learning models in early drug discovery. Based on
-extensive research of existing tools, we first settled on the <a href="https://github.com/spotify/luigi">Luigi
-library</a> for this task. We quickly
+extensive research of existing tools, we first settled on the <a href="https://github.com/spotify/luigi" target="_blank" rel="noopener">Luigi
+library</a>
+ for this task. We quickly
 learned though that machine learning workflows have specific
 requirements not common in general bioinformatics pipelines, such as
 very high number of tasks due to nested parameter sweeps and cross
@@ -95,21 +109,26 @@ parameters optimized during the workflow run, creating the need for so
 called dynamic scheduling.</p>
 <p>Luigi was not completely living up to our requirement, and so we tried
 to fix the situation by developing a helper library,
-<a href="https://github.com/pharmbio/sciluigi">SciLuigi</a> (previously <a href="http://doi.org/10.1186/s13321-016-0179-6">published
-in J Chemin</a>f). After a year
+<a href="https://github.com/pharmbio/sciluigi" target="_blank" rel="noopener">SciLuigi</a>
+ (previously <a href="http://doi.org/10.1186/s13321-016-0179-6" target="_blank" rel="noopener">published
+in J Chemin</a>
+f). After a year
 of using Luigi+SciLuigi, we started to experience limitations with this
 solution too though. It still lacked dynamic scheduling and we
 experienced performance and robustness problems with Luigi&rsquo;s interpreted
 Python core, which slowed down development a lot.</p>
 <p>To solve these remaining problems we took our experiences from SciLuigi
-and applied it on a <a href="https://en.wikipedia.org/wiki/Flow-based_programming">flow-based
-programming</a> (FBP)
-inspired scheduler in <a href="http://golang.org">Go</a> (if you can call it a
+and applied it on a <a href="https://en.wikipedia.org/wiki/Flow-based_programming" target="_blank" rel="noopener">flow-based
+programming</a>
+ (FBP)
+inspired scheduler in <a href="http://golang.org" target="_blank" rel="noopener">Go</a>
+ (if you can call it a
 scheduler, as scheduling happens implicit as part of the dataflow/FBP
 design!), resulting in the SciPipe library.</p>
-<p>We have subsequently used SciPipe over the last year for <a href="https://github.com/pharmbio/ptp-project">building
+<p>We have subsequently used SciPipe over the last year for <a href="https://github.com/pharmbio/ptp-project" target="_blank" rel="noopener">building
 machine learning models in drug
-discovery</a>, and are so far
+discovery</a>
+, and are so far
 extremely pleased with our experiences. The performance problems are
 gone and the dynamic scheduling lets us keep the workflow definition
 integrated, so we can produce coherent audit logs and workflow graphs,
@@ -119,10 +138,13 @@ in machine learning in particular, but we have also made sure that it
 works well for more traditional genomics and transcriptomics
 applications, to avoid the need to use different workflow tools for each
 problem. More info on this is available in the
-<a href="www.biorxiv.org/content/early/2018/08/01/380808">preprint</a>.</p>
+<a href="www.biorxiv.org/content/early/2018/08/01/380808">preprint</a>
+.</p>
 <h3 id="availability-of-scipipe">Availability of SciPipe:</h3>
-<p>Website &amp; Docs: <a href="http://scipipe.org">scipipe.org</a><br>
-GitHub: <a href="https://github.com/scipipe/scipipe">github.com/scipipe/scipipe</a></p>
+<p>Website &amp; Docs: <a href="http://scipipe.org" target="_blank" rel="noopener">scipipe.org</a>
+<br>
+GitHub: <a href="https://github.com/scipipe/scipipe" target="_blank" rel="noopener">github.com/scipipe/scipipe</a>
+</p>
 
   
 

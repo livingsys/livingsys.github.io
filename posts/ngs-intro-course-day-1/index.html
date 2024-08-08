@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>NGS Bioinformatics Intro Course Day 1 | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -44,14 +44,17 @@
   <p>Just finished day 1 of the <a href="samuel.lampa.co/posts/introductory-course-in-bioinformatics-for-ngs-data/">introductory course on Bioinformatics for
 Next generation sequencing
 data</a>
+
 at Scilifelab Uppsala. Attaching a photo from one of the hands-on
 tutorial sessions, with the tutorial leaders, standing to the right.</p>
 <p><a href="ngsintro.jpg"><p class="image">
     <img src="ngsintro.jpg" alt=""  />
 </p>
-</a></p>
+</a>
+</p>
 <p>Today's content was mostly introductions to the linux commandline in
-general, and the <a href="http://www.uppmax.uu.se">UPPMAX HPC environment</a> in
+general, and the <a href="http://www.uppmax.uu.se" target="_blank" rel="noopener">UPPMAX HPC environment</a>
+ in
 particular, an area I'm already very familiar with, after two years as
 a sysadmin at UPPMAX. Thus, today I mostly got to help out the other
 students a bit.</p>
@@ -60,7 +63,8 @@ commandline, rather than just throwing an easy-to-use to use GUI to
 them, seems to be something that is not super common out there
 internationally (and something that we touch on in our lessons learned
 article, from implementing the UPPNEX resource). It is something that is
-widely acclaimed though, here at <a href="http://scilifelab.se/">SciLifeLab</a>
+widely acclaimed though, here at <a href="http://scilifelab.se/" target="_blank" rel="noopener">SciLifeLab</a>
+
 among most if not everybody who has already made their way into the
 world of commandline use. GUIs are typically - in popular opinion here -
 way too constraining for the juggling around of terabytes of data
@@ -70,11 +74,13 @@ analysis use cases.</p>
 a very interesting site with introductory bioinformatics materials that
 someone sent me:</p>
 <ul>
-<li><a href="http://www.personal.psu.edu/iua1/courses/2014-BMMB-852.html">Course in &quot;Applied Bioinformatics 2014&quot; at Penn State
-University</a></li>
+<li><a href="http://www.personal.psu.edu/iua1/courses/2014-BMMB-852.html" target="_blank" rel="noopener">Course in &quot;Applied Bioinformatics 2014&quot; at Penn State
+University</a>
+</li>
 </ul>
 <p>This course is created by the creator of widely used
-questions-and-answers site <a href="biostars.org">biostars.org</a>, and seems to
+questions-and-answers site <a href="biostars.org">biostars.org</a>
+, and seems to
 contain tons of very good and very hands-on and practical material. I
 will probably continue digging through this material after the current
 course is finished (which is also when I should have a better head start
@@ -82,27 +88,36 @@ into the field).</p>
 <p>In spite of mostly focusing on linux introduction, I anyways picked up
 the first &quot;NGS bioinformatics&quot; nugget for today:</p>
 <p>The &quot;rule-of-thumbish&quot; kind of fact that a typical steps in an
-<a href="http://en.wikipedia.org/wiki/Exome">exome</a> analysis consists of:</p>
+<a href="http://en.wikipedia.org/wiki/Exome" target="_blank" rel="noopener">exome</a>
+ analysis consists of:</p>
 <ul>
 <li>Filtering out low quality reads</li>
 <li>Aligning of the reads to a reference genome</li>
-<li>Finding all the <a href="http://en.wikipedia.org/wiki/Single-nucleotide_polymorphism">SNPs (Single Nucleotide
+<li>Finding all the <a href="http://en.wikipedia.org/wiki/Single-nucleotide_polymorphism" target="_blank" rel="noopener">SNPs (Single Nucleotide
 Polymophisms)</a>
+
 in the data.</li>
 </ul>
 <p>Otherwise, in the afternoon, after most students had came over the
 initial linux commandline hurdle, I found some time to test out the
 python based, and
-&quot;<a href="http://en.wikipedia.org/wiki/Make_(software)">make</a>-inspired&quot;
+&quot;<a href="http://en.wikipedia.org/wiki/Make_%28software%29" target="_blank" rel="noopener">make</a>
+-inspired&quot;
 workflow tool
-<a href="https://bitbucket.org/johanneskoester/snakemake">snakemake</a>. I have
+<a href="https://bitbucket.org/johanneskoester/snakemake" target="_blank" rel="noopener">snakemake</a>
+. I have
 heard good things about snakemake from a large number of folks I know,
 so it has been on my shortlist to check out (Otherwise, I'm mostly
 familiar with tools like Spotify's
-<a href="https://github.com/spotify/luigi">Luigi</a>, <a href="galaxyproject.org">Galaxy</a>,
-<a href="https://ccg.murdoch.edu.au/yabi">Yabi</a>,
-<a href="https://github.com/ssadedin/bpipe/">BPipe</a> and
-<a href="nextflow.io">Nextflow</a>).</p>
+<a href="https://github.com/spotify/luigi" target="_blank" rel="noopener">Luigi</a>
+, <a href="galaxyproject.org">Galaxy</a>
+,
+<a href="https://ccg.murdoch.edu.au/yabi" target="_blank" rel="noopener">Yabi</a>
+,
+<a href="https://github.com/ssadedin/bpipe/" target="_blank" rel="noopener">BPipe</a>
+ and
+<a href="nextflow.io">Nextflow</a>
+).</p>
 <p>Snakemake left me so far with a largely positive impression, for it's
 terse and efficient syntax, great logging and visualization facilites
 and even a web based GUI to contorl jobs. Still, there were also a
@@ -113,8 +128,9 @@ the end, rather than feeding your pipeline with any indata you have).
 Will have to continue testing it out in the near future to see how
 bad/not-so-bad those things are.</p>
 <p>Anyways, this should be well enough for today. Now looking forward to
-getting in to the <a href="http://uppnex.se/twiki/do/view/Courses/NgsIntro1502/Schedule">&quot;real&quot; bioinformatics content tomorrow
+getting in to the <a href="http://uppnex.se/twiki/do/view/Courses/NgsIntro1502/Schedule" target="_blank" rel="noopener">&quot;real&quot; bioinformatics content tomorrow
 tuesday</a>
+
 (starting with a walk-through of common file formats used in NGS
 analysis).</p>
 

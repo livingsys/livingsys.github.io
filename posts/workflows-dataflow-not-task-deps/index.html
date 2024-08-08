@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>Workflow tool makers: Allow defining data flow, not just task dependencies | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -49,12 +49,17 @@ logos"  class="align_right" />
 There
 seem to be a little upsurge in light-weight - often python-based -
 workflow tools for data pipelines in the last couple of years:
-Spotify's <a href="https://github.com/spotify/luigi">Luigi</a>, OpenStack's
-<a href="https://wiki.openstack.org/wiki/Mistral">Mistral</a>, Pinterest's
-<a href="https://github.com/pinterest/pinball">Pinball</a>, and recently AirBnb's
-<a href="https://github.com/airbnb/airflow">Airflow</a>, to name a few. These are
+Spotify's <a href="https://github.com/spotify/luigi" target="_blank" rel="noopener">Luigi</a>
+, OpenStack's
+<a href="https://wiki.openstack.org/wiki/Mistral" target="_blank" rel="noopener">Mistral</a>
+, Pinterest's
+<a href="https://github.com/pinterest/pinball" target="_blank" rel="noopener">Pinball</a>
+, and recently AirBnb's
+<a href="https://github.com/airbnb/airflow" target="_blank" rel="noopener">Airflow</a>
+, to name a few. These are
 all interesting tools, and it is an interesting trend for us at
-<a href="http://www.farmbio.uu.se/research/researchgroups/pb/?languageId=1">pharmbio</a>,
+<a href="http://www.farmbio.uu.se/research/researchgroups/pb/?languageId=1" target="_blank" rel="noopener">pharmbio</a>
+,
 who try to see how we can use workflow tools to automate bio- and
 cheminformatics tasks on compute clusters.</p>
 <h3 id="something-missing-">Something missing ...</h3>
@@ -66,8 +71,9 @@ tasks</strong>.</p>
 the case for almost all these tools. In the case of Luigi though, at
 least it was extensible enough that it was very easy to add a small
 workaround to allow dependency definition between these instead of tasks
-(we're in the process of packaging this up in the <a href="http://github.com/samuell/sciluigi">sciluigi
-library</a>).</p>
+(we're in the process of packaging this up in the <a href="http://github.com/samuell/sciluigi" target="_blank" rel="noopener">sciluigi
+library</a>
+).</p>
 <p>Maybe this has something to do with the nature of typical hadoop
 workflows, which seem to be the primary goal of most of these tools. But
 it is still unfortunate that this subtle design decision highly limits
@@ -76,7 +82,8 @@ workflows.</p>
 <h3 id="lets-look-at-an-example">Let's look at an example</h3>
 <p>Let's for example compare one of these tools with another very common
 platform in bioinformatics, which ships with workflow support built-in:
-the <a href="http://galaxyproject.org/">Galaxy platform</a>. Let's compare for
+the <a href="http://galaxyproject.org/" target="_blank" rel="noopener">Galaxy platform</a>
+. Let's compare for
 example how Airflow defines dependencies directly between tasks, and how
 Galaxy properly defines connections between inputs and outputs, by
 looking at the graphical representation of the workflows.</p>
@@ -84,22 +91,26 @@ looking at the graphical representation of the workflows.</p>
     <img src="selection_200.png" alt=""  />
 </p>
 </p>
-<p><em><strong>Airflow dependency graph</strong> (Image from the <a href="http://pythonhosted.org/airflow">AirFlow
-docs</a>)</em></p>
+<p><em><strong>Airflow dependency graph</strong> (Image from the <a href="http://pythonhosted.org/airflow" target="_blank" rel="noopener">AirFlow
+docs</a>
+)</em></p>
 <p><p class="image">
     <img src="peptide_workflow.png" alt=""  />
 </p>
 </p>
 <p><em><strong>Galaxy &quot;dependency graph&quot;, or &quot;data flow network&quot;</strong>
-(<a href="https://github.com/bgruening/presentations/blob/master/shared/resources/img/peptide_workflow.png">Screenshot</a>
-creds: <a href="https://github.com/bgruening">Björn Grüning</a>)</em></p>
+(<a href="https://github.com/bgruening/presentations/blob/master/shared/resources/img/peptide_workflow.png" target="_blank" rel="noopener">Screenshot</a>
+
+creds: <a href="https://github.com/bgruening" target="_blank" rel="noopener">Björn Grüning</a>
+)</em></p>
 <p>Do you see how the explicitly named inputs and outputs in the Galaxy
 example makes this workflow so much clearer.</p>
 <p>Now, these are of course only graphs, and might not tell the full truth
 about how the tool works, but you just have to look at a few code
 examples, to see that this really is the case. For example, for AirFlow,
 you can find an example of setting up dependencies
-<a href="http://pythonhosted.org/airflow/tutorial.html#setting-up-dependencies">here</a>.
+<a href="http://pythonhosted.org/airflow/tutorial.html#setting-up-dependencies" target="_blank" rel="noopener">here</a>
+.
 Or, see below:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#008000"># ... code for instantiating tasks t1 and t2 ...</span>
 </span></span><span style="display:flex;"><span>t2.set_upstream(t1)
@@ -126,10 +137,13 @@ explicit way?</p>
 <p>If you still don't believe that this is important, have a look at this
 example workflow from a real world bioinformatics (Next Generation
 Sequencing) workflow, given in a
-<a href="http://uppnex.se/twiki/do/view/Courses/NgsIntro1502">course</a> at
-<a href="http://www.scilifelab.se/">SciLifeLab</a> here in Uppsala/Stockholm
-(implemented in a predecessor to our sciluigi library, <a href="https://github.com/samuell/luigis_monkey_wrench">luigi's monkey
-wrench</a>). Look
+<a href="http://uppnex.se/twiki/do/view/Courses/NgsIntro1502" target="_blank" rel="noopener">course</a>
+ at
+<a href="http://www.scilifelab.se/" target="_blank" rel="noopener">SciLifeLab</a>
+ here in Uppsala/Stockholm
+(implemented in a predecessor to our sciluigi library, <a href="https://github.com/samuell/luigis_monkey_wrench" target="_blank" rel="noopener">luigi's monkey
+wrench</a>
+). Look
 especially for all the &quot;inports&quot; and &quot;outport&quot; parts in the code:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00f">import</span> luigi
 </span></span><span style="display:flex;"><span><span style="color:#00f">from</span> luigis_monkey_wrench <span style="color:#00f">import</span> *
@@ -280,8 +294,9 @@ wiring anyway!</p>
 <p>​So, please, tool makers, remember:</p>
 <ul>
 <li>Tasks need to support multiple, explicitly named inputs and outputs
-(&quot;in-ports&quot; and &quot;out-ports&quot; in <a href="http://en.wikipedia.org/wiki/Flow-based_programming">Flow-based
+(&quot;in-ports&quot; and &quot;out-ports&quot; in <a href="http://en.wikipedia.org/wiki/Flow-based_programming" target="_blank" rel="noopener">Flow-based
 programming</a>
+
 lingo).</li>
 <li>The dependency graph definition should define connections between
 inputs and outputs, not between tasks.</li>

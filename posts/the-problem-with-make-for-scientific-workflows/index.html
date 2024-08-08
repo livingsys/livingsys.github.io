@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>The problem with make for scientific workflows | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -48,8 +48,9 @@
 <h2 id="the-workflow-problem-solved-once-and-for-all-in-1979">The workflow problem solved once and for all in 1979?</h2>
 <p>As soon as the topic of scientific workflows is brought up, there are
 always a few make fans fervently insisting that the problem of workflows
-is solved once and for all with <a href="http://www.gnu.org/software/make/">GNU
-make</a>, written first in the 70's :)</p>
+is solved once and for all with <a href="http://www.gnu.org/software/make/" target="_blank" rel="noopener">GNU
+make</a>
+, written first in the 70's :)</p>
 <p>Personally I haven't been so sure. On the one hand, I know the tool
 solves a lot of problems for many people. Also, there is something very
 attractive about buildling on a tool that you can be sure will be
@@ -67,9 +68,10 @@ becomes hard - if not impossible - to know what these resulting file
 patterns will be. You simply can't know before you started executing
 the workflow.</p>
 <p>Because this was just my &quot;intuitive understanding&quot;, I was quite
-interested when I stumbled upon a <a href="http://www.aclweb.org/anthology/W/W08/W08-0503.pdf">paper that discusses this exact
+interested when I stumbled upon a <a href="http://www.aclweb.org/anthology/W/W08/W08-0503.pdf" target="_blank" rel="noopener">paper that discusses this exact
 problem in some
-detail</a>. In section
+detail</a>
+. In section
 2.2 the authors explain a number of problems with it for the kind of use
 cases I have been thinking of.</p>
 <p>They list the problems under three main categories:</p>
@@ -119,8 +121,9 @@ the suffix or prefix of a filename. This makefile does not work
 because it requires the parser, chunker, and tagger to all be the last
 part of the filename before the type suffix.&quot;</em></p>
 </blockquote>
-<p>But by all means, have a look at <a href="http://www.aclweb.org/anthology/W/W08/W08-0503.pdf">the
-paper</a> for yourself!
+<p>But by all means, have a look at <a href="http://www.aclweb.org/anthology/W/W08/W08-0503.pdf" target="_blank" rel="noopener">the
+paper</a>
+ for yourself!
 :)</p>
 <h2 id="some-comments">Some comments</h2>
 <p>I find this paper interesting in that it provides concrete use cases to
@@ -130,10 +133,12 @@ description. E.g, I don't think being &quot;filename based&quot; versus
 &quot;parameter based&quot; is a problem at all, if you just have a powerful
 file name pattern mechanism that allows you to freely and flexible
 incorporate the parameter names and values at any desired place in the
-filename pattern. That is the case .e.g in <a href="https://github.com/spotify/luigi">Spotify's luigi workflow
-tool</a>, which we have been using in our
-work in <a href="http://www.farmbio.uu.se/forskning/researchgroups/pb/">Ola Spjuth's group at
-UU</a>.</p>
+filename pattern. That is the case .e.g in <a href="https://github.com/spotify/luigi" target="_blank" rel="noopener">Spotify's luigi workflow
+tool</a>
+, which we have been using in our
+work in <a href="http://www.farmbio.uu.se/forskning/researchgroups/pb/" target="_blank" rel="noopener">Ola Spjuth's group at
+UU</a>
+.</p>
 <p>The other two points, about some dependency graph patterns being
 impractical to work with, seem to touch close to the heart of the
 problem though. like I mentioned earlier that in make you have to
@@ -152,11 +157,15 @@ data dependencies, rather than implicit ones based upon file name
 pattern rules (That is, more &quot;dataflow&quot; or &quot;flow based programming&quot;
 like).</p>
 <p>Interestingly, this approach is taken in tools such as
-<a href="http://www.nextflow.io/">NextFlow</a> and seemingly to a slighlty more
-limited extent in tools like <a href="http://bpipe.org/">BPipe</a>. (EDIT: And
-definitely in our new Go-based library <a href="http://scipipe.org">SciPipe</a>).</p>
+<a href="http://www.nextflow.io/" target="_blank" rel="noopener">NextFlow</a>
+ and seemingly to a slighlty more
+limited extent in tools like <a href="http://bpipe.org/" target="_blank" rel="noopener">BPipe</a>
+. (EDIT: And
+definitely in our new Go-based library <a href="http://scipipe.org" target="_blank" rel="noopener">SciPipe</a>
+).</p>
 <p>It should be mentioned though that python-based
-<a href="https://bitbucket.org/johanneskoester/snakemake">SnakeMake</a> provides
+<a href="https://bitbucket.org/johanneskoester/snakemake" target="_blank" rel="noopener">SnakeMake</a>
+ provides
 some constructs that makes some of the problems described above a lot
 more tractable to implement even though the basic execution mechanism is
 &quot;pull-based&quot; just like in make itself (you specify the desired target
@@ -167,16 +176,20 @@ interpolate the file pattern in any way.</p>
 <p>Let's hope to see more dataflow inspired workflow tools in the future,
 but in the meanwhile, keep an eye on NextFlow, BPipe, and also
 SnakeMake, if you can live with its pull-based mechanism!</p>
-<p>-- <a href="http://twitter.com/smllmp">Samuel</a></p>
+<p>-- <a href="http://twitter.com/smllmp" target="_blank" rel="noopener">Samuel</a>
+</p>
 <p><em><strong>UPDATE:</strong> I should clarify that the problems discussed below do not
 apply to some ways of working with make such as this interesting method
-by <a href="https://twitter.com/yokofakun">Pierre Lindenbaum</a>, where the
-makefile is <a href="https://github.com/lindenb/ngsxml">generated from an XML
-description</a>, thus using make as a
+by <a href="https://twitter.com/yokofakun" target="_blank" rel="noopener">Pierre Lindenbaum</a>
+, where the
+makefile is <a href="https://github.com/lindenb/ngsxml" target="_blank" rel="noopener">generated from an XML
+description</a>
+, thus using make as a
 kind of &quot;assembly language&quot;, to which higher level workflow
-definitions are &quot;compiled&quot;. Pierre <a href="https://twitter.com/yokofakun/status/576878752673693696">mentions a few other problems with
+definitions are &quot;compiled&quot;. Pierre <a href="https://twitter.com/yokofakun/status/576878752673693696" target="_blank" rel="noopener">mentions a few other problems with
 make here
-though</a>.</em></p>
+though</a>
+.</em></p>
 
   
 

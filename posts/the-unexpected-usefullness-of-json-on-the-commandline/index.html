@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>The unexpected convenience of JSON on the commandline | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -41,13 +41,16 @@
   
   <time datetime="2015-12-08T07:10:00&#43;01:00">December 8, 2015</time>
 
-  <p>I was working with a migration from <a href="http://drupal.org">drupal</a> to
-<a href="http://processwire.com">processwire</a> CMS:es, where I wanted to be able
+  <p>I was working with a migration from <a href="http://drupal.org" target="_blank" rel="noopener">drupal</a>
+ to
+<a href="http://processwire.com" target="_blank" rel="noopener">processwire</a>
+ CMS:es, where I wanted to be able
 to pipe data, including the body field with HTML formatting and all,
 through multiple processing steps in a flexible manner. I'd start with
 an extraction SQL query, through a few components to replace and massage
 the data, and finally over to an import command using processwire's
-<a href="http://wireshell.pw">wireshell tool</a>. So, basically I needed a flexible
+<a href="http://wireshell.pw" target="_blank" rel="noopener">wireshell tool</a>
+. So, basically I needed a flexible
 format for structured data that could be sent as one &quot;data object&quot; per
 line, to work nicely with linux commandline tools like grep, sed and
 awk.</p>
@@ -111,8 +114,9 @@ and using the normal linux commandline tools for convenient browsing on
 the commandline (such as my favorite <strong>less -Si</strong> for scrolling without
 wrapping lines:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>python extractsql.py | python replace.py | less -Si
-</span></span></code></pre></div><p>But, even better than custom python components, is that you have the <a href="https://stedolan.github.io/jq/">jq
-tool</a> available, which fits perfectly
+</span></span></code></pre></div><p>But, even better than custom python components, is that you have the <a href="https://stedolan.github.io/jq/" target="_blank" rel="noopener">jq
+tool</a>
+ available, which fits perfectly
 into this workflow. In short, <strong>jq</strong> can replace all of sed, awk and
 grep, in one combined package for working with json objects.</p>
 <p>A more detailed foray into using jq is material for another post, but
@@ -120,8 +124,9 @@ just a simple example that would be usable here is to filter out just
 the NodeType field, to see that it became correctly replaced. This is
 easily achieved with jq:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>python extractsql.py | python replace.py | jq <span style="color:#a31515">&#39;.NodeType&#39;</span> | less -Si
-</span></span></code></pre></div><p>As simple as that. Check the <a href="https://stedolan.github.io/jq/manual/">jq
-manual</a> for more usage info on
+</span></span></code></pre></div><p>As simple as that. Check the <a href="https://stedolan.github.io/jq/manual/" target="_blank" rel="noopener">jq
+manual</a>
+ for more usage info on
 jq.</p>
 <p>I'm sure I will use JSON for piping structured data on the commandline
 a lot more from now on.</p>

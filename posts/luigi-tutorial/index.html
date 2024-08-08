@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>Tutorial: Luigi for Scientific Workflows | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -41,25 +41,32 @@
   
   <time datetime="2016-06-21T13:49:00&#43;02:00">June 21, 2016</time>
 
-  <p><em>This is a Luigi tutorial I held at the <a href="http://uppnex.se/events/eInfraMPS2015/">e-Infrastructures for Massively
-parallel sequencing</a> workshop
-(<a href="https://www.youtube.com/channel/UCfLDx5VYn25QIZLmtybvdeQ/videos">Video
-archive</a>)
-at <a href="http://scilifelab.se/">SciLifeLab</a> Uppsala in January 2015, moved
+  <p><em>This is a Luigi tutorial I held at the <a href="http://uppnex.se/events/eInfraMPS2015/" target="_blank" rel="noopener">e-Infrastructures for Massively
+parallel sequencing</a>
+ workshop
+(<a href="https://www.youtube.com/channel/UCfLDx5VYn25QIZLmtybvdeQ/videos" target="_blank" rel="noopener">Video
+archive</a>
+)
+at <a href="http://scilifelab.se/" target="_blank" rel="noopener">SciLifeLab</a>
+ Uppsala in January 2015, moved
 here for future reference.</em></p>
 <h2 id="luigi_screenshotpng"><p class="image">
     <img src="luigi_screenshot.png" alt=""  />
 </p>
 </h2>
 <h2 id="what-is-luigi">What is Luigi?</h2>
-<p><a href="https://github.com/spotify/luigi">Luigi</a> is a batch workflow system
-written in Python and developed by <a href="https://erikbern.com/">Erik
-Bernhardson</a> and others at
-<a href="http://spotify.com/">Spotify</a>, where it is used to compute
+<p><a href="https://github.com/spotify/luigi" target="_blank" rel="noopener">Luigi</a>
+ is a batch workflow system
+written in Python and developed by <a href="https://erikbern.com/" target="_blank" rel="noopener">Erik
+Bernhardson</a>
+ and others at
+<a href="http://spotify.com/" target="_blank" rel="noopener">Spotify</a>
+, where it is used to compute
 machine-learning powered music recommendation lists, top lists etc.</p>
 <p>Luigi is one of not-too-many batch workflow systems that supports
 running both normal command line jobs and
-<a href="http://hadoop.apache.org/">Hadoop</a> jobs in the same (in this tutorial,
+<a href="http://hadoop.apache.org/" target="_blank" rel="noopener">Hadoop</a>
+ jobs in the same (in this tutorial,
 we will focus only on the command line part).</p>
 <p>Luigi workflows are developed in an object oriented fashion in python
 code, and are executed and controlled from the commandline. But when
@@ -80,30 +87,43 @@ show how we can extend the &quot;functional&quot; design of luigi, into a more
 &quot;data flow&quot; like design that most other workflow engines follow.</p>
 <h2 id="some-useful-resources">Some useful resources</h2>
 <ul>
-<li><a href="https://github.com/pharmbio/sciluigi">The SciLuigi helper library</a></li>
-<li><a href="http://luigi.readthedocs.org/en/latest/">Official luigi
-documentation</a></li>
-<li><a href="https://github.com/spotify/luigi">Luigi project (source code and issue tracker) on
-Github</a></li>
-<li><a href="https://groups.google.com/forum/#!forum/luigi-user">Luigi users mailing list / Google
-group</a></li>
-<li><a href="https://www.youtube.com/watch?v=Wgqkc7f13co">A talk on Luigi by Luigi creator Erik
-Bernhardson</a></li>
+<li><a href="https://github.com/pharmbio/sciluigi" target="_blank" rel="noopener">The SciLuigi helper library</a>
+</li>
+<li><a href="http://luigi.readthedocs.org/en/latest/" target="_blank" rel="noopener">Official luigi
+documentation</a>
+</li>
+<li><a href="https://github.com/spotify/luigi" target="_blank" rel="noopener">Luigi project (source code and issue tracker) on
+Github</a>
+</li>
+<li><a href="https://groups.google.com/forum/#!forum/luigi-user" target="_blank" rel="noopener">Luigi users mailing list / Google
+group</a>
+</li>
+<li><a href="https://www.youtube.com/watch?v=Wgqkc7f13co" target="_blank" rel="noopener">A talk on Luigi by Luigi creator Erik
+Bernhardson</a>
+</li>
 </ul>
 <h2 id="tutorial-table-of-contents">Tutorial: ​Table of contents</h2>
 <p>The tutorial is divided into the following sections:</p>
 <ul>
-<li><a href="#install">Installing Luigi</a></li>
-<li><a href="#helloworld">Defining workflows in Luigi / Hello World</a></li>
-<li><a href="#dependencies_parameters">Adding dependencies and parameters</a></li>
-<li><a href="#visualize">Visualizing running workflows</a> (optional)</li>
-<li><a href="#reuse">Re-using components in multiple workflows</a></li>
-<li><a href="#multi_input_output">A solution for multiple inputs and outputs</a></li>
-<li><a href="#commands">Executing commands</a></li>
+<li><a href="#install">Installing Luigi</a>
+</li>
+<li><a href="#helloworld">Defining workflows in Luigi / Hello World</a>
+</li>
+<li><a href="#dependencies_parameters">Adding dependencies and parameters</a>
+</li>
+<li><a href="#visualize">Visualizing running workflows</a>
+ (optional)</li>
+<li><a href="#reuse">Re-using components in multiple workflows</a>
+</li>
+<li><a href="#multi_input_output">A solution for multiple inputs and outputs</a>
+</li>
+<li><a href="#commands">Executing commands</a>
+</li>
 </ul>
 <p><em><strong>UPDATE June 21, 2016:</strong> Note that the strategy used in points 5-7
-above have been collected into the</em> <a href="https://github.com/pharmbio/sciluigi">SciLuigi helper
-library</a><em>, which is highly
+above have been collected into the</em> <a href="https://github.com/pharmbio/sciluigi" target="_blank" rel="noopener">SciLuigi helper
+library</a>
+<em>, which is highly
 recommended for bioinformatics use cases</em>!</p>
 <p>[]{#install}<strong>Installing Luigi</strong></p>
 <p><strong>1. Install the pyenv python version handler</strong></p>
@@ -359,16 +379,18 @@ luigi daemon, not just the local-scheduler as before:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>luigid
 </span></span></code></pre></div><p>Then, in a browser, fire up the following web address:</p>
 <ul>
-<li><a href="http://localhost:8082/">http://localhost:8082<p class="image">
+<li><a href="http://localhost:8082/" target="_blank" rel="noopener">http://localhost:8082<p class="image">
     <img src="http://uppnex.se/twiki/pub/TWiki/TWikiDocGraphics/external-link.gif" alt=""  />
 </p>
-</a></li>
+</a>
+</li>
 </ul>
 <p>Then, in a separate terminal window, start the luigi workflow we created
 above, now specifying &quot;<strong>localhost</strong>&quot; as our
 &quot;<strong>--scheduler-host</strong>&quot;:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python luigitutorial.py --scheduler-host localhost NameSubstituter --name YourName
-</span></span></code></pre></div><p>Now, go back to <a href="http://localhost:8082/">http://localhost:8082</a>,
+</span></span></code></pre></div><p>Now, go back to <a href="http://localhost:8082/" target="_blank" rel="noopener">http://localhost:8082</a>
+,
 refresh, and see what you see!</p>
 <p>If everything works correctly, you should see something like this:
 <p class="image">
@@ -437,8 +459,9 @@ workflow:</p>
 </span></span></code></pre></div><h3 id="an-other-more-dynamic-way">An other, more dynamic, way</h3>
 <p>The default way of re-using luigi tasks, by sub-classing, as
 demonstrated above, but for reasons we will not go into depth about here
-(but that you can read more about in <a href="https://medium.com/@saml/loosely-coupled-tasks-in-luigi-workflows-6840d32e2824">this blog
-post</a>),
+(but that you can read more about in <a href="https://medium.com/@saml/loosely-coupled-tasks-in-luigi-workflows-6840d32e2824" target="_blank" rel="noopener">this blog
+post</a>
+),
 we need a more flexible and dynamic way of building up workflows based
 on existing luigi tasks.</p>
 <p>Based on our experimentation, we have found that the following method
@@ -857,8 +880,9 @@ x() method, for execution (we could send a string as well, but a list of
 command parts has turned out to be easier to work with, when many of the
 parts are dynamically generated from input file names, parameters etc.)</p>
 <p>So, this last example show a pretty authentic real-world example of how
-we are using Luigi at <a href="http://www.farmbio.uu.se/forskning/researchgroups/pb/Data-intensive/">UU/Dept. of Pharmaceutical Bio
-sciences</a>.</p>
+we are using Luigi at <a href="http://www.farmbio.uu.se/forskning/researchgroups/pb/Data-intensive/" target="_blank" rel="noopener">UU/Dept. of Pharmaceutical Bio
+sciences</a>
+.</p>
 
   
 

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>On Provenance Reports in Scientific Workflows | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -66,11 +66,15 @@ correct any misconceptions here!):</p>
 <li>I understand Galaxy stores quite a lot of metadata information about
 workflow runs internally, which are viewable via jobs in the UI, but
 not so sure about any specific reporting facility.</li>
-<li>I know <a href="http://docs.bpipe.org">bpipe</a> has some type of <a href="http://docs.bpipe.org/Guides/Reports/">HTML
-report</a>,</li>
-<li>Unsure about the situation in <a href="https://www.nextflow.io/">NextFlow</a>
+<li>I know <a href="http://docs.bpipe.org" target="_blank" rel="noopener">bpipe</a>
+ has some type of <a href="http://docs.bpipe.org/Guides/Reports/" target="_blank" rel="noopener">HTML
+report</a>
+,</li>
+<li>Unsure about the situation in <a href="https://www.nextflow.io/" target="_blank" rel="noopener">NextFlow</a>
+
 (don't remember seeing an explicit reporting function), and
-<a href="http://snakemake.readthedocs.io">Snakemake</a>.</li>
+<a href="http://snakemake.readthedocs.io" target="_blank" rel="noopener">Snakemake</a>
+.</li>
 </ul>
 <p>Pardon my hand-waving unsurity here, but again, my point is just that
 there doesn't seem to be much consensus about it yet. Also, in the
@@ -91,10 +95,12 @@ brainstorming on the topic.</p>
 <h2 id="how-scipipe-does-it">How SciPipe does it</h2>
 <p>SciPipe is designed quite heavily around being able to customize
 completely up to your liking how to name both intermediate and final
-outputs from the workflow, with <a href="http://scipipe.org/writing_workflows/#formatting-output-file-paths">helper
-methods</a>,
-or <a href="http://scipipe.org/writing_workflows/#even-more-control-over-file-formatting">providing your own anonymous
+outputs from the workflow, with <a href="http://scipipe.org/writing_workflows/#formatting-output-file-paths" target="_blank" rel="noopener">helper
+methods</a>
+,
+or <a href="http://scipipe.org/writing_workflows/#even-more-control-over-file-formatting" target="_blank" rel="noopener">providing your own anonymous
 function</a>
+
 to generate the path. This makes it manageable to browse through
 intermediate output file for manual sanity checking for example.</p>
 <p>Thus, wouldn't it be great if we could have the provenance information
@@ -222,8 +228,9 @@ command to get the version string from it would suffice?</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>myProcess := workflow.NewProc(<span style="color:#a31515">&#34;my_process&#34;</span>, <span style="color:#a31515">&#34;awk &#39;{ print }&#39; ...&#34;</span> ...)
 </span></span><span style="display:flex;"><span>myProcess.SetVersionCommand(<span style="color:#a31515">&#34;awk --version&#34;</span>)
 </span></span></code></pre></div><p>? Guess we'll have to try and see. Comments welcome!</p>
-<p><em><strong>Update:</strong> See some discussion in <a href="https://www.reddit.com/r/bioinformatics/comments/77e5ga/some_thoughts_on_provenance_reports_in_scientific/?ref=share&amp;ref_source=link">this reddit
-thread</a></em></p>
+<p><em><strong>Update:</strong> See some discussion in <a href="https://www.reddit.com/r/bioinformatics/comments/77e5ga/some_thoughts_on_provenance_reports_in_scientific/?ref=share&amp;ref_source=link" target="_blank" rel="noopener">this reddit
+thread</a>
+</em></p>
 <p><em><strong>Edit, Oct 19, 13:50 CET:</strong> Updated wording to make reading more
 fluent</em></p>
 

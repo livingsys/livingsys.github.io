@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>(E)BNF parser for parts of the Galaxy ToolConfig syntax with ANTLR | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -42,17 +42,21 @@
   <time datetime="2011-07-28T09:46:00&#43;02:00">July 28, 2011</time>
 
   <p>As
-<a href="http://saml.rilspace.com/fims-project-status-update-thinking-about-cli-wrapper-xml-formats">blogged</a>
+<a href="http://saml.rilspace.com/fims-project-status-update-thinking-about-cli-wrapper-xml-formats" target="_blank" rel="noopener">blogged</a>
+
 earlier, I'm currently into parsing the syntax of some definitions for
 the parameters and stuff of command line tools. As said in the linked
-blog post, I was pondering whether to use the <a href="https://bitbucket.org/galaxy/galaxy-central/wiki/ToolConfigSyntax">Galaxy
+blog post, I was pondering whether to use the <a href="https://bitbucket.org/galaxy/galaxy-central/wiki/ToolConfigSyntax" target="_blank" rel="noopener">Galaxy
 Toolconfig</a>
-format or the <a href="http://www.docbook.org/tdg/en/html/cmdsynopsis.html">DocBook CmdSynopsis
-format</a>. It turned
+
+format or the <a href="http://www.docbook.org/tdg/en/html/cmdsynopsis.html" target="_blank" rel="noopener">DocBook CmdSynopsis
+format</a>
+. It turned
 out though Well, that cmdsynopsis lacks the option to specify a list of
 valid choices, for a parameter, as is possible in the Galaxy ToolConfig
 format (see
-<a href="http://wiki.g2.bx.psu.edu/Admin/Tools/Tool%20Config%20Syntax#A.3Coptions.3E_tag_set">here</a>),
+<a href="http://wiki.g2.bx.psu.edu/Admin/Tools/Tool%20Config%20Syntax#A.3Coptions.3E_tag_set" target="_blank" rel="noopener">here</a>
+),
 and thus can be used to generate drop-down lists in wizards etc. which
 is basically what I want to do ... so, now I'm going with the Galaxy
 format after all.</p>
@@ -87,20 +91,24 @@ the Java XPath libs for that). But look inside the <code>&lt;command&gt;</code> 
 that's some really non-xml stuff, no? (it is instructions for a python
 based template library, used in galaxy). I have to parse this though, in
 order to replicate the logic of it ... so what to do? ... well, I
-turned to the <a href="http://www.antlr.org/">ANTLR Parser Generator</a>.</p>
+turned to the <a href="http://www.antlr.org/" target="_blank" rel="noopener">ANTLR Parser Generator</a>
+.</p>
 <h3 id="toc0">ANTLRWorks works nicely out of the box</h3>
-<p>I heard a lot of good things about <a href="http://www.antlr.org/">ANTLR</a>, like
+<p>I heard a lot of good things about <a href="http://www.antlr.org/" target="_blank" rel="noopener">ANTLR</a>
+, like
 that it is more easily debugged than typical BNF parsers etc, so the
 choice wasn't that hard. I tried the ANTLR for Eclipse, but though it
 looks nice, it that was quite buggy, and I couldnt get it to work
 properly in neither Eclipse 3.5 or 3.6. So, finally I went with the easy
 option and developed my EBNF grammar in
-<a href="http://www.antlr.org/works/index.html">ANTLRWorks</a>, which is an
+<a href="http://www.antlr.org/works/index.html" target="_blank" rel="noopener">ANTLRWorks</a>
+, which is an
 integrated Java App, with the correct ANTLR lib already installed etc.
 Turned out to work really good!</p>
 <p>The grammar I came up with so far (only for the syntax inside the
-&lt;command&gt; tag so far, though!) is <a href="https://github.com/samuell/galaxy-toolconfig-bnf/blob/master/GalaxyToolConfig.g">available on
+&lt;command&gt; tag so far, though!) is <a href="https://github.com/samuell/galaxy-toolconfig-bnf/blob/master/GalaxyToolConfig.g" target="_blank" rel="noopener">available on
 GitHub</a>
+
 ... and below (in condensed syntax to save some space), for you
 convenience :)</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bnf" data-lang="bnf"><span style="display:flex;"><span>grammar GalaxyToolConfig;
@@ -129,7 +137,8 @@ samuel dot lampa at gmail dot com)</p>
 <p><a href="screenshot-antlrworks_1_4_2.png"><p class="image">
     <img src="screenshot-antlrworks_1_4_2.png" alt=""  />
 </p>
-</a></p>
+</a>
+</p>
 <p><em>As you can see in the screenshot, the different parts have correctly
 been identified as &quot;param&quot;, &quot;if statement&quot; and so forth. You can se
 also how I can click in the test syntax, to see where in the parse tree
@@ -253,17 +262,20 @@ anything more advanced, such as nested braces/xml tags etc ... but as
 you can see in the example above also, much of the pattern matching
 syntax actually has big similarities to RegEx.</p>
 <p>In terms of tutorials, for the (E)BNF/ANTLR combo at least, I'd highly
-recommend <a href="http://vimeo.com/groups/29150/videos/8137747">this set of screencasts on using ANTLR in
-Eclipse</a>. Though I didn't
+recommend <a href="http://vimeo.com/groups/29150/videos/8137747" target="_blank" rel="noopener">this set of screencasts on using ANTLR in
+Eclipse</a>
+. Though I didn't
 use the Eclipse version, these screencasts quickly give you an idea of
 how it all works ... I watched at least a bunch of them, and I'm happy
 I did.</p>
 <h3 id="toc2">Links</h3>
 <ul>
 <li>The EBNF I came up with so far is available on
-<a href="https://github.com/samuell/galaxy-toolconfig-bnf/blob/master/GalaxyToolConfig.g">GitHub</a></li>
-<li>The generated parser <a href="https://github.com/bioclipse/bioclipse.uppmax/tree/master/plugins/net.bioclipse.uppmax/src/net/bioclipse/uppmax/galaxytoolconfigparser">is,
+<a href="https://github.com/samuell/galaxy-toolconfig-bnf/blob/master/GalaxyToolConfig.g" target="_blank" rel="noopener">GitHub</a>
+</li>
+<li>The generated parser <a href="https://github.com/bioclipse/bioclipse.uppmax/tree/master/plugins/net.bioclipse.uppmax/src/net/bioclipse/uppmax/galaxytoolconfigparser" target="_blank" rel="noopener">is,
 too</a>
+
 (Though in another github project)</li>
 </ul>
 

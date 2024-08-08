@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>Make your commandline tool workflow friendly | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -55,10 +55,14 @@ of specifying them. The optimal is often to be as explicit as possible
 while allowing the user (and thus the workflow tool) as much flexibility
 and control as possible over each output file path.</p>
 <p>Before jumping in, just a disclaimer that I have experience from
-integrating tools primarily in <a href="https://galaxyproject.org/">Galaxy</a>
+integrating tools primarily in <a href="https://galaxyproject.org/" target="_blank" rel="noopener">Galaxy</a>
+
 (though quite a years ago),
-<a href="https://github.com/spotify/luigi">Luigi</a>/<a href="https://github.com/pharmbio/sciluigi">SciLuigi</a>
-and <a href="http://scipipe.org">SciPipe</a>, and can not talk for all tools.
+<a href="https://github.com/spotify/luigi" target="_blank" rel="noopener">Luigi</a>
+/<a href="https://github.com/pharmbio/sciluigi" target="_blank" rel="noopener">SciLuigi</a>
+
+and <a href="http://scipipe.org" target="_blank" rel="noopener">SciPipe</a>
+, and can not talk for all tools.
 Exceptions might exist, due to other ways of handling file paths.
 Generally though, I expect the same principles to apply to the majority
 of workflow tools which integrate commandline programs writing to a
@@ -102,27 +106,37 @@ completion, so as to guarantee atomic writes.</li>
 rules, should make integrating your commandline program way easier, more
 robust, and reproducible.</p>
 <p>Do you have more suggestions? Please add them in the comments section!</p>
-<p><em><strong>Update (May 26):</strong> <a href="https://twitter.com/bjoerngruening">Björn
-Grüning</a> maintains <a href="https://github.com/bgruening/coding_for_big_data">a more extensive
+<p><em><strong>Update (May 26):</strong> <a href="https://twitter.com/bjoerngruening" target="_blank" rel="noopener">Björn
+Grüning</a>
+ maintains <a href="https://github.com/bgruening/coding_for_big_data" target="_blank" rel="noopener">a more extensive
 list of
-recommendations</a>,
+recommendations</a>
+,
 including some of the above points<br>
-<strong>Update (May 26):</strong> If you're interested, <a href="https://twitter.com/smllmp/status/1000135015194296320">here is the twitter
-thread</a> that
+<strong>Update (May 26):</strong> If you're interested, <a href="https://twitter.com/smllmp/status/1000135015194296320" target="_blank" rel="noopener">here is the twitter
+thread</a>
+ that
 sparked the idea of this post.<br>
-<strong>Update (May 27):</strong> <a href="https://twitter.com/ctitusbrown">Titus Brown</a> has
-a <a href="https://github.com/ctb/titus-blog/blob/add/command_line_patterns/src/2018-our-command-line-patterns.md">blog post in the
-works</a>,
-<a href="https://twitter.com/ctitusbrown/status/1000735471062806528">announced
-here</a>, and
-<a href="https://github.com/ctb/titus-blog/pull/21">discussions summarized
-here</a>.<br>
-<strong>Update (May 27):</strong> Just learned that <a href="https://twitter.com/jmmv">Julio
-Merino</a> has a <a href="http://julio.meroh.net/series.html#CLI%20design">post series from 2013 on CLI
-design</a>.<br>
+<strong>Update (May 27):</strong> <a href="https://twitter.com/ctitusbrown" target="_blank" rel="noopener">Titus Brown</a>
+ has
+a <a href="https://github.com/ctb/titus-blog/blob/add/command_line_patterns/src/2018-our-command-line-patterns.md" target="_blank" rel="noopener">blog post in the
+works</a>
+,
+<a href="https://twitter.com/ctitusbrown/status/1000735471062806528" target="_blank" rel="noopener">announced
+here</a>
+, and
+<a href="https://github.com/ctb/titus-blog/pull/21" target="_blank" rel="noopener">discussions summarized
+here</a>
+.<br>
+<strong>Update (May 27):</strong> Just learned that <a href="https://twitter.com/jmmv" target="_blank" rel="noopener">Julio
+Merino</a>
+ has a <a href="http://julio.meroh.net/series.html#CLI%20design" target="_blank" rel="noopener">post series from 2013 on CLI
+design</a>
+.<br>
 <strong>Update (May 2019):</strong> A paper incorporating the above considerations is
-published: <a href="https://academic.oup.com/gigascience/article/8/5/giz054/5497810">Software engineering for scientific big data
-analysis</a>.</em></p>
+published: <a href="https://academic.oup.com/gigascience/article/8/5/giz054/5497810" target="_blank" rel="noopener">Software engineering for scientific big data
+analysis</a>
+.</em></p>
 
   
 

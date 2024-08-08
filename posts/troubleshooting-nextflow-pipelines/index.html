@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>Troubleshooting Nextflow pipelines | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0501cde787a831c36705f20a2589d2156b6b699bcf7c5b749bb4b5842d0bff5e.css" integrity="sha256-BQHN54eoMcNnBfIKJYnSFWtraZvPfFt0m7S1hC0L/14=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -43,11 +43,14 @@
 
   <!-- raw HTML omitted -->
 <p>We have been evaluating Nextflow before in my work at
-<a href="https://pharmb.io">pharmb.io</a>, but that was before
-<a href="https://www.nextflow.io/docs/latest/dsl1.html">DSL2</a> and the support
+<a href="https://pharmb.io" target="_blank" rel="noopener">pharmb.io</a>
+, but that was before
+<a href="https://www.nextflow.io/docs/latest/dsl1.html" target="_blank" rel="noopener">DSL2</a>
+ and the support
 for re-usable modules (which was one reason we needed to develop our own
-tools to support our challenges, as explained <a href="https://doi.org/10.1093/gigascience/giz044">in the
-paper</a>). Thus, there's
+tools to support our challenges, as explained <a href="https://doi.org/10.1093/gigascience/giz044" target="_blank" rel="noopener">in the
+paper</a>
+). Thus, there's
 definitely some stuff to get into.</p>
 <p>Based on my years in bioinformatics and data science, I've seen that
 the number one skill that you need to develop is to be able to
@@ -72,37 +75,49 @@ comments!</p>
 techniques, and the idea here is not to re-iterate them, so I'll start
 with pointing out some of the most important ones here.</p>
 <ol>
-<li>Perhaps the most similar page to this one, is the <a href="https://training.nextflow.io/basic_training/debugging/">troubleshooting
-guide</a> on
+<li>Perhaps the most similar page to this one, is the <a href="https://training.nextflow.io/basic_training/debugging/" target="_blank" rel="noopener">troubleshooting
+guide</a>
+ on
 the Nextflow Training website.</li>
-<li>There is also some <a href="https://nextflow.io/docs/latest/developer/index.html#debugging">info on avialable debugging
+<li>There is also some <a href="https://nextflow.io/docs/latest/developer/index.html#debugging" target="_blank" rel="noopener">info on avialable debugging
 tools</a>
+
 in the overview page in the main Nextflow docs.</li>
-<li>The doc page on <a href="https://www.nextflow.io/docs/latest/tracing.html">Tracing &amp;
+<li>The doc page on <a href="https://www.nextflow.io/docs/latest/tracing.html" target="_blank" rel="noopener">Tracing &amp;
 visualisation</a>
+
 provides info on some very useful tools to understand what your
 pipeline does.</li>
-<li>The <a href="https://www.nextflow.io/docs/latest/metadata.html">workflow introspection
-page</a> also
+<li>The <a href="https://www.nextflow.io/docs/latest/metadata.html" target="_blank" rel="noopener">workflow introspection
+page</a>
+ also
 contains tips on how you can inspect especially the objects in the
 DSL/Groovy part of the pipeline.</li>
-<li>A search for &quot;troubleshooting&quot; in the Nextflow docs gives a <a href="https://nextflow.io/docs/latest/search.html?q=troubleshooting&amp;check_keywords=yes&amp;area=default">few
+<li>A search for &quot;troubleshooting&quot; in the Nextflow docs gives a <a href="https://nextflow.io/docs/latest/search.html?q=troubleshooting&amp;check_keywords=yes&amp;area=default" target="_blank" rel="noopener">few
 pages specific to various execution
-platforms</a>,
-as well as on <a href="https://nextflow.io/docs/latest/cache-and-resume.html#troubleshooting">caching and
-resuming</a>,
+platforms</a>
+,
+as well as on <a href="https://nextflow.io/docs/latest/cache-and-resume.html#troubleshooting" target="_blank" rel="noopener">caching and
+resuming</a>
+,
 which should be generally useful.</li>
-<li><a href="https://twitter.com/arcane_mahesh">Mahesh Binzer-Panchal</a> started
-<a href="https://github.com/carpentries-incubator/workflows-nextflow/issues/64">an issue to collect various common errors in
-Nextflow</a>.</li>
-<li>This seems to be now collected into <a href="https://midnighter.github.io/nextflow-gotchas/">this website with gotchas and
-common errors</a>.</li>
-<li>Apart from the <a href="https://www.nextflow.io/slack-invite.html">Slack</a>,
-there is now also a <a href="https://community.seqera.io/c/nextflow/5">community
-forum</a>, where you can
+<li><a href="https://twitter.com/arcane_mahesh" target="_blank" rel="noopener">Mahesh Binzer-Panchal</a>
+ started
+<a href="https://github.com/carpentries-incubator/workflows-nextflow/issues/64" target="_blank" rel="noopener">an issue to collect various common errors in
+Nextflow</a>
+.</li>
+<li>This seems to be now collected into <a href="https://midnighter.github.io/nextflow-gotchas/" target="_blank" rel="noopener">this website with gotchas and
+common errors</a>
+.</li>
+<li>Apart from the <a href="https://www.nextflow.io/slack-invite.html" target="_blank" rel="noopener">Slack</a>
+,
+there is now also a <a href="https://community.seqera.io/c/nextflow/5" target="_blank" rel="noopener">community
+forum</a>
+, where you can
 search for previous issues and ask about your own.</li>
-<li>Last but definitely not least, the <a href="https://nf-co.re/join">nf-core
-community</a> contains a super-vibrant
+<li>Last but definitely not least, the <a href="https://nf-co.re/join" target="_blank" rel="noopener">nf-core
+community</a>
+ contains a super-vibrant
 community, with an even more active Slack server, and lots of other
 community resources.</li>
 </ol>
@@ -170,13 +185,15 @@ function is, in summary:</p>
 <ul>
 <li><code>.command.begin</code></li>
 <li><code>.command.err</code> - Everything written to
-<a href="https://en.wikipedia.org/wiki/Standard_streams#Standard_error_(stderr)">stderr</a>
+<a href="https://en.wikipedia.org/wiki/Standard_streams#Standard_error_%28stderr%29" target="_blank" rel="noopener">stderr</a>
+
 from the command. Will typically be errors, but some commands are
 ill-behaved and write out other stuff here as well, that might be
 potentially useful for debugging.</li>
 <li><code>.command.log</code> - Log output from the command</li>
 <li><code>.command.out</code> - Everything written to
-<a href="https://en.wikipedia.org/wiki/Standard_streams#Standard_output_(stdout)">stdout</a></li>
+<a href="https://en.wikipedia.org/wiki/Standard_streams#Standard_output_%28stdout%29" target="_blank" rel="noopener">stdout</a>
+</li>
 <li><code>.command.run</code> - This is a scaffold script that contains various
 bash functions to create temporary folder, stage files, execute the
 .command.sh script, and clean up. We will look closer at it below.</li>
@@ -279,7 +296,8 @@ share them, or at least a link to them, in the comments below!</p>
 <li>2023-11-01 13:37 CET: Added section &quot;Turning off the cleanup parts,
 to explore temporary folders&quot;</li>
 <li>2023-11-01 14:20 CET: Added pointer about nxf_launch(), on tip from
-<a href="https://twitter.com/gau">Maxime Garcia</a>.</li>
+<a href="https://twitter.com/gau" target="_blank" rel="noopener">Maxime Garcia</a>
+.</li>
 <li>2023-11-01 21:30 CET: Added link to troubleshooting guide at the
 Nextflow Training website.</li>
 </ul>
