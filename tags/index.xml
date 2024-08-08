@@ -15,5 +15,61 @@
       <guid>https://livingsystems.se/tags/conference/</guid>
       <description></description>
     </item>
+    <item>
+      <title>Go</title>
+      <link>https://livingsystems.se/tags/go/</link>
+      <pubDate>Thu, 18 Dec 2014 20:43:00 +0100</pubDate>
+      <guid>https://livingsystems.se/tags/go/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Galaxy</title>
+      <link>https://livingsystems.se/tags/galaxy/</link>
+      <pubDate>Thu, 28 Jul 2011 09:46:00 +0200</pubDate>
+      <guid>https://livingsystems.se/tags/galaxy/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Docbook</title>
+      <link>https://livingsystems.se/tags/docbook/</link>
+      <pubDate>Thu, 21 Jul 2011 01:33:00 +0200</pubDate>
+      <guid>https://livingsystems.se/tags/docbook/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Regex</title>
+      <link>https://livingsystems.se/tags/regex/</link>
+      <pubDate>Thu, 21 Jul 2011 01:33:00 +0200</pubDate>
+      <guid>https://livingsystems.se/tags/regex/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>XSLT</title>
+      <link>https://livingsystems.se/tags/xslt/</link>
+      <pubDate>Thu, 21 Jul 2011 01:33:00 +0200</pubDate>
+      <guid>https://livingsystems.se/tags/xslt/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Semantic</title>
+      <link>https://livingsystems.se/tags/semantic/</link>
+      <pubDate>Wed, 17 Feb 2010 01:45:00 +0100</pubDate>
+      <guid>https://livingsystems.se/tags/semantic/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Simulation</title>
+      <link>https://livingsystems.se/tags/simulation/</link>
+      <pubDate>Wed, 17 Feb 2010 01:45:00 +0100</pubDate>
+      <guid>https://livingsystems.se/tags/simulation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Prolog</title>
+      <link>https://livingsystems.se/tags/prolog/</link>
+      <pubDate>Tue, 22 Sep 2009 17:04:00 +0200</pubDate>
+      <guid>https://livingsystems.se/tags/prolog/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

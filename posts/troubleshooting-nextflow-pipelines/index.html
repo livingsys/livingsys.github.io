@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width">
 <title>Troubleshooting Nextflow pipelines | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.f3a5991997d3edfa6612acd25887dbae0ca5be329567cceb3054217da27f5132.css" integrity="sha256-86WZGZfT7fpmEqzSWIfbrgylvjKVZ8zrMFQhfaJ/UTI=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
 
 
 </head>
@@ -132,7 +133,7 @@ and ends with a long random string of letters and numbers called a
 &quot;hash&quot;, for example <code>/tmp/nf/work/a3/0e2ea68c421ced4797e00de9e73155</code>.
 It is a good idea to cd into this folder and exploring it, when you have
 a hard to track down-bug, so in this example:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#a90d91">cd</span> /tmp/nf/work/a3/0e2ea68c421ced4797e00de9e73155
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /tmp/nf/work/a3/0e2ea68c421ced4797e00de9e73155
 </span></span><span style="display:flex;"><span>ls -1a
 </span></span></code></pre></div><p>The <code>-1a</code> flags, or in particular <code>-1tra</code> are very useful, and have the
 following function:</p>
@@ -232,17 +233,17 @@ temporary folders manually.</p>
 .command.run file before running it (In bash, you can comment it out by
 adding a <code>#</code> - character at the beginning of the line).</p>
 <p>In particular, check the <code>on_exit()</code> function, which might look like so:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>on_exit<span style="color:#000">()</span> <span style="color:#000">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">exit_status</span><span style="color:#000">=</span><span style="color:#c41a16">${</span><span style="color:#000">nxf_main_ret</span>:=<span style="color:#000">$?</span><span style="color:#c41a16">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">printf</span> <span style="color:#000">$exit_status</span> &gt; /tmp/nf/work/a3/0e2ea68c421ced4797e00de9e73155/.exitcode
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">set</span> +u
-</span></span><span style="display:flex;"><span>    <span style="color:#000">[[</span> <span style="color:#c41a16">&#34;</span><span style="color:#000">$tee1</span><span style="color:#c41a16">&#34;</span> <span style="color:#000">]]</span> <span style="color:#000">&amp;&amp;</span> <span style="color:#a90d91">kill</span> <span style="color:#000">$tee1</span> 2&gt;/dev/null
-</span></span><span style="display:flex;"><span>    <span style="color:#000">[[</span> <span style="color:#c41a16">&#34;</span><span style="color:#000">$tee2</span><span style="color:#c41a16">&#34;</span> <span style="color:#000">]]</span> <span style="color:#000">&amp;&amp;</span> <span style="color:#a90d91">kill</span> <span style="color:#000">$tee2</span> 2&gt;/dev/null
-</span></span><span style="display:flex;"><span>    <span style="color:#000">[[</span> <span style="color:#c41a16">&#34;</span><span style="color:#000">$ctmp</span><span style="color:#c41a16">&#34;</span> <span style="color:#000">]]</span> <span style="color:#000">&amp;&amp;</span> rm -rf <span style="color:#000">$ctmp</span> <span style="color:#000">||</span> <span style="color:#a90d91">true</span>
-</span></span><span style="display:flex;"><span>    rm -rf <span style="color:#000">$NXF_SCRATCH</span> <span style="color:#000">||</span> <span style="color:#a90d91">true</span>
-</span></span><span style="display:flex;"><span>    sync <span style="color:#000">||</span> <span style="color:#a90d91">true</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">exit</span> <span style="color:#000">$exit_status</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">}</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>on_exit() {
+</span></span><span style="display:flex;"><span>    exit_status=<span style="color:#a31515">${</span>nxf_main_ret:=$?<span style="color:#a31515">}</span>
+</span></span><span style="display:flex;"><span>    printf $exit_status &gt; /tmp/nf/work/a3/0e2ea68c421ced4797e00de9e73155/.exitcode
+</span></span><span style="display:flex;"><span>    set +u
+</span></span><span style="display:flex;"><span>    [[ <span style="color:#a31515">&#34;</span>$tee1<span style="color:#a31515">&#34;</span> ]] &amp;&amp; kill $tee1 2&gt;/dev/null
+</span></span><span style="display:flex;"><span>    [[ <span style="color:#a31515">&#34;</span>$tee2<span style="color:#a31515">&#34;</span> ]] &amp;&amp; kill $tee2 2&gt;/dev/null
+</span></span><span style="display:flex;"><span>    [[ <span style="color:#a31515">&#34;</span>$ctmp<span style="color:#a31515">&#34;</span> ]] &amp;&amp; rm -rf $ctmp || true
+</span></span><span style="display:flex;"><span>    rm -rf $NXF_SCRATCH || true
+</span></span><span style="display:flex;"><span>    sync || true
+</span></span><span style="display:flex;"><span>    exit $exit_status
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Here, you could comment our for example the
 <code>rm -rf $NXF_SCRATCH || true</code> line, if you want the temporary folder to
 remain existing (typically put in <code>/tmp</code> and named something like
@@ -263,10 +264,10 @@ manually!</p>
 <p>If you want to be able to quickly enable these two adjustments when in a
 work folder, you can add the following bash function to your
 <code>~/.bash_aliases</code> file:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#a90d91">function</span> debugnf<span style="color:#000">()</span> <span style="color:#000">{</span>
-</span></span><span style="display:flex;"><span>    sed -i <span style="color:#c41a16">&#39;2s/^/set -x\n/&#39;</span> .command.<span style="color:#000">{</span>run,sh<span style="color:#000">}</span>;
-</span></span><span style="display:flex;"><span>    sed -i <span style="color:#c41a16">&#39;s/rm /#rm /g&#39;</span> .command.run;
-</span></span><span style="display:flex;"><span><span style="color:#000">}</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#00f">function</span> debugnf() {
+</span></span><span style="display:flex;"><span>    sed -i <span style="color:#a31515">&#39;2s/^/set -x\n/&#39;</span> .command.{run,sh};
+</span></span><span style="display:flex;"><span>    sed -i <span style="color:#a31515">&#39;s/rm /#rm /g&#39;</span> .command.run;
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Then, when in a work folder, you can just run <code>debugnf</code> before running
 any of the .command.run or .command.sh files manually.</p>
 <h3 id="summary">Summary</h3>

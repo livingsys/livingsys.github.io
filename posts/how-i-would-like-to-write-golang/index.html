@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width">
 <title>How I would like to write Go programs | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.f3a5991997d3edfa6612acd25887dbae0ca5be329567cceb3054217da27f5132.css" integrity="sha256-86WZGZfT7fpmEqzSWIfbrgylvjKVZ8zrMFQhfaJ/UTI=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
 
 
 </head>
@@ -72,187 +73,187 @@ gist</a>,
 <a href="http://play.golang.org/p/2_uJwnk7zS">golang play</a> or in the pasted
 version just below! Watch out especially for those lines connecting the
 (asynchronous) processes together. That is, these lines:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#000">split</span>.<span style="color:#000">In</span>  = <span style="color:#000">hisay</span>.<span style="color:#000">Out</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">lower</span>.<span style="color:#000">In</span>  = <span style="color:#000">split</span>.<span style="color:#000">OutLeft</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">upper</span>.<span style="color:#000">In</span>  = <span style="color:#000">split</span>.<span style="color:#000">OutRight</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">zippr</span>.<span style="color:#000">In1</span> = <span style="color:#000">lower</span>.<span style="color:#000">Out</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">zippr</span>.<span style="color:#000">In2</span> = <span style="color:#000">upper</span>.<span style="color:#000">Out</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">prntr</span>.<span style="color:#000">In</span>  = <span style="color:#000">zippr</span>.<span style="color:#000">Out</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>split.In  = hisay.Out
+</span></span><span style="display:flex;"><span>lower.In  = split.OutLeft
+</span></span><span style="display:flex;"><span>upper.In  = split.OutRight
+</span></span><span style="display:flex;"><span>zippr.In1 = lower.Out
+</span></span><span style="display:flex;"><span>zippr.In2 = upper.Out
+</span></span><span style="display:flex;"><span>prntr.In  = zippr.Out
 </span></span></code></pre></div><p>In summary: This is how I want to write composable Go programs!
 (Especially if I can find a nicer way to drive the network, than a
 hard-coded for-loop ;) - ideas welcome)</p>
 <p>And so the full code example:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">package</span> <span style="color:#000">main</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#00f">package</span> main
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> (
-</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;fmt&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;math&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;strings&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#a31515">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a31515">&#34;math&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a31515">&#34;strings&#34;</span>
 </span></span><span style="display:flex;"><span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">const</span> (
-</span></span><span style="display:flex;"><span>    <span style="color:#000">BUFSIZE</span> = <span style="color:#1c01ce">16</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">const</span> (
+</span></span><span style="display:flex;"><span>    BUFSIZE = 16
 </span></span><span style="display:flex;"><span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#177500">// ======= Main =======
-</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">main</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Init processes
-</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#000">hisay</span> <span style="color:#000">:=</span> <span style="color:#000">NewHiSayer</span>()
-</span></span><span style="display:flex;"><span>    <span style="color:#000">split</span> <span style="color:#000">:=</span> <span style="color:#000">NewStringSplitter</span>()
-</span></span><span style="display:flex;"><span>    <span style="color:#000">lower</span> <span style="color:#000">:=</span> <span style="color:#000">NewLowerCaser</span>()
-</span></span><span style="display:flex;"><span>    <span style="color:#000">upper</span> <span style="color:#000">:=</span> <span style="color:#000">NewUpperCaser</span>()
-</span></span><span style="display:flex;"><span>    <span style="color:#000">zippr</span> <span style="color:#000">:=</span> <span style="color:#000">NewZipper</span>()
-</span></span><span style="display:flex;"><span>    <span style="color:#000">prntr</span> <span style="color:#000">:=</span> <span style="color:#000">NewPrinter</span>()
+</span></span><span style="display:flex;"><span><span style="color:#008000">// ======= Main =======
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">func</span> main() {
+</span></span><span style="display:flex;"><span>    <span style="color:#008000">// Init processes
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>    hisay := NewHiSayer()
+</span></span><span style="display:flex;"><span>    split := NewStringSplitter()
+</span></span><span style="display:flex;"><span>    lower := NewLowerCaser()
+</span></span><span style="display:flex;"><span>    upper := NewUpperCaser()
+</span></span><span style="display:flex;"><span>    zippr := NewZipper()
+</span></span><span style="display:flex;"><span>    prntr := NewPrinter()
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Network definition *** This is where to look! ***
-</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#000">split</span>.<span style="color:#000">In</span> = <span style="color:#000">hisay</span>.<span style="color:#000">Out</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">lower</span>.<span style="color:#000">In</span> = <span style="color:#000">split</span>.<span style="color:#000">OutLeft</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">upper</span>.<span style="color:#000">In</span> = <span style="color:#000">split</span>.<span style="color:#000">OutRight</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">zippr</span>.<span style="color:#000">In1</span> = <span style="color:#000">lower</span>.<span style="color:#000">Out</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">zippr</span>.<span style="color:#000">In2</span> = <span style="color:#000">upper</span>.<span style="color:#000">Out</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">prntr</span>.<span style="color:#000">In</span> = <span style="color:#000">zippr</span>.<span style="color:#000">Out</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#008000">// Network definition *** This is where to look! ***
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>    split.In = hisay.Out
+</span></span><span style="display:flex;"><span>    lower.In = split.OutLeft
+</span></span><span style="display:flex;"><span>    upper.In = split.OutRight
+</span></span><span style="display:flex;"><span>    zippr.In1 = lower.Out
+</span></span><span style="display:flex;"><span>    zippr.In2 = upper.Out
+</span></span><span style="display:flex;"><span>    prntr.In = zippr.Out
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Set up processes for running (spawn go-routines)
-</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#a90d91">go</span> <span style="color:#000">hisay</span>.<span style="color:#000">Run</span>()
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">go</span> <span style="color:#000">split</span>.<span style="color:#000">Run</span>()
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">go</span> <span style="color:#000">lower</span>.<span style="color:#000">Run</span>()
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">go</span> <span style="color:#000">upper</span>.<span style="color:#000">Run</span>()
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">go</span> <span style="color:#000">zippr</span>.<span style="color:#000">Run</span>()
-</span></span><span style="display:flex;"><span>    <span style="color:#000">prntr</span>.<span style="color:#000">Run</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#008000">// Set up processes for running (spawn go-routines)
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>    <span style="color:#00f">go</span> hisay.Run()
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">go</span> split.Run()
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">go</span> lower.Run()
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">go</span> upper.Run()
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">go</span> zippr.Run()
+</span></span><span style="display:flex;"><span>    prntr.Run()
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">println</span>(<span style="color:#c41a16">&#34;Finished program!&#34;</span>)
+</span></span><span style="display:flex;"><span>    println(<span style="color:#a31515">&#34;Finished program!&#34;</span>)
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#177500">// ======= HiSayer =======
-</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">type</span> <span style="color:#000">hiSayer</span> <span style="color:#a90d91">struct</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#000">Out</span> <span style="color:#a90d91">chan</span> <span style="color:#a90d91">string</span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">// ======= HiSayer =======
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">type</span> hiSayer <span style="color:#00f">struct</span> {
+</span></span><span style="display:flex;"><span>    Out <span style="color:#00f">chan</span> <span style="color:#2b91af">string</span>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">NewHiSayer</span>() <span style="color:#000">*</span><span style="color:#000">hiSayer</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">&amp;</span><span style="color:#000">hiSayer</span>{<span style="color:#000">Out</span>: <span style="color:#a90d91">make</span>(<span style="color:#a90d91">chan</span> <span style="color:#a90d91">string</span>, <span style="color:#000">BUFSIZE</span>)}
+</span></span><span style="display:flex;"><span><span style="color:#00f">func</span> NewHiSayer() *hiSayer {
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">return</span> &amp;hiSayer{Out: make(<span style="color:#00f">chan</span> <span style="color:#2b91af">string</span>, BUFSIZE)}
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> (<span style="color:#000">proc</span> <span style="color:#000">*</span><span style="color:#000">hiSayer</span>) <span style="color:#000">Run</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">defer</span> <span style="color:#a90d91">close</span>(<span style="color:#000">proc</span>.<span style="color:#000">Out</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">for</span> <span style="color:#000">_</span>, <span style="color:#000">i</span> <span style="color:#000">:=</span> <span style="color:#a90d91">range</span> []<span style="color:#a90d91">int</span>{<span style="color:#1c01ce">1</span>, <span style="color:#1c01ce">2</span>, <span style="color:#1c01ce">3</span>, <span style="color:#1c01ce">4</span>, <span style="color:#1c01ce">5</span>, <span style="color:#1c01ce">6</span>, <span style="color:#1c01ce">7</span>, <span style="color:#1c01ce">8</span>, <span style="color:#1c01ce">9</span>, <span style="color:#1c01ce">10</span>} {
-</span></span><span style="display:flex;"><span>        <span style="color:#000">proc</span>.<span style="color:#000">Out</span> <span style="color:#000">&lt;-</span> <span style="color:#000">fmt</span>.<span style="color:#000">Sprintf</span>(<span style="color:#c41a16">&#34;Hi for the %d:th time!&#34;</span>, <span style="color:#000">i</span>)
+</span></span><span style="display:flex;"><span><span style="color:#00f">func</span> (proc *hiSayer) Run() {
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">defer</span> close(proc.Out)
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">for</span> _, i := <span style="color:#00f">range</span> []<span style="color:#2b91af">int</span>{1, 2, 3, 4, 5, 6, 7, 8, 9, 10} {
+</span></span><span style="display:flex;"><span>        proc.Out &lt;- fmt.Sprintf(<span style="color:#a31515">&#34;Hi for the %d:th time!&#34;</span>, i)
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#177500">// ======= StringSplitter =======
-</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">type</span> <span style="color:#000">stringSplitter</span> <span style="color:#a90d91">struct</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#000">In</span>       <span style="color:#a90d91">chan</span> <span style="color:#a90d91">string</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">OutLeft</span>  <span style="color:#a90d91">chan</span> <span style="color:#a90d91">string</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">OutRight</span> <span style="color:#a90d91">chan</span> <span style="color:#a90d91">string</span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">// ======= StringSplitter =======
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">type</span> stringSplitter <span style="color:#00f">struct</span> {
+</span></span><span style="display:flex;"><span>    In       <span style="color:#00f">chan</span> <span style="color:#2b91af">string</span>
+</span></span><span style="display:flex;"><span>    OutLeft  <span style="color:#00f">chan</span> <span style="color:#2b91af">string</span>
+</span></span><span style="display:flex;"><span>    OutRight <span style="color:#00f">chan</span> <span style="color:#2b91af">string</span>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">NewStringSplitter</span>() <span style="color:#000">*</span><span style="color:#000">stringSplitter</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">&amp;</span><span style="color:#000">stringSplitter</span>{
-</span></span><span style="display:flex;"><span>        <span style="color:#000">OutLeft</span>:  <span style="color:#a90d91">make</span>(<span style="color:#a90d91">chan</span> <span style="color:#a90d91">string</span>, <span style="color:#000">BUFSIZE</span>),
-</span></span><span style="display:flex;"><span>        <span style="color:#000">OutRight</span>: <span style="color:#a90d91">make</span>(<span style="color:#a90d91">chan</span> <span style="color:#a90d91">string</span>, <span style="color:#000">BUFSIZE</span>),
+</span></span><span style="display:flex;"><span><span style="color:#00f">func</span> NewStringSplitter() *stringSplitter {
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">return</span> &amp;stringSplitter{
+</span></span><span style="display:flex;"><span>        OutLeft:  make(<span style="color:#00f">chan</span> <span style="color:#2b91af">string</span>, BUFSIZE),
+</span></span><span style="display:flex;"><span>        OutRight: make(<span style="color:#00f">chan</span> <span style="color:#2b91af">string</span>, BUFSIZE),
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> (<span style="color:#000">proc</span> <span style="color:#000">*</span><span style="color:#000">stringSplitter</span>) <span style="color:#000">Run</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">defer</span> <span style="color:#a90d91">close</span>(<span style="color:#000">proc</span>.<span style="color:#000">OutLeft</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">defer</span> <span style="color:#a90d91">close</span>(<span style="color:#000">proc</span>.<span style="color:#000">OutRight</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">for</span> <span style="color:#000">s</span> <span style="color:#000">:=</span> <span style="color:#a90d91">range</span> <span style="color:#000">proc</span>.<span style="color:#000">In</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#000">halfLen</span> <span style="color:#000">:=</span> <span style="color:#a90d91">int</span>(<span style="color:#000">math</span>.<span style="color:#000">Floor</span>(<span style="color:#a90d91">float64</span>(<span style="color:#a90d91">len</span>(<span style="color:#000">s</span>)) <span style="color:#000">/</span> <span style="color:#a90d91">float64</span>(<span style="color:#1c01ce">2</span>)))
-</span></span><span style="display:flex;"><span>        <span style="color:#000">proc</span>.<span style="color:#000">OutLeft</span> <span style="color:#000">&lt;-</span> <span style="color:#000">s</span>[<span style="color:#1c01ce">0</span>:<span style="color:#000">halfLen</span>]
-</span></span><span style="display:flex;"><span>        <span style="color:#000">proc</span>.<span style="color:#000">OutRight</span> <span style="color:#000">&lt;-</span> <span style="color:#000">s</span>[<span style="color:#000">halfLen</span>:<span style="color:#a90d91">len</span>(<span style="color:#000">s</span>)]
+</span></span><span style="display:flex;"><span><span style="color:#00f">func</span> (proc *stringSplitter) Run() {
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">defer</span> close(proc.OutLeft)
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">defer</span> close(proc.OutRight)
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">for</span> s := <span style="color:#00f">range</span> proc.In {
+</span></span><span style="display:flex;"><span>        halfLen := int(math.Floor(float64(len(s)) / float64(2)))
+</span></span><span style="display:flex;"><span>        proc.OutLeft &lt;- s[0:halfLen]
+</span></span><span style="display:flex;"><span>        proc.OutRight &lt;- s[halfLen:len(s)]
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#177500">// ======= LowerCaser =======
-</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">type</span> <span style="color:#000">lowerCaser</span> <span style="color:#a90d91">struct</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#000">In</span>  <span style="color:#a90d91">chan</span> <span style="color:#a90d91">string</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">Out</span> <span style="color:#a90d91">chan</span> <span style="color:#a90d91">string</span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">// ======= LowerCaser =======
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">type</span> lowerCaser <span style="color:#00f">struct</span> {
+</span></span><span style="display:flex;"><span>    In  <span style="color:#00f">chan</span> <span style="color:#2b91af">string</span>
+</span></span><span style="display:flex;"><span>    Out <span style="color:#00f">chan</span> <span style="color:#2b91af">string</span>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">NewLowerCaser</span>() <span style="color:#000">*</span><span style="color:#000">lowerCaser</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">&amp;</span><span style="color:#000">lowerCaser</span>{<span style="color:#000">Out</span>: <span style="color:#a90d91">make</span>(<span style="color:#a90d91">chan</span> <span style="color:#a90d91">string</span>, <span style="color:#000">BUFSIZE</span>)}
+</span></span><span style="display:flex;"><span><span style="color:#00f">func</span> NewLowerCaser() *lowerCaser {
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">return</span> &amp;lowerCaser{Out: make(<span style="color:#00f">chan</span> <span style="color:#2b91af">string</span>, BUFSIZE)}
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> (<span style="color:#000">proc</span> <span style="color:#000">*</span><span style="color:#000">lowerCaser</span>) <span style="color:#000">Run</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">defer</span> <span style="color:#a90d91">close</span>(<span style="color:#000">proc</span>.<span style="color:#000">Out</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">for</span> <span style="color:#000">s</span> <span style="color:#000">:=</span> <span style="color:#a90d91">range</span> <span style="color:#000">proc</span>.<span style="color:#000">In</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#000">proc</span>.<span style="color:#000">Out</span> <span style="color:#000">&lt;-</span> <span style="color:#000">strings</span>.<span style="color:#000">ToLower</span>(<span style="color:#000">s</span>)
+</span></span><span style="display:flex;"><span><span style="color:#00f">func</span> (proc *lowerCaser) Run() {
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">defer</span> close(proc.Out)
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">for</span> s := <span style="color:#00f">range</span> proc.In {
+</span></span><span style="display:flex;"><span>        proc.Out &lt;- strings.ToLower(s)
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#177500">// ======= UpperCaser =======
-</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">type</span> <span style="color:#000">upperCaser</span> <span style="color:#a90d91">struct</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#000">In</span>  <span style="color:#a90d91">chan</span> <span style="color:#a90d91">string</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">Out</span> <span style="color:#a90d91">chan</span> <span style="color:#a90d91">string</span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">// ======= UpperCaser =======
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">type</span> upperCaser <span style="color:#00f">struct</span> {
+</span></span><span style="display:flex;"><span>    In  <span style="color:#00f">chan</span> <span style="color:#2b91af">string</span>
+</span></span><span style="display:flex;"><span>    Out <span style="color:#00f">chan</span> <span style="color:#2b91af">string</span>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">NewUpperCaser</span>() <span style="color:#000">*</span><span style="color:#000">upperCaser</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">&amp;</span><span style="color:#000">upperCaser</span>{<span style="color:#000">Out</span>: <span style="color:#a90d91">make</span>(<span style="color:#a90d91">chan</span> <span style="color:#a90d91">string</span>, <span style="color:#000">BUFSIZE</span>)}
+</span></span><span style="display:flex;"><span><span style="color:#00f">func</span> NewUpperCaser() *upperCaser {
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">return</span> &amp;upperCaser{Out: make(<span style="color:#00f">chan</span> <span style="color:#2b91af">string</span>, BUFSIZE)}
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> (<span style="color:#000">proc</span> <span style="color:#000">*</span><span style="color:#000">upperCaser</span>) <span style="color:#000">Run</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">defer</span> <span style="color:#a90d91">close</span>(<span style="color:#000">proc</span>.<span style="color:#000">Out</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">for</span> <span style="color:#000">s</span> <span style="color:#000">:=</span> <span style="color:#a90d91">range</span> <span style="color:#000">proc</span>.<span style="color:#000">In</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#000">proc</span>.<span style="color:#000">Out</span> <span style="color:#000">&lt;-</span> <span style="color:#000">strings</span>.<span style="color:#000">ToUpper</span>(<span style="color:#000">s</span>)
+</span></span><span style="display:flex;"><span><span style="color:#00f">func</span> (proc *upperCaser) Run() {
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">defer</span> close(proc.Out)
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">for</span> s := <span style="color:#00f">range</span> proc.In {
+</span></span><span style="display:flex;"><span>        proc.Out &lt;- strings.ToUpper(s)
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#177500">// ======= Merger =======
-</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">type</span> <span style="color:#000">zipper</span> <span style="color:#a90d91">struct</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#000">In1</span> <span style="color:#a90d91">chan</span> <span style="color:#a90d91">string</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">In2</span> <span style="color:#a90d91">chan</span> <span style="color:#a90d91">string</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">Out</span> <span style="color:#a90d91">chan</span> <span style="color:#a90d91">string</span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">// ======= Merger =======
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">type</span> zipper <span style="color:#00f">struct</span> {
+</span></span><span style="display:flex;"><span>    In1 <span style="color:#00f">chan</span> <span style="color:#2b91af">string</span>
+</span></span><span style="display:flex;"><span>    In2 <span style="color:#00f">chan</span> <span style="color:#2b91af">string</span>
+</span></span><span style="display:flex;"><span>    Out <span style="color:#00f">chan</span> <span style="color:#2b91af">string</span>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">NewZipper</span>() <span style="color:#000">*</span><span style="color:#000">zipper</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">&amp;</span><span style="color:#000">zipper</span>{<span style="color:#000">Out</span>: <span style="color:#a90d91">make</span>(<span style="color:#a90d91">chan</span> <span style="color:#a90d91">string</span>, <span style="color:#000">BUFSIZE</span>)}
+</span></span><span style="display:flex;"><span><span style="color:#00f">func</span> NewZipper() *zipper {
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">return</span> &amp;zipper{Out: make(<span style="color:#00f">chan</span> <span style="color:#2b91af">string</span>, BUFSIZE)}
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> (<span style="color:#000">proc</span> <span style="color:#000">*</span><span style="color:#000">zipper</span>) <span style="color:#000">Run</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">defer</span> <span style="color:#a90d91">close</span>(<span style="color:#000">proc</span>.<span style="color:#000">Out</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">for</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#000">s1</span>, <span style="color:#000">ok1</span> <span style="color:#000">:=</span> <span style="color:#000">&lt;-</span><span style="color:#000">proc</span>.<span style="color:#000">In1</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">s2</span>, <span style="color:#000">ok2</span> <span style="color:#000">:=</span> <span style="color:#000">&lt;-</span><span style="color:#000">proc</span>.<span style="color:#000">In2</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">if</span> !<span style="color:#000">ok1</span> <span style="color:#000">&amp;&amp;</span> !<span style="color:#000">ok2</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">break</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">func</span> (proc *zipper) Run() {
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">defer</span> close(proc.Out)
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">for</span> {
+</span></span><span style="display:flex;"><span>        s1, ok1 := &lt;-proc.In1
+</span></span><span style="display:flex;"><span>        s2, ok2 := &lt;-proc.In2
+</span></span><span style="display:flex;"><span>        <span style="color:#00f">if</span> !ok1 &amp;&amp; !ok2 {
+</span></span><span style="display:flex;"><span>            <span style="color:#00f">break</span>
 </span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#000">proc</span>.<span style="color:#000">Out</span> <span style="color:#000">&lt;-</span> <span style="color:#000">fmt</span>.<span style="color:#000">Sprint</span>(<span style="color:#000">s1</span>, <span style="color:#000">s2</span>)
+</span></span><span style="display:flex;"><span>        proc.Out &lt;- fmt.Sprint(s1, s2)
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#177500">// ======= Printer =======
-</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">type</span> <span style="color:#000">printer</span> <span style="color:#a90d91">struct</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#000">In</span> <span style="color:#a90d91">chan</span> <span style="color:#a90d91">string</span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">// ======= Printer =======
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">type</span> printer <span style="color:#00f">struct</span> {
+</span></span><span style="display:flex;"><span>    In <span style="color:#00f">chan</span> <span style="color:#2b91af">string</span>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">NewPrinter</span>() <span style="color:#000">*</span><span style="color:#000">printer</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">&amp;</span><span style="color:#000">printer</span>{}
+</span></span><span style="display:flex;"><span><span style="color:#00f">func</span> NewPrinter() *printer {
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">return</span> &amp;printer{}
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> (<span style="color:#000">proc</span> <span style="color:#000">*</span><span style="color:#000">printer</span>) <span style="color:#000">Run</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">for</span> <span style="color:#000">s</span> <span style="color:#000">:=</span> <span style="color:#a90d91">range</span> <span style="color:#000">proc</span>.<span style="color:#000">In</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#000">fmt</span>.<span style="color:#000">Println</span>(<span style="color:#000">s</span>)
+</span></span><span style="display:flex;"><span><span style="color:#00f">func</span> (proc *printer) Run() {
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">for</span> s := <span style="color:#00f">range</span> proc.In {
+</span></span><span style="display:flex;"><span>        fmt.Println(s)
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>And if we run it, we get:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ go run dataflow_syntax_test.go
-</span></span><span style="display:flex;"><span>hi <span style="color:#a90d91">for</span> the  1:TH TIME!
-</span></span><span style="display:flex;"><span>hi <span style="color:#a90d91">for</span> the  2:TH TIME!
-</span></span><span style="display:flex;"><span>hi <span style="color:#a90d91">for</span> the  3:TH TIME!
-</span></span><span style="display:flex;"><span>hi <span style="color:#a90d91">for</span> the  4:TH TIME!
-</span></span><span style="display:flex;"><span>hi <span style="color:#a90d91">for</span> the  5:TH TIME!
-</span></span><span style="display:flex;"><span>hi <span style="color:#a90d91">for</span> the  6:TH TIME!
-</span></span><span style="display:flex;"><span>hi <span style="color:#a90d91">for</span> the  7:TH TIME!
-</span></span><span style="display:flex;"><span>hi <span style="color:#a90d91">for</span> the  8:TH TIME!
-</span></span><span style="display:flex;"><span>hi <span style="color:#a90d91">for</span> the  9:TH TIME!
-</span></span><span style="display:flex;"><span>hi <span style="color:#a90d91">for</span> the  10:TH TIME!
+</span></span><span style="display:flex;"><span>hi <span style="color:#00f">for</span> the  1:TH TIME!
+</span></span><span style="display:flex;"><span>hi <span style="color:#00f">for</span> the  2:TH TIME!
+</span></span><span style="display:flex;"><span>hi <span style="color:#00f">for</span> the  3:TH TIME!
+</span></span><span style="display:flex;"><span>hi <span style="color:#00f">for</span> the  4:TH TIME!
+</span></span><span style="display:flex;"><span>hi <span style="color:#00f">for</span> the  5:TH TIME!
+</span></span><span style="display:flex;"><span>hi <span style="color:#00f">for</span> the  6:TH TIME!
+</span></span><span style="display:flex;"><span>hi <span style="color:#00f">for</span> the  7:TH TIME!
+</span></span><span style="display:flex;"><span>hi <span style="color:#00f">for</span> the  8:TH TIME!
+</span></span><span style="display:flex;"><span>hi <span style="color:#00f">for</span> the  9:TH TIME!
+</span></span><span style="display:flex;"><span>hi <span style="color:#00f">for</span> the  10:TH TIME!
 </span></span><span style="display:flex;"><span>Finished program!
 </span></span></code></pre></div><hr>
 <p><em><strong>Note I:</strong> See also <a href="https://plus.google.com/u/0/+SamuelLampa/posts/GKgBLeeJXdX">this very interesting discussion on

@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width">
 <title>Table-driven tests in C# | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.f3a5991997d3edfa6612acd25887dbae0ca5be329567cceb3054217da27f5132.css" integrity="sha256-86WZGZfT7fpmEqzSWIfbrgylvjKVZ8zrMFQhfaJ/UTI=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
 
 
 </head>
@@ -49,36 +50,36 @@ with inputs and corresponding expected outputs, and looping over them to
 execute the function being tested. In short, the idea is to suggest a
 maximally short and convenient syntax to do this.</p>
 <p>For example, given that we have a function like this in mylibrary.go:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">package</span> <span style="color:#000">tabletest</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#00f">package</span> tabletest
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#177500">// Concat concats strings
-</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span><span style="color:#a90d91">func</span> <span style="color:#000">Concat</span>(<span style="color:#000">a</span> <span style="color:#a90d91">string</span>, <span style="color:#000">b</span> <span style="color:#a90d91">string</span>) <span style="color:#a90d91">string</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">a</span> <span style="color:#000">+</span> <span style="color:#000">b</span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">// Concat concats strings
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span><span style="color:#00f">func</span> Concat(a <span style="color:#2b91af">string</span>, b <span style="color:#2b91af">string</span>) <span style="color:#2b91af">string</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">return</span> a + b
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>... then we could write a quite compact enumeration of testcases for
 testing this function like this (placing it in a file like
 mylibrary_test.go):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">package</span> <span style="color:#000">tabletest</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#00f">package</span> tabletest
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> (
-</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;testing&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#a31515">&#34;testing&#34;</span>
 </span></span><span style="display:flex;"><span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#177500">// TestConcat tests the Concat function
-</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span><span style="color:#a90d91">func</span> <span style="color:#000">TestConcat</span>(<span style="color:#000">t</span> <span style="color:#000">*</span><span style="color:#000">testing</span>.<span style="color:#000">T</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#000">testCases</span> <span style="color:#000">:=</span> []<span style="color:#a90d91">struct</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#000">str1</span> <span style="color:#a90d91">string</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">str2</span> <span style="color:#a90d91">string</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">want</span> <span style="color:#a90d91">string</span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">// TestConcat tests the Concat function
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span><span style="color:#00f">func</span> TestConcat(t *testing.T) {
+</span></span><span style="display:flex;"><span>    testCases := []<span style="color:#00f">struct</span> {
+</span></span><span style="display:flex;"><span>        str1 <span style="color:#2b91af">string</span>
+</span></span><span style="display:flex;"><span>        str2 <span style="color:#2b91af">string</span>
+</span></span><span style="display:flex;"><span>        want <span style="color:#2b91af">string</span>
 </span></span><span style="display:flex;"><span>    }{
-</span></span><span style="display:flex;"><span>        {<span style="color:#000">str1</span>: <span style="color:#c41a16">&#34;a&#34;</span>, <span style="color:#000">str2</span>: <span style="color:#c41a16">&#34;b&#34;</span>, <span style="color:#000">want</span>: <span style="color:#c41a16">&#34;ab&#34;</span>},
-</span></span><span style="display:flex;"><span>        {<span style="color:#000">str1</span>: <span style="color:#c41a16">&#34;b&#34;</span>, <span style="color:#000">str2</span>: <span style="color:#c41a16">&#34;c&#34;</span>, <span style="color:#000">want</span>: <span style="color:#c41a16">&#34;bc&#34;</span>},
-</span></span><span style="display:flex;"><span>        {<span style="color:#000">str1</span>: <span style="color:#c41a16">&#34;c&#34;</span>, <span style="color:#000">str2</span>: <span style="color:#c41a16">&#34;d&#34;</span>, <span style="color:#000">want</span>: <span style="color:#c41a16">&#34;cd&#34;</span>},
+</span></span><span style="display:flex;"><span>        {str1: <span style="color:#a31515">&#34;a&#34;</span>, str2: <span style="color:#a31515">&#34;b&#34;</span>, want: <span style="color:#a31515">&#34;ab&#34;</span>},
+</span></span><span style="display:flex;"><span>        {str1: <span style="color:#a31515">&#34;b&#34;</span>, str2: <span style="color:#a31515">&#34;c&#34;</span>, want: <span style="color:#a31515">&#34;bc&#34;</span>},
+</span></span><span style="display:flex;"><span>        {str1: <span style="color:#a31515">&#34;c&#34;</span>, str2: <span style="color:#a31515">&#34;d&#34;</span>, want: <span style="color:#a31515">&#34;cd&#34;</span>},
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">for</span> <span style="color:#000">_</span>, <span style="color:#000">tt</span> <span style="color:#000">:=</span> <span style="color:#a90d91">range</span> <span style="color:#000">testCases</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#000">have</span> <span style="color:#000">:=</span> <span style="color:#000">Concat</span>(<span style="color:#000">tt</span>.<span style="color:#000">str1</span>, <span style="color:#000">tt</span>.<span style="color:#000">str2</span>)
-</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">if</span> <span style="color:#000">have</span> <span style="color:#000">!=</span> <span style="color:#000">tt</span>.<span style="color:#000">want</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#000">t</span>.<span style="color:#000">Fatalf</span>(<span style="color:#c41a16">&#34;ERROR: wanted %s but have %s\n&#34;</span>, <span style="color:#000">tt</span>.<span style="color:#000">want</span>, <span style="color:#000">have</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">for</span> _, tt := <span style="color:#00f">range</span> testCases {
+</span></span><span style="display:flex;"><span>        have := Concat(tt.str1, tt.str2)
+</span></span><span style="display:flex;"><span>        <span style="color:#00f">if</span> have != tt.want {
+</span></span><span style="display:flex;"><span>            t.Fatalf(<span style="color:#a31515">&#34;ERROR: wanted %s but have %s\n&#34;</span>, tt.want, have)
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
@@ -97,24 +98,24 @@ with some new syntax introduced in C# 7, it is quite possible!</p>
 framework).</p>
 <p>First, we assume that we have function something just like the Concat
 function above:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#a90d91">public</span> <span style="color:#a90d91">string</span> <span style="color:#000">Concat</span>(<span style="color:#a90d91">string</span> <span style="color:#000">s1</span>, <span style="color:#a90d91">string</span> <span style="color:#000">s2</span>)
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#00f">public</span> <span style="color:#2b91af">string</span> Concat(<span style="color:#2b91af">string</span> s1, <span style="color:#2b91af">string</span> s2)
 </span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">s1</span> + <span style="color:#000">s2</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">return</span> s1 + s2;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>... then, we could write a test function like so:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#a90d91">using</span> <span style="color:#000">System.Collections.Generic</span>;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">using</span> <span style="color:#000">Xunit</span>;
-</span></span><span style="display:flex;"><span><span style="color:#836c28">
-</span></span></span><span style="display:flex;"><span><span style="color:#836c28">[Fact]</span> <span style="color:#177500">// &lt;-- annotation required by xUnit</span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">public</span> <span style="color:#a90d91">void</span> <span style="color:#000">TestConcat</span>()
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#00f">using</span> System.Collections.Generic;
+</span></span><span style="display:flex;"><span><span style="color:#00f">using</span> Xunit;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[Fact] <span style="color:#008000">// &lt;-- annotation required by xUnit</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">public</span> <span style="color:#00f">void</span> TestConcat()
 </span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">foreach</span> (<span style="color:#a90d91">var</span> <span style="color:#000">TC</span> <span style="color:#a90d91">in</span> <span style="color:#a90d91">new</span> <span style="color:#000">List</span>&lt;(<span style="color:#a90d91">string</span> <span style="color:#000">str1</span>, <span style="color:#a90d91">string</span> <span style="color:#000">str2</span>, <span style="color:#a90d91">string</span> <span style="color:#000">want</span>)&gt; {
-</span></span><span style="display:flex;"><span>        (<span style="color:#000">str1</span>: <span style="color:#c41a16">&#34;a&#34;</span>, <span style="color:#000">str2</span>: <span style="color:#c41a16">&#34;b&#34;</span>, <span style="color:#000">want</span>: <span style="color:#c41a16">&#34;ab&#34;</span>),
-</span></span><span style="display:flex;"><span>        (<span style="color:#000">str1</span>: <span style="color:#c41a16">&#34;b&#34;</span>, <span style="color:#000">str2</span>: <span style="color:#c41a16">&#34;c&#34;</span>, <span style="color:#000">want</span>: <span style="color:#c41a16">&#34;bc&#34;</span>),
-</span></span><span style="display:flex;"><span>        (<span style="color:#000">str1</span>: <span style="color:#c41a16">&#34;c&#34;</span>, <span style="color:#000">str2</span>: <span style="color:#c41a16">&#34;d&#34;</span>, <span style="color:#000">want</span>: <span style="color:#c41a16">&#34;cd&#34;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">foreach</span> (<span style="color:#2b91af">var</span> TC <span style="color:#00f">in</span> <span style="color:#00f">new</span> List&lt;(<span style="color:#2b91af">string</span> str1, <span style="color:#2b91af">string</span> str2, <span style="color:#2b91af">string</span> want)&gt; {
+</span></span><span style="display:flex;"><span>        (str1: <span style="color:#a31515">&#34;a&#34;</span>, str2: <span style="color:#a31515">&#34;b&#34;</span>, want: <span style="color:#a31515">&#34;ab&#34;</span>),
+</span></span><span style="display:flex;"><span>        (str1: <span style="color:#a31515">&#34;b&#34;</span>, str2: <span style="color:#a31515">&#34;c&#34;</span>, want: <span style="color:#a31515">&#34;bc&#34;</span>),
+</span></span><span style="display:flex;"><span>        (str1: <span style="color:#a31515">&#34;c&#34;</span>, str2: <span style="color:#a31515">&#34;d&#34;</span>, want: <span style="color:#a31515">&#34;cd&#34;</span>),
 </span></span><span style="display:flex;"><span>    })
 </span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        <span style="color:#000">Assert</span>.<span style="color:#000">Equal</span>(<span style="color:#000">TC</span>.<span style="color:#000">want</span>, <span style="color:#000">Concat</span>(<span style="color:#000">TC</span>.<span style="color:#000">str1</span>, <span style="color:#000">TC</span>.<span style="color:#000">str2</span>));
+</span></span><span style="display:flex;"><span>        Assert.Equal(TC.want, Concat(TC.str1, TC.str2));
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>What happens here it that we initialize a new list of an anonymous tuple
@@ -124,19 +125,19 @@ combine the initialization with the foreach loop, this is actually in a
 way even more succinct than the corresponding code in Go!</p>
 <p>If you are really lazy, you can actually skip the field names when
 filling in the &quot;table&quot;:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#a90d91">using</span> <span style="color:#000">System.Collections.Generic</span>;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">using</span> <span style="color:#000">Xunit</span>;
-</span></span><span style="display:flex;"><span><span style="color:#836c28">
-</span></span></span><span style="display:flex;"><span><span style="color:#836c28">[Fact]</span> <span style="color:#177500">// &lt;-- annotation required by xUnit</span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">public</span> <span style="color:#a90d91">void</span> <span style="color:#000">TestConcat</span>()
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#00f">using</span> System.Collections.Generic;
+</span></span><span style="display:flex;"><span><span style="color:#00f">using</span> Xunit;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[Fact] <span style="color:#008000">// &lt;-- annotation required by xUnit</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">public</span> <span style="color:#00f">void</span> TestConcat()
 </span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">foreach</span> (<span style="color:#a90d91">var</span> <span style="color:#000">TC</span> <span style="color:#a90d91">in</span> <span style="color:#a90d91">new</span> <span style="color:#000">List</span>&lt;(<span style="color:#a90d91">string</span> <span style="color:#000">str1</span>, <span style="color:#a90d91">string</span> <span style="color:#000">str2</span>, <span style="color:#a90d91">string</span> <span style="color:#000">want</span>)&gt; {
-</span></span><span style="display:flex;"><span>        (<span style="color:#c41a16">&#34;a&#34;</span>, <span style="color:#c41a16">&#34;b&#34;</span>, <span style="color:#c41a16">&#34;ab&#34;</span>),
-</span></span><span style="display:flex;"><span>        (<span style="color:#c41a16">&#34;b&#34;</span>, <span style="color:#c41a16">&#34;c&#34;</span>, <span style="color:#c41a16">&#34;bc&#34;</span>),
-</span></span><span style="display:flex;"><span>        (<span style="color:#c41a16">&#34;c&#34;</span>, <span style="color:#c41a16">&#34;d&#34;</span>, <span style="color:#c41a16">&#34;cd&#34;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">foreach</span> (<span style="color:#2b91af">var</span> TC <span style="color:#00f">in</span> <span style="color:#00f">new</span> List&lt;(<span style="color:#2b91af">string</span> str1, <span style="color:#2b91af">string</span> str2, <span style="color:#2b91af">string</span> want)&gt; {
+</span></span><span style="display:flex;"><span>        (<span style="color:#a31515">&#34;a&#34;</span>, <span style="color:#a31515">&#34;b&#34;</span>, <span style="color:#a31515">&#34;ab&#34;</span>),
+</span></span><span style="display:flex;"><span>        (<span style="color:#a31515">&#34;b&#34;</span>, <span style="color:#a31515">&#34;c&#34;</span>, <span style="color:#a31515">&#34;bc&#34;</span>),
+</span></span><span style="display:flex;"><span>        (<span style="color:#a31515">&#34;c&#34;</span>, <span style="color:#a31515">&#34;d&#34;</span>, <span style="color:#a31515">&#34;cd&#34;</span>),
 </span></span><span style="display:flex;"><span>    })
 </span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        <span style="color:#000">Assert</span>.<span style="color:#000">Equal</span>(<span style="color:#000">TC</span>.<span style="color:#000">want</span>, <span style="color:#000">Concat</span>(<span style="color:#000">TC</span>.<span style="color:#000">str1</span>, <span style="color:#000">TC</span>.<span style="color:#000">str2</span>));
+</span></span><span style="display:flex;"><span>        Assert.Equal(TC.want, Concat(TC.str1, TC.str2));
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Even less keystrokes. This is in fact not that far from editing plain

@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width">
 <title>Creating a static copy of a Drupal, Wordpress or other CMS website | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.f3a5991997d3edfa6612acd25887dbae0ca5be329567cceb3054217da27f5132.css" integrity="sha256-86WZGZfT7fpmEqzSWIfbrgylvjKVZ8zrMFQhfaJ/UTI=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
 
 
 </head>
@@ -41,7 +42,7 @@
   <time datetime="2020-08-20T17:42:00&#43;02:00">August 20, 2020</time>
 
   <!-- raw HTML omitted -->
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget -P . -mpck --html-extension -e <span style="color:#000">robots</span><span style="color:#000">=</span>off --wait 0.5 &lt;URL&gt;
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget -P . -mpck --html-extension -e robots=off --wait 0.5 &lt;URL&gt;
 </span></span></code></pre></div><p>To understand the flags, you can check `man wget` of course, but some
 explanations follow here:</p>
 <ul>
@@ -66,9 +67,9 @@ HTML-files and other files, that you can just upload to your web server
 instead of your CMS.</p>
 <p>Finally, you might want to add this rule to the Nginx config, to make
 sure the old non-.html URLs are redirected to the .html variant:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#a90d91">location</span> <span style="color:#c41a16">/</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">if</span> <span style="color:#c41a16">(</span><span style="color:#000">$request_filename</span> <span style="color:#c41a16">!~*</span> <span style="color:#c41a16">(/|(.+)\.(html|css|js|gif|png|jpg))</span>$ <span style="color:#c41a16">)</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">rewrite</span> <span style="color:#c41a16">^(.+)</span>$ <span style="color:#000">$1.html</span> <span style="color:#c41a16">permanent</span>;
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#00f">location</span> <span style="color:#a31515">/</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">if</span> <span style="color:#a31515">(</span>$request_filename <span style="color:#a31515">!~*</span> <span style="color:#a31515">(/|(.+)\.(html|css|js|gif|png|jpg))</span>$ <span style="color:#a31515">)</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#00f">rewrite</span> <span style="color:#a31515">^(.+)</span>$ $1.html <span style="color:#a31515">permanent</span>;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Add these lines in the appropriate server config in the relevant file,

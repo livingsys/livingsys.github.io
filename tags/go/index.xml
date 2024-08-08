@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Go on Living Systems</title>
+    <link>https://livingsystems.se/tags/go/</link>
+    <description>Recent content in Go on Living Systems</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 18 Dec 2014 20:43:00 +0100</lastBuildDate>
+    <atom:link href="https://livingsystems.se/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The smallest pipeable go program</title>
+      <link>https://livingsystems.se/posts/smallest-pipeable-go-program/</link>
+      <pubDate>Thu, 18 Dec 2014 20:43:00 +0100</pubDate>
+      <guid>https://livingsystems.se/posts/smallest-pipeable-go-program/</guid>
+      <description>import ( &amp;ldquo;io&amp;rdquo; &amp;ldquo;os&amp;rdquo; )&#xA;func main() { io.Copy(os.Stdout, os.Stdin) }&#xA;... or (credits: [Roger Peppe](https://twitter.com/rogpeppe)): ```go package main import ( &amp;#34;bufio&amp;#34; &amp;#34;fmt&amp;#34; &amp;#34;os&amp;#34; ) func main() { for scan := bufio.NewScanner(os.Stdin); scan.Scan(); { fmt.Printf(&amp;#34;%s\n&amp;#34;, scan.Text()) } } Ah, I just realized that the &amp;quot;smallest pipeable&amp;quot; Go(lang) program is rather small, if using my little library of minimalistic streaming components. Nothing more than:&#xA;package main import ( &amp;#34;fmt&amp;#34; &amp;#34;github.com/samuell/glow&amp;#34; ) func main() { inchan := make(chan []byte, 16) glow.</description>
+    </item>
+    <item>
+      <title>Profiling and creating call graphs for Go programs</title>
+      <link>https://livingsystems.se/posts/profiling-and-call-graphs-for-golang/</link>
+      <pubDate>Thu, 08 Aug 2013 01:13:00 +0200</pubDate>
+      <guid>https://livingsystems.se/posts/profiling-and-call-graphs-for-golang/</guid>
+      <description>In trying to get my head around the code of the very interesting GoFlow library, (for flow-based programming in Go), and the accompanying flow-based bioinformatics library I started hacking on, I needed to get some kind of visualization (like a call graph) ... something like this:&#xA;(And in the end, that is what I got ... read on ... ) :)&#xA;I then found out about the go tool pprof command, for which the Go team published a blog post on here.</description>
+    </item>
+  </channel>
+</rss>

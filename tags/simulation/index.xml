@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Simulation on Living Systems</title>
+    <link>https://livingsystems.se/tags/simulation/</link>
+    <description>Recent content in Simulation on Living Systems</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 17 Feb 2010 01:45:00 +0100</lastBuildDate>
+    <atom:link href="https://livingsystems.se/tags/simulation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Answering questions without answers - by wrapping simulations in semantics</title>
+      <link>https://livingsystems.se/posts/answering-questions-by-wrapping-simulations-in-semantics/</link>
+      <pubDate>Wed, 17 Feb 2010 01:45:00 +0100</pubDate>
+      <guid>https://livingsystems.se/posts/answering-questions-by-wrapping-simulations-in-semantics/</guid>
+      <description>There are lots of things that can&#39;t be answered by a computer from data alone. Maybe the majority of what we humans perceive as knowledge is inferred from a combination of data (simple fact statements about reality) and rules that tell how facts can be combined together to allow making implicit knowledge (knowledge that is not persisted as facts anywhere, but has to be inferred from other facts and rules) become explicit.</description>
+    </item>
+  </channel>
+</rss>

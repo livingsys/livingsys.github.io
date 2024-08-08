@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width">
 <title>Installing Qubes OS | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.f3a5991997d3edfa6612acd25887dbae0ca5be329567cceb3054217da27f5132.css" integrity="sha256-86WZGZfT7fpmEqzSWIfbrgylvjKVZ8zrMFQhfaJ/UTI=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
 
 
 </head>
@@ -102,7 +103,7 @@ image to the USB stick. BE WARNED though that this will completely erase
 all other data on the USB stick, so make sure to move away any data you
 might have there first!</p>
 <p>The command is something like:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dd <span style="color:#000">bs</span><span style="color:#000">=</span>4M <span style="color:#a90d91">if</span><span style="color:#000">=</span>/path/to/qubesos.iso <span style="color:#000">of</span><span style="color:#000">=</span>/dev/sdb
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dd bs=4M <span style="color:#00f">if</span>=/path/to/qubesos.iso of=/dev/sdb
 </span></span></code></pre></div><p>WARNING: Check first that sdb is actually your usb drive! This can be
 done using a software such as gparted.</p>
 <h3 id="no-bootable-device-found">&quot;No bootable device found&quot;</h3>

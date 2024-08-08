@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width">
 <title>A &#34;Hello World&#34; program in SWI-Prolog | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.f3a5991997d3edfa6612acd25887dbae0ca5be329567cceb3054217da27f5132.css" integrity="sha256-86WZGZfT7fpmEqzSWIfbrgylvjKVZ8zrMFQhfaJ/UTI=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
 
 
 </head>
@@ -44,25 +45,25 @@
 <p>Then you can load the program from inside prolog after you've started
 it.</p>
 <p>So, let's start the prolog interactive GUI:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-prolog" data-lang="prolog"><span style="display:flex;"><span><span style="color:#c41a16">prolog</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-prolog" data-lang="prolog"><span style="display:flex;"><span><span style="color:#a31515">prolog</span>
 </span></span></code></pre></div><p>Then, in the Prolog GUI, load the file test.pl like so:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-prolog" data-lang="prolog"><span style="display:flex;"><span><span style="color:#c41a16">?-</span> [<span style="color:#c41a16">test</span>].
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-prolog" data-lang="prolog"><span style="display:flex;"><span><span style="color:#a31515">?-</span> [<span style="color:#a31515">test</span>].
 </span></span></code></pre></div><p>Now, if you had some prolog clauses in the test.pl file, you will be
 able to extract that information by querying.</p>
 <p>A very simple test program that you could create is:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-prolog" data-lang="prolog"><span style="display:flex;"><span><span style="color:#177500">/* Some facts about parent relationships */</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">parent</span>(<span style="color:#c41a16">sam</span>,<span style="color:#c41a16">mark</span>).
-</span></span><span style="display:flex;"><span><span style="color:#000">parent</span>(<span style="color:#c41a16">mark</span>,<span style="color:#c41a16">jim</span>).
-</span></span><span style="display:flex;"><span><span style="color:#177500">/* A general rule */</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">grandparent</span>(<span style="color:#000">Grandparent</span>,<span style="color:#000">Child</span>) :-
-</span></span><span style="display:flex;"><span><span style="color:#000">parent</span>(<span style="color:#000">Grandparent</span>,<span style="color:#000">Parent</span>),
-</span></span><span style="display:flex;"><span><span style="color:#000">parent</span>(<span style="color:#000">Parent</span>,<span style="color:#000">Child</span>).
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-prolog" data-lang="prolog"><span style="display:flex;"><span><span style="color:#008000">/* Some facts about parent relationships */</span>
+</span></span><span style="display:flex;"><span>parent(<span style="color:#a31515">sam</span>,<span style="color:#a31515">mark</span>).
+</span></span><span style="display:flex;"><span>parent(<span style="color:#a31515">mark</span>,<span style="color:#a31515">jim</span>).
+</span></span><span style="display:flex;"><span><span style="color:#008000">/* A general rule */</span>
+</span></span><span style="display:flex;"><span>grandparent(Grandparent,Child) :-
+</span></span><span style="display:flex;"><span>parent(Grandparent,Parent),
+</span></span><span style="display:flex;"><span>parent(Parent,Child).
 </span></span></code></pre></div><p>If you write this in test.pl, and load test.pl according to the
 instructions above, you'll now be able to query prolog for the
 grandparent of jim in the following way:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-prolog" data-lang="prolog"><span style="display:flex;"><span><span style="color:#c41a16">?-</span> <span style="color:#000">grandparent</span>(<span style="color:#000">WHO</span>,<span style="color:#c41a16">jim</span>).
-</span></span><span style="display:flex;"><span><span style="color:#000">WHO</span> <span style="color:#000">=</span> <span style="color:#c41a16">sam</span> ;
-</span></span><span style="display:flex;"><span><span style="color:#c41a16">false</span>.
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-prolog" data-lang="prolog"><span style="display:flex;"><span><span style="color:#a31515">?-</span> grandparent(WHO,<span style="color:#a31515">jim</span>).
+</span></span><span style="display:flex;"><span>WHO = <span style="color:#a31515">sam</span> ;
+</span></span><span style="display:flex;"><span><span style="color:#a31515">false</span>.
 </span></span></code></pre></div><h3 id="toc0">Notes</h3>
 <ul>
 <li>&quot;false.&quot; here just means that after the first occurence of a
@@ -73,9 +74,15 @@ while all-lowercase words are treated as <em>atoms</em>.</li>
 <p>More explanations about how Prolog works can be found elsewhere. This is
 just how to get going</p>
 <p>When you want to exit the Prolog GUI, type:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-prolog" data-lang="prolog"><span style="display:flex;"><span><span style="color:#c41a16">?-</span> <span style="color:#c41a16">halt</span>.
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-prolog" data-lang="prolog"><span style="display:flex;"><span><span style="color:#a31515">?-</span> <span style="color:#a31515">halt</span>.
 </span></span></code></pre></div>
   
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/prolog/">Prolog</a></li>
+    </ul>
+  </div>
 
 
   </main>

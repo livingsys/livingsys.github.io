@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width">
 <title>Dynamic Navigation for Higher Performance | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.f3a5991997d3edfa6612acd25887dbae0ca5be329567cceb3054217da27f5132.css" integrity="sha256-86WZGZfT7fpmEqzSWIfbrgylvjKVZ8zrMFQhfaJ/UTI=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
 
 
 </head>
@@ -156,10 +157,12 @@ needs navigating the structure. I would definitely add a link named
 <p><em>Fig 3: A link called &quot;<code>effectiveTrip</code>&quot; was added to the model. (I
 tend to let blue color represent &quot;persistent&quot; (=&quot;freeze&quot;) and orange
 color represent &quot;derived&quot; for links).</em></p>
-<p>![Fig 3: A link called &quot;effectiveTrip&quot; was added to the model. (I tend
-to let blue color represent &quot;persistent&quot; (=&quot;freeze&quot;) and orange to
-represent &quot;derived&quot; for
-links).](03_effectivetrip_jpg_bmp.png &ldquo;Fig 3: A link called &ldquo;effectiveTrip&rdquo; was added to the model. (I tend to let blue color represent &ldquo;persistent&rdquo; (=&ldquo;freeze&rdquo;) and orange to represent &ldquo;derived&rdquo; for links).&rdquo;)</p>
+<p><p class="image">
+    <img src="03_effectivetrip_jpg_bmp.png" alt="Fig 3: A link called &amp;ldquo;effectiveTrip&amp;rdquo; was added to the model. (I tend to let
+blue color represent &amp;ldquo;persistent&amp;rdquo; (=&amp;ldquo;freeze&amp;rdquo;) and orange to represent &amp;ldquo;derived&amp;rdquo;
+for links)."  />
+</p>
+</p>
 <p>This new derived link '<code>effectiveTrip</code> will implement (and thus
 &quot;hide&quot;) all the navigation logic needed to reach the front-most trip
 object. As I can already now foresee that this link will be accessed
@@ -190,14 +193,17 @@ spot&quot; structure will be used in the logic of many remote places very
 often accessing objects cross over, and when doing so the links already
 directly references the instances you would want to access. Look at the
 &quot;mess&quot; of links below...!:</em></p>
-<p>![Fig 4: Doesn't also derived links require CPU in order to be
+<p><p class="image">
+    <img src="04_combination_links_bmp.png" alt="Fig 4: Doesn&#39;t also derived links require CPU in order to be
 evaluated...? you might ask. The answer is, yes of course - but only
-once - if the subscribed items don't change. And this is not very
-likely here, but the very &quot;hot spot&quot; structure here will be used in
+once - if the subscribed items don&#39;t change. And this is not very
+likely here, but the very &amp;quot;hot spot&amp;quot; structure here will be used in
 many places in the logic accessing objects cross over very often and
 when doing so the links already directly references the instances you
-want to access. Look at the &quot;mess&quot; of
-links...!:](04_combination_links_bmp.png &ldquo;Fig 4: Doesn&rsquo;t also derived links require CPU in order to be evaluated&hellip;? you might ask. The answer is, yes of course - but only once - if the subscribed items don&rsquo;t change. And this is not very likely here, but the very &ldquo;hot spot&rdquo; structure here will be used in many places in the logic accessing objects cross over very often and when doing so the links already directly references the instances you want to access. Look at the &ldquo;mess&rdquo; of links&hellip;!:&rdquo;)</p>
+want to access. Look at the &amp;quot;mess&amp;quot; of
+links...!:"  />
+</p>
+</p>
 <p>Now this is an example of a high performance solution using the model as
 the tool for optimization. And in doing so the additional links are at
 the same time clarifying/indicating directly in the model the intended
@@ -227,12 +233,12 @@ trip object, starting from a <code>Parcel</code>, but we don't know on which
 <code>VehicleUnit</code> we are loaded, and therefore we start looking for the trip
 using the link <code>effectiveTrip</code> which &quot;hides&quot; the logic determining
 which <code>Trip</code> object is &quot;mobilized&quot; (i.e &quot;effective&quot; front-most):</p>
-<pre tabindex="0"><code class="language-pascal" data-lang="pascal">function TParcel.CalculateTrip_Something...: Double;
-var
-  TripObj : TTrip;
-begin
-  TripObj := Self.vehicleUnit.effectiveTrip; // that&#39;s it! ...
-</code></pre><p>From the Parcel, down to the vehicle platform, and then directly access
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objectpascal" data-lang="objectpascal"><span style="display:flex;"><span><span style="color:#00f">function</span> TParcel.CalculateTrip_Something...: <span style="color:#2b91af">Double</span>;
+</span></span><span style="display:flex;"><span><span style="color:#00f">var</span>
+</span></span><span style="display:flex;"><span>  TripObj : TTrip;
+</span></span><span style="display:flex;"><span><span style="color:#00f">begin</span>
+</span></span><span style="display:flex;"><span>  TripObj := Self.vehicleUnit.effectiveTrip; <span style="color:#008000">// that&#39;s it! ...</span>
+</span></span></code></pre></div><p>From the Parcel, down to the vehicle platform, and then directly access
 the trip. That's easy, and the code is clear. The details about how we
 got hold of the correct trip object (hidden in the derived link) does
 not, and should not, be mixing up the business logic when traversing and
@@ -243,9 +249,9 @@ loaded on another vehicle, just like any other <code>parcel</code> can be loaded
 a vehicle (or in a batch of Parcels), so the code above is even simpler
 in my final generic model where the derived link is &quot;virtual
 overridden&quot; in different subclasses. My final code goes like this:</p>
-<pre tabindex="0"><code class="language-pascal" data-lang="pascal">begin
-  TripObj := Self.effectiveTrip; // that&#39;s it!
-</code></pre><p>The <code>Parcel</code> will find its valid (front-most) <code>Trip</code> using this command
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objectpascal" data-lang="objectpascal"><span style="display:flex;"><span><span style="color:#00f">begin</span>
+</span></span><span style="display:flex;"><span>  TripObj := Self.effectiveTrip; <span style="color:#008000">// that&#39;s it!</span>
+</span></span></code></pre></div><p>The <code>Parcel</code> will find its valid (front-most) <code>Trip</code> using this command
 regardless of how complicated the path might be. This change in the
 model is shown in fig 5 where a new common super class (for parcels and
 vehicles) actually owns the persistent and derived link to the trip
@@ -256,10 +262,13 @@ below.</p>
 <p><em>Fig 5: Here the model is modified to become more generic even allowing
 any &quot;planable object&quot; to carry a batch of other planable objects, and
 as the model goes more generic, the role names do so too.</em></p>
-<p>![Fig 5: Here the model is modified to become more generic even allowing
-any &quot;planable object&quot; to carry a batch of other planable objects - and
+<p><p class="image">
+    <img src="05_model_complete_abstract_bmp.png" alt="Fig 5: Here the model is modified to become more generic even allowing
+any &amp;quot;planable object&amp;quot; to carry a batch of other planable objects - and
 as the model goes more generic the role names do so
-too.](05_model_complete_abstract_bmp.png &ldquo;Fig 5: Here the model is modified to become more generic even allowing any &ldquo;planable object&rdquo; to carry a batch of other planable objects - and as the model goes more generic the role names do so too.&rdquo;)</p>
+too."  />
+</p>
+</p>
 <p><code>Trip</code> info applies directly for a <code>Parcel</code> too (via
 <code>AbstractPlanPortion</code>) because a transport company can plan a parcel to
 be delivered with, for instance, an airplane which totals we are not
@@ -321,139 +330,139 @@ members more than once (=&gt; avoiding repeated triggering of internal
 bold events etc). The efficiency of the entire concept discussed above
 and the detailed coding below is verified using ProDelphi profiler (very
 high accuracy <strong>(+-3%)</strong> on measuring code performance).</p>
-<pre tabindex="0"><code class="language-pascal" data-lang="pascal">{ TParcel }
-
-
-procedure TParcel._effectiveTrip_DeriveAndSubscribe(...);
-// If loaded the carriers (effective) trip is returned,
-// else the local trip (if any).
-var
-  CarrierObj: TVehicleUnit;
-  ResultValue : TTrip;
-begin
-  M_batchHolder.DefaultSubscribe(Subscriber, breResubscribe);
-  CarrierObj := batchHolder;
-  if Assigned(CarrierObj) then
-  begin
-    CarrierObj.M_effectiveTrip.DefaultSubscribe(Subscriber, breResubscribe);
-    ResultValue := CarrierObj.effectiveTrip;
-  end
-  else
-  begin
-    M_trip.DefaultSubscribe(Subscriber, breResubscribe);
-    ResultValue := trip;
-  end;
-  M_effectiveTrip.BoldObject := ResultValue;
-end;
-
-
-{ TVehicleUnit }
-
-
-procedure TVehicleUnit._effectiveTrip_DeriveAndSubscribe(...);
-var
-  HaulerObj: TVehicleUnit;
-  ResultValue,
-  TripObj: TTrip;
-begin
-  ResultValue := nil;
-  M_combinationFirst.DefaultSubscribe(Subscriber, breResubscribe);
-  HaulerObj := combinationFirst;
-  // the traversing is already done here
-  if Assigned(HaulerObj) then
-  begin
-    HaulerObj.M_Trip.DefaultSubscribe(Subscriber, breResubscribe);
-    TripObj := HaulerObj.trip;
-    if Assigned(TripObj) then
-    begin
-      TripObj.M_IsMobilized.DefaultSubscribe(Subscriber);
-      if TripObj.IsMobilized then
-        ResultValue := TripObj;
-    end;
-  end;
-  M_effectiveTrip.BoldObject := ResultValue;
-end;
-
-
-procedure TVehicleUnit._combinationFirst_DeriveAndSubscribe(...);
-// This link will be the fast &#34;short cut&#34; used by many many
-// functions in this scope and other links and attributes, thus
-// meaning optimization, not &#34;extras&#34; or &#34;candy&#34; in the model.
-var
-  LoopObj: TVehicleUnit;
-begin
-  LoopObj := Self; // Traverse ahead
-  LoopObj.M_hauler.DefaultSubscribe(Subscriber, breResubscribe);
-  while Assigned(LoopObj.Hauler) do
-  begin
-    LoopObj := LoopObj.Hauler;
-    LoopObj.M_hauler.DefaultSubscribe(Subscriber, breResubscribe);
-  end;
-  M_combinationFirst.BoldObject := LoopObj;
-end;
-
-
-procedure TVehicleUnit._combinationLast_DeriveAndSubscribe(DerivedObject: TObject; Subscriber: TBoldSubscriber);
-var
-  LoopObj: TVehicleUnit;
-begin
-  LoopObj := Self;
-  LoopObj.M_trailer.DefaultSubscribe(Subscriber, breResubscribe);
-  while Assigned(LoopObj.trailer) do
-  begin
-    LoopObj := LoopObj.trailer;
-    LoopObj.M_trailer.DefaultSubscribe(Subscriber, breResubscribe);
-  end;
-  M_combinationLast.BoldObject := LoopObj;
-end;
-
-
-procedure TVehicleUnit.combinationUnits_DeriveAndSubscribe(...);
-var
-  LoopObj: TVehicleUnit;
-  ResultList: TBoldObjectList;
-begin
-  M_combinationUnits.Clear;
-  ResultList := TBoldObjectList.Create;
-  try
-    M_combinationFirst.DefaultSubscribe(Subscriber, breResubscribe);
-    LoopObj := combinationFirst;
-    repeat
-      ResultList.Add(LoopObj);
-      LoopObj.M_trailer.DefaultSubscribe(Subscriber, breResubscribe);
-      LoopObj := LoopObj.trailer;
-    until LoopObj = nil
-  finally
-    M_combinationUnits.AddList(ResultList);
-    FreeAndNil(ResultList);
-  end;
-end;
-
-
-procedure TVehicleUnit._combinationLoadItems_DeriveAndSubscribe(DerivedObject: TObject; Subscriber: TBoldSubscriber);
-// A list collecting all (batch)items loaded on any unit in the
-// vehicle combination. Implemented for convenience and
-// clarifications.
-var
-  UnitCnt, i: Integer;
-  UnitObj: TVehicleUnit;
-begin
-  M_combinationLoadItems.Clear;
-  combinationUnits.DefaultSubscribe(Subscriber, breResubscribe);
-  UnitCnt := combinationUnits.Count;
-  if UnitCnt &gt; 0 then
-  begin
-    for i := 0 to UnitCnt-1 do
-    begin
-      UnitObj := combinationUnits[i];
-      UnitObj.loadedItems.EnsureObjects;
-      UnitObj.loadedItems.DefaultSubscribe(Subscriber);
-      // Collect all if UnitObj.loadedItems.Count &gt; 0 then
-      M_combinationLoadItems.AddList(UnitObj.loadedItems);
-    end;
-  end;
-end;
-</code></pre><p><a href="https://twitter.com/rolflampa">Rolf Lampa</a>,<br>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objectpascal" data-lang="objectpascal"><span style="display:flex;"><span><span style="color:#008000">{ TParcel }</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">procedure</span> TParcel._effectiveTrip_DeriveAndSubscribe(...);
+</span></span><span style="display:flex;"><span><span style="color:#008000">// If loaded the carriers (effective) trip is returned,</span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">// else the local trip (if any).</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">var</span>
+</span></span><span style="display:flex;"><span>  CarrierObj: TVehicleUnit;
+</span></span><span style="display:flex;"><span>  ResultValue : TTrip;
+</span></span><span style="display:flex;"><span><span style="color:#00f">begin</span>
+</span></span><span style="display:flex;"><span>  M_batchHolder.DefaultSubscribe(Subscriber, breResubscribe);
+</span></span><span style="display:flex;"><span>  CarrierObj := batchHolder;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">if</span> Assigned(CarrierObj) <span style="color:#00f">then</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">begin</span>
+</span></span><span style="display:flex;"><span>    CarrierObj.M_effectiveTrip.DefaultSubscribe(Subscriber, breResubscribe);
+</span></span><span style="display:flex;"><span>    ResultValue := CarrierObj.effectiveTrip;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">end</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">else</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">begin</span>
+</span></span><span style="display:flex;"><span>    M_trip.DefaultSubscribe(Subscriber, breResubscribe);
+</span></span><span style="display:flex;"><span>    ResultValue := trip;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">end</span>;
+</span></span><span style="display:flex;"><span>  M_effectiveTrip.BoldObject := ResultValue;
+</span></span><span style="display:flex;"><span><span style="color:#00f">end</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">{ TVehicleUnit }</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">procedure</span> TVehicleUnit._effectiveTrip_DeriveAndSubscribe(...);
+</span></span><span style="display:flex;"><span><span style="color:#00f">var</span>
+</span></span><span style="display:flex;"><span>  HaulerObj: TVehicleUnit;
+</span></span><span style="display:flex;"><span>  ResultValue,
+</span></span><span style="display:flex;"><span>  TripObj: TTrip;
+</span></span><span style="display:flex;"><span><span style="color:#00f">begin</span>
+</span></span><span style="display:flex;"><span>  ResultValue := <span style="color:#00f">nil</span>;
+</span></span><span style="display:flex;"><span>  M_combinationFirst.DefaultSubscribe(Subscriber, breResubscribe);
+</span></span><span style="display:flex;"><span>  HaulerObj := combinationFirst;
+</span></span><span style="display:flex;"><span>  <span style="color:#008000">// the traversing is already done here</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">if</span> Assigned(HaulerObj) <span style="color:#00f">then</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">begin</span>
+</span></span><span style="display:flex;"><span>    HaulerObj.M_Trip.DefaultSubscribe(Subscriber, breResubscribe);
+</span></span><span style="display:flex;"><span>    TripObj := HaulerObj.trip;
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">if</span> Assigned(TripObj) <span style="color:#00f">then</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">begin</span>
+</span></span><span style="display:flex;"><span>      TripObj.M_IsMobilized.DefaultSubscribe(Subscriber);
+</span></span><span style="display:flex;"><span>      <span style="color:#00f">if</span> TripObj.IsMobilized <span style="color:#00f">then</span>
+</span></span><span style="display:flex;"><span>        ResultValue := TripObj;
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">end</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">end</span>;
+</span></span><span style="display:flex;"><span>  M_effectiveTrip.BoldObject := ResultValue;
+</span></span><span style="display:flex;"><span><span style="color:#00f">end</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">procedure</span> TVehicleUnit._combinationFirst_DeriveAndSubscribe(...);
+</span></span><span style="display:flex;"><span><span style="color:#008000">// This link will be the fast &#34;short cut&#34; used by many many</span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">// functions in this scope and other links and attributes, thus</span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">// meaning optimization, not &#34;extras&#34; or &#34;candy&#34; in the model.</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">var</span>
+</span></span><span style="display:flex;"><span>  LoopObj: TVehicleUnit;
+</span></span><span style="display:flex;"><span><span style="color:#00f">begin</span>
+</span></span><span style="display:flex;"><span>  LoopObj := Self; <span style="color:#008000">// Traverse ahead</span>
+</span></span><span style="display:flex;"><span>  LoopObj.M_hauler.DefaultSubscribe(Subscriber, breResubscribe);
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">while</span> Assigned(LoopObj.Hauler) <span style="color:#00f">do</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">begin</span>
+</span></span><span style="display:flex;"><span>    LoopObj := LoopObj.Hauler;
+</span></span><span style="display:flex;"><span>    LoopObj.M_hauler.DefaultSubscribe(Subscriber, breResubscribe);
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">end</span>;
+</span></span><span style="display:flex;"><span>  M_combinationFirst.BoldObject := LoopObj;
+</span></span><span style="display:flex;"><span><span style="color:#00f">end</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">procedure</span> TVehicleUnit._combinationLast_DeriveAndSubscribe(DerivedObject: TObject; Subscriber: TBoldSubscriber);
+</span></span><span style="display:flex;"><span><span style="color:#00f">var</span>
+</span></span><span style="display:flex;"><span>  LoopObj: TVehicleUnit;
+</span></span><span style="display:flex;"><span><span style="color:#00f">begin</span>
+</span></span><span style="display:flex;"><span>  LoopObj := Self;
+</span></span><span style="display:flex;"><span>  LoopObj.M_trailer.DefaultSubscribe(Subscriber, breResubscribe);
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">while</span> Assigned(LoopObj.trailer) <span style="color:#00f">do</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">begin</span>
+</span></span><span style="display:flex;"><span>    LoopObj := LoopObj.trailer;
+</span></span><span style="display:flex;"><span>    LoopObj.M_trailer.DefaultSubscribe(Subscriber, breResubscribe);
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">end</span>;
+</span></span><span style="display:flex;"><span>  M_combinationLast.BoldObject := LoopObj;
+</span></span><span style="display:flex;"><span><span style="color:#00f">end</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">procedure</span> TVehicleUnit.combinationUnits_DeriveAndSubscribe(...);
+</span></span><span style="display:flex;"><span><span style="color:#00f">var</span>
+</span></span><span style="display:flex;"><span>  LoopObj: TVehicleUnit;
+</span></span><span style="display:flex;"><span>  ResultList: TBoldObjectList;
+</span></span><span style="display:flex;"><span><span style="color:#00f">begin</span>
+</span></span><span style="display:flex;"><span>  M_combinationUnits.Clear;
+</span></span><span style="display:flex;"><span>  ResultList := TBoldObjectList.Create;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">try</span>
+</span></span><span style="display:flex;"><span>    M_combinationFirst.DefaultSubscribe(Subscriber, breResubscribe);
+</span></span><span style="display:flex;"><span>    LoopObj := combinationFirst;
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">repeat</span>
+</span></span><span style="display:flex;"><span>      ResultList.Add(LoopObj);
+</span></span><span style="display:flex;"><span>      LoopObj.M_trailer.DefaultSubscribe(Subscriber, breResubscribe);
+</span></span><span style="display:flex;"><span>      LoopObj := LoopObj.trailer;
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">until</span> LoopObj = <span style="color:#00f">nil</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">finally</span>
+</span></span><span style="display:flex;"><span>    M_combinationUnits.AddList(ResultList);
+</span></span><span style="display:flex;"><span>    FreeAndNil(ResultList);
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">end</span>;
+</span></span><span style="display:flex;"><span><span style="color:#00f">end</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">procedure</span> TVehicleUnit._combinationLoadItems_DeriveAndSubscribe(DerivedObject: TObject; Subscriber: TBoldSubscriber);
+</span></span><span style="display:flex;"><span><span style="color:#008000">// A list collecting all (batch)items loaded on any unit in the</span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">// vehicle combination. Implemented for convenience and</span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">// clarifications.</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">var</span>
+</span></span><span style="display:flex;"><span>  UnitCnt, i: <span style="color:#2b91af">Integer</span>;
+</span></span><span style="display:flex;"><span>  UnitObj: TVehicleUnit;
+</span></span><span style="display:flex;"><span><span style="color:#00f">begin</span>
+</span></span><span style="display:flex;"><span>  M_combinationLoadItems.Clear;
+</span></span><span style="display:flex;"><span>  combinationUnits.DefaultSubscribe(Subscriber, breResubscribe);
+</span></span><span style="display:flex;"><span>  UnitCnt := combinationUnits.Count;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">if</span> UnitCnt &gt; 0 <span style="color:#00f">then</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">begin</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">for</span> i := 0 <span style="color:#00f">to</span> UnitCnt-1 <span style="color:#00f">do</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">begin</span>
+</span></span><span style="display:flex;"><span>      UnitObj := combinationUnits[i];
+</span></span><span style="display:flex;"><span>      UnitObj.loadedItems.EnsureObjects;
+</span></span><span style="display:flex;"><span>      UnitObj.loadedItems.DefaultSubscribe(Subscriber);
+</span></span><span style="display:flex;"><span>      <span style="color:#008000">// Collect all if UnitObj.loadedItems.Count &gt; 0 then</span>
+</span></span><span style="display:flex;"><span>      M_combinationLoadItems.AddList(UnitObj.loadedItems);
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">end</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">end</span>;
+</span></span><span style="display:flex;"><span><span style="color:#00f">end</span>;
+</span></span></code></pre></div><p><a href="https://twitter.com/rolflampa">Rolf Lampa</a>,<br>
 Self employed consultant, <a href="http://rilpartner.com">RIL Partner AB</a></p>
 <h3 id="notes-and-links">Notes and links</h3>
 <ul>

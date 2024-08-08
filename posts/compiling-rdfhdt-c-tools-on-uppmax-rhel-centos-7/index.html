@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width">
 <title>Compiling RDFHDT C&#43;&#43; tools on UPPMAX (RHEL/CentOS 7) | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.f3a5991997d3edfa6612acd25887dbae0ca5be329567cceb3054217da27f5132.css" integrity="sha256-86WZGZfT7fpmEqzSWIfbrgylvjKVZ8zrMFQhfaJ/UTI=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0a062e1fd1fd023b5bddc54370019169be4022da587623f7783189ac23d60d39.css" integrity="sha256-CgYuH9H9Ajtb3cVDcAGRab5AItpYdiP3eDGJrCPWDTk=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
 
 
 </head>
@@ -58,7 +59,7 @@ suite</a> from source.</p>
 are running on CentOS 7.3, or more exactly, 7.3.1611, which can be seen
 with this command:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat /etc/redhat-release
-</span></span><span style="display:flex;"><span>CentOS Linux release 7.3.1611 <span style="color:#000">(</span>Core<span style="color:#000">)</span>
+</span></span><span style="display:flex;"><span>CentOS Linux release 7.3.1611 (Core)
 </span></span></code></pre></div><p>You will also need the following yum packages installed (install with
 yum install &lt;package-name&gt;):</p>
 <ul>
@@ -69,13 +70,13 @@ yum install &lt;package-name&gt;):</p>
 <p>1. Clone from git</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/rdfhdt/hdt-cpp.git
 </span></span></code></pre></div><p>2. Go into hdt-lib inside the cloned directory:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#a90d91">cd</span> hdt-cpp/hdt-lib
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd hdt-cpp/hdt-lib
 </span></span></code></pre></div><p>3. Download raptor and yalj libraries:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yumdownloader raptor2.x86_64 raptor2-devel.x86_64 yajl.x86_64 yajl-devel.x86_64
 </span></span></code></pre></div><p>4. Unpack all the .rpm files:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#a90d91">for</span> f in *.rpm; <span style="color:#a90d91">do</span>
-</span></span><span style="display:flex;"><span>   rpm2cpio <span style="color:#000">$f</span> | cpio -idmv;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">done</span>;
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#00f">for</span> f in *.rpm; <span style="color:#00f">do</span>
+</span></span><span style="display:flex;"><span>   rpm2cpio $f | cpio -idmv;
+</span></span><span style="display:flex;"><span><span style="color:#00f">done</span>;
 </span></span></code></pre></div><p>5. Download the serd library:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget http://download.drobilla.net/serd-0.28.0.tar.bz2
 </span></span></code></pre></div><p>6. Unpack the serd library:</p>
@@ -83,19 +84,19 @@ yum install &lt;package-name&gt;):</p>
 </span></span></code></pre></div><p>7. Rename the serd folder to serd-0:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mv serd-0.28.0 serd-0
 </span></span></code></pre></div><p>8. Enter the serd folder:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#a90d91">cd</span> serd-0
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd serd-0
 </span></span></code></pre></div><p>9. Compile the serd library:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./waf configure
 </span></span><span style="display:flex;"><span>./waf
 </span></span></code></pre></div><p>(The generated .so file will be put in a &quot;build&quot; folder under the serd
 folder)</p>
 <p>10. Exit the serd folder, back into the hdt-lib folder:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#a90d91">cd</span> ..
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd ..
 </span></span></code></pre></div><p>11. Then edit the Makefile as follows:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>--- a/hdt-lib/Makefile
 </span></span><span style="display:flex;"><span>+++ b/hdt-lib/Makefile
-</span></span><span style="display:flex;"><span>@@ -17,14 +17,14 @@ FLAGS=-O3 -Wno-deprecated -Wall -Wextra -Wno-unused-parameter -Wno-sign-compare
-</span></span><span style="display:flex;"><span> endif
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">@@ -17,14 +17,14 @@ FLAGS=-O3 -Wno-deprecated -Wall -Wextra -Wno-unused-parameter -Wno-sign-compare
+</span></span></span><span style="display:flex;"><span><span style="font-weight:bold"></span> endif
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span> INCLUDES=-I $(LIBCDSPATH)/includes/ -I /usr/local/include -I ./include -I /opt/local/include -I /usr/include
 </span></span><span style="display:flex;"><span>-LDFLAGS=
@@ -148,26 +149,26 @@ thread</a>),
 so that the binary and library search paths are always accessible in
 your shell, so that you can run the hdt tools from anywhere on the file
 system:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#177500"># Load local bin and library directories</span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">export</span> <span style="color:#000">PATH</span><span style="color:#000">=</span>~/usr/bin:<span style="color:#000">$PATH</span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">export</span> <span style="color:#000">LD_LIBRARY_PATH</span><span style="color:#000">=</span>~/usr/lib:<span style="color:#000">$LD_LIBRARY_PATH</span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">export</span> <span style="color:#000">LD_LIBRARY_PATH</span><span style="color:#000">=</span>~/usr/lib64:<span style="color:#000">$LD_LIBRARY_PATH</span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">export</span> <span style="color:#000">C_INCLUDE_PATH</span><span style="color:#000">=</span>~/usr/include:<span style="color:#000">$C_INCLUDE_PATH</span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">export</span> <span style="color:#000">CPLUS_INCLUDE_PATH</span><span style="color:#000">=</span>~/usr/include:<span style="color:#000">$CPLUS_INCLUDE_PATH</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#008000"># Load local bin and library directories</span>
+</span></span><span style="display:flex;"><span>export PATH=~/usr/bin:$PATH
+</span></span><span style="display:flex;"><span>export LD_LIBRARY_PATH=~/usr/lib:$LD_LIBRARY_PATH
+</span></span><span style="display:flex;"><span>export LD_LIBRARY_PATH=~/usr/lib64:$LD_LIBRARY_PATH
+</span></span><span style="display:flex;"><span>export C_INCLUDE_PATH=~/usr/include:$C_INCLUDE_PATH
+</span></span><span style="display:flex;"><span>export CPLUS_INCLUDE_PATH=~/usr/include:$CPLUS_INCLUDE_PATH
 </span></span></code></pre></div><p>4. Reload the ~/.bashrc file:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#a90d91">source</span> ~/.bashrc
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>source ~/.bashrc
 </span></span></code></pre></div><p>5. Done! Now you should be able to run a tool like rdf2hdt (for
 converting RDF dat to HDT format) from anywhere in the file system:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ rdf2hdt
 </span></span><span style="display:flex;"><span>ERROR: You must supply an input and output
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>$ rdf2hdt <span style="color:#000">[</span>options<span style="color:#000">]</span> &lt;rdf input file&gt; &lt;hdt output file&gt;
-</span></span><span style="display:flex;"><span>        -h                      This <span style="color:#a90d91">help</span>
+</span></span><span style="display:flex;"><span>$ rdf2hdt [options] &lt;rdf input file&gt; &lt;hdt output file&gt;
+</span></span><span style="display:flex;"><span>        -h                      This help
 </span></span><span style="display:flex;"><span>        -i              Also generate index to solve all triple patterns.
 </span></span><span style="display:flex;"><span>        -c      &lt;configfile&gt;    HDT Config options file
-</span></span><span style="display:flex;"><span>        -o      &lt;options&gt;       HDT Additional options <span style="color:#000">(</span><span style="color:#000">option1</span><span style="color:#000">=</span>value1;<span style="color:#000">option2</span><span style="color:#000">=</span>value2;...<span style="color:#000">)</span>
-</span></span><span style="display:flex;"><span>        -f      &lt;format&gt;        Format of the RDF input <span style="color:#000">(</span>ntriples, nquad, n3, turtle, rdfxml<span style="color:#000">)</span>
-</span></span><span style="display:flex;"><span>        -B      <span style="color:#c41a16">&#34;&lt;base URI&gt;&#34;</span>    Base URI of the dataset.
+</span></span><span style="display:flex;"><span>        -o      &lt;options&gt;       HDT Additional options (option1=value1;option2=value2;...)
+</span></span><span style="display:flex;"><span>        -f      &lt;format&gt;        Format of the RDF input (ntriples, nquad, n3, turtle, rdfxml)
+</span></span><span style="display:flex;"><span>        -B      <span style="color:#a31515">&#34;&lt;base URI&gt;&#34;</span>    Base URI of the dataset.
 </span></span><span style="display:flex;"><span>        -V      Prints the HDT version number
 </span></span></code></pre></div>
   

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Prolog on Living Systems</title>
+    <link>https://livingsystems.se/tags/prolog/</link>
+    <description>Recent content in Prolog on Living Systems</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 22 Sep 2009 17:04:00 +0200</lastBuildDate>
+    <atom:link href="https://livingsystems.se/tags/prolog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A &#34;Hello World&#34; program in SWI-Prolog</title>
+      <link>https://livingsystems.se/posts/a-hello-world-prolog-program/</link>
+      <pubDate>Tue, 22 Sep 2009 17:04:00 +0200</pubDate>
+      <guid>https://livingsystems.se/posts/a-hello-world-prolog-program/</guid>
+      <description>Then you can load the program from inside prolog after you&#39;ve started it.&#xA;So, let&#39;s start the prolog interactive GUI:&#xA;prolog Then, in the Prolog GUI, load the file test.pl like so:&#xA;?- [test]. Now, if you had some prolog clauses in the test.pl file, you will be able to extract that information by querying.&#xA;A very simple test program that you could create is:&#xA;/* Some facts about parent relationships */ parent(sam,mark).</description>
+    </item>
+  </channel>
+</rss>

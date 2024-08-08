@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Regex on Living Systems</title>
+    <link>https://livingsystems.se/tags/regex/</link>
+    <description>Recent content in Regex on Living Systems</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 21 Jul 2011 01:33:00 +0200</lastBuildDate>
+    <atom:link href="https://livingsystems.se/tags/regex/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Partial Galaxy ToolConfig to DocBook CmdSynopsis conversion with XSLT RegEx</title>
+      <link>https://livingsystems.se/posts/galaxy-toolconfig-to-docbook-cmdsynopsis/</link>
+      <pubDate>Thu, 21 Jul 2011 01:33:00 +0200</pubDate>
+      <guid>https://livingsystems.se/posts/galaxy-toolconfig-to-docbook-cmdsynopsis/</guid>
+      <description>&amp;lt;tool id=&amp;#34;sam_to_bam&amp;#34; name=&amp;#34;SAM-to-BAM&amp;#34; version=&amp;#34;1.1.1&amp;#34;&amp;gt; &amp;lt;description&amp;gt;converts SAM format to BAM format&amp;lt;/description&amp;gt; &amp;lt;requirements&amp;gt; &amp;lt;requirement type=&amp;#34;package&amp;#34;&amp;gt;samtools&amp;lt;/requirement&amp;gt; &amp;lt;/requirements&amp;gt; &amp;lt;command interpreter=&amp;#34;python&amp;#34;&amp;gt; sam_to_bam.py --input1=$source.input1 --dbkey=${input1.metadata.dbkey} #if $source.index_source == &amp;#34;history&amp;#34;: --ref_file=$source.ref_file #else --ref_file=&amp;#34;None&amp;#34; #end if --output1=$output1 --index_dir=${GALAXY_DATA_INDEX_DIR} &amp;lt;/command&amp;gt; &amp;lt;inputs&amp;gt; &amp;lt;conditional name=&amp;#34;source&amp;#34;&amp;gt; &amp;lt;param name=&amp;#34;index_source&amp;#34; type=&amp;#34;select&amp;#34; label=&amp;#34;Choose the source for the reference list&amp;#34;&amp;gt; &amp;lt;option value=&amp;#34;cached&amp;#34;&amp;gt;Locally cached&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;history&amp;#34;&amp;gt;History&amp;lt;/option&amp;gt; &amp;lt;/param&amp;gt; &amp;lt;when value=&amp;#34;cached&amp;#34;&amp;gt; &amp;lt;param name=&amp;#34;input1&amp;#34; type=&amp;#34;data&amp;#34; format=&amp;#34;sam&amp;#34; label=&amp;#34;SAM File to Convert&amp;#34;&amp;gt; &amp;lt;validator type=&amp;#34;unspecified_build&amp;#34; /&amp;gt; &amp;lt;validator type=&amp;#34;dataset_metadata_in_file&amp;#34; filename=&amp;#34;sam_fa_indices.loc&amp;#34; metadata_name=&amp;#34;dbkey&amp;#34; metadata_column=&amp;#34;1&amp;#34; message=&amp;#34;Sequences are not currently available for the specified build.</description>
+    </item>
+  </channel>
+</rss>
