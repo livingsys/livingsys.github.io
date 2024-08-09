@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>C&#43;&#43; on Living Systems</title>
-    <link>http://localhost:1313/tags/c&#43;&#43;/</link>
+    <link>https://livingsystems.se/tags/c&#43;&#43;/</link>
     <description>Recent content in C&#43;&#43; on Living Systems</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 13 Sep 2017 18:04:00 +0200</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livingsystems.se/tags/c++/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Compiling RDFHDT C&#43;&#43; tools on UPPMAX (RHEL/CentOS 7)</title>
-      <link>http://localhost:1313/posts/compiling-rdfhdt-c-tools-on-uppmax-rhel-centos-7/</link>
+      <link>https://livingsystems.se/posts/compiling-rdfhdt-c-tools-on-uppmax-rhel-centos-7/</link>
       <pubDate>Wed, 13 Sep 2017 18:04:00 +0200</pubDate>
-      <guid>http://localhost:1313/posts/compiling-rdfhdt-c-tools-on-uppmax-rhel-centos-7/</guid>
+      <guid>https://livingsystems.se/posts/compiling-rdfhdt-c-tools-on-uppmax-rhel-centos-7/</guid>
       <description>At pharmb.io we are researching how to use semantic technologies to push the boundaries for what can be done with intelligent data processing, often of large datasets (see e.g. our paper on linking RDF to cheminformatics and proteomics , and our work on the RDFIO software suite ). Thus, for us, RDFHDT opens new possibilites. As we are heavy users of the UPPMAX HPC center for our computations, and so, we need to have the HDT tools available there.</description>
     </item>
   </channel>

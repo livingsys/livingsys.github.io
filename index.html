@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
 <head>
-	<meta name="generator" content="Hugo 0.129.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+	<meta name="generator" content="Hugo 0.129.0">
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>Living Systems</title>
 
-    <link rel="stylesheet" href="/css/main.css">
+      <link rel="stylesheet" href="/css/main.min.0dd62280a0c008a6369ab81bd9d63c41bf7e4b5e9377c4a60df43868258f1db5.css" integrity="sha256-DdYigKDACKY2mrgb2dY8Qb9&#43;S16Td8SmDfQ4aCWPHbU=" crossorigin="anonymous">
 
 
-      <script src="/js/main.js"></script>
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
 
 <link rel="alternate" type="application/rss+xml" href="/index.xml" title="Living Systems">
 
@@ -262,8 +262,7 @@ Thanks to engaged speakers and attendees, it turned into an interesting day with
     <div class="post-card">
 
 <h2><a href="/posts/parsing-drugbank-xml-or-any-large-xml-file-in-streaming-mode-in-go/">Parsing DrugBank XML (or any large XML file) in streaming mode in Go</a></h2>
-While Go&rsquo;s XML stream-parsing support is great, the details of how to do that in a streaming fashion was not immediately clear from the docs, and I was thus saved by this blog post by David Singleton . Basically, you could use his blog post as a starting point, but I wanted to write up my own post to document some specifics and peculiarities I figured out.
-Idea: Parse DrugBank XML to TSV So in short, we want to parse the DrugBank XML, which contains tons of hierarchical information about each drug in the dataset, and extract just a few fields, and output that into a nicely formatted tab-separated (.
+I had a problem in which I thought I needed to parse the full DrugBank dataset, which comes as a (670MB) XML file (For open access papers describing DrugBank, see: [1], [2], [3] and [4]). It turned out what I needed was available as CSV files under &ldquo;Structure External Links &rdquo;. There is probably still some other uses of this approach though, as the XML version of DrugBank seems to contain a lot more information in a single format.
 </div>
 
   
@@ -282,7 +281,8 @@ Mathematical notation and dataflow programming Even though computations done on 
 
 <h2><a href="/posts/what-is-a-scientific-batch-workflow/">What is a scientific (batch) workflow?</a></h2>
 Workflows and DAGs - Confusion about the concepts Jörgen Brandt tweeted a comment that got me thinking again on something I&rsquo;ve pondered a lot lately:
-&ldquo;A workflow is a DAG.&rdquo; is really a weak definition. That&rsquo;s like saying &ldquo;A love letter is a sequence of characters.&rdquo; representation ≠ meaning @joergenbr Jörgen makes a good point. A Directed Acyclic Graph (DAG) does not by any means capture the full semantic content included in a computational workflow.
+&ldquo;A workflow is a DAG.&rdquo; is really a weak definition. That&rsquo;s like saying &ldquo;A love letter is a sequence of characters.&rdquo; representation ≠ meaning
+&ndash; @joergenbr Jörgen makes a good point. A Directed Acyclic Graph (DAG) does not by any means capture the full semantic content included in a computational workflow.
 </div>
 
   
@@ -369,7 +369,7 @@ This post is also published on medium My current work at pharmb.io entails addin
 <a href="/posts/smwcon-fall-2016/"><img src="/posts/smwcon-fall-2016//smwcon_intro.jpg" class="post-img-list"></a>
 
 <h2><a href="/posts/smwcon-fall-2016/">SMWCon Fall 2016 - My talk on large RDF imports</a></h2>
-[I was invited to give a talk at ]Semantic MediaWiki (SMW) conference [ (SMWCon) in Frankfurt last week, on our work on enabling import of RDF datasets into ]SMW [. I have presented at SMWCon before as well (2011: ]blog [, ]slides [, ]video [, 2013: ]slides [), so it was nice to re-connect with some old friends, and to get up to date about how SMW is developing, as well as share about our own contributions.
+I was invited to give a talk at Semantic MediaWiki (SMW) conference in Frankfurt last week, on our work on enabling import of RDF datasets into SMW . I have presented at SMWCon before as well (2011: blog , slides video , 2013: slides ), so it was nice to re-connect with some old friends, and to get up to date about how SMW is developing, as well as share about our own contributions.
 </div>
 
   
@@ -575,7 +575,10 @@ First some outcome from this tutorial What do I mean with &ldquo;outcome&rdquo;?
     <div class="post-card">
 
 <h2><a href="/posts/hadoop-ngs-workshop/">Random links from the Hadoop NGS Workshop</a></h2>
- Spark notebook Scala notebook ADAM By Big Data Genomics Tweet by Frank Nothaft on common workflow def Part of Global Alliance for &hellip; Another link is ga4gh.org Tachyon in-memory file system Cuneiform Does support multiple outputs etc Black-box vs. White-box Workflow dependency graph can be dynamically built up while you&rsquo;re running Can specity tasks in any scripting languages, or in cuneiform itself Hi-Way Worklow engine for Hadoop​ Can run exported Galaxy workflows 
+Some random links from the Hadoop for Next-Gen Sequencing workshop held at KTH in Kista, Stockholm in February 2015.
+UPDATE: Slides and Videos now available !
+Spark notebook Scala notebook ADAM By Big Data Genomics Tweet by Frank Nothaft on common workflow def Part of Global Alliance for &hellip; Another link is ga4gh.org Tachyon in-memory file system
+Cuneiform Does support multiple outputs etc Black-box vs. White-box Workflow dependency graph can be dynamically built up while you&rsquo;re running Can specity tasks in any scripting languages, or in cuneiform itself Hi-Way Worklow engine for Hadoop​ Can run exported Galaxy workflows 
 </div>
 
   

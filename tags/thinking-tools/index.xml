@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Thinking-Tools on Living Systems</title>
-    <link>http://localhost:1313/tags/thinking-tools/</link>
+    <link>https://livingsystems.se/tags/thinking-tools/</link>
     <description>Recent content in Thinking-Tools on Living Systems</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 09 Nov 2015 19:45:00 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/thinking-tools/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livingsystems.se/tags/thinking-tools/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The matrix transformation as a model for declarative atomic data flow operations</title>
-      <link>http://localhost:1313/posts/matrix-transformation-as-model-for-data-flow-operations/</link>
+      <link>https://livingsystems.se/posts/matrix-transformation-as-model-for-data-flow-operations/</link>
       <pubDate>Mon, 09 Nov 2015 19:45:00 +0100</pubDate>
-      <guid>http://localhost:1313/posts/matrix-transformation-as-model-for-data-flow-operations/</guid>
+      <guid>https://livingsystems.se/posts/matrix-transformation-as-model-for-data-flow-operations/</guid>
       <description>After just reading on Hacker News about Google&amp;rsquo;s newly released TensorFlow library , for deep learning based on tensors and data flow, I realized I wrote in a draft post back in 2013 that:&#xA;&amp;ldquo;What if one could have a fully declarative &amp;ldquo;matrix language&amp;rdquo; in which all data transformations ever needed could be declaratively defined in a way that is very easy to comprehend?&amp;rdquo;&#xA;&amp;hellip; so, I thought this is a good time to post this draft, to see whether it spurs any further ideas.</description>
     </item>
   </channel>

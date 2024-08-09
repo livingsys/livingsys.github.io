@@ -2,45 +2,45 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Scipipe on Living Systems</title>
-    <link>http://localhost:1313/tags/scipipe/</link>
+    <link>https://livingsystems.se/tags/scipipe/</link>
     <description>Recent content in Scipipe on Living Systems</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 13 Apr 2024 12:00:00 +0200</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/scipipe/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livingsystems.se/tags/scipipe/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SciPipe used at NASA Glenn Research Center</title>
-      <link>http://localhost:1313/posts/scipipe-at-nasa/</link>
+      <link>https://livingsystems.se/posts/scipipe-at-nasa/</link>
       <pubDate>Sat, 13 Apr 2024 12:00:00 +0200</pubDate>
-      <guid>http://localhost:1313/posts/scipipe-at-nasa/</guid>
+      <guid>https://livingsystems.se/posts/scipipe-at-nasa/</guid>
       <description>I was happy to see the publication finally going online , of work done at NASA Glenn Research Center , where SciPipe has been used to process and track provenance of the analyses, &amp;ldquo;Modeling the impact of thoracic pressure on intracranial pressure&amp;rdquo;. I&amp;rsquo;ve known the work existed for a couple of years, after getting some extraordinarily useful contributions from Drayton fixing some bugs I&amp;rsquo;m not sure I&amp;rsquo;d ever find otherwise, but cool to now also see it published!</description>
     </item>
     <item>
       <title>SciPipe paper published in GigaScience</title>
-      <link>http://localhost:1313/posts/scipipe-paper-published-in-gigascience/</link>
+      <link>https://livingsystems.se/posts/scipipe-paper-published-in-gigascience/</link>
       <pubDate>Sat, 27 Apr 2019 14:48:00 +0200</pubDate>
-      <guid>http://localhost:1313/posts/scipipe-paper-published-in-gigascience/</guid>
+      <guid>https://livingsystems.se/posts/scipipe-paper-published-in-gigascience/</guid>
       <description>We just wanted to share that the paper on our Go-based workflow library, SciPipe, was just published in GigaScience:&#xA;Abstract Background The complex nature of biological data has driven the development of specialized software tools. Scientific workflow management systems simplify the assembly of such tools into pipelines, assist with job automation, and aid reproducibility of analyses. Many contemporary workflow tools are specialized or not designed for highly complex workflows, such as with nested loops, dynamic scheduling, and parametrization, which is common in, e.</description>
     </item>
     <item>
       <title>Preprint on SciPipe - Go-based scientific workflow library</title>
-      <link>http://localhost:1313/posts/scipipe-preprint/</link>
+      <link>https://livingsystems.se/posts/scipipe-preprint/</link>
       <pubDate>Thu, 02 Aug 2018 01:01:00 +0200</pubDate>
-      <guid>http://localhost:1313/posts/scipipe-preprint/</guid>
+      <guid>https://livingsystems.se/posts/scipipe-preprint/</guid>
       <description>A pre-print for our Go-based workflow libarary SciPipe , is out, with the title SciPipe - A workflow library for agile development of complex and dynamic bioinformatics pipelines , co-authored by me and colleagues at pharmb.io : Martin Dahlö , Jonathan Alvarsson and Ola Spjuth . Access it here .&#xA;It has been more than three years since the first commit on the SciPipe Git repository in March, 2015, and development has been going in various degrees of intensity during these years, often besides other duties at pharmb.</description>
     </item>
     <item>
       <title>What is a scientific (batch) workflow?</title>
-      <link>http://localhost:1313/posts/what-is-a-scientific-batch-workflow/</link>
+      <link>https://livingsystems.se/posts/what-is-a-scientific-batch-workflow/</link>
       <pubDate>Thu, 07 Dec 2017 00:57:00 +0100</pubDate>
-      <guid>http://localhost:1313/posts/what-is-a-scientific-batch-workflow/</guid>
-      <description>Workflows and DAGs - Confusion about the concepts Jörgen Brandt tweeted a comment that got me thinking again on something I&amp;rsquo;ve pondered a lot lately:&#xA;&amp;ldquo;A workflow is a DAG.&amp;rdquo; is really a weak definition. That&amp;rsquo;s like saying &amp;ldquo;A love letter is a sequence of characters.&amp;rdquo; representation ≠ meaning @joergenbr Jörgen makes a good point. A Directed Acyclic Graph (DAG) does not by any means capture the full semantic content included in a computational workflow.</description>
+      <guid>https://livingsystems.se/posts/what-is-a-scientific-batch-workflow/</guid>
+      <description>Workflows and DAGs - Confusion about the concepts Jörgen Brandt tweeted a comment that got me thinking again on something I&amp;rsquo;ve pondered a lot lately:&#xA;&amp;ldquo;A workflow is a DAG.&amp;rdquo; is really a weak definition. That&amp;rsquo;s like saying &amp;ldquo;A love letter is a sequence of characters.&amp;rdquo; representation ≠ meaning&#xA;&amp;ndash; @joergenbr Jörgen makes a good point. A Directed Acyclic Graph (DAG) does not by any means capture the full semantic content included in a computational workflow.</description>
     </item>
     <item>
       <title>First production run with SciPipe - A Go-based scientific workflow tool</title>
-      <link>http://localhost:1313/posts/first-production-workflow-run-with-scipipe/</link>
+      <link>https://livingsystems.se/posts/first-production-workflow-run-with-scipipe/</link>
       <pubDate>Thu, 28 Sep 2017 19:32:00 +0200</pubDate>
-      <guid>http://localhost:1313/posts/first-production-workflow-run-with-scipipe/</guid>
+      <guid>https://livingsystems.se/posts/first-production-workflow-run-with-scipipe/</guid>
       <description>Today marked the day when we ran the very first production workflow with SciPipe , the Go -based scientific workflow tool we&amp;rsquo;ve been working on over the last couple of years. Yay! :)&#xA;This is how it looked (no fancy GUI or such yet, sorry):&#xA;The first result we got in this very very first job was a list of counts of ligands (chemical compounds) in the ExcapeDB dataset (download here ) interacting with the 44 protein/gene targets identified by Bowes et al as a good baseline set for identifying hazardous side-effects effects in the body (that is, any chemical compounds binding these proteins, will never become an approved drug).</description>
     </item>
   </channel>

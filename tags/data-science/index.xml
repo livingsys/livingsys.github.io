@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data-Science on Living Systems</title>
-    <link>http://localhost:1313/tags/data-science/</link>
+    <link>https://livingsystems.se/tags/data-science/</link>
     <description>Recent content in Data-Science on Living Systems</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 10 Apr 2018 11:40:00 +0200</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/data-science/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livingsystems.se/tags/data-science/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Semantic Web ❤ Data Science? My talk at Linked Data Sweden 2018</title>
-      <link>http://localhost:1313/posts/semantic-web-data-science-my-talk-at-linked-data-sweden-2018/</link>
+      <link>https://livingsystems.se/posts/semantic-web-data-science-my-talk-at-linked-data-sweden-2018/</link>
       <pubDate>Tue, 10 Apr 2018 11:40:00 +0200</pubDate>
-      <guid>http://localhost:1313/posts/semantic-web-data-science-my-talk-at-linked-data-sweden-2018/</guid>
+      <guid>https://livingsystems.se/posts/semantic-web-data-science-my-talk-at-linked-data-sweden-2018/</guid>
       <description>During the last months, I have had the pleasure work together with Matthias Palmér (MetaSolutions AB ) and Fernanda Dórea (National Veterinary Institute ), to prepare for and organize this year&amp;rsquo;s version of the annual Linked Data Sweden event , which this year was held in Uppsala hosted by the SciLifeLab Data Centre .&#xA;Thanks to engaged speakers and attendees, it turned into an interesting day with great discussions, new contacts, and a lot of new impressions and insights.</description>
     </item>
   </channel>

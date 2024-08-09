@@ -2,456 +2,456 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/ahc2024/</loc>
+    <loc>https://livingsystems.se/posts/ahc2024/</loc>
     <lastmod>2024-07-05T16:23:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/conferences/</loc>
+    <loc>https://livingsystems.se/tags/conferences/</loc>
     <lastmod>2024-07-05T16:23:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/hologenomics/</loc>
+    <loc>https://livingsystems.se/tags/hologenomics/</loc>
     <lastmod>2024-07-05T16:23:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/microbiology/</loc>
+    <loc>https://livingsystems.se/tags/microbiology/</loc>
     <lastmod>2024-07-05T16:23:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
+    <loc>https://livingsystems.se/posts/</loc>
     <lastmod>2024-07-05T16:23:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://livingsystems.se/tags/</loc>
     <lastmod>2024-07-05T16:23:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/bioinformatics/</loc>
+    <loc>https://livingsystems.se/tags/bioinformatics/</loc>
     <lastmod>2024-05-27T12:44:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/productivity/</loc>
+    <loc>https://livingsystems.se/tags/productivity/</loc>
     <lastmod>2024-05-27T12:44:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/bioinformatics-recipes/</loc>
+    <loc>https://livingsystems.se/posts/bioinformatics-recipes/</loc>
     <lastmod>2024-05-27T12:44:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/go/</loc>
+    <loc>https://livingsystems.se/tags/go/</loc>
     <lastmod>2024-05-13T17:05:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/programming-languages/</loc>
+    <loc>https://livingsystems.se/tags/programming-languages/</loc>
     <lastmod>2024-05-13T17:05:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/golang-for-bioinformatics/</loc>
+    <loc>https://livingsystems.se/posts/golang-for-bioinformatics/</loc>
     <lastmod>2024-05-13T17:05:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/nasa/</loc>
+    <loc>https://livingsystems.se/tags/nasa/</loc>
     <lastmod>2024-04-13T12:00:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/scipipe/</loc>
+    <loc>https://livingsystems.se/tags/scipipe/</loc>
     <lastmod>2024-04-13T12:00:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/scipipe-at-nasa/</loc>
+    <loc>https://livingsystems.se/posts/scipipe-at-nasa/</loc>
     <lastmod>2024-04-13T12:00:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/debugging/</loc>
+    <loc>https://livingsystems.se/tags/debugging/</loc>
     <lastmod>2024-03-04T14:42:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/debugging-inside-jinja-templates-using-pdb-ipdb/</loc>
+    <loc>https://livingsystems.se/posts/debugging-inside-jinja-templates-using-pdb-ipdb/</loc>
     <lastmod>2024-03-04T14:42:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/jinja/</loc>
+    <loc>https://livingsystems.se/tags/jinja/</loc>
     <lastmod>2024-03-04T14:42:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/pdb/</loc>
+    <loc>https://livingsystems.se/tags/pdb/</loc>
     <lastmod>2024-03-04T14:42:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/python/</loc>
+    <loc>https://livingsystems.se/tags/python/</loc>
     <lastmod>2024-03-04T14:42:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/reproducibility/</loc>
+    <loc>https://livingsystems.se/tags/reproducibility/</loc>
     <lastmod>2023-11-09T18:38:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/scicommander/</loc>
+    <loc>https://livingsystems.se/tags/scicommander/</loc>
     <lastmod>2023-11-09T18:38:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/scicommander-0.3/</loc>
+    <loc>https://livingsystems.se/posts/scicommander-0.3/</loc>
     <lastmod>2023-11-09T18:38:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/nextflow/</loc>
+    <loc>https://livingsystems.se/tags/nextflow/</loc>
     <lastmod>2023-11-01T11:47:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/troubleshooting-nextflow-pipelines/</loc>
+    <loc>https://livingsystems.se/posts/troubleshooting-nextflow-pipelines/</loc>
     <lastmod>2023-11-01T11:47:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/workflow-tools/</loc>
+    <loc>https://livingsystems.se/tags/workflow-tools/</loc>
     <lastmod>2023-11-01T11:47:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://livingsystems.se/</loc>
     <lastmod>2023-01-01T08:00:00-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/debian/</loc>
+    <loc>https://livingsystems.se/tags/debian/</loc>
     <lastmod>2022-03-24T04:50:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/linux/</loc>
+    <loc>https://livingsystems.se/tags/linux/</loc>
     <lastmod>2022-03-24T04:50:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/installing-and-configuring-debian-11-into-a-great-experience/</loc>
+    <loc>https://livingsystems.se/posts/installing-and-configuring-debian-11-into-a-great-experience/</loc>
     <lastmod>2022-03-24T04:50:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/cyber-security/</loc>
+    <loc>https://livingsystems.se/tags/cyber-security/</loc>
     <lastmod>2021-12-29T06:59:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/installing-qubes-os/</loc>
+    <loc>https://livingsystems.se/posts/installing-qubes-os/</loc>
     <lastmod>2021-12-29T06:59:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/qubes-os/</loc>
+    <loc>https://livingsystems.se/tags/qubes-os/</loc>
     <lastmod>2021-12-29T06:59:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/composability-in-functional-and-flow-based-programming/</loc>
+    <loc>https://livingsystems.se/posts/composability-in-functional-and-flow-based-programming/</loc>
     <lastmod>2021-02-12T16:24:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/flow-based-programming/</loc>
+    <loc>https://livingsystems.se/tags/flow-based-programming/</loc>
     <lastmod>2021-02-12T16:24:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/functional-programming/</loc>
+    <loc>https://livingsystems.se/tags/functional-programming/</loc>
     <lastmod>2021-02-12T16:24:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/concurrency/</loc>
+    <loc>https://livingsystems.se/tags/concurrency/</loc>
     <lastmod>2020-09-05T15:36:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/crystal/</loc>
+    <loc>https://livingsystems.se/tags/crystal/</loc>
     <lastmod>2020-09-05T15:36:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/crystal-concurrency-easier-syntax-than-golang/</loc>
+    <loc>https://livingsystems.se/posts/crystal-concurrency-easier-syntax-than-golang/</loc>
     <lastmod>2020-09-05T15:36:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/testing/</loc>
+    <loc>https://livingsystems.se/tags/testing/</loc>
     <lastmod>2020-08-20T23:47:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/go-test-coverage-in-browser/</loc>
+    <loc>https://livingsystems.se/posts/go-test-coverage-in-browser/</loc>
     <lastmod>2020-08-20T23:47:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/cms/</loc>
+    <loc>https://livingsystems.se/tags/cms/</loc>
     <lastmod>2020-08-20T17:42:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/static-copy-of-cms-website/</loc>
+    <loc>https://livingsystems.se/posts/static-copy-of-cms-website/</loc>
     <lastmod>2020-08-20T17:42:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/drupal/</loc>
+    <loc>https://livingsystems.se/tags/drupal/</loc>
     <lastmod>2020-08-20T17:42:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/pub-sub-with-zeromq-in-python/</loc>
+    <loc>https://livingsystems.se/posts/pub-sub-with-zeromq-in-python/</loc>
     <lastmod>2019-11-13T11:56:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/zeromq/</loc>
+    <loc>https://livingsystems.se/tags/zeromq/</loc>
     <lastmod>2019-11-13T11:56:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/c%23/</loc>
+    <loc>https://livingsystems.se/tags/c%23/</loc>
     <lastmod>2019-11-02T21:24:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/table-driven-tests-in-csharp/</loc>
+    <loc>https://livingsystems.se/posts/table-driven-tests-in-csharp/</loc>
     <lastmod>2019-11-02T21:24:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/publications/</loc>
+    <loc>https://livingsystems.se/tags/publications/</loc>
     <lastmod>2019-04-27T14:48:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/scipipe-paper-published-in-gigascience/</loc>
+    <loc>https://livingsystems.se/posts/scipipe-paper-published-in-gigascience/</loc>
     <lastmod>2019-04-27T14:48:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/structured-go-routines-or-framework-less-flow-based-programming-in-go/</loc>
+    <loc>https://livingsystems.se/posts/structured-go-routines-or-framework-less-flow-based-programming-in-go/</loc>
     <lastmod>2019-03-02T13:52:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/linux-like-non-wsl-terminal-env-on-windows/</loc>
+    <loc>https://livingsystems.se/posts/linux-like-non-wsl-terminal-env-on-windows/</loc>
     <lastmod>2018-11-29T16:36:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/windows/</loc>
+    <loc>https://livingsystems.se/tags/windows/</loc>
     <lastmod>2018-11-29T16:36:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/wsl/</loc>
+    <loc>https://livingsystems.se/tags/wsl/</loc>
     <lastmod>2018-11-29T16:36:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/linked-data-science/</loc>
+    <loc>https://livingsystems.se/posts/linked-data-science/</loc>
     <lastmod>2018-09-21T01:43:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/linked-data/</loc>
+    <loc>https://livingsystems.se/tags/linked-data/</loc>
     <lastmod>2018-09-21T01:43:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/semantic/</loc>
+    <loc>https://livingsystems.se/tags/semantic/</loc>
     <lastmod>2018-09-21T01:43:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/scipipe-preprint/</loc>
+    <loc>https://livingsystems.se/posts/scipipe-preprint/</loc>
     <lastmod>2018-08-02T01:01:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/make-your-commandline-tool-workflow-friendly/</loc>
+    <loc>https://livingsystems.se/posts/make-your-commandline-tool-workflow-friendly/</loc>
     <lastmod>2018-05-25T23:59:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/todournal/</loc>
+    <loc>https://livingsystems.se/posts/todournal/</loc>
     <lastmod>2018-04-13T16:15:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/data-science/</loc>
+    <loc>https://livingsystems.se/tags/data-science/</loc>
     <lastmod>2018-04-10T11:40:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/semantic-web-data-science-my-talk-at-linked-data-sweden-2018/</loc>
+    <loc>https://livingsystems.se/posts/semantic-web-data-science-my-talk-at-linked-data-sweden-2018/</loc>
     <lastmod>2018-04-10T11:40:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/drugbank/</loc>
+    <loc>https://livingsystems.se/tags/drugbank/</loc>
     <lastmod>2018-03-15T15:19:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/parsing-drugbank-xml-or-any-large-xml-file-in-streaming-mode-in-go/</loc>
+    <loc>https://livingsystems.se/posts/parsing-drugbank-xml-or-any-large-xml-file-in-streaming-mode-in-go/</loc>
     <lastmod>2018-03-15T15:19:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/xml/</loc>
+    <loc>https://livingsystems.se/tags/xml/</loc>
     <lastmod>2018-03-15T15:19:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/dataflow/</loc>
+    <loc>https://livingsystems.se/tags/dataflow/</loc>
     <lastmod>2017-12-27T14:05:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/equation-centric-dataflow-programming-in-go/</loc>
+    <loc>https://livingsystems.se/posts/equation-centric-dataflow-programming-in-go/</loc>
     <lastmod>2017-12-27T14:05:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/what-is-a-scientific-batch-workflow/</loc>
+    <loc>https://livingsystems.se/posts/what-is-a-scientific-batch-workflow/</loc>
     <lastmod>2017-12-07T00:57:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/golang-growing-in-bioinformatics-workflows/</loc>
+    <loc>https://livingsystems.se/posts/golang-growing-in-bioinformatics-workflows/</loc>
     <lastmod>2017-11-10T12:54:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/note-taking/</loc>
+    <loc>https://livingsystems.se/tags/note-taking/</loc>
     <lastmod>2017-11-07T18:45:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/my-frustration-with-the-state-of-note-taking-tools/</loc>
+    <loc>https://livingsystems.se/posts/my-frustration-with-the-state-of-note-taking-tools/</loc>
     <lastmod>2017-11-07T18:45:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/learning/</loc>
+    <loc>https://livingsystems.se/tags/learning/</loc>
     <lastmod>2017-10-31T10:38:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/how-to-learn/</loc>
+    <loc>https://livingsystems.se/posts/how-to-learn/</loc>
     <lastmod>2017-10-31T10:38:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/provenance-reports-in-scientific-workflows/</loc>
+    <loc>https://livingsystems.se/posts/provenance-reports-in-scientific-workflows/</loc>
     <lastmod>2017-10-19T11:44:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/provenance/</loc>
+    <loc>https://livingsystems.se/tags/provenance/</loc>
     <lastmod>2017-10-19T11:44:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/range-over-multiple-go-channels/</loc>
+    <loc>https://livingsystems.se/posts/range-over-multiple-go-channels/</loc>
     <lastmod>2017-10-05T10:23:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/first-production-workflow-run-with-scipipe/</loc>
+    <loc>https://livingsystems.se/posts/first-production-workflow-run-with-scipipe/</loc>
     <lastmod>2017-09-28T19:32:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/c&#43;&#43;/</loc>
+    <loc>https://livingsystems.se/tags/c&#43;&#43;/</loc>
     <lastmod>2017-09-13T18:04:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/compiling-rdfhdt-c-tools-on-uppmax-rhel-centos-7/</loc>
+    <loc>https://livingsystems.se/posts/compiling-rdfhdt-c-tools-on-uppmax-rhel-centos-7/</loc>
     <lastmod>2017-09-13T18:04:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/rdf/</loc>
+    <loc>https://livingsystems.se/tags/rdf/</loc>
     <lastmod>2017-09-13T18:04:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/rdfio/</loc>
+    <loc>https://livingsystems.se/tags/rdfio/</loc>
     <lastmod>2017-09-13T18:04:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/new-paper-on-rdfio-for-interoperable-biomedical-datamanagement-in-semantic-mediawiki/</loc>
+    <loc>https://livingsystems.se/posts/new-paper-on-rdfio-for-interoperable-biomedical-datamanagement-in-semantic-mediawiki/</loc>
     <lastmod>2017-09-11T15:57:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/semantic-mediawiki/</loc>
+    <loc>https://livingsystems.se/tags/semantic-mediawiki/</loc>
     <lastmod>2017-09-11T15:57:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/kubernetes/</loc>
+    <loc>https://livingsystems.se/tags/kubernetes/</loc>
     <lastmod>2017-02-15T00:01:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/launching-kubernetes-jobs-from-the-go-api-notes-from-a-beginner/</loc>
+    <loc>https://livingsystems.se/posts/launching-kubernetes-jobs-from-the-go-api-notes-from-a-beginner/</loc>
     <lastmod>2017-02-15T00:01:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/smwcon-fall-2016/</loc>
+    <loc>https://livingsystems.se/posts/smwcon-fall-2016/</loc>
     <lastmod>2016-10-07T11:50:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/talks/</loc>
+    <loc>https://livingsystems.se/tags/talks/</loc>
     <lastmod>2016-10-07T11:50:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/data-engineering/</loc>
+    <loc>https://livingsystems.se/tags/data-engineering/</loc>
     <lastmod>2016-06-21T13:49:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/luigi/</loc>
+    <loc>https://livingsystems.se/tags/luigi/</loc>
     <lastmod>2016-06-21T13:49:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/luigi-tutorial/</loc>
+    <loc>https://livingsystems.se/posts/luigi-tutorial/</loc>
     <lastmod>2016-06-21T13:49:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/the-best-of-go-d-and-rust/</loc>
+    <loc>https://livingsystems.se/posts/the-best-of-go-d-and-rust/</loc>
     <lastmod>2016-06-11T14:24:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/d/</loc>
+    <loc>https://livingsystems.se/tags/d/</loc>
     <lastmod>2016-06-11T14:24:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/rust/</loc>
+    <loc>https://livingsystems.se/tags/rust/</loc>
     <lastmod>2016-06-11T14:24:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/time-boxing/</loc>
+    <loc>https://livingsystems.se/tags/time-boxing/</loc>
     <lastmod>2016-02-26T12:40:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/time-boxing-and-unified-trello-board/</loc>
+    <loc>https://livingsystems.se/posts/time-boxing-and-unified-trello-board/</loc>
     <lastmod>2016-02-26T12:40:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/trello/</loc>
+    <loc>https://livingsystems.se/tags/trello/</loc>
     <lastmod>2016-02-26T12:40:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/json/</loc>
+    <loc>https://livingsystems.se/tags/json/</loc>
     <lastmod>2015-12-08T07:10:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/the-unexpected-usefullness-of-json-on-the-commandline/</loc>
+    <loc>https://livingsystems.se/posts/the-unexpected-usefullness-of-json-on-the-commandline/</loc>
     <lastmod>2015-12-08T07:10:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/matrix-transformation-as-model-for-data-flow-operations/</loc>
+    <loc>https://livingsystems.se/posts/matrix-transformation-as-model-for-data-flow-operations/</loc>
     <lastmod>2015-11-09T19:45:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/thinking-tools/</loc>
+    <loc>https://livingsystems.se/tags/thinking-tools/</loc>
     <lastmod>2015-11-09T19:45:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/galaxy/</loc>
+    <loc>https://livingsystems.se/tags/galaxy/</loc>
     <lastmod>2015-10-26T21:23:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/snakemake/</loc>
+    <loc>https://livingsystems.se/tags/snakemake/</loc>
     <lastmod>2015-10-26T21:23:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/dynamic-workflow-scheduling/</loc>
+    <loc>https://livingsystems.se/posts/dynamic-workflow-scheduling/</loc>
     <lastmod>2015-10-26T21:23:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/how-to-be-productive-in-vim-in-30-minutes/</loc>
+    <loc>https://livingsystems.se/posts/how-to-be-productive-in-vim-in-30-minutes/</loc>
     <lastmod>2015-09-15T12:21:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/vim/</loc>
+    <loc>https://livingsystems.se/tags/vim/</loc>
     <lastmod>2015-09-15T12:21:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/how-to-compile-vim-for-use-with-pyenv-and-vim-pyenv/</loc>
+    <loc>https://livingsystems.se/posts/how-to-compile-vim-for-use-with-pyenv-and-vim-pyenv/</loc>
     <lastmod>2015-08-20T08:05:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/how-i-would-like-to-write-golang/</loc>
+    <loc>https://livingsystems.se/posts/how-i-would-like-to-write-golang/</loc>
     <lastmod>2015-07-18T02:34:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/terminator-middle-way/</loc>
+    <loc>https://livingsystems.se/posts/terminator-middle-way/</loc>
     <lastmod>2015-07-17T19:22:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/fbp-data-flow-syntax/</loc>
+    <loc>https://livingsystems.se/posts/fbp-data-flow-syntax/</loc>
     <lastmod>2015-07-16T17:13:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/organizing-compbio-projects/</loc>
+    <loc>https://livingsystems.se/posts/organizing-compbio-projects/</loc>
     <lastmod>2015-06-23T20:32:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/biology/</loc>
+    <loc>https://livingsystems.se/tags/biology/</loc>
     <lastmod>2015-06-13T14:25:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/erlang/</loc>
+    <loc>https://livingsystems.se/tags/erlang/</loc>
     <lastmod>2015-06-13T14:25:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/flowbased-vs-erlang-message-passing/</loc>
+    <loc>https://livingsystems.se/posts/flowbased-vs-erlang-message-passing/</loc>
     <lastmod>2015-06-13T14:25:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/irods-rulelang-cheatsheet/</loc>
+    <loc>https://livingsystems.se/posts/irods-rulelang-cheatsheet/</loc>
     <lastmod>2015-06-11T01:55:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/irods/</loc>
+    <loc>https://livingsystems.se/tags/irods/</loc>
     <lastmod>2015-06-11T01:55:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/airflow/</loc>
+    <loc>https://livingsystems.se/tags/airflow/</loc>
     <lastmod>2015-06-10T12:03:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/workflows-dataflow-not-task-deps/</loc>
+    <loc>https://livingsystems.se/posts/workflows-dataflow-not-task-deps/</loc>
     <lastmod>2015-06-10T12:03:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/patterns-for-composable-concurrent-pipelines-in-go/</loc>
+    <loc>https://livingsystems.se/posts/patterns-for-composable-concurrent-pipelines-in-go/</loc>
     <lastmod>2015-06-01T14:54:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/automation/</loc>
+    <loc>https://livingsystems.se/tags/automation/</loc>
     <lastmod>2015-03-23T20:46:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/the-role-of-simplicity-in-testing-and-automation/</loc>
+    <loc>https://livingsystems.se/posts/the-role-of-simplicity-in-testing-and-automation/</loc>
     <lastmod>2015-03-23T20:46:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/gnu-make/</loc>
+    <loc>https://livingsystems.se/tags/gnu-make/</loc>
     <lastmod>2015-03-14T20:46:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/the-problem-with-make-for-scientific-workflows/</loc>
+    <loc>https://livingsystems.se/posts/the-problem-with-make-for-scientific-workflows/</loc>
     <lastmod>2015-03-14T20:46:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/bold/</loc>
+    <loc>https://livingsystems.se/tags/bold/</loc>
     <lastmod>2015-03-11T20:45:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/delphi/</loc>
+    <loc>https://livingsystems.se/tags/delphi/</loc>
     <lastmod>2015-03-11T20:45:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/dynamic-navigation-for-higher-performance/</loc>
+    <loc>https://livingsystems.se/posts/dynamic-navigation-for-higher-performance/</loc>
     <lastmod>2015-03-11T20:45:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/model-driven/</loc>
+    <loc>https://livingsystems.se/tags/model-driven/</loc>
     <lastmod>2015-03-11T20:45:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/object-pascal/</loc>
+    <loc>https://livingsystems.se/tags/object-pascal/</loc>
     <lastmod>2015-03-11T20:45:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/genomics/</loc>
+    <loc>https://livingsystems.se/tags/genomics/</loc>
     <lastmod>2015-03-03T20:45:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/ngs-bioinformatics-intro-course-day-3/</loc>
+    <loc>https://livingsystems.se/posts/ngs-bioinformatics-intro-course-day-3/</loc>
     <lastmod>2015-03-03T20:45:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/hadoop/</loc>
+    <loc>https://livingsystems.se/tags/hadoop/</loc>
     <lastmod>2015-02-19T20:44:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/next-generation-sequencing/</loc>
+    <loc>https://livingsystems.se/tags/next-generation-sequencing/</loc>
     <lastmod>2015-02-19T20:44:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/hadoop-ngs-workshop/</loc>
+    <loc>https://livingsystems.se/posts/hadoop-ngs-workshop/</loc>
     <lastmod>2015-02-19T20:44:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/our-experiences-using-spotifys-luigi-for-bioinformatics-workflows/</loc>
+    <loc>https://livingsystems.se/posts/our-experiences-using-spotifys-luigi-for-bioinformatics-workflows/</loc>
     <lastmod>2015-02-12T20:45:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/ngs-bioinformatics-intro-course-day-2/</loc>
+    <loc>https://livingsystems.se/posts/ngs-bioinformatics-intro-course-day-2/</loc>
     <lastmod>2015-02-10T20:44:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/ngs-intro-course-day-1/</loc>
+    <loc>https://livingsystems.se/posts/ngs-intro-course-day-1/</loc>
     <lastmod>2015-02-09T20:44:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/introductory-course-in-bioinformatics-for-ngs-data/</loc>
+    <loc>https://livingsystems.se/posts/introductory-course-in-bioinformatics-for-ngs-data/</loc>
     <lastmod>2015-02-09T20:44:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/rdfio-vm/</loc>
+    <loc>https://livingsystems.se/posts/rdfio-vm/</loc>
     <lastmod>2015-01-13T20:43:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/smallest-pipeable-go-program/</loc>
+    <loc>https://livingsystems.se/posts/smallest-pipeable-go-program/</loc>
     <lastmod>2014-12-18T20:43:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/profiling/</loc>
+    <loc>https://livingsystems.se/tags/profiling/</loc>
     <lastmod>2013-08-08T01:13:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/profiling-and-call-graphs-for-golang/</loc>
+    <loc>https://livingsystems.se/posts/profiling-and-call-graphs-for-golang/</loc>
     <lastmod>2013-08-08T01:13:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/ebnf-parser-for-galaxy-toolconfig-syntax-with-antlr/</loc>
+    <loc>https://livingsystems.se/posts/ebnf-parser-for-galaxy-toolconfig-syntax-with-antlr/</loc>
     <lastmod>2011-07-28T09:46:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/parsing/</loc>
+    <loc>https://livingsystems.se/tags/parsing/</loc>
     <lastmod>2011-07-28T09:46:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/docbook/</loc>
+    <loc>https://livingsystems.se/tags/docbook/</loc>
     <lastmod>2011-07-21T01:33:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/galaxy-toolconfig-to-docbook-cmdsynopsis/</loc>
+    <loc>https://livingsystems.se/posts/galaxy-toolconfig-to-docbook-cmdsynopsis/</loc>
     <lastmod>2011-07-21T01:33:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/regex/</loc>
+    <loc>https://livingsystems.se/tags/regex/</loc>
     <lastmod>2011-07-21T01:33:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/xslt/</loc>
+    <loc>https://livingsystems.se/tags/xslt/</loc>
     <lastmod>2011-07-21T01:33:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/answering-questions-by-wrapping-simulations-in-semantics/</loc>
+    <loc>https://livingsystems.se/posts/answering-questions-by-wrapping-simulations-in-semantics/</loc>
     <lastmod>2010-02-17T01:45:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/simulation/</loc>
+    <loc>https://livingsystems.se/tags/simulation/</loc>
     <lastmod>2010-02-17T01:45:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/a-hello-world-prolog-program/</loc>
+    <loc>https://livingsystems.se/posts/a-hello-world-prolog-program/</loc>
     <lastmod>2009-09-22T17:04:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/prolog/</loc>
+    <loc>https://livingsystems.se/tags/prolog/</loc>
     <lastmod>2009-09-22T17:04:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://livingsystems.se/categories/</loc>
   </url>
 </urlset>

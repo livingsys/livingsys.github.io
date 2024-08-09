@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>SMWCon Fall 2016 - My talk on large RDF imports | Living Systems</title>
 
-    <link rel="stylesheet" href="/css/main.css">
+      <link rel="stylesheet" href="/css/main.min.0dd62280a0c008a6369ab81bd9d63c41bf7e4b5e9377c4a60df43868258f1db5.css" integrity="sha256-DdYigKDACKY2mrgb2dY8Qb9&#43;S16Td8SmDfQ4aCWPHbU=" crossorigin="anonymous">
 
 
-      <script src="/js/main.js"></script>
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
 
 
 
@@ -41,38 +41,36 @@
   
   <time datetime="2016-10-07T11:50:00&#43;02:00">October 7, 2016</time>
 
-  <p>[I was invited to give a talk at ]<a href="https://www.semantic-mediawiki.org/wiki/SMWCon_Fall_2016/Conference_Days" target="_blank" rel="noopener">Semantic MediaWiki (SMW)
+  <p>I was invited to give a talk at <a href="https://www.semantic-mediawiki.org/wiki/SMWCon_Fall_2016/Conference_Days" target="_blank" rel="noopener">Semantic MediaWiki (SMW)
 conference</a>
-[
-(SMWCon) in Frankfurt last week, on our work on enabling import of RDF datasets
-into ]<a href="https://www.semantic-mediawiki.org" target="_blank" rel="noopener">SMW</a>
-[.  I have presented at SMWCon
-before as well (2011:
-]<a href="http://saml.rilspace.com/smwcon-fall-2011-impressions" target="_blank" rel="noopener">blog</a>
-[,
-]<a href="http://www.slideshare.net/SamuelLampa/hooking-up-semantic-mediawiki-with-external-tools-via-sparql" target="_blank" rel="noopener">slides</a>
-[,
-]<a href="https://www.youtube.com/watch?v=3US0G5dDynM" target="_blank" rel="noopener">video</a>
-[, 2013:
-]<a href="http://www.slideshare.net/SamuelLampa/20131030-smw-con" target="_blank" rel="noopener">slides</a>
-[), so it was
+
+in Frankfurt last week, on our work on enabling import of RDF datasets into
+<a href="https://www.semantic-mediawiki.org" target="_blank" rel="noopener">SMW</a>
+.  I have presented at SMWCon before
+as well (2011: <a href="http://saml.rilspace.com/smwcon-fall-2011-impressions" target="_blank" rel="noopener">blog</a>
+,
+<a href="http://www.slideshare.net/SamuelLampa/hooking-up-semantic-mediawiki-with-external-tools-via-sparql" target="_blank" rel="noopener">slides</a>
+
+<a href="https://www.youtube.com/watch?v=3US0G5dDynM" target="_blank" rel="noopener">video</a>
+, 2013:
+<a href="http://www.slideshare.net/SamuelLampa/20131030-smw-con" target="_blank" rel="noopener">slides</a>
+), so it was
 nice to re-connect with some old friends, and to get up to date about how SMW
-is developing, as well as share about our own contributions.]</p>
-<p><em><strong>Note:</strong> See also the <a href="https://storify.com/smllmp/semantic-mediawiki-conference-fall-2016" target="_blank" rel="noopener">SMWCon 2016 twitter
+is developing, as well as share about our own contributions.</p>
+<ul>
+<li><strong>Note:</strong> See also the <a href="https://storify.com/smllmp/semantic-mediawiki-conference-fall-2016" target="_blank" rel="noopener">SMWCon 2016 twitter
 storyboard</a>
 
-for a nice overview of the event.</em></p>
+for a nice overview of the event.</li>
+</ul>
 <h2 id="the-talk---on-rdf-import-in-semantic-mediawiki">The Talk - on RDF Import in Semantic MediaWiki</h2>
-<p>[My talk this year was titled &ldquo;Batch import of large RDF datasets using
+<p>My talk this year was titled &ldquo;Batch import of large RDF datasets using
 RDFIO or the new rdf2smw tool&rdquo;. More info can be found on the
-]<a href="https://www.semantic-mediawiki.org/wiki/SMWCon_Fall_2016/Batch_import_of_large_RDF_datasets_using_RDFIO_or_the_new_rdf2smw_tool" target="_blank" rel="noopener">talk
-page</a>
-[.
-S]lides are <a href="http://www.slideshare.net/SamuelLampa/batch-import-of-large-rdf-datasets-into-semantic-mediawiki" target="_blank" rel="noopener">available on
-slideshare</a>
-
-(video to appear on the <a href="https://www.semantic-mediawiki.org/wiki/SMWCon_Fall_2016/Batch_import_of_large_RDF_datasets_using_RDFIO_or_the_new_rdf2smw_tool" target="_blank" rel="noopener">talk
-page</a>
+<a href="https://www.semantic-mediawiki.org/wiki/SMWCon_Fall_2016/Batch_import_of_large_RDF_datasets_using_RDFIO_or_the_new_rdf2smw_tool" target="_blank" rel="noopener">talk page</a>
+</p>
+<p>Slides are <a href="http://www.slideshare.net/SamuelLampa/batch-import-of-large-rdf-datasets-into-semantic-mediawiki" target="_blank" rel="noopener">available on slideshare</a>
+</p>
+<p>(video to appear on the <a href="https://www.semantic-mediawiki.org/wiki/SMWCon_Fall_2016/Batch_import_of_large_RDF_datasets_using_RDFIO_or_the_new_rdf2smw_tool" target="_blank" rel="noopener">talk page</a>
 
 later):</p>
 <p>I will refer to the slides and the talk page for more info on the talk
@@ -170,8 +168,7 @@ SMW</a>
  too :)</p>
 <p>Toni&rsquo;s full slides:</p>
 <h3 id="more-random-notes-and-links">More random notes and links</h3>
-<p>[I will end this post with a few random links and notes I found
-interesting:]</p>
+<p>I will end this post with a few random links and notes I found interesting:</p>
 <ul>
 <li><a href="https://twitter.com/khoffmeyer" target="_blank" rel="noopener">Karsten Hoffmeyer</a>
 , mentioned that
@@ -202,8 +199,8 @@ collaboratively creating slides for educational use</li>
 that tries to aggregate scholarly events, organizations, people,
 journals and more.</li>
 </ul>
-<p>[Overall, I was happy to see the SMW development and community still
-going strong!]{style=&ldquo;line-height: 22.4px;&rdquo;}</p>
+<p>Overall, I was happy to see the SMW development and community still going
+strong!</p>
 
   
   <div>

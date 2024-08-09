@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Talks on Living Systems</title>
-    <link>http://localhost:1313/tags/talks/</link>
+    <link>https://livingsystems.se/tags/talks/</link>
     <description>Recent content in Talks on Living Systems</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 07 Oct 2016 11:50:00 +0200</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/talks/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livingsystems.se/tags/talks/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SMWCon Fall 2016 - My talk on large RDF imports</title>
-      <link>http://localhost:1313/posts/smwcon-fall-2016/</link>
+      <link>https://livingsystems.se/posts/smwcon-fall-2016/</link>
       <pubDate>Fri, 07 Oct 2016 11:50:00 +0200</pubDate>
-      <guid>http://localhost:1313/posts/smwcon-fall-2016/</guid>
-      <description>[I was invited to give a talk at ]Semantic MediaWiki (SMW) conference [ (SMWCon) in Frankfurt last week, on our work on enabling import of RDF datasets into ]SMW [. I have presented at SMWCon before as well (2011: ]blog [, ]slides [, ]video [, 2013: ]slides [), so it was nice to re-connect with some old friends, and to get up to date about how SMW is developing, as well as share about our own contributions.</description>
+      <guid>https://livingsystems.se/posts/smwcon-fall-2016/</guid>
+      <description>I was invited to give a talk at Semantic MediaWiki (SMW) conference in Frankfurt last week, on our work on enabling import of RDF datasets into SMW . I have presented at SMWCon before as well (2011: blog , slides video , 2013: slides ), so it was nice to re-connect with some old friends, and to get up to date about how SMW is developing, as well as share about our own contributions.</description>
     </item>
   </channel>
 </rss>

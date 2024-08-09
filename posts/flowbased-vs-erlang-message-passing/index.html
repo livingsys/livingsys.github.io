@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>Flow-based programming and Erlang style message passing - A Biology-inspired idea of how they fit together | Living Systems</title>
 
-    <link rel="stylesheet" href="/css/main.css">
+      <link rel="stylesheet" href="/css/main.min.0dd62280a0c008a6369ab81bd9d63c41bf7e4b5e9377c4a60df43868258f1db5.css" integrity="sha256-DdYigKDACKY2mrgb2dY8Qb9&#43;S16Td8SmDfQ4aCWPHbU=" crossorigin="anonymous">
 
 
-      <script src="/js/main.js"></script>
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
 
 
 
@@ -99,15 +99,16 @@ a general way something like FBP-style in-ports and out-ports would
 probably require creating even further specialized Erlang/Elixir
 processes. Maybe you need one for each in-port/out-port, which would
 mean even more data copying.</p>
-<p><em><strong>These architectural differences were by the way something that was
-touched upon in highly recommended a <a href="http://www.erlang-factory.com/euc2014/paul-butcher" target="_blank" rel="noopener">talk by Paul Butcher at
+<ul>
+<li><strong>These architectural differences were by the way something that was touched
+upon in highly recommended a <a href="http://www.erlang-factory.com/euc2014/paul-butcher" target="_blank" rel="noopener">talk by Paul Butcher at
 EUC2014</a>
- last year
-(See
+ last year (See
 <a href="http://www.erlang-factory.com/static/upload/media/1403178373396314paulbutchereuc2014.pdf" target="_blank" rel="noopener">Slides</a>
 
 and <a href="https://vimeo.com/102707745" target="_blank" rel="noopener">Video</a>
-)</strong></em></p>
+)</strong></li>
+</ul>
 <p>One thing I&rsquo;m still wondering about though, is whether the overhead of
 this copying might not be such a big problem since you now will have
 pipeline parallelism in Elixir, as José
@@ -252,7 +253,7 @@ processing. I see the match like this:</p>
 <p>One of these - the cell-to-cell signaling, is aimed at synchronizing
 state <em><strong>between</strong></em> nearby cells, while the other, DNA→RNA→Protein
 chain, is for the heavy lifting of processing large amounts of data
-<em><strong>inside</strong></em> each cell.</p>
+<strong>inside</strong> each cell.</p>
 <p>The first one is a very &ldquo;loose&rdquo; process, in that signaling molecules
 are released in excess, but on &ldquo;chance&rdquo;, and will eventually reach
 receptors on the surfaces of nearby cells, and initiate some kind of

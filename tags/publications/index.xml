@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Publications on Living Systems</title>
-    <link>http://localhost:1313/tags/publications/</link>
+    <link>https://livingsystems.se/tags/publications/</link>
     <description>Recent content in Publications on Living Systems</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 27 Apr 2019 14:48:00 +0200</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/publications/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livingsystems.se/tags/publications/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SciPipe paper published in GigaScience</title>
-      <link>http://localhost:1313/posts/scipipe-paper-published-in-gigascience/</link>
+      <link>https://livingsystems.se/posts/scipipe-paper-published-in-gigascience/</link>
       <pubDate>Sat, 27 Apr 2019 14:48:00 +0200</pubDate>
-      <guid>http://localhost:1313/posts/scipipe-paper-published-in-gigascience/</guid>
+      <guid>https://livingsystems.se/posts/scipipe-paper-published-in-gigascience/</guid>
       <description>We just wanted to share that the paper on our Go-based workflow library, SciPipe, was just published in GigaScience:&#xA;Abstract Background The complex nature of biological data has driven the development of specialized software tools. Scientific workflow management systems simplify the assembly of such tools into pipelines, assist with job automation, and aid reproducibility of analyses. Many contemporary workflow tools are specialized or not designed for highly complex workflows, such as with nested loops, dynamic scheduling, and parametrization, which is common in, e.</description>
     </item>
     <item>
       <title>Preprint on SciPipe - Go-based scientific workflow library</title>
-      <link>http://localhost:1313/posts/scipipe-preprint/</link>
+      <link>https://livingsystems.se/posts/scipipe-preprint/</link>
       <pubDate>Thu, 02 Aug 2018 01:01:00 +0200</pubDate>
-      <guid>http://localhost:1313/posts/scipipe-preprint/</guid>
+      <guid>https://livingsystems.se/posts/scipipe-preprint/</guid>
       <description>A pre-print for our Go-based workflow libarary SciPipe , is out, with the title SciPipe - A workflow library for agile development of complex and dynamic bioinformatics pipelines , co-authored by me and colleagues at pharmb.io : Martin Dahlö , Jonathan Alvarsson and Ola Spjuth . Access it here .&#xA;It has been more than three years since the first commit on the SciPipe Git repository in March, 2015, and development has been going in various degrees of intensity during these years, often besides other duties at pharmb.</description>
     </item>
     <item>
       <title>Make your commandline tool workflow friendly</title>
-      <link>http://localhost:1313/posts/make-your-commandline-tool-workflow-friendly/</link>
+      <link>https://livingsystems.se/posts/make-your-commandline-tool-workflow-friendly/</link>
       <pubDate>Fri, 25 May 2018 23:59:00 +0200</pubDate>
-      <guid>http://localhost:1313/posts/make-your-commandline-tool-workflow-friendly/</guid>
+      <guid>https://livingsystems.se/posts/make-your-commandline-tool-workflow-friendly/</guid>
       <description>Update (May 2019): A paper incorporating the below considerations is published:&#xA;Björn A Grüning, Samuel Lampa, Marc Vaudel, Daniel Blankenberg, &amp;ldquo;Software engineering for scientific big data analysis &amp;rdquo; GigaScience, Volume 8, Issue 5, May 2019, giz054, https://doi.org/10.1093/gigascience/giz054 There are a number of pitfalls that can make a commandline program really hard to integrate into a workflow (or &amp;ldquo;pipeline&amp;rdquo;) framework. The reason is that many workflow tools use output file paths to keep track of the state of the tasks producing these files.</description>
     </item>
     <item>
       <title>New paper on RDFIO for interoperable biomedical data management in Semantic MediaWiki</title>
-      <link>http://localhost:1313/posts/new-paper-on-rdfio-for-interoperable-biomedical-datamanagement-in-semantic-mediawiki/</link>
+      <link>https://livingsystems.se/posts/new-paper-on-rdfio-for-interoperable-biomedical-datamanagement-in-semantic-mediawiki/</link>
       <pubDate>Mon, 11 Sep 2017 15:57:00 +0200</pubDate>
-      <guid>http://localhost:1313/posts/new-paper-on-rdfio-for-interoperable-biomedical-datamanagement-in-semantic-mediawiki/</guid>
+      <guid>https://livingsystems.se/posts/new-paper-on-rdfio-for-interoperable-biomedical-datamanagement-in-semantic-mediawiki/</guid>
       <description>As my collaborator and M.Sc. supervisor Egon Willighagen already blogged , we just released a paper titled: &amp;ldquo;RDFIO: extending Semantic MediaWiki for interoperable biomedical data management &amp;rdquo;, with uses cases from Egon and Pekka Kohonen , coding help from Ali King and project supervision from Denny Vrandečić , Roland Grafström and Ola Spjuth .&#xA;See the picture below (from the paper) for an overview of all the newly developed functionality (drawn in black), as related to the previously existing functionality (drawn in grey):</description>
     </item>
   </channel>

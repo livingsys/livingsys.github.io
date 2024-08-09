@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>Go | Living Systems</title>
 
-    <link rel="stylesheet" href="/css/main.css">
+      <link rel="stylesheet" href="/css/main.min.0dd62280a0c008a6369ab81bd9d63c41bf7e4b5e9377c4a60df43868258f1db5.css" integrity="sha256-DdYigKDACKY2mrgb2dY8Qb9&#43;S16Td8SmDfQ4aCWPHbU=" crossorigin="anonymous">
 
 
-      <script src="/js/main.js"></script>
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
 
 <link rel="alternate" type="application/rss+xml" href="/tags/go/index.xml" title="Living Systems">
 
@@ -68,8 +68,7 @@ To this end, I created a bash alias that does everything in one command, gocov.
   
     
     <h2><a href="/posts/parsing-drugbank-xml-or-any-large-xml-file-in-streaming-mode-in-go/">Parsing DrugBank XML (or any large XML file) in streaming mode in Go</a></h2>
-    While Go&rsquo;s XML stream-parsing support is great, the details of how to do that in a streaming fashion was not immediately clear from the docs, and I was thus saved by this blog post by David Singleton . Basically, you could use his blog post as a starting point, but I wanted to write up my own post to document some specifics and peculiarities I figured out.
-Idea: Parse DrugBank XML to TSV So in short, we want to parse the DrugBank XML, which contains tons of hierarchical information about each drug in the dataset, and extract just a few fields, and output that into a nicely formatted tab-separated (.
+    I had a problem in which I thought I needed to parse the full DrugBank dataset, which comes as a (670MB) XML file (For open access papers describing DrugBank, see: [1], [2], [3] and [4]). It turned out what I needed was available as CSV files under &ldquo;Structure External Links &rdquo;. There is probably still some other uses of this approach though, as the XML version of DrugBank seems to contain a lot more information in a single format.
   
     
     <a href="/posts/equation-centric-dataflow-programming-in-go/"><img src="/posts/equation-centric-dataflow-programming-in-go//loan.gif" class="post-img-list"></a>

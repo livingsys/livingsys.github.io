@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Irods on Living Systems</title>
-    <link>http://localhost:1313/tags/irods/</link>
+    <link>https://livingsystems.se/tags/irods/</link>
     <description>Recent content in Irods on Living Systems</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 11 Jun 2015 01:55:00 +0200</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/irods/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livingsystems.se/tags/irods/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A cheatsheet for the iRODS rule language</title>
-      <link>http://localhost:1313/posts/irods-rulelang-cheatsheet/</link>
+      <link>https://livingsystems.se/posts/irods-rulelang-cheatsheet/</link>
       <pubDate>Thu, 11 Jun 2015 01:55:00 +0200</pubDate>
-      <guid>http://localhost:1313/posts/irods-rulelang-cheatsheet/</guid>
+      <guid>https://livingsystems.se/posts/irods-rulelang-cheatsheet/</guid>
       <description>iRODS , the &amp;ldquo;integrated rule oriented data system&amp;rdquo; is a super cool system for managing datasets consisting of files, from smallish ones, to really large ones counted in petabytes, and possibly spanning multiple continents.&#xA;There&amp;rsquo;s a lot to be said about iRODS (up for another blog post) but the one most interesting feature, in my opinion, is the rule language, which allows to define custom rules and policies for how data should be handled, totally automatically, depending on a lot of factors.</description>
     </item>
   </channel>

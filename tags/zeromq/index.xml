@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ZeroMQ on Living Systems</title>
-    <link>http://localhost:1313/tags/zeromq/</link>
+    <link>https://livingsystems.se/tags/zeromq/</link>
     <description>Recent content in ZeroMQ on Living Systems</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 13 Nov 2019 11:56:00 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/zeromq/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livingsystems.se/tags/zeromq/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Basic PUB/SUB connection with ZeroMQ in Python</title>
-      <link>http://localhost:1313/posts/pub-sub-with-zeromq-in-python/</link>
+      <link>https://livingsystems.se/posts/pub-sub-with-zeromq-in-python/</link>
       <pubDate>Wed, 13 Nov 2019 11:56:00 +0100</pubDate>
-      <guid>http://localhost:1313/posts/pub-sub-with-zeromq-in-python/</guid>
+      <guid>https://livingsystems.se/posts/pub-sub-with-zeromq-in-python/</guid>
       <description>ZeroMQ is a great way to quickly and simply send messages between multiple programs running on the same or different computers. It is very simple and robust since it doesn&amp;rsquo;t need any central server. Instead it talks directly between the programs through sockets, TCP-connections or similar.&#xA;ZeroMQ has client libraries for basically all commonly used programming languages, but when testing out that a connection works between e.g. two different machines, it might be good to keep things simple and test just the connection, as simply as possible.</description>
     </item>
   </channel>

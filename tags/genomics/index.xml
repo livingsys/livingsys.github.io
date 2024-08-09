@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Genomics on Living Systems</title>
-    <link>http://localhost:1313/tags/genomics/</link>
+    <link>https://livingsystems.se/tags/genomics/</link>
     <description>Recent content in Genomics on Living Systems</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 03 Mar 2015 20:45:00 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/genomics/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livingsystems.se/tags/genomics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>NGS Bioinformatics Course Day 3: New Luigi helper tool, &#34;real-world&#34; NGS pipelines</title>
-      <link>http://localhost:1313/posts/ngs-bioinformatics-intro-course-day-3/</link>
+      <link>https://livingsystems.se/posts/ngs-bioinformatics-intro-course-day-3/</link>
       <pubDate>Tue, 03 Mar 2015 20:45:00 +0100</pubDate>
-      <guid>http://localhost:1313/posts/ngs-bioinformatics-intro-course-day-3/</guid>
+      <guid>https://livingsystems.se/posts/ngs-bioinformatics-intro-course-day-3/</guid>
       <description>It turned out I didn&amp;rsquo;t have the time and strength to blog every day at the NGS Bioinformatics Intro course, so here comes a wrap up with some random notes and tidbits from the last days, including any concluding remarks!&#xA;These days we started working on a more realistic NGS pipeline, on analysing re-sequencing samples (slides , tutorial ).&#xA;First some outcome from this tutorial What do I mean with &amp;ldquo;outcome&amp;rdquo;?</description>
     </item>
     <item>
       <title>NGS Bioinformatics Intro Course Day 2</title>
-      <link>http://localhost:1313/posts/ngs-bioinformatics-intro-course-day-2/</link>
+      <link>https://livingsystems.se/posts/ngs-bioinformatics-intro-course-day-2/</link>
       <pubDate>Tue, 10 Feb 2015 20:44:00 +0100</pubDate>
-      <guid>http://localhost:1313/posts/ngs-bioinformatics-intro-course-day-2/</guid>
+      <guid>https://livingsystems.se/posts/ngs-bioinformatics-intro-course-day-2/</guid>
       <description>Today was the second day of the introductory course in NGS bioinformatics that I&amp;rsquo;m taking as part of my PhD studies.&#xA;For me it started with a substantial oversleep, probably due to a combination of an annoying cold and the ~2 hour commute from south Stockholm to Uppsala and BMC . Thus I missed some really interesting material (and tutorial ) on file types in NGS analysis, but will make sure to go through that in my free time during the week.</description>
     </item>
     <item>
       <title>NGS Bioinformatics Intro Course Day 1</title>
-      <link>http://localhost:1313/posts/ngs-intro-course-day-1/</link>
+      <link>https://livingsystems.se/posts/ngs-intro-course-day-1/</link>
       <pubDate>Mon, 09 Feb 2015 20:44:00 +0100</pubDate>
-      <guid>http://localhost:1313/posts/ngs-intro-course-day-1/</guid>
+      <guid>https://livingsystems.se/posts/ngs-intro-course-day-1/</guid>
       <description>Just finished day 1 of the introductory course on Bioinformatics for Next generation sequencing data at Scilifelab Uppsala. Attaching a photo from one of the hands-on tutorial sessions, with the tutorial leaders, standing to the right.&#xA;Today&amp;rsquo;s content was mostly introductions to the linux commandline in general, and the UPPMAX HPC environment in particular, an area I&amp;rsquo;m already very familiar with, after two years as a sysadmin at UPPMAX. Thus, today I mostly got to help out the other students a bit.</description>
     </item>
   </channel>

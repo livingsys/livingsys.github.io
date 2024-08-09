@@ -2,59 +2,59 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Bioinformatics on Living Systems</title>
-    <link>http://localhost:1313/tags/bioinformatics/</link>
+    <link>https://livingsystems.se/tags/bioinformatics/</link>
     <description>Recent content in Bioinformatics on Living Systems</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 27 May 2024 12:44:00 +0200</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/bioinformatics/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livingsystems.se/tags/bioinformatics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>We need recipes for common bioinformatics tasks</title>
-      <link>http://localhost:1313/posts/bioinformatics-recipes/</link>
+      <link>https://livingsystems.se/posts/bioinformatics-recipes/</link>
       <pubDate>Mon, 27 May 2024 12:44:00 +0200</pubDate>
-      <guid>http://localhost:1313/posts/bioinformatics-recipes/</guid>
+      <guid>https://livingsystems.se/posts/bioinformatics-recipes/</guid>
       <description>Ad-hoc tasks in bioinformatics can contain such an immense number of operations and tasks that need to be performed to achieve a certain goal. Often these are all individually regarded as rather &amp;ldquo;standard&amp;rdquo; or &amp;ldquo;routine&amp;rdquo;. Despite this, it is quite hard to find an authoritative set of &amp;ldquo;recipes&amp;rdquo; for how to do such tasks.&#xA;Thus I was starting to think that there needs to be a collection of bioinformatics &amp;ldquo;recipes&amp;rdquo;. A sort of &amp;ldquo;cookbook&amp;rdquo; for common bioinformatics tasks.</description>
     </item>
     <item>
       <title>Why didn&#39;t Go get a breakthrough in bioinformatics (yet)?</title>
-      <link>http://localhost:1313/posts/golang-for-bioinformatics/</link>
+      <link>https://livingsystems.se/posts/golang-for-bioinformatics/</link>
       <pubDate>Mon, 13 May 2024 17:05:00 +0200</pubDate>
-      <guid>http://localhost:1313/posts/golang-for-bioinformatics/</guid>
+      <guid>https://livingsystems.se/posts/golang-for-bioinformatics/</guid>
       <description>As we are - according to some expert opinions - living in the Century of Biology, I found it interesting to reflect on Go&amp;rsquo;s usage within the field.&#xA;Go has some great features that make it really well suited for biology, such as:&#xA;A relatively simple language that can be learned in a short time even for people without a CS background. This is super important aspect for biologists. Fantastic support for cross-compilation into all major computer architectures and operating systems, as static, self-sufficient executables making it extremely simple to deploy tools, something that can&amp;rsquo;t be said about the currently most popular bio language, Python.</description>
     </item>
     <item>
       <title>A few thoughts on organizing computational (biology) projects</title>
-      <link>http://localhost:1313/posts/organizing-compbio-projects/</link>
+      <link>https://livingsystems.se/posts/organizing-compbio-projects/</link>
       <pubDate>Tue, 23 Jun 2015 20:32:00 +0200</pubDate>
-      <guid>http://localhost:1313/posts/organizing-compbio-projects/</guid>
+      <guid>https://livingsystems.se/posts/organizing-compbio-projects/</guid>
       <description>I read this excellent article with practical recommendations on how to organize a computational project, in terms of directory structure.&#xA;Directory structure matters The importance of a good directory structure seems to often be overlooked in teaching about computational biology, but can be the difference between a successful project, and one where every change or re-run of some part of a workflow, will require days of manual fiddling to get hand on the right data, in the right format, in the right place, with the right version of the workflow, with the right parameters, and then succeed to run it without errors.</description>
     </item>
     <item>
       <title>NGS Bioinformatics Course Day 3: New Luigi helper tool, &#34;real-world&#34; NGS pipelines</title>
-      <link>http://localhost:1313/posts/ngs-bioinformatics-intro-course-day-3/</link>
+      <link>https://livingsystems.se/posts/ngs-bioinformatics-intro-course-day-3/</link>
       <pubDate>Tue, 03 Mar 2015 20:45:00 +0100</pubDate>
-      <guid>http://localhost:1313/posts/ngs-bioinformatics-intro-course-day-3/</guid>
+      <guid>https://livingsystems.se/posts/ngs-bioinformatics-intro-course-day-3/</guid>
       <description>It turned out I didn&amp;rsquo;t have the time and strength to blog every day at the NGS Bioinformatics Intro course, so here comes a wrap up with some random notes and tidbits from the last days, including any concluding remarks!&#xA;These days we started working on a more realistic NGS pipeline, on analysing re-sequencing samples (slides , tutorial ).&#xA;First some outcome from this tutorial What do I mean with &amp;ldquo;outcome&amp;rdquo;?</description>
     </item>
     <item>
       <title>NGS Bioinformatics Intro Course Day 2</title>
-      <link>http://localhost:1313/posts/ngs-bioinformatics-intro-course-day-2/</link>
+      <link>https://livingsystems.se/posts/ngs-bioinformatics-intro-course-day-2/</link>
       <pubDate>Tue, 10 Feb 2015 20:44:00 +0100</pubDate>
-      <guid>http://localhost:1313/posts/ngs-bioinformatics-intro-course-day-2/</guid>
+      <guid>https://livingsystems.se/posts/ngs-bioinformatics-intro-course-day-2/</guid>
       <description>Today was the second day of the introductory course in NGS bioinformatics that I&amp;rsquo;m taking as part of my PhD studies.&#xA;For me it started with a substantial oversleep, probably due to a combination of an annoying cold and the ~2 hour commute from south Stockholm to Uppsala and BMC . Thus I missed some really interesting material (and tutorial ) on file types in NGS analysis, but will make sure to go through that in my free time during the week.</description>
     </item>
     <item>
       <title>NGS Bioinformatics Intro Course Day 1</title>
-      <link>http://localhost:1313/posts/ngs-intro-course-day-1/</link>
+      <link>https://livingsystems.se/posts/ngs-intro-course-day-1/</link>
       <pubDate>Mon, 09 Feb 2015 20:44:00 +0100</pubDate>
-      <guid>http://localhost:1313/posts/ngs-intro-course-day-1/</guid>
+      <guid>https://livingsystems.se/posts/ngs-intro-course-day-1/</guid>
       <description>Just finished day 1 of the introductory course on Bioinformatics for Next generation sequencing data at Scilifelab Uppsala. Attaching a photo from one of the hands-on tutorial sessions, with the tutorial leaders, standing to the right.&#xA;Today&amp;rsquo;s content was mostly introductions to the linux commandline in general, and the UPPMAX HPC environment in particular, an area I&amp;rsquo;m already very familiar with, after two years as a sysadmin at UPPMAX. Thus, today I mostly got to help out the other students a bit.</description>
     </item>
     <item>
       <title>Taking a one week introductory course in Bioinformatics for NGS data</title>
-      <link>http://localhost:1313/posts/introductory-course-in-bioinformatics-for-ngs-data/</link>
+      <link>https://livingsystems.se/posts/introductory-course-in-bioinformatics-for-ngs-data/</link>
       <pubDate>Mon, 09 Feb 2015 20:44:00 +0100</pubDate>
-      <guid>http://localhost:1313/posts/introductory-course-in-bioinformatics-for-ngs-data/</guid>
+      <guid>https://livingsystems.se/posts/introductory-course-in-bioinformatics-for-ngs-data/</guid>
       <description>Right now I&amp;rsquo;m sitting on the train and trying to get my head around some of the pre-course materials .</description>
     </item>
   </channel>

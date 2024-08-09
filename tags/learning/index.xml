@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Learning on Living Systems</title>
-    <link>http://localhost:1313/tags/learning/</link>
+    <link>https://livingsystems.se/tags/learning/</link>
     <description>Recent content in Learning on Living Systems</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 31 Oct 2017 10:38:00 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/learning/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livingsystems.se/tags/learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Learning how to learn</title>
-      <link>http://localhost:1313/posts/how-to-learn/</link>
+      <link>https://livingsystems.se/posts/how-to-learn/</link>
       <pubDate>Tue, 31 Oct 2017 10:38:00 +0100</pubDate>
-      <guid>http://localhost:1313/posts/how-to-learn/</guid>
+      <guid>https://livingsystems.se/posts/how-to-learn/</guid>
       <description>I&amp;rsquo;m reading A mind for numbers , by Barbara Oakley. Firstly, it is a very interesting book, but the main lesson I&amp;rsquo;ve already learned from this book seems so paramount that I have to write it down, so I don&amp;rsquo;t forget it (some meta-connotations in that statement ;) ). I found the book through Barbara&amp;rsquo;s coursera course &amp;ldquo;Learning how to Learn &amp;rdquo;, and to me it seems learning in general is the topic of the book too, more than numbers specifically - but I still have to read it through, so stay tuned.</description>
     </item>
   </channel>

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Scicommander on Living Systems</title>
-    <link>http://localhost:1313/tags/scicommander/</link>
+    <link>https://livingsystems.se/tags/scicommander/</link>
     <description>Recent content in Scicommander on Living Systems</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 09 Nov 2023 18:38:00 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/scicommander/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livingsystems.se/tags/scicommander/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SciCommander - track provenance of any shell command</title>
-      <link>http://localhost:1313/posts/scicommander-0.3/</link>
+      <link>https://livingsystems.se/posts/scicommander-0.3/</link>
       <pubDate>Thu, 09 Nov 2023 18:38:00 +0100</pubDate>
-      <guid>http://localhost:1313/posts/scicommander-0.3/</guid>
+      <guid>https://livingsystems.se/posts/scicommander-0.3/</guid>
       <description>I haven&amp;rsquo;t written much about a new tool I&amp;rsquo;ve been working on in some extra time: SciCommander .&#xA;I just presented a poster about it at the Swedish Bioinformatics Workshop 2023 , so perhaps let me first present you the poster instead of re-iterating what it is (click to view large version):&#xA;New version not requiring running the scicmd command I got a lot of great feedback from numerous people at the conference, most of who pointed out that it would be great if one could start scicommander as a kind of subshell, inside which one can run commands as usual, instead of running them via the scicmd -c command.</description>
     </item>
   </channel>

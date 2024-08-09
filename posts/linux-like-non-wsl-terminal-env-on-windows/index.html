@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>Setting up a reasonable and light-weight Linux-like (non-WSL) terminal environment on Windows | Living Systems</title>
 
-    <link rel="stylesheet" href="/css/main.css">
+      <link rel="stylesheet" href="/css/main.min.0dd62280a0c008a6369ab81bd9d63c41bf7e4b5e9377c4a60df43868258f1db5.css" integrity="sha256-DdYigKDACKY2mrgb2dY8Qb9&#43;S16Td8SmDfQ4aCWPHbU=" crossorigin="anonymous">
 
 
-      <script src="/js/main.js"></script>
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
 
 
 
@@ -89,21 +89,21 @@ Linux-like bash environment in Windows.</p>
 <li>Start MSYS2 from the start menu in Windows.</li>
 <li>Run upgrades of packages with the pacman packager:
 <ul>
-<li><strong><code>pacman -Syu</code></strong></li>
+<li><code>pacman -Syu</code></li>
 <li>Hard restart terminal</li>
-<li><strong><code>pacman -Su</code></strong></li>
+<li><code>pacman -Su</code></li>
 </ul>
 </li>
-<li>Install packages with <strong><code>pacman -S &lt;package&gt;</code></strong>
+<li>Install packages with <code>pacman -S &lt;package&gt;</code>
 <ul>
 <li>Some packages I installed:
 <ul>
-<li>vim</li>
-<li>git</li>
-<li>tig (The awesome text-mode interface to git)</li>
-<li>tmux</li>
-<li>man-db (for manual pages)</li>
-<li>cgdb</li>
+<li><code>vim</code></li>
+<li><code>git</code></li>
+<li><code>tig</code> (The awesome text-mode interface to git)</li>
+<li><code>tmux</code></li>
+<li><code>man-db</code> (for manual pages)</li>
+<li><code>cgdb</code></li>
 </ul>
 </li>
 </ul>
@@ -112,12 +112,12 @@ Linux-like bash environment in Windows.</p>
 <li>Configure git to check out files with Windows style line endings,
 but check in with Linux style ditto:
 <ul>
-<li><strong><code>git config --global core.autocrlf true</code></strong></li>
+<li><code>git config --global core.autocrlf true</code></li>
 </ul>
 </li>
 <li>Make python scripts properly print output continuously:
 <ul>
-<li><strong><code>alias python='winpty python.exe'</code></strong></li>
+<li><code>alias python='winpty python.exe'</code></li>
 </ul>
 </li>
 <li>For Python development,</li>
@@ -161,7 +161,6 @@ that, run <code>winpty -Xallow-non-tty</code></li>
 <code>alias dn='winpty -Xallow-non-tty dotnet'</code> which I put in my
 <code>~/.bash_aliases</code> file.</li>
 </ul>
-<p><strong>Samuel</strong></p>
 
   
   <div>

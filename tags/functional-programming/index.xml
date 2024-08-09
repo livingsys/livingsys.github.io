@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Functional Programming on Living Systems</title>
-    <link>http://localhost:1313/tags/functional-programming/</link>
+    <link>https://livingsystems.se/tags/functional-programming/</link>
     <description>Recent content in Functional Programming on Living Systems</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 12 Feb 2021 16:24:00 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/functional-programming/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livingsystems.se/tags/functional-programming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Composability in functional and flow-based programming</title>
-      <link>http://localhost:1313/posts/composability-in-functional-and-flow-based-programming/</link>
+      <link>https://livingsystems.se/posts/composability-in-functional-and-flow-based-programming/</link>
       <pubDate>Fri, 12 Feb 2021 16:24:00 +0100</pubDate>
-      <guid>http://localhost:1313/posts/composability-in-functional-and-flow-based-programming/</guid>
+      <guid>https://livingsystems.se/posts/composability-in-functional-and-flow-based-programming/</guid>
       <description>An area where I&amp;rsquo;m not so happy with some things I&amp;rsquo;ve seen in FP, is composability.&#xA;In my view, a well designed system or langauge should make functions (or other smallest unit of computation) more easily composable, not less.&#xA;What strikes me as one of the biggest elephants in the room regarding FP, is that typical functions compose fantastically as long as you are working with a single input argument, and a single output for each function application, but as soon as you start taking multiple input arguments and returned outputs though, you tend to end up with very messy trees of function application.</description>
     </item>
     <item>
       <title>FBP inspired data flow syntax: The missing piece for the success of functional programming?</title>
-      <link>http://localhost:1313/posts/fbp-data-flow-syntax/</link>
+      <link>https://livingsystems.se/posts/fbp-data-flow-syntax/</link>
       <pubDate>Thu, 16 Jul 2015 17:13:00 +0200</pubDate>
-      <guid>http://localhost:1313/posts/fbp-data-flow-syntax/</guid>
+      <guid>https://livingsystems.se/posts/fbp-data-flow-syntax/</guid>
       <description>Often when I suggest people have a look at Flow-based Programming (FBP) or Data Flow for one reason or another, people are often put off by the strong connection between these concepts and graphical programming. That is, the idea that programs will be easier to understand if expressed and developed in a visual notation.&#xA;This is unfortunate, since I think this is in no way the core benefit of FBP or Data Flow, although it is a nice side-effect for those who prefer it.</description>
     </item>
   </channel>
