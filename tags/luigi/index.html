@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>Luigi | Living Systems_</title>
 
-      <link rel="stylesheet" href="/css/main.min.4f089e822380326637801bfc78c8707ea0e3820c97c45c77088818155e295dc8.css" integrity="sha256-TwiegiOAMmY3gBv8eMhwfqDjggyXxFx3CIgYFV4pXcg=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.fa614a522086c809a263ef1ce0c1c09b84d583cc3b0995c679df3d80b74687d7.css" integrity="sha256-&#43;mFKUiCGyAmiY&#43;8c4MHAm4TVg8w7CZXGed89gLdGh9c=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -42,42 +42,52 @@
   <h1>Luigi</h1>
   
   
-    
-    <a href="/posts/luigi-tutorial/"><img src="/posts/luigi-tutorial//luigi_screenshot.png" class="post-img-list"></a>
-    
-    <h2><a href="/posts/luigi-tutorial/">Tutorial: Luigi for Scientific Workflows</a></h2>
-    This is a Luigi tutorial I held at the e-Infrastructures for Massively parallel sequencing workshop (Video archive ) at SciLifeLab Uppsala in January 2015, moved here for future reference.
+    <div class="post-card">
+
+<a href="/posts/luigi-tutorial/"><img src="/posts/luigi-tutorial//luigi_screenshot.png" class="post-img-list"></a>
+
+<h2><a href="/posts/luigi-tutorial/">Tutorial: Luigi for Scientific Workflows</a></h2>
+This is a Luigi tutorial I held at the e-Infrastructures for Massively parallel sequencing workshop (Video archive ) at SciLifeLab Uppsala in January 2015, moved here for future reference.
 What is Luigi? Luigi is a batch workflow system written in Python and developed by Erik Bernhardson and others at Spotify , where it is used to compute machine-learning powered music recommendation lists, top lists etc.
 Luigi is one of not-too-many batch workflow systems that supports running both normal command line jobs and Hadoop jobs in the same (in this tutorial, we will focus only on the command line part).
+</div>
+
   
-    
-    <a href="/posts/dynamic-workflow-scheduling/"><img src="/posts/dynamic-workflow-scheduling//scheduling_unsplash-1.jpg" class="post-img-list"></a>
-    
-    <h2><a href="/posts/dynamic-workflow-scheduling/">Wanted: Dynamic workflow scheduling</a></h2>
-    Photo credits: Matthew Smith / Unsplash In our work on automating machine learning computations in cheminformatics with scientific workflow tools , we have came to realize something; Dynamic scheduling in scientific workflow tools is very important and sometimes badly needed.
+    <div class="post-card">
+
+<a href="/posts/dynamic-workflow-scheduling/"><img src="/posts/dynamic-workflow-scheduling//scheduling_unsplash-1.jpg" class="post-img-list"></a>
+
+<h2><a href="/posts/dynamic-workflow-scheduling/">Wanted: Dynamic workflow scheduling</a></h2>
+Photo credits: Matthew Smith / Unsplash In our work on automating machine learning computations in cheminformatics with scientific workflow tools , we have came to realize something; Dynamic scheduling in scientific workflow tools is very important and sometimes badly needed.
 What I mean is that new tasks should be able to be scheduled during the execution of a workflow, not just in its scheduling phase.
 What is striking is that far from all workflow tools allow this.
+</div>
+
   
-    
-    <a href="/posts/workflows-dataflow-not-task-deps/"><img src="/posts/workflows-dataflow-not-task-deps//peptide_workflow.png" class="post-img-list"></a>
-    
-    <h2><a href="/posts/workflows-dataflow-not-task-deps/">Workflow tool makers: Allow defining data flow, not just task dependencies</a></h2>
-    Upsurge in workflow tools There seem to be a little upsurge in light-weight - often python-based - workflow tools for data pipelines in the last couple of years: Spotify&rsquo;s Luigi , OpenStack&rsquo;s Mistral , Pinterest&rsquo;s Pinball , and recently AirBnb&rsquo;s Airflow , to name a few. These are all interesting tools, and it is an interesting trend for us at pharmbio , who try to see how we can use workflow tools to automate bio- and cheminformatics tasks on compute clusters.
+    <div class="post-card">
+
+<a href="/posts/workflows-dataflow-not-task-deps/"><img src="/posts/workflows-dataflow-not-task-deps//peptide_workflow.png" class="post-img-list"></a>
+
+<h2><a href="/posts/workflows-dataflow-not-task-deps/">Workflow tool makers: Allow defining data flow, not just task dependencies</a></h2>
+Upsurge in workflow tools There seem to be a little upsurge in light-weight - often python-based - workflow tools for data pipelines in the last couple of years: Spotify&rsquo;s Luigi , OpenStack&rsquo;s Mistral , Pinterest&rsquo;s Pinball , and recently AirBnb&rsquo;s Airflow , to name a few. These are all interesting tools, and it is an interesting trend for us at pharmbio , who try to see how we can use workflow tools to automate bio- and cheminformatics tasks on compute clusters.
+</div>
+
   
-    
-    <a href="/posts/our-experiences-using-spotifys-luigi-for-bioinformatics-workflows/"><img src="/posts/our-experiences-using-spotifys-luigi-for-bioinformatics-workflows//selection_047_luigi.png" class="post-img-list"></a>
-    
-    <h2><a href="/posts/our-experiences-using-spotifys-luigi-for-bioinformatics-workflows/">Links: Our experiences using Spotify&#39;s Luigi for Bioinformatics Workflows</a></h2>
-    Fig 1: A screenshot of Luigi&rsquo;s web UI, of a real-world (although rather simple) workflow implemented in Luigi:
+    <div class="post-card">
+
+<a href="/posts/our-experiences-using-spotifys-luigi-for-bioinformatics-workflows/"><img src="/posts/our-experiences-using-spotifys-luigi-for-bioinformatics-workflows//selection_047_luigi.png" class="post-img-list"></a>
+
+<h2><a href="/posts/our-experiences-using-spotifys-luigi-for-bioinformatics-workflows/">Links: Our experiences using Spotify&#39;s Luigi for Bioinformatics Workflows</a></h2>
+Fig 1: A screenshot of Luigi&rsquo;s web UI, of a real-world (although rather simple) workflow implemented in Luigi:
 Update May 5, 2016: Most of the below material is more or less outdated. Our latest work has resulted in the SciLuigi helper library , which we have used in production and will be focus of further developments.
 In the Bioclipse / Pharmaceutical Bioinformatics group at Dept of Pharm. Biosciences att UU, we are quite heavy users of Spotify&rsquo;s Luigi workflow library , to automate workflows, mainly doing Machine Learning heavy lifting.
+</div>
+
   
 
   </main>
   <footer>
-    <p>Copyright &copy; 2024 Living Systems. All rights reserved.</p>
-
-<p>Find us on <a href="https://twitter.com/smllmp">Twitter</a></p>
+    <p>Copyright &copy; 2024 Samuel Lampa. All rights reserved. Find me on <a href="https://orcid.org/0000-0001-6740-9212" target="_blank">ORCID</a>, <a href="https://github.com/samuell" target="_blank">GitHub</a>, <a href="https://twitter.com/smllmp" target="_blank">Twitter</a> or <a href="https://linkedin.com/in/smllmp" target="_blank">LinkedIn</a>.</p>
 
   </footer>
 </body>

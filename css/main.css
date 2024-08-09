@@ -25,7 +25,6 @@ header {
 
 footer {
   border-top: 4px solid #efefef;
-  margin-top: 2em;
 }
 
 hr {
@@ -153,7 +152,7 @@ nav li a {
 }
 ul.tags {
     margin: 1em 0;
-    padding: 2em 0;
+    padding: 1em 0;
     border-top: 4px solid #efefef;
 }
 .tags li {
@@ -169,7 +168,7 @@ ul.tags {
     border: none;
     border-radius: 1em;
     padding: .2em 1em 0 1em;
-    margin: 0;
+    margin: .4em .4em .4em 0;
 }
 .tags li a:hover {
     background: #9c6;
