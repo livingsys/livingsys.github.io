@@ -6,8 +6,15 @@
     <description>Recent content in Home on Living Systems_</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 05 Jul 2024 16:23:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 09 Aug 2024 04:18:22 +0200</lastBuildDate>
     <atom:link href="https://livingsystems.se/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>https://livingsystems.se/about/</link>
+      <pubDate>Fri, 09 Aug 2024 04:18:22 +0200</pubDate>
+      <guid>https://livingsystems.se/about/</guid>
+      <description>Right now, this serves as a technical and research blog for me, Samuel Lampa, a bioinformatician and data engineer in Stockholm, Sweden.&#xA;If you want to connect, you can find me on Twitter and LinkedIn .&#xA;By the way, do you need help with 3D CAD project and/or parametric design in Rhino 3D and Grasshopper? Visit RIL Labs </description>
+    </item>
     <item>
       <title>A few notes from the Applied Hologenomics Conference 2024</title>
       <link>https://livingsystems.se/posts/ahc2024/</link>
