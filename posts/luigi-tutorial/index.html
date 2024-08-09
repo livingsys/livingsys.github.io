@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>Tutorial: Luigi for Scientific Workflows | Living Systems</title>
+<title>Tutorial: Luigi for Scientific Workflows | Living Systems_</title>
 
-      <link rel="stylesheet" href="/css/main.min.0dd62280a0c008a6369ab81bd9d63c41bf7e4b5e9377c4a60df43868258f1db5.css" integrity="sha256-DdYigKDACKY2mrgb2dY8Qb9&#43;S16Td8SmDfQ4aCWPHbU=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.c08730684592e72120b7bb901ae1fdf20ffab2cedb2d273d4cef0381e0e558aa.css" integrity="sha256-wIcwaEWS5yEgt7uQGuH98g/6ss7bLSc9TO8DgeDlWKo=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -15,7 +15,7 @@
 </head>
 <body>
   <header>
-    <h1>Living Systems</h1>
+    <h1>Living Systems_</h1>
 
   <nav>
     <ul>
@@ -145,11 +145,11 @@ for bioinformatics use cases!</p>
 <p><strong>1. Install the pyenv python version handler</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone git://github.com/yyuu/pyenv.git ~/.pyenv
 </span></span></code></pre></div><p>Make pyenv start every time you log in:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#a31515">&#39;export PYENV_ROOT=&#34;$HOME/.pyenv&#34;&#39;</span> &gt;&gt; ~/.bash_profile
-</span></span><span style="display:flex;"><span>echo <span style="color:#a31515">&#39;export PATH=&#34;$PYENV_ROOT/bin:$PATH&#34;&#39;</span> &gt;&gt; ~/.bash_profile
-</span></span><span style="display:flex;"><span>echo <span style="color:#a31515">&#39;eval &#34;$(pyenv init -)&#34;&#39;</span> &gt;&gt; ~/.bash_profile
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#a90d91">echo</span> <span style="color:#c41a16">&#39;export PYENV_ROOT=&#34;$HOME/.pyenv&#34;&#39;</span> &gt;&gt; ~/.bash_profile
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">echo</span> <span style="color:#c41a16">&#39;export PATH=&#34;$PYENV_ROOT/bin:$PATH&#34;&#39;</span> &gt;&gt; ~/.bash_profile
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">echo</span> <span style="color:#c41a16">&#39;eval &#34;$(pyenv init -)&#34;&#39;</span> &gt;&gt; ~/.bash_profile
 </span></span></code></pre></div><p><strong>Important!</strong> Reload the bash profile file to enable the new settings:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>source ~/.bash_profile
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#a90d91">source</span> ~/.bash_profile
 </span></span></code></pre></div><p><strong>2. Install your own python (version)</strong></p>
 <p>Get pyenv to install the python version of your liking.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pyenv install 2.7.6
@@ -164,7 +164,7 @@ the luigi scheduler daemon and individual workers:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install luigi
 </span></span></code></pre></div><p>Re-load your <code>~/.bash_profile</code>, so that the right binaries (such as
 luigid) are used:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>source ~/.bash_profile
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#a90d91">source</span> ~/.bash_profile
 </span></span></code></pre></div><h2 id="helloworld">Defining workflows in Luigi / Hello World</h2>
 <h3 id="luigi-basics">Luigi basics</h3>
 <p>Luigi workflows consists more or less of tasks and targets.</p>
@@ -195,19 +195,19 @@ calling <code>output()</code>.</li>
 <p>An example of a simple &ldquo;hello world&rdquo; luigi task (that just prints
 &ldquo;Hello world&rdquo; in a new file), complete with the code required to run
 the python file as a luigi script, looks like this:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00f">import</span> luigi
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">luigi</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">HelloWorld</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> requires(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> <span style="color:#00f">None</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> output(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> luigi.LocalTarget(<span style="color:#a31515">&#39;helloworld.txt&#39;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> run(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">with</span> self.output().open(<span style="color:#a31515">&#39;w&#39;</span>) <span style="color:#00f">as</span> outfile:
-</span></span><span style="display:flex;"><span>            outfile.write(<span style="color:#a31515">&#39;Hello World!</span><span style="color:#a31515">\n</span><span style="color:#a31515">&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">HelloWorld</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">requires</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#a90d91">None</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">output</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">LocalTarget</span>(<span style="color:#c41a16">&#39;helloworld.txt&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">run</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">with</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">output</span>()<span style="color:#000">.</span><span style="color:#000">open</span>(<span style="color:#c41a16">&#39;w&#39;</span>) <span style="color:#a90d91">as</span> <span style="color:#000">outfile</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#000">outfile</span><span style="color:#000">.</span><span style="color:#000">write</span>(<span style="color:#c41a16">&#39;Hello World!</span><span style="color:#c41a16">\n</span><span style="color:#c41a16">&#39;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">if</span> __name__ == <span style="color:#a31515">&#39;__main__&#39;</span>:
-</span></span><span style="display:flex;"><span>    luigi.run()
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">if</span> <span style="color:#000">__name__</span> <span style="color:#000">==</span> <span style="color:#c41a16">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">run</span>()
 </span></span></code></pre></div><p>Type this into a file, named, say, <code>luigitutorial.py</code>, and let&rsquo;s try
 to run it and see what happens!</p>
 <p><em>(Note that since we don&rsquo;t have any dependencies for this task, we just
@@ -217,29 +217,29 @@ scheduler host to use, and the name of the task to run. For now, lets
 just use the <code>--local-scheduler</code> option, so that we don&rsquo;t need
 to start a new scheduler, and of course, we specify the &ldquo;HelloWorld&rdquo;
 that we have defined above:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>[samuel@milou2 luigitest]$ python luigitutorial.py --local-scheduler HelloWorld
-</span></span><span style="display:flex;"><span>DEBUG: Checking <span style="color:#00f">if</span> HelloWorld() is complete
-</span></span><span style="display:flex;"><span>INFO: Scheduled HelloWorld() (PENDING)
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">[</span>samuel@milou2 luigitest<span style="color:#000">]</span>$ python luigitutorial.py --local-scheduler HelloWorld
+</span></span><span style="display:flex;"><span>DEBUG: Checking <span style="color:#a90d91">if</span> HelloWorld<span style="color:#000">()</span> is <span style="color:#a90d91">complete</span>
+</span></span><span style="display:flex;"><span>INFO: Scheduled HelloWorld<span style="color:#000">()</span> <span style="color:#000">(</span>PENDING<span style="color:#000">)</span>
 </span></span><span style="display:flex;"><span>INFO: Done scheduling tasks
-</span></span><span style="display:flex;"><span>INFO: Running Worker with 1 processes
-</span></span><span style="display:flex;"><span>DEBUG: Asking scheduler <span style="color:#00f">for</span> work...
-</span></span><span style="display:flex;"><span>DEBUG: Pending tasks: 1
-</span></span><span style="display:flex;"><span>INFO: [pid 17513] Worker Worker(salt=160204304, host=milou2.uppmax.uu.se, username=sam***, pid=17513) running HelloWorld()
-</span></span><span style="display:flex;"><span>INFO: [pid 17513] Worker Worker(salt=160204304, host=milou2.uppmax.uu.se, username=sam***, pid=17513) <span style="color:#00f">done</span> HelloWorld()
-</span></span><span style="display:flex;"><span>DEBUG: 1 running tasks, waiting <span style="color:#00f">for</span> next task to finish
-</span></span><span style="display:flex;"><span>DEBUG: Asking scheduler <span style="color:#00f">for</span> work...
+</span></span><span style="display:flex;"><span>INFO: Running Worker with <span style="color:#1c01ce">1</span> processes
+</span></span><span style="display:flex;"><span>DEBUG: Asking scheduler <span style="color:#a90d91">for</span> work...
+</span></span><span style="display:flex;"><span>DEBUG: Pending tasks: <span style="color:#1c01ce">1</span>
+</span></span><span style="display:flex;"><span>INFO: <span style="color:#000">[</span>pid 17513<span style="color:#000">]</span> Worker Worker<span style="color:#000">(</span><span style="color:#000">salt</span><span style="color:#000">=</span>160204304, <span style="color:#000">host</span><span style="color:#000">=</span>milou2.uppmax.uu.se, <span style="color:#000">username</span><span style="color:#000">=</span>sam***, <span style="color:#000">pid</span><span style="color:#000">=</span>17513<span style="color:#000">)</span> running HelloWorld<span style="color:#000">()</span>
+</span></span><span style="display:flex;"><span>INFO: <span style="color:#000">[</span>pid 17513<span style="color:#000">]</span> Worker Worker<span style="color:#000">(</span><span style="color:#000">salt</span><span style="color:#000">=</span>160204304, <span style="color:#000">host</span><span style="color:#000">=</span>milou2.uppmax.uu.se, <span style="color:#000">username</span><span style="color:#000">=</span>sam***, <span style="color:#000">pid</span><span style="color:#000">=</span>17513<span style="color:#000">)</span> <span style="color:#a90d91">done</span> HelloWorld<span style="color:#000">()</span>
+</span></span><span style="display:flex;"><span>DEBUG: <span style="color:#1c01ce">1</span> running tasks, waiting <span style="color:#a90d91">for</span> next task to finish
+</span></span><span style="display:flex;"><span>DEBUG: Asking scheduler <span style="color:#a90d91">for</span> work...
 </span></span><span style="display:flex;"><span>INFO: Done
-</span></span><span style="display:flex;"><span>INFO: There are no more tasks to run at this time
-</span></span><span style="display:flex;"><span>INFO: Worker Worker(salt=160204304, host=milou2.uppmax.uu.se, username=sam***, pid=17513) was stopped. Shutting down Keep-Alive thread
+</span></span><span style="display:flex;"><span>INFO: There are no more tasks to run at this <span style="color:#a90d91">time</span>
+</span></span><span style="display:flex;"><span>INFO: Worker Worker<span style="color:#000">(</span><span style="color:#000">salt</span><span style="color:#000">=</span>160204304, <span style="color:#000">host</span><span style="color:#000">=</span>milou2.uppmax.uu.se, <span style="color:#000">username</span><span style="color:#000">=</span>sam***, <span style="color:#000">pid</span><span style="color:#000">=</span>17513<span style="color:#000">)</span> was stopped. Shutting down Keep-Alive thread
 </span></span></code></pre></div><p>Ah, did you notice that <code>INFO: Done</code> line there! Seems we are finally
 set! Let&rsquo;s look if we have any new content in our folder:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>[samuel@milou2 luigitest]$ ls -ltr
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">[</span>samuel@milou2 luigitest<span style="color:#000">]</span>$ ls -ltr
 </span></span><span style="display:flex;"><span>total 64K
-</span></span><span style="display:flex;"><span>-rw-rw-r-- 1 samuel samuel 677 16 jan 17.52 luigitutorial.py
-</span></span><span style="display:flex;"><span>-rw-rw-r-- 1 samuel samuel 13 16 jan 17.58 helloworld.txt
+</span></span><span style="display:flex;"><span>-rw-rw-r-- <span style="color:#1c01ce">1</span> samuel samuel <span style="color:#1c01ce">677</span> <span style="color:#1c01ce">16</span> jan 17.52 luigitutorial.py
+</span></span><span style="display:flex;"><span>-rw-rw-r-- <span style="color:#1c01ce">1</span> samuel samuel <span style="color:#1c01ce">13</span> <span style="color:#1c01ce">16</span> jan 17.58 helloworld.txt
 </span></span></code></pre></div><p>Ah, cool, we have a new file &ldquo;helloworld.txt&rdquo; there! And what does it
 contain:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>[samuel@milou2 luigitest]$ cat helloworld.txt
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">[</span>samuel@milou2 luigitest<span style="color:#000">]</span>$ cat helloworld.txt
 </span></span><span style="display:flex;"><span>Hello World!
 </span></span></code></pre></div><p>Yay, exactly what we told it to contain!</p>
 <p>Now you can sit back for a moment and contemplate the satisfaction of
@@ -258,32 +258,32 @@ replace &ldquo;World&rdquo; with some name.</p>
 substitute with a parameter! So, look at how this looks, in the new
 <code>NameSubstituter</code> class/task (the <code>HelloWorld</code> task remains
 unchanged):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00f">import</span> luigi
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">luigi</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">HelloWorld</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> requires(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> <span style="color:#00f">None</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> output(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> luigi.LocalTarget(<span style="color:#a31515">&#39;helloworld.txt&#39;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> run(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">with</span> self.output().open(<span style="color:#a31515">&#39;w&#39;</span>) <span style="color:#00f">as</span> outfile:
-</span></span><span style="display:flex;"><span>            outfile.write(<span style="color:#a31515">&#39;Hello World!</span><span style="color:#a31515">\n</span><span style="color:#a31515">&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">HelloWorld</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">requires</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#a90d91">None</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">output</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">LocalTarget</span>(<span style="color:#c41a16">&#39;helloworld.txt&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">run</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">with</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">output</span>()<span style="color:#000">.</span><span style="color:#000">open</span>(<span style="color:#c41a16">&#39;w&#39;</span>) <span style="color:#a90d91">as</span> <span style="color:#000">outfile</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#000">outfile</span><span style="color:#000">.</span><span style="color:#000">write</span>(<span style="color:#c41a16">&#39;Hello World!</span><span style="color:#c41a16">\n</span><span style="color:#c41a16">&#39;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">NameSubstituter</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>    name = luigi.Parameter()
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">NameSubstituter</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#000">name</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> requires(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> HelloWorld()
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> output(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> luigi.LocalTarget(self.input().path + <span style="color:#a31515">&#39;.name_&#39;</span> + self.name)
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> run(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">with</span> self.input().open() <span style="color:#00f">as</span> infile, self.output().open(<span style="color:#a31515">&#39;w&#39;</span>) <span style="color:#00f">as</span> outfile:
-</span></span><span style="display:flex;"><span>            text = infile.read()
-</span></span><span style="display:flex;"><span>            text = text.replace(<span style="color:#a31515">&#39;World&#39;</span>, self.name)
-</span></span><span style="display:flex;"><span>            outfile.write(text)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">requires</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">HelloWorld</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">output</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">LocalTarget</span>(<span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">input</span>()<span style="color:#000">.</span><span style="color:#000">path</span> <span style="color:#000">+</span> <span style="color:#c41a16">&#39;.name_&#39;</span> <span style="color:#000">+</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">name</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">run</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">with</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">input</span>()<span style="color:#000">.</span><span style="color:#000">open</span>() <span style="color:#a90d91">as</span> <span style="color:#000">infile</span>, <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">output</span>()<span style="color:#000">.</span><span style="color:#000">open</span>(<span style="color:#c41a16">&#39;w&#39;</span>) <span style="color:#a90d91">as</span> <span style="color:#000">outfile</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#000">text</span> <span style="color:#000">=</span> <span style="color:#000">infile</span><span style="color:#000">.</span><span style="color:#000">read</span>()
+</span></span><span style="display:flex;"><span>            <span style="color:#000">text</span> <span style="color:#000">=</span> <span style="color:#000">text</span><span style="color:#000">.</span><span style="color:#000">replace</span>(<span style="color:#c41a16">&#39;World&#39;</span>, <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">name</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#000">outfile</span><span style="color:#000">.</span><span style="color:#000">write</span>(<span style="color:#000">text</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">if</span> __name__ == <span style="color:#a31515">&#39;__main__&#39;</span>:
-</span></span><span style="display:flex;"><span>    luigi.run()
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">if</span> <span style="color:#000">__name__</span> <span style="color:#000">==</span> <span style="color:#c41a16">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">run</span>()
 </span></span></code></pre></div><p>Above you can see in the <code>requires()</code> method of the
 <code>NameSubstituter</code> task, how we return the previous task
 (<code>HelloWorld</code> in this case) and in the <code>run()</code> method, we open it as
@@ -295,52 +295,52 @@ the luigi parameter, and then write it out to the output target of
 generated file, can you see that from the code?</li>
 </ul>
 <p>Let&rsquo;s try to run the new task, and see what we get:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>[samuel@milou2 luigitest]$ python luigitutorial.py --local-scheduler NameSubstituter
-</span></span><span style="display:flex;"><span>Traceback (most recent call last):
-</span></span><span style="display:flex;"><span>  File <span style="color:#a31515">&#34;luigitutorial.py&#34;</span>, line 28, in &lt;module&gt;
-</span></span><span style="display:flex;"><span>    luigi.run()
-</span></span><span style="display:flex;"><span>  File <span style="color:#a31515">&#34;/home/samuel/.pyenv/versions/2.7.6/lib/python2.7/site-packages/luigi/interface.py&#34;</span>, line 451, in run
-</span></span><span style="display:flex;"><span>    tasks = interface.parse(cmdline_args, main_task_cls=main_task_cls)
-</span></span><span style="display:flex;"><span>  File <span style="color:#a31515">&#34;/home/samuel/.pyenv/versions/2.7.6/lib/python2.7/site-packages/luigi/interface.py&#34;</span>, line 309, in parse
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">return</span> self.parse_task(cmdline_args, main_task_cls)
-</span></span><span style="display:flex;"><span>  File <span style="color:#a31515">&#34;/home/samuel/.pyenv/versions/2.7.6/lib/python2.7/site-packages/luigi/interface.py&#34;</span>, line 304, in parse_task
-</span></span><span style="display:flex;"><span>    task = task_cls.from_str_params(params, Register.get_global_params())
-</span></span><span style="display:flex;"><span>  File <span style="color:#a31515">&#34;/home/samuel/.pyenv/versions/2.7.6/lib/python2.7/site-packages/luigi/task.py&#34;</span>, line 382, in from_str_params
-</span></span><span style="display:flex;"><span>    value = param.parse_from_input(param_name, params_str[param_name])
-</span></span><span style="display:flex;"><span>  File <span style="color:#a31515">&#34;/home/samuel/.pyenv/versions/2.7.6/lib/python2.7/site-packages/luigi/parameter.py&#34;</span>, line 252, in parse_from_input
-</span></span><span style="display:flex;"><span>    (param_name, <span style="color:#a31515">&#34;--&#34;</span> + param_name.replace(<span style="color:#a31515">&#39;_&#39;</span>, <span style="color:#a31515">&#39;-&#39;</span>)))
-</span></span><span style="display:flex;"><span>luigi.parameter.MissingParameterException: No value <span style="color:#00f">for</span> <span style="color:#a31515">&#39;name&#39;</span> (--name) submitted and no default value has been assigned.
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">[</span>samuel@milou2 luigitest<span style="color:#000">]</span>$ python luigitutorial.py --local-scheduler NameSubstituter
+</span></span><span style="display:flex;"><span>Traceback <span style="color:#000">(</span>most recent call last<span style="color:#000">)</span>:
+</span></span><span style="display:flex;"><span>  File <span style="color:#c41a16">&#34;luigitutorial.py&#34;</span>, line 28, in &lt;module&gt;
+</span></span><span style="display:flex;"><span>    luigi.run<span style="color:#000">()</span>
+</span></span><span style="display:flex;"><span>  File <span style="color:#c41a16">&#34;/home/samuel/.pyenv/versions/2.7.6/lib/python2.7/site-packages/luigi/interface.py&#34;</span>, line 451, in run
+</span></span><span style="display:flex;"><span>    <span style="color:#000">tasks</span> <span style="color:#000">=</span> interface.parse<span style="color:#000">(</span>cmdline_args, <span style="color:#000">main_task_cls</span><span style="color:#000">=</span>main_task_cls<span style="color:#000">)</span>
+</span></span><span style="display:flex;"><span>  File <span style="color:#c41a16">&#34;/home/samuel/.pyenv/versions/2.7.6/lib/python2.7/site-packages/luigi/interface.py&#34;</span>, line 309, in parse
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> self.parse_task<span style="color:#000">(</span>cmdline_args, main_task_cls<span style="color:#000">)</span>
+</span></span><span style="display:flex;"><span>  File <span style="color:#c41a16">&#34;/home/samuel/.pyenv/versions/2.7.6/lib/python2.7/site-packages/luigi/interface.py&#34;</span>, line 304, in parse_task
+</span></span><span style="display:flex;"><span>    <span style="color:#000">task</span> <span style="color:#000">=</span> task_cls.from_str_params<span style="color:#000">(</span>params, Register.get_global_params<span style="color:#000">())</span>
+</span></span><span style="display:flex;"><span>  File <span style="color:#c41a16">&#34;/home/samuel/.pyenv/versions/2.7.6/lib/python2.7/site-packages/luigi/task.py&#34;</span>, line 382, in from_str_params
+</span></span><span style="display:flex;"><span>    <span style="color:#000">value</span> <span style="color:#000">=</span> param.parse_from_input<span style="color:#000">(</span>param_name, params_str<span style="color:#000">[</span>param_name<span style="color:#000">])</span>
+</span></span><span style="display:flex;"><span>  File <span style="color:#c41a16">&#34;/home/samuel/.pyenv/versions/2.7.6/lib/python2.7/site-packages/luigi/parameter.py&#34;</span>, line 252, in parse_from_input
+</span></span><span style="display:flex;"><span>    <span style="color:#000">(</span>param_name, <span style="color:#c41a16">&#34;--&#34;</span> + param_name.replace<span style="color:#000">(</span><span style="color:#c41a16">&#39;_&#39;</span>, <span style="color:#c41a16">&#39;-&#39;</span><span style="color:#000">)))</span>
+</span></span><span style="display:flex;"><span>luigi.parameter.MissingParameterException: No value <span style="color:#a90d91">for</span> <span style="color:#c41a16">&#39;name&#39;</span> <span style="color:#000">(</span>--name<span style="color:#000">)</span> submitted and no default value has been assigned.
 </span></span></code></pre></div><p>Oops! Did you see that last line?</p>
 <p>Of course, if we create a parameter to the task, we need to provide the
 value for the parameter as well! And the output suggests how to do it:
 Just add <code>&quot;--name &lt;the-value-of-the-parameter&gt;</code>. Let&rsquo;s try
 again:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>[samuel@milou2 luigitest]$ python luigitutorial.py --local-scheduler NameSubstituter --name samuel
-</span></span><span style="display:flex;"><span>DEBUG: Checking <span style="color:#00f">if</span> NameSubstituter(name=samuel) is complete
-</span></span><span style="display:flex;"><span>INFO: Scheduled NameSubstituter(name=samuel) (PENDING)
-</span></span><span style="display:flex;"><span>DEBUG: Checking <span style="color:#00f">if</span> HelloWorld() is complete
-</span></span><span style="display:flex;"><span>INFO: Scheduled HelloWorld() (DONE)
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">[</span>samuel@milou2 luigitest<span style="color:#000">]</span>$ python luigitutorial.py --local-scheduler NameSubstituter --name samuel
+</span></span><span style="display:flex;"><span>DEBUG: Checking <span style="color:#a90d91">if</span> NameSubstituter<span style="color:#000">(</span><span style="color:#000">name</span><span style="color:#000">=</span>samuel<span style="color:#000">)</span> is <span style="color:#a90d91">complete</span>
+</span></span><span style="display:flex;"><span>INFO: Scheduled NameSubstituter<span style="color:#000">(</span><span style="color:#000">name</span><span style="color:#000">=</span>samuel<span style="color:#000">)</span> <span style="color:#000">(</span>PENDING<span style="color:#000">)</span>
+</span></span><span style="display:flex;"><span>DEBUG: Checking <span style="color:#a90d91">if</span> HelloWorld<span style="color:#000">()</span> is <span style="color:#a90d91">complete</span>
+</span></span><span style="display:flex;"><span>INFO: Scheduled HelloWorld<span style="color:#000">()</span> <span style="color:#000">(</span>DONE<span style="color:#000">)</span>
 </span></span><span style="display:flex;"><span>INFO: Done scheduling tasks
-</span></span><span style="display:flex;"><span>INFO: Running Worker with 1 processes
-</span></span><span style="display:flex;"><span>DEBUG: Asking scheduler <span style="color:#00f">for</span> work...
-</span></span><span style="display:flex;"><span>DEBUG: Pending tasks: 1
-</span></span><span style="display:flex;"><span>INFO: [pid 9019] Worker Worker(salt=493027103, host=milou2.uppmax.uu.se, username=sam***, pid=9019) running   NameSubstituter(name=samuel)
-</span></span><span style="display:flex;"><span>INFO: [pid 9019] Worker Worker(salt=493027103, host=milou2.uppmax.uu.se, username=sam***, pid=9019) <span style="color:#00f">done</span>      NameSubstituter(name=samuel)
-</span></span><span style="display:flex;"><span>DEBUG: 1 running tasks, waiting <span style="color:#00f">for</span> next task to finish
-</span></span><span style="display:flex;"><span>DEBUG: Asking scheduler <span style="color:#00f">for</span> work...
+</span></span><span style="display:flex;"><span>INFO: Running Worker with <span style="color:#1c01ce">1</span> processes
+</span></span><span style="display:flex;"><span>DEBUG: Asking scheduler <span style="color:#a90d91">for</span> work...
+</span></span><span style="display:flex;"><span>DEBUG: Pending tasks: <span style="color:#1c01ce">1</span>
+</span></span><span style="display:flex;"><span>INFO: <span style="color:#000">[</span>pid 9019<span style="color:#000">]</span> Worker Worker<span style="color:#000">(</span><span style="color:#000">salt</span><span style="color:#000">=</span>493027103, <span style="color:#000">host</span><span style="color:#000">=</span>milou2.uppmax.uu.se, <span style="color:#000">username</span><span style="color:#000">=</span>sam***, <span style="color:#000">pid</span><span style="color:#000">=</span>9019<span style="color:#000">)</span> running   NameSubstituter<span style="color:#000">(</span><span style="color:#000">name</span><span style="color:#000">=</span>samuel<span style="color:#000">)</span>
+</span></span><span style="display:flex;"><span>INFO: <span style="color:#000">[</span>pid 9019<span style="color:#000">]</span> Worker Worker<span style="color:#000">(</span><span style="color:#000">salt</span><span style="color:#000">=</span>493027103, <span style="color:#000">host</span><span style="color:#000">=</span>milou2.uppmax.uu.se, <span style="color:#000">username</span><span style="color:#000">=</span>sam***, <span style="color:#000">pid</span><span style="color:#000">=</span>9019<span style="color:#000">)</span> <span style="color:#a90d91">done</span>      NameSubstituter<span style="color:#000">(</span><span style="color:#000">name</span><span style="color:#000">=</span>samuel<span style="color:#000">)</span>
+</span></span><span style="display:flex;"><span>DEBUG: <span style="color:#1c01ce">1</span> running tasks, waiting <span style="color:#a90d91">for</span> next task to finish
+</span></span><span style="display:flex;"><span>DEBUG: Asking scheduler <span style="color:#a90d91">for</span> work...
 </span></span><span style="display:flex;"><span>INFO: Done
-</span></span><span style="display:flex;"><span>INFO: There are no more tasks to run at this time
-</span></span><span style="display:flex;"><span>INFO: Worker Worker(salt=493027103, host=milou2.uppmax.uu.se, username=sam***, pid=9019) was stopped. Shutting down Keep-Alive thread
+</span></span><span style="display:flex;"><span>INFO: There are no more tasks to run at this <span style="color:#a90d91">time</span>
+</span></span><span style="display:flex;"><span>INFO: Worker Worker<span style="color:#000">(</span><span style="color:#000">salt</span><span style="color:#000">=</span>493027103, <span style="color:#000">host</span><span style="color:#000">=</span>milou2.uppmax.uu.se, <span style="color:#000">username</span><span style="color:#000">=</span>sam***, <span style="color:#000">pid</span><span style="color:#000">=</span>9019<span style="color:#000">)</span> was stopped. Shutting down Keep-Alive thread
 </span></span></code></pre></div><p>Well, that looks WAY better! (We get that &ldquo;<strong>Done</strong>&rdquo; line in the
 bottom).</p>
 <p>And, we can also have a look at what files have been generated now (we
 use the -ltr flags, to list files in order of modification time, in
 ascending order):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>[samuel@milou2 luigitest]$ ls -ltr
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">[</span>samuel@milou2 luigitest<span style="color:#000">]</span>$ ls -ltr
 </span></span><span style="display:flex;"><span>total 96K
-</span></span><span style="display:flex;"><span>-rw-rw-r-- 1 samuel samuel 748 16 jan 19.28 luigitutorial.py
-</span></span><span style="display:flex;"><span>-rw-rw-r-- 1 samuel samuel 13 16 jan 19.31 helloworld.txt
-</span></span><span style="display:flex;"><span>-rw-rw-r-- 1 samuel samuel 14 16 jan 19.31 helloworld.txt.name_samuel
+</span></span><span style="display:flex;"><span>-rw-rw-r-- <span style="color:#1c01ce">1</span> samuel samuel <span style="color:#1c01ce">748</span> <span style="color:#1c01ce">16</span> jan 19.28 luigitutorial.py
+</span></span><span style="display:flex;"><span>-rw-rw-r-- <span style="color:#1c01ce">1</span> samuel samuel <span style="color:#1c01ce">13</span> <span style="color:#1c01ce">16</span> jan 19.31 helloworld.txt
+</span></span><span style="display:flex;"><span>-rw-rw-r-- <span style="color:#1c01ce">1</span> samuel samuel <span style="color:#1c01ce">14</span> <span style="color:#1c01ce">16</span> jan 19.31 helloworld.txt.name_samuel
 </span></span></code></pre></div><p>Did you guess right about the name of that last file?</p>
 <p>Did you notice how we simply <strong>padded</strong> a new string to the file name of
 the target from our parent task? It turns out that this is in fact a
@@ -356,37 +356,37 @@ what&rsquo;s happening in a visual way!</p>
 need to add a little sleep to the tasks, since they are running so fast.
 So, let&rsquo;s add a sleep of 15 seconds before and after the main chunk of
 work in each of the tasks:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00f">import</span> luigi
-</span></span><span style="display:flex;"><span><span style="color:#00f">import</span> time
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">luigi</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">time</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">HelloWorld</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> requires(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> <span style="color:#00f">None</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> output(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> luigi.LocalTarget(<span style="color:#a31515">&#39;helloworld.txt&#39;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> run(self):
-</span></span><span style="display:flex;"><span>        time.sleep(15)
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">with</span> self.output().open(<span style="color:#a31515">&#39;w&#39;</span>) <span style="color:#00f">as</span> outfile:
-</span></span><span style="display:flex;"><span>            outfile.write(<span style="color:#a31515">&#39;Hello World!</span><span style="color:#a31515">\n</span><span style="color:#a31515">&#39;</span>)
-</span></span><span style="display:flex;"><span>        time.sleep(15)
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">HelloWorld</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">requires</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#a90d91">None</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">output</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">LocalTarget</span>(<span style="color:#c41a16">&#39;helloworld.txt&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">run</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#000">time</span><span style="color:#000">.</span><span style="color:#000">sleep</span>(<span style="color:#1c01ce">15</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">with</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">output</span>()<span style="color:#000">.</span><span style="color:#000">open</span>(<span style="color:#c41a16">&#39;w&#39;</span>) <span style="color:#a90d91">as</span> <span style="color:#000">outfile</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#000">outfile</span><span style="color:#000">.</span><span style="color:#000">write</span>(<span style="color:#c41a16">&#39;Hello World!</span><span style="color:#c41a16">\n</span><span style="color:#c41a16">&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#000">time</span><span style="color:#000">.</span><span style="color:#000">sleep</span>(<span style="color:#1c01ce">15</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">NameSubstituter</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>    name = luigi.Parameter()
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">NameSubstituter</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#000">name</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> requires(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> HelloWorld()
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> output(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> luigi.LocalTarget(self.input().path + <span style="color:#a31515">&#39;.name_&#39;</span> + self.name)
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> run(self):
-</span></span><span style="display:flex;"><span>        time.sleep(15)
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">with</span> self.input().open() <span style="color:#00f">as</span> infile, self.output().open(<span style="color:#a31515">&#39;w&#39;</span>) <span style="color:#00f">as</span> outfile:
-</span></span><span style="display:flex;"><span>            text = infile.read()
-</span></span><span style="display:flex;"><span>            text = text.replace(<span style="color:#a31515">&#39;World&#39;</span>, self.name)
-</span></span><span style="display:flex;"><span>            outfile.write(text)
-</span></span><span style="display:flex;"><span>        time.sleep(15)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">requires</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">HelloWorld</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">output</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">LocalTarget</span>(<span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">input</span>()<span style="color:#000">.</span><span style="color:#000">path</span> <span style="color:#000">+</span> <span style="color:#c41a16">&#39;.name_&#39;</span> <span style="color:#000">+</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">name</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">run</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#000">time</span><span style="color:#000">.</span><span style="color:#000">sleep</span>(<span style="color:#1c01ce">15</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">with</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">input</span>()<span style="color:#000">.</span><span style="color:#000">open</span>() <span style="color:#a90d91">as</span> <span style="color:#000">infile</span>, <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">output</span>()<span style="color:#000">.</span><span style="color:#000">open</span>(<span style="color:#c41a16">&#39;w&#39;</span>) <span style="color:#a90d91">as</span> <span style="color:#000">outfile</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#000">text</span> <span style="color:#000">=</span> <span style="color:#000">infile</span><span style="color:#000">.</span><span style="color:#000">read</span>()
+</span></span><span style="display:flex;"><span>            <span style="color:#000">text</span> <span style="color:#000">=</span> <span style="color:#000">text</span><span style="color:#000">.</span><span style="color:#000">replace</span>(<span style="color:#c41a16">&#39;World&#39;</span>, <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">name</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#000">outfile</span><span style="color:#000">.</span><span style="color:#000">write</span>(<span style="color:#000">text</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#000">time</span><span style="color:#000">.</span><span style="color:#000">sleep</span>(<span style="color:#1c01ce">15</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">if</span> __name__ == <span style="color:#a31515">&#39;__main__&#39;</span>:
-</span></span><span style="display:flex;"><span>    luigi.run()
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">if</span> <span style="color:#000">__name__</span> <span style="color:#000">==</span> <span style="color:#c41a16">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">run</span>()
 </span></span></code></pre></div><p>What we also need to do, in order to view the web UI, is to run the
 luigi daemon, not just the local-scheduler as before:</p>
 <p>So, in a separate terminal / SSH window, start up the daemon:</p>
@@ -426,49 +426,49 @@ existing task class, and override it&rsquo;s requires() method.</p>
 <p>Then, in the bottom, we have subclassed <code>TaskC</code> into <code>MyTaskC</code>, and
 by overriding the requires() method, changed the dependency from
 <code>TaskA</code> to <code>TaskB</code>:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00f">import</span> luigi
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">luigi</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">TaskA</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> requires(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> <span style="color:#00f">None</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> output(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> luigi.LocalTarget(<span style="color:#a31515">&#39;task_a&#39;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> run(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">with</span> self.output().open(<span style="color:#a31515">&#39;w&#39;</span>) <span style="color:#00f">as</span> outfile:
-</span></span><span style="display:flex;"><span>            outfile.write(<span style="color:#a31515">&#39;foo&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">TaskA</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">requires</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#a90d91">None</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">output</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">LocalTarget</span>(<span style="color:#c41a16">&#39;task_a&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">run</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">with</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">output</span>()<span style="color:#000">.</span><span style="color:#000">open</span>(<span style="color:#c41a16">&#39;w&#39;</span>) <span style="color:#a90d91">as</span> <span style="color:#000">outfile</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#000">outfile</span><span style="color:#000">.</span><span style="color:#000">write</span>(<span style="color:#c41a16">&#39;foo&#39;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">TaskB</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> requires(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> <span style="color:#00f">None</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> output(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> luigi.LocalTarget(<span style="color:#a31515">&#39;task_b&#39;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> run(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">with</span> self.output().open(<span style="color:#a31515">&#39;w&#39;</span>) <span style="color:#00f">as</span> outfile:
-</span></span><span style="display:flex;"><span>            outfile.write(<span style="color:#a31515">&#39;bar&#39;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">TaskC</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> requires(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> TaskA() <span style="color:#008000"># &lt;-- Notice this dependency!</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> output(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> luigi.LocalTarget(self.input().path + <span style="color:#a31515">&#39;.task_c&#39;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> run(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">with</span> self.input().open() <span style="color:#00f">as</span> infile, self.output().open(<span style="color:#a31515">&#39;w&#39;</span>) <span style="color:#00f">as</span> outfile:
-</span></span><span style="display:flex;"><span>            <span style="color:#00f">for</span> line <span style="color:#00f">in</span> infile:
-</span></span><span style="display:flex;"><span>                outfile.write(line)
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">TaskB</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">requires</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#a90d91">None</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">output</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">LocalTarget</span>(<span style="color:#c41a16">&#39;task_b&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">run</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">with</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">output</span>()<span style="color:#000">.</span><span style="color:#000">open</span>(<span style="color:#c41a16">&#39;w&#39;</span>) <span style="color:#a90d91">as</span> <span style="color:#000">outfile</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#000">outfile</span><span style="color:#000">.</span><span style="color:#000">write</span>(<span style="color:#c41a16">&#39;bar&#39;</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># Let&#39;s create an own &#34;copy&#34; of TaskC, that depends on TaskB instead of TaskA:</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">TaskC</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">requires</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">TaskA</span>() <span style="color:#177500"># &lt;-- Notice this dependency!</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">output</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">LocalTarget</span>(<span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">input</span>()<span style="color:#000">.</span><span style="color:#000">path</span> <span style="color:#000">+</span> <span style="color:#c41a16">&#39;.task_c&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">run</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">with</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">input</span>()<span style="color:#000">.</span><span style="color:#000">open</span>() <span style="color:#a90d91">as</span> <span style="color:#000">infile</span>, <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">output</span>()<span style="color:#000">.</span><span style="color:#000">open</span>(<span style="color:#c41a16">&#39;w&#39;</span>) <span style="color:#a90d91">as</span> <span style="color:#000">outfile</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">for</span> <span style="color:#000">line</span> <span style="color:#000">in</span> <span style="color:#000">infile</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#000">outfile</span><span style="color:#000">.</span><span style="color:#000">write</span>(<span style="color:#000">line</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">MyTaskC</span>(TaskC):
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> requires(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> TaskB() <span style="color:#008000"># &lt;-- Notice how we switched the dependency in TaskC!</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">if</span> __name__ == <span style="color:#a31515">&#39;__main__&#39;</span>:
-</span></span><span style="display:flex;"><span>    luigi.run()
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Let&#39;s create an own &#34;copy&#34; of TaskC, that depends on TaskB instead of TaskA:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">MyTaskC</span>(<span style="color:#000">TaskC</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">requires</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">TaskB</span>() <span style="color:#177500"># &lt;-- Notice how we switched the dependency in TaskC!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">if</span> <span style="color:#000">__name__</span> <span style="color:#000">==</span> <span style="color:#c41a16">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">run</span>()
 </span></span></code></pre></div><p>Try now to run this workflow, by executing the last task in the
 workflow:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>[samuel]$ python luigi_reuse_depinject.py --local-scheduler TaskC
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">[</span>samuel<span style="color:#000">]</span>$ python luigi_reuse_depinject.py --local-scheduler TaskC
 </span></span></code></pre></div><h3 id="an-other-more-dynamic-way">An other, more dynamic, way</h3>
 <p>The default way of re-using luigi tasks, by sub-classing, as
 demonstrated above, but for reasons we will not go into depth about here
@@ -479,49 +479,49 @@ we need a more flexible and dynamic way of building up workflows based
 on existing luigi tasks.</p>
 <p>Based on our experimentation, we have found that the following method
 works very well:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00f">import</span> luigi
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">luigi</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">TaskA</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> requires(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> <span style="color:#00f">None</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> output(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> luigi.LocalTarget(<span style="color:#a31515">&#39;task_a&#39;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> run(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">with</span> self.output().open(<span style="color:#a31515">&#39;w&#39;</span>) <span style="color:#00f">as</span> outfile:
-</span></span><span style="display:flex;"><span>            outfile.write(<span style="color:#a31515">&#39;foo&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">TaskA</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">requires</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#a90d91">None</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">output</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">LocalTarget</span>(<span style="color:#c41a16">&#39;task_a&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">run</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">with</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">output</span>()<span style="color:#000">.</span><span style="color:#000">open</span>(<span style="color:#c41a16">&#39;w&#39;</span>) <span style="color:#a90d91">as</span> <span style="color:#000">outfile</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#000">outfile</span><span style="color:#000">.</span><span style="color:#000">write</span>(<span style="color:#c41a16">&#39;foo&#39;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">TaskB</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> requires(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> <span style="color:#00f">None</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> output(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> luigi.LocalTarget(<span style="color:#a31515">&#39;task_b&#39;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> run(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">with</span> self.output().open(<span style="color:#a31515">&#39;w&#39;</span>) <span style="color:#00f">as</span> outfile:
-</span></span><span style="display:flex;"><span>            outfile.write(<span style="color:#a31515">&#39;bar&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">TaskB</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">requires</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#a90d91">None</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">output</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">LocalTarget</span>(<span style="color:#c41a16">&#39;task_b&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">run</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">with</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">output</span>()<span style="color:#000">.</span><span style="color:#000">open</span>(<span style="color:#c41a16">&#39;w&#39;</span>) <span style="color:#a90d91">as</span> <span style="color:#000">outfile</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#000">outfile</span><span style="color:#000">.</span><span style="color:#000">write</span>(<span style="color:#c41a16">&#39;bar&#39;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">TaskC</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>    upstream_task = luigi.Parameter(default=TaskA()) <span style="color:#008000"># &lt;-- Notice how we set the upstream dependency as a luigi task!</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> requires(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> self.upstream_task <span style="color:#008000"># &lt;-- Notice this dependency!</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> output(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> luigi.LocalTarget(self.input().path + <span style="color:#a31515">&#39;.task_c&#39;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> run(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">with</span> self.input().open() <span style="color:#00f">as</span> infile, self.output().open(<span style="color:#a31515">&#39;w&#39;</span>) <span style="color:#00f">as</span> outfile:
-</span></span><span style="display:flex;"><span>            <span style="color:#00f">for</span> line <span style="color:#00f">in</span> infile:
-</span></span><span style="display:flex;"><span>                outfile.write(line)
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">TaskC</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#000">upstream_task</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>(<span style="color:#000">default</span><span style="color:#000">=</span><span style="color:#000">TaskA</span>()) <span style="color:#177500"># &lt;-- Notice how we set the upstream dependency as a luigi task!</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">requires</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">upstream_task</span> <span style="color:#177500"># &lt;-- Notice this dependency!</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">output</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">LocalTarget</span>(<span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">input</span>()<span style="color:#000">.</span><span style="color:#000">path</span> <span style="color:#000">+</span> <span style="color:#c41a16">&#39;.task_c&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">run</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">with</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">input</span>()<span style="color:#000">.</span><span style="color:#000">open</span>() <span style="color:#a90d91">as</span> <span style="color:#000">infile</span>, <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">output</span>()<span style="color:#000">.</span><span style="color:#000">open</span>(<span style="color:#c41a16">&#39;w&#39;</span>) <span style="color:#a90d91">as</span> <span style="color:#000">outfile</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">for</span> <span style="color:#000">line</span> <span style="color:#000">in</span> <span style="color:#000">infile</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#000">outfile</span><span style="color:#000">.</span><span style="color:#000">write</span>(<span style="color:#000">line</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># Let&#39;s create a workflow task &#34;MyWorkflow&#34;, that requires TaskC, but with a</span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># different upstream dependency (TaskB) instead of the default TaskA</span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">MyWorkflow</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> requires(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> TaskC(
-</span></span><span style="display:flex;"><span>          upstream_task=TaskB() <span style="color:#008000"># &lt;-- Notice how we switched the dependency in TaskC!</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Let&#39;s create a workflow task &#34;MyWorkflow&#34;, that requires TaskC, but with a</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># different upstream dependency (TaskB) instead of the default TaskA</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">MyWorkflow</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">requires</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">TaskC</span>(
+</span></span><span style="display:flex;"><span>          <span style="color:#000">upstream_task</span><span style="color:#000">=</span><span style="color:#000">TaskB</span>() <span style="color:#177500"># &lt;-- Notice how we switched the dependency in TaskC!</span>
 </span></span><span style="display:flex;"><span>        )
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> output(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> self.input()
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">output</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">input</span>()
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">if</span> __name__ == <span style="color:#a31515">&#39;__main__&#39;</span>:
-</span></span><span style="display:flex;"><span>    luigi.run()
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">if</span> <span style="color:#000">__name__</span> <span style="color:#000">==</span> <span style="color:#c41a16">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">run</span>()
 </span></span></code></pre></div><p>Notice in <code>TaskC</code> above, how we are taking the upstream dependency as
 a parameter, rather than hard-coding it! This makes it possible to
 change how the workflow is connected together, at any time.</p>
@@ -531,7 +531,7 @@ implement any run() method!</p>
 <p>Try now, after deleting the previously created output, to run this
 workflow, by executing our new and special &ldquo;workflow task&rdquo;,
 <code>MyWorkflow</code>:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>[samuel]$ python luigi_reuse_depinject.py --local-scheduler MyWorkflow
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">[</span>samuel<span style="color:#000">]</span>$ python luigi_reuse_depinject.py --local-scheduler MyWorkflow
 </span></span></code></pre></div><p>&hellip; and verify that the result is still the same!</p>
 <h3 id="a-note-on-passing-parameters">A note on passing parameters</h3>
 <p>You might not have realized it yet, but the second method will prove to
@@ -541,36 +541,36 @@ easier to create modular workflows that don&rsquo;t require changes in any of
 the tasks themselves, when re-using tasks in new workflows.</p>
 <p>Consider the following (sketchy) example luigi workflow, created using
 the first, sub-classing, approach:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">TaskA</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>  param1 = luigi.Parameter()
-</span></span><span style="display:flex;"><span>  ...
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">TaskA</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>  <span style="color:#000">param1</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#000">...</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">TaskB</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>  param1 = luigi.Parameter()
-</span></span><span style="display:flex;"><span>  param2 = luigi.Parameter()
-</span></span><span style="display:flex;"><span>  <span style="color:#00f">def</span> requires(self):
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">return</span> TaskA(param1=self.param1)
-</span></span><span style="display:flex;"><span>  ...
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">TaskB</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>  <span style="color:#000">param1</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#000">param2</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">def</span> <span style="color:#000">requires</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">TaskA</span>(<span style="color:#000">param1</span><span style="color:#000">=</span><span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">param1</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#000">...</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">TaskC</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>  param1 = luigi.Parameter()
-</span></span><span style="display:flex;"><span>  param2 = luigi.Parameter()
-</span></span><span style="display:flex;"><span>  param3 = luigi.Parameter()
-</span></span><span style="display:flex;"><span>  <span style="color:#00f">def</span> requires(self):
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">return</span> TaskA(param1=self.param1,
-</span></span><span style="display:flex;"><span>                 param2=self.param2)
-</span></span><span style="display:flex;"><span>  ...
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">TaskC</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>  <span style="color:#000">param1</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#000">param2</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#000">param3</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">def</span> <span style="color:#000">requires</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">TaskA</span>(<span style="color:#000">param1</span><span style="color:#000">=</span><span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">param1</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#000">param2</span><span style="color:#000">=</span><span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">param2</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#000">...</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">TaskD</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>  param1 = luigi.Parameter()
-</span></span><span style="display:flex;"><span>  param2 = luigi.Parameter()
-</span></span><span style="display:flex;"><span>  param3 = luigi.Parameter()
-</span></span><span style="display:flex;"><span>  param4 = luigi.Parameter()
-</span></span><span style="display:flex;"><span>  <span style="color:#00f">def</span> requires(self):
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">return</span> TaskA(param1=self.param1,
-</span></span><span style="display:flex;"><span>                 param2=self.param2,
-</span></span><span style="display:flex;"><span>                 param3=self.param3)
-</span></span><span style="display:flex;"><span>  ...
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">TaskD</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>  <span style="color:#000">param1</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#000">param2</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#000">param3</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#000">param4</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">def</span> <span style="color:#000">requires</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">TaskA</span>(<span style="color:#000">param1</span><span style="color:#000">=</span><span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">param1</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#000">param2</span><span style="color:#000">=</span><span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">param2</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#000">param3</span><span style="color:#000">=</span><span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">param3</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#000">...</span>
 </span></span></code></pre></div><p>Do you notice how parameters introduced higher up in the &ldquo;workflow
 graph&rdquo;, have to be duplicated all the way down to the last task,
 <code>TaskD</code>, and passed along, through all intermediate tasks?</p>
@@ -587,44 +587,44 @@ modular?</p>
 contains its own parameter(s), and those parameters are only duplicated
 (once) if / when the task is used in a &ldquo;workflow task&rdquo;, along the line
 of our example further above:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">TaskA</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>    param1 = luigi.Parameter()
-</span></span><span style="display:flex;"><span>    ...
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">TaskA</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#000">param1</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#000">...</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">TaskB</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>    param2 = luigi.Parameter()
-</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">TaskB</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#000">param2</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#000">...</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">TaskC</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>    param3 = luigi.Parameter()
-</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">TaskC</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#000">param3</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#000">...</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">TaskD</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>    param4 = luigi.Parameter()
-</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">TaskD</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#000">param4</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#000">...</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">MyWorkflow</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>    param1 = luigi.Parameter()
-</span></span><span style="display:flex;"><span>    param2 = luigi.Parameter()
-</span></span><span style="display:flex;"><span>    param3 = luigi.Parameter()
-</span></span><span style="display:flex;"><span>    param4 = luigi.Parameter()
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">MyWorkflow</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#000">param1</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#000">param2</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#000">param3</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#000">param4</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> requires(self):
-</span></span><span style="display:flex;"><span>        task_a = TaskA(
-</span></span><span style="display:flex;"><span>            param1 = self.param1)
-</span></span><span style="display:flex;"><span>        task_b = TaskB(
-</span></span><span style="display:flex;"><span>            upstream_task = task_a
-</span></span><span style="display:flex;"><span>            param2 = self.param2)
-</span></span><span style="display:flex;"><span>        task_c = TaskC(
-</span></span><span style="display:flex;"><span>            upstream_task = task_b
-</span></span><span style="display:flex;"><span>            param3 = self.param3)
-</span></span><span style="display:flex;"><span>        task_d = TaskD(
-</span></span><span style="display:flex;"><span>            upstream_task = task_c
-</span></span><span style="display:flex;"><span>            param4 = self.param4)
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> task_d
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">requires</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#000">task_a</span> <span style="color:#000">=</span> <span style="color:#000">TaskA</span>(
+</span></span><span style="display:flex;"><span>            <span style="color:#000">param1</span> <span style="color:#000">=</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">param1</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#000">task_b</span> <span style="color:#000">=</span> <span style="color:#000">TaskB</span>(
+</span></span><span style="display:flex;"><span>            <span style="color:#000">upstream_task</span> <span style="color:#000">=</span> <span style="color:#000">task_a</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000">param2</span> <span style="color:#000">=</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">param2</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#000">task_c</span> <span style="color:#000">=</span> <span style="color:#000">TaskC</span>(
+</span></span><span style="display:flex;"><span>            <span style="color:#000">upstream_task</span> <span style="color:#000">=</span> <span style="color:#000">task_b</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000">param3</span> <span style="color:#000">=</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">param3</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#000">task_d</span> <span style="color:#000">=</span> <span style="color:#000">TaskD</span>(
+</span></span><span style="display:flex;"><span>            <span style="color:#000">upstream_task</span> <span style="color:#000">=</span> <span style="color:#000">task_c</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000">param4</span> <span style="color:#000">=</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">param4</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">task_d</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> output(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> self.input()
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">output</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">input</span>()
 </span></span></code></pre></div><p>Do you see now how the tasks themselves never need to change, and so
 become completely modular, easy to stitch in to any workflow?</p>
 <p>(We will continue improving on this scheme in the next section, where we
@@ -636,34 +636,34 @@ even better, a dict, with luigi.Target()&rsquo;s.</p>
 <p>Below is an example of how <code>TaskB</code> can depend on two outputs from
 <code>TaskA</code> (So <code>TaskA</code> &rsquo;s two outputs, become <code>TaskB</code> &rsquo;s two
 inputs):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00f">import</span> luigi
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">luigi</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">TaskA</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> requires(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> <span style="color:#00f">None</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> output(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> {<span style="color:#a31515">&#39;output1&#39;</span> : luigi.LocalTarget(<span style="color:#a31515">&#39;task_a_out1&#39;</span>),
-</span></span><span style="display:flex;"><span>                <span style="color:#a31515">&#39;output2&#39;</span> : luigi.LocalTarget(<span style="color:#a31515">&#39;task_a_out2&#39;</span>)}
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> run(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">with</span> self.output().open(<span style="color:#a31515">&#39;w&#39;</span>) <span style="color:#00f">as</span> outfile:
-</span></span><span style="display:flex;"><span>            outfile.write(<span style="color:#a31515">&#39;foo</span><span style="color:#a31515">\n</span><span style="color:#a31515">&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">TaskA</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">requires</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#a90d91">None</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">output</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> {<span style="color:#c41a16">&#39;output1&#39;</span> : <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">LocalTarget</span>(<span style="color:#c41a16">&#39;task_a_out1&#39;</span>),
+</span></span><span style="display:flex;"><span>                <span style="color:#c41a16">&#39;output2&#39;</span> : <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">LocalTarget</span>(<span style="color:#c41a16">&#39;task_a_out2&#39;</span>)}
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">run</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">with</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">output</span>()<span style="color:#000">.</span><span style="color:#000">open</span>(<span style="color:#c41a16">&#39;w&#39;</span>) <span style="color:#a90d91">as</span> <span style="color:#000">outfile</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#000">outfile</span><span style="color:#000">.</span><span style="color:#000">write</span>(<span style="color:#c41a16">&#39;foo</span><span style="color:#c41a16">\n</span><span style="color:#c41a16">&#39;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">TaskB</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> requires(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> TaskA()
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> output(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> luigi.LocalTarget(<span style="color:#a31515">&#39;task_a&#39;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> run(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">with</span> self.input()[<span style="color:#a31515">&#39;output1&#39;</span>].open() <span style="color:#00f">as</span> infile1: <span style="color:#008000"># Notice how we need to know the name of TaskA&#39;s output</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#00f">with</span> self.input()[<span style="color:#a31515">&#39;output2&#39;</span>].open() <span style="color:#00f">as</span> infile2: <span style="color:#008000"># ... and same here ...</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#00f">with</span> self.output().open(<span style="color:#a31515">&#39;w&#39;</span>) <span style="color:#00f">as</span> outfile:
-</span></span><span style="display:flex;"><span>                    <span style="color:#00f">for</span> line <span style="color:#00f">in</span> infile1:
-</span></span><span style="display:flex;"><span>                        outfile.write(line)
-</span></span><span style="display:flex;"><span>                    <span style="color:#00f">for</span> line <span style="color:#00f">in</span> infile2:
-</span></span><span style="display:flex;"><span>                        outfile.write(line)
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">TaskB</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">requires</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">TaskA</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">output</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">LocalTarget</span>(<span style="color:#c41a16">&#39;task_a&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">run</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">with</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">input</span>()[<span style="color:#c41a16">&#39;output1&#39;</span>]<span style="color:#000">.</span><span style="color:#000">open</span>() <span style="color:#a90d91">as</span> <span style="color:#000">infile1</span>: <span style="color:#177500"># Notice how we need to know the name of TaskA&#39;s output</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">with</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">input</span>()[<span style="color:#c41a16">&#39;output2&#39;</span>]<span style="color:#000">.</span><span style="color:#000">open</span>() <span style="color:#a90d91">as</span> <span style="color:#000">infile2</span>: <span style="color:#177500"># ... and same here ...</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#a90d91">with</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">output</span>()<span style="color:#000">.</span><span style="color:#000">open</span>(<span style="color:#c41a16">&#39;w&#39;</span>) <span style="color:#a90d91">as</span> <span style="color:#000">outfile</span>:
+</span></span><span style="display:flex;"><span>                    <span style="color:#a90d91">for</span> <span style="color:#000">line</span> <span style="color:#000">in</span> <span style="color:#000">infile1</span>:
+</span></span><span style="display:flex;"><span>                        <span style="color:#000">outfile</span><span style="color:#000">.</span><span style="color:#000">write</span>(<span style="color:#000">line</span>)
+</span></span><span style="display:flex;"><span>                    <span style="color:#a90d91">for</span> <span style="color:#000">line</span> <span style="color:#000">in</span> <span style="color:#000">infile2</span>:
+</span></span><span style="display:flex;"><span>                        <span style="color:#000">outfile</span><span style="color:#000">.</span><span style="color:#000">write</span>(<span style="color:#000">line</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">if</span> __name__ == <span style="color:#a31515">&#39;__main__&#39;</span>:
-</span></span><span style="display:flex;"><span>    luigi.run()
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">if</span> <span style="color:#000">__name__</span> <span style="color:#000">==</span> <span style="color:#c41a16">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">run</span>()
 </span></span></code></pre></div><p>But, do you notice anything strange here?</p>
 <p>Do you notice how, in the run() method of <code>TaskB</code>, we have to know the
 names of the outputs of <code>TaskA</code> &hellip; which is of course less than
@@ -674,56 +674,56 @@ one task (<code>TaskC</code> in this case) depends on TWO upstream tasks, EACH O
 WHICH returns two outputs. Then we have to look up two dict structures
 (the dict returned from our requires() method, and the one returned from
 each upstream tasks output() function):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00f">import</span> luigi
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">luigi</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">TaskA</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> requires(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> <span style="color:#00f">None</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> output(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> {<span style="color:#a31515">&#39;output1&#39;</span> : luigi.LocalTarget(<span style="color:#a31515">&#39;task_a_out1&#39;</span>),
-</span></span><span style="display:flex;"><span>                <span style="color:#a31515">&#39;output2&#39;</span> : luigi.LocalTarget(<span style="color:#a31515">&#39;task_a_out2&#39;</span>)}
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> run(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">with</span> self.output()[<span style="color:#a31515">&#39;output1&#39;</span>].open(<span style="color:#a31515">&#39;w&#39;</span>) <span style="color:#00f">as</span> outfile:
-</span></span><span style="display:flex;"><span>            outfile.write(<span style="color:#a31515">&#39;foo</span><span style="color:#a31515">\n</span><span style="color:#a31515">&#39;</span>)
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">with</span> self.output()[<span style="color:#a31515">&#39;output2&#39;</span>].open(<span style="color:#a31515">&#39;w&#39;</span>) <span style="color:#00f">as</span> outfile:
-</span></span><span style="display:flex;"><span>            outfile.write(<span style="color:#a31515">&#39;foo</span><span style="color:#a31515">\n</span><span style="color:#a31515">&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">TaskA</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">requires</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#a90d91">None</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">output</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> {<span style="color:#c41a16">&#39;output1&#39;</span> : <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">LocalTarget</span>(<span style="color:#c41a16">&#39;task_a_out1&#39;</span>),
+</span></span><span style="display:flex;"><span>                <span style="color:#c41a16">&#39;output2&#39;</span> : <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">LocalTarget</span>(<span style="color:#c41a16">&#39;task_a_out2&#39;</span>)}
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">run</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">with</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">output</span>()[<span style="color:#c41a16">&#39;output1&#39;</span>]<span style="color:#000">.</span><span style="color:#000">open</span>(<span style="color:#c41a16">&#39;w&#39;</span>) <span style="color:#a90d91">as</span> <span style="color:#000">outfile</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#000">outfile</span><span style="color:#000">.</span><span style="color:#000">write</span>(<span style="color:#c41a16">&#39;foo</span><span style="color:#c41a16">\n</span><span style="color:#c41a16">&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">with</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">output</span>()[<span style="color:#c41a16">&#39;output2&#39;</span>]<span style="color:#000">.</span><span style="color:#000">open</span>(<span style="color:#c41a16">&#39;w&#39;</span>) <span style="color:#a90d91">as</span> <span style="color:#000">outfile</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#000">outfile</span><span style="color:#000">.</span><span style="color:#000">write</span>(<span style="color:#c41a16">&#39;foo</span><span style="color:#c41a16">\n</span><span style="color:#c41a16">&#39;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">TaskB</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> requires(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> <span style="color:#00f">None</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> output(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> {<span style="color:#a31515">&#39;output1&#39;</span> : luigi.LocalTarget(<span style="color:#a31515">&#39;task_b_out1&#39;</span>),
-</span></span><span style="display:flex;"><span>                <span style="color:#a31515">&#39;output2&#39;</span> : luigi.LocalTarget(<span style="color:#a31515">&#39;task_b_out2&#39;</span>)}
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> run(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">with</span> self.output()[<span style="color:#a31515">&#39;output1&#39;</span>].open(<span style="color:#a31515">&#39;w&#39;</span>) <span style="color:#00f">as</span> outfile:
-</span></span><span style="display:flex;"><span>            outfile.write(<span style="color:#a31515">&#39;bar</span><span style="color:#a31515">\n</span><span style="color:#a31515">&#39;</span>)
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">with</span> self.output()[<span style="color:#a31515">&#39;output2&#39;</span>].open(<span style="color:#a31515">&#39;w&#39;</span>) <span style="color:#00f">as</span> outfile:
-</span></span><span style="display:flex;"><span>            outfile.write(<span style="color:#a31515">&#39;bar</span><span style="color:#a31515">\n</span><span style="color:#a31515">&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">TaskB</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">requires</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#a90d91">None</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">output</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> {<span style="color:#c41a16">&#39;output1&#39;</span> : <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">LocalTarget</span>(<span style="color:#c41a16">&#39;task_b_out1&#39;</span>),
+</span></span><span style="display:flex;"><span>                <span style="color:#c41a16">&#39;output2&#39;</span> : <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">LocalTarget</span>(<span style="color:#c41a16">&#39;task_b_out2&#39;</span>)}
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">run</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">with</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">output</span>()[<span style="color:#c41a16">&#39;output1&#39;</span>]<span style="color:#000">.</span><span style="color:#000">open</span>(<span style="color:#c41a16">&#39;w&#39;</span>) <span style="color:#a90d91">as</span> <span style="color:#000">outfile</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#000">outfile</span><span style="color:#000">.</span><span style="color:#000">write</span>(<span style="color:#c41a16">&#39;bar</span><span style="color:#c41a16">\n</span><span style="color:#c41a16">&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">with</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">output</span>()[<span style="color:#c41a16">&#39;output2&#39;</span>]<span style="color:#000">.</span><span style="color:#000">open</span>(<span style="color:#c41a16">&#39;w&#39;</span>) <span style="color:#a90d91">as</span> <span style="color:#000">outfile</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#000">outfile</span><span style="color:#000">.</span><span style="color:#000">write</span>(<span style="color:#c41a16">&#39;bar</span><span style="color:#c41a16">\n</span><span style="color:#c41a16">&#39;</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">TaskC</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> requires(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> {<span style="color:#a31515">&#39;input_a&#39;</span> : TaskA(),
-</span></span><span style="display:flex;"><span>                <span style="color:#a31515">&#39;input_b&#39;</span> : TaskB()}
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> output(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> luigi.LocalTarget(self.input()[<span style="color:#a31515">&#39;input_a&#39;</span>][<span style="color:#a31515">&#39;output1&#39;</span>].path + <span style="color:#a31515">&#39;.task_c&#39;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> run(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">with</span> self.input()[<span style="color:#a31515">&#39;input_a&#39;</span>][<span style="color:#a31515">&#39;output1&#39;</span>].open() <span style="color:#00f">as</span> infile_a1: <span style="color:#008000"># Notice how we need to know the name of TaskA&#39;s output</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#00f">with</span> self.input()[<span style="color:#a31515">&#39;input_a&#39;</span>][<span style="color:#a31515">&#39;output2&#39;</span>].open() <span style="color:#00f">as</span> infile_a2: <span style="color:#008000"># ... and same here ...</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#00f">with</span> self.input()[<span style="color:#a31515">&#39;input_b&#39;</span>][<span style="color:#a31515">&#39;output1&#39;</span>].open() <span style="color:#00f">as</span> infile_b1: <span style="color:#008000"># Notice how we need to know the name of TaskA&#39;s output</span>
-</span></span><span style="display:flex;"><span>                    <span style="color:#00f">with</span> self.input()[<span style="color:#a31515">&#39;input_b&#39;</span>][<span style="color:#a31515">&#39;output2&#39;</span>].open() <span style="color:#00f">as</span> infile_b2: <span style="color:#008000"># ... and same here ...</span>
-</span></span><span style="display:flex;"><span>                        <span style="color:#00f">with</span> self.output().open(<span style="color:#a31515">&#39;w&#39;</span>) <span style="color:#00f">as</span> outfile:
-</span></span><span style="display:flex;"><span>                            <span style="color:#00f">for</span> line <span style="color:#00f">in</span> infile_a1:
-</span></span><span style="display:flex;"><span>                                outfile.write(line)
-</span></span><span style="display:flex;"><span>                            <span style="color:#00f">for</span> line <span style="color:#00f">in</span> infile_a2:
-</span></span><span style="display:flex;"><span>                                outfile.write(line)
-</span></span><span style="display:flex;"><span>                            <span style="color:#00f">for</span> line <span style="color:#00f">in</span> infile_b1:
-</span></span><span style="display:flex;"><span>                                outfile.write(line)
-</span></span><span style="display:flex;"><span>                            <span style="color:#00f">for</span> line <span style="color:#00f">in</span> infile_b2:
-</span></span><span style="display:flex;"><span>                                outfile.write(line)
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">TaskC</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">requires</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> {<span style="color:#c41a16">&#39;input_a&#39;</span> : <span style="color:#000">TaskA</span>(),
+</span></span><span style="display:flex;"><span>                <span style="color:#c41a16">&#39;input_b&#39;</span> : <span style="color:#000">TaskB</span>()}
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">output</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">LocalTarget</span>(<span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">input</span>()[<span style="color:#c41a16">&#39;input_a&#39;</span>][<span style="color:#c41a16">&#39;output1&#39;</span>]<span style="color:#000">.</span><span style="color:#000">path</span> <span style="color:#000">+</span> <span style="color:#c41a16">&#39;.task_c&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">run</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">with</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">input</span>()[<span style="color:#c41a16">&#39;input_a&#39;</span>][<span style="color:#c41a16">&#39;output1&#39;</span>]<span style="color:#000">.</span><span style="color:#000">open</span>() <span style="color:#a90d91">as</span> <span style="color:#000">infile_a1</span>: <span style="color:#177500"># Notice how we need to know the name of TaskA&#39;s output</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">with</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">input</span>()[<span style="color:#c41a16">&#39;input_a&#39;</span>][<span style="color:#c41a16">&#39;output2&#39;</span>]<span style="color:#000">.</span><span style="color:#000">open</span>() <span style="color:#a90d91">as</span> <span style="color:#000">infile_a2</span>: <span style="color:#177500"># ... and same here ...</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#a90d91">with</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">input</span>()[<span style="color:#c41a16">&#39;input_b&#39;</span>][<span style="color:#c41a16">&#39;output1&#39;</span>]<span style="color:#000">.</span><span style="color:#000">open</span>() <span style="color:#a90d91">as</span> <span style="color:#000">infile_b1</span>: <span style="color:#177500"># Notice how we need to know the name of TaskA&#39;s output</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#a90d91">with</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">input</span>()[<span style="color:#c41a16">&#39;input_b&#39;</span>][<span style="color:#c41a16">&#39;output2&#39;</span>]<span style="color:#000">.</span><span style="color:#000">open</span>() <span style="color:#a90d91">as</span> <span style="color:#000">infile_b2</span>: <span style="color:#177500"># ... and same here ...</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#a90d91">with</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">output</span>()<span style="color:#000">.</span><span style="color:#000">open</span>(<span style="color:#c41a16">&#39;w&#39;</span>) <span style="color:#a90d91">as</span> <span style="color:#000">outfile</span>:
+</span></span><span style="display:flex;"><span>                            <span style="color:#a90d91">for</span> <span style="color:#000">line</span> <span style="color:#000">in</span> <span style="color:#000">infile_a1</span>:
+</span></span><span style="display:flex;"><span>                                <span style="color:#000">outfile</span><span style="color:#000">.</span><span style="color:#000">write</span>(<span style="color:#000">line</span>)
+</span></span><span style="display:flex;"><span>                            <span style="color:#a90d91">for</span> <span style="color:#000">line</span> <span style="color:#000">in</span> <span style="color:#000">infile_a2</span>:
+</span></span><span style="display:flex;"><span>                                <span style="color:#000">outfile</span><span style="color:#000">.</span><span style="color:#000">write</span>(<span style="color:#000">line</span>)
+</span></span><span style="display:flex;"><span>                            <span style="color:#a90d91">for</span> <span style="color:#000">line</span> <span style="color:#000">in</span> <span style="color:#000">infile_b1</span>:
+</span></span><span style="display:flex;"><span>                                <span style="color:#000">outfile</span><span style="color:#000">.</span><span style="color:#000">write</span>(<span style="color:#000">line</span>)
+</span></span><span style="display:flex;"><span>                            <span style="color:#a90d91">for</span> <span style="color:#000">line</span> <span style="color:#000">in</span> <span style="color:#000">infile_b2</span>:
+</span></span><span style="display:flex;"><span>                                <span style="color:#000">outfile</span><span style="color:#000">.</span><span style="color:#000">write</span>(<span style="color:#000">line</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">if</span> __name__ == <span style="color:#a31515">&#39;__main__&#39;</span>:
-</span></span><span style="display:flex;"><span>    luigi.run()
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">if</span> <span style="color:#000">__name__</span> <span style="color:#000">==</span> <span style="color:#c41a16">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">run</span>()
 </span></span></code></pre></div><p>(notice the double dict look ups, in the run method &hellip; for example
 <code>self.input()['input_a']['output1'].open() as infile_a1</code>
 &hellip; I guess you can notice how this also gets rather messy after a
@@ -745,94 +745,94 @@ structures sent as parameters.</li>
 dependencies <strong>between tasks</strong>, we specify how tasks depend on, and
 export, <strong>targets</strong>.</p>
 <p>Let&rsquo;s look at how our solution looks in code:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#008000">###### Meta class ######</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#177500">###### Meta class ######</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">DependencyMetaTask</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>    <span style="color:#008000"># METHODS FOR AUTOMATING DEPENDENCY MANAGEMENT</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> requires(self):
-</span></span><span style="display:flex;"><span>        upstream_tasks = []
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">for</span> param_val <span style="color:#00f">in</span> self.param_args:
-</span></span><span style="display:flex;"><span>            <span style="color:#00f">if</span> type(param_val) <span style="color:#00f">is</span> dict:
-</span></span><span style="display:flex;"><span>                <span style="color:#00f">if</span> <span style="color:#a31515">&#39;upstream&#39;</span> <span style="color:#00f">in</span> param_val:
-</span></span><span style="display:flex;"><span>                    upstream_tasks.append(param_val[<span style="color:#a31515">&#39;upstream&#39;</span>][<span style="color:#a31515">&#39;task&#39;</span>])
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> upstream_tasks
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">DependencyMetaTask</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#177500"># METHODS FOR AUTOMATING DEPENDENCY MANAGEMENT</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">requires</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#000">upstream_tasks</span> <span style="color:#000">=</span> []
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">for</span> <span style="color:#000">param_val</span> <span style="color:#000">in</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">param_args</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">if</span> <span style="color:#a90d91">type</span>(<span style="color:#000">param_val</span>) <span style="color:#000">is</span> <span style="color:#a90d91">dict</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#a90d91">if</span> <span style="color:#c41a16">&#39;upstream&#39;</span> <span style="color:#000">in</span> <span style="color:#000">param_val</span>:
+</span></span><span style="display:flex;"><span>                    <span style="color:#000">upstream_tasks</span><span style="color:#000">.</span><span style="color:#000">append</span>(<span style="color:#000">param_val</span>[<span style="color:#c41a16">&#39;upstream&#39;</span>][<span style="color:#c41a16">&#39;task&#39;</span>])
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">upstream_tasks</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> get_input(self, input_name):
-</span></span><span style="display:flex;"><span>        param = self.param_kwargs[input_name]
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">if</span> type(param) <span style="color:#00f">is</span> dict <span style="color:#00f">and</span> <span style="color:#a31515">&#39;upstream&#39;</span> <span style="color:#00f">in</span> param:
-</span></span><span style="display:flex;"><span>            <span style="color:#00f">return</span> param[<span style="color:#a31515">&#39;upstream&#39;</span>][<span style="color:#a31515">&#39;task&#39;</span>].output()[param[<span style="color:#a31515">&#39;upstream&#39;</span>][<span style="color:#a31515">&#39;port&#39;</span>]]
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">else</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#00f">return</span> param
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008000">###### Normal classes ######</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">TaskA</span>(DependencyMetaTask):
-</span></span><span style="display:flex;"><span>    <span style="color:#008000"># INPUT TARGETS</span>
-</span></span><span style="display:flex;"><span>    in1_target = luigi.Parameter()
-</span></span><span style="display:flex;"><span>    param_a1 = luigi.Parameter()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>   <span style="color:#008000"># DEFINE OUTPUTS</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> output(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> { <span style="color:#a31515">&#39;out1&#39;</span> :
-</span></span><span style="display:flex;"><span>            luigi.LocalTarget(
-</span></span><span style="display:flex;"><span>                self.get_input(<span style="color:#a31515">&#39;in1_target&#39;</span>).path + <span style="color:#a31515">&#39;.out1&#39;</span>),
-</span></span><span style="display:flex;"><span>                 <span style="color:#a31515">&#39;out2&#39;</span> :
-</span></span><span style="display:flex;"><span>            luigi.LocalTarget(
-</span></span><span style="display:flex;"><span>                self.get_input(<span style="color:#a31515">&#39;in1_target&#39;</span>).path + <span style="color:#a31515">&#39;.out2&#39;</span>) } }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#008000"># WHAT THE TASK DOES</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> run(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">with</span> open(self.get_input(<span style="color:#a31515">&#39;in1_target&#39;</span>).path) <span style="color:#00f">as</span> infile:
-</span></span><span style="display:flex;"><span>            <span style="color:#00f">for</span> line <span style="color:#00f">in</span> infile:
-</span></span><span style="display:flex;"><span>                do_something(line)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">get_input</span>(<span style="color:#5b269a">self</span>, <span style="color:#000">input_name</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#000">param</span> <span style="color:#000">=</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">param_kwargs</span>[<span style="color:#000">input_name</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">if</span> <span style="color:#a90d91">type</span>(<span style="color:#000">param</span>) <span style="color:#000">is</span> <span style="color:#a90d91">dict</span> <span style="color:#000">and</span> <span style="color:#c41a16">&#39;upstream&#39;</span> <span style="color:#000">in</span> <span style="color:#000">param</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">return</span> <span style="color:#000">param</span>[<span style="color:#c41a16">&#39;upstream&#39;</span>][<span style="color:#c41a16">&#39;task&#39;</span>]<span style="color:#000">.</span><span style="color:#000">output</span>()[<span style="color:#000">param</span>[<span style="color:#c41a16">&#39;upstream&#39;</span>][<span style="color:#c41a16">&#39;port&#39;</span>]]
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">else</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">return</span> <span style="color:#000">param</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">TaskB</span>():
-</span></span><span style="display:flex;"><span>    <span style="color:#008000"># INPUT TARGETS</span>
-</span></span><span style="display:flex;"><span>    in1_target = luigi.Parameter()
-</span></span><span style="display:flex;"><span>    in2_target = luigi.Parameter()
-</span></span><span style="display:flex;"><span>    param_b1 = luigi.Parameter()
-</span></span><span style="display:flex;"><span>    param_b2 = luigi.Parameter()
+</span></span><span style="display:flex;"><span><span style="color:#177500">###### Normal classes ######</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> run(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#008000"># Do something with both in1 and in2</span>
-</span></span><span style="display:flex;"><span>        ....
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">TaskA</span>(<span style="color:#000">DependencyMetaTask</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#177500"># INPUT TARGETS</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">in1_target</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#000">param_a1</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008000">##### THE ACTUAL WORKFLOW / DEPENDENCY GRAPH DEFINITION #####</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#177500"># DEFINE OUTPUTS</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">output</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> { <span style="color:#c41a16">&#39;out1&#39;</span> :
+</span></span><span style="display:flex;"><span>            <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">LocalTarget</span>(
+</span></span><span style="display:flex;"><span>                <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">get_input</span>(<span style="color:#c41a16">&#39;in1_target&#39;</span>)<span style="color:#000">.</span><span style="color:#000">path</span> <span style="color:#000">+</span> <span style="color:#c41a16">&#39;.out1&#39;</span>),
+</span></span><span style="display:flex;"><span>                 <span style="color:#c41a16">&#39;out2&#39;</span> :
+</span></span><span style="display:flex;"><span>            <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">LocalTarget</span>(
+</span></span><span style="display:flex;"><span>                <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">get_input</span>(<span style="color:#c41a16">&#39;in1_target&#39;</span>)<span style="color:#000">.</span><span style="color:#000">path</span> <span style="color:#000">+</span> <span style="color:#c41a16">&#39;.out2&#39;</span>) } }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">MyWorkFlow</span>(luigi.Task):
-</span></span><span style="display:flex;"><span>    <span style="color:#008000"># We only need to duplicate all parameters</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#008000"># once, which is here in the workflow task</span>
-</span></span><span style="display:flex;"><span>    param_a1 = luigi.Parameter()
-</span></span><span style="display:flex;"><span>    param_b1 = luigi.Parameter()
-</span></span><span style="display:flex;"><span>    param_b2 = luigi.Parameter()
+</span></span><span style="display:flex;"><span>    <span style="color:#177500"># WHAT THE TASK DOES</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">run</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">with</span> <span style="color:#a90d91">open</span>(<span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">get_input</span>(<span style="color:#c41a16">&#39;in1_target&#39;</span>)<span style="color:#000">.</span><span style="color:#000">path</span>) <span style="color:#a90d91">as</span> <span style="color:#000">infile</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">for</span> <span style="color:#000">line</span> <span style="color:#000">in</span> <span style="color:#000">infile</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#000">do_something</span>(<span style="color:#000">line</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#008000"># Here the whole workflow definition resides:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> requires(self):
-</span></span><span style="display:flex;"><span>        task_a = TaskA(
-</span></span><span style="display:flex;"><span>            param_a1 = self.param_a1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">TaskB</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#177500"># INPUT TARGETS</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">in1_target</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#000">in2_target</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#000">param_b1</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#000">param_b2</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">run</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#177500"># Do something with both in1 and in2</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">....</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#177500">##### THE ACTUAL WORKFLOW / DEPENDENCY GRAPH DEFINITION #####</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">MyWorkFlow</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#177500"># We only need to duplicate all parameters</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#177500"># once, which is here in the workflow task</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">param_a1</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#000">param_b1</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#000">param_b2</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#177500"># Here the whole workflow definition resides:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">requires</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#000">task_a</span> <span style="color:#000">=</span> <span style="color:#000">TaskA</span>(
+</span></span><span style="display:flex;"><span>            <span style="color:#000">param_a1</span> <span style="color:#000">=</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">param_a1</span>
 </span></span><span style="display:flex;"><span>        )
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        task_b = TaskB(
-</span></span><span style="display:flex;"><span>            param_b1 = self.param_b1,
-</span></span><span style="display:flex;"><span>            param_b2 = self.param_b2,
-</span></span><span style="display:flex;"><span>            <span style="color:#008000"># Here below, we connect the output out1 from TaskA</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#008000"># to in1_target of TaskB ...</span>
-</span></span><span style="display:flex;"><span>            in1_target =
-</span></span><span style="display:flex;"><span>                { <span style="color:#a31515">&#39;upstream&#39;</span> : { <span style="color:#a31515">&#39;task&#39;</span> : task_a,
-</span></span><span style="display:flex;"><span>                                 <span style="color:#a31515">&#39;port&#39;</span> : <span style="color:#a31515">&#39;out1&#39;</span> } }
-</span></span><span style="display:flex;"><span>            <span style="color:#008000"># ... and again, out2 of TaskA, to in2_target of</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#008000"># TaskB, using our special syntax.</span>
-</span></span><span style="display:flex;"><span>            in2_target =
-</span></span><span style="display:flex;"><span>                { <span style="color:#a31515">&#39;upstream&#39;</span> : { <span style="color:#a31515">&#39;task&#39;</span> : task_a,
-</span></span><span style="display:flex;"><span>                                 <span style="color:#a31515">&#39;port&#39;</span> : <span style="color:#a31515">&#39;out2&#39;</span> } }
+</span></span><span style="display:flex;"><span>        <span style="color:#000">task_b</span> <span style="color:#000">=</span> <span style="color:#000">TaskB</span>(
+</span></span><span style="display:flex;"><span>            <span style="color:#000">param_b1</span> <span style="color:#000">=</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">param_b1</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#000">param_b2</span> <span style="color:#000">=</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">param_b2</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#177500"># Here below, we connect the output out1 from TaskA</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#177500"># to in1_target of TaskB ...</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000">in1_target</span> <span style="color:#000">=</span>
+</span></span><span style="display:flex;"><span>                { <span style="color:#c41a16">&#39;upstream&#39;</span> : { <span style="color:#c41a16">&#39;task&#39;</span> : <span style="color:#000">task_a</span>,
+</span></span><span style="display:flex;"><span>                                 <span style="color:#c41a16">&#39;port&#39;</span> : <span style="color:#c41a16">&#39;out1&#39;</span> } }
+</span></span><span style="display:flex;"><span>            <span style="color:#177500"># ... and again, out2 of TaskA, to in2_target of</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#177500"># TaskB, using our special syntax.</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000">in2_target</span> <span style="color:#000">=</span>
+</span></span><span style="display:flex;"><span>                { <span style="color:#c41a16">&#39;upstream&#39;</span> : { <span style="color:#c41a16">&#39;task&#39;</span> : <span style="color:#000">task_a</span>,
+</span></span><span style="display:flex;"><span>                                 <span style="color:#c41a16">&#39;port&#39;</span> : <span style="color:#c41a16">&#39;out2&#39;</span> } }
 </span></span><span style="display:flex;"><span>        )
 </span></span></code></pre></div><p>So, can you follow what happens here?</p>
 <p>The key here is the get_input() method in the <code>DependencyMetaTask</code>
 meta class. It allows us to send as parameters to tasks, a double dict
 structure looking like so:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>some_target = { <span style="color:#a31515">&#39;upstream&#39;</span> : { <span style="color:#a31515">&#39;task&#39;</span> : TaskA() , <span style="color:#a31515">&#39;port&#39;</span> : <span style="color:#a31515">&#39;output1&#39;</span> } }
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">some_target</span> <span style="color:#000">=</span> <span style="color:#000">{</span> <span style="color:#c41a16">&#39;upstream&#39;</span> : <span style="color:#000">{</span> <span style="color:#c41a16">&#39;task&#39;</span> : TaskA<span style="color:#000">()</span> , <span style="color:#c41a16">&#39;port&#39;</span> : <span style="color:#c41a16">&#39;output1&#39;</span> <span style="color:#000">}</span> <span style="color:#000">}</span>
 </span></span></code></pre></div><p>&hellip; just a little differently formatted above.</p>
 <p>Then, as you can see in the run() method of <code>TaskA</code> above, we can just
 use the get_input() function to get a specific input target (and not
@@ -856,37 +856,37 @@ this easier to work with.</p>
 as one for executing commands, and let all tasks subclass (or &ldquo;mix in&rdquo;
 the mixin). Below you find our implementation of a helper function for
 executing commands, and how to use it:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00f">import</span> luigi
-</span></span><span style="display:flex;"><span><span style="color:#00f">import</span> commands
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">luigi</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">commands</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">TaskHelpers</span>():
-</span></span><span style="display:flex;"><span>    <span style="color:#008000"># We here show the simplest version needed to execute commands in our preferred way:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> execute_command(self, command):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> commands.getstatusoutput(command)
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">TaskHelpers</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#177500"># We here show the simplest version needed to execute commands in our preferred way:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">execute_command</span>(<span style="color:#5b269a">self</span>, <span style="color:#000">command</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">commands</span><span style="color:#000">.</span><span style="color:#000">getstatusoutput</span>(<span style="color:#000">command</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#008000"># And we can also have a really short &#34;alias&#34; of the execute_command method</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> x(self, command):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> self.execute_command(command)
+</span></span><span style="display:flex;"><span>    <span style="color:#177500"># And we can also have a really short &#34;alias&#34; of the execute_command method</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">x</span>(<span style="color:#5b269a">self</span>, <span style="color:#000">command</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">execute_command</span>(<span style="color:#000">command</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># Then we can use the above TaskHelper mixin, like this (taken from a real-world example):</span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">GenerateFingerPrint</span>(luigi.Task, TaskHelpers):
-</span></span><span style="display:flex;"><span>    <span style="color:#008000"># INPUT TARGETS</span>
-</span></span><span style="display:flex;"><span>    dataset_target = luigi.Parameter()
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Then we can use the above TaskHelper mixin, like this (taken from a real-world example):</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">GenerateFingerPrint</span>(<span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Task</span>, <span style="color:#000">TaskHelpers</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#177500"># INPUT TARGETS</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">dataset_target</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#008000"># PARAMETERS</span>
-</span></span><span style="display:flex;"><span>    fingerprint_type = luigi.Parameter()
+</span></span><span style="display:flex;"><span>    <span style="color:#177500"># PARAMETERS</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fingerprint_type</span> <span style="color:#000">=</span> <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">Parameter</span>()
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#008000"># DEFINE OUTPUTS</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> output(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">return</span> { <span style="color:#a31515">&#39;fingerprints&#39;</span> : luigi.LocalTarget(self.get_input(<span style="color:#a31515">&#39;dataset_target&#39;</span>).path + <span style="color:#a31515">&#39;.&#39;</span> + self.fingerprint_type + <span style="color:#a31515">&#39;.csr&#39;</span>) }
+</span></span><span style="display:flex;"><span>    <span style="color:#177500"># DEFINE OUTPUTS</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">output</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> { <span style="color:#c41a16">&#39;fingerprints&#39;</span> : <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">LocalTarget</span>(<span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">get_input</span>(<span style="color:#c41a16">&#39;dataset_target&#39;</span>)<span style="color:#000">.</span><span style="color:#000">path</span> <span style="color:#000">+</span> <span style="color:#c41a16">&#39;.&#39;</span> <span style="color:#000">+</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">fingerprint_type</span> <span style="color:#000">+</span> <span style="color:#c41a16">&#39;.csr&#39;</span>) }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> run(self):
-</span></span><span style="display:flex;"><span>        self.x([JAVA_PATH, <span style="color:#a31515">&#39;-jar jars/FingerprintsGenerator.jar&#39;</span>,
-</span></span><span style="display:flex;"><span>                <span style="color:#a31515">&#39;-fp&#39;</span>, self.fingerprint_type,
-</span></span><span style="display:flex;"><span>                <span style="color:#a31515">&#39;-inputfile&#39;</span>, self.get_input(<span style="color:#a31515">&#39;dataset_target&#39;</span>).path,
-</span></span><span style="display:flex;"><span>                <span style="color:#a31515">&#39;-parser&#39;</span>, <span style="color:#a31515">&#39;1&#39;</span>,
-</span></span><span style="display:flex;"><span>                <span style="color:#a31515">&#39;-outputfile&#39;</span>, self.output()[<span style="color:#a31515">&#39;fingerprints&#39;</span>].path])
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">run</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">x</span>([<span style="color:#000">JAVA_PATH</span>, <span style="color:#c41a16">&#39;-jar jars/FingerprintsGenerator.jar&#39;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#c41a16">&#39;-fp&#39;</span>, <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">fingerprint_type</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#c41a16">&#39;-inputfile&#39;</span>, <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">get_input</span>(<span style="color:#c41a16">&#39;dataset_target&#39;</span>)<span style="color:#000">.</span><span style="color:#000">path</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#c41a16">&#39;-parser&#39;</span>, <span style="color:#c41a16">&#39;1&#39;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#c41a16">&#39;-outputfile&#39;</span>, <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">output</span>()[<span style="color:#c41a16">&#39;fingerprints&#39;</span>]<span style="color:#000">.</span><span style="color:#000">path</span>])
 </span></span></code></pre></div><p>In the run method of the <code>GenerateFingerPrint</code> task, you see how we
 can execute commands by sending a python list of command parts, to the
 x() method, for execution (we could send a string as well, but a list of

@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>Workflow tool makers: Allow defining data flow, not just task dependencies | Living Systems</title>
+<title>Workflow tool makers: Allow defining data flow, not just task dependencies | Living Systems_</title>
 
-      <link rel="stylesheet" href="/css/main.min.0dd62280a0c008a6369ab81bd9d63c41bf7e4b5e9377c4a60df43868258f1db5.css" integrity="sha256-DdYigKDACKY2mrgb2dY8Qb9&#43;S16Td8SmDfQ4aCWPHbU=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.c08730684592e72120b7bb901ae1fdf20ffab2cedb2d273d4cef0381e0e558aa.css" integrity="sha256-wIcwaEWS5yEgt7uQGuH98g/6ss7bLSc9TO8DgeDlWKo=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -15,7 +15,7 @@
 </head>
 <body>
   <header>
-    <h1>Living Systems</h1>
+    <h1>Living Systems_</h1>
 
   <nav>
     <ul>
@@ -112,24 +112,24 @@ you can find an example of setting up dependencies
 <a href="http://pythonhosted.org/airflow/tutorial.html#setting-up-dependencies" target="_blank" rel="noopener">here</a>
 .
 Or, see below:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#008000"># ... code for instantiating tasks t1 and t2 ...</span>
-</span></span><span style="display:flex;"><span>t2.set_upstream(t1)
-</span></span><span style="display:flex;"><span><span style="color:#008000"># This means that t2 will depend on t1</span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># running successfully to run</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#177500"># ... code for instantiating tasks t1 and t2 ...</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">t2</span><span style="color:#000">.</span><span style="color:#000">set_upstream</span>(<span style="color:#000">t1</span>)
+</span></span><span style="display:flex;"><span><span style="color:#177500"># This means that t2 will depend on t1</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># running successfully to run</span>
 </span></span></code></pre></div><p>Do you see how you set the dependencies directly between the tasks (t1
 and t2), without any info about inputs and outputs?</p>
 <p>In the case of Galaxy, you don&rsquo;t define this in code, but you can draw
 the connections between named outports and inports graphically.</p>
 <p>And, for an example of a library that allows to do this in code, see for
 example our little helper library for luigi, sciluigi, that allows this:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#008000"># Run the same task on the two splits</span>
-</span></span><span style="display:flex;"><span>t1 = Task1()
-</span></span><span style="display:flex;"><span>t2 = Task1()
-</span></span><span style="display:flex;"><span>t3 = Task2(
-</span></span><span style="display:flex;"><span>        in1 = t1.outspec(<span style="color:#a31515">&#39;out1&#39;</span>)
-</span></span><span style="display:flex;"><span>        in2 = t1.outspec(<span style="color:#a31515">&#39;out2&#39;</span>)
-</span></span><span style="display:flex;"><span>        in3 = t2.outspec(<span style="color:#a31515">&#39;out1&#39;</span>)
-</span></span><span style="display:flex;"><span>        in4 = t2.outspec(<span style="color:#a31515">&#39;out2&#39;</span>))
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#177500"># Run the same task on the two splits</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">t1</span> <span style="color:#000">=</span> <span style="color:#000">Task1</span>()
+</span></span><span style="display:flex;"><span><span style="color:#000">t2</span> <span style="color:#000">=</span> <span style="color:#000">Task1</span>()
+</span></span><span style="display:flex;"><span><span style="color:#000">t3</span> <span style="color:#000">=</span> <span style="color:#000">Task2</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#000">in1</span> <span style="color:#000">=</span> <span style="color:#000">t1</span><span style="color:#000">.</span><span style="color:#000">outspec</span>(<span style="color:#c41a16">&#39;out1&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#000">in2</span> <span style="color:#000">=</span> <span style="color:#000">t1</span><span style="color:#000">.</span><span style="color:#000">outspec</span>(<span style="color:#c41a16">&#39;out2&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#000">in3</span> <span style="color:#000">=</span> <span style="color:#000">t2</span><span style="color:#000">.</span><span style="color:#000">outspec</span>(<span style="color:#c41a16">&#39;out1&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#000">in4</span> <span style="color:#000">=</span> <span style="color:#000">t2</span><span style="color:#000">.</span><span style="color:#000">outspec</span>(<span style="color:#c41a16">&#39;out2&#39;</span>))
 </span></span></code></pre></div><p>Do you see how this enables us to receive multiple outputs (out1, out2)
 from multiple upstream tasks (t1, t2), into task t3 in a very clear and
 explicit way?</p>
@@ -145,145 +145,145 @@ Sequencing) workflow, given in a
 wrench</a>
 ). Look
 especially for all the &ldquo;inports&rdquo; and &ldquo;outport&rdquo; parts in the code:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00f">import</span> luigi
-</span></span><span style="display:flex;"><span><span style="color:#00f">from</span> luigis_monkey_wrench <span style="color:#00f">import</span> *
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">luigi</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">from</span> <span style="color:#000">luigis_monkey_wrench</span> <span style="color:#a90d91">import</span> <span style="color:#000">*</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>REF=<span style="color:#a31515">&#39;human_17_v37.fasta&#39;</span>
-</span></span><span style="display:flex;"><span>INDIVIDUALS=[<span style="color:#a31515">&#39;NA06984&#39;</span>,<span style="color:#a31515">&#39;NA07000&#39;</span>]
-</span></span><span style="display:flex;"><span>SAMPLES=[<span style="color:#a31515">&#39;1&#39;</span>,<span style="color:#a31515">&#39;2&#39;</span>]
-</span></span><span style="display:flex;"><span>BASENAME=<span style="color:#a31515">&#39;.ILLUMINA.low_coverage.17q_&#39;</span>
-</span></span><span style="display:flex;"><span>PICARDDIR=<span style="color:#a31515">&#39;/sw/apps/bioinfo/picard/1.69/kalkyl/&#39;</span>
-</span></span><span style="display:flex;"><span>KNOWNSITES=<span style="color:#a31515">&#39;/proj/labs/gatk/ALL.chr17.phase1_integrated_calls.snps_indels_svs.genotypes.vcf&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">REF</span><span style="color:#000">=</span><span style="color:#c41a16">&#39;human_17_v37.fasta&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">INDIVIDUALS</span><span style="color:#000">=</span>[<span style="color:#c41a16">&#39;NA06984&#39;</span>,<span style="color:#c41a16">&#39;NA07000&#39;</span>]
+</span></span><span style="display:flex;"><span><span style="color:#000">SAMPLES</span><span style="color:#000">=</span>[<span style="color:#c41a16">&#39;1&#39;</span>,<span style="color:#c41a16">&#39;2&#39;</span>]
+</span></span><span style="display:flex;"><span><span style="color:#000">BASENAME</span><span style="color:#000">=</span><span style="color:#c41a16">&#39;.ILLUMINA.low_coverage.17q_&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">PICARDDIR</span><span style="color:#000">=</span><span style="color:#c41a16">&#39;/sw/apps/bioinfo/picard/1.69/kalkyl/&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">KNOWNSITES</span><span style="color:#000">=</span><span style="color:#c41a16">&#39;/proj/labs/gatk/ALL.chr17.phase1_integrated_calls.snps_indels_svs.genotypes.vcf&#39;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">GATKWorkflow</span>(WorkflowTask):
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">GATKWorkflow</span>(<span style="color:#000">WorkflowTask</span>):
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">def</span> requires(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">for</span> i <span style="color:#00f">in</span> INDIVIDUALS:
-</span></span><span style="display:flex;"><span>            <span style="color:#008000"># Workflow definition</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#008000"># ---------------------------------------------------------------------------------</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#008000"># files() will return a pseudo task that just outputs an existing file,</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#008000">#         while not running anything.</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#008000"># shell() will create a new task with a command that can take inputs</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#008000">#         and outputs.</span>
-</span></span><span style="display:flex;"><span>            fq1 = file(<span style="color:#a31515">&#39;fastq:</span><span style="color:#a31515">{i}</span><span style="color:#a31515">/</span><span style="color:#a31515">{i}{b}</span><span style="color:#a31515">1.fq&#39;</span>.format(i=i,b=BASENAME))
-</span></span><span style="display:flex;"><span>            fq2 = file(<span style="color:#a31515">&#39;fastq:</span><span style="color:#a31515">{i}</span><span style="color:#a31515">/</span><span style="color:#a31515">{i}{b}</span><span style="color:#a31515">2.fq&#39;</span>.format(i=i,b=BASENAME))
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">def</span> <span style="color:#000">requires</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">for</span> <span style="color:#000">i</span> <span style="color:#000">in</span> <span style="color:#000">INDIVIDUALS</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#177500"># Workflow definition</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#177500"># ---------------------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#177500"># files() will return a pseudo task that just outputs an existing file,</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#177500">#         while not running anything.</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#177500"># shell() will create a new task with a command that can take inputs</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#177500">#         and outputs.</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000">fq1</span> <span style="color:#000">=</span> <span style="color:#000">file</span>(<span style="color:#c41a16">&#39;fastq:</span><span style="color:#c41a16">{i}</span><span style="color:#c41a16">/</span><span style="color:#c41a16">{i}{b}</span><span style="color:#c41a16">1.fq&#39;</span><span style="color:#000">.</span><span style="color:#000">format</span>(<span style="color:#000">i</span><span style="color:#000">=</span><span style="color:#000">i</span>,<span style="color:#000">b</span><span style="color:#000">=</span><span style="color:#000">BASENAME</span>))
+</span></span><span style="display:flex;"><span>            <span style="color:#000">fq2</span> <span style="color:#000">=</span> <span style="color:#000">file</span>(<span style="color:#c41a16">&#39;fastq:</span><span style="color:#c41a16">{i}</span><span style="color:#c41a16">/</span><span style="color:#c41a16">{i}{b}</span><span style="color:#c41a16">2.fq&#39;</span><span style="color:#000">.</span><span style="color:#000">format</span>(<span style="color:#000">i</span><span style="color:#000">=</span><span style="color:#000">i</span>,<span style="color:#000">b</span><span style="color:#000">=</span><span style="color:#000">BASENAME</span>))
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#008000"># Step 2 in [1]--------------------------------------------------------------------</span>
-</span></span><span style="display:flex;"><span>            aln1 = shell(<span style="color:#a31515">&#39;bwa aln </span><span style="color:#a31515">{ref}</span><span style="color:#a31515"> &lt;i:fastq&gt; &gt; &lt;o:sai:&lt;i:fastq&gt;.sai&gt;&#39;</span>.format(ref=REF))
-</span></span><span style="display:flex;"><span>            aln1.inports[<span style="color:#a31515">&#39;fastq&#39;</span>] = fq1.outport(<span style="color:#a31515">&#39;fastq&#39;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#177500"># Step 2 in [1]--------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000">aln1</span> <span style="color:#000">=</span> <span style="color:#000">shell</span>(<span style="color:#c41a16">&#39;bwa aln </span><span style="color:#c41a16">{ref}</span><span style="color:#c41a16"> &lt;i:fastq&gt; &gt; &lt;o:sai:&lt;i:fastq&gt;.sai&gt;&#39;</span><span style="color:#000">.</span><span style="color:#000">format</span>(<span style="color:#000">ref</span><span style="color:#000">=</span><span style="color:#000">REF</span>))
+</span></span><span style="display:flex;"><span>            <span style="color:#000">aln1</span><span style="color:#000">.</span><span style="color:#000">inports</span>[<span style="color:#c41a16">&#39;fastq&#39;</span>] <span style="color:#000">=</span> <span style="color:#000">fq1</span><span style="color:#000">.</span><span style="color:#000">outport</span>(<span style="color:#c41a16">&#39;fastq&#39;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            aln2 = shell(<span style="color:#a31515">&#39;bwa aln </span><span style="color:#a31515">{ref}</span><span style="color:#a31515"> &lt;i:fastq&gt; &gt; &lt;o:sai:&lt;i:fastq&gt;.sai&gt;&#39;</span>.format(ref=REF))
-</span></span><span style="display:flex;"><span>            aln2.inports[<span style="color:#a31515">&#39;fastq&#39;</span>] = fq2.outport(<span style="color:#a31515">&#39;fastq&#39;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#000">aln2</span> <span style="color:#000">=</span> <span style="color:#000">shell</span>(<span style="color:#c41a16">&#39;bwa aln </span><span style="color:#c41a16">{ref}</span><span style="color:#c41a16"> &lt;i:fastq&gt; &gt; &lt;o:sai:&lt;i:fastq&gt;.sai&gt;&#39;</span><span style="color:#000">.</span><span style="color:#000">format</span>(<span style="color:#000">ref</span><span style="color:#000">=</span><span style="color:#000">REF</span>))
+</span></span><span style="display:flex;"><span>            <span style="color:#000">aln2</span><span style="color:#000">.</span><span style="color:#000">inports</span>[<span style="color:#c41a16">&#39;fastq&#39;</span>] <span style="color:#000">=</span> <span style="color:#000">fq2</span><span style="color:#000">.</span><span style="color:#000">outport</span>(<span style="color:#c41a16">&#39;fastq&#39;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#008000"># Step 3 in [1]--------------------------------------------------------------------</span>
-</span></span><span style="display:flex;"><span>            merg = shell((<span style="color:#a31515">&#39;bwa sampe </span><span style="color:#a31515">{ref}</span><span style="color:#a31515"> &lt;i:sai1&gt; &lt;i:sai2&gt; &lt;i:fq1&gt; &lt;i:fq2&gt; &#39;</span>
-</span></span><span style="display:flex;"><span>                         <span style="color:#a31515">&#39;&gt; &lt;o:merged:</span><span style="color:#a31515">{i}</span><span style="color:#a31515">/</span><span style="color:#a31515">{i}{b}</span><span style="color:#a31515">.merged.sam&gt;&#39;</span>).format(
-</span></span><span style="display:flex;"><span>                ref=REF,
-</span></span><span style="display:flex;"><span>                i=i,
-</span></span><span style="display:flex;"><span>                b=BASENAME))
-</span></span><span style="display:flex;"><span>            merg.inports[<span style="color:#a31515">&#39;sai1&#39;</span>] = aln1.outport(<span style="color:#a31515">&#39;sai&#39;</span>)
-</span></span><span style="display:flex;"><span>            merg.inports[<span style="color:#a31515">&#39;sai2&#39;</span>] = aln2.outport(<span style="color:#a31515">&#39;sai&#39;</span>)
-</span></span><span style="display:flex;"><span>            merg.inports[<span style="color:#a31515">&#39;fq1&#39;</span>] = fq1.outport(<span style="color:#a31515">&#39;fastq&#39;</span>)
-</span></span><span style="display:flex;"><span>            merg.inports[<span style="color:#a31515">&#39;fq2&#39;</span>] = fq2.outport(<span style="color:#a31515">&#39;fastq&#39;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#177500"># Step 3 in [1]--------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000">merg</span> <span style="color:#000">=</span> <span style="color:#000">shell</span>((<span style="color:#c41a16">&#39;bwa sampe </span><span style="color:#c41a16">{ref}</span><span style="color:#c41a16"> &lt;i:sai1&gt; &lt;i:sai2&gt; &lt;i:fq1&gt; &lt;i:fq2&gt; &#39;</span>
+</span></span><span style="display:flex;"><span>                         <span style="color:#c41a16">&#39;&gt; &lt;o:merged:</span><span style="color:#c41a16">{i}</span><span style="color:#c41a16">/</span><span style="color:#c41a16">{i}{b}</span><span style="color:#c41a16">.merged.sam&gt;&#39;</span>)<span style="color:#000">.</span><span style="color:#000">format</span>(
+</span></span><span style="display:flex;"><span>                <span style="color:#000">ref</span><span style="color:#000">=</span><span style="color:#000">REF</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#000">i</span><span style="color:#000">=</span><span style="color:#000">i</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#000">b</span><span style="color:#000">=</span><span style="color:#000">BASENAME</span>))
+</span></span><span style="display:flex;"><span>            <span style="color:#000">merg</span><span style="color:#000">.</span><span style="color:#000">inports</span>[<span style="color:#c41a16">&#39;sai1&#39;</span>] <span style="color:#000">=</span> <span style="color:#000">aln1</span><span style="color:#000">.</span><span style="color:#000">outport</span>(<span style="color:#c41a16">&#39;sai&#39;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#000">merg</span><span style="color:#000">.</span><span style="color:#000">inports</span>[<span style="color:#c41a16">&#39;sai2&#39;</span>] <span style="color:#000">=</span> <span style="color:#000">aln2</span><span style="color:#000">.</span><span style="color:#000">outport</span>(<span style="color:#c41a16">&#39;sai&#39;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#000">merg</span><span style="color:#000">.</span><span style="color:#000">inports</span>[<span style="color:#c41a16">&#39;fq1&#39;</span>] <span style="color:#000">=</span> <span style="color:#000">fq1</span><span style="color:#000">.</span><span style="color:#000">outport</span>(<span style="color:#c41a16">&#39;fastq&#39;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#000">merg</span><span style="color:#000">.</span><span style="color:#000">inports</span>[<span style="color:#c41a16">&#39;fq2&#39;</span>] <span style="color:#000">=</span> <span style="color:#000">fq2</span><span style="color:#000">.</span><span style="color:#000">outport</span>(<span style="color:#c41a16">&#39;fastq&#39;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#008000"># Step 4a in [1]------------------------------------------------------------------</span>
-</span></span><span style="display:flex;"><span>            mergbam = shell(<span style="color:#a31515">&#39;&#39;&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">            java -Xmx2g -jar </span><span style="color:#a31515">{p}</span><span style="color:#a31515">/AddOrReplaceReadGroups.jar
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                INPUT=&lt;i:sam&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                OUTPUT=&lt;o:bam:&lt;i:sam&gt;.bam&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                SORT_ORDER=coordinate
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                RGID=</span><span style="color:#a31515">{sample}</span><span style="color:#a31515">-id
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                RGLB=</span><span style="color:#a31515">{sample}</span><span style="color:#a31515">-lib
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                RGPL=ILLUMINA
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                RGPU=</span><span style="color:#a31515">{sample}</span><span style="color:#a31515">-01
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                RGSM=</span><span style="color:#a31515">{sample}</span><span style="color:#a31515">
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">            &#39;&#39;&#39;</span>.format(
-</span></span><span style="display:flex;"><span>                 p=PICARDDIR,
-</span></span><span style="display:flex;"><span>                 sample=i))
-</span></span><span style="display:flex;"><span>            mergbam.inports[<span style="color:#a31515">&#39;sam&#39;</span>] = merg.outport(<span style="color:#a31515">&#39;merged&#39;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#177500"># Step 4a in [1]------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000">mergbam</span> <span style="color:#000">=</span> <span style="color:#000">shell</span>(<span style="color:#c41a16">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">            java -Xmx2g -jar </span><span style="color:#c41a16">{p}</span><span style="color:#c41a16">/AddOrReplaceReadGroups.jar
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                INPUT=&lt;i:sam&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                OUTPUT=&lt;o:bam:&lt;i:sam&gt;.bam&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                SORT_ORDER=coordinate
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                RGID=</span><span style="color:#c41a16">{sample}</span><span style="color:#c41a16">-id
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                RGLB=</span><span style="color:#c41a16">{sample}</span><span style="color:#c41a16">-lib
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                RGPL=ILLUMINA
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                RGPU=</span><span style="color:#c41a16">{sample}</span><span style="color:#c41a16">-01
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                RGSM=</span><span style="color:#c41a16">{sample}</span><span style="color:#c41a16">
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">            &#39;&#39;&#39;</span><span style="color:#000">.</span><span style="color:#000">format</span>(
+</span></span><span style="display:flex;"><span>                 <span style="color:#000">p</span><span style="color:#000">=</span><span style="color:#000">PICARDDIR</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#000">sample</span><span style="color:#000">=</span><span style="color:#000">i</span>))
+</span></span><span style="display:flex;"><span>            <span style="color:#000">mergbam</span><span style="color:#000">.</span><span style="color:#000">inports</span>[<span style="color:#c41a16">&#39;sam&#39;</span>] <span style="color:#000">=</span> <span style="color:#000">merg</span><span style="color:#000">.</span><span style="color:#000">outport</span>(<span style="color:#c41a16">&#39;merged&#39;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#008000"># Step 4b in [1] -----------------------------------------------------------------</span>
-</span></span><span style="display:flex;"><span>            index_mergbam = shell(<span style="color:#a31515">&#39;&#39;&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">            java -Xmx2g -jar
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                /sw/apps/bioinfo/picard/1.69/kalkyl/BuildBamIndex.jar
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                INPUT=&lt;i:bamr
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                # &lt;o:bai:&lt;i:bam:.bam|.bai&gt;&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">            &#39;&#39;&#39;</span>)
-</span></span><span style="display:flex;"><span>            index_mergbam.inports[<span style="color:#a31515">&#39;bam&#39;</span>] = mergbam.outport(<span style="color:#a31515">&#39;bam&#39;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#177500"># Step 4b in [1] -----------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000">index_mergbam</span> <span style="color:#000">=</span> <span style="color:#000">shell</span>(<span style="color:#c41a16">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">            java -Xmx2g -jar
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                /sw/apps/bioinfo/picard/1.69/kalkyl/BuildBamIndex.jar
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                INPUT=&lt;i:bamr
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                # &lt;o:bai:&lt;i:bam:.bam|.bai&gt;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">            &#39;&#39;&#39;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#000">index_mergbam</span><span style="color:#000">.</span><span style="color:#000">inports</span>[<span style="color:#c41a16">&#39;bam&#39;</span>] <span style="color:#000">=</span> <span style="color:#000">mergbam</span><span style="color:#000">.</span><span style="color:#000">outport</span>(<span style="color:#c41a16">&#39;bam&#39;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#008000"># Step 5a in [1]------------------------------------------------------------------</span>
-</span></span><span style="display:flex;"><span>            local_realign = shell(<span style="color:#a31515">&#39;&#39;&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">            java -Xmx2g -jar /sw/apps/bioinfo/GATK/1.5.21/GenomeAnalysisTK.jar
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                -I &lt;i:bam&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                -R </span><span style="color:#a31515">{ref}</span><span style="color:#a31515">
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                -T RealignerTargetCreator
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                -o &lt;o:intervals:&lt;i:bam&gt;.intervals&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">            &#39;&#39;&#39;</span>.format(
-</span></span><span style="display:flex;"><span>               ref=REF))
-</span></span><span style="display:flex;"><span>            local_realign.inports[<span style="color:#a31515">&#39;bam&#39;</span>] = mergbam.outport(<span style="color:#a31515">&#39;bam&#39;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#177500"># Step 5a in [1]------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000">local_realign</span> <span style="color:#000">=</span> <span style="color:#000">shell</span>(<span style="color:#c41a16">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">            java -Xmx2g -jar /sw/apps/bioinfo/GATK/1.5.21/GenomeAnalysisTK.jar
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                -I &lt;i:bam&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                -R </span><span style="color:#c41a16">{ref}</span><span style="color:#c41a16">
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                -T RealignerTargetCreator
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                -o &lt;o:intervals:&lt;i:bam&gt;.intervals&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">            &#39;&#39;&#39;</span><span style="color:#000">.</span><span style="color:#000">format</span>(
+</span></span><span style="display:flex;"><span>               <span style="color:#000">ref</span><span style="color:#000">=</span><span style="color:#000">REF</span>))
+</span></span><span style="display:flex;"><span>            <span style="color:#000">local_realign</span><span style="color:#000">.</span><span style="color:#000">inports</span>[<span style="color:#c41a16">&#39;bam&#39;</span>] <span style="color:#000">=</span> <span style="color:#000">mergbam</span><span style="color:#000">.</span><span style="color:#000">outport</span>(<span style="color:#c41a16">&#39;bam&#39;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#008000"># Step 5b in [1]-----------------------------------------------------------------</span>
-</span></span><span style="display:flex;"><span>            actual_realign = shell(<span style="color:#a31515">&#39;&#39;&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">            java -Xmx2g -jar /sw/apps/bioinfo/GATK/1.5.21/GenomeAnalysisTK.jar
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                -I &lt;i:bam&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                -R </span><span style="color:#a31515">{ref}</span><span style="color:#a31515">
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                -T IndelRealigner
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                -o &lt;o:realigned_bam:&lt;i:intervals&gt;.realign.bam&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                -targetIntervals &lt;i:intervals&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                # &lt;o:realigned_bai:&lt;i:intervals&gt;.realign.bai&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">            &#39;&#39;&#39;</span>.format(
-</span></span><span style="display:flex;"><span>                ref=REF))
-</span></span><span style="display:flex;"><span>            actual_realign.inports[<span style="color:#a31515">&#39;bam&#39;</span>] = mergbam.outport(<span style="color:#a31515">&#39;bam&#39;</span>)
-</span></span><span style="display:flex;"><span>            actual_realign.inports[<span style="color:#a31515">&#39;intervals&#39;</span>] = local_realign.outport(<span style="color:#a31515">&#39;intervals&#39;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#177500"># Step 5b in [1]-----------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000">actual_realign</span> <span style="color:#000">=</span> <span style="color:#000">shell</span>(<span style="color:#c41a16">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">            java -Xmx2g -jar /sw/apps/bioinfo/GATK/1.5.21/GenomeAnalysisTK.jar
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                -I &lt;i:bam&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                -R </span><span style="color:#c41a16">{ref}</span><span style="color:#c41a16">
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                -T IndelRealigner
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                -o &lt;o:realigned_bam:&lt;i:intervals&gt;.realign.bam&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                -targetIntervals &lt;i:intervals&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                # &lt;o:realigned_bai:&lt;i:intervals&gt;.realign.bai&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">            &#39;&#39;&#39;</span><span style="color:#000">.</span><span style="color:#000">format</span>(
+</span></span><span style="display:flex;"><span>                <span style="color:#000">ref</span><span style="color:#000">=</span><span style="color:#000">REF</span>))
+</span></span><span style="display:flex;"><span>            <span style="color:#000">actual_realign</span><span style="color:#000">.</span><span style="color:#000">inports</span>[<span style="color:#c41a16">&#39;bam&#39;</span>] <span style="color:#000">=</span> <span style="color:#000">mergbam</span><span style="color:#000">.</span><span style="color:#000">outport</span>(<span style="color:#c41a16">&#39;bam&#39;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#000">actual_realign</span><span style="color:#000">.</span><span style="color:#000">inports</span>[<span style="color:#c41a16">&#39;intervals&#39;</span>] <span style="color:#000">=</span> <span style="color:#000">local_realign</span><span style="color:#000">.</span><span style="color:#000">outport</span>(<span style="color:#c41a16">&#39;intervals&#39;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#008000"># Step 5c in [1]-----------------------------------------------------------------</span>
-</span></span><span style="display:flex;"><span>            mark_dupes = shell(<span style="color:#a31515">&#39;&#39;&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">            java -Xmx2g -jar /sw/apps/bioinfo/picard/1.69/kalkyl/MarkDuplicates.jar &#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                INPUT=&lt;i:bam&gt; &#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                OUTPUT=&lt;o:marked_bam:&lt;i:bam&gt;.marked.bam&gt; &#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                METRICS_FILE=&lt;o:metrics:&lt;i:bam&gt;.marked.metrics&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">            &#39;&#39;&#39;</span>)
-</span></span><span style="display:flex;"><span>            mark_dupes.inports[<span style="color:#a31515">&#39;bam&#39;</span>] = actual_realign.outport(<span style="color:#a31515">&#39;realigned_bam&#39;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#177500"># Step 5c in [1]-----------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000">mark_dupes</span> <span style="color:#000">=</span> <span style="color:#000">shell</span>(<span style="color:#c41a16">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">            java -Xmx2g -jar /sw/apps/bioinfo/picard/1.69/kalkyl/MarkDuplicates.jar &#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                INPUT=&lt;i:bam&gt; &#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                OUTPUT=&lt;o:marked_bam:&lt;i:bam&gt;.marked.bam&gt; &#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                METRICS_FILE=&lt;o:metrics:&lt;i:bam&gt;.marked.metrics&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">            &#39;&#39;&#39;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#000">mark_dupes</span><span style="color:#000">.</span><span style="color:#000">inports</span>[<span style="color:#c41a16">&#39;bam&#39;</span>] <span style="color:#000">=</span> <span style="color:#000">actual_realign</span><span style="color:#000">.</span><span style="color:#000">outport</span>(<span style="color:#c41a16">&#39;realigned_bam&#39;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#008000"># Step 5d in [1], Index bam (picard does not do that automatically)---------------</span>
-</span></span><span style="display:flex;"><span>            index_marked_bam = shell((<span style="color:#a31515">&#39;java -Xmx2g -jar &#39;</span>
-</span></span><span style="display:flex;"><span>                                 <span style="color:#a31515">&#39;/sw/apps/bioinfo/picard/1.69/kalkyl/BuildBamIndex.jar &#39;</span>
-</span></span><span style="display:flex;"><span>                                 <span style="color:#a31515">&#39;INPUT=&lt;i:bam&gt; &#39;</span>
-</span></span><span style="display:flex;"><span>                                 <span style="color:#a31515">&#39;# &lt;o:bai:&lt;i:bam:.bam|.bai&gt;&gt;&#39;</span>))
-</span></span><span style="display:flex;"><span>            index_marked_bam.inports[<span style="color:#a31515">&#39;bam&#39;</span>] = mark_dupes.outport(<span style="color:#a31515">&#39;marked_bam&#39;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#177500"># Step 5d in [1], Index bam (picard does not do that automatically)---------------</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000">index_marked_bam</span> <span style="color:#000">=</span> <span style="color:#000">shell</span>((<span style="color:#c41a16">&#39;java -Xmx2g -jar &#39;</span>
+</span></span><span style="display:flex;"><span>                                 <span style="color:#c41a16">&#39;/sw/apps/bioinfo/picard/1.69/kalkyl/BuildBamIndex.jar &#39;</span>
+</span></span><span style="display:flex;"><span>                                 <span style="color:#c41a16">&#39;INPUT=&lt;i:bam&gt; &#39;</span>
+</span></span><span style="display:flex;"><span>                                 <span style="color:#c41a16">&#39;# &lt;o:bai:&lt;i:bam:.bam|.bai&gt;&gt;&#39;</span>))
+</span></span><span style="display:flex;"><span>            <span style="color:#000">index_marked_bam</span><span style="color:#000">.</span><span style="color:#000">inports</span>[<span style="color:#c41a16">&#39;bam&#39;</span>] <span style="color:#000">=</span> <span style="color:#000">mark_dupes</span><span style="color:#000">.</span><span style="color:#000">outport</span>(<span style="color:#c41a16">&#39;marked_bam&#39;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#008000"># Step 5e in [1], quality recalibration with GATK---------------------------------</span>
-</span></span><span style="display:flex;"><span>            count_covar = shell(<span style="color:#a31515">&#39;&#39;&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">            java -Xmx2g -jar /sw/apps/bioinfo/GATK/1.5.21/GenomeAnalysisTK.jar
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                -T CountCovariates -I &lt;i:bam&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                -R </span><span style="color:#a31515">{ref}</span><span style="color:#a31515">
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                -knownSites </span><span style="color:#a31515">{sites}</span><span style="color:#a31515">
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                -cov ReadGroupCovariate
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                -cov CycleCovariate
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                -cov DinucCovariate
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                -cov QualityScoreCovariate
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                -recalFile &lt;o:covariate:&lt;i:bam&gt;.covar&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">            &#39;&#39;&#39;</span>.format(
-</span></span><span style="display:flex;"><span>                ref=REF,
-</span></span><span style="display:flex;"><span>                sites=KNOWNSITES))
-</span></span><span style="display:flex;"><span>            count_covar.inports[<span style="color:#a31515">&#39;bam&#39;</span>] = mark_dupes.outport(<span style="color:#a31515">&#39;marked_bam&#39;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#177500"># Step 5e in [1], quality recalibration with GATK---------------------------------</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000">count_covar</span> <span style="color:#000">=</span> <span style="color:#000">shell</span>(<span style="color:#c41a16">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">            java -Xmx2g -jar /sw/apps/bioinfo/GATK/1.5.21/GenomeAnalysisTK.jar
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                -T CountCovariates -I &lt;i:bam&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                -R </span><span style="color:#c41a16">{ref}</span><span style="color:#c41a16">
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                -knownSites </span><span style="color:#c41a16">{sites}</span><span style="color:#c41a16">
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                -cov ReadGroupCovariate
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                -cov CycleCovariate
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                -cov DinucCovariate
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                -cov QualityScoreCovariate
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                -recalFile &lt;o:covariate:&lt;i:bam&gt;.covar&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">            &#39;&#39;&#39;</span><span style="color:#000">.</span><span style="color:#000">format</span>(
+</span></span><span style="display:flex;"><span>                <span style="color:#000">ref</span><span style="color:#000">=</span><span style="color:#000">REF</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#000">sites</span><span style="color:#000">=</span><span style="color:#000">KNOWNSITES</span>))
+</span></span><span style="display:flex;"><span>            <span style="color:#000">count_covar</span><span style="color:#000">.</span><span style="color:#000">inports</span>[<span style="color:#c41a16">&#39;bam&#39;</span>] <span style="color:#000">=</span> <span style="color:#000">mark_dupes</span><span style="color:#000">.</span><span style="color:#000">outport</span>(<span style="color:#c41a16">&#39;marked_bam&#39;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#008000"># Step 5f in [1]-----------------------------------------------------------------</span>
-</span></span><span style="display:flex;"><span>            table_recalib = shell(<span style="color:#a31515">&#39;&#39;&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">            java -Xmx2g -jar /sw/apps/bioinfo/GATK/1.5.21/GenomeAnalysisTK.jar
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                -T TableRecalibration
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                -I &lt;i:bam&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                -R </span><span style="color:#a31515">{ref}</span><span style="color:#a31515">
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                -recalFile &lt;i:calib&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                -o &lt;o:calibrated_bam:&lt;i:calib&gt;.bam&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">            &#39;&#39;&#39;</span>.format(ref=REF))
-</span></span><span style="display:flex;"><span>            table_recalib.inports[<span style="color:#a31515">&#39;bam&#39;</span>] = mark_dupes.outport(<span style="color:#a31515">&#39;marked_bam&#39;</span>)
-</span></span><span style="display:flex;"><span>            table_recalib.inports[<span style="color:#a31515">&#39;calib&#39;</span>] = count_covar.outport(<span style="color:#a31515">&#39;covariate&#39;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#177500"># Step 5f in [1]-----------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000">table_recalib</span> <span style="color:#000">=</span> <span style="color:#000">shell</span>(<span style="color:#c41a16">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">            java -Xmx2g -jar /sw/apps/bioinfo/GATK/1.5.21/GenomeAnalysisTK.jar
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                -T TableRecalibration
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                -I &lt;i:bam&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                -R </span><span style="color:#c41a16">{ref}</span><span style="color:#c41a16">
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                -recalFile &lt;i:calib&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                -o &lt;o:calibrated_bam:&lt;i:calib&gt;.bam&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">            &#39;&#39;&#39;</span><span style="color:#000">.</span><span style="color:#000">format</span>(<span style="color:#000">ref</span><span style="color:#000">=</span><span style="color:#000">REF</span>))
+</span></span><span style="display:flex;"><span>            <span style="color:#000">table_recalib</span><span style="color:#000">.</span><span style="color:#000">inports</span>[<span style="color:#c41a16">&#39;bam&#39;</span>] <span style="color:#000">=</span> <span style="color:#000">mark_dupes</span><span style="color:#000">.</span><span style="color:#000">outport</span>(<span style="color:#c41a16">&#39;marked_bam&#39;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#000">table_recalib</span><span style="color:#000">.</span><span style="color:#000">inports</span>[<span style="color:#c41a16">&#39;calib&#39;</span>] <span style="color:#000">=</span> <span style="color:#000">count_covar</span><span style="color:#000">.</span><span style="color:#000">outport</span>(<span style="color:#c41a16">&#39;covariate&#39;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#00f">yield</span> table_recalib
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">yield</span> <span style="color:#000">table_recalib</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">if</span> __name__ == <span style="color:#a31515">&#39;__main__&#39;</span>:
-</span></span><span style="display:flex;"><span>    luigi.run()
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">if</span> <span style="color:#000">__name__</span> <span style="color:#000">==</span> <span style="color:#c41a16">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#000">luigi</span><span style="color:#000">.</span><span style="color:#000">run</span>()
 </span></span></code></pre></div><p>I think in this example it becomes clear that the actual <strong>data flow</strong>
 in the system, is much more intricate than just the <strong>dependencies
 between tasks,</strong> and that the latter, tasks dependencies only, don&rsquo;t

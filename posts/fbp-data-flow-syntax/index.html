@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>FBP inspired data flow syntax: The missing piece for the success of functional programming? | Living Systems</title>
+<title>FBP inspired data flow syntax: The missing piece for the success of functional programming? | Living Systems_</title>
 
-      <link rel="stylesheet" href="/css/main.min.0dd62280a0c008a6369ab81bd9d63c41bf7e4b5e9377c4a60df43868258f1db5.css" integrity="sha256-DdYigKDACKY2mrgb2dY8Qb9&#43;S16Td8SmDfQ4aCWPHbU=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.c08730684592e72120b7bb901ae1fdf20ffab2cedb2d273d4cef0381e0e558aa.css" integrity="sha256-wIcwaEWS5yEgt7uQGuH98g/6ss7bLSc9TO8DgeDlWKo=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -15,7 +15,7 @@
 </head>
 <body>
   <header>
-    <h1>Living Systems</h1>
+    <h1>Living Systems_</h1>
 
   <nav>
     <ul>
@@ -99,15 +99,15 @@ functional language, but featuring constructs commonly referred to as
 &ldquo;functional&rdquo;). More exactly, let&rsquo;s look at how a bunch of
 lazy-evaluating python generator objects are chained together to form a
 sequential, lazy-evaluated, processing pipeline:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#008000"># Create a generator object using generator-comprehension syntax</span>
-</span></span><span style="display:flex;"><span>gen_his = (<span style="color:#a31515">&#39;hi for the </span><span style="color:#a31515">%d</span><span style="color:#a31515">:th time!&#39;</span> % i <span style="color:#00f">for</span> i <span style="color:#00f">in</span> xrange(10))
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#177500"># Create a generator object using generator-comprehension syntax</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">gen_his</span> <span style="color:#000">=</span> (<span style="color:#c41a16">&#39;hi for the </span><span style="color:#c41a16">%d</span><span style="color:#c41a16">:th time!&#39;</span> <span style="color:#000">%</span> <span style="color:#000">i</span> <span style="color:#a90d91">for</span> <span style="color:#000">i</span> <span style="color:#000">in</span> <span style="color:#000">xrange</span>(<span style="color:#1c01ce">10</span>))
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># Create a generator that upper-cases the strings lazy-evaluatedly:</span>
-</span></span><span style="display:flex;"><span>gen_uc_his = (s.upper() <span style="color:#00f">for</span> s <span style="color:#00f">in</span> gen_his)
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Create a generator that upper-cases the strings lazy-evaluatedly:</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">gen_uc_his</span> <span style="color:#000">=</span> (<span style="color:#000">s</span><span style="color:#000">.</span><span style="color:#000">upper</span>() <span style="color:#a90d91">for</span> <span style="color:#000">s</span> <span style="color:#000">in</span> <span style="color:#000">gen_his</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># Let&#39;s print this:</span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">for</span> s <span style="color:#00f">in</span> gen_uc_his:
-</span></span><span style="display:flex;"><span>  print(s)
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Let&#39;s print this:</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">for</span> <span style="color:#000">s</span> <span style="color:#000">in</span> <span style="color:#000">gen_uc_his</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">print</span>(<span style="color:#000">s</span>)
 </span></span></code></pre></div><p>This looks all fine for a simple linear pipeline like this:</p>
 <pre tabindex="0"><code>[String producer] -&gt; [String uppercaser] -&gt; [String printer]
 </code></pre><p>But what if
@@ -116,18 +116,18 @@ in two halves, and send the first part to a lower-caser, and the rest to
 an upper-caser (sorry for the exceedingly synthetic example)? How do you
 express that with generator functions? You would have to call the same
 generator twice, something like:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#008000"># Create a generator object using generator-comprehension syntax:</span>
-</span></span><span style="display:flex;"><span>gen_his = (<span style="color:#a31515">&#39;hi for the </span><span style="color:#a31515">%d</span><span style="color:#a31515">:th time!&#39;</span> % i <span style="color:#00f">for</span> i <span style="color:#00f">in</span> xrange(10))
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#177500"># Create a generator object using generator-comprehension syntax:</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">gen_his</span> <span style="color:#000">=</span> (<span style="color:#c41a16">&#39;hi for the </span><span style="color:#c41a16">%d</span><span style="color:#c41a16">:th time!&#39;</span> <span style="color:#000">%</span> <span style="color:#000">i</span> <span style="color:#a90d91">for</span> <span style="color:#000">i</span> <span style="color:#000">in</span> <span style="color:#000">xrange</span>(<span style="color:#1c01ce">10</span>))
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># Create a generator that returns the first and second half of each string:</span>
-</span></span><span style="display:flex;"><span>gen_splitted_his = ((s[len(s)//2:], s[:len(s)//2]) <span style="color:#00f">for</span> s <span style="color:#00f">in</span> gen_his)
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Create a generator that returns the first and second half of each string:</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">gen_splitted_his</span> <span style="color:#000">=</span> ((<span style="color:#000">s</span>[<span style="color:#a90d91">len</span>(<span style="color:#000">s</span>)<span style="color:#000">//</span><span style="color:#1c01ce">2</span>:], <span style="color:#000">s</span>[:<span style="color:#a90d91">len</span>(<span style="color:#000">s</span>)<span style="color:#000">//</span><span style="color:#1c01ce">2</span>]) <span style="color:#a90d91">for</span> <span style="color:#000">s</span> <span style="color:#000">in</span> <span style="color:#000">gen_his</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># Create a generator that lower-cases the left half of the strings:</span>
-</span></span><span style="display:flex;"><span>gen_lc_his = (left.lower() <span style="color:#00f">for</span> left, right <span style="color:#00f">in</span> gen_splitted_his)
-</span></span><span style="display:flex;"><span><span style="color:#008000"># Create a generator that upper-cases the left right of the strings:</span>
-</span></span><span style="display:flex;"><span>gen_uc_his = (right.upper() <span style="color:#00f">for</span> left, right <span style="color:#00f">in</span> gen_splitted_his)
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Create a generator that lower-cases the left half of the strings:</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">gen_lc_his</span> <span style="color:#000">=</span> (<span style="color:#000">left</span><span style="color:#000">.</span><span style="color:#000">lower</span>() <span style="color:#a90d91">for</span> <span style="color:#000">left</span>, <span style="color:#000">right</span> <span style="color:#000">in</span> <span style="color:#000">gen_splitted_his</span>)
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Create a generator that upper-cases the left right of the strings:</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">gen_uc_his</span> <span style="color:#000">=</span> (<span style="color:#000">right</span><span style="color:#000">.</span><span style="color:#000">upper</span>() <span style="color:#a90d91">for</span> <span style="color:#000">left</span>, <span style="color:#000">right</span> <span style="color:#000">in</span> <span style="color:#000">gen_splitted_his</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># Printing omitted here for brevity.</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Printing omitted here for brevity.</span>
 </span></span></code></pre></div><p>But, this will produce an error, since running a generator function
 twice is not allowed, and this would not re-use the same items in memory
 anyway, which is kind of the main point with stream processing. Also, do
@@ -143,30 +143,30 @@ upstream generator functions. We could go a little more
 generator as an argument to a function that returning a generator (which
 is defined by using the &ldquo;yield&rdquo; keyword instead of &ldquo;return&rdquo;, in the
 normal python function definition syntax):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#008000"># Create a generator object using generator-comprehension syntax:</span>
-</span></span><span style="display:flex;"><span>gen_his = (<span style="color:#a31515">&#39;hi for the </span><span style="color:#a31515">%d</span><span style="color:#a31515">:th time!&#39;</span> % i <span style="color:#00f">for</span> i <span style="color:#00f">in</span> xrange(10))
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#177500"># Create a generator object using generator-comprehension syntax:</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">gen_his</span> <span style="color:#000">=</span> (<span style="color:#c41a16">&#39;hi for the </span><span style="color:#c41a16">%d</span><span style="color:#c41a16">:th time!&#39;</span> <span style="color:#000">%</span> <span style="color:#000">i</span> <span style="color:#a90d91">for</span> <span style="color:#000">i</span> <span style="color:#000">in</span> <span style="color:#000">xrange</span>(<span style="color:#1c01ce">10</span>))
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># Create a generator that returns the first and second half of each string:</span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">def</span> gen_splitted_his(upstream_generator):
-</span></span><span style="display:flex;"><span>  <span style="color:#00f">for</span> s <span style="color:#00f">in</span> upstream_generator:
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">yield</span> (s[len(s)//2:], s[:len(s)//2])
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Create a generator that returns the first and second half of each string:</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">def</span> <span style="color:#000">gen_splitted_his</span>(<span style="color:#000">upstream_generator</span>):
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">for</span> <span style="color:#000">s</span> <span style="color:#000">in</span> <span style="color:#000">upstream_generator</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">yield</span> (<span style="color:#000">s</span>[<span style="color:#a90d91">len</span>(<span style="color:#000">s</span>)<span style="color:#000">//</span><span style="color:#1c01ce">2</span>:], <span style="color:#000">s</span>[:<span style="color:#a90d91">len</span>(<span style="color:#000">s</span>)<span style="color:#000">//</span><span style="color:#1c01ce">2</span>])
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># Create a generator that lower-cases the left half of the strings:</span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">def</span> gen_lc_his(upstream_generator):
-</span></span><span style="display:flex;"><span>  <span style="color:#00f">for</span> left, right <span style="color:#00f">in</span> upstream_generator:
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">yield</span> left.lower()
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Create a generator that lower-cases the left half of the strings:</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">def</span> <span style="color:#000">gen_lc_his</span>(<span style="color:#000">upstream_generator</span>):
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">for</span> <span style="color:#000">left</span>, <span style="color:#000">right</span> <span style="color:#000">in</span> <span style="color:#000">upstream_generator</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">yield</span> <span style="color:#000">left</span><span style="color:#000">.</span><span style="color:#000">lower</span>()
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># Create a generator that upper-cases the left right of the strings:</span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">def</span> gen_uc_his(upstream_generator):
-</span></span><span style="display:flex;"><span>  <span style="color:#00f">for</span> left, right <span style="color:#00f">in</span> upstream_generator:
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">yield</span> right.upper()
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Create a generator that upper-cases the left right of the strings:</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">def</span> <span style="color:#000">gen_uc_his</span>(<span style="color:#000">upstream_generator</span>):
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">for</span> <span style="color:#000">left</span>, <span style="color:#000">right</span> <span style="color:#000">in</span> <span style="color:#000">upstream_generator</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">yield</span> <span style="color:#000">right</span><span style="color:#000">.</span><span style="color:#000">upper</span>()
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># Chain the generators together using dependency injection</span>
-</span></span><span style="display:flex;"><span>splitted_his = gen_splitted_his(gen_his)
-</span></span><span style="display:flex;"><span>lc_his = gen_lc_his(splitted_his)
-</span></span><span style="display:flex;"><span>uc_his = gen_uc_his(splitted_his)
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Chain the generators together using dependency injection</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">splitted_his</span> <span style="color:#000">=</span> <span style="color:#000">gen_splitted_his</span>(<span style="color:#000">gen_his</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000">lc_his</span> <span style="color:#000">=</span> <span style="color:#000">gen_lc_his</span>(<span style="color:#000">splitted_his</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000">uc_his</span> <span style="color:#000">=</span> <span style="color:#000">gen_uc_his</span>(<span style="color:#000">splitted_his</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># Now, we would loop over lc_his and uc_his separately, to print</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Now, we would loop over lc_his and uc_his separately, to print</span>
 </span></span></code></pre></div><p>So, using dependency injection, we have removed the hard-coded dependency
 between the generators. But we still have a kind of &ldquo;API&rdquo; or &ldquo;signature&rdquo;
 dependency between the <code>gen_splitted_his</code> and <code>gen_{us,lc}_his</code>, in that the
@@ -198,67 +198,67 @@ examples</a>
 those two links for concrete real-world code examples, but just to
 illustrate how to the above toy code example could look like in vanilla
 python, with a little imagination:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#008000"># Create an FBP process that generates Hi&#39;s:</span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">GenerateHis</span>(FBPProcess):
-</span></span><span style="display:flex;"><span>  <span style="color:#008000"># Define in/out-ports</span>
-</span></span><span style="display:flex;"><span>  his = OutPort()
-</span></span><span style="display:flex;"><span>  <span style="color:#008000"># Define main routine</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#00f">def</span> run(self):
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">for</span> i <span style="color:#00f">in</span> range(10):
-</span></span><span style="display:flex;"><span>      self.his.send(<span style="color:#a31515">&#39;hi for the </span><span style="color:#a31515">%d</span><span style="color:#a31515">:th time!&#39;</span> % i)
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#177500"># Create an FBP process that generates Hi&#39;s:</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">GenerateHis</span>(<span style="color:#000">FBPProcess</span>):
+</span></span><span style="display:flex;"><span>  <span style="color:#177500"># Define in/out-ports</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">his</span> <span style="color:#000">=</span> <span style="color:#000">OutPort</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#177500"># Define main routine</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">def</span> <span style="color:#000">run</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">for</span> <span style="color:#000">i</span> <span style="color:#000">in</span> <span style="color:#a90d91">range</span>(<span style="color:#1c01ce">10</span>):
+</span></span><span style="display:flex;"><span>      <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">his</span><span style="color:#000">.</span><span style="color:#000">send</span>(<span style="color:#c41a16">&#39;hi for the </span><span style="color:#c41a16">%d</span><span style="color:#c41a16">:th time!&#39;</span> <span style="color:#000">%</span> <span style="color:#000">i</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># Create an FBP process that splits strings into two halves:</span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">def</span> SplitStrings(FBPProcess):
-</span></span><span style="display:flex;"><span>  <span style="color:#008000"># Define in/out-ports</span>
-</span></span><span style="display:flex;"><span>  input = InPort()
-</span></span><span style="display:flex;"><span>  left_part = OutPort()
-</span></span><span style="display:flex;"><span>  right_part = OutPort()
-</span></span><span style="display:flex;"><span>  <span style="color:#008000"># Define main routine</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#00f">def</span> run(self):
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">for</span> s <span style="color:#00f">in</span> self.input.receive():
-</span></span><span style="display:flex;"><span>      self.left_part.send(s[len(s)//2:])
-</span></span><span style="display:flex;"><span>      self.right_part.send(s[:len(s)//2])
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Create an FBP process that splits strings into two halves:</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">def</span> <span style="color:#000">SplitStrings</span>(<span style="color:#000">FBPProcess</span>):
+</span></span><span style="display:flex;"><span>  <span style="color:#177500"># Define in/out-ports</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">input</span> <span style="color:#000">=</span> <span style="color:#000">InPort</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#000">left_part</span> <span style="color:#000">=</span> <span style="color:#000">OutPort</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#000">right_part</span> <span style="color:#000">=</span> <span style="color:#000">OutPort</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#177500"># Define main routine</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">def</span> <span style="color:#000">run</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">for</span> <span style="color:#000">s</span> <span style="color:#000">in</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">input</span><span style="color:#000">.</span><span style="color:#000">receive</span>():
+</span></span><span style="display:flex;"><span>      <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">left_part</span><span style="color:#000">.</span><span style="color:#000">send</span>(<span style="color:#000">s</span>[<span style="color:#a90d91">len</span>(<span style="color:#000">s</span>)<span style="color:#000">//</span><span style="color:#1c01ce">2</span>:])
+</span></span><span style="display:flex;"><span>      <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">right_part</span><span style="color:#000">.</span><span style="color:#000">send</span>(<span style="color:#000">s</span>[:<span style="color:#a90d91">len</span>(<span style="color:#000">s</span>)<span style="color:#000">//</span><span style="color:#1c01ce">2</span>])
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># Create a generator that lower-cases strings:</span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">LowercaseStrings</span>(FBPProcess):
-</span></span><span style="display:flex;"><span>  <span style="color:#008000"># Define in/out-ports</span>
-</span></span><span style="display:flex;"><span>  input = InPort()
-</span></span><span style="display:flex;"><span>  lowercased = OutPort()
-</span></span><span style="display:flex;"><span>  <span style="color:#008000"># Define main routine</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#00f">def</span> run(self):
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">for</span> s <span style="color:#00f">in</span> self.input_string.receive():
-</span></span><span style="display:flex;"><span>      self.lowercased.send(s.lower())
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Create a generator that lower-cases strings:</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">LowercaseStrings</span>(<span style="color:#000">FBPProcess</span>):
+</span></span><span style="display:flex;"><span>  <span style="color:#177500"># Define in/out-ports</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">input</span> <span style="color:#000">=</span> <span style="color:#000">InPort</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#000">lowercased</span> <span style="color:#000">=</span> <span style="color:#000">OutPort</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#177500"># Define main routine</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">def</span> <span style="color:#000">run</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">for</span> <span style="color:#000">s</span> <span style="color:#000">in</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">input_string</span><span style="color:#000">.</span><span style="color:#000">receive</span>():
+</span></span><span style="display:flex;"><span>      <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">lowercased</span><span style="color:#000">.</span><span style="color:#000">send</span>(<span style="color:#000">s</span><span style="color:#000">.</span><span style="color:#000">lower</span>())
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># Create a generator that lower-cases strings:</span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">UppercaseStrings</span>(FBPProcess):
-</span></span><span style="display:flex;"><span>  <span style="color:#008000"># Define in/out-ports</span>
-</span></span><span style="display:flex;"><span>  input = InPort()
-</span></span><span style="display:flex;"><span>  uppercased = OutPort()
-</span></span><span style="display:flex;"><span>  <span style="color:#008000"># Define main routine</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#00f">def</span> run(self):
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">for</span> s <span style="color:#00f">in</span> self.input_string.receive():
-</span></span><span style="display:flex;"><span>      self.uppercased.send(s.upper())
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Create a generator that lower-cases strings:</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">class</span> <span style="color:#3f6e75">UppercaseStrings</span>(<span style="color:#000">FBPProcess</span>):
+</span></span><span style="display:flex;"><span>  <span style="color:#177500"># Define in/out-ports</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">input</span> <span style="color:#000">=</span> <span style="color:#000">InPort</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#000">uppercased</span> <span style="color:#000">=</span> <span style="color:#000">OutPort</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#177500"># Define main routine</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">def</span> <span style="color:#000">run</span>(<span style="color:#5b269a">self</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">for</span> <span style="color:#000">s</span> <span style="color:#000">in</span> <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">input_string</span><span style="color:#000">.</span><span style="color:#000">receive</span>():
+</span></span><span style="display:flex;"><span>      <span style="color:#5b269a">self</span><span style="color:#000">.</span><span style="color:#000">uppercased</span><span style="color:#000">.</span><span style="color:#000">send</span>(<span style="color:#000">s</span><span style="color:#000">.</span><span style="color:#000">upper</span>())
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># Initiate ...</span>
-</span></span><span style="display:flex;"><span>hi_generator = GenerateHis()
-</span></span><span style="display:flex;"><span>splitter = SplitStrings()
-</span></span><span style="display:flex;"><span>uppercaser = UppercaseStrings()
-</span></span><span style="display:flex;"><span>lowercaser = LowercaseStrings()
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Initiate ...</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">hi_generator</span> <span style="color:#000">=</span> <span style="color:#000">GenerateHis</span>()
+</span></span><span style="display:flex;"><span><span style="color:#000">splitter</span> <span style="color:#000">=</span> <span style="color:#000">SplitStrings</span>()
+</span></span><span style="display:flex;"><span><span style="color:#000">uppercaser</span> <span style="color:#000">=</span> <span style="color:#000">UppercaseStrings</span>()
+</span></span><span style="display:flex;"><span><span style="color:#000">lowercaser</span> <span style="color:#000">=</span> <span style="color:#000">LowercaseStrings</span>()
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># ... and chain the FBP processes together, using single-assignment syntax:</span>
-</span></span><span style="display:flex;"><span>splitter.input = hi_generator.his
-</span></span><span style="display:flex;"><span>lowercaser.input = splitter.left_part
-</span></span><span style="display:flex;"><span>uppercaser.input = splitter.right_part
-</span></span><span style="display:flex;"><span><span style="color:#008000"># NOTE: The above three lines are kind of the gist of this whole post!! :)</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># ... and chain the FBP processes together, using single-assignment syntax:</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">splitter</span><span style="color:#000">.</span><span style="color:#000">input</span> <span style="color:#000">=</span> <span style="color:#000">hi_generator</span><span style="color:#000">.</span><span style="color:#000">his</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">lowercaser</span><span style="color:#000">.</span><span style="color:#000">input</span> <span style="color:#000">=</span> <span style="color:#000">splitter</span><span style="color:#000">.</span><span style="color:#000">left_part</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">uppercaser</span><span style="color:#000">.</span><span style="color:#000">input</span> <span style="color:#000">=</span> <span style="color:#000">splitter</span><span style="color:#000">.</span><span style="color:#000">right_part</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># NOTE: The above three lines are kind of the gist of this whole post!! :)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># Loop over the lower and upper-cased strings separately and print:</span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">for</span> s <span style="color:#00f">in</span> lowercaser.lowercased.receive():
-</span></span><span style="display:flex;"><span>  print(s)
-</span></span><span style="display:flex;"><span><span style="color:#00f">for</span> s <span style="color:#00f">in</span> uppercaser.uppercased.receive():
-</span></span><span style="display:flex;"><span>  print(s)
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Loop over the lower and upper-cased strings separately and print:</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">for</span> <span style="color:#000">s</span> <span style="color:#000">in</span> <span style="color:#000">lowercaser</span><span style="color:#000">.</span><span style="color:#000">lowercased</span><span style="color:#000">.</span><span style="color:#000">receive</span>():
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">print</span>(<span style="color:#000">s</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">for</span> <span style="color:#000">s</span> <span style="color:#000">in</span> <span style="color:#000">uppercaser</span><span style="color:#000">.</span><span style="color:#000">uppercased</span><span style="color:#000">.</span><span style="color:#000">receive</span>():
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">print</span>(<span style="color:#000">s</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># (Depending on implementation, the components might be added to a network</span>
-</span></span><span style="display:flex;"><span><span style="color:#008000">#  component too, that drives the execution of all the processes).</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># (Depending on implementation, the components might be added to a network</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500">#  component too, that drives the execution of all the processes).</span>
 </span></span></code></pre></div><p>So, do you see how now we have completely generic processes for
 lower-casing and upper-casing, without any dependencies on the number of
 outputs yielded by the upstream process? &hellip; and how the reason for

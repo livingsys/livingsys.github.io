@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>Crystal: Go-like concurrency with easier syntax | Living Systems</title>
+<title>Crystal: Go-like concurrency with easier syntax | Living Systems_</title>
 
-      <link rel="stylesheet" href="/css/main.min.0dd62280a0c008a6369ab81bd9d63c41bf7e4b5e9377c4a60df43868258f1db5.css" integrity="sha256-DdYigKDACKY2mrgb2dY8Qb9&#43;S16Td8SmDfQ4aCWPHbU=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.c08730684592e72120b7bb901ae1fdf20ffab2cedb2d273d4cef0381e0e558aa.css" integrity="sha256-wIcwaEWS5yEgt7uQGuH98g/6ss7bLSc9TO8DgeDlWKo=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -15,7 +15,7 @@
 </head>
 <body>
   <header>
-    <h1>Living Systems</h1>
+    <h1>Living Systems_</h1>
 
   <nav>
     <ul>
@@ -92,112 +92,112 @@ here</a>
 .</p>
 <h3 id="go-implementation">Go implementation</h3>
 <p>Here is the Go implementation:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#00f">package</span> main
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">package</span> <span style="color:#000">main</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">import</span> (
-</span></span><span style="display:flex;"><span>    <span style="color:#a31515">&#34;bufio&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a31515">&#34;fmt&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a31515">&#34;os&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;bufio&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;os&#34;</span>
 </span></span><span style="display:flex;"><span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">func</span> main() {
-</span></span><span style="display:flex;"><span>    lineChan := make(<span style="color:#00f">chan</span> <span style="color:#2b91af">string</span>, 16)
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">lineChan</span> <span style="color:#000">:=</span> <span style="color:#a90d91">make</span>(<span style="color:#a90d91">chan</span> <span style="color:#a90d91">string</span>, <span style="color:#1c01ce">16</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#008000">// ------------------------------------------------------------------------------
-</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>    <span style="color:#008000">// Loop over the input file in a separate fiber
-</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>    <span style="color:#008000">// ------------------------------------------------------------------------------
-</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>    <span style="color:#00f">go</span> <span style="color:#00f">func</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">defer</span> close(lineChan)
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// ------------------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#177500">// Loop over the input file in a separate fiber
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#177500">// ------------------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#177500"></span>    <span style="color:#a90d91">go</span> <span style="color:#a90d91">func</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">defer</span> <span style="color:#a90d91">close</span>(<span style="color:#000">lineChan</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        gcFile, err := os.Open(<span style="color:#a31515">&#34;Homo_sapiens.GRCh37.67.dna_rm.chromosome.Y.fa&#34;</span>)
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">defer</span> gcFile.Close()
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">if</span> err != <span style="color:#00f">nil</span> {
-</span></span><span style="display:flex;"><span>            panic(err)
+</span></span><span style="display:flex;"><span>        <span style="color:#000">gcFile</span>, <span style="color:#000">err</span> <span style="color:#000">:=</span> <span style="color:#000">os</span>.<span style="color:#000">Open</span>(<span style="color:#c41a16">&#34;Homo_sapiens.GRCh37.67.dna_rm.chromosome.Y.fa&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">defer</span> <span style="color:#000">gcFile</span>.<span style="color:#000">Close</span>()
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">if</span> <span style="color:#000">err</span> <span style="color:#000">!=</span> <span style="color:#a90d91">nil</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">panic</span>(<span style="color:#000">err</span>)
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        scan := bufio.NewScanner(gcFile)
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">for</span> scan.Scan() {
-</span></span><span style="display:flex;"><span>            line := scan.Text()
-</span></span><span style="display:flex;"><span>            lineChan &lt;- line
+</span></span><span style="display:flex;"><span>        <span style="color:#000">scan</span> <span style="color:#000">:=</span> <span style="color:#000">bufio</span>.<span style="color:#000">NewScanner</span>(<span style="color:#000">gcFile</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">for</span> <span style="color:#000">scan</span>.<span style="color:#000">Scan</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#000">line</span> <span style="color:#000">:=</span> <span style="color:#000">scan</span>.<span style="color:#000">Text</span>()
+</span></span><span style="display:flex;"><span>            <span style="color:#000">lineChan</span> <span style="color:#000">&lt;-</span> <span style="color:#000">line</span>
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }()
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    at := 0
-</span></span><span style="display:flex;"><span>    gc := 0
+</span></span><span style="display:flex;"><span>    <span style="color:#000">at</span> <span style="color:#000">:=</span> <span style="color:#1c01ce">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">gc</span> <span style="color:#000">:=</span> <span style="color:#1c01ce">0</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">for</span> line := <span style="color:#00f">range</span> lineChan {
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">if</span> line[0] == <span style="color:#a31515">&#39;&gt;&#39;</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#00f">continue</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">for</span> <span style="color:#000">line</span> <span style="color:#000">:=</span> <span style="color:#a90d91">range</span> <span style="color:#000">lineChan</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">if</span> <span style="color:#000">line</span>[<span style="color:#1c01ce">0</span>] <span style="color:#000">==</span> <span style="color:#2300ce">&#39;&gt;&#39;</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">continue</span>
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">for</span> _, chr := <span style="color:#00f">range</span> line {
-</span></span><span style="display:flex;"><span>            <span style="color:#00f">switch</span> chr {
-</span></span><span style="display:flex;"><span>            <span style="color:#00f">case</span> <span style="color:#a31515">&#39;A&#39;</span>, <span style="color:#a31515">&#39;T&#39;</span>:
-</span></span><span style="display:flex;"><span>                at += 1
-</span></span><span style="display:flex;"><span>                <span style="color:#00f">continue</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#00f">case</span> <span style="color:#a31515">&#39;G&#39;</span>, <span style="color:#a31515">&#39;C&#39;</span>:
-</span></span><span style="display:flex;"><span>                gc += 1
-</span></span><span style="display:flex;"><span>                <span style="color:#00f">continue</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">for</span> <span style="color:#000">_</span>, <span style="color:#000">chr</span> <span style="color:#000">:=</span> <span style="color:#a90d91">range</span> <span style="color:#000">line</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">switch</span> <span style="color:#000">chr</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">case</span> <span style="color:#2300ce">&#39;A&#39;</span>, <span style="color:#2300ce">&#39;T&#39;</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#000">at</span> <span style="color:#000">+=</span> <span style="color:#1c01ce">1</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#a90d91">continue</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a90d91">case</span> <span style="color:#2300ce">&#39;G&#39;</span>, <span style="color:#2300ce">&#39;C&#39;</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#000">gc</span> <span style="color:#000">+=</span> <span style="color:#1c01ce">1</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#a90d91">continue</span>
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">var</span> gcFrac <span style="color:#2b91af">float64</span>
-</span></span><span style="display:flex;"><span>    gcFrac = float64(gc) / float64(at+gc)
-</span></span><span style="display:flex;"><span>    fmt.Printf(<span style="color:#a31515">&#34;GC fraction: %f\n&#34;</span>, gcFrac)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">var</span> <span style="color:#000">gcFrac</span> <span style="color:#a90d91">float64</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">gcFrac</span> = <span style="color:#a90d91">float64</span>(<span style="color:#000">gc</span>) <span style="color:#000">/</span> <span style="color:#a90d91">float64</span>(<span style="color:#000">at</span><span style="color:#000">+</span><span style="color:#000">gc</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fmt</span>.<span style="color:#000">Printf</span>(<span style="color:#c41a16">&#34;GC fraction: %f\n&#34;</span>, <span style="color:#000">gcFrac</span>)
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Compile and run with e.g.:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>GOMAXPROCS=4; go build -o gcgo gc.go
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">GOMAXPROCS</span><span style="color:#000">=</span>4; go build -o gcgo gc.go
 </span></span><span style="display:flex;"><span>./gcgo
 </span></span></code></pre></div><h3 id="crystal-implementation">Crystal implementation</h3>
 <p>&hellip; and here is the same functionality, implemented in Crystal:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-crystal" data-lang="crystal"><span style="display:flex;"><span>lines_chan = Channel(String).new(16)
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-crystal" data-lang="crystal"><span style="display:flex;"><span><span style="color:#000">lines_chan</span> <span style="color:#000">=</span> <span style="color:#a90d91">Channel</span>(<span style="color:#a90d91">String</span>)<span style="color:#000">.</span><span style="color:#000">new</span>(<span style="color:#1c01ce">16</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># ------------------------------------------------------------------------------</span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># Loop over the input file in a separate fiber (and thread, if you set the</span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># CRYSTAL_WORKERS count to something larger than 1), and send its output on a</span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># channel</span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># ------------------------------------------------------------------------------</span>
-</span></span><span style="display:flex;"><span>spawn <span style="color:#00f">do</span>
-</span></span><span style="display:flex;"><span>  gcfile = File.new(<span style="color:#a31515">&#34;Homo_sapiens.GRCh37.67.dna_rm.chromosome.Y.fa&#34;</span>)
-</span></span><span style="display:flex;"><span>  gcfile.each_line() <span style="color:#00f">do</span> |line|
-</span></span><span style="display:flex;"><span>    lines_chan.send(line)
-</span></span><span style="display:flex;"><span>  <span style="color:#00f">end</span>
-</span></span><span style="display:flex;"><span>  gcfile.close
-</span></span><span style="display:flex;"><span><span style="color:#00f">ensure</span>
-</span></span><span style="display:flex;"><span>  lines_chan.close
-</span></span><span style="display:flex;"><span><span style="color:#00f">end</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># ------------------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Loop over the input file in a separate fiber (and thread, if you set the</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># CRYSTAL_WORKERS count to something larger than 1), and send its output on a</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># channel</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># ------------------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span><span style="color:#5b269a">spawn</span> <span style="color:#a90d91">do</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">gcfile</span> <span style="color:#000">=</span> <span style="color:#a90d91">File</span><span style="color:#000">.</span><span style="color:#000">new</span>(<span style="color:#c41a16">&#34;Homo_sapiens.GRCh37.67.dna_rm.chromosome.Y.fa&#34;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#000">gcfile</span><span style="color:#000">.</span><span style="color:#000">each_line</span>() <span style="color:#a90d91">do</span> <span style="color:#000">|</span><span style="color:#000">line</span><span style="color:#000">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">lines_chan</span><span style="color:#000">.</span><span style="color:#000">send</span>(<span style="color:#000">line</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">end</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">gcfile</span><span style="color:#000">.</span><span style="color:#000">close</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">ensure</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">lines_chan</span><span style="color:#000">.</span><span style="color:#000">close</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">end</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># ------------------------------------------------------------------------------</span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># Loop over the lines on the channel in the main thread, and count GC fraction.</span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># ------------------------------------------------------------------------------</span>
-</span></span><span style="display:flex;"><span>at = 0
-</span></span><span style="display:flex;"><span>gc = 0
-</span></span><span style="display:flex;"><span><span style="color:#00f">while</span> line = lines_chan.receive?
-</span></span><span style="display:flex;"><span>  <span style="color:#00f">if</span> line.starts_with?(<span style="color:#a31515">&#39;&gt;&#39;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">next</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#00f">end</span>
-</span></span><span style="display:flex;"><span>  line.each_byte() <span style="color:#00f">do</span> |chr|
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">case</span> chr
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">when</span> <span style="color:#a31515">&#39;A&#39;</span>, <span style="color:#a31515">&#39;T&#39;</span>
-</span></span><span style="display:flex;"><span>      at += 1
-</span></span><span style="display:flex;"><span>      <span style="color:#00f">next</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">when</span> <span style="color:#a31515">&#39;G&#39;</span>, <span style="color:#a31515">&#39;C&#39;</span>
-</span></span><span style="display:flex;"><span>      gc += 1
-</span></span><span style="display:flex;"><span>      <span style="color:#00f">next</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">end</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#00f">end</span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">end</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># ------------------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Loop over the lines on the channel in the main thread, and count GC fraction.</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># ------------------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">at</span> <span style="color:#000">=</span> <span style="color:#1c01ce">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">gc</span> <span style="color:#000">=</span> <span style="color:#1c01ce">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">while</span> <span style="color:#000">line</span> <span style="color:#000">=</span> <span style="color:#000">lines_chan</span><span style="color:#000">.</span><span style="color:#000">receive?</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">if</span> <span style="color:#000">line</span><span style="color:#000">.</span><span style="color:#000">starts_with?</span>(<span style="color:#2300ce">&#39;&gt;&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">next</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">end</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">line</span><span style="color:#000">.</span><span style="color:#000">each_byte</span>() <span style="color:#a90d91">do</span> <span style="color:#000">|</span><span style="color:#000">chr</span><span style="color:#000">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">case</span> <span style="color:#000">chr</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">when</span> <span style="color:#2300ce">&#39;A&#39;</span>, <span style="color:#2300ce">&#39;T&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">at</span> <span style="color:#000">+=</span> <span style="color:#1c01ce">1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a90d91">next</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">when</span> <span style="color:#2300ce">&#39;G&#39;</span>, <span style="color:#2300ce">&#39;C&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">gc</span> <span style="color:#000">+=</span> <span style="color:#1c01ce">1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a90d91">next</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">end</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">end</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">end</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># ------------------------------------------------------------------------------</span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># Output results</span>
-</span></span><span style="display:flex;"><span><span style="color:#008000"># ------------------------------------------------------------------------------</span>
-</span></span><span style="display:flex;"><span>gcfrac = gc / (gc + at)
-</span></span><span style="display:flex;"><span>puts <span style="color:#a31515">&#34;GC fraction: </span><span style="color:#a31515">#{</span>gcfrac<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># ------------------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Output results</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># ------------------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">gcfrac</span> <span style="color:#000">=</span> <span style="color:#000">gc</span> <span style="color:#000">/</span> (<span style="color:#000">gc</span> <span style="color:#000">+</span> <span style="color:#000">at</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">puts</span> <span style="color:#c41a16">&#34;GC fraction: </span><span style="color:#c41a16">#{</span><span style="color:#000">gcfrac</span><span style="color:#c41a16">}</span><span style="color:#c41a16">&#34;</span>
 </span></span></code></pre></div><p>Note that to run the Crystal program with true multi-threading, you have
 to send a flag: <code>-Dpreview_mt</code>, to use it.</p>
 <p>Compile and run with e.g.:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>CRYSTAL_WORKERS=4; crystal build --release -Dpreview_mt -o gccr gc.cr
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">CRYSTAL_WORKERS</span><span style="color:#000">=</span>4; crystal build --release -Dpreview_mt -o gccr gc.cr
 </span></span><span style="display:flex;"><span>./gccr
 </span></span></code></pre></div><h3 id="some-differences">Some differences</h3>
 <p>We can note a few differences:</p>

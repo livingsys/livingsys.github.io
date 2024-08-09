@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>The unexpected convenience of JSON on the commandline | Living Systems</title>
+<title>The unexpected convenience of JSON on the commandline | Living Systems_</title>
 
-      <link rel="stylesheet" href="/css/main.min.0dd62280a0c008a6369ab81bd9d63c41bf7e4b5e9377c4a60df43868258f1db5.css" integrity="sha256-DdYigKDACKY2mrgb2dY8Qb9&#43;S16Td8SmDfQ4aCWPHbU=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.c08730684592e72120b7bb901ae1fdf20ffab2cedb2d273d4cef0381e0e558aa.css" integrity="sha256-wIcwaEWS5yEgt7uQGuH98g/6ss7bLSc9TO8DgeDlWKo=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -15,7 +15,7 @@
 </head>
 <body>
   <header>
-    <h1>Living Systems</h1>
+    <h1>Living Systems_</h1>
 
   <nav>
     <ul>
@@ -72,40 +72,40 @@ structure to and from a JSON string.</p>
 wranglers, I just wanted to illustrate just how easy this is:</p>
 <p>So, for example, reading some basic info and the body field (of Drupal
 7) from MySQL is as easy as:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00f">import</span> MySQLdb <span style="color:#00f">as</span> mdb
-</span></span><span style="display:flex;"><span><span style="color:#00f">import</span> json
-</span></span><span style="display:flex;"><span><span style="color:#00f">from</span> sys <span style="color:#00f">import</span> stdout
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">MySQLdb</span> <span style="color:#a90d91">as</span> <span style="color:#000">mdb</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">json</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">from</span> <span style="color:#000">sys</span> <span style="color:#a90d91">import</span> <span style="color:#000">stdout</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>con = mdb.connect([HOST], [USER], [PASS], [DB])
-</span></span><span style="display:flex;"><span>cur = con.cursor()
-</span></span><span style="display:flex;"><span>query = <span style="color:#a31515">&#39;&#39;&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">        SELECT n.nid, n.type, n.created, n.title, fdb.body_value
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">        FROM node AS n
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">        LEFT JOIN field_data_body AS fdb ON n.vid = fdb.revision_id
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">        &#39;&#39;&#39;</span>
-</span></span><span style="display:flex;"><span>cur.execute(query)
-</span></span><span style="display:flex;"><span>rows = cur.fetchall()
-</span></span><span style="display:flex;"><span><span style="color:#00f">for</span> row <span style="color:#00f">in</span> rows:
-</span></span><span style="display:flex;"><span>    rowinfo = [i.decode(<span style="color:#a31515">&#39;latin-1&#39;</span>) <span style="color:#00f">if</span> type(i) <span style="color:#00f">is</span> str <span style="color:#00f">else</span> i <span style="color:#00f">for</span> i <span style="color:#00f">in</span> row]
-</span></span><span style="display:flex;"><span>    pageinfo = {
-</span></span><span style="display:flex;"><span>            <span style="color:#a31515">&#39;Nid&#39;</span>: rowinfo[0],
-</span></span><span style="display:flex;"><span>            <span style="color:#a31515">&#39;NodeType&#39;</span>: rowinfo[1],
-</span></span><span style="display:flex;"><span>            <span style="color:#a31515">&#39;Created&#39;</span>: rowinfo[2],
-</span></span><span style="display:flex;"><span>            <span style="color:#a31515">&#39;Title&#39;</span>: rowinfo[3],
-</span></span><span style="display:flex;"><span>            <span style="color:#a31515">&#39;Body&#39;</span>: rowinfo[4],
+</span></span><span style="display:flex;"><span><span style="color:#000">con</span> <span style="color:#000">=</span> <span style="color:#000">mdb</span><span style="color:#000">.</span><span style="color:#000">connect</span>([<span style="color:#000">HOST</span>], [<span style="color:#000">USER</span>], [<span style="color:#000">PASS</span>], [<span style="color:#000">DB</span>])
+</span></span><span style="display:flex;"><span><span style="color:#000">cur</span> <span style="color:#000">=</span> <span style="color:#000">con</span><span style="color:#000">.</span><span style="color:#000">cursor</span>()
+</span></span><span style="display:flex;"><span><span style="color:#000">query</span> <span style="color:#000">=</span> <span style="color:#c41a16">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">        SELECT n.nid, n.type, n.created, n.title, fdb.body_value
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">        FROM node AS n
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">        LEFT JOIN field_data_body AS fdb ON n.vid = fdb.revision_id
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">        &#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">cur</span><span style="color:#000">.</span><span style="color:#000">execute</span>(<span style="color:#000">query</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000">rows</span> <span style="color:#000">=</span> <span style="color:#000">cur</span><span style="color:#000">.</span><span style="color:#000">fetchall</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">for</span> <span style="color:#000">row</span> <span style="color:#000">in</span> <span style="color:#000">rows</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#000">rowinfo</span> <span style="color:#000">=</span> [<span style="color:#000">i</span><span style="color:#000">.</span><span style="color:#000">decode</span>(<span style="color:#c41a16">&#39;latin-1&#39;</span>) <span style="color:#a90d91">if</span> <span style="color:#a90d91">type</span>(<span style="color:#000">i</span>) <span style="color:#000">is</span> <span style="color:#a90d91">str</span> <span style="color:#a90d91">else</span> <span style="color:#000">i</span> <span style="color:#a90d91">for</span> <span style="color:#000">i</span> <span style="color:#000">in</span> <span style="color:#000">row</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#000">pageinfo</span> <span style="color:#000">=</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#c41a16">&#39;Nid&#39;</span>: <span style="color:#000">rowinfo</span>[<span style="color:#1c01ce">0</span>],
+</span></span><span style="display:flex;"><span>            <span style="color:#c41a16">&#39;NodeType&#39;</span>: <span style="color:#000">rowinfo</span>[<span style="color:#1c01ce">1</span>],
+</span></span><span style="display:flex;"><span>            <span style="color:#c41a16">&#39;Created&#39;</span>: <span style="color:#000">rowinfo</span>[<span style="color:#1c01ce">2</span>],
+</span></span><span style="display:flex;"><span>            <span style="color:#c41a16">&#39;Title&#39;</span>: <span style="color:#000">rowinfo</span>[<span style="color:#1c01ce">3</span>],
+</span></span><span style="display:flex;"><span>            <span style="color:#c41a16">&#39;Body&#39;</span>: <span style="color:#000">rowinfo</span>[<span style="color:#1c01ce">4</span>],
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    stdout.write(json.dumps(pageinfo) + <span style="color:#a31515">&#39;</span><span style="color:#a31515">\n</span><span style="color:#a31515">&#39;</span>) <span style="color:#008000"># The newline is important here!</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">stdout</span><span style="color:#000">.</span><span style="color:#000">write</span>(<span style="color:#000">json</span><span style="color:#000">.</span><span style="color:#000">dumps</span>(<span style="color:#000">pageinfo</span>) <span style="color:#000">+</span> <span style="color:#c41a16">&#39;</span><span style="color:#c41a16">\n</span><span style="color:#c41a16">&#39;</span>) <span style="color:#177500"># The newline is important here!</span>
 </span></span></code></pre></div><p>But now, this is mostly MySQL stuff, so a smaller component might better
 demonstrate how little is needed to read from json. So, say that we want
 to change all occurances of &ldquo;node&rdquo; in NodeType to &ldquo;page&rdquo; (which is
 the more commonly used term for what Drupal calls a node):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00f">from</span> sys <span style="color:#00f">import</span> stdin, stdout
-</span></span><span style="display:flex;"><span><span style="color:#00f">import</span> json
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a90d91">from</span> <span style="color:#000">sys</span> <span style="color:#a90d91">import</span> <span style="color:#000">stdin</span>, <span style="color:#000">stdout</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">json</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">for</span> row <span style="color:#00f">in</span> stdin:
-</span></span><span style="display:flex;"><span>    r = json.loads(row)
-</span></span><span style="display:flex;"><span>    r[<span style="color:#a31515">&#39;NodeType&#39;</span>] = r[<span style="color:#a31515">&#39;NodeType&#39;</span>].replace(<span style="color:#a31515">&#39;node&#39;</span>, <span style="color:#a31515">&#39;page&#39;</span>)
-</span></span><span style="display:flex;"><span>    stdout.write(json.dumps(r) + <span style="color:#a31515">&#39;</span><span style="color:#a31515">\n</span><span style="color:#a31515">&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">for</span> <span style="color:#000">row</span> <span style="color:#000">in</span> <span style="color:#000">stdin</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#000">r</span> <span style="color:#000">=</span> <span style="color:#000">json</span><span style="color:#000">.</span><span style="color:#000">loads</span>(<span style="color:#000">row</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#000">r</span>[<span style="color:#c41a16">&#39;NodeType&#39;</span>] <span style="color:#000">=</span> <span style="color:#000">r</span>[<span style="color:#c41a16">&#39;NodeType&#39;</span>]<span style="color:#000">.</span><span style="color:#000">replace</span>(<span style="color:#c41a16">&#39;node&#39;</span>, <span style="color:#c41a16">&#39;page&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#000">stdout</span><span style="color:#000">.</span><span style="color:#000">write</span>(<span style="color:#000">json</span><span style="color:#000">.</span><span style="color:#000">dumps</span>(<span style="color:#000">r</span>) <span style="color:#000">+</span> <span style="color:#c41a16">&#39;</span><span style="color:#c41a16">\n</span><span style="color:#c41a16">&#39;</span>)
 </span></span></code></pre></div><p>So, this is what little is required to create a pipeable component
 working with JSON data, using python!</p>
 <p>So, now, we can use these two components together by just piping them,
@@ -122,7 +122,7 @@ grep, in one combined package for working with json objects.</p>
 just a simple example that would be usable here is to filter out just
 the NodeType field, to see that it became correctly replaced. This is
 easily achieved with jq:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>python extractsql.py | python replace.py | jq <span style="color:#a31515">&#39;.NodeType&#39;</span> | less -Si
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>python extractsql.py | python replace.py | jq <span style="color:#c41a16">&#39;.NodeType&#39;</span> | less -Si
 </span></span></code></pre></div><p>As simple as that. Check the <a href="https://stedolan.github.io/jq/manual/" target="_blank" rel="noopener">jq
 manual</a>
  for more usage info on

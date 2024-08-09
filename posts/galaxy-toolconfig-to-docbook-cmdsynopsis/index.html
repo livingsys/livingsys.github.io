@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>Partial Galaxy ToolConfig to DocBook CmdSynopsis conversion with XSLT RegEx | Living Systems</title>
+<title>Partial Galaxy ToolConfig to DocBook CmdSynopsis conversion with XSLT RegEx | Living Systems_</title>
 
-      <link rel="stylesheet" href="/css/main.min.0dd62280a0c008a6369ab81bd9d63c41bf7e4b5e9377c4a60df43868258f1db5.css" integrity="sha256-DdYigKDACKY2mrgb2dY8Qb9&#43;S16Td8SmDfQ4aCWPHbU=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.c08730684592e72120b7bb901ae1fdf20ffab2cedb2d273d4cef0381e0e558aa.css" integrity="sha256-wIcwaEWS5yEgt7uQGuH98g/6ss7bLSc9TO8DgeDlWKo=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -15,7 +15,7 @@
 </head>
 <body>
   <header>
-    <h1>Living Systems</h1>
+    <h1>Living Systems_</h1>
 
   <nav>
     <ul>
@@ -42,12 +42,12 @@
   <time datetime="2011-07-21T01:33:00&#43;02:00">July 21, 2011</time>
 
   <!-- raw HTML omitted -->
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>&lt;tool id=<span style="color:#a31515">&#34;sam_to_bam&#34;</span> name=<span style="color:#a31515">&#34;SAM-to-BAM&#34;</span> version=<span style="color:#a31515">&#34;1.1.1&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>  &lt;description&gt;converts SAM format to BAM format&lt;/description&gt;
-</span></span><span style="display:flex;"><span>  &lt;requirements&gt;
-</span></span><span style="display:flex;"><span>    &lt;requirement type=<span style="color:#a31515">&#34;package&#34;</span>&gt;samtools&lt;/requirement&gt;
-</span></span><span style="display:flex;"><span>  &lt;/requirements&gt;
-</span></span><span style="display:flex;"><span>  &lt;command interpreter=<span style="color:#a31515">&#34;python&#34;</span>&gt;
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#000">&lt;tool</span> <span style="color:#836c28">id=</span><span style="color:#c41a16">&#34;sam_to_bam&#34;</span> <span style="color:#836c28">name=</span><span style="color:#c41a16">&#34;SAM-to-BAM&#34;</span> <span style="color:#836c28">version=</span><span style="color:#c41a16">&#34;1.1.1&#34;</span><span style="color:#000">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;description&gt;</span>converts SAM format to BAM format<span style="color:#000">&lt;/description&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;requirements&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">&lt;requirement</span> <span style="color:#836c28">type=</span><span style="color:#c41a16">&#34;package&#34;</span><span style="color:#000">&gt;</span>samtools<span style="color:#000">&lt;/requirement&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;/requirements&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;command</span> <span style="color:#836c28">interpreter=</span><span style="color:#c41a16">&#34;python&#34;</span><span style="color:#000">&gt;</span>
 </span></span><span style="display:flex;"><span>    sam_to_bam.py
 </span></span><span style="display:flex;"><span>      --input1=$source.input1
 </span></span><span style="display:flex;"><span>      --dbkey=${input1.metadata.dbkey}
@@ -58,29 +58,29 @@
 </span></span><span style="display:flex;"><span>      #end if
 </span></span><span style="display:flex;"><span>      --output1=$output1
 </span></span><span style="display:flex;"><span>      --index_dir=${GALAXY_DATA_INDEX_DIR}
-</span></span><span style="display:flex;"><span>  &lt;/command&gt;
-</span></span><span style="display:flex;"><span>  &lt;inputs&gt;
-</span></span><span style="display:flex;"><span>    &lt;conditional name=<span style="color:#a31515">&#34;source&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>      &lt;param name=<span style="color:#a31515">&#34;index_source&#34;</span> type=<span style="color:#a31515">&#34;select&#34;</span> label=<span style="color:#a31515">&#34;Choose the source for the reference list&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>        &lt;option value=<span style="color:#a31515">&#34;cached&#34;</span>&gt;Locally cached&lt;/option&gt;
-</span></span><span style="display:flex;"><span>        &lt;option value=<span style="color:#a31515">&#34;history&#34;</span>&gt;History&lt;/option&gt;
-</span></span><span style="display:flex;"><span>      &lt;/param&gt;
-</span></span><span style="display:flex;"><span>      &lt;when value=<span style="color:#a31515">&#34;cached&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>        &lt;param name=<span style="color:#a31515">&#34;input1&#34;</span> type=<span style="color:#a31515">&#34;data&#34;</span> format=<span style="color:#a31515">&#34;sam&#34;</span> label=<span style="color:#a31515">&#34;SAM File to Convert&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>           &lt;validator type=<span style="color:#a31515">&#34;unspecified_build&#34;</span> /&gt;
-</span></span><span style="display:flex;"><span>           &lt;validator type=<span style="color:#a31515">&#34;dataset_metadata_in_file&#34;</span> filename=<span style="color:#a31515">&#34;sam_fa_indices.loc&#34;</span> metadata_name=<span style="color:#a31515">&#34;dbkey&#34;</span> metadata_column=<span style="color:#a31515">&#34;1&#34;</span> message=<span style="color:#a31515">&#34;Sequences are not currently available for the specified build.&#34;</span> line_startswith=<span style="color:#a31515">&#34;index&#34;</span> /&gt;
-</span></span><span style="display:flex;"><span>        &lt;/param&gt;
-</span></span><span style="display:flex;"><span>      &lt;/when&gt;
-</span></span><span style="display:flex;"><span>      &lt;when value=<span style="color:#a31515">&#34;history&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>        &lt;param name=<span style="color:#a31515">&#34;input1&#34;</span> type=<span style="color:#a31515">&#34;data&#34;</span> format=<span style="color:#a31515">&#34;sam&#34;</span> label=<span style="color:#a31515">&#34;Convert SAM file&#34;</span> /&gt;
-</span></span><span style="display:flex;"><span>        &lt;param name=<span style="color:#a31515">&#34;ref_file&#34;</span> type=<span style="color:#a31515">&#34;data&#34;</span> format=<span style="color:#a31515">&#34;fasta&#34;</span> label=<span style="color:#a31515">&#34;Using reference file&#34;</span> /&gt;
-</span></span><span style="display:flex;"><span>      &lt;/when&gt;
-</span></span><span style="display:flex;"><span>    &lt;/conditional&gt;
-</span></span><span style="display:flex;"><span>  &lt;/inputs&gt;
-</span></span><span style="display:flex;"><span>  &lt;outputs&gt;
-</span></span><span style="display:flex;"><span>    &lt;data format=<span style="color:#a31515">&#34;bam&#34;</span> name=<span style="color:#a31515">&#34;output1&#34;</span> label=<span style="color:#a31515">&#34;${tool.name} on ${on_string}: converted BAM&#34;</span> /&gt;
-</span></span><span style="display:flex;"><span>  &lt;/outputs&gt;
-</span></span><span style="display:flex;"><span>&lt;/xml&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;/command&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;inputs&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">&lt;conditional</span> <span style="color:#836c28">name=</span><span style="color:#c41a16">&#34;source&#34;</span><span style="color:#000">&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">&lt;param</span> <span style="color:#836c28">name=</span><span style="color:#c41a16">&#34;index_source&#34;</span> <span style="color:#836c28">type=</span><span style="color:#c41a16">&#34;select&#34;</span> <span style="color:#836c28">label=</span><span style="color:#c41a16">&#34;Choose the source for the reference list&#34;</span><span style="color:#000">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">&lt;option</span> <span style="color:#836c28">value=</span><span style="color:#c41a16">&#34;cached&#34;</span><span style="color:#000">&gt;</span>Locally cached<span style="color:#000">&lt;/option&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">&lt;option</span> <span style="color:#836c28">value=</span><span style="color:#c41a16">&#34;history&#34;</span><span style="color:#000">&gt;</span>History<span style="color:#000">&lt;/option&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">&lt;/param&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">&lt;when</span> <span style="color:#836c28">value=</span><span style="color:#c41a16">&#34;cached&#34;</span><span style="color:#000">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">&lt;param</span> <span style="color:#836c28">name=</span><span style="color:#c41a16">&#34;input1&#34;</span> <span style="color:#836c28">type=</span><span style="color:#c41a16">&#34;data&#34;</span> <span style="color:#836c28">format=</span><span style="color:#c41a16">&#34;sam&#34;</span> <span style="color:#836c28">label=</span><span style="color:#c41a16">&#34;SAM File to Convert&#34;</span><span style="color:#000">&gt;</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#000">&lt;validator</span> <span style="color:#836c28">type=</span><span style="color:#c41a16">&#34;unspecified_build&#34;</span> <span style="color:#000">/&gt;</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#000">&lt;validator</span> <span style="color:#836c28">type=</span><span style="color:#c41a16">&#34;dataset_metadata_in_file&#34;</span> <span style="color:#836c28">filename=</span><span style="color:#c41a16">&#34;sam_fa_indices.loc&#34;</span> <span style="color:#836c28">metadata_name=</span><span style="color:#c41a16">&#34;dbkey&#34;</span> <span style="color:#836c28">metadata_column=</span><span style="color:#c41a16">&#34;1&#34;</span> <span style="color:#836c28">message=</span><span style="color:#c41a16">&#34;Sequences are not currently available for the specified build.&#34;</span> <span style="color:#836c28">line_startswith=</span><span style="color:#c41a16">&#34;index&#34;</span> <span style="color:#000">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">&lt;/param&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">&lt;/when&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">&lt;when</span> <span style="color:#836c28">value=</span><span style="color:#c41a16">&#34;history&#34;</span><span style="color:#000">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">&lt;param</span> <span style="color:#836c28">name=</span><span style="color:#c41a16">&#34;input1&#34;</span> <span style="color:#836c28">type=</span><span style="color:#c41a16">&#34;data&#34;</span> <span style="color:#836c28">format=</span><span style="color:#c41a16">&#34;sam&#34;</span> <span style="color:#836c28">label=</span><span style="color:#c41a16">&#34;Convert SAM file&#34;</span> <span style="color:#000">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">&lt;param</span> <span style="color:#836c28">name=</span><span style="color:#c41a16">&#34;ref_file&#34;</span> <span style="color:#836c28">type=</span><span style="color:#c41a16">&#34;data&#34;</span> <span style="color:#836c28">format=</span><span style="color:#c41a16">&#34;fasta&#34;</span> <span style="color:#836c28">label=</span><span style="color:#c41a16">&#34;Using reference file&#34;</span> <span style="color:#000">/&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">&lt;/when&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">&lt;/conditional&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;/inputs&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;outputs&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">&lt;data</span> <span style="color:#836c28">format=</span><span style="color:#c41a16">&#34;bam&#34;</span> <span style="color:#836c28">name=</span><span style="color:#c41a16">&#34;output1&#34;</span> <span style="color:#836c28">label=</span><span style="color:#c41a16">&#34;${tool.name} on ${on_string}: converted BAM&#34;</span> <span style="color:#000">/&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;/outputs&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">&lt;/xml&gt;</span>
 </span></span></code></pre></div><p>&hellip; you see that in the <strong>command</strong> tag, the actual syntax of the
 command is specified in a kind of &ldquo;free text&rdquo; format &hellip; This might
 not be exactly what one might think to use XSLT transformations for, but
@@ -92,51 +92,51 @@ together this little XSLT stylesheet for parsing up the free text
 content of that command tag (haven&rsquo;t got to the more detailed config
 inside the inputs-tag in the galaxy format, but might not need either,
 if staying with the galaxy format anyway):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xslt" data-lang="xslt"><span style="display:flex;"><span><span style="color:#00f">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xslt" data-lang="xslt"><span style="display:flex;"><span><span style="color:#633820">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&lt;xsl:stylesheet xmlns:xsl=<span style="color:#a31515">&#34;http://www.w3.org/1999/XSL/Transform&#34;</span> version=<span style="color:#a31515">&#34;2.0&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#000">xsl:stylesheet</span> <span style="color:#836c28">xmlns:xsl</span><span style="color:#000">=</span><span style="color:#c41a16">&#34;http://www.w3.org/1999/XSL/Transform&#34;</span> <span style="color:#836c28">version</span><span style="color:#000">=</span><span style="color:#c41a16">&#34;2.0&#34;</span>&gt;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    &lt;xsl:output method=<span style="color:#a31515">&#34;xml&#34;</span> indent=<span style="color:#a31515">&#34;yes&#34;</span> encoding=<span style="color:#a31515">&#34;UTF-8&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#000">xsl:output</span> <span style="color:#836c28">method</span><span style="color:#000">=</span><span style="color:#c41a16">&#34;xml&#34;</span> <span style="color:#836c28">indent</span><span style="color:#000">=</span><span style="color:#c41a16">&#34;yes&#34;</span> <span style="color:#836c28">encoding</span><span style="color:#000">=</span><span style="color:#c41a16">&#34;UTF-8&#34;</span> /&gt;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    &lt;xsl:template match=<span style="color:#a31515">&#34;/&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>        &lt;cmdsynopsis&gt;
-</span></span><span style="display:flex;"><span>            &lt;xsl:apply-templates select=<span style="color:#a31515">&#34;tool/command&#34;</span> /&gt;
-</span></span><span style="display:flex;"><span>        &lt;/cmdsynopsis&gt;
-</span></span><span style="display:flex;"><span>    &lt;/xsl:template&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#000">xsl:template</span> <span style="color:#836c28">match</span><span style="color:#000">=</span><span style="color:#c41a16">&#34;/&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#000">cmdsynopsis</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#000">xsl:apply-templates</span> <span style="color:#836c28">select</span><span style="color:#000">=</span><span style="color:#c41a16">&#34;tool/command&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#000">cmdsynopsis</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#000">xsl:template</span>&gt;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    &lt;xsl:template match=<span style="color:#a31515">&#34;tool/command&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>        &lt;command&gt;
-</span></span><span style="display:flex;"><span>            &lt;xsl:value-of select=<span style="color:#a31515">&#34;@interpreter&#34;</span> /&gt;
-</span></span><span style="display:flex;"><span>        &lt;/command&gt;
-</span></span><span style="display:flex;"><span>        &lt;xsl:for-each select=<span style="color:#a31515">&#39;tokenize(
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                                    replace(
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                                        replace(
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                                            replace(
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                                                replace(
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                                                    .,
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                                                    &#34;[ ]+&#34;,
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                                                    &#34;&#34;),
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                                                &#34;\n#[^\s]+&#34;,
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                                                &#34;&#34;),
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                                            &#34;\n+&#34;,
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                                            &#34; &#34;),
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                                        &#34;(^\s+|\s+$)&#34;,
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                                        &#34;&#34;),
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515">                                    &#34;\s&#34;)&#39;</span>&gt;
-</span></span><span style="display:flex;"><span>        &lt;xsl:if test=<span style="color:#a31515">&#39;matches(.,&#34;\{&#34;)!=true()&#39;</span>&gt;
-</span></span><span style="display:flex;"><span>            &lt;arg&gt;
-</span></span><span style="display:flex;"><span>                &lt;xsl:value-of select=<span style="color:#a31515">&#39;replace(.,&#34;=.*&#34;,&#34;&#34;)&#39;</span>&gt;&lt;/xsl:value-of&gt;
-</span></span><span style="display:flex;"><span>                &lt;xsl:if test=<span style="color:#a31515">&#39;matches(.,&#34;.*=.*&#34;)&#39;</span>&gt;
-</span></span><span style="display:flex;"><span>                    &lt;xsl:text&gt; &lt;/xsl:text&gt;
-</span></span><span style="display:flex;"><span>                    &lt;replaceable&gt;
-</span></span><span style="display:flex;"><span>                        &lt;xsl:value-of select=<span style="color:#a31515">&#39;replace(.,&#34;.*=\s*\$?&#34;,&#34;&#34;)&#39;</span>&gt;&lt;/xsl:value-of&gt;
-</span></span><span style="display:flex;"><span>                    &lt;/replaceable&gt;
-</span></span><span style="display:flex;"><span>                &lt;/xsl:if&gt;
-</span></span><span style="display:flex;"><span>            &lt;/arg&gt;
-</span></span><span style="display:flex;"><span>        &lt;/xsl:if&gt;
-</span></span><span style="display:flex;"><span>        &lt;/xsl:for-each&gt;
-</span></span><span style="display:flex;"><span>    &lt;/xsl:template&gt;
-</span></span><span style="display:flex;"><span>&lt;/xsl:stylesheet&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#000">xsl:template</span> <span style="color:#836c28">match</span><span style="color:#000">=</span><span style="color:#c41a16">&#34;tool/command&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#000">command</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#000">xsl:value-of</span> <span style="color:#836c28">select</span><span style="color:#000">=</span><span style="color:#c41a16">&#34;@interpreter&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#000">command</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#000">xsl:for-each</span> <span style="color:#836c28">select</span><span style="color:#000">=</span><span style="color:#c41a16">&#39;tokenize(
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                                    replace(
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                                        replace(
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                                            replace(
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                                                replace(
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                                                    .,
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                                                    &#34;[ ]+&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                                                    &#34;&#34;),
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                                                &#34;\n#[^\s]+&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                                                &#34;&#34;),
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                                            &#34;\n+&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                                            &#34; &#34;),
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                                        &#34;(^\s+|\s+$)&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                                        &#34;&#34;),
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">                                    &#34;\s&#34;)&#39;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#000">xsl:if</span> <span style="color:#836c28">test</span><span style="color:#000">=</span><span style="color:#c41a16">&#39;matches(.,&#34;\{&#34;)!=true()&#39;</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#000">arg</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;<span style="color:#000">xsl:value-of</span> <span style="color:#836c28">select</span><span style="color:#000">=</span><span style="color:#c41a16">&#39;replace(.,&#34;=.*&#34;,&#34;&#34;)&#39;</span>&gt;&lt;/<span style="color:#000">xsl:value-of</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;<span style="color:#000">xsl:if</span> <span style="color:#836c28">test</span><span style="color:#000">=</span><span style="color:#c41a16">&#39;matches(.,&#34;.*=.*&#34;)&#39;</span>&gt;
+</span></span><span style="display:flex;"><span>                    &lt;<span style="color:#000">xsl:text</span>&gt; &lt;/<span style="color:#000">xsl:text</span>&gt;
+</span></span><span style="display:flex;"><span>                    &lt;<span style="color:#000">replaceable</span>&gt;
+</span></span><span style="display:flex;"><span>                        &lt;<span style="color:#000">xsl:value-of</span> <span style="color:#836c28">select</span><span style="color:#000">=</span><span style="color:#c41a16">&#39;replace(.,&#34;.*=\s*\$?&#34;,&#34;&#34;)&#39;</span>&gt;&lt;/<span style="color:#000">xsl:value-of</span>&gt;
+</span></span><span style="display:flex;"><span>                    &lt;/<span style="color:#000">replaceable</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;/<span style="color:#000">xsl:if</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;/<span style="color:#000">arg</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#000">xsl:if</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#000">xsl:for-each</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#000">xsl:template</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#000">xsl:stylesheet</span>&gt;
 </span></span></code></pre></div><p>&hellip; a bit crazy with all these nested regex replace function calls, no?
 :) &hellip; but, I can tell you, it actually works very good! Found it
 easier to work with than many other regex implementations (i.e. matching
@@ -147,19 +147,19 @@ default in some other ones).</p>
 expression given to tokenize (similar to &ldquo;split&rdquo; in some other
 languages, like python).</p>
 <p>The result of the transoformation? Here it goes:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#00f">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
-</span></span><span style="display:flex;"><span>&lt;cmdsynopsis&gt;
-</span></span><span style="display:flex;"><span>   &lt;command&gt;python&lt;/command&gt;
-</span></span><span style="display:flex;"><span>   &lt;arg&gt;sam_to_bam.py&lt;/arg&gt;
-</span></span><span style="display:flex;"><span>   &lt;arg&gt;--input1 &lt;replaceable&gt;source.input1&lt;/replaceable&gt;
-</span></span><span style="display:flex;"><span>   &lt;/arg&gt;
-</span></span><span style="display:flex;"><span>   &lt;arg&gt;--ref_file &lt;replaceable&gt;source.ref_file&lt;/replaceable&gt;
-</span></span><span style="display:flex;"><span>   &lt;/arg&gt;
-</span></span><span style="display:flex;"><span>   &lt;arg&gt;--ref_file &lt;replaceable&gt;&#34;None&#34;&lt;/replaceable&gt;
-</span></span><span style="display:flex;"><span>   &lt;/arg&gt;
-</span></span><span style="display:flex;"><span>   &lt;arg&gt;--output1 &lt;replaceable&gt;output1&lt;/replaceable&gt;
-</span></span><span style="display:flex;"><span>   &lt;/arg&gt;
-</span></span><span style="display:flex;"><span>&lt;/cmdsynopsis&gt;
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#633820">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">&lt;cmdsynopsis&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#000">&lt;command&gt;</span>python<span style="color:#000">&lt;/command&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#000">&lt;arg&gt;</span>sam_to_bam.py<span style="color:#000">&lt;/arg&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#000">&lt;arg&gt;</span>--input1 <span style="color:#000">&lt;replaceable&gt;</span>source.input1<span style="color:#000">&lt;/replaceable&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#000">&lt;/arg&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#000">&lt;arg&gt;</span>--ref_file <span style="color:#000">&lt;replaceable&gt;</span>source.ref_file<span style="color:#000">&lt;/replaceable&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#000">&lt;/arg&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#000">&lt;arg&gt;</span>--ref_file <span style="color:#000">&lt;replaceable&gt;</span>&#34;None&#34;<span style="color:#000">&lt;/replaceable&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#000">&lt;/arg&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#000">&lt;arg&gt;</span>--output1 <span style="color:#000">&lt;replaceable&gt;</span>output1<span style="color:#000">&lt;/replaceable&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#000">&lt;/arg&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">&lt;/cmdsynopsis&gt;</span>
 </span></span></code></pre></div><p>Not perfect (there are double &ldquo;&ndash;ref_file&rdquo; arguments still), but at
 least it has parsed up the different arguments, removed some galaxy
 specific stuff (the parts enclosed by &ldquo;{}&rdquo;) and the conditional
@@ -172,7 +172,7 @@ processor</a>
 .</p>
 <p>To call it for doing a transformation, you simply go (when using the
 open source &ldquo;home edition&rdquo;):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -jar saxon9he.jar [xml-file] [xslt-file] &gt; [output-file]
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -jar saxon9he.jar <span style="color:#000">[</span>xml-file<span style="color:#000">]</span> <span style="color:#000">[</span>xslt-file<span style="color:#000">]</span> &gt; <span style="color:#000">[</span>output-file<span style="color:#000">]</span>
 </span></span></code></pre></div><p>Works good! (does a good job of formatting the XML too).</p>
 
   

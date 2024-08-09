@@ -8,7 +8,9 @@ body {
   margin: 0 auto;
 }
 
-main {
+header h1 {
+    font-family: "Ubuntu mono", "Monospace", "Consolas", "Lucida Console";
+    font-size: 2.4em;
 }
 
 h1, h2, h3, h4, h5, h6,
