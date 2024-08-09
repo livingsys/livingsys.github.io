@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Debian on Living Systems</title>
+    <link>http://localhost:1313/tags/debian/</link>
+    <description>Recent content in Debian on Living Systems</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 24 Mar 2022 04:50:00 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/debian/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Random notes from installing Debian 11 with separate accounts for work and private</title>
+      <link>http://localhost:1313/posts/installing-and-configuring-debian-11-into-a-great-experience/</link>
+      <pubDate>Thu, 24 Mar 2022 04:50:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/installing-and-configuring-debian-11-into-a-great-experience/</guid>
+      <description>See especially the end for info about how to set up a nice integration between the work and private accounts, such that one can e.g. occasionally start the mail client or web browser from the private account from the work one etc.&#xA;Caveats when installing Debian 11 Make sure that an EFI partition is created (when I manually modified the partition table I accidentally deleted it, and had to reinstall to get it created properly again).</description>
+    </item>
+  </channel>
+</rss>

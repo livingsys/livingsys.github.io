@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>Random notes from installing Debian 11 with separate accounts for work and private | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.c11645622300898541e1ba6a090a08898a6e2a2f204875343a09f514ed41aadd.css" integrity="sha256-wRZFYiMAiYVB4bpqCQoIiYpuKi8gSHU0Ogn1FO1Bqt0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 
 
-      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+      <script src="/js/main.js"></script>
 
 
 
@@ -54,7 +54,7 @@ to get it created properly again).</li>
 <li>Had to turn off safe boot in BIOS</li>
 <li>Had to set SATA settings to AHCI</li>
 <li>Had to manually create a boot option with the path to
-<pre tabindex="0"><code>\EFI\debian\grubx64.efi 
+<pre tabindex="0"><code>\EFI\debian\grubx64.efi
 </code></pre>in BIOS settings</li>
 </ul>
 <h3 id="instructions-for-configuring-debian-to-my-liking">Instructions for configuring Debian to my liking</h3>
@@ -71,8 +71,8 @@ to get it created properly again).</li>
 <li>Change default search engine in firefox to duckduckgo</li>
 <li>Replace applications menu with whiskers menu</li>
 <li>Install some packages:
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install vim git tig tmux curl tree rsync gparted <span style="color:#a31515">\
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515"></span>    ecryptfs-utils redshift bash-completion bluez blueman
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install vim git tig tmux curl tree rsync gparted
+</span></span><span style="display:flex;"><span>    ecryptfs-utils redshift bash-completion bluez blueman
 </span></span></code></pre></div></li>
 <li>Clone rc folder:
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/samuell/rc.git
@@ -87,8 +87,8 @@ to get it created properly again).</li>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat <span style="color:#a31515">&#39;if [ -f ~/.bashrc_mods ]; then . ~/.bashrc_mods; fi&#39;</span> &gt;&gt; ~/.bashrc &amp;&amp; source ~/.bashrc
 </span></span></code></pre></div></li>
 <li>Install vim-plug:
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -fLo ~/.vim/autoload/plug.vim --create-dirs <span style="color:#a31515">\
-</span></span></span><span style="display:flex;"><span><span style="color:#a31515"></span>    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+</span></span><span style="display:flex;"><span>    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 </span></span></code></pre></div></li>
 <li>Run <code>:PlugInstall</code> in vim:
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vim -c <span style="color:#a31515">&#34;:PlugInstall&#34;</span> -c <span style="color:#a31515">&#34;qa!&#34;</span>
@@ -178,6 +178,13 @@ BIOS battery is bad. If so:</p>
 </ul>
 
   
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/linux/">Linux</a></li>
+        <li><a href="/tags/debian/">Debian</a></li>
+    </ul>
+  </div>
 
 
   </main>

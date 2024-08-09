@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>Setting up a reasonable and light-weight Linux-like (non-WSL) terminal environment on Windows | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.c11645622300898541e1ba6a090a08898a6e2a2f204875343a09f514ed41aadd.css" integrity="sha256-wRZFYiMAiYVB4bpqCQoIiYpuKi8gSHU0Ogn1FO1Bqt0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 
 
-      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+      <script src="/js/main.js"></script>
 
 
 
@@ -73,12 +73,12 @@ manager: <a href="https://en.wikipedia.org/wiki/Tmux" target="_blank" rel="noope
 post</a>
  mentioned the system that Git-Bash
 builds upon, and that it sports a package manager which can install a
-lot more software: MSYS2. Long story short: I tried MSYS2, and now I'm
+lot more software: MSYS2. Long story short: I tried MSYS2, and now I&rsquo;m
 (figuratively) in love. With a few (fixable) caveats I now can run
 pretty much my full command-line bash+tmux+vim+git(+etc etc) workflow
-from Xubuntu, IN WINDOWS, right inside the Windows filesystem ... and
+from Xubuntu, IN WINDOWS, right inside the Windows filesystem &hellip; and
 things just work!</p>
-<p>So, for my own and others' documentation, I below provide documentation
+<p>So, for my own and others&rsquo; documentation, I below provide documentation
 of the procedure I have so far followed to enable a comfortable very
 Linux-like bash environment in Windows.</p>
 <h2 id="how-to-set-up-a-nice-environment-based-on-msys2">How to set up a nice environment based on MSYS2</h2>
@@ -128,9 +128,9 @@ following <a href="https://chocolatey.org/install" target="_blank" rel="noopener
 </li>
 <li>If you run Windows in VirtualBox, make sure to enable bidirectional
 clipboard in VirtualBox, by right clicking on the virtual machine
-and choosing:<br>
-&quot;Settings &gt; General &gt; Advanced&quot; and setting &quot;Shared clipboard&quot;
-to &quot;bidirectional&quot;.</li>
+and choosing:
+&ldquo;Settings &gt; General &gt; Advanced&rdquo; and setting &ldquo;Shared clipboard&rdquo;
+to &ldquo;bidirectional&rdquo;.</li>
 </ul>
 <h2 id="end-result">End result</h2>
 <p>If you follow the above instructions roughly, you might end up with an
@@ -140,7 +140,7 @@ environment like this:</p>
 </p>
 </a>
 </p>
-<p>So far, I'm super pleased with this setup.</p>
+<p>So far, I&rsquo;m super pleased with this setup.</p>
 <h2 id="some-caveats">Some caveats</h2>
 <p>I noticed the following caveats:</p>
 <ul>
@@ -148,13 +148,13 @@ environment like this:</p>
 of the normal Ctrl + Shift + V from Linux.</li>
 <li>At least for Git-Bash, you need to name you ssh-keys
 <code>~/.ssh/id_rsa</code>, not some custom name like <code>~/.ssh/.id_rsa_gitlab</code>,
-or it won't be picked up (haven't tried with MSYS2 yet). There
-should be a way to change this, but I haven't had the time to check
+or it won&rsquo;t be picked up (haven&rsquo;t tried with MSYS2 yet). There
+should be a way to change this, but I haven&rsquo;t had the time to check
 it up just yet.</li>
 <li>Some commands, such as <code>dotnet</code>, the commandline tool for .Net core,
 are not cancelleable via Ctrl + C unless you run them via <code>winpty</code>.
-So, you'd run: <code>winpty dotnet</code></li>
-<li>Running commands via winpty on the other hand means that you can't
+So, you&rsquo;d run: <code>winpty dotnet</code></li>
+<li>Running commands via winpty on the other hand means that you can&rsquo;t
 pipe or redirect the outputs like normal linux commands. To solve
 that, run <code>winpty -Xallow-non-tty</code></li>
 <li>For dotnet, I created an alias definition
@@ -164,6 +164,13 @@ that, run <code>winpty -Xallow-non-tty</code></li>
 <p><strong>Samuel</strong></p>
 
   
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/windows/">Windows</a></li>
+        <li><a href="/tags/wsl/">Wsl</a></li>
+    </ul>
+  </div>
 
 
   </main>

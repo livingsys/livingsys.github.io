@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>Why didn&#39;t Go get a breakthrough in bioinformatics (yet)? | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.c11645622300898541e1ba6a090a08898a6e2a2f204875343a09f514ed41aadd.css" integrity="sha256-wRZFYiMAiYVB4bpqCQoIiYpuKi8gSHU0Ogn1FO1Bqt0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 
 
-      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+      <script src="/js/main.js"></script>
 
 
 
@@ -49,7 +49,7 @@ bioinformatics"  />
 <p>As we are - <a href="https://a16z.com/the-century-of-biology/" target="_blank" rel="noopener">according to some expert
 opinions</a>
  - living in the
-Century of Biology, I found it interesting to reflect on Go's usage
+Century of Biology, I found it interesting to reflect on Go&rsquo;s usage
 within the field.</p>
 <p>Go has some great features that make it really well suited for biology,
 such as:</p>
@@ -60,7 +60,7 @@ aspect for biologists.</li>
 <li>Fantastic support for cross-compilation into all major computer
 architectures and operating systems, as static, self-sufficient
 executables making it extremely simple to deploy tools, something
-that can't be said about the currently most popular bio language,
+that can&rsquo;t be said about the currently most popular bio language,
 Python.</li>
 <li>Fantastic support for concurrency and writing code as a set of
 parallell operations that streams data between them. Again, as
@@ -94,7 +94,7 @@ CS-oriented bioinformatics folks seem to prefer the much more
 complicated Rust language for implementing new tools (See e.g. this
 <a href="https://www.nature.com/articles/d41586-020-03382-2" target="_blank" rel="noopener">Nature articlee</a>
 
-and <a href="https://lh3.github.io/2024/03/05/what-high-performance-language-to-learn" target="_blank" rel="noopener">Heng Li's
+and <a href="https://lh3.github.io/2024/03/05/what-high-performance-language-to-learn" target="_blank" rel="noopener">Heng Li&rsquo;s
 post</a>
 ).</p>
 <p>This is to me quite surprising, as I know that for a large part of the
@@ -196,10 +196,10 @@ lot of bioinformatics workfloads excellently.</p>
 <p>I wonder if and what could be done to make the simple things, like
 reading and writing files, easy in a future version of Go?</p>
 <h3 id="addendum-i-why-not-crystal">Addendum I: Why not Crystal?</h3>
-<p>I realize I should comment a bit about why I haven't gone with
+<p>I realize I should comment a bit about why I haven&rsquo;t gone with
 <a href="https://crystal-lang.org/" target="_blank" rel="noopener">Crystal</a>
 . Crystal is a super curious
-language in that it has the kind of fluent syntax I'm looking for
+language in that it has the kind of fluent syntax I&rsquo;m looking for
 (heavily inspired by Ruby), <a href="https://lh3.github.io/2020/05/17/fast-high-level-programming-languages" target="_blank" rel="noopener">has performed pretty well in some
 comparisons</a>
 ,
@@ -212,21 +212,21 @@ hindering effective development of larger projects, and <a href="https://github.
 its cross-platform
 compatibility</a>
 . If
-these issues could be addressed, I'd be very interested in
+these issues could be addressed, I&rsquo;d be very interested in
 re-evaluating it!</p>
 <h3 id="addendum-ii-what-are-some-other-contenders">Addendum II: What are some other contenders?</h3>
 <p>Apart from Rust and Crystal, and as you can see from my list of compiled
 languages, there are a lot of potential alternatives for a go-to
 compiled, fast language for bioinformatics. One of the most interesting
-ones I'm aware of right now are <a href="https://www.julialang.org/" target="_blank" rel="noopener">Julia</a>
+ones I&rsquo;m aware of right now are <a href="https://www.julialang.org/" target="_blank" rel="noopener">Julia</a>
  and
 <a href="https://ziglang.org/" target="_blank" rel="noopener">Zig</a>
 . While Julia <a href="https://www.nature.com/articles/s41592-023-01832-z" target="_blank" rel="noopener">has been picking up usage in
 biology quite a
 bit</a>
-, it isn't a
+, it isn&rsquo;t a
 properly compiled language though, but rather a scripting language
-providing speedups via just-in-time compilation. It doesn't to my
+providing speedups via just-in-time compilation. It doesn&rsquo;t to my
 knowledge (yet) have a great story for ahead-of-time compilation of
 statically linked binaries. Zig remains an interesting langauge because
 its very close integration with the C programming language (C programs
@@ -245,24 +245,32 @@ will develop or be able to gain a foothold in bioinformatics.</p>
 <a href="https://www.reddit.com/r/golang/comments/1ctj5q1/why_didnt_go_get_a_breakthrough_in_bioinformatics/" target="_blank" rel="noopener">Reddit</a>
 </p>
 <hr>
-<p><strong>Edit history:</strong><br>
-Edit 2024-05-15, 20:07: Added mention of Benthos<br>
+<p><strong>Edit history:</strong>
+Edit 2024-05-15, 20:07: Added mention of Benthos
 Edit 2024-05-16, 19:08: Correction: processes -&gt; goroutines (Thanks
 <a href="https://twitter.com/MihaiTodor" target="_blank" rel="noopener">Mihai Todor</a>
-!)<br>
+!)
 Edit 2024-05-16, 19:31: Added addendum about Crystal (Thanks <a href="https://twitter.com/alexanderadam__" target="_blank" rel="noopener">Alexander
 Adam</a>
- for raising the question!)<br>
+ for raising the question!)
 Edit 2024-05-16, 19:45: Added addendum about Julia and Zig too (Thanks
 again to <a href="https://twitter.com/MihaiTodor" target="_blank" rel="noopener">Mihai Todor</a>
  for bringing up
-Zig!)<br>
-Edit 2024-05-16, 19:50~: Added comment about Mojo.<br>
-Edit 2024-05-16, 20:02: Improved intro.<br>
+Zig!)
+Edit 2024-05-16, 19:50~: Added comment about Mojo.
+Edit 2024-05-16, 20:02: Improved intro.
 Edit 2024-05-17, 11:59: Improved intro again with more reasoning on why
 Go is a good suggestion for bio in the first place.</p>
 
   
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/go/">Go</a></li>
+        <li><a href="/tags/bioinformatics/">Bioinformatics</a></li>
+        <li><a href="/tags/programming-languages/">Programming-Languages</a></li>
+    </ul>
+  </div>
 
 
   </main>

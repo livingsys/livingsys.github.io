@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Productivity on Living Systems</title>
+    <link>http://localhost:1313/tags/productivity/</link>
+    <description>Recent content in Productivity on Living Systems</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 27 May 2024 12:44:00 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/productivity/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>We need recipes for common bioinformatics tasks</title>
+      <link>http://localhost:1313/posts/bioinformatics-recipes/</link>
+      <pubDate>Mon, 27 May 2024 12:44:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/bioinformatics-recipes/</guid>
+      <description>Ad-hoc tasks in bioinformatics can contain such an immense number of operations and tasks that need to be performed to achieve a certain goal. Often these are all individually regarded as rather &amp;ldquo;standard&amp;rdquo; or &amp;ldquo;routine&amp;rdquo;. Despite this, it is quite hard to find an authoritative set of &amp;ldquo;recipes&amp;rdquo; for how to do such tasks.&#xA;Thus I was starting to think that there needs to be a collection of bioinformatics &amp;ldquo;recipes&amp;rdquo;. A sort of &amp;ldquo;cookbook&amp;rdquo; for common bioinformatics tasks.</description>
+    </item>
+    <item>
+      <title>To make computational lab note-taking happen, make the journal into a todo-list (a &#34;Todournal&#34;)</title>
+      <link>http://localhost:1313/posts/todournal/</link>
+      <pubDate>Fri, 13 Apr 2018 16:15:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/todournal/</guid>
+      <description>Good lab note-taking is hard Good note-taking is in my opinion as important for computational research as for wet lab research. For computational research it is much easier though to forget doing it, since you might not have a physical notebook lying on your desk staring at you, but rather might need to open a specific software or file, to write the notes. I think this is one reason why lab note taking seems to happen a lot less among computational scientists than among wet lab ditto.</description>
+    </item>
+    <item>
+      <title>The frustrating state of note taking tools</title>
+      <link>http://localhost:1313/posts/my-frustration-with-the-state-of-note-taking-tools/</link>
+      <pubDate>Tue, 07 Nov 2017 18:45:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/my-frustration-with-the-state-of-note-taking-tools/</guid>
+      <description>One year left to the dissertation (we hope) and now turning from mostly software development into more of data analysis and needing to read up quite a pile of books and papers on my actual topic, pharmaceutical bioinformatics. With this background, I&amp;rsquo;m feel forced to ponder ways to improving my note taking workflow. I&amp;rsquo;m already quite happy with the way of taking notes I&amp;rsquo;ve settled on, using a lot of drawings and often iterating over the same notes multiple times to ask questions, fill in details, and figure out connections.</description>
+    </item>
+    <item>
+      <title>Time-boxing and a unified trello board = productivity</title>
+      <link>http://localhost:1313/posts/time-boxing-and-unified-trello-board/</link>
+      <pubDate>Fri, 26 Feb 2016 12:40:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/time-boxing-and-unified-trello-board/</guid>
+      <description>Figure: Sketchy screenshot of how my current board looks. Notice especially the &amp;ldquo;Now&amp;rdquo; stack, marked in yellow, where you are only allowed to put one single card. I used to have a very hard time getting an overview of my current work, and prioritizing and concentrating on any single task for too long. I always felt there might be something else that might be more important than what I were currently doing.</description>
+    </item>
+    <item>
+      <title>How to be productive in vim in 30 minutes</title>
+      <link>http://localhost:1313/posts/how-to-be-productive-in-vim-in-30-minutes/</link>
+      <pubDate>Tue, 15 Sep 2015 12:21:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/how-to-be-productive-in-vim-in-30-minutes/</guid>
+      <description>I had heard a lot of people say vim is very hard to learn, and got the impression that it will take a great investment to switch to using it.&#xA;While I have came to understand that they are right in that there is a lot of things to invest in to get really great at using vim, that will really pay back, I have also found out one thing that I see almost no-one mentioning:</description>
+    </item>
+    <item>
+      <title>Terminator as a middle-way between floating and tiling window managers</title>
+      <link>http://localhost:1313/posts/terminator-middle-way/</link>
+      <pubDate>Fri, 17 Jul 2015 19:22:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/terminator-middle-way/</guid>
+      <description>I have tried hard to improve my linux desktop productivity by learning to do as much as possible using keyboard shortcuts, aliases for terminal commands etc etc (I even produced an online course on linux commandline productivity ).&#xA;In this spirit, I naturally tried out a so called tiling window manager (aka tiling wm). In short, a tiling wm organizes all open windows on the screen (or on the current desktop) into a &amp;ldquo;tiled&amp;rdquo; grid of frames.</description>
+    </item>
+    <item>
+      <title>A few thoughts on organizing computational (biology) projects</title>
+      <link>http://localhost:1313/posts/organizing-compbio-projects/</link>
+      <pubDate>Tue, 23 Jun 2015 20:32:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/organizing-compbio-projects/</guid>
+      <description>I read this excellent article with practical recommendations on how to organize a computational project, in terms of directory structure.&#xA;Directory structure matters The importance of a good directory structure seems to often be overlooked in teaching about computational biology, but can be the difference between a successful project, and one where every change or re-run of some part of a workflow, will require days of manual fiddling to get hand on the right data, in the right format, in the right place, with the right version of the workflow, with the right parameters, and then succeed to run it without errors.</description>
+    </item>
+    <item>
+      <title>The role of simplicity in testing and automation</title>
+      <link>http://localhost:1313/posts/the-role-of-simplicity-in-testing-and-automation/</link>
+      <pubDate>Mon, 23 Mar 2015 20:46:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/the-role-of-simplicity-in-testing-and-automation/</guid>
+      <description>Disclaimer: Don&amp;rsquo;t take this too seriously &amp;hellip; this is &amp;ldquo;thinking-in-progress&amp;rdquo; :)&#xA;It just struck me the other minute, how simplicity is the key theme behind two very important areas in software development, that I&amp;rsquo;ve been dabbling with quite a bit recently: Testing, and automation.&#xA;Have you thought about how testing, in its essence, is: Wrapping complex code, which you can&amp;rsquo;t mentally comprehend completely, in simple code, that you can mentally comprehend, at least one test at a time.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>The unexpected convenience of JSON on the commandline | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.c11645622300898541e1ba6a090a08898a6e2a2f204875343a09f514ed41aadd.css" integrity="sha256-wRZFYiMAiYVB4bpqCQoIiYpuKi8gSHU0Ogn1FO1Bqt0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 
 
-      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+      <script src="/js/main.js"></script>
 
 
 
@@ -46,24 +46,24 @@
 <a href="http://processwire.com" target="_blank" rel="noopener">processwire</a>
  CMS:es, where I wanted to be able
 to pipe data, including the body field with HTML formatting and all,
-through multiple processing steps in a flexible manner. I'd start with
+through multiple processing steps in a flexible manner. I&rsquo;d start with
 an extraction SQL query, through a few components to replace and massage
-the data, and finally over to an import command using processwire's
+the data, and finally over to an import command using processwire&rsquo;s
 <a href="http://wireshell.pw" target="_blank" rel="noopener">wireshell tool</a>
 . So, basically I needed a flexible
-format for structured data that could be sent as one &quot;data object&quot; per
+format for structured data that could be sent as one &ldquo;data object&rdquo; per
 line, to work nicely with linux commandline tools like grep, sed and
 awk.</p>
-<p>CSV didn't seem that suitable, because of the unpredictable HTML
-formatting of the body field (though I never really tried) ... and I
-don't even know how to wrap up YAML into one-liners.</p>
+<p>CSV didn&rsquo;t seem that suitable, because of the unpredictable HTML
+formatting of the body field (though I never really tried) &hellip; and I
+don&rsquo;t even know how to wrap up YAML into one-liners.</p>
 <p>But then it struck me how well JSON is suited for this.</p>
-<p>I've heard folks using it before, and it is by no means any news to
-experienced data wranglers, I'm sure, but I just hadn't thought about
+<p>I&rsquo;ve heard folks using it before, and it is by no means any news to
+experienced data wranglers, I&rsquo;m sure, but I just hadn&rsquo;t thought about
 it.</p>
 <p>JSON has excellent escaping of any kind of characters, and can be
 formatted as one object per line, making it perfect for piping on the
-commandline. What's more, working with JSON in python, is extremely
+commandline. What&rsquo;s more, working with JSON in python, is extremely
 convenient, since all the typical python data structures (lists, tuples
 and dicts) map directly to counterparts in JSON. This means that you can
 just use json.dumps() or json.loads() to convert a nested python data
@@ -97,7 +97,7 @@ wranglers, I just wanted to illustrate just how easy this is:</p>
 </span></span><span style="display:flex;"><span>    stdout.write(json.dumps(pageinfo) + <span style="color:#a31515">&#39;</span><span style="color:#a31515">\n</span><span style="color:#a31515">&#39;</span>) <span style="color:#008000"># The newline is important here!</span>
 </span></span></code></pre></div><p>But now, this is mostly MySQL stuff, so a smaller component might better
 demonstrate how little is needed to read from json. So, say that we want
-to change all occurances of &quot;node&quot; in NodeType to &quot;page&quot; (which is
+to change all occurances of &ldquo;node&rdquo; in NodeType to &ldquo;page&rdquo; (which is
 the more commonly used term for what Drupal calls a node):</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00f">from</span> sys <span style="color:#00f">import</span> stdin, stdout
 </span></span><span style="display:flex;"><span><span style="color:#00f">import</span> json
@@ -107,9 +107,8 @@ the more commonly used term for what Drupal calls a node):</p>
 </span></span><span style="display:flex;"><span>    r[<span style="color:#a31515">&#39;NodeType&#39;</span>] = r[<span style="color:#a31515">&#39;NodeType&#39;</span>].replace(<span style="color:#a31515">&#39;node&#39;</span>, <span style="color:#a31515">&#39;page&#39;</span>)
 </span></span><span style="display:flex;"><span>    stdout.write(json.dumps(r) + <span style="color:#a31515">&#39;</span><span style="color:#a31515">\n</span><span style="color:#a31515">&#39;</span>)
 </span></span></code></pre></div><p>So, this is what little is required to create a pipeable component
-working with JSON data, using python!<br>
-<br>
-So, now, we can use these two components together by just piping them,
+working with JSON data, using python!</p>
+<p>So, now, we can use these two components together by just piping them,
 and using the normal linux commandline tools for convenient browsing on
 the commandline (such as my favorite <strong>less -Si</strong> for scrolling without
 wrapping lines:</p>
@@ -128,10 +127,17 @@ easily achieved with jq:</p>
 manual</a>
  for more usage info on
 jq.</p>
-<p>I'm sure I will use JSON for piping structured data on the commandline
+<p>I&rsquo;m sure I will use JSON for piping structured data on the commandline
 a lot more from now on.</p>
 
   
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/json/">Json</a></li>
+        <li><a href="/tags/python/">Python</a></li>
+    </ul>
+  </div>
 
 
   </main>

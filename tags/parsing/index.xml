@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Parsing on Living Systems</title>
+    <link>http://localhost:1313/tags/parsing/</link>
+    <description>Recent content in Parsing on Living Systems</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 28 Jul 2011 09:46:00 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/parsing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>(E)BNF parser for parts of the Galaxy ToolConfig syntax with ANTLR</title>
+      <link>http://localhost:1313/posts/ebnf-parser-for-galaxy-toolconfig-syntax-with-antlr/</link>
+      <pubDate>Thu, 28 Jul 2011 09:46:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/ebnf-parser-for-galaxy-toolconfig-syntax-with-antlr/</guid>
+      <description>As blogged earlier, I&amp;rsquo;m currently into parsing the syntax of some definitions for the parameters and stuff of command line tools. As said in the linked blog post, I was pondering whether to use the Galaxy Toolconfig format or the DocBook CmdSynopsis format . It turned out though Well, that cmdsynopsis lacks the option to specify a list of valid choices, for a parameter, as is possible in the Galaxy ToolConfig format (see here ), and thus can be used to generate drop-down lists in wizards etc.</description>
+    </item>
+  </channel>
+</rss>

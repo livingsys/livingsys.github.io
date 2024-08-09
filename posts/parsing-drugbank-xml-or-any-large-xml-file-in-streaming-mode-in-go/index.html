@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>Parsing DrugBank XML (or any large XML file) in streaming mode in Go | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.c11645622300898541e1ba6a090a08898a6e2a2f204875343a09f514ed41aadd.css" integrity="sha256-wRZFYiMAiYVB4bpqCQoIiYpuKi8gSHU0Ogn1FO1Bqt0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 
 
-      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+      <script src="/js/main.js"></script>
 
 
 
@@ -42,7 +42,7 @@
   <time datetime="2018-03-15T15:19:00&#43;01:00">March 15, 2018</time>
 
   <!-- raw HTML omitted -->
-<p>While Go's XML stream-parsing support is great, the details of how to
+<p>While Go&rsquo;s XML stream-parsing support is great, the details of how to
 do that in a streaming fashion was not immediately clear from the docs,
 and I was thus saved by <a href="http://blog.davidsingleton.org/parsing-huge-xml-files-with-go/" target="_blank" rel="noopener">this blog
 post</a>
@@ -67,9 +67,9 @@ my real world problem mentioned above) for each drug are:</p>
 </ul>
 <h2 id="the-drugbank-xml-format">The DrugBank XML format</h2>
 <p>The DrugBank XML format is a pretty simple one on its highest level: It
-is basically a lot of &lt;drug&gt;&lt;/drug&gt; elements thrown into a
-&lt;drugbank&gt;&lt;/drugbank&gt; enclosing tag. The relative complexity comes
-within the &lt;drug&gt; tag. But because of how Go parses XML to structs
+is basically a lot of <!-- raw HTML omitted --><!-- raw HTML omitted --> elements thrown into a
+<!-- raw HTML omitted --><!-- raw HTML omitted --> enclosing tag. The relative complexity comes
+within the <!-- raw HTML omitted --> tag. But because of how Go parses XML to structs
 using tags, we can just skip most of that info, and only focus on the
 parts we are interested in.</p>
 <p>A schematic example of the DrugBank XML containing only the fields we
@@ -105,19 +105,19 @@ are interested could look like this:</p>
 </span></span><span style="display:flex;"><span>  &lt;/calculated-properties&gt;
 </span></span><span style="display:flex;"><span>&lt;/drug&gt;
 </span></span><span style="display:flex;"><span>&lt;/drugbank&gt;
-</span></span></code></pre></div><p>(In reality, each &lt;drug&gt; element is far far many more lines than this,
+</span></span></code></pre></div><p>(In reality, each <!-- raw HTML omitted --> element is far far many more lines than this,
 which really necessitates proper XML parsing tools).</p>
 <h2 id="mapping-xml-to-go-structs">Mapping XML to Go Structs</h2>
 <p>The parsing strategy for XML in Go, is the same as for other formats
 such as JSON: Define one or more structs into which we parse certain XML
 elements and attributes. The mapping between XML (or JSON) and the
-struct fields are done using so called &quot;tags&quot; which are added within
+struct fields are done using so called &ldquo;tags&rdquo; which are added within
 back-quotes after the fields in the struct definition. Thus, defining
 sensible structs and XML element-to-struct field mappings is the core of
 the work, and will directly influence how easy your code will be to work
 with.</p>
 <p>Below you can see the struct-structure (sounds just right, right?) I
-defined to be able to parse out the data I'm interested in:</p>
+defined to be able to parse out the data I&rsquo;m interested in:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#00f">type</span> Drugbank <span style="color:#00f">struct</span> {
 </span></span><span style="display:flex;"><span>    XMLName xml.Name <span style="color:#a31515">`xml:&#34;drugbank&#34;`</span>
 </span></span><span style="display:flex;"><span>    Drugs   []Drug   <span style="color:#a31515">`xml:&#34;drug&#34;`</span>
@@ -148,22 +148,22 @@ defined to be able to parse out the data I'm interested in:</p>
 <li>As said, the stuff within back-quotes represent the structure in the
 XML to be mapped to a certain field.</li>
 <li>Note how, for nested hierarchies, we need multiple struct types,
-such as the &quot;Property&quot; and &quot;ExternalIdentifier&quot; ones ... which
-are then linked to from the main &quot;Drug&quot; struct&quot;.</li>
-<li>We also need a struct for the highest level element, &lt;drugbank&gt;.</li>
+such as the &ldquo;Property&rdquo; and &ldquo;ExternalIdentifier&rdquo; ones &hellip; which
+are then linked to from the main &ldquo;Drug&rdquo; struct&quot;.</li>
+<li>We also need a struct for the highest level element, <!-- raw HTML omitted -->.</li>
 <li>Each struct needs to have a field of xml.Name type (named XMLName
 for simplicity), that defines its name in the XML, so that we have
 somewhere to add our XML-mapping tag.</li>
-<li>Note, when we have a slice (&quot;list&quot;) of things, such as the
-&quot;CalculatedProperties&quot; field in the &quot;Drug&quot; struct, how we need
+<li>Note, when we have a slice (&ldquo;list&rdquo;) of things, such as the
+&ldquo;CalculatedProperties&rdquo; field in the &ldquo;Drug&rdquo; struct, how we need
 to specify a two level path
-(`xml:&quot;calculated-properties**&gt;**property&quot;`) into the XML
-structure, so that we get down to the individual &quot;property&quot; XML
+(<code>xml:&quot;calculated-properties**&gt;**property&quot;</code>) into the XML
+structure, so that we get down to the individual &ldquo;property&rdquo; XML
 elements which are placed inside a grouping
-&quot;calculated-properties&quot; element.</li>
+&ldquo;calculated-properties&rdquo; element.</li>
 </ul>
 <p>With that set up, we can create our Go code to loop over our XML file in
-a streaming fashion, along the lines of David's <a href="http://blog.davidsingleton.org/parsing-huge-xml-files-with-go/" target="_blank" rel="noopener">blog
+a streaming fashion, along the lines of David&rsquo;s <a href="http://blog.davidsingleton.org/parsing-huge-xml-files-with-go/" target="_blank" rel="noopener">blog
 post</a>
 ,
 while also creating a TSV writer, which we use to stream-write our
@@ -245,7 +245,7 @@ main function left out for brevity):</p>
 </span></span><span style="display:flex;"><span>xmlFile.Close()
 </span></span><span style="display:flex;"><span>tsvFile.Close()
 </span></span></code></pre></div><h2 id="turn-into-a-reproducible-workflow-with-scipipe">Turn into a reproducible workflow with SciPipe</h2>
-<p>Now, we could use SciPipe (Go-based workflow library I'm developing) to
+<p>Now, we could use SciPipe (Go-based workflow library I&rsquo;m developing) to
 put this into a little workflow, where we also automaticalyl download
 the DrugBank data, Unzip it, and run the XML-to-TSV code. See <a href="https://gist.github.com/samuell/fc82fad39e7efda7987fc18173777f7f" target="_blank" rel="noopener">this
 gist</a>
@@ -256,15 +256,15 @@ for the full workflow code.</p>
 <li>Create a file drugbank_userinfo.txt, containing your DrugBank
 website username and password, on the form: USERNAME:PASSWORD</li>
 <li>Install Go</li>
-<li>Install scipipe with<br>
+<li>Install scipipe with
 <code>go get github.com/scipipe/scipipe/...</code></li>
-<li>Make sure you have curl installed. On Ubuntu:<br>
+<li>Make sure you have curl installed. On Ubuntu:
 <code>sudo apt-get install curl</code></li>
 </ul>
 <p>Then, you should be able to run it, with:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>go run drugbank_xml_to_tsv_with_scipipe.go
 </span></span></code></pre></div><h2 id="full-scipipe-workflow-code-example">Full SciPipe workflow code example</h2>
-<p>I'm including the full SciPipe workflow code below as well, for the day
+<p>I&rsquo;m including the full SciPipe workflow code below as well, for the day
 when Github is down ;):</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#00f">package</span> main
 </span></span><span style="display:flex;"><span>
@@ -448,6 +448,14 @@ API</a>
 SetOut() instead of SetPathStatic(), SetPathExtend() etc)</em></p>
 
   
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/xml/">Xml</a></li>
+        <li><a href="/tags/drugbank/">Drugbank</a></li>
+        <li><a href="/tags/go/">Go</a></li>
+    </ul>
+  </div>
 
 
   </main>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C# on Living Systems</title>
+    <link>http://localhost:1313/tags/c%23/</link>
+    <description>Recent content in C# on Living Systems</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 02 Nov 2019 21:24:00 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/c%23/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Table-driven tests in C#</title>
+      <link>http://localhost:1313/posts/table-driven-tests-in-csharp/</link>
+      <pubDate>Sat, 02 Nov 2019 21:24:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/table-driven-tests-in-csharp/</guid>
+      <description>Folks in the Go community have championed so called table-driven tests (see e.g. this post by Dave Cheney and the Go wiki ) as a way to quickly and easily writing up a bunch of complete test cases with inputs and corresponding expected outputs, and looping over them to execute the function being tested. In short, the idea is to suggest a maximally short and convenient syntax to do this.</description>
+    </item>
+  </channel>
+</rss>

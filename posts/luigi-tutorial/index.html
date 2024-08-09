@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>Tutorial: Luigi for Scientific Workflows | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.c11645622300898541e1ba6a090a08898a6e2a2f204875343a09f514ed41aadd.css" integrity="sha256-wRZFYiMAiYVB4bpqCQoIiYpuKi8gSHU0Ogn1FO1Bqt0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 
 
-      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+      <script src="/js/main.js"></script>
 
 
 
@@ -77,14 +77,14 @@ demonstrated in the picture above).</p>
 that the dependency graph is by default defined by hard-coding the
 upstream dependent task, inside each task. In this regard, luigi tasks
 are quite similar to functions in functional programming, where each
-function knows everything needed to provide it's answer, including all
+function knows everything needed to provide it&rsquo;s answer, including all
 the other functions that need to be executed to get there.</p>
 <p>There are ways to override these hard-coded dependencies, to create
 other workflows though, but since workflows in bioinformatics often need
 more flexibility than that, and need to be easy to augment with e.g.
 extra filtering steps anywhere in a workflow, we will in this tutorial
-show how we can extend the &quot;functional&quot; design of luigi, into a more
-&quot;data flow&quot; like design that most other workflow engines follow.</p>
+show how we can extend the &ldquo;functional&rdquo; design of luigi, into a more
+&ldquo;data flow&rdquo; like design that most other workflow engines follow.</p>
 <h2 id="some-useful-resources">Some useful resources</h2>
 <ul>
 <li><a href="https://github.com/pharmbio/sciluigi" target="_blank" rel="noopener">The SciLuigi helper library</a>
@@ -105,26 +105,42 @@ Bernhardson</a>
 <h2 id="tutorial-table-of-contents">Tutorial: ​Table of contents</h2>
 <p>The tutorial is divided into the following sections:</p>
 <ul>
-<li><a href="#install">Installing Luigi</a>
+<li>
+<p><a href="#install">Installing Luigi</a>
+</p>
 </li>
-<li><a href="#helloworld">Defining workflows in Luigi / Hello World</a>
+<li>
+<p><a href="#helloworld">Defining workflows in Luigi / Hello World</a>
+</p>
 </li>
-<li><a href="#dependencies_parameters">Adding dependencies and parameters</a>
+<li>
+<p><a href="#dependencies_params">Adding dependencies and parameters</a>
+</p>
 </li>
-<li><a href="#visualize">Visualizing running workflows</a>
- (optional)</li>
-<li><a href="#reuse">Re-using components in multiple workflows</a>
+<li>
+<p><a href="#visualize">Visualizing running workflows</a>
+ (optional)</p>
 </li>
-<li><a href="#multi_input_output">A solution for multiple inputs and outputs</a>
+<li>
+<p><a href="#reuse">Re-using components in multiple workflows</a>
+</p>
 </li>
-<li><a href="#commands">Executing commands</a>
+<li>
+<p><a href="#multi_input_output">A solution for multiple inputs and outputs</a>
+</p>
+</li>
+<li>
+<p><a href="#commands">Executing commands</a>
+</p>
+</li>
+<li>
+<p><strong>UPDATE June 21, 2016:</strong> Note that the strategy used in points 5-7 above
+have been collected into the* <a href="https://github.com/pharmbio/sciluigi" target="_blank" rel="noopener">SciLuigi helper
+library</a>
+*, which is highly recommended
+for bioinformatics use cases!</p>
 </li>
 </ul>
-<p><em><strong>UPDATE June 21, 2016:</strong> Note that the strategy used in points 5-7
-above have been collected into the</em> <a href="https://github.com/pharmbio/sciluigi" target="_blank" rel="noopener">SciLuigi helper
-library</a>
-<em>, which is highly
-recommended for bioinformatics use cases</em>!</p>
 <p>[]{#install}<strong>Installing Luigi</strong></p>
 <p><strong>1. Install the pyenv python version handler</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone git://github.com/yyuu/pyenv.git ~/.pyenv
@@ -146,38 +162,38 @@ the luigi scheduler daemon and individual workers:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install tornado
 </span></span></code></pre></div><p>Install luigi itself:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install luigi
-</span></span></code></pre></div><p>Re-load your ~/.bash_profile, so that the right binaries (such as
+</span></span></code></pre></div><p>Re-load your <code>~/.bash_profile</code>, so that the right binaries (such as
 luigid) are used:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>source ~/.bash_profile
-</span></span></code></pre></div><h2 id="helloworlddefining-workflows-in-luigi--hello-world">[]{#helloworld}Defining workflows in Luigi / Hello World</h2>
+</span></span></code></pre></div><h2 id="helloworld">Defining workflows in Luigi / Hello World</h2>
 <h3 id="luigi-basics">Luigi basics</h3>
 <p>Luigi workflows consists more or less of tasks and targets.</p>
 <p>Targets are some sort of data that is persisted between task runs. In
-this tutorial we will only work with <strong>luigi.LocalTarget()</strong>'s, which
+this tutorial we will only work with <code>luigi.LocalTarget()</code>&rsquo;s, which
 are normal files.</p>
 <p>Tasks are defined as python classes that subclass the luigi.Task super
 class. Each task has methods that the workflow designer is supposed to
 implement:</p>
 <ol>
-<li><strong>requires() -</strong> should return one or more instantiated tasks that
+<li><code>requires()</code> - should return one or more instantiated tasks that
 the current task depends on.</li>
-<li><strong>output()</strong> - return one or more targets objects, typically
+<li><code>output()</code> - return one or more targets objects, typically
 representing files, the the current task will produce when run.</li>
-<li><strong>run()</strong> - Here goes all the code that the task should run as its
+<li><code>run()</code> - Here goes all the code that the task should run as its
 job.</li>
 </ol>
 <p>In the run method, this is how we use the inputs and outputs to the
 task:</p>
 <ul>
-<li>For the input, we use the special <strong>input()</strong> method, to get the
-results of the <strong>output()</strong> function in our <strong>parent task</strong> (the
-task that specified in <strong>requires()</strong>).</li>
+<li>For the input, we use the special <code>input()</code> method, to get the
+results of the <code>output()</code> function in our <strong>parent task</strong> (the
+task that specified in <code>requires()</code>).</li>
 <li>The outputs, we get (as luigi.LocalTarget objects), by simply
-calling <strong>output().</strong></li>
+calling <code>output()</code>.</li>
 </ul>
 <h3 id="a-hello-world-task-in-luigi">A Hello World task in Luigi</h3>
-<p>An example of a simple &quot;hello world&quot; luigi task (that just prints
-&quot;Hello world&quot; in a new file), complete with the code required to run
+<p>An example of a simple &ldquo;hello world&rdquo; luigi task (that just prints
+&ldquo;Hello world&rdquo; in a new file), complete with the code required to run
 the python file as a luigi script, looks like this:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00f">import</span> luigi
 </span></span><span style="display:flex;"><span>
@@ -192,16 +208,14 @@ the python file as a luigi script, looks like this:</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#00f">if</span> __name__ == <span style="color:#a31515">&#39;__main__&#39;</span>:
 </span></span><span style="display:flex;"><span>    luigi.run()
-</span></span></code></pre></div><p>Type this into a file, named, say, <strong>luigitutorial.py</strong>, and let's try
-to run it and see what happens!<br>
-<br>
-<em>(Note that since we don't have any dependencies for this task, we just
-return <strong>None</strong> in the <strong>requires()</strong> method)</em><br>
-<br>
-To run the script, there are only two things you have to specify; A
+</span></span></code></pre></div><p>Type this into a file, named, say, <code>luigitutorial.py</code>, and let&rsquo;s try
+to run it and see what happens!</p>
+<p><em>(Note that since we don&rsquo;t have any dependencies for this task, we just
+return <code>None</code> in the <code>requires()</code> method)</em></p>
+<p>To run the script, there are only two things you have to specify; A
 scheduler host to use, and the name of the task to run. For now, lets
-just use the &quot;<strong>--local-scheduler</strong>&quot; option, so that we don't need
-to start a new scheduler, and of course, we specify the &quot;HelloWorld&quot;
+just use the <code>--local-scheduler</code> option, so that we don&rsquo;t need
+to start a new scheduler, and of course, we specify the &ldquo;HelloWorld&rdquo;
 that we have defined above:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>[samuel@milou2 luigitest]$ python luigitutorial.py --local-scheduler HelloWorld
 </span></span><span style="display:flex;"><span>DEBUG: Checking <span style="color:#00f">if</span> HelloWorld() is complete
@@ -217,13 +231,13 @@ that we have defined above:</p>
 </span></span><span style="display:flex;"><span>INFO: Done
 </span></span><span style="display:flex;"><span>INFO: There are no more tasks to run at this time
 </span></span><span style="display:flex;"><span>INFO: Worker Worker(salt=160204304, host=milou2.uppmax.uu.se, username=sam***, pid=17513) was stopped. Shutting down Keep-Alive thread
-</span></span></code></pre></div><p>Ah, did you notice that &quot;INFO: Done&quot; line there! Seems we are finally
-set! Let's look if we have any new content in our folder:</p>
+</span></span></code></pre></div><p>Ah, did you notice that <code>INFO: Done</code> line there! Seems we are finally
+set! Let&rsquo;s look if we have any new content in our folder:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>[samuel@milou2 luigitest]$ ls -ltr
 </span></span><span style="display:flex;"><span>total 64K
 </span></span><span style="display:flex;"><span>-rw-rw-r-- 1 samuel samuel 677 16 jan 17.52 luigitutorial.py
 </span></span><span style="display:flex;"><span>-rw-rw-r-- 1 samuel samuel 13 16 jan 17.58 helloworld.txt
-</span></span></code></pre></div><p>Ah, cool, we have a new file &quot;helloworld.txt&quot; there! And what does it
+</span></span></code></pre></div><p>Ah, cool, we have a new file &ldquo;helloworld.txt&rdquo; there! And what does it
 contain:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>[samuel@milou2 luigitest]$ cat helloworld.txt
 </span></span><span style="display:flex;"><span>Hello World!
@@ -234,15 +248,15 @@ just having written and ran your very first luigi workflow!
     <img src="http://uppnex.se/twiki/pub/TWiki/SmiliesPlugin/smile.gif" alt="smile"  class="smile" />
 </p>
 </p>
-<h2 id="dependencies_paramsadding-dependencies-and-parameters">[]{#dependencies_params}Adding dependencies and parameters</h2>
+<h2 id="dependencies_params">Adding dependencies and parameters</h2>
 <p>To add dependencies between tasks, we need one more task, and we need to
-return something more than just None in the <strong>requires()</strong> function of
-the downstream one. Let's try adding another task,<strong>NameSubstituter</strong>,
-that will take the file we created in our <strong>HelloWorld</strong> task, and
-replace &quot;World&quot; with some name.</p>
-<p>But lets save time and take two steps in one, so let's take the name to
+return something more than just None in the <code>requires()</code> function of
+the downstream one. Let&rsquo;s try adding another task,<code>NameSubstituter</code>,
+that will take the file we created in our <code>HelloWorld</code> task, and
+replace &ldquo;World&rdquo; with some name.</p>
+<p>But lets save time and take two steps in one, so let&rsquo;s take the name to
 substitute with a parameter! So, look at how this looks, in the new
-<strong>NameSubstituter</strong> class/task (the <strong>HelloWorld</strong> task remains
+<code>NameSubstituter</code> class/task (the <code>HelloWorld</code> task remains
 unchanged):</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00f">import</span> luigi
 </span></span><span style="display:flex;"><span>
@@ -270,17 +284,17 @@ unchanged):</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#00f">if</span> __name__ == <span style="color:#a31515">&#39;__main__&#39;</span>:
 </span></span><span style="display:flex;"><span>    luigi.run()
-</span></span></code></pre></div><p>Above you can see in the <strong>requires()</strong> method of the
-<strong>NameSubstituter</strong> task, how we return the previous task
-(<strong>HelloWorld</strong> in this case) and in the <strong>run()</strong> method, we open it as
-our infile, read it, replace &quot;World&quot; with some name that we get from
+</span></span></code></pre></div><p>Above you can see in the <code>requires()</code> method of the
+<code>NameSubstituter</code> task, how we return the previous task
+(<code>HelloWorld</code> in this case) and in the <code>run()</code> method, we open it as
+our infile, read it, replace &ldquo;World&rdquo; with some name that we get from
 the luigi parameter, and then write it out to the output target of
-<strong>NameSubstituter</strong>.</p>
+<code>NameSubstituter</code>.</p>
 <ul>
 <li><strong>Stop and think:</strong> What will be the file name of the newly
 generated file, can you see that from the code?</li>
 </ul>
-<p>Let's try to run the new task, and see what we get:</p>
+<p>Let&rsquo;s try to run the new task, and see what we get:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>[samuel@milou2 luigitest]$ python luigitutorial.py --local-scheduler NameSubstituter
 </span></span><span style="display:flex;"><span>Traceback (most recent call last):
 </span></span><span style="display:flex;"><span>  File <span style="color:#a31515">&#34;luigitutorial.py&#34;</span>, line 28, in &lt;module&gt;
@@ -299,7 +313,7 @@ generated file, can you see that from the code?</li>
 </span></span></code></pre></div><p>Oops! Did you see that last line?</p>
 <p>Of course, if we create a parameter to the task, we need to provide the
 value for the parameter as well! And the output suggests how to do it:
-Just add <strong>&quot;--name &lt;the-value-of-the-parameter&gt;&quot;</strong>. Let's try
+Just add <code>&quot;--name &lt;the-value-of-the-parameter&gt;</code>. Let&rsquo;s try
 again:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>[samuel@milou2 luigitest]$ python luigitutorial.py --local-scheduler NameSubstituter --name samuel
 </span></span><span style="display:flex;"><span>DEBUG: Checking <span style="color:#00f">if</span> NameSubstituter(name=samuel) is complete
@@ -317,7 +331,7 @@ again:</p>
 </span></span><span style="display:flex;"><span>INFO: Done
 </span></span><span style="display:flex;"><span>INFO: There are no more tasks to run at this time
 </span></span><span style="display:flex;"><span>INFO: Worker Worker(salt=493027103, host=milou2.uppmax.uu.se, username=sam***, pid=9019) was stopped. Shutting down Keep-Alive thread
-</span></span></code></pre></div><p>Well, that looks WAY better! (We get that &quot;<strong>Done</strong>&quot; line in the
+</span></span></code></pre></div><p>Well, that looks WAY better! (We get that &ldquo;<strong>Done</strong>&rdquo; line in the
 bottom).</p>
 <p>And, we can also have a look at what files have been generated now (we
 use the -ltr flags, to list files in order of modification time, in
@@ -334,13 +348,13 @@ highly useful pattern, since it helps us keep track of what tasks have
 been ran in order to produce a particular file, and also the values of
 the parameters to those tasks, if we choose to include them, like we did
 with the <strong>name</strong> parameter here.</p>
-<h2 id="visualizevisualizing-running-workflows-optional">[]{#visualize}Visualizing running workflows (optional)</h2>
+<h2 id="visualize">Visualizing running workflows (optional)</h2>
 <p>Before we go further into more advanced topics, lets see if we can get
 the web based workflow visualization going, so that we can keep track of
-what's happening in a visual way!</p>
-<p>In order to see what's happening before the workflow is finished, we
+what&rsquo;s happening in a visual way!</p>
+<p>In order to see what&rsquo;s happening before the workflow is finished, we
 need to add a little sleep to the tasks, since they are running so fast.
-So, let's add a sleep of 15 seconds before and after the main chunk of
+So, let&rsquo;s add a sleep of 15 seconds before and after the main chunk of
 work in each of the tasks:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00f">import</span> luigi
 </span></span><span style="display:flex;"><span><span style="color:#00f">import</span> time
@@ -385,9 +399,8 @@ luigi daemon, not just the local-scheduler as before:</p>
 </a>
 </li>
 </ul>
-<p>Then, in a separate terminal window, start the luigi workflow we created
-above, now specifying &quot;<strong>localhost</strong>&quot; as our
-&quot;<strong>--scheduler-host</strong>&quot;:</p>
+<p>Then, in a separate terminal window, start the luigi workflow we created above,
+now specifying <code>localhost</code> as our <code>--scheduler-host</code>.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python luigitutorial.py --scheduler-host localhost NameSubstituter --name YourName
 </span></span></code></pre></div><p>Now, go back to <a href="http://localhost:8082/" target="_blank" rel="noopener">http://localhost:8082</a>
 ,
@@ -399,20 +412,20 @@ refresh, and see what you see!</p>
 </p>
 <p>Click on the button indicated in the screenshot above!</p>
 <p>Then you should see something like this, representing a (very minimal)
-&quot;dependency graph&quot; of our two tasks:</p>
+&ldquo;dependency graph&rdquo; of our two tasks:</p>
 <p><p class="image">
     <img src="luigi_task_status2.png" alt=""  />
 </p>
 </p>
-<h2 id="reusere-using-components-in-multiple-workflows">[]{#reuse}Re-using components in multiple workflows</h2>
+<h2 id="reuse">Re-using components in multiple workflows</h2>
 <h3 id="the-default-way-sub-classing">The default way: Sub-classing</h3>
 <p>The simplest way to re-use luigi components, is to just subclass an
-existing task class, and override it's requires() method.</p>
-<p>See for example this code example, where we have a <strong>TaskA</strong> and
-<strong>TaskB</strong>, and then a <strong>TaskC</strong> that depends on <strong>TaskA</strong>.</p>
-<p>Then, in the bottom, we have subclassed <strong>TaskC</strong> into <strong>MyTaskC</strong>, and
+existing task class, and override it&rsquo;s requires() method.</p>
+<p>See for example this code example, where we have a <code>TaskA</code> and
+<code>TaskB</code>, and then a <code>TaskC</code> that depends on <code>TaskA</code>.</p>
+<p>Then, in the bottom, we have subclassed <code>TaskC</code> into <code>MyTaskC</code>, and
 by overriding the requires() method, changed the dependency from
-<strong>TaskA</strong> to <strong>TaskB</strong>:</p>
+<code>TaskA</code> to <code>TaskB</code>:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00f">import</span> luigi
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">TaskA</span>(luigi.Task):
@@ -509,22 +522,22 @@ works very well:</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#00f">if</span> __name__ == <span style="color:#a31515">&#39;__main__&#39;</span>:
 </span></span><span style="display:flex;"><span>    luigi.run()
-</span></span></code></pre></div><p>Notice in <strong>TaskC</strong> above, how we are taking the upstream dependency as
+</span></span></code></pre></div><p>Notice in <code>TaskC</code> above, how we are taking the upstream dependency as
 a parameter, rather than hard-coding it! This makes it possible to
 change how the workflow is connected together, at any time.</p>
-<p>Notice also, in the <strong>MyWorkflow</strong> task, how we have created this task
+<p>Notice also, in the <code>MyWorkflow</code> task, how we have created this task
 just for the sake of encapsulating the workflow - it does not even
 implement any run() method!</p>
 <p>Try now, after deleting the previously created output, to run this
-workflow, by executing our new and special &quot;workflow task&quot;,
-<strong>MyWorkflow</strong>:</p>
+workflow, by executing our new and special &ldquo;workflow task&rdquo;,
+<code>MyWorkflow</code>:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>[samuel]$ python luigi_reuse_depinject.py --local-scheduler MyWorkflow
-</span></span></code></pre></div><p>... and verify that the result is still the same!</p>
+</span></span></code></pre></div><p>&hellip; and verify that the result is still the same!</p>
 <h3 id="a-note-on-passing-parameters">A note on passing parameters</h3>
 <p>You might not have realized it yet, but the second method will prove to
 be much much preferable to the first one for a number of reasons. One of
 those reasons is that for tasks that take parameters, it will be much
-easier to create modular workflows that don't require changes in any of
+easier to create modular workflows that don&rsquo;t require changes in any of
 the tasks themselves, when re-using tasks in new workflows.</p>
 <p>Consider the following (sketchy) example luigi workflow, created using
 the first, sub-classing, approach:</p>
@@ -558,21 +571,21 @@ the first, sub-classing, approach:</p>
 </span></span><span style="display:flex;"><span>                 param2=self.param2,
 </span></span><span style="display:flex;"><span>                 param3=self.param3)
 </span></span><span style="display:flex;"><span>  ...
-</span></span></code></pre></div><p>Do you notice how parameters introduced higher up in the &quot;workflow
-graph&quot;, have to be duplicated all the way down to the last task,
-<strong>TaskD</strong>, and passed along, through all intermediate tasks?</p>
+</span></span></code></pre></div><p>Do you notice how parameters introduced higher up in the &ldquo;workflow
+graph&rdquo;, have to be duplicated all the way down to the last task,
+<code>TaskD</code>, and passed along, through all intermediate tasks?</p>
 <p>Can you imagine what happens e.g. if we want to add an existing task
-somewhere in the middle, e.g. between <strong>TaskB</strong> and <strong>TaskC</strong>? - Then we
-need to firstly add all the parameters which need just need to &quot;pass
-through&quot; this task, until it reaches its upstream goal. But secondly,
+somewhere in the middle, e.g. between <code>TaskB</code> and <code>TaskC</code>? - Then we
+need to firstly add all the parameters which need just need to &ldquo;pass
+through&rdquo; this task, until it reaches its upstream goal. But secondly,
 if that new task takes any parameters, we will also need to duplicate
-those parameters in all downstream tasks (in this case <strong>TaskC</strong> and
-<strong>TaskD</strong>), in order to be able to execute the whole workflow?</p>
+those parameters in all downstream tasks (in this case <code>TaskC</code> and
+<code>TaskD</code>), in order to be able to execute the whole workflow?</p>
 <p>Do you see how the tasks are no longer interchangeable, and truly
 modular?</p>
 <p>Then, consider the following workflow, where instead, each task just
 contains its own parameter(s), and those parameters are only duplicated
-(once) if / when the task is used in a &quot;workflow task&quot;, along the line
+(once) if / when the task is used in a &ldquo;workflow task&rdquo;, along the line
 of our example further above:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">TaskA</span>(luigi.Task):
 </span></span><span style="display:flex;"><span>    param1 = luigi.Parameter()
@@ -616,12 +629,12 @@ of our example further above:</p>
 become completely modular, easy to stitch in to any workflow?</p>
 <p>(We will continue improving on this scheme in the next section, where we
 look at how to handle multiple inputs and outputs to tasks)</p>
-<h2 id="multi_input_outputa-solution-for-multiple-inputs-and-outputs">[]{#multi_input_output}A solution for multiple inputs and outputs</h2>
+<h2 id="multi_input_output">A solution for multiple inputs and outputs</h2>
 <p>One can return multiple outputs (and take multiple inputs) in tasks in
-luigi, by letting the <strong>output()</strong> function of a task return a list, but
-even better, a dict, with luigi.Target()'s.</p>
-<p>Below is an example of how <strong>TaskB</strong> can depend on two outputs from
-<strong>TaskA</strong> (So <strong>TaskA</strong> 's two outputs, become <strong>TaskB</strong> 's two
+luigi, by letting the <code>output()</code> function of a task return a list, but
+even better, a dict, with luigi.Target()&rsquo;s.</p>
+<p>Below is an example of how <code>TaskB</code> can depend on two outputs from
+<code>TaskA</code> (So <code>TaskA</code> &rsquo;s two outputs, become <code>TaskB</code> &rsquo;s two
 inputs):</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00f">import</span> luigi
 </span></span><span style="display:flex;"><span>
@@ -652,12 +665,12 @@ inputs):</p>
 </span></span><span style="display:flex;"><span><span style="color:#00f">if</span> __name__ == <span style="color:#a31515">&#39;__main__&#39;</span>:
 </span></span><span style="display:flex;"><span>    luigi.run()
 </span></span></code></pre></div><p>But, do you notice anything strange here?</p>
-<p>Do you notice how, in the run() method of <strong>TaskB</strong>, we have to know the
-names of the outputs of <strong>TaskA</strong> ... which is of course less than
+<p>Do you notice how, in the run() method of <code>TaskB</code>, we have to know the
+names of the outputs of <code>TaskA</code> &hellip; which is of course less than
 optimal, since now we have to know internals of another task inside our
 task. Then our tasks are no longer independent and truly modular.</p>
-<p>But this is not even the worst we can get ... look at what happens when
-one task (<strong>TaskC</strong> in this case) depends on TWO upstream tasks, EACH OF
+<p>But this is not even the worst we can get &hellip; look at what happens when
+one task (<code>TaskC</code> in this case) depends on TWO upstream tasks, EACH OF
 WHICH returns two outputs. Then we have to look up two dict structures
 (the dict returned from our requires() method, and the one returned from
 each upstream tasks output() function):</p>
@@ -711,27 +724,27 @@ each upstream tasks output() function):</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#00f">if</span> __name__ == <span style="color:#a31515">&#39;__main__&#39;</span>:
 </span></span><span style="display:flex;"><span>    luigi.run()
-</span></span></code></pre></div><p>(notice the double dict look ups, in the run method ... for example
-<strong>self.input()['input_a']['output1'].open() as infile_a1</strong>
-... I guess you can notice how this also gets rather messy after a
+</span></span></code></pre></div><p>(notice the double dict look ups, in the run method &hellip; for example
+<code>self.input()['input_a']['output1'].open() as infile_a1</code>
+&hellip; I guess you can notice how this also gets rather messy after a
 while)</p>
 <h3 id="a-solution">A solution</h3>
 <p>The way we have found to work around this, is the following:</p>
 <ul>
-<li>Don't send upstream dependencies as parameters, like we suggested
+<li>Don&rsquo;t send upstream dependencies as parameters, like we suggested
 in an earlier section.</li>
 <li>Instead, just send (as a parameter) a dict-structure containing the
-upstream task, and the name of the output, to &quot;plug into&quot; this
+upstream task, and the name of the output, to &ldquo;plug into&rdquo; this
 task.</li>
-<li>Make one such parameter per &quot;input&quot; that the task will use.</li>
-<li>Create a special method get_input(), stored in a meta class, that
+<li>Make one such parameter per &ldquo;input&rdquo; that the task will use.</li>
+<li>Create a special method <code>get_input()</code>, stored in a meta class, that
 can be used to retrieve the correct input, based on the dict
 structures sent as parameters.</li>
 </ul>
 <p>Part of what we solve here, is also that, instead of specifying
 dependencies <strong>between tasks</strong>, we specify how tasks depend on, and
 export, <strong>targets</strong>.</p>
-<p>Let's look at how our solution looks in code:</p>
+<p>Let&rsquo;s look at how our solution looks in code:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#008000">###### Meta class ######</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#00f">class</span> <span style="color:#2b91af">DependencyMetaTask</span>(luigi.Task):
@@ -816,31 +829,31 @@ export, <strong>targets</strong>.</p>
 </span></span><span style="display:flex;"><span>                                 <span style="color:#a31515">&#39;port&#39;</span> : <span style="color:#a31515">&#39;out2&#39;</span> } }
 </span></span><span style="display:flex;"><span>        )
 </span></span></code></pre></div><p>So, can you follow what happens here?</p>
-<p>The key here is the get_input() method in the <strong>DependencyMetaTask</strong>
+<p>The key here is the get_input() method in the <code>DependencyMetaTask</code>
 meta class. It allows us to send as parameters to tasks, a double dict
 structure looking like so:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>some_target = { <span style="color:#a31515">&#39;upstream&#39;</span> : { <span style="color:#a31515">&#39;task&#39;</span> : TaskA() , <span style="color:#a31515">&#39;port&#39;</span> : <span style="color:#a31515">&#39;output1&#39;</span> } }
-</span></span></code></pre></div><p>... just a little differently formatted above.</p>
-<p>Then, as you can see in the run() method of <strong>TaskA</strong> above, we can just
+</span></span></code></pre></div><p>&hellip; just a little differently formatted above.</p>
+<p>Then, as you can see in the run() method of <code>TaskA</code> above, we can just
 use the get_input() function to get a specific input target (and not
 just a dependent task, or dict of tasks, like with the normal input()
 method).</p>
 <p>Maybe you also notice that this lets us do all the wiring of how outputs
-from <strong>TaskA</strong> is mapped to &quot;inputs&quot; (those special parameters which
-take a specification for how to find a certain target), in <strong>TaskB</strong>. In
+from <code>TaskA</code> is mapped to &ldquo;inputs&rdquo; (those special parameters which
+take a specification for how to find a certain target), in <code>TaskB</code>. In
 effect we have <strong>separated the workflow definition from the tasks
 themselves</strong>, and thereby made the tasks wholly independent and truly
 modular, just as we sought to do.</p>
-<h2 id="commandsexecuting-commands">[]{#commands}Executing commands</h2>
-<p>In Luigi, it is very easy to implement a task's run() method with just
+<h2 id="commands">Executing commands</h2>
+<p>In Luigi, it is very easy to implement a task&rsquo;s run() method with just
 some python code that does something.</p>
 <p>But in bioinformatics, most of the time we want to execute some external
 program, that is accessible only via its command line interface.</p>
 <p>This is also no problem in python, as you might expect, but we have
 found that creating some small helper functions can help a lot in making
 this easier to work with.</p>
-<p>We typically create a <strong>MetaTask</strong> or Mixin, with helper functions such
-as one for executing commands, and let all tasks subclass (or &quot;mix in&quot;
+<p>We typically create a <code>MetaTask</code> or Mixin, with helper functions such
+as one for executing commands, and let all tasks subclass (or &ldquo;mix in&rdquo;
 the mixin). Below you find our implementation of a helper function for
 executing commands, and how to use it:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00f">import</span> luigi
@@ -874,7 +887,7 @@ executing commands, and how to use it:</p>
 </span></span><span style="display:flex;"><span>                <span style="color:#a31515">&#39;-inputfile&#39;</span>, self.get_input(<span style="color:#a31515">&#39;dataset_target&#39;</span>).path,
 </span></span><span style="display:flex;"><span>                <span style="color:#a31515">&#39;-parser&#39;</span>, <span style="color:#a31515">&#39;1&#39;</span>,
 </span></span><span style="display:flex;"><span>                <span style="color:#a31515">&#39;-outputfile&#39;</span>, self.output()[<span style="color:#a31515">&#39;fingerprints&#39;</span>].path])
-</span></span></code></pre></div><p>In the run method of the <strong>GenerateFingerPrint</strong> task, you see how we
+</span></span></code></pre></div><p>In the run method of the <code>GenerateFingerPrint</code> task, you see how we
 can execute commands by sending a python list of command parts, to the
 x() method, for execution (we could send a string as well, but a list of
 command parts has turned out to be easier to work with, when many of the
@@ -885,6 +898,14 @@ sciences</a>
 .</p>
 
   
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/luigi/">Luigi</a></li>
+        <li><a href="/tags/workflow-tools/">Workflow-Tools</a></li>
+        <li><a href="/tags/data-engineering/">Data Engineering</a></li>
+    </ul>
+  </div>
 
 
   </main>

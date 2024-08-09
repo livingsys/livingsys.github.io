@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>Answering questions without answers - by wrapping simulations in semantics | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.c11645622300898541e1ba6a090a08898a6e2a2f204875343a09f514ed41aadd.css" integrity="sha256-wRZFYiMAiYVB4bpqCQoIiYpuKi8gSHU0Ogn1FO1Bqt0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 
 
-      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+      <script src="/js/main.js"></script>
 
 
 
@@ -42,7 +42,7 @@
   <time datetime="2010-02-17T01:45:00&#43;01:00">February 17, 2010</time>
 
   <!-- raw HTML omitted -->
-<p>There are lots of things that can't be answered by a computer from data
+<p>There are lots of things that can&rsquo;t be answered by a computer from data
 alone. Maybe the majority of what we humans perceive as knowledge is
 inferred from a combination of data (simple fact statements about
 reality) and rules that tell how facts can be combined together to allow
@@ -56,7 +56,7 @@ storage than can probably ever be made available in this universe.</p>
 <p>It is not too hard to come up with some processes which are just too
 complex and involves too much variability^1^ that it is unrealistic to
 try to capture every imaginable state of of that system or process in
-explicit facts. Instead we must seek the &quot;first principles&quot; that
+explicit facts. Instead we must seek the &ldquo;first principles&rdquo; that
 define the process, and through <em>simulations</em> make explicit any
 knowledge we are looking for, at the time we need it (one can of course
 <em>cache</em> often accessed knowledge).</p>
@@ -64,7 +64,7 @@ knowledge we are looking for, at the time we need it (one can of course
 looking for, but which <em>does not</em> exist in explicit form.</p>
 <h3 id="toc2">Simulations should be automated</h3>
 <p>There are lots of simulation software for biological systems out there
-... deterministic, stochastic and agent-based ones to mention a few
+&hellip; deterministic, stochastic and agent-based ones to mention a few
 categories. The plethora of different systems to choose from does not
 make life easier for the bench scientist. And in order to improve that
 situation, and provide some automation, a standardized way to deal with
@@ -74,7 +74,7 @@ simulations is needed.</p>
 through the <a href="http://sbml.org/" target="_blank" rel="noopener">SBML</a>
  standard, a standard file format
 for molecular biology models (pathways, gene regulatory networks, and
-the like). But how to make things more &quot;automatable&quot;, as is one of the
+the like). But how to make things more &ldquo;automatable&rdquo;, as is one of the
 main goals of semantic web?</p>
 <p>Interestingly, <a href="http://github.com/egonw" target="_blank" rel="noopener">Egon</a>
  hinted about a <a href="http://neilswainston.blogspot.com/2010/02/computational-tools-for-annotation-of.html" target="_blank" rel="noopener">blog
@@ -83,18 +83,18 @@ post</a>
 about a very semantic annotation of SBML models! Nice indeed that SBML
 and semantic tech can now be integrated.</p>
 <h3 id="toc4">Still more to do</h3>
-<p>I'm thinking whether that is still enough though. If wanting to
+<p>I&rsquo;m thinking whether that is still enough though. If wanting to
 automate knowledge discovery using these kind of systems, one needs to
 capture in a computer-readable way also the <em>outcome</em> of simulations,
 not only the underlying model^2^.</p>
 <p>So, all in all, I think there is some work to be done in wrapping
-simulation software into a &quot;semantic shell&quot; that knows all it needs to
+simulation software into a &ldquo;semantic shell&rdquo; that knows all it needs to
 understand the the language of incoming data (it might even need to be
 able to produce such data, from semantic queries), and also can analyze
 the simulation results, and provide the questioner with an answer in a
 semantic way.</p>
 <p>Thus, by <em>wrapping simulations in semantics</em>, one might be able to
-<em>automate answering of questionswith no answers</em>! (at least, that's the
+<em>automate answering of questionswith no answers</em>! (at least, that&rsquo;s the
 idea :) )</p>
 <h3 id="update-march-2010-building-blocks-already-there">Update (March 2010): Building blocks already there</h3>
 <p>I was at <a href="http://www.ebi.ac.uk/" target="_blank" rel="noopener">EBI</a>
@@ -103,7 +103,7 @@ kindly hinted to by <a href="http://www.chenli.info/" target="_blank" rel="noope
 , I learned to
 know the <a href="http://www.biomodels.net/" target="_blank" rel="noopener">BioModels</a>
  initiative, which
-they're directing in the <a href="http://www.ebi.ac.uk/compneur-srv/" target="_blank" rel="noopener">Le
+they&rsquo;re directing in the <a href="http://www.ebi.ac.uk/compneur-srv/" target="_blank" rel="noopener">Le
 Novère</a>
  group at EBI.</p>
 <p>When I wrote the post above, I had not imagined that the building blocks
@@ -139,8 +139,8 @@ an automated system for answering questions whose answers are hidden in
 simulation results) might not be so unrealistic after all.</p>
 <hr>
 <ul>
-<li><del>1.\ ''Think\ of\ the\ embryonic\ development\ process\ for\ example,\ and\ then\ add\ dimensions\ like;\ species,\ environmental\ factors,\ mutations\ etc.\ etc.\ Say\ for\ example\ that\ we\ are\ looking\ for\ the\ expression\ level\ of\ gene\ X,\ in\ the\ compartment\ Y,\ in\ the\ species\ Z,\ after\ A\ days\ of\ growth,\ with\ a\ temperature\ that\ goes\ from\ +17\ C\ to +\ 4\ C\ in\ a\ gradient\ during\ that\ A-day\ period''.\ You\ can\ easily\ see\ that\ there\ are\ quite\ some\ possible\ combinations\ of\ factors\ affecting\ the\ state\ of\ the\ system\ in\ every\ time\ step\ ...\ .</del></li>
-<li><del>2.\ Most\ probably,\ principles\ from\ the\ [http://sadiframework.org/\ SADI\ framework],\ will\ come\ useful\ here</del></li>
+<li><del>1. &lsquo;&lsquo;Think of the embryonic development process for example, and then add dimensions like; species, environmental factors, mutations etc. etc. Say for example that we are looking for the expression level of gene X, in the compartment Y, in the species Z, after A days of growth, with a temperature that goes from +17 C to + 4 C in a gradient during that A-day period&rsquo;&rsquo;. You can easily see that there are quite some possible combinations of factors affecting the state of the system in every time step &hellip; .</del></li>
+<li><del>2. Most probably, principles from the [http://sadiframework.org/ SADI framework], will come useful here</del></li>
 </ul>
 
   

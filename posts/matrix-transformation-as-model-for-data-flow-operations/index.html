@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>The matrix transformation as a model for declarative atomic data flow operations | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.c11645622300898541e1ba6a090a08898a6e2a2f204875343a09f514ed41aadd.css" integrity="sha256-wRZFYiMAiYVB4bpqCQoIiYpuKi8gSHU0Ogn1FO1Bqt0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 
 
-      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+      <script src="/js/main.js"></script>
 
 
 
@@ -43,18 +43,18 @@
 
   <p><em>After just <a href="https://news.ycombinator.com/item?id=10532957" target="_blank" rel="noopener">reading on Hacker
 News</a>
- about Google's
+ about Google&rsquo;s
 newly released <a href="http://tensorflow.org/" target="_blank" rel="noopener">TensorFlow library</a>
 , for deep
 learning based on tensors and data flow, I realized I wrote in a draft
 post back in 2013 that:</em></p>
 <blockquote>
-<p><em><strong>&quot;What if one could have a fully declarative &ldquo;matrix language&rdquo; in
+<p><em><strong>&ldquo;What if one could have a fully declarative &ldquo;matrix language&rdquo; in
 which all data transformations ever needed could be declaratively
-defined in a way that is very easy to comprehend?&quot;</strong></em></p>
+defined in a way that is very easy to comprehend?&rdquo;</strong></em></p>
 </blockquote>
-<p><em>... so, I thought this is a good time to post this draft, to see
-whether it spurs any further ideas. The following is an almost &quot;as is&quot;
+<p><em>&hellip; so, I thought this is a good time to post this draft, to see
+whether it spurs any further ideas. The following is an almost &ldquo;as is&rdquo;
 copy and paste of that document from December 2013:</em></p>
 <hr>
 <h2 id="what-is-a-matrix-an-analogy-from-physical-water-pipes">What is a Matrix? An analogy from physical water pipes</h2>
@@ -127,16 +127,14 @@ then the Map and the reduce steps are completely up to the developer
 to implement, and can be different for each column, or even
 column/row combination! → That definitely should make the
 computation at least partly very well parallelizable (the map
-step!)<br>
-<br>
-So, in terms of the flowing water mixer, if we write out where the
-maps and reduces happen, it would look something like this:<br>
-<br>
-<p class="image">
+step!)</p>
+<p>So, in terms of the flowing water mixer, if we write out where the
+maps and reduces happen, it would look something like this:</p>
+<p><p class="image">
     <img src="matrix02.png" alt=""  />
 </p>
-<br>
-&hellip; where the map happens in every &ldquo;tap&rdquo;, while the reduce steps
+</p>
+<p>&hellip; where the map happens in every &ldquo;tap&rdquo;, while the reduce steps
 happens once for each &ldquo;column&rdquo; of taps (shown with the red arrows).</p>
 </li>
 <li>
@@ -153,6 +151,12 @@ these possible values both on its input and output sides, could do.</p>
 </ul>
 
   
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/thinking-tools/">Thinking-Tools</a></li>
+    </ul>
+  </div>
 
 
   </main>

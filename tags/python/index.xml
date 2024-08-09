@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Living Systems</title>
+    <link>http://localhost:1313/tags/python/</link>
+    <description>Recent content in Python on Living Systems</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 04 Mar 2024 14:42:00 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Debugging inside Jinja templates using pdb/ipdb</title>
+      <link>http://localhost:1313/posts/debugging-inside-jinja-templates-using-pdb-ipdb/</link>
+      <pubDate>Mon, 04 Mar 2024 14:42:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/debugging-inside-jinja-templates-using-pdb-ipdb/</guid>
+      <description>I&amp;rsquo;m working on a static reporting tool using the Jinja2 templating engine for Python.&#xA;I was trying to figure out a way to enter into the Jinja templating code with the pdb/ipdb commandline debugger.&#xA;I tried creating an .ipdbrc file in my local directory with the line:&#xA;path/to/template.html:&amp;lt;lineno&amp;gt; &amp;hellip; but that didn&amp;rsquo;t work.&#xA;What worked was to figure out the line that says :&#xA;return self.environment.concat(self.root_render_func(ctx)) &amp;hellip; inside the the jinja codebase, and put a breakpoint on that (which for me was on line 1299, but might vary depending on version):</description>
+    </item>
+    <item>
+      <title>Basic PUB/SUB connection with ZeroMQ in Python</title>
+      <link>http://localhost:1313/posts/pub-sub-with-zeromq-in-python/</link>
+      <pubDate>Wed, 13 Nov 2019 11:56:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/pub-sub-with-zeromq-in-python/</guid>
+      <description>ZeroMQ is a great way to quickly and simply send messages between multiple programs running on the same or different computers. It is very simple and robust since it doesn&amp;rsquo;t need any central server. Instead it talks directly between the programs through sockets, TCP-connections or similar.&#xA;ZeroMQ has client libraries for basically all commonly used programming languages, but when testing out that a connection works between e.g. two different machines, it might be good to keep things simple and test just the connection, as simply as possible.</description>
+    </item>
+    <item>
+      <title>The unexpected convenience of JSON on the commandline</title>
+      <link>http://localhost:1313/posts/the-unexpected-usefullness-of-json-on-the-commandline/</link>
+      <pubDate>Tue, 08 Dec 2015 07:10:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/the-unexpected-usefullness-of-json-on-the-commandline/</guid>
+      <description>I was working with a migration from drupal to processwire CMS:es, where I wanted to be able to pipe data, including the body field with HTML formatting and all, through multiple processing steps in a flexible manner. I&amp;rsquo;d start with an extraction SQL query, through a few components to replace and massage the data, and finally over to an import command using processwire&amp;rsquo;s wireshell tool . So, basically I needed a flexible format for structured data that could be sent as one &amp;ldquo;data object&amp;rdquo; per line, to work nicely with linux commandline tools like grep, sed and awk.</description>
+    </item>
+    <item>
+      <title>How to compile vim for use with pyenv and vim-pyenv</title>
+      <link>http://localhost:1313/posts/how-to-compile-vim-for-use-with-pyenv-and-vim-pyenv/</link>
+      <pubDate>Thu, 20 Aug 2015 08:05:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/how-to-compile-vim-for-use-with-pyenv-and-vim-pyenv/</guid>
+      <description>This manifested itself in a bunch of error message from the python module in vim, ending with:&#xA;AttributeError: &amp;#39;module&amp;#39; object has no attribute &amp;#39;vars&amp;#39; I first thought it was an error in vim-pyenv and reported it (see that issue for more in-depth details). In summary it turns out that older versions of VIM indeed lack some attributes in its python module, so I figured I had to compile my own version, below are just my notes about how to do this, for future reference:</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Luigi on Living Systems</title>
+    <link>http://localhost:1313/tags/luigi/</link>
+    <description>Recent content in Luigi on Living Systems</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 21 Jun 2016 13:49:00 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/luigi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tutorial: Luigi for Scientific Workflows</title>
+      <link>http://localhost:1313/posts/luigi-tutorial/</link>
+      <pubDate>Tue, 21 Jun 2016 13:49:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/luigi-tutorial/</guid>
+      <description>This is a Luigi tutorial I held at the e-Infrastructures for Massively parallel sequencing workshop (Video archive ) at SciLifeLab Uppsala in January 2015, moved here for future reference.&#xA;What is Luigi? Luigi is a batch workflow system written in Python and developed by Erik Bernhardson and others at Spotify , where it is used to compute machine-learning powered music recommendation lists, top lists etc.&#xA;Luigi is one of not-too-many batch workflow systems that supports running both normal command line jobs and Hadoop jobs in the same (in this tutorial, we will focus only on the command line part).</description>
+    </item>
+    <item>
+      <title>Wanted: Dynamic workflow scheduling</title>
+      <link>http://localhost:1313/posts/dynamic-workflow-scheduling/</link>
+      <pubDate>Mon, 26 Oct 2015 21:23:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/dynamic-workflow-scheduling/</guid>
+      <description>Photo credits: Matthew Smith / Unsplash In our work on automating machine learning computations in cheminformatics with scientific workflow tools , we have came to realize something; Dynamic scheduling in scientific workflow tools is very important and sometimes badly needed.&#xA;What I mean is that new tasks should be able to be scheduled during the execution of a workflow, not just in its scheduling phase.&#xA;What is striking is that far from all workflow tools allow this.</description>
+    </item>
+    <item>
+      <title>Workflow tool makers: Allow defining data flow, not just task dependencies</title>
+      <link>http://localhost:1313/posts/workflows-dataflow-not-task-deps/</link>
+      <pubDate>Wed, 10 Jun 2015 12:03:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/workflows-dataflow-not-task-deps/</guid>
+      <description>Upsurge in workflow tools There seem to be a little upsurge in light-weight - often python-based - workflow tools for data pipelines in the last couple of years: Spotify&amp;rsquo;s Luigi , OpenStack&amp;rsquo;s Mistral , Pinterest&amp;rsquo;s Pinball , and recently AirBnb&amp;rsquo;s Airflow , to name a few. These are all interesting tools, and it is an interesting trend for us at pharmbio , who try to see how we can use workflow tools to automate bio- and cheminformatics tasks on compute clusters.</description>
+    </item>
+    <item>
+      <title>Links: Our experiences using Spotify&#39;s Luigi for Bioinformatics Workflows</title>
+      <link>http://localhost:1313/posts/our-experiences-using-spotifys-luigi-for-bioinformatics-workflows/</link>
+      <pubDate>Thu, 12 Feb 2015 20:45:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/our-experiences-using-spotifys-luigi-for-bioinformatics-workflows/</guid>
+      <description>Fig 1: A screenshot of Luigi&amp;rsquo;s web UI, of a real-world (although rather simple) workflow implemented in Luigi:&#xA;Update May 5, 2016: Most of the below material is more or less outdated. Our latest work has resulted in the SciLuigi helper library , which we have used in production and will be focus of further developments.&#xA;In the Bioclipse / Pharmaceutical Bioinformatics group at Dept of Pharm. Biosciences att UU, we are quite heavy users of Spotify&amp;rsquo;s Luigi workflow library , to automate workflows, mainly doing Machine Learning heavy lifting.</description>
+    </item>
+  </channel>
+</rss>

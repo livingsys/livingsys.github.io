@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>Partial Galaxy ToolConfig to DocBook CmdSynopsis conversion with XSLT RegEx | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.c11645622300898541e1ba6a090a08898a6e2a2f204875343a09f514ed41aadd.css" integrity="sha256-wRZFYiMAiYVB4bpqCQoIiYpuKi8gSHU0Ogn1FO1Bqt0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 
 
-      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+      <script src="/js/main.js"></script>
 
 
 
@@ -81,15 +81,15 @@
 </span></span><span style="display:flex;"><span>    &lt;data format=<span style="color:#a31515">&#34;bam&#34;</span> name=<span style="color:#a31515">&#34;output1&#34;</span> label=<span style="color:#a31515">&#34;${tool.name} on ${on_string}: converted BAM&#34;</span> /&gt;
 </span></span><span style="display:flex;"><span>  &lt;/outputs&gt;
 </span></span><span style="display:flex;"><span>&lt;/xml&gt;
-</span></span></code></pre></div><p>... you see that in the <strong>command</strong> tag, the actual syntax of the
-command is specified in a kind of &quot;free text&quot; format ... This might
+</span></span></code></pre></div><p>&hellip; you see that in the <strong>command</strong> tag, the actual syntax of the
+command is specified in a kind of &ldquo;free text&rdquo; format &hellip; This might
 not be exactly what one might think to use XSLT transformations for, but
 together with the regex functionality in XSLT 2.0 you definitely has
 this option too. Helped by <a href="http://www.xml.com/pub/a/2003/06/04/tr.html" target="_blank" rel="noopener">this
 article</a>
  on xml.com, I put
 together this little XSLT stylesheet for parsing up the free text
-content of that command tag (haven't got to the more detailed config
+content of that command tag (haven&rsquo;t got to the more detailed config
 inside the inputs-tag in the galaxy format, but might not need either,
 if staying with the galaxy format anyway):</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xslt" data-lang="xslt"><span style="display:flex;"><span><span style="color:#00f">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
@@ -137,14 +137,14 @@ if staying with the galaxy format anyway):</p>
 </span></span><span style="display:flex;"><span>        &lt;/xsl:for-each&gt;
 </span></span><span style="display:flex;"><span>    &lt;/xsl:template&gt;
 </span></span><span style="display:flex;"><span>&lt;/xsl:stylesheet&gt;
-</span></span></code></pre></div><p>... a bit crazy with all these nested regex replace function calls, no?
-:) ... but, I can tell you, it actually works very good! Found it
+</span></span></code></pre></div><p>&hellip; a bit crazy with all these nested regex replace function calls, no?
+:) &hellip; but, I can tell you, it actually works very good! Found it
 easier to work with than many other regex implementations (i.e. matching
-newlines could be done with &quot;\n&quot;, which I think you can't do by
+newlines could be done with &ldquo;\n&rdquo;, which I think you can&rsquo;t do by
 default in some other ones).</p>
 <p>I can also mention that the <em>tokenize</em> function splits a string into an
-&quot;array&quot; of the parts between the parts that is matched by the
-expression given to tokenize (similar to &quot;split&quot; in some other
+&ldquo;array&rdquo; of the parts between the parts that is matched by the
+expression given to tokenize (similar to &ldquo;split&rdquo; in some other
 languages, like python).</p>
 <p>The result of the transoformation? Here it goes:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#00f">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
@@ -160,18 +160,18 @@ languages, like python).</p>
 </span></span><span style="display:flex;"><span>   &lt;arg&gt;--output1 &lt;replaceable&gt;output1&lt;/replaceable&gt;
 </span></span><span style="display:flex;"><span>   &lt;/arg&gt;
 </span></span><span style="display:flex;"><span>&lt;/cmdsynopsis&gt;
-</span></span></code></pre></div><p>Not perfect (there are double &quot;--ref_file&quot; arguments still), but at
+</span></span></code></pre></div><p>Not perfect (there are double &ldquo;&ndash;ref_file&rdquo; arguments still), but at
 least it has parsed up the different arguments, removed some galaxy
-specific stuff (the parts enclosed by &quot;{}&quot;) and the conditional
+specific stuff (the parts enclosed by &ldquo;{}&rdquo;) and the conditional
 statements. At least I think it shows that xslt + regex is actually an
-option, don't you think? :)</p>
+option, don&rsquo;t you think? :)</p>
 <p>A caveat here though: I found out that most of the XSLT processor tools
-for Ubuntu (xsltproc, xalan, the one built into php5) don't accept XSLT
+for Ubuntu (xsltproc, xalan, the one built into php5) don&rsquo;t accept XSLT
 2.0 features such as regex, so I ended up using the java based <a href="http://saxon.sourceforge.net/" target="_blank" rel="noopener">saxon
 processor</a>
 .</p>
 <p>To call it for doing a transformation, you simply go (when using the
-open source &quot;home edition&quot;):</p>
+open source &ldquo;home edition&rdquo;):</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -jar saxon9he.jar [xml-file] [xslt-file] &gt; [output-file]
 </span></span></code></pre></div><p>Works good! (does a good job of formatting the XML too).</p>
 

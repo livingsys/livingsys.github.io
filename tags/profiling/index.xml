@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Profiling on Living Systems</title>
+    <link>http://localhost:1313/tags/profiling/</link>
+    <description>Recent content in Profiling on Living Systems</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 08 Aug 2013 01:13:00 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/profiling/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Profiling and creating call graphs for Go programs</title>
+      <link>http://localhost:1313/posts/profiling-and-call-graphs-for-golang/</link>
+      <pubDate>Thu, 08 Aug 2013 01:13:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/profiling-and-call-graphs-for-golang/</guid>
+      <description>In trying to get my head around the code of the very interesting GoFlow library, (for flow-based programming in Go), and the accompanying flow-based bioinformatics library I started hacking on, I needed to get some kind of visualization (like a call graph) &amp;hellip; something like this:&#xA;(And in the end, that is what I got &amp;hellip; read on &amp;hellip; ) :)&#xA;I then found out about the go tool pprof command, for which the Go team published a blog post on here .</description>
+    </item>
+  </channel>
+</rss>

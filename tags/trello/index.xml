@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Trello on Living Systems</title>
+    <link>http://localhost:1313/tags/trello/</link>
+    <description>Recent content in Trello on Living Systems</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 26 Feb 2016 12:40:00 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/trello/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Time-boxing and a unified trello board = productivity</title>
+      <link>http://localhost:1313/posts/time-boxing-and-unified-trello-board/</link>
+      <pubDate>Fri, 26 Feb 2016 12:40:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/time-boxing-and-unified-trello-board/</guid>
+      <description>Figure: Sketchy screenshot of how my current board looks. Notice especially the &amp;ldquo;Now&amp;rdquo; stack, marked in yellow, where you are only allowed to put one single card. I used to have a very hard time getting an overview of my current work, and prioritizing and concentrating on any single task for too long. I always felt there might be something else that might be more important than what I were currently doing.</description>
+    </item>
+  </channel>
+</rss>

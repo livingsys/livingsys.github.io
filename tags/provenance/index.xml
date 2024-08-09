@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Provenance on Living Systems</title>
+    <link>http://localhost:1313/tags/provenance/</link>
+    <description>Recent content in Provenance on Living Systems</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 19 Oct 2017 11:44:00 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/provenance/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>On Provenance Reports in Scientific Workflows</title>
+      <link>http://localhost:1313/posts/provenance-reports-in-scientific-workflows/</link>
+      <pubDate>Thu, 19 Oct 2017 11:44:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/provenance-reports-in-scientific-workflows/</guid>
+      <description>One of the more important tasks for a scientific workflow is to keep track of so called &amp;ldquo;provenance information&amp;rdquo; about its data outputs - information about how each data file was created. This is important so other researchers can easily replicate the study (re-run it with the same software and tools). It should also help for anyone wanting to reproduce it (re-run the same study design, possibly with other software and tools).</description>
+    </item>
+  </channel>
+</rss>

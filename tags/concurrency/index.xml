@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Concurrency on Living Systems</title>
+    <link>http://localhost:1313/tags/concurrency/</link>
+    <description>Recent content in Concurrency on Living Systems</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 05 Sep 2020 15:36:00 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/concurrency/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Crystal: Go-like concurrency with easier syntax</title>
+      <link>http://localhost:1313/posts/crystal-concurrency-easier-syntax-than-golang/</link>
+      <pubDate>Sat, 05 Sep 2020 15:36:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/crystal-concurrency-easier-syntax-than-golang/</guid>
+      <description>I have been playing around a lot with concurrency in Go over the years, resulting in libraries such as SciPipe , FlowBase and rdf2smw . My main motivation for looking into Go has been the possibility to use it as a more performant, scaleable and type-safe alternative to Python for data heavy scripting tasks in bioinformatics and other fields I&amp;rsquo;ve been dabbling in. Especially as it makes it so easy to write concurrent and parallel code in it.</description>
+    </item>
+  </channel>
+</rss>

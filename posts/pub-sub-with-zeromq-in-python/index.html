@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>Basic PUB/SUB connection with ZeroMQ in Python | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.c11645622300898541e1ba6a090a08898a6e2a2f204875343a09f514ed41aadd.css" integrity="sha256-wRZFYiMAiYVB4bpqCQoIiYpuKi8gSHU0Ogn1FO1Bqt0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 
 
-      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+      <script src="/js/main.js"></script>
 
 
 
@@ -41,7 +41,21 @@
   
   <time datetime="2019-11-13T11:56:00&#43;01:00">November 13, 2019</time>
 
-  <!-- raw HTML omitted -->
+  <p><a href="https://zeromq.org" target="_blank" rel="noopener">ZeroMQ</a>
+ is a great way to quickly and simply send messages
+between multiple programs running on the same or different computers. It is
+very simple and robust since it doesn&rsquo;t need any central server. Instead it
+talks directly between the programs through sockets, TCP-connections or
+similar.</p>
+<p>ZeroMQ has client libraries for basically all commonly used programming
+languages, but when testing out that a connection works between e.g. two
+different machines, it might be good to keep things simple and test just
+the connection, as simply as possible. For this purpose, I have came to
+use the following two python scripts, where one sets up a &ldquo;publisher&rdquo;,
+and the other a &ldquo;subscriber&rdquo; process. I&rsquo;m documenting them here since
+I tend to forget the syntax from time to time, and also some details,
+such as that you have to make sure the subscriber subscribes to one or
+all topics.</p>
 <p>First, to install ZeroMQ in python, use <code>conda install pyzmq</code> or
 <code>pip install pyzmq</code> depending on which python package manager you use.</p>
 <h3 id="the-publisher-pubpy">The publisher (pub.py)</h3>
@@ -79,14 +93,12 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sock.close()
 </span></span><span style="display:flex;"><span>ctx.term()
-</span></span></code></pre></div><p>Then, if you run these on the same machines, you can leave the
-IP-addresses as is. On the other hand, if you put these on different
-machines, you will need to change the IP address given to
-&quot;sock.connect()&quot; in the subscriber script to the IP-address of the
-machine where the publisher script is located.</p>
-<p>Then you just run these two scripts in a terminal and hope to see the
-same string that the publisher sends, being output on the subscriber
-side too.</p>
+</span></span></code></pre></div><p>Then, if you run these on the same machines, you can leave the IP-addresses as
+is. On the other hand, if you put these on different machines, you will need to
+change the IP address given to <code>sock.connect()</code> in the subscriber script to the
+IP-address of the machine where the publisher script is located.</p>
+<p>Then you just run these two scripts in a terminal and hope to see the same
+string that the publisher sends, being output on the subscriber side too.</p>
 <p>If you run this in MSYS2 on Windows (<a href="https://bionics.it/posts/linux-like-non-wsl-terminal-env-on-windows" target="_blank" rel="noopener">as I have blogged about
 before</a>
 ),
@@ -100,7 +112,7 @@ note that you need to run python through winpty:</p>
 </span></span><span style="display:flex;"><span>Sent string: Hi <span style="color:#00f">for</span> the 5:th time... ...
 </span></span><span style="display:flex;"><span>Sent string: Hi <span style="color:#00f">for</span> the 6:th time... ...
 </span></span><span style="display:flex;"><span>Sent string: Hi <span style="color:#00f">for</span> the 7:th time... ...
-</span></span></code></pre></div><p>... and:</p>
+</span></span></code></pre></div><p>&hellip; and:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ winpty python sub.py
 </span></span><span style="display:flex;"><span>Starting receiver loop ...
 </span></span><span style="display:flex;"><span>Received string: Hi <span style="color:#00f">for</span> the 2:th time... ...
@@ -109,14 +121,19 @@ note that you need to run python through winpty:</p>
 </span></span><span style="display:flex;"><span>Received string: Hi <span style="color:#00f">for</span> the 5:th time... ...
 </span></span><span style="display:flex;"><span>Received string: Hi <span style="color:#00f">for</span> the 6:th time... ...
 </span></span><span style="display:flex;"><span>Received string: Hi <span style="color:#00f">for</span> the 7:th time... ...
-</span></span></code></pre></div><p><strong>Samuel</strong> (<a href="https://twitter.com/smllmp" target="_blank" rel="noopener">@smllmp</a>
-)</p>
-<hr>
-<p><strong>Updates<br>
+</span></span></code></pre></div><hr>
+<p><strong>Updates
 <em>2020-02-11:</em></strong> <em>Fixed broken code example (some lines had ended up in
 the wrong code example).</em></p>
 
   
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/python/">Python</a></li>
+        <li><a href="/tags/zeromq/">ZeroMQ</a></li>
+    </ul>
+  </div>
 
 
   </main>

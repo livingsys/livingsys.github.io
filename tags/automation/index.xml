@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Automation on Living Systems</title>
+    <link>http://localhost:1313/tags/automation/</link>
+    <description>Recent content in Automation on Living Systems</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 23 Mar 2015 20:46:00 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/automation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The role of simplicity in testing and automation</title>
+      <link>http://localhost:1313/posts/the-role-of-simplicity-in-testing-and-automation/</link>
+      <pubDate>Mon, 23 Mar 2015 20:46:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/the-role-of-simplicity-in-testing-and-automation/</guid>
+      <description>Disclaimer: Don&amp;rsquo;t take this too seriously &amp;hellip; this is &amp;ldquo;thinking-in-progress&amp;rdquo; :)&#xA;It just struck me the other minute, how simplicity is the key theme behind two very important areas in software development, that I&amp;rsquo;ve been dabbling with quite a bit recently: Testing, and automation.&#xA;Have you thought about how testing, in its essence, is: Wrapping complex code, which you can&amp;rsquo;t mentally comprehend completely, in simple code, that you can mentally comprehend, at least one test at a time.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>What is a scientific (batch) workflow? | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.c11645622300898541e1ba6a090a08898a6e2a2f204875343a09f514ed41aadd.css" integrity="sha256-wRZFYiMAiYVB4bpqCQoIiYpuKi8gSHU0Ogn1FO1Bqt0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 
 
-      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+      <script src="/js/main.js"></script>
 
 
 
@@ -51,11 +51,11 @@
  <a href="https://twitter.com/joergenbr/status/907626987333746688" target="_blank" rel="noopener">tweeted a
 comment</a>
  that
-got me thinking again on something I've pondered a lot lately:</p>
+got me thinking again on something I&rsquo;ve pondered a lot lately:</p>
 <blockquote>
-<h2 id="meaning">&quot;A workflow is a DAG.&quot; is really a weak definition. That's like
-saying &quot;A love letter is a sequence of characters.&quot; representation ≠
-meaning\</h2>
+<h2 id="meaning">&ldquo;A workflow is a DAG.&rdquo; is really a weak definition. That&rsquo;s like
+saying &ldquo;A love letter is a sequence of characters.&rdquo; representation ≠
+meaning</h2>
 <p><a href="https://twitter.com/joergenbr/status/907626987333746688" target="_blank" rel="noopener">@joergenbr</a>
 </p>
 </blockquote>
@@ -63,7 +63,7 @@ meaning\</h2>
 (DAG)</a>
  does not by
 any means capture the full semantic content included in a computational
-workflow. I think <a href="http://www.worldscientific.com/doi/pdf/10.1142/9789814508728_0001" target="_blank" rel="noopener">Werner Gitt's <em>universal information</em>
+workflow. I think <a href="http://www.worldscientific.com/doi/pdf/10.1142/9789814508728_0001" target="_blank" rel="noopener">Werner Gitt&rsquo;s <em>universal information</em>
 model</a>
 
 is highly relevant here, suggesting that information comes in at least
@@ -77,18 +77,18 @@ leads to further confusion about how different types of workflow tools
 actually differ. As a small example, in many workflows-as-DAG
 discussions, there is often not even a common understanding of what the
 nodes and edges of the DAGs should represent. Are nodes processing
-components? tasks? task invocations? ... or data inputs and outputs?
-Are the edges data? ... or just dependencies?</p>
+components? tasks? task invocations? &hellip; or data inputs and outputs?
+Are the edges data? &hellip; or just dependencies?</p>
 <p>It seems the concept of a scientific workflow might be just slightly
 more complicated than many realize. The ones who seem to truly
 understand the differences are the ones who tried building a workflow
 tool themselves (which is one good reason to not always refrain from
-trying to build your own tool, despite all the &quot;reinventing the wheel&quot;
+trying to build your own tool, despite all the &ldquo;reinventing the wheel&rdquo;
 complaints :)).</p>
-<p>Anyways, all this confusion is why I'm writing this post, hoping to
+<p>Anyways, all this confusion is why I&rsquo;m writing this post, hoping to
 clarify a little bit what scientific batch workflow systems are at their
 core, as far as my experience goes.</p>
-<p>There are many ways to describe workflows, but specifically, I'm trying
+<p>There are many ways to describe workflows, but specifically, I&rsquo;m trying
 to define <em>the smallest set of information that is always encoded in
 workflow definitions, across the most popular shell-based scientific
 batch workflows used in bioinformatics today</em>.</p>
@@ -112,11 +112,11 @@ and <em>concrete workflow invocations</em> based on this definition. We will in
 this post mostly talk about the former one.</p>
 <h2 id="the-smallest-constituent-of-a-workflow">The smallest constituent of a workflow</h2>
 <p>One good way to define something, is generally by identifying its
-smallest common denominator constituent, so let's do that.</p>
+smallest common denominator constituent, so let&rsquo;s do that.</p>
 <p>Here again I think lies some confusion. When people think of the
 smallest common constituent in a workflow, it is common to hear
-suggestions such as the workflow &quot;steps&quot;, &quot;processes&quot;,
-&quot;components&quot;, &quot;tasks&quot; and similar. I argue that not all of these
+suggestions such as the workflow &ldquo;steps&rdquo;, &ldquo;processes&rdquo;,
+&ldquo;components&rdquo;, &ldquo;tasks&rdquo; and similar. I argue that not all of these
 concepts are actually referring to the smallest common part of
 workflows.</p>
 <p>I argue that the smallest common constituent of a scientific batch
@@ -130,7 +130,7 @@ invocation definition.</p>
 <p>Unique program invocation definitions are mostly not what is referred to
 when talking about workflow <em><strong>steps</strong></em>, <em><strong>components</strong></em> or
 <em><strong>processes</strong></em>. It is, on the other hand, mostly what is meant with the
-term <em><strong>workflow task</strong></em>. Thus, that is the term we'll use throughout
+term <em><strong>workflow task</strong></em>. Thus, that is the term we&rsquo;ll use throughout
 this post.</p>
 <h2 id="building-on-the-smallest-constituting-part">Building on the smallest constituting part</h2>
 <p>Now that we have defined the smallest constituent of a workflow
@@ -157,7 +157,7 @@ other push-based but non-dataflow-based tools and paradigms like
 , or tools wrapping commandline
 execution in a functional language like
 <a href="http://www.cuneiform-lang.org/" target="_blank" rel="noopener">Cuneiform</a>
-, are all &quot;just&quot; variations
+, are all &ldquo;just&rdquo; variations
 on the same thing: A templating mechanism for concrete program
 invocation definitions, augmented with mechanisms for populating those
 templates.</p>
@@ -181,7 +181,7 @@ are dependent on other tasks.</p>
 <p>In make-like systems, this is again done through file name patterns:
 Dependencies are specified via the input file name patterns, that are
 made concrete by interpolating file name patterns. In dataflow systems,
-channels between components provide a kind of &quot;template&quot; for
+channels between components provide a kind of &ldquo;template&rdquo; for
 dependencies: It provides a static connection which will serve as the
 mechanism to generate any concrete dependencies on upstream files for
 specific tasks. The other push-based systems work somewhat similarly to
@@ -204,7 +204,7 @@ here</a>
 summary, it is generally recommendable to specify the dependencies in
 terms of data, not just task finish status.</p>
 <h2 id="and-the-sum-of-all-this-is">And the sum of all this is?</h2>
-<p>Ok, so let's conclude with a summary of this little foray into what
+<p>Ok, so let&rsquo;s conclude with a summary of this little foray into what
 defines a scientific batch workflow:</p>
 <p>A scientific batch workflow is:</p>
 <ul>
@@ -217,7 +217,7 @@ defines a scientific batch workflow:</p>
 <li>A set of dependencies between the inputs and outputs of the
 aforementioned tasks</li>
 </ul>
-<p><strong>That's it</strong>, as far as I can see and understand. With this definition
+<p><strong>That&rsquo;s it</strong>, as far as I can see and understand. With this definition
 in mind, it is - as said - much more interesting to go out and study how
 different workflow tools are representing this information, and how they
 make it easier for the user to generate the concrete set of tasks (which
@@ -245,19 +245,26 @@ nodes.</li>
 </ul>
 </li>
 </ul>
-<p>So, if coming back to Jörgen's
+<p>So, if coming back to Jörgen&rsquo;s
 <a href="https://twitter.com/joergenbr/status/907626987333746688" target="_blank" rel="noopener">tweet</a>
 , I
-think it is fair to say that &quot;a workflow is [just] a DAG&quot; is a bit
+think it is fair to say that &ldquo;a workflow is [just] a DAG&rdquo; is a bit
 of a over-simplification. An over-simplification in more than one way,
 it seems :)</p>
 <hr>
-<p><em>Update (Dec 7, 2017, 14:52 CET): Clarifications in the introduction<br>
-Update (Dec 7, 2017, 15:07 CET): Fixed tons of typos, sorry<br>
+<p><em>Update (Dec 7, 2017, 14:52 CET): Clarifications in the introduction
+Update (Dec 7, 2017, 15:07 CET): Fixed tons of typos, sorry
 Update (May 31, 2018, 20:53 CET): Vertices -&gt; Edges (Thanks Olivier
 Mathieu!)</em></p>
 
   
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/workflow-tools/">Workflow-Tools</a></li>
+        <li><a href="/tags/scipipe/">Scipipe</a></li>
+    </ul>
+  </div>
 
 
   </main>

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>How I would like to write Go programs | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.c11645622300898541e1ba6a090a08898a6e2a2f204875343a09f514ed41aadd.css" integrity="sha256-wRZFYiMAiYVB4bpqCQoIiYpuKi8gSHU0Ogn1FO1Bqt0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 
 
-      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+      <script src="/js/main.js"></script>
 
 
 
@@ -55,12 +55,12 @@ strongly help to create clearer, easier-to-maintain, and more
 declarative Go programs.</p>
 <p>These ideas have since became clearer, and we (<a href="http://twitter.com/ola_spjuth" target="_blank" rel="noopener">Ola
 Spjuth</a>
-'s <a href="http://www.farmbio.uu.se/research/researchgroups/pb/" target="_blank" rel="noopener">research group at
+&rsquo;s <a href="http://www.farmbio.uu.se/research/researchgroups/pb/" target="_blank" rel="noopener">research group at
 pharmbio</a>
 ) have
 successfully used them to make the workflow syntax for
 <a href="https://github.com/spotify/luigi" target="_blank" rel="noopener">Luigi</a>
- (Spotify's great workflow
+ (Spotify&rsquo;s great workflow
 engine by <a href="http://twitter.com/fulhack" target="_blank" rel="noopener">Erik Bernhardsson</a>
  &amp; co)
 workflows easier, as implemented in the <a href="https://github.com/samuell/sciluigi#readme" target="_blank" rel="noopener">SciLuigi helper
@@ -71,7 +71,7 @@ day</a>
 , about how I think
 this kind of syntax would help untangle the syntax used in most
 functional languages. But the final code example in that blog post was a
-toy example in python, that didn't work, since python doesn't have the
+toy example in python, that didn&rsquo;t work, since python doesn&rsquo;t have the
 required concurrent features to make it work.</p>
 <p>So, the idea struck me tonight that it might be easy enough to implement
 the same example in Go, using the most up-to-date ideas for the syntax.
@@ -266,63 +266,71 @@ hard-coded for-loop ;) - ideas welcome)</p>
 </span></span><span style="display:flex;"><span>hi <span style="color:#00f">for</span> the  10:TH TIME!
 </span></span><span style="display:flex;"><span>Finished program!
 </span></span></code></pre></div><hr>
-<p><em><strong>Note I:</strong> See also <a href="https://plus.google.com/u/0/&#43;SamuelLampa/posts/GKgBLeeJXdX" target="_blank" rel="noopener">this very interesting discussion on
+<ul>
+<li><strong>Note I:</strong> See also <a href="https://plus.google.com/u/0/&#43;SamuelLampa/posts/GKgBLeeJXdX" target="_blank" rel="noopener">this very interesting discussion on
 Google+</a>
-.<br>
-<strong>Note II:</strong> ... and also <a href="https://groups.google.com/forum/#!topic/golang-nuts/vgj_d-MjUHA" target="_blank" rel="noopener">this super-interesting discussion on
-golang-nuts mailing
+.</li>
+<li><strong>Note II:</strong> &hellip; and also <a href="https://groups.google.com/forum/#!topic/golang-nuts/vgj_d-MjUHA" target="_blank" rel="noopener">this super-interesting discussion on golang-nuts
+mailing
 list</a>
-
-(See especially <a href="https://groups.google.com/d/msg/golang-nuts/vgj_d-MjUHA/T9sE64Yrcq0J" target="_blank" rel="noopener">the example and mini-FBP-framework
+ (See
+especially <a href="https://groups.google.com/d/msg/golang-nuts/vgj_d-MjUHA/T9sE64Yrcq0J" target="_blank" rel="noopener">the example and mini-FBP-framework
 suggested</a>
 
 by <a href="http://twitter.com/egonelbre" target="_blank" rel="noopener">Egon Elbre</a>
-)<br>
-<strong>Note III:</strong> For clarity, I should mention that I'm fully aware of
+)</li>
+<li><strong>Note III:</strong> For clarity, I should mention that I&rsquo;m fully aware of
 <a href="http://twitter.com/sibiroff" target="_blank" rel="noopener">Vladimir Sibiroff</a>
-'s great
+&rsquo;s great
 <a href="https://github.com/trustmaster/goflow" target="_blank" rel="noopener">GoFlow</a>
- library, which <a href="http://github.com/samuell/blow" target="_blank" rel="noopener">I've
-been playing with</a>
-, and the development
-of which I'm following closely. But I have wanted to see how far one
-can go without a framework at all, just using an FBP-like pattern and
-syntax, since I think a few FBP-inspired ideas can benefit also those
-programs that need to stay away from frameworks for one reason or
-another. This post presents what I have came up with so far (very much
-inspired by GoFlow by the way!).<br>
-<strong>Note IV</strong> (Jul 19, '15, 3:49 CET): Have updated the code examples
-with some of the great suggestions by</em> <a href="http://twitter.com/egonelbre" target="_blank" rel="noopener">Egon
+ library, which <a href="http://github.com/samuell/blow" target="_blank" rel="noopener">I&rsquo;ve been
+playing with</a>
+, and the development of which
+I&rsquo;m following closely. But I have wanted to see how far one can go without a
+framework at all, just using an FBP-like pattern and syntax, since I think a
+few FBP-inspired ideas can benefit also those programs that need to stay away
+from frameworks for one reason or another. This post presents what I have
+came up with so far (very much inspired by GoFlow by the way!).</li>
+<li><strong>Note IV</strong> (Jul 19, &lsquo;15, 3:49 CET): Have updated the code examples with
+some of the great suggestions by* <a href="http://twitter.com/egonelbre" target="_blank" rel="noopener">Egon
 Elbre</a>
-<em>, now allowing to skip the
-&quot;driving loop&quot;. To demonstrate this more nicely, I have added a
-&quot;zipper&quot; and &quot;printer&quot; component, that are more suited as
-terminating processes. See the</em> <a href="https://groups.google.com/d/msg/golang-nuts/vgj_d-MjUHA/qQMij-plrgQJ" target="_blank" rel="noopener">mailing list
+<em>, now allowing to skip the &ldquo;driving
+loop&rdquo;. To demonstrate this more nicely, I have added a &ldquo;zipper&rdquo; and
+&ldquo;printer&rdquo; component, that are more suited as terminating processes. See
+the</em> <a href="https://groups.google.com/d/msg/golang-nuts/vgj_d-MjUHA/qQMij-plrgQJ" target="_blank" rel="noopener">mailing list
 thread</a>
-
-<em>for more info.</em></p>
+ for more info.</li>
+</ul>
 <hr>
-<p><em><strong>Edit I:</strong> Made code example terser, after feedback from <a href="https://twitter.com/rolflampa" target="_blank" rel="noopener">Rolf
+<ul>
+<li><strong>Edit I:</strong> Made code example terser, after feedback from <a href="https://twitter.com/rolflampa" target="_blank" rel="noopener">Rolf
 Lampa</a>
-.<br>
-<strong>Edit II:</strong> Added missing channel close statements.</em><br>
-<em><strong>Edit III:</strong> Fix data races introduced by switching channels after a
+.</li>
+<li><strong>Edit II:</strong> Added missing channel close statements.</li>
+<li><strong>Edit III:</strong> Fix data races introduced by switching channels after ajk
 go-routine had started reading from it (Spotted by <a href="https://plus.google.com/&#43;YannHodique/posts" target="_blank" rel="noopener">Yann
 Hodique</a>
  in <a href="https://plus.google.com/&#43;SamuelLampa/posts/GKgBLeeJXdX" target="_blank" rel="noopener">this
 thread</a>
-,
-thanks!)</em><br>
-<em><strong>Edit IV:</strong> Defer the channel closeing to avoid prematurely closing
+, thanks!)</li>
+<li><strong>Edit IV:</strong> Defer the channel closeing to avoid prematurely closing
 channels, as pointed out by <a href="http://twitter.com/egonelbre" target="_blank" rel="noopener">Egon Elbre</a>
-
-in <a href="https://groups.google.com/d/msg/golang-nuts/vgj_d-MjUHA/T9sE64Yrcq0J" target="_blank" rel="noopener">this
+ in
+<a href="https://groups.google.com/d/msg/golang-nuts/vgj_d-MjUHA/T9sE64Yrcq0J" target="_blank" rel="noopener">this
 thread</a>
-.<br>
-<strong>Edit V:</strong> A better &quot;driver loop&quot;, using the ok-values from read
-channels.</em></p>
+</li>
+<li><strong>Edit V:</strong> A better &ldquo;driver loop&rdquo;, using the ok-values from read channels.</li>
+</ul>
 
   
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/go/">Go</a></li>
+        <li><a href="/tags/dataflow/">Dataflow</a></li>
+        <li><a href="/tags/flow-based-programming/">Flow-Based Programming</a></li>
+    </ul>
+  </div>
 
 
   </main>

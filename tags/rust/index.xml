@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rust on Living Systems</title>
+    <link>http://localhost:1313/tags/rust/</link>
+    <description>Recent content in Rust on Living Systems</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 11 Jun 2016 14:24:00 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Combining the best of Go, D and Rust?</title>
+      <link>http://localhost:1313/posts/the-best-of-go-d-and-rust/</link>
+      <pubDate>Sat, 11 Jun 2016 14:24:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/the-best-of-go-d-and-rust/</guid>
+      <description>I&amp;rsquo;ve been following the development of D , Go and Rust (and also FreePascal for some use cases ) for some years (been into some benchmarking for bioinfo tasks ), and now we finally have three (four, with fpc) stable statically compiled languages with some momentum behind them, meaning they all are past 1.0.&#xA;While I have went with Go for current projects , I still have a hard time &amp;ldquo;totally falling in love&amp;rdquo; with any single of these languages.</description>
+    </item>
+  </channel>
+</rss>

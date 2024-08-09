@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gnu Make on Living Systems</title>
+    <link>http://localhost:1313/tags/gnu-make/</link>
+    <description>Recent content in Gnu Make on Living Systems</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 14 Mar 2015 20:46:00 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/gnu-make/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The problem with make for scientific workflows</title>
+      <link>http://localhost:1313/posts/the-problem-with-make-for-scientific-workflows/</link>
+      <pubDate>Sat, 14 Mar 2015 20:46:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/the-problem-with-make-for-scientific-workflows/</guid>
+      <description>The workflow problem solved once and for all in 1979? As soon as the topic of scientific workflows is brought up, there are always a few make fans fervently insisting that the problem of workflows is solved once and for all with GNU make , written first in the 70&amp;rsquo;s :)&#xA;Personally I haven&amp;rsquo;t been so sure. On the one hand, I know the tool solves a lot of problems for many people.</description>
+    </item>
+  </channel>
+</rss>

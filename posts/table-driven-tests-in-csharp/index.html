@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>Table-driven tests in C# | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.c11645622300898541e1ba6a090a08898a6e2a2f204875343a09f514ed41aadd.css" integrity="sha256-wRZFYiMAiYVB4bpqCQoIiYpuKi8gSHU0Ogn1FO1Bqt0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 
 
-      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+      <script src="/js/main.js"></script>
 
 
 
@@ -58,7 +58,7 @@ maximally short and convenient syntax to do this.</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#008000"></span><span style="color:#00f">func</span> Concat(a <span style="color:#2b91af">string</span>, b <span style="color:#2b91af">string</span>) <span style="color:#2b91af">string</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#00f">return</span> a + b
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>... then we could write a quite compact enumeration of testcases for
+</span></span></code></pre></div><p>&hellip; then we could write a quite compact enumeration of testcases for
 testing this function like this (placing it in a file like
 mylibrary_test.go):</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#00f">package</span> tabletest
@@ -105,7 +105,7 @@ function above:</p>
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#00f">return</span> s1 + s2;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>... then, we could write a test function like so:</p>
+</span></span></code></pre></div><p>&hellip; then, we could write a test function like so:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#00f">using</span> System.Collections.Generic;
 </span></span><span style="display:flex;"><span><span style="color:#00f">using</span> Xunit;
 </span></span><span style="display:flex;"><span>
@@ -123,11 +123,11 @@ function above:</p>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>What happens here it that we initialize a new list of an anonymous tuple
 type (initialized using just parentheses), which we fill with values
-... all inline in the set-up of the foreach-loop. Since we are able to
+&hellip; all inline in the set-up of the foreach-loop. Since we are able to
 combine the initialization with the foreach loop, this is actually in a
 way even more succinct than the corresponding code in Go!</p>
 <p>If you are really lazy, you can actually skip the field names when
-filling in the &quot;table&quot;:</p>
+filling in the &ldquo;table&rdquo;:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#00f">using</span> System.Collections.Generic;
 </span></span><span style="display:flex;"><span><span style="color:#00f">using</span> Xunit;
 </span></span><span style="display:flex;"><span>
@@ -149,7 +149,7 @@ compiler-checked in your editor as you type.</p>
 <p>Now, I know frameworks for C# (NUnit, xUnit, MSTest etc) implement
 their own ways of enumerating test input and outputs, often via
 annotations on the test methods. Thus, this might not be the recommended
-way to write tests in everyone's books. Still, I tend to like this
+way to write tests in everyone&rsquo;s books. Still, I tend to like this
 approach a lot. The fact that table-driven tests are normal Go/C# code
 means there is no extra syntax to learn, the behavior is easier to
 reason about, and definitely more portable between test frameworks.</p>
@@ -160,10 +160,15 @@ some smaller amounts of data (e.g. various kinds of default data) that
 needs to be initiated into an object structure and where you want an
 easy way to edit the actual data, and want to avoid repeating possibly
 more complex code for setting up the object structure.</p>
-<p><strong>Samuel</strong> <a href="https://twitter.com/smllmp" target="_blank" rel="noopener">@smllmp</a>
-</p>
 
   
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/testing/">Testing</a></li>
+        <li><a href="/tags/c%23/">C#</a></li>
+    </ul>
+  </div>
 
 
   </main>

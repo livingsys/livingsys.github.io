@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>Dynamic Navigation for Higher Performance | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.c11645622300898541e1ba6a090a08898a6e2a2f204875343a09f514ed41aadd.css" integrity="sha256-wRZFYiMAiYVB4bpqCQoIiYpuKi8gSHU0Ogn1FO1Bqt0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 
 
-      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+      <script src="/js/main.js"></script>
 
 
 
@@ -55,7 +55,7 @@ howtodothings.com</a>
 .</em></p>
 <p>Modeling class structures takes some thinking, and when done the
 thinking and the drawing and after that starting up using the model,
-then you'll spend awful lots of code traversing links in order to
+then you&rsquo;ll spend awful lots of code traversing links in order to
 retrieve trivial info in a given object structure. Navigating the same
 sometimes complicated link-paths over and over again consumes CPU power
 and it also causes much redundant code or expressions accessing the same
@@ -68,29 +68,29 @@ navigation, the redundant navigational
 code/<a href="http://en.wikipedia.org/wiki/Object_Constraint_Language" target="_blank" rel="noopener">OCL</a>
 -expressions
 and at the same time achieve decreasing CPU load by adding derived
-associations instead, making a few &quot;dumb&quot; persistent links more useful
-and the model more &quot;intelligent&quot;. And furthermore, in doing so
+associations instead, making a few &ldquo;dumb&rdquo; persistent links more useful
+and the model more &ldquo;intelligent&rdquo;. And furthermore, in doing so
 directly in your model your model will at the same time reflect more
 specifically which parts of the model is actually used, and how.</p>
 <p>An example can show a typical situation where adding many derived links,
 extending the model with more useful info, will result in more
 efficient, less redundant and more readable code. If we were talking
 traditional handcrafting you probably would have thought I was joking,
-because we usually don't save us from more problems by adding more
-relations between objects...! But I'm not joking, instead you will
+because we usually don&rsquo;t save us from more problems by adding more
+relations between objects&hellip;! But I&rsquo;m not joking, instead you will
 actually achieve all the mentioned benefits by adding a few simple lines
 (associations) to the model when using Bold.</p>
 <h3 id="example">Example</h3>
 <p>A truck vehicle combination can serve us with an example. The example
-model will consist of Vehicle units (connected into 'vehicle
-combinations', and some <code>Parcels</code> and a <code>Trip</code> object keeping all kinds
+model will consist of Vehicle units (connected into &lsquo;vehicle
+combinations&rsquo;, and some <code>Parcels</code> and a <code>Trip</code> object keeping all kinds
 of trip info and calculations. With these three basic categories
 connected together we will end up writing almost 50% of the code (or
 ocl-expressions) for algorithms navigating the basic structure which has
 only three persistent links. But such coding is trivial, takes time and
 adds no added value to the system.</p>
-<p>Let's have a look at a &quot;RIL world representation&quot; of an example
-before representing it using an UML class diagram (&quot;RIL&quot; is my
+<p>Let&rsquo;s have a look at a &ldquo;RIL world representation&rdquo; of an example
+before representing it using an UML class diagram (&ldquo;RIL&rdquo; is my
 initials):</p>
 <p><em>Fig 1: The Vehicle combination below carries <code>Parcels</code>, but only the
 front-most <code>VehicleUnit</code> keeps track of <code>Trip</code> info about distances,
@@ -106,33 +106,33 @@ calculations."  class="Fig 1: This Vehicle combination carries Parcels, but only
 <p>For several reasons, not discussed here, the <code>VehicleUnits</code> shown above
 always has a <code>Trip</code> object attached, but only the front-most trip object
 is representing the <em>entire vehicle combination</em>. The other trip
-objects/calculators are &quot;demobilized&quot; until the <code>trailer</code> (possibly)
+objects/calculators are &ldquo;demobilized&rdquo; until the <code>trailer</code> (possibly)
 is disconnected from the truck, and then the trailer will be a valid
-(&quot;front-most&quot;) <code>tripHolder</code> on its own (and thus its Trip object will
+(&ldquo;front-most&rdquo;) <code>tripHolder</code> on its own (and thus its Trip object will
 be mobilized).</p>
 <p>Imagine that you are viewing one of the Vehicle units or one of the
 <code>Parcels</code> using a UI. Then you would probably like to know more about
 trip related info, like distances traveled, addresses visited, the
 visiting order, costs or revenues per km etc (all managed by the trip
 object).</p>
-<p>Despite the fact that there's only three relations in this model (see
+<p>Despite the fact that there&rsquo;s only three relations in this model (see
 Fig 2. below) you would still have to think twice in order to navigate
-correctly trying to find the &quot;calculator&quot; in the front (here
-represented by a &quot;<code>Trip</code> class&quot;).</p>
+correctly trying to find the &ldquo;calculator&rdquo; in the front (here
+represented by a &ldquo;<code>Trip</code> class&rdquo;).</p>
 <p>It would be even worse if you wanted to implement some generic logic or
 calculations for the <code>VehicleUnits</code>, because you would always have to
-make sure that you navigate to the &quot;front-most vehicle unit&quot; (lets
-call it the &quot;<code>hauler</code>&quot;) and from the front-most vehicle unit navigate
-directly to the trip info (the &quot;calculator&quot;).</p>
+make sure that you navigate to the &ldquo;front-most vehicle unit&rdquo; (lets
+call it the &ldquo;<code>hauler</code>&rdquo;) and from the front-most vehicle unit navigate
+directly to the trip info (the &ldquo;calculator&rdquo;).</p>
 <p>In a real application there was so much info embedded in this basic
 structure that the three links would be accessed/navigated so many times
 that many hundreds of lines of code (and/or OCL expressions) would be
-written &quot;here and there and everywhere&quot;. One of the bad things with
+written &ldquo;here and there and everywhere&rdquo;. One of the bad things with
 that is that if you explicitly traverse every link from one end of the
 structure every time you need access to an object or an attribute in the
 other end of the structure, you will need to <em>execute</em> the navigation
 logic in the CPU every time.</p>
-<p>Another bad thing is that your core <em>business logic</em> would &quot;drown&quot; in
+<p>Another bad thing is that your core <em>business logic</em> would &ldquo;drown&rdquo; in
 the code and expressions dealing with such trivial navigation (lots of
 <code>if then else, for i :=</code> and assign checks). And this is where derived
 <em>links</em> can help a lot in avoiding a logical mess (derived <em>attributes</em>
@@ -146,34 +146,34 @@ this:"  class="Fig 2: A simple class model of the illustration above could look 
 </p>
 </p>
 <p>The navigation problem is more obvious in this class model than in the
-&quot;RIL world illustration&quot;.</p>
+&ldquo;RIL world illustration&rdquo;.</p>
 <p>If I for example select a <code>Parcel</code> in a GUI list and want some trip info
-(from the trip object), then as a programmer I couldn't directly tell
-the exact navigation path to the &quot;mobilized&quot; trip object, which is the
+(from the trip object), then as a programmer I couldn&rsquo;t directly tell
+the exact navigation path to the &ldquo;mobilized&rdquo; trip object, which is the
 object holding current valid trip info. Example:</p>
 <p>If the parcel was loaded on a <code>trailer</code>, then the expression (from
-Parcel) 'vehicleUnit.trip' would return a demobilized trip object! But
+Parcel) &lsquo;vehicleUnit.trip&rsquo; would return a demobilized trip object! But
 if the Parcel was loaded on the <code>hauler</code> it would return the desired
-&quot;mobilized&quot; trip object. This complication of things is in itself
+&ldquo;mobilized&rdquo; trip object. This complication of things is in itself
 reason enough to add a derived link fixing the problem of accessing the
 correct trip object directly in the model, so that one as a programmer
 never again would have to consider this when coding algorithms that
 needs navigating the structure. I would definitely add a link named
 <code>effectiveTrip</code>, like so:</p>
-<p><em>Fig 3: A link called &quot;<code>effectiveTrip</code>&quot; was added to the model. (I
-tend to let blue color represent &quot;persistent&quot; (=&quot;freeze&quot;) and orange
-color represent &quot;derived&quot; for links).</em></p>
+<p><em>Fig 3: A link called &ldquo;<code>effectiveTrip</code>&rdquo; was added to the model. (I
+tend to let blue color represent &ldquo;persistent&rdquo; (=&ldquo;freeze&rdquo;) and orange
+color represent &ldquo;derived&rdquo; for links).</em></p>
 <p><p class="image">
     <img src="03_effectivetrip_jpg_bmp.png" alt="Fig 3: A link called &amp;ldquo;effectiveTrip&amp;rdquo; was added to the model. (I tend to let
 blue color represent &amp;ldquo;persistent&amp;rdquo; (=&amp;ldquo;freeze&amp;rdquo;) and orange to represent &amp;ldquo;derived&amp;rdquo;
 for links)."  />
 </p>
 </p>
-<p>This new derived link '<code>effectiveTrip</code> will implement (and thus
-&quot;hide&quot;) all the navigation logic needed to reach the front-most trip
+<p>This new derived link &lsquo;<code>effectiveTrip</code> will implement (and thus
+&ldquo;hide&rdquo;) all the navigation logic needed to reach the front-most trip
 object. As I can already now foresee that this link will be accessed
 very often from Parcels and in vehicle combinations I would hard code
-the derivation logic optimizing the logic for finding the &quot;front-most&quot;
+the derivation logic optimizing the logic for finding the &ldquo;front-most&rdquo;
 vehicle unit, which involves traversing the <code>trailer</code>/<code>hauler</code> link and
 stop when the <code>hauler</code> link is nil (=<code>IsFrontMost</code>), and From there we
 can reference the correct trip object directly. This means that we also
@@ -181,33 +181,33 @@ realize that accessing the front-most vehicle (the combination hauler)
 is very typical and will happen even more often than accessing the trip
 object itself! I already know that also the <code>effectiveTrip</code> link can use
 such a derived link! So lets add it right away giving it the name
-'<code>combinationFirst</code>' (see Fig 4. below).</p>
-<p>I selected the name '<code>combinationFirst</code>' because then you immediately
-realize the typical in this situation. It's a typical list handling
+&lsquo;<code>combinationFirst</code>&rsquo; (see Fig 4. below).</p>
+<p>I selected the name &lsquo;<code>combinationFirst</code>&rsquo; because then you immediately
+realize the typical in this situation. It&rsquo;s a typical list handling
 problem (first, last, etc). Thus you can already now imagine the
 usefulness of yet a another derived link which we can call
-'<code>combinationLast</code>' and even a third link called
-'<code>combinationUnits</code>'!</p>
+&lsquo;<code>combinationLast</code>&rsquo; and even a third link called
+&lsquo;<code>combinationUnits</code>&rsquo;!</p>
 <p>From a real world example I can assure that these links will be
-frequently used and thus the &quot;cost&quot; for evaluating them will be paid
+frequently used and thus the &ldquo;cost&rdquo; for evaluating them will be paid
 off already the second time you access any one of them!</p>
-<p><em>Fig 4: But, doesn't also derived links require CPU in order to be
+<p><em>Fig 4: But, doesn&rsquo;t also derived links require CPU in order to be
 evaluated, you might ask? The answer is, yes of course, but only once,
-if the subscribed items (hauler/trailer connection) don't change. And
-this is not very likely, at least not very often, but this very &quot;hot
-spot&quot; structure will be used in the logic of many remote places very
+if the subscribed items (hauler/trailer connection) don&rsquo;t change. And
+this is not very likely, at least not very often, but this very &ldquo;hot
+spot&rdquo; structure will be used in the logic of many remote places very
 often accessing objects cross over, and when doing so the links already
 directly references the instances you would want to access. Look at the
-&quot;mess&quot; of links below...!:</em></p>
+&ldquo;mess&rdquo; of links below&hellip;!:</em></p>
 <p><p class="image">
-    <img src="04_combination_links_bmp.png" alt="Fig 4: Doesn&#39;t also derived links require CPU in order to be
-evaluated...? you might ask. The answer is, yes of course - but only
-once - if the subscribed items don&#39;t change. And this is not very
-likely here, but the very &amp;quot;hot spot&amp;quot; structure here will be used in
+    <img src="04_combination_links_bmp.png" alt="Fig 4: Doesn&amp;rsquo;t also derived links require CPU in order to be
+evaluated&amp;hellip;? you might ask. The answer is, yes of course - but only
+once - if the subscribed items don&amp;rsquo;t change. And this is not very
+likely here, but the very &amp;ldquo;hot spot&amp;rdquo; structure here will be used in
 many places in the logic accessing objects cross over very often and
 when doing so the links already directly references the instances you
-want to access. Look at the &amp;quot;mess&amp;quot; of
-links...!:"  />
+want to access. Look at the &amp;ldquo;mess&amp;rdquo; of
+links&amp;hellip;!:"  />
 </p>
 </p>
 <p>Now this is an example of a high performance solution using the model as
@@ -215,7 +215,7 @@ the tool for optimization. And in doing so the additional links are at
 the same time clarifying/indicating directly in the model the intended
 usage of this specific structure.</p>
 <p>For those of you who think that I finally got mad I can tell that I
-didn't. Instead I increased the speed of the calculations and all the
+didn&rsquo;t. Instead I increased the speed of the calculations and all the
 activities related to this structure in a real world application with
 many thousand percents compared to explicitly coding each step of the
 entire navigation path each time the combination trip or a specific
@@ -224,28 +224,28 @@ entire navigation path each time the combination trip or a specific
 attributes for different calculation purposes accesses the structure
 back and forth all the time, providing the client user with real-time
 calculations of revenues per km and distances, based on distance shares
-of totals, based on shares of other shares, based on... etc, etc.</p>
+of totals, based on shares of other shares, based on&hellip; etc, etc.</p>
 <p>The thing is to, step for step, let one derived link use the other links
 as often as possible, then even the need for reevaluating the links
 decreases when things changes!</p>
 <p>The last statement can be verified very clearly with a separate example
-showing how important it is to &quot;REUSE&quot; everything you derive (step for
+showing how important it is to &ldquo;REUSE&rdquo; everything you derive (step for
 step) to every higher level (regarding which part of the structure is
-more likely to change and which part is more &quot;static&quot;). With &quot;reuse&quot;
-I mean &quot;<em>the CPU work already done</em>&quot; for deriving the links (which
+more likely to change and which part is more &ldquo;static&rdquo;). With &ldquo;reuse&rdquo;
+I mean &ldquo;<em>the CPU work already done</em>&rdquo; for deriving the links (which
 then is cached). More on this could be subject for a separate article.</p>
 <p>Now lets have a look at some code. Assuming we need to get hold of the
-trip object, starting from a <code>Parcel</code>, but we don't know on which
+trip object, starting from a <code>Parcel</code>, but we don&rsquo;t know on which
 <code>VehicleUnit</code> we are loaded, and therefore we start looking for the trip
-using the link <code>effectiveTrip</code> which &quot;hides&quot; the logic determining
-which <code>Trip</code> object is &quot;mobilized&quot; (i.e &quot;effective&quot; front-most):</p>
+using the link <code>effectiveTrip</code> which &ldquo;hides&rdquo; the logic determining
+which <code>Trip</code> object is &ldquo;mobilized&rdquo; (i.e &ldquo;effective&rdquo; front-most):</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objectpascal" data-lang="objectpascal"><span style="display:flex;"><span><span style="color:#00f">function</span> TParcel.CalculateTrip_Something...: <span style="color:#2b91af">Double</span>;
 </span></span><span style="display:flex;"><span><span style="color:#00f">var</span>
 </span></span><span style="display:flex;"><span>  TripObj : TTrip;
 </span></span><span style="display:flex;"><span><span style="color:#00f">begin</span>
 </span></span><span style="display:flex;"><span>  TripObj := Self.vehicleUnit.effectiveTrip; <span style="color:#008000">// that&#39;s it! ...</span>
 </span></span></code></pre></div><p>From the Parcel, down to the vehicle platform, and then directly access
-the trip. That's easy, and the code is clear. The details about how we
+the trip. That&rsquo;s easy, and the code is clear. The details about how we
 got hold of the correct trip object (hidden in the derived link) does
 not, and should not, be mixing up the business logic when traversing and
 performing calculations based on this object structure.</p>
@@ -253,8 +253,8 @@ performing calculations based on this object structure.</p>
 common super class (not shown so far). This is because a vehicle can be
 loaded on another vehicle, just like any other <code>parcel</code> can be loaded on
 a vehicle (or in a batch of Parcels), so the code above is even simpler
-in my final generic model where the derived link is &quot;virtual
-overridden&quot; in different subclasses. My final code goes like this:</p>
+in my final generic model where the derived link is &ldquo;virtual
+overridden&rdquo; in different subclasses. My final code goes like this:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objectpascal" data-lang="objectpascal"><span style="display:flex;"><span><span style="color:#00f">begin</span>
 </span></span><span style="display:flex;"><span>  TripObj := Self.effectiveTrip; <span style="color:#008000">// that&#39;s it!</span>
 </span></span></code></pre></div><p>The <code>Parcel</code> will find its valid (front-most) <code>Trip</code> using this command
@@ -266,11 +266,11 @@ class, and the (abstract) <code>effectiveTrip</code>-link is implemented
 and then overridden separately for the <code>VehicleUnit</code> class as shown
 below.</p>
 <p><em>Fig 5: Here the model is modified to become more generic even allowing
-any &quot;planable object&quot; to carry a batch of other planable objects, and
+any &ldquo;planable object&rdquo; to carry a batch of other planable objects, and
 as the model goes more generic, the role names do so too.</em></p>
 <p><p class="image">
     <img src="05_model_complete_abstract_bmp.png" alt="Fig 5: Here the model is modified to become more generic even allowing
-any &amp;quot;planable object&amp;quot; to carry a batch of other planable objects - and
+any &amp;ldquo;planable object&amp;rdquo; to carry a batch of other planable objects - and
 as the model goes more generic the role names do so
 too."  />
 </p>
@@ -281,27 +281,27 @@ be delivered with, for instance, an airplane which totals we are not
 interested of - but we are still interested in keeping track of any trip
 events involved in the actual transportation along with documentation
 and transactions attached to the parcel itself etc. But this also means
-that when there's need for accessing the &quot;effective&quot; trip object we
+that when there&rsquo;s need for accessing the &ldquo;effective&rdquo; trip object we
 also need to perform very complicated checks all over the structure
-trying to find out in which context the (correct, &quot;mobilized&quot;) trip
-object can be found... Without our derived links hiding (implementing)
+trying to find out in which context the (correct, &ldquo;mobilized&rdquo;) trip
+object can be found&hellip; Without our derived links hiding (implementing)
 all the navigational seeking and trying, this would really make our
 calculation logic very complicated only for such a simple thing as just
-retrieving some data from the structure. A real nightmare in fact...</p>
+retrieving some data from the structure. A real nightmare in fact&hellip;</p>
 <p>This kind of complicating of <em>what should be</em> a simple thing is not very
 unique in the programming world. What is unique here though is how it
 can be dealt with using Bold technology with its derived links and
 subscription mechanisms (and the fact that links are quick and easy to
-draw, and they're code generated, and they're automagically
+draw, and they&rsquo;re code generated, and they&rsquo;re automagically
 instantiated by the Bold framework when accessed by your code).</p>
 <p>Notice again that the <code>Parcel</code> can be a <code>TripHolder</code> itself (Parcel can
 even hold batches of other parcels), or if the <code>Parcel</code> is loaded on a
-carrier it doesn't know if it's loaded on the carrier which actually
+carrier it doesn&rsquo;t know if it&rsquo;s loaded on the carrier which actually
 holds the trip info (that is, whether on the hauler or the trailer). We
 would really have to do some tricky navigation in this structure! With a
 structure like this you can imagine how much redundant coding and how
 complicated OCL expressions would be just for accessing information in
-the structure. Your core business logic would actually &quot;&quot;drown&quot;&quot; in
+the structure. Your core business logic would actually &ldquo;&ldquo;drown&rdquo;&rdquo; in
 navigation logic just for simply retrieving trivial things from the
 structure, and the CPU would spend a lot of time finding Your way(s) to
 the target objects/data.</p>
@@ -318,11 +318,11 @@ anywhere in the structure, go anywhere, directly, by referencing link
 members with names fully clarifying what you intend to access. And all
 this will be done in the most efficient way you can come up with using
 the Bold architecture.</p>
-<p>With &quot;efficient&quot; I mean &quot;always direct access to the desired target
-object instance&quot; (except for the first evaluation which in this
-particular case happens only once for hundreds of accesses...).</p>
+<p>With &ldquo;efficient&rdquo; I mean &ldquo;always direct access to the desired target
+object instance&rdquo; (except for the first evaluation which in this
+particular case happens only once for hundreds of accesses&hellip;).</p>
 <p>This is only part of the concepts we used consciously to make possible
-what was not possible before: using regular, but &quot;clean design&quot;,
+what was not possible before: using regular, but &ldquo;clean design&rdquo;,
 modeled and structured object oriented business classes performing high
 performance real time (re)calculations of very advanced trip
 calculations (not discussed here). On a single CPU (application server)
@@ -330,8 +330,8 @@ for multiple clients.</p>
 <h3 id="derivation-code-with-comments">Derivation code, with comments</h3>
 <p>In the code below I underlined [<em>edit: underline was lost in the new
 code format below</em>] all the internal referencing of the derived links
-(&quot;efficient cached reuse of already evaluated results&quot;). I also used
-local variables thus avoiding the internal &quot;look up&quot; of internal Bold
+(&ldquo;efficient cached reuse of already evaluated results&rdquo;). I also used
+local variables thus avoiding the internal &ldquo;look up&rdquo; of internal Bold
 members more than once (=&gt; avoiding repeated triggering of internal
 bold events etc). The efficiency of the entire concept discussed above
 and the detailed coding below is verified using ProDelphi profiler (very
@@ -469,7 +469,7 @@ high accuracy <strong>(+-3%)</strong> on measuring code performance).</p>
 </span></span><span style="display:flex;"><span>  <span style="color:#00f">end</span>;
 </span></span><span style="display:flex;"><span><span style="color:#00f">end</span>;
 </span></span></code></pre></div><p><a href="https://twitter.com/rolflampa" target="_blank" rel="noopener">Rolf Lampa</a>
-,<br>
+,
 Self employed consultant, <a href="http://rilpartner.com" target="_blank" rel="noopener">RIL Partner AB</a>
 </p>
 <h3 id="notes-and-links">Notes and links</h3>
@@ -492,6 +492,15 @@ Source</a>
 </ul>
 
   
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/delphi/">Delphi</a></li>
+        <li><a href="/tags/bold/">Bold</a></li>
+        <li><a href="/tags/object-pascal/">Object-Pascal</a></li>
+        <li><a href="/tags/model-driven/">Model-Driven</a></li>
+    </ul>
+  </div>
 
 
   </main>

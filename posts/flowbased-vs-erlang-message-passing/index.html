@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>Flow-based programming and Erlang style message passing - A Biology-inspired idea of how they fit together | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.c11645622300898541e1ba6a090a08898a6e2a2f204875343a09f514ed41aadd.css" integrity="sha256-wRZFYiMAiYVB4bpqCQoIiYpuKi8gSHU0Ogn1FO1Bqt0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 
 
-      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+      <script src="/js/main.js"></script>
 
 
 
@@ -59,12 +59,11 @@ fix some of the pain points with <em>Erlang the language</em>, the eco-system
 has got even more interesting.</p>
 <p>What I find exciting about Erlang/Elixir and its virtual machine, is its
 ability to utilize multiple CPU:s on computers, and doing this across
-multiple computers, in what is commonly referred to as &quot;distributed
-computing&quot;. <a href="fbp_general_interactive_application.png"><p class="image">
+multiple computers, in what is commonly referred to as &ldquo;distributed
+computing&rdquo;. <p class="image">
     <img src="fbp_general_interactive_application.png" alt="Flow-based programming example. Image from
 http://jpaulmorrison.com/fbp/examples.html"  class="align_right" />
 </p>
-</a>
 
 But then, <a href="http://www.jpaulmorrison.com/fbp/" target="_blank" rel="noopener">Flow-based programming</a>
  (FBP) are
@@ -72,7 +71,7 @@ often pitched for basically the same purposes: good at running things in
 parallel in general. So, how do these two paradigms compare?</p>
 <h3 id="flow-based-programming-and-erlangelixir-seems-like-a-great-fit">Flow-based programming and Erlang/Elixir seems like a great fit?</h3>
 <p>It is hard not to think that the flow-based programming paradigm, with
-its multiple &quot;black box&quot; processes talking to each other over channels
+its multiple &ldquo;black box&rdquo; processes talking to each other over channels
 and the Erlang message-passing model of highly isolated processes
 sending messages to the mail boxes of other processes, would have a lot
 of overlap in functionality. One would think the architecture of one of
@@ -109,7 +108,7 @@ EUC2014</a>
 
 and <a href="https://vimeo.com/102707745" target="_blank" rel="noopener">Video</a>
 )</strong></em></p>
-<p>One thing I'm still wondering about though, is whether the overhead of
+<p>One thing I&rsquo;m still wondering about though, is whether the overhead of
 this copying might not be such a big problem since you now will have
 pipeline parallelism in Elixir, as José
 <a href="http://www.erlang-factory.com/euc2015/jose-valim" target="_blank" rel="noopener">presented</a>
@@ -132,12 +131,12 @@ Erlang VM quite different though.</p>
 VM</a>
  for compiled Erlang code,
 and the work going on with JIT-compilation for Erlang (Mentioned in the
-<a href="http://www.erlang-factory.com/euc2015/kenneth-lundin" target="_blank" rel="noopener">&quot;News from the OTP team&quot;
+<a href="http://www.erlang-factory.com/euc2015/kenneth-lundin" target="_blank" rel="noopener">&ldquo;News from the OTP team&rdquo;
 session</a>
  at the
-EUC2015), Erlang is in it's current state kind of slow for many types
+EUC2015), Erlang is in it&rsquo;s current state kind of slow for many types
 of computations. It is scalable yes, but slow. For example I tried some
-simple string processing algorithm in Elixir recently, which I've used
+simple string processing algorithm in Elixir recently, which I&rsquo;ve used
 to <a href="http://saml.rilspace.org/moar-languagez-gc-content-in-python-d-fpc-c-and-c" target="_blank" rel="noopener">benchmark a bunch of other languages
 before</a>
 ,
@@ -159,7 +158,7 @@ as C, if your computation demands are large while cost/energy efficiency
 is also of importance.</p>
 <p>Combining Erlang with a faster language for the actual processing, is
 actually exactly what is done at the company where Erlang was born in
-the first place, Ericsson. At the <a href="http://www.erlang-factory.com/euc2015/anders-danne" target="_blank" rel="noopener">&quot;Embedded Erlang&quot; talk on
+the first place, Ericsson. At the <a href="http://www.erlang-factory.com/euc2015/anders-danne" target="_blank" rel="noopener">&ldquo;Embedded Erlang&rdquo; talk on
 EUC2015</a>
 , Anders
 Danne of Ericsson revealed details about an interesting project which
@@ -174,10 +173,10 @@ body.</p>
 <p>Biology is full of information systems at different scales, but two of
 these that strike me as excellent examples of the items at play in this
 post are <strong>a)</strong> the DNA-to-RNA-to-Protein information processing chain
-commonly known as &quot;the central dogma&quot;, and <strong>b)</strong>, cell-to-cell
+commonly known as &ldquo;the central dogma&rdquo;, and <strong>b)</strong>, cell-to-cell
 signalling.</p>
-<h4 id="the-dna-rna-protein-processing-chain">The DNA-&gt;RNA-&gt;Protein processing chain</h4>
-<p>The DNA-&gt;RNA-&gt;Protein processing chain is a very low-level intricate
+<h4 id="the-dnararrrnararrprotein-processing-chain">The DNA→RNA→Protein processing chain</h4>
+<p>The DNA→RNA→Protein processing chain is a very low-level intricate
 chain of information processing that happens partly in the cell nucleus,
 partly in the space outside the nucleus (but still within he cell wall).
 It requires exceptional performance since there are large amounts of
@@ -188,18 +187,18 @@ have just eaten and enzymes for breaking down a certain food product
 need to be processed by specialized enzymes.</p>
 <p><strong>So, how is this implemented in the human cell?</strong></p>
 <p>Well, I think my words will fall short of describing this amazing
-process, so let's watch a little 3 minute animation instead:</p>
-<p>Do you see how the molecular machines are producing long &quot;streams&quot; of
+process, so let&rsquo;s watch a little 3 minute animation instead:</p>
+<p>Do you see how the molecular machines are producing long &ldquo;streams&rdquo; of
 information (e.g. an mRNA strand), while continuously reading another
-&quot;stream&quot; of information (e.g. a DNA strand), or the same thing for
-Protein-&quot;strands&quot; and mRNA-strands.</p>
-<p>I don't know about you, but to me, this looks a lot like flow-based
+&ldquo;stream&rdquo; of information (e.g. a DNA strand), or the same thing for
+Protein-&ldquo;strands&rdquo; and mRNA-strands.</p>
+<p>I don&rsquo;t know about you, but to me, this looks a lot like flow-based
 programming! - a highly optimized process where the physical proximity
-of the molecular letters stitched together into a &quot;strand&quot; or
-&quot;stream&quot; of information, that is processed in &quot;streaming mode&quot; by a
+of the molecular letters stitched together into a &ldquo;strand&rdquo; or
+&ldquo;stream&rdquo; of information, that is processed in &ldquo;streaming mode&rdquo; by a
 molecular machine into another stream of information.</p>
 <h4 id="cell-to-cell-signalling-for-robust-signalling-outside-the-safe-and-predictable-nature-within-the-cell-walls">Cell-to-cell signalling for robust signalling outside the safe and predictable nature within the cell walls</h4>
-<p>Cell-to-cell signalling, in contrast to the DNA-&gt;RNA-&gt;Protein
+<p>Cell-to-cell signalling, in contrast to the DNA→RNA→Protein
 processing chain, does involve less amount of information (but could
 still be <em>at least</em> as significant), since being a very high-level form
 of communication, it is heavily dependent on shared context between
@@ -209,7 +208,7 @@ message correctly, even if the actual message contains very little
 amount of (shannon) information.</p>
 <p>Compare this to e.g. a group of SWAT soldiers who have made up detailed
 plan for an attack, and then just are positioning themselves, and awaits
-a simple &quot;Go!&quot; message via their radios. The &quot;Go!&quot; message will
+a simple &ldquo;Go!&rdquo; message via their radios. The &ldquo;Go!&rdquo; message will
 contain hardly more than one or a few bits of information, measured in
 shannon information metrics, but due to the high amount of shared
 context information among the soldiers, it will be a highly significant
@@ -220,14 +219,14 @@ other hand there are other requirements, such as robustness to failure,
 since when these signalling molecules leave the cellular walls, the
 environment will be all the less reliable and predictable.</p>
 <p><strong>So, how is this implemented in the biological systems?</strong></p>
-<p>Here again, let's look at an animation of an example of the process
+<p>Here again, let&rsquo;s look at an animation of an example of the process
 rather than me trying to explain the steps in detail:</p>
-<p>The video shows one specific cell signaling &quot;pathway&quot; as they are
-called, but the same basic principles hold for many other &quot;pathways&quot;:
+<p>The video shows one specific cell signaling &ldquo;pathway&rdquo; as they are
+called, but the same basic principles hold for many other &ldquo;pathways&rdquo;:
 A signaling molecule is excreted from one cell, and then interacts with
 a receptor on the surface of another cell, that actually spans the cell
 wall, and triggers a chain of reaction on the inside of the
-&quot;recipient&quot; cell.</p>
+&ldquo;recipient&rdquo; cell.</p>
 <p>Things like robustness are here handled especially, by executing an
 excess of signaling molecules, more than will probably reach receptors
 of other cells.</p>
@@ -236,10 +235,10 @@ of other cells.</p>
 examples above?</p>
 <p>Well, my idea with including these examples is that they are two very
 different solutions to information processing problems at very different
-scales in the cell: The DNA-&gt;RNA-&gt;Protein processing chain does the
+scales in the cell: The DNA→RNA→Protein processing chain does the
 heavy lifting of translating high amounts of structural information
 about the molecular machines to be produced, while various cell-to-cell
-signaling pathways are more a kind of &quot;alerting&quot; systems for cells to
+signaling pathways are more a kind of &ldquo;alerting&rdquo; systems for cells to
 notify each other of various state changes in behavior needed for nearby
 cells, due to e.g. something happening in the close-by area.</p>
 <p>Personally, I think there is an interesting match between these two
@@ -247,24 +246,24 @@ information systems and the two information processing paradigms
 discussed in this article: Erlang style message passing and Flow-based
 processing. I see the match like this:</p>
 <ul>
-<li>DNA-&gt;RNA-&gt;Protein processing chain &lt;--&gt; Flow-based programming.</li>
-<li>Cell-to-cell signaling &lt;--&gt; Erlang style message passing.</li>
+<li>DNA→RNA→Protein processing chain ←→ Flow-based programming.</li>
+<li>Cell-to-cell signaling ←→ Erlang style message passing.</li>
 </ul>
 <p>One of these - the cell-to-cell signaling, is aimed at synchronizing
-state <em><strong>between</strong></em> nearby cells, while the other, DNA-&gt;RNA-&gt;Protein
+state <em><strong>between</strong></em> nearby cells, while the other, DNA→RNA→Protein
 chain, is for the heavy lifting of processing large amounts of data
 <em><strong>inside</strong></em> each cell.</p>
-<p>The first one is a very &quot;loose&quot; process, in that signaling molecules
-are released in excess, but on &quot;chance&quot;, and will eventually reach
+<p>The first one is a very &ldquo;loose&rdquo; process, in that signaling molecules
+are released in excess, but on &ldquo;chance&rdquo;, and will eventually reach
 receptors on the surfaces of nearby cells, and initiate some kind of
 response. This I would compare with the situation in TCP/IP networks,
-where predictability is not really the same as within the safe &quot;walls&quot;
+where predictability is not really the same as within the safe &ldquo;walls&rdquo;
 of the CPU. This would be where the robustness-increasing features of
 Erlang really shines.</p>
-<p>The DNA-&gt;RNA-&gt;Protein processing chain on the other hand, with its
+<p>The DNA→RNA→Protein processing chain on the other hand, with its
 very strict requirements on performance, has a very tight (even
 physical) coupling between the input data, the processing machinery, and
-the output data, and the placement of data into a &quot;stream&quot; (&quot;strand&quot;
+the output data, and the placement of data into a &ldquo;stream&rdquo; (&ldquo;strand&rdquo;
 in biological terms) means that while pulling an information item /
 nucleotide through the processing machinery, the next item to process
 will automatically be pulled in. This would be where the
@@ -283,32 +282,42 @@ communication between such services.</li>
 and FPGA code, maybe Erlang/Elixir should be used as control plane
 between micro-services built with highly optimized Flow-based
 programming principles?</p>
-<p>Maybe this would even simultaneously solve Erlang's performance
-problem, while solving Flow-based programming's problem with
+<p>Maybe this would even simultaneously solve Erlang&rsquo;s performance
+problem, while solving Flow-based programming&rsquo;s problem with
 [robustness of] large distributed systems? Well, one can speculate at
 least. And yeah, why not also test this out in practice! :)</p>
 <hr>
-<p><em><strong>Note I:</strong> Interesting discussions on the post is happening on
+<ul>
+<li><strong>Note I:</strong> Interesting discussions on the post is happening on
 <a href="https://news.ycombinator.com/item?id=9718868" target="_blank" rel="noopener">HackerNews</a>
 , and the
 <a href="https://groups.google.com/d/msg/flow-based-programming/6LMw6JukILY/C9SmQdlMKm8J" target="_blank" rel="noopener">Flow-based programming mailing
 list</a>
-</em><br>
-<em><strong>Note II:</strong> ElixirFBP creator Peter C Marks <a href="http://www.elixirfbp.org/2015/06/a-couple-of-things.html" target="_blank" rel="noopener">blogged a
+</li>
+<li><strong>Note II:</strong> ElixirFBP creator Peter C Marks <a href="http://www.elixirfbp.org/2015/06/a-couple-of-things.html" target="_blank" rel="noopener">blogged a
 comment</a>
- of
-this post and the discussion it triggered <a href="http://www.elixirfbp.org/2015/06/a-couple-of-things.html" target="_blank" rel="noopener">Check it out
-elixirfbp.org</a>
-</em><br>
-<em><strong>Note III:</strong> The slowness of Erlang/Elixir that I mention, is
-disputed! See discussion on</em> <a href="http://www.meetup.com/stockholm-elixir/events/203279212/" target="_blank" rel="noopener">this meetup
+ of this
+post and the discussion it triggered <a href="http://www.elixirfbp.org/2015/06/a-couple-of-things.html" target="_blank" rel="noopener">Check it out
+at elixirfbp.org</a>
+</li>
+<li><strong>Note III:</strong> The slowness of Erlang/Elixir that I mention, is disputed! See
+discussion on <a href="http://www.meetup.com/stockholm-elixir/events/203279212/" target="_blank" rel="noopener">this meetup
 page</a>
-<em>, and in
-particular Johan Lind's</em> <a href="https://gist.github.com/samuell/dbea9f759dced60a7d0b#comment-1311551" target="_blank" rel="noopener">improvements on the code example
+, and in
+particular Johan Lind&rsquo;s <a href="https://gist.github.com/samuell/dbea9f759dced60a7d0b#comment-1311551" target="_blank" rel="noopener">improvements on the code example
 here</a>
-</p>
+</li>
+</ul>
 
   
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/flow-based-programming/">Flow-Based Programming</a></li>
+        <li><a href="/tags/erlang/">Erlang</a></li>
+        <li><a href="/tags/biology/">Biology</a></li>
+    </ul>
+  </div>
 
 
   </main>

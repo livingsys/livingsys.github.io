@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>First production run with SciPipe - A Go-based scientific workflow tool | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.c11645622300898541e1ba6a090a08898a6e2a2f204875343a09f514ed41aadd.css" integrity="sha256-wRZFYiMAiYVB4bpqCQoIiYpuKi8gSHU0Ogn1FO1Bqt0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 
 
-      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+      <script src="/js/main.js"></script>
 
 
 
@@ -47,7 +47,7 @@
 -based
 <a href="https://en.wikipedia.org/wiki/Scientific_workflow_system" target="_blank" rel="noopener">scientific workflow
 tool</a>
- we've
+ we&rsquo;ve
 been working on over the last couple of years. Yay! :)</p>
 <p>This is how it looked (no fancy GUI or such yet, sorry):</p>
 <p><p class="image">
@@ -89,7 +89,7 @@ really fix, and what to really not, emerged :)</p>
 <p>Previous <a href="https://jcheminf.springeropen.com/articles/10.1186/s13321-016-0151-5" target="_blank" rel="noopener">data analysis
 projects</a>
 
-have been done using Spotify's
+have been done using Spotify&rsquo;s
 <a href="https://github.com/spotify/luigi" target="_blank" rel="noopener">Luigi</a>
  in combination with our helper
 tool <a href="https://github.com/pharmbio/sciluigi" target="_blank" rel="noopener">SciLuigi</a>
@@ -112,9 +112,9 @@ communicate with the central Luigi scheduler via HTTP over the
 network lead to robustness problems over around 64 workers, with
 HTTP-timeouts and other similar glitches.</li>
 </ul>
-<p>Thus, I'm very excited we are now running our Go-based tool. While it
+<p>Thus, I&rsquo;m very excited we are now running our Go-based tool. While it
 takes a lot of inspiration from both Luigi and SciLuigi, such as
-Luigi's very powerful file naming strategy and the named port ideas we
+Luigi&rsquo;s very powerful file naming strategy and the named port ideas we
 developed in SciLuigi, it also solves both of the mentioned problems
 above:</p>
 <ul>
@@ -126,7 +126,7 @@ is done completely inside the Go binary.</li>
 </ul>
 <p>SciPipe further adds even more improvements such as full dataflow
 behaviour, meaning that construction of the tree of concrete tasks to
-execute doesn't need to be done before leaving over to the execution
+execute doesn&rsquo;t need to be done before leaving over to the execution
 engine. Instead, tasks are scheduled on-the-fly while the engine is
 running, based on data fed into processes. This will greatly simplify
 some workflow constructs we had problems with in SciLuigi.</p>
@@ -146,7 +146,7 @@ Programming</a>
 
 approach.</p>
 <h2 id="for-something-more-stable---consider-nextflow">For something more stable - consider NextFlow</h2>
-<p>Note though: For those who'd prefer a more mature, stable, and
+<p>Note though: For those who&rsquo;d prefer a more mature, stable, and
 supported solution with a bigger established community, note that
 <a href="https://www.nextflow.io/" target="_blank" rel="noopener">NextFlow</a>
  (see also <a href="http://dx.doi.org/10.1038/nbt.3820" target="_blank" rel="noopener">the
@@ -160,14 +160,14 @@ Programming</a>
  to
 be crucial for our vision of creating a library of re-usable workflow
 components for our use cases. In concrete terms, this means that <a href="http://bionics.it/posts/fbp-data-flow-syntax#comment-2140898697" target="_blank" rel="noopener">inputs
-and outputs are defined as fields (&quot;ports&quot;) bound to
+and outputs are defined as fields (&ldquo;ports&rdquo;) bound to
 components</a>
 ,
 rather than being unbound variables shared between components in the
 workflow scope, as is the case in NextFlow. We think this is important
 in order to make re-usable components self-contained and
 self-documentary, and also helps with things like autocompletion (type
-&quot;componentname.&lt;tab&gt;&quot; and you will get a list of the available
+<code>componentname.&lt;tab&gt;</code> and you will get a list of the available
 ports). <a href="http://bionics.it/posts/fbp-data-flow-syntax#comment-2141038801" target="_blank" rel="noopener">Nextflow takes a slightly different view
 here</a>
 
@@ -178,17 +178,25 @@ component</a>
 which seems to be a reasonable assumption in the Genomics field which it
 is focused on.</p>
 <p>What is perhaps a more interesting note here though, is that in all the
-very fruitful discussions I've had with NextFlow creator <a href="https://twitter.com/PaoloDiTommaso" target="_blank" rel="noopener">Paolo Di
+very fruitful discussions I&rsquo;ve had with NextFlow creator <a href="https://twitter.com/PaoloDiTommaso" target="_blank" rel="noopener">Paolo Di
 Tommaso</a>
  we both whole-heartedly
 agree about the power and ease of use of the dataflow paradigm.
 Hopefully we can eventually get support for some of the dataflow
 specialities in the <a href="http://commonwl.org" target="_blank" rel="noopener">Common Workflow Language</a>
 .
-Let's continue to explore how the process of writing workflows can be
+Let&rsquo;s continue to explore how the process of writing workflows can be
 made even more fluent, flexible and fun. :)</p>
 
   
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/scipipe/">Scipipe</a></li>
+        <li><a href="/tags/workflow-tools/">Workflow-Tools</a></li>
+        <li><a href="/tags/go/">Go</a></li>
+    </ul>
+  </div>
 
 
   </main>

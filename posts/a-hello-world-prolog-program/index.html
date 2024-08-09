@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>A &#34;Hello World&#34; program in SWI-Prolog | Living Systems</title>
+<title>A Hello World program in SWI-Prolog | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.c11645622300898541e1ba6a090a08898a6e2a2f204875343a09f514ed41aadd.css" integrity="sha256-wRZFYiMAiYVB4bpqCQoIiYpuKi8gSHU0Ogn1FO1Bqt0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 
 
-      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+      <script src="/js/main.js"></script>
 
 
 
@@ -35,16 +35,16 @@
   </header>
   <main>
     
-  <h1>A &#34;Hello World&#34; program in SWI-Prolog</h1>
+  <h1>A Hello World program in SWI-Prolog</h1>
 
   
   
   <time datetime="2009-09-22T17:04:00&#43;02:00">September 22, 2009</time>
 
   <!-- raw HTML omitted -->
-<p>Then you can load the program from inside prolog after you've started
+<p>Then you can load the program from inside prolog after you&rsquo;ve started
 it.</p>
-<p>So, let's start the prolog interactive GUI:</p>
+<p>So, let&rsquo;s start the prolog interactive GUI:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-prolog" data-lang="prolog"><span style="display:flex;"><span><span style="color:#a31515">prolog</span>
 </span></span></code></pre></div><p>Then, in the Prolog GUI, load the file test.pl like so:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-prolog" data-lang="prolog"><span style="display:flex;"><span><span style="color:#a31515">?-</span> [<span style="color:#a31515">test</span>].
@@ -59,15 +59,15 @@ able to extract that information by querying.</p>
 </span></span><span style="display:flex;"><span>parent(Grandparent,Parent),
 </span></span><span style="display:flex;"><span>parent(Parent,Child).
 </span></span></code></pre></div><p>If you write this in test.pl, and load test.pl according to the
-instructions above, you'll now be able to query prolog for the
+instructions above, you&rsquo;ll now be able to query prolog for the
 grandparent of jim in the following way:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-prolog" data-lang="prolog"><span style="display:flex;"><span><span style="color:#a31515">?-</span> grandparent(WHO,<span style="color:#a31515">jim</span>).
 </span></span><span style="display:flex;"><span>WHO = <span style="color:#a31515">sam</span> ;
 </span></span><span style="display:flex;"><span><span style="color:#a31515">false</span>.
 </span></span></code></pre></div><h3 id="toc0">Notes</h3>
 <ul>
-<li>&quot;false.&quot; here just means that after the first occurence of a
-matching item, it didn't find anymore items.</li>
+<li>&ldquo;false.&rdquo; here just means that after the first occurence of a
+matching item, it didn&rsquo;t find anymore items.</li>
 <li>words starting with a Capital letter are treated as <em>variables</em>,
 while all-lowercase words are treated as <em>atoms</em>.</li>
 </ul>

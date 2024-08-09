@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>Debugging inside Jinja templates using pdb/ipdb | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.c11645622300898541e1ba6a090a08898a6e2a2f204875343a09f514ed41aadd.css" integrity="sha256-wRZFYiMAiYVB4bpqCQoIiYpuKi8gSHU0Ogn1FO1Bqt0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 
 
-      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+      <script src="/js/main.js"></script>
 
 
 
@@ -41,20 +41,20 @@
   
   <time datetime="2024-03-04T14:42:00&#43;01:00">March 4, 2024</time>
 
-  <p>I'm working on a static reporting tool using the Jinja2 templating
+  <p>I&rsquo;m working on a static reporting tool using the Jinja2 templating
 engine for Python.</p>
 <p>I was trying to figure out a way to enter into the Jinja templating code
 with the pdb/ipdb commandline debugger.</p>
 <p>I tried creating an <code>.ipdbrc</code> file in my local directory with the line:</p>
 <pre><code>path/to/template.html:&lt;lineno&gt;
 </code></pre>
-<p>... but that didn't work.</p>
+<p>&hellip; but that didn&rsquo;t work.</p>
 <p>What worked was to figure out <a href="https://github.com/pallets/jinja/blob/main/src/jinja2/environment.py#L1301" target="_blank" rel="noopener">the line that
 says</a>
 :</p>
 <pre><code>return self.environment.concat(self.root_render_func(ctx))
 </code></pre>
-<p>... inside the the jinja codebase, and put a breakpoint on that (which
+<p>&hellip; inside the the jinja codebase, and put a breakpoint on that (which
 for me was on line 1299, but might vary depending on version):</p>
 <pre><code>break &lt;path-to-python-install&gt;/lib/python3.11/site-packages/jinja2/environment.py:1299
 </code></pre>
@@ -63,18 +63,18 @@ for me was on line 1299, but might vary depending on version):</p>
     <img src="image-1.png" alt=""  />
 </p>
 </p>
-<p>Typed 's' to step into that function ... and lo and behold, I'm
+<p>Typed &rsquo;s&rsquo; to step into that function &hellip; and lo and behold, I&rsquo;m
 inside the template page(!):</p>
 <p><p class="image">
     <img src="image-6.png" alt=""  />
 </p>
 </p>
-<p>You can't access variables in the normal way though:</p>
+<p>You can&rsquo;t access variables in the normal way though:</p>
 <p><p class="image">
     <img src="image-4.png" alt=""  />
 </p>
 </p>
-<p>... but with some digging, I found you can do it in another way, by
+<p>&hellip; but with some digging, I found you can do it in another way, by
 accessing them via <code>vars()['context']['&lt;variable-name-here&gt;']</code></p>
 <p><p class="image">
     <img src="image-7.png" alt=""  />
@@ -82,6 +82,15 @@ accessing them via <code>vars()['context']['&lt;variable-name-here&gt;']</code><
 </p>
 
   
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/python/">Python</a></li>
+        <li><a href="/tags/debugging/">Debugging</a></li>
+        <li><a href="/tags/pdb/">Pdb</a></li>
+        <li><a href="/tags/jinja/">Jinja</a></li>
+    </ul>
+  </div>
 
 
   </main>

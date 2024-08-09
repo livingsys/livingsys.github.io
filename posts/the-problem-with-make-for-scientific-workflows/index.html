@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>The problem with make for scientific workflows | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.c11645622300898541e1ba6a090a08898a6e2a2f204875343a09f514ed41aadd.css" integrity="sha256-wRZFYiMAiYVB4bpqCQoIiYpuKi8gSHU0Ogn1FO1Bqt0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 
 
-      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+      <script src="/js/main.js"></script>
 
 
 
@@ -50,8 +50,8 @@
 always a few make fans fervently insisting that the problem of workflows
 is solved once and for all with <a href="http://www.gnu.org/software/make/" target="_blank" rel="noopener">GNU
 make</a>
-, written first in the 70's :)</p>
-<p>Personally I haven't been so sure. On the one hand, I know the tool
+, written first in the 70&rsquo;s :)</p>
+<p>Personally I haven&rsquo;t been so sure. On the one hand, I know the tool
 solves a lot of problems for many people. Also, there is something very
 attractive about buildling on a tool that you can be sure will be
 available on more or less every unix-like operating system, for decades
@@ -65,9 +65,9 @@ target <em>file name pattern</em> of the desired output, and let make figure
 out what rules it takes to create those. Thus when you have a variable
 or dynamically computed number of outputs anywhere in the workflow, it
 becomes hard - if not impossible - to know what these resulting file
-patterns will be. You simply can't know before you started executing
+patterns will be. You simply can&rsquo;t know before you started executing
 the workflow.</p>
-<p>Because this was just my &quot;intuitive understanding&quot;, I was quite
+<p>Because this was just my &ldquo;intuitive understanding&rdquo;, I was quite
 interested when I stumbled upon a <a href="http://www.aclweb.org/anthology/W/W08/W08-0503.pdf" target="_blank" rel="noopener">paper that discusses this exact
 problem in some
 detail</a>
@@ -83,32 +83,32 @@ cases I have been thinking of.</p>
 <p>I will quote some selected parts under each of the categories, below.</p>
 <h3 id="files-are-represented-by-strings">Files are represented by strings</h3>
 <blockquote>
-<p><em>&quot;... from our perspective, make is a declarative language for
+<p><em>&quot;&hellip; from our perspective, make is a declarative language for
 specifying dependencies. This seems to be exactly what we want, and
 indeed it does solve some of the problems detailed above. make has
 several new problems, though, which result in its being not an ideal
 solution to our problem&quot;</em></p>
 </blockquote>
 <blockquote>
-<p><em>&quot;... there are three serious problems ...&quot;</em></p>
+<p><em>&quot;&hellip; there are three serious problems &hellip;&quot;</em></p>
 </blockquote>
-<p><em>&quot;The basic problem here is that to make, a file is represented by a
+<p><em>&ldquo;The basic problem here is that to make, a file is represented by a
 string, its filename. For machine learning and natural language
 processing experiments, it is much more natural to represent a file as a
-set of key-value pairs. ...&quot;</em></p>
+set of key-value pairs. &hellip;&rdquo;</em></p>
 <h3 id="problems-with-combinatorial-dependencies">[Problems with] combinatorial dependencies</h3>
 <blockquote>
-<p><em>&quot;The second problem with make is that it is very difficult to
+<p><em>&ldquo;The second problem with make is that it is very difficult to
 specify combinatorial dependencies. If one continued to write the
 makefile above, one would eventually need to write a final all target
 to specify all the files which would need to be built. There are 60
-such files [...] There is no easy way in make of listing these 60
+such files [&hellip;] There is no easy way in make of listing these 60
 files in a natural manner. One can escape to a shell script, or use
-GNU make&rsquo;s foreach function, but both ways are messy.&quot;</em></p>
+GNU make&rsquo;s foreach function, but both ways are messy.&rdquo;</em></p>
 </blockquote>
 <h3 id="non-representable-dependency-structures">Non-representable dependency structures</h3>
 <blockquote>
-<p><em>&quot;The final problem with make also relates to dependencies. It is
+<p><em>&ldquo;The final problem with make also relates to dependencies. It is
 more subtle, but it turns out that there are some sorts of dependency
 structures which cannot be represented in make. Suppose I want to
 compare the effect of using one of three parsers, one of three
@@ -119,7 +119,7 @@ might be run. A non-working example is in Figure 3. The problem is
 that make pattern rules (rules using the % character) can only match
 the suffix or prefix of a filename. This makefile does not work
 because it requires the parser, chunker, and tagger to all be the last
-part of the filename before the type suffix.&quot;</em></p>
+part of the filename before the type suffix.&rdquo;</em></p>
 </blockquote>
 <p>But by all means, have a look at <a href="http://www.aclweb.org/anthology/W/W08/W08-0503.pdf" target="_blank" rel="noopener">the
 paper</a>
@@ -129,14 +129,14 @@ paper</a>
 <p>I find this paper interesting in that it provides concrete use cases to
 a problem that I had only an intuitive understanding of before.</p>
 <p>It might not completely hit the nail at its head with all the problem
-description. E.g, I don't think being &quot;filename based&quot; versus
-&quot;parameter based&quot; is a problem at all, if you just have a powerful
+description. E.g, I don&rsquo;t think being &ldquo;filename based&rdquo; versus
+&ldquo;parameter based&rdquo; is a problem at all, if you just have a powerful
 file name pattern mechanism that allows you to freely and flexible
 incorporate the parameter names and values at any desired place in the
-filename pattern. That is the case .e.g in <a href="https://github.com/spotify/luigi" target="_blank" rel="noopener">Spotify's luigi workflow
+filename pattern. That is the case .e.g in <a href="https://github.com/spotify/luigi" target="_blank" rel="noopener">Spotify&rsquo;s luigi workflow
 tool</a>
 , which we have been using in our
-work in <a href="http://www.farmbio.uu.se/forskning/researchgroups/pb/" target="_blank" rel="noopener">Ola Spjuth's group at
+work in <a href="http://www.farmbio.uu.se/forskning/researchgroups/pb/" target="_blank" rel="noopener">Ola Spjuth&rsquo;s group at
 UU</a>
 .</p>
 <p>The other two points, about some dependency graph patterns being
@@ -151,10 +151,10 @@ impractical to specify manually.</p>
 <p>For these kind of use cases it seems it would be nicer to just specify
 the tasks, the indata, and how the data flows, from output of one task
 to input of another one, without needing to know the final resulting
-file name pattern in before hand. Thus a bit more &quot;push-based&quot;
-approach compared to &quot;pull based&quot;, and also with explicit wiring of
+file name pattern in before hand. Thus a bit more &ldquo;push-based&rdquo;
+approach compared to &ldquo;pull based&rdquo;, and also with explicit wiring of
 data dependencies, rather than implicit ones based upon file name
-pattern rules (That is, more &quot;dataflow&quot; or &quot;flow based programming&quot;
+pattern rules (That is, more &ldquo;dataflow&rdquo; or &ldquo;flow based programming&rdquo;
 like).</p>
 <p>Interestingly, this approach is taken in tools such as
 <a href="http://www.nextflow.io/" target="_blank" rel="noopener">NextFlow</a>
@@ -168,30 +168,36 @@ definitely in our new Go-based library <a href="http://scipipe.org" target="_bla
  provides
 some constructs that makes some of the problems described above a lot
 more tractable to implement even though the basic execution mechanism is
-&quot;pull-based&quot; just like in make itself (you specify the desired target
+&ldquo;pull-based&rdquo; just like in make itself (you specify the desired target
 file pattern to drive upstream tasks) but it has a much better handling
 of named inputs and outputs than GNU make, and also a more powerful file
 pattern interpolation mechanism, where you can use python code to
 interpolate the file pattern in any way.</p>
-<p>Let's hope to see more dataflow inspired workflow tools in the future,
+<p>Let&rsquo;s hope to see more dataflow inspired workflow tools in the future,
 but in the meanwhile, keep an eye on NextFlow, BPipe, and also
 SnakeMake, if you can live with its pull-based mechanism!</p>
-<p>-- <a href="http://twitter.com/smllmp" target="_blank" rel="noopener">Samuel</a>
-</p>
-<p><em><strong>UPDATE:</strong> I should clarify that the problems discussed below do not
-apply to some ways of working with make such as this interesting method
-by <a href="https://twitter.com/yokofakun" target="_blank" rel="noopener">Pierre Lindenbaum</a>
-, where the
-makefile is <a href="https://github.com/lindenb/ngsxml" target="_blank" rel="noopener">generated from an XML
-description</a>
-, thus using make as a
-kind of &quot;assembly language&quot;, to which higher level workflow
-definitions are &quot;compiled&quot;. Pierre <a href="https://twitter.com/yokofakun/status/576878752673693696" target="_blank" rel="noopener">mentions a few other problems with
-make here
-though</a>
-.</em></p>
+<ul>
+<li><strong>UPDATE:</strong> I should clarify that the problems discussed below do not apply
+to some ways of working with make such as this interesting method by <a href="https://twitter.com/yokofakun" target="_blank" rel="noopener">Pierre
+Lindenbaum</a>
+, where the makefile is <a href="https://github.com/lindenb/ngsxml" target="_blank" rel="noopener">generated
+from an XML description</a>
+, thus using make
+as a kind of &ldquo;assembly language&rdquo;, to which higher level workflow
+definitions are &ldquo;compiled&rdquo;. Pierre <a href="https://twitter.com/yokofakun/status/576878752673693696" target="_blank" rel="noopener">mentions a few other problems with make
+here though</a>
+.*</li>
+</ul>
 
   
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/gnu-make/">Gnu Make</a></li>
+        <li><a href="/tags/workflow-tools/">Workflow-Tools</a></li>
+        <li><a href="/tags/reproducibility/">Reproducibility</a></li>
+    </ul>
+  </div>
 
 
   </main>

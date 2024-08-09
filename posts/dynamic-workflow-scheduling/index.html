@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>Wanted: Dynamic workflow scheduling | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.c11645622300898541e1ba6a090a08898a6e2a2f204875343a09f514ed41aadd.css" integrity="sha256-wRZFYiMAiYVB4bpqCQoIiYpuKi8gSHU0Ogn1FO1Bqt0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 
 
-      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+      <script src="/js/main.js"></script>
 
 
 
@@ -76,7 +76,7 @@ tools completely separate the execution into two stages:</p>
  and
 <a href="https://bitbucket.org/ccgmurdoch/yabi/wiki/Home" target="_blank" rel="noopener">Yabi</a>
  (Tool authors,
-correct me if I'm wrong!).</p>
+correct me if I&rsquo;m wrong!).</p>
 <p>The case where we really have needed this was for running machine
 learning algorithms on data sets of various data set sizes. To gain
 optimal models, we have been first first optimizing the cost parameter
@@ -105,8 +105,8 @@ continuously from during execution of a workflow.</p>
 to the dataflow paradigm. In most dataflow tools you have independently
 running processes that receive messages with input data that
 continuously schedule new tasks as they receive messages until the
-system hands them a message telling them to shut down. &quot;Dynamic
-scheduling&quot; is really how dataflow systems work in other words, which I
+system hands them a message telling them to shut down. &ldquo;Dynamic
+scheduling&rdquo; is really how dataflow systems work in other words, which I
 find interesting. I think the dataflow system
 <a href="http://nextflow.io" target="_blank" rel="noopener">Nextflow</a>
  works like this. And so does my <a href="http://scipipe.org" target="_blank" rel="noopener">little
@@ -116,12 +116,20 @@ started hacking on out of frustration with some other tools a long time
 ago, although that one still lacks most other popular features ;)</p>
 <p>I just had not realized how important this feature could be, for very
 common use cases.</p>
-<p><strong>Samuel</strong> (<a href="https://twitter.com/smllmp" target="_blank" rel="noopener">@smllmp</a>
-)</p>
-<p><em><strong>EDIT 2020-10-19: Fixed some typos and improved flow of some
-sentences.</strong></em></p>
+<ul>
+<li><strong>EDIT 2020-10-19: Fixed some typos and improved flow of some sentences.</strong></li>
+</ul>
 
   
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/workflow-tools/">Workflow-Tools</a></li>
+        <li><a href="/tags/snakemake/">Snakemake</a></li>
+        <li><a href="/tags/luigi/">Luigi</a></li>
+        <li><a href="/tags/galaxy/">Galaxy</a></li>
+    </ul>
+  </div>
 
 
   </main>

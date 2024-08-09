@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>Equation-centric dataflow programming in Go | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.c11645622300898541e1ba6a090a08898a6e2a2f204875343a09f514ed41aadd.css" integrity="sha256-wRZFYiMAiYVB4bpqCQoIiYpuKi8gSHU0Ogn1FO1Bqt0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 
 
-      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+      <script src="/js/main.js"></script>
 
 
 
@@ -54,7 +54,7 @@ languages like <a href="http://www.sagemath.org/" target="_blank" rel="noopener"
 ,
 there seem to always be quite a divide between the mathematical notation
 and the numerical implementation.</p>
-<p>I'm generelly interested in how we can go towards a more declarative
+<p>I&rsquo;m generelly interested in how we can go towards a more declarative
 way of specifying relations between entities, to minimize the amount of
 coding we have to do when modelling systems. I find it especially
 interesting with approaches that are easy to implement in mainstream
@@ -67,21 +67,21 @@ into <a href="https://en.wikipedia.org/wiki/Dataflow" target="_blank" rel="noope
 <a href="https://en.wikipedia.org/wiki/Flow-based_programming" target="_blank" rel="noopener">flow-based
 programming</a>
 
-programs, since these approaches are a pretty good fit for today's
+programs, since these approaches are a pretty good fit for today&rsquo;s
 multicore CPU chips, where the inherent pipeline parallelism makes good
 use of multiple computing cores without too much hoops, except we
 express the computations as pipelines of asynchronously running
 processing components.</p>
 <h2 id="enter-go-generator-functions">Enter Go generator functions</h2>
-<p>Pondering the fact that Go's concurrency primitives (go-routines and
-channels) combined into the generator pattern (<a href="https://talks.golang.org/2012/concurrency.slide#25" target="_blank" rel="noopener">see Rob Pike's slides
+<p>Pondering the fact that Go&rsquo;s concurrency primitives (go-routines and
+channels) combined into the generator pattern (<a href="https://talks.golang.org/2012/concurrency.slide#25" target="_blank" rel="noopener">see Rob Pike&rsquo;s slides
 here</a>
 ), is pretty
 much dataflow in a pretty functional style, it struck me that Go
 generator functions might be useful for expressing computation in a way
 that resembles mathematical equations.</p>
-<p>If you haven't seen Go generator functions, check the link above to
-Rob's slides. Otherwise, in short, they are functions which, instead of
+<p>If you haven&rsquo;t seen Go generator functions, check the link above to
+Rob&rsquo;s slides. Otherwise, in short, they are functions which, instead of
 returning a finished value, return a channel, from which one or more
 values can be retrieved. Internally, the generator function will start a
 go-routine which will produce the values for you <em>lazily</em>, or,
@@ -89,14 +89,14 @@ go-routine which will produce the values for you <em>lazily</em>, or,
 some values if the channel is buffered).</p>
 <p>Said and done. This turned out to be easier than expected. With the help
 of one or two helper functions, I could easily implement various numeric
-operators like &quot;Add&quot; and &quot;Div&quot; in the form of generator functions
+operators like &ldquo;Add&rdquo; and &ldquo;Div&rdquo; in the form of generator functions
 that operate on a stream of numbers, and in turn returns a stream of
 integers or numbers. Since the returned channel represents the output of
 each operator function, it becomes possible to nest these operator
 function calls in a way that somehow mimics a mathematical formula
 chosen to implement.</p>
 <p>As example formula for my experiment, I wanted something with simple
-operators (mostly &quot;Add&quot;, &quot;Sub&quot;, &quot;Mul&quot; and &quot;Div), but complex
+operators (mostly &ldquo;Add&rdquo;, &ldquo;Sub&rdquo;, &ldquo;Mul&rdquo; and &ldquo;Div), but complex
 enough that it is relevant to make the formula as readable as possible.
 The monthly payment formula from <a href="http://www.math.utah.edu/~pa/math/equations/equations.html" target="_blank" rel="noopener">this
 page</a>
@@ -274,7 +274,7 @@ decide in which direction the computation goes: From inputs to outputs.
 Perhaps it is possible to express this in a more generic way, since Go
 channels are after all bi-directional, unless they are explicitly made
 uni-directional?</p>
-<p>We also get into territory where Go's lack of generics is giving some
+<p>We also get into territory where Go&rsquo;s lack of generics is giving some
 consequences. In order to keep the above code example reasonably short,
 we have limited outselves to streams of float values. Extending this to
 arbitrary combinations of floats, integers, and of all the sizes, would
@@ -291,6 +291,13 @@ reddit</a>
 </ul>
 
   
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/dataflow/">Dataflow</a></li>
+        <li><a href="/tags/go/">Go</a></li>
+    </ul>
+  </div>
 
 
   </main>

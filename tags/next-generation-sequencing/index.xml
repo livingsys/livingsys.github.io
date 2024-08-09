@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Next-Generation Sequencing on Living Systems</title>
+    <link>http://localhost:1313/tags/next-generation-sequencing/</link>
+    <description>Recent content in Next-Generation Sequencing on Living Systems</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 19 Feb 2015 20:44:00 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/next-generation-sequencing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Random links from the Hadoop NGS Workshop</title>
+      <link>http://localhost:1313/posts/hadoop-ngs-workshop/</link>
+      <pubDate>Thu, 19 Feb 2015 20:44:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/hadoop-ngs-workshop/</guid>
+      <description> Spark notebook Scala notebook ADAM By Big Data Genomics Tweet by Frank Nothaft on common workflow def Part of Global Alliance for &amp;hellip; Another link is ga4gh.org Tachyon in-memory file system Cuneiform Does support multiple outputs etc Black-box vs. White-box Workflow dependency graph can be dynamically built up while you&amp;rsquo;re running Can specity tasks in any scripting languages, or in cuneiform itself Hi-Way Worklow engine for Hadoop​ Can run exported Galaxy workflows </description>
+    </item>
+    <item>
+      <title>Taking a one week introductory course in Bioinformatics for NGS data</title>
+      <link>http://localhost:1313/posts/introductory-course-in-bioinformatics-for-ngs-data/</link>
+      <pubDate>Mon, 09 Feb 2015 20:44:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/introductory-course-in-bioinformatics-for-ngs-data/</guid>
+      <description>Right now I&amp;rsquo;m sitting on the train and trying to get my head around some of the pre-course materials .</description>
+    </item>
+  </channel>
+</rss>

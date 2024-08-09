@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>NGS Bioinformatics Intro Course Day 2 | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.c11645622300898541e1ba6a090a08898a6e2a2f204875343a09f514ed41aadd.css" integrity="sha256-wRZFYiMAiYVB4bpqCQoIiYpuKi8gSHU0Ogn1FO1Bqt0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 
 
-      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+      <script src="/js/main.js"></script>
 
 
 
@@ -44,7 +44,7 @@
   <p>Today was the second day of the <a href="http://uppnex.se/twiki/do/view/Courses/NgsIntro1502/" target="_blank" rel="noopener">introductory course in NGS
 bioinformatics</a>
 
-that I'm taking as part of my PhD studies.</p>
+that I&rsquo;m taking as part of my PhD studies.</p>
 <p><p class="image">
     <img src="20150210_132439.jpg" alt=""  />
 </p>
@@ -62,7 +62,7 @@ some really interesting
 on file types in NGS analysis, but will make sure to go through that in
 my free time during the week.</p>
 <p>I came to the lecture quite fittingly, exactly when Olga
-Vinnere-Petterson were going from the &quot;older&quot; NGS techniques that I
+Vinnere-Petterson were going from the &ldquo;older&rdquo; NGS techniques that I
 already know fairly well (454, etc), and into the newer ones, such as
 PacBio and IonTorrent.</p>
 <p>In the afternoon, Adam Ameur covered some examples of typical analysis
@@ -72,33 +72,41 @@ often looks like in practice.</p>
 <p>A common theme for the day was constrasting of different types of
 Next-gen sequencing machines, their specific quality characteristics,
 and the subsequent impact on the analytics of its data.</p>
-<p>In some of the final slides, we had this kind of &quot;overview&quot; of the
+<p>In some of the final slides, we had this kind of &ldquo;overview&rdquo; of the
 main three technologies today:</p>
 <ul>
-<li>Use illumina when you need a really large amount data (reads), for
-the buck.</li>
-<li>IonTorrent can be nice for certain applications (forgot exactly
-what! =P ), at a reasonable cost.</li>
-<li>Use PacBio when you want great quality: The single-molecule very
+<li>
+<p>Use illumina when you need a really large amount data (reads), for
+the buck.</p>
+</li>
+<li>
+<p>IonTorrent can be nice for certain applications (forgot exactly
+what! =P ), at a reasonable cost.</p>
+</li>
+<li>
+<p>Use PacBio when you want great quality: The single-molecule very
 long-reads sequencing, can resolve all kinds of problems with the
 other methods, making de novo assembly and various correction and
-validation easier.</li>
-<li>A more comprehensive summary was also prestented:<br>
-<br>
-<p class="image">
+validation easier.</p>
+</li>
+<li>
+<p>A more comprehensive summary was also prestented:</p>
+<p><p class="image">
     <img src="ngsintro_ngstech_summary.jpg" alt=""  />
+</p>
 </p>
 </li>
 </ul>
 <p>Then there is also some upcoming really interesting technologies, some
 of which is already available at SciLifeLab:</p>
 <ul>
-<li>The Illumina HiSeq X Ten machines, which can sequence 320 human
-whole genome sequences per week!
+<li>
+<p>The Illumina HiSeq X Ten machines, which can sequence 320 human
+whole genome sequences per week!</p>
 <ul>
 <li>(Hint: This will put an enormous pressure on the downstream
-analysis pipeline and infrastructure! ... something that goes
-well in hand with our research in <a href="http://www.farmbio.uu.se/forskning/researchgroups/pb/" target="_blank" rel="noopener">Ola Spjuth's
+analysis pipeline and infrastructure! &hellip; something that goes
+well in hand with our research in <a href="http://www.farmbio.uu.se/forskning/researchgroups/pb/" target="_blank" rel="noopener">Ola Spjuth&rsquo;s
 group</a>
  at
 <a href="http://www.farmbio.uu.se/" target="_blank" rel="noopener">Dept. for Pharm. Biosciences</a>
@@ -107,83 +115,98 @@ how to automate handling of really large datasets, using
 workflow tools and big data technologies etc.)</li>
 </ul>
 </li>
-<li>The <a href="http://www.extremetech.com/extreme/151086-minion-a-complete-dna-sequencer-on-a-usb-stick" target="_blank" rel="noopener">MinION &quot;sequencer on an USB
-stick&quot;</a>
+<li>
+<p>The <a href="http://www.extremetech.com/extreme/151086-minion-a-complete-dna-sequencer-on-a-usb-stick" target="_blank" rel="noopener">MinION &ldquo;sequencer on an USB
+stick&rdquo;</a>
 
 by <a href="https://www.nanoporetech.com/" target="_blank" rel="noopener">Oxford Nanopore tech</a>
  , that has
-a suggested pricetag around $50 USD! (wow!):<br>
-<br>
-<p class="image">
+a suggested pricetag around $50 USD! (wow!):</p>
+<p><p class="image">
     <img src="ngsintro_olga_minion.jpg" alt=""  />
 </p>
+</p>
 </li>
-<li>Another nice picture of the MinION, that shows just how handy it
-is - just plug it to your laptop, and pipette your sample onto it!<br>
+<li>
+<p>Another nice picture of the MinION, that shows just how handy it
+is - just plug it to your laptop, and pipette your sample onto it!
 <p class="image">
     <img src="4130_mini_ion_lab-copy.png" alt="MinION"  />
+</p>
 </p>
 </li>
 </ul>
 <p>Some other random learnings from today was:</p>
 <ul>
-<li>Most if not all of the sequencing machines provide raw data (reads)
-in <a href="http://en.wikipedia.org/wiki/FASTQ_format" target="_blank" rel="noopener">FastQ</a>
- format, that
-contains the sequences of the reads (short fragments of DNA ... the
-Next Gen sequencing methods build upon the technique of ripping DNA
-into small fragments, and sequencing them in parallel, to gain
-performance)</li>
-<li><a href="http://scilifelab.se" target="_blank" rel="noopener">SciLifeLab</a>
- here in Sweden happens to be the
-3rd best equipped sequencing center in Europe, after
+<li>
+<p>Most if not all of the sequencing machines provide raw data (reads) in
+<a href="http://en.wikipedia.org/wiki/FASTQ_format" target="_blank" rel="noopener">FastQ</a>
+ format, that contains the
+sequences of the reads (short fragments of DNA &hellip; the Next Gen sequencing
+methods build upon the technique of ripping DNA into small fragments, and
+sequencing them in parallel, to gain performance)</p>
+</li>
+<li>
+<p><a href="http://scilifelab.se" target="_blank" rel="noopener">SciLifeLab</a>
+ here in Sweden happens to be the 3rd best
+equipped sequencing center in Europe, after
 <a href="https://www.sanger.ac.uk/" target="_blank" rel="noopener">Sanger</a>
  in the UK, and
 <a href="http://www.decode.com/" target="_blank" rel="noopener">deCode</a>
- on Island.</li>
-<li>Adam Ameur noted that Bacterial genome sequencing is &quot;pretty much
-solved&quot; (in that one can easily assemble the genomes in a high
-quality enough to not have that many ambiguities left), using the
-longer reads of the PacBio sequencer, possibly corrected with
-shorter (but higher number of) reads from e.g. an illumina machine.</li>
-<li>Adam also mentioned a really interesting <a href="http://blog.pacificbiosciences.com/2014/02/data-release-54x-long-read-coverage-for.html" target="_blank" rel="noopener">data released by
+ on Island.</p>
+</li>
+<li>
+<p>Adam Ameur noted that Bacterial genome sequencing is &ldquo;pretty much solved&rdquo; (in
+that one can easily assemble the genomes in a high quality enough to not have
+that many ambiguities left), using the longer reads of the PacBio sequencer,
+possibly corrected with shorter (but higher number of) reads from e.g. an
+illumina machine.</p>
+</li>
+<li>
+<p>Adam also mentioned a really interesting <a href="http://blog.pacificbiosciences.com/2014/02/data-release-54x-long-read-coverage-for.html" target="_blank" rel="noopener">data released by
 PacBio</a>
 
-where they sequenced and assembled <em>de novo</em>, the human genome to
-54X coverage depth:<br>
-<br>
-<p class="image">
+where they sequenced and assembled <em>de novo</em>, the human genome to 54X
+coverage depth:</p>
+<p><p class="image">
     <img src="ngsintro_adam_nextstep.jpg" alt=""  />
+</p>
 </p>
 </li>
 </ul>
-<p>Finally the course participants had the chance to shortly present their
-own on-going projects and to discuss any questions they might have
-related to that. We had quite some discussion on the suitable number of
-samples, and it was concluded that 3 well functioning samples is the
-absolute minimum (of course), but that one should always strive to have
-a bit more, as a margin, since otherwise if one of them is dropped for
-any reason (low quality or other problems), you're smoked. Also it was
-noted that just &quot;technical samples&quot; (taking multiple times from the
-same material) is not as interesting as &quot;biological samples&quot; (multiple
-cells / tissue samples, but optimally even multiple donors).</p>
+<p>Finally the course participants had the chance to shortly present their own
+on-going projects and to discuss any questions they might have related to that.
+We had quite some discussion on the suitable number of samples, and it was
+concluded that 3 well functioning samples is the absolute minimum (of course),
+but that one should always strive to have a bit more, as a margin, since
+otherwise if one of them is dropped for any reason (low quality or other
+problems), you&rsquo;re smoked. Also it was noted that just &ldquo;technical samples&rdquo;
+(taking multiple times from the same material) is not as interesting as
+&ldquo;biological samples&rdquo; (multiple cells / tissue samples, but optimally even
+multiple donors).</p>
 <p>All in all, it was a highly interesting day, with a lot of discussion of
 the intricacies of data analysis in the face of messy data, which has to
 involve various quality control measures, and ways to handle that, etc.</p>
 <p>Now looking forward to tomorrow (or today, as I write this blog post one
 day late, on the train to the course), <a href="http://uppnex.se/twiki/do/view/Courses/NgsIntro1502/Schedule" target="_blank" rel="noopener">wednesday, when we will dive
-into the core of the course, with &quot;Alignment with BWA; Samtools; Data
+into the core of the course, with &ldquo;Alignment with BWA; Samtools; Data
 Processing with Picard; Variant Calling with GATK; SAM/BAM and VCF
-Formats&quot;</a>
+Formats&rdquo;</a>
 .</p>
 <h3 id="blog-posts-in-series">Blog posts in series</h3>
 <ul>
-<li><a href="http://bionics.it/posts/ngs-intro-course-day-1/" target="_blank" rel="noopener">NGS Bioinformatics Intro Course Day
-1</a>
+<li><a href="http://bionics.it/posts/ngs-intro-course-day-1/" target="_blank" rel="noopener">NGS Bioinformatics Intro Course Day 1</a>
 </li>
 </ul>
 
   
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/genomics/">Genomics</a></li>
+        <li><a href="/tags/bioinformatics/">Bioinformatics</a></li>
+    </ul>
+  </div>
 
 
   </main>

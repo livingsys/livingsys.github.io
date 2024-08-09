@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>A few thoughts on organizing computational (biology) projects | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.c11645622300898541e1ba6a090a08898a6e2a2f204875343a09f514ed41aadd.css" integrity="sha256-wRZFYiMAiYVB4bpqCQoIiYpuKi8gSHU0Ogn1FO1Bqt0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 
 
-      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+      <script src="/js/main.js"></script>
 
 
 
@@ -41,16 +41,15 @@
   
   <time datetime="2015-06-23T20:32:00&#43;02:00">June 23, 2015</time>
 
-  <p><a href="http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424" target="_blank" rel="noopener"><p class="image">
-    <img src="-bin-bash_251-1.png" alt=""  />
+  <p><p class="image">
+    <img src="-bin-bash_251-1.png" alt="Screenshot of paper and a directory structure in a terminal"  />
 </p>
-</a>
 </p>
 <p>I read this <a href="http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424" target="_blank" rel="noopener">excellent
 article</a>
 
-with practical recommendations on how to organize a computational
-project, in terms of directory structure.</p>
+with practical recommendations on how to organize a computational project, in
+terms of directory structure.</p>
 <h2 id="directory-structure-matters">Directory structure matters</h2>
 <p>The importance of a good directory structure seems to often be
 overlooked in teaching about computational biology, but can be the
@@ -66,21 +65,21 @@ about:</p>
 <li>Starting a new date-tagged directory for each new experiment
 (neither just each run, nor let all files be in the same directory)
 <ul>
-<li><em>(So you would have something like an &quot;experiments&quot; folder,
-with subfolders with names like &quot;2000-01-01&quot;, or
-&quot;2000-01-01-this-and-that-experiment&quot;)</em></li>
+<li><em>(So you would have something like an &ldquo;experiments&rdquo; folder,
+with subfolders with names like &ldquo;2000-01-01&rdquo;, or
+&ldquo;2000-01-01-this-and-that-experiment&rdquo;)</em></li>
 </ul>
 </li>
-<li>Including a summarizing &quot;runall&quot; driver script in each such
+<li>Including a summarizing &ldquo;runall&rdquo; driver script in each such
 folder, that will reproduce the results of that experiment</li>
 </ul>
 <p>This lead me to realize something else that has bugged me for a long
 time, based on troubles we had with our project setup, but which I
-wasn't clear about before:</p>
+wasn&rsquo;t clear about before:</p>
 <ul>
 <li>It is super-important to keep track of what parts of your code
-(component code, workflow code, run configuraitons and &quot;run
-scripts&quot;), that change between experiments, and which do not. And
+(component code, workflow code, run configuraitons and &ldquo;run
+scripts&rdquo;), that change between experiments, and which do not. And
 following this:</li>
 <li>The parts that change even the slightest between experiments, should
 not go under any project-wide directory structure, but should
@@ -91,21 +90,21 @@ experiment is fully self-contained.</li>
 static, such as workflow definitions (we thought that just the
 parameters, config and run scripts would change), will actually change.
 Sometimes a little, and sometimes a lot.</p>
-<p>Thus, I'm quite sure that our next step, after a re-organization we're
+<p>Thus, I&rsquo;m quite sure that our next step, after a re-organization we&rsquo;re
 doing now, will include a full copy of the workflow definition in each
 experiment folder.</p>
-<p>I'm sure this is different for each project though, depending on where
-you are on the &quot;production pipeline vs explorative experimentation
-workflow&quot; - scale. In our case, we assumed we were closer to a
-&quot;production pipeline&quot; than we actually were, and that caused us a lot
+<p>I&rsquo;m sure this is different for each project though, depending on where
+you are on the &ldquo;production pipeline vs explorative experimentation
+workflow&rdquo; - scale. In our case, we assumed we were closer to a
+&ldquo;production pipeline&rdquo; than we actually were, and that caused us a lot
 of trouble.</p>
 <h2 id="a-tentative-project-directory-structure">A tentative project directory structure</h2>
-<p>Apart from the realization above, I've also been sketching on a new
+<p>Apart from the realization above, I&rsquo;ve also been sketching on a new
 directory structure, heavily inspired from the paper, with some
 additions from our own experience.</p>
 <p>So, this is what I think I would like a project directory structure to
 look like right now:</p>
-<pre><code>├── bin  &lt;-------------------# Binary files and executables (jar files &amp; proj-wide scripts etc)
+<pre tabindex="0"><code>├── bin  &lt;-------------------# Binary files and executables (jar files &amp; proj-wide scripts etc)
 ├── cfg &lt;--------------------# Project-wide configuraiotn
 ├── doc  &lt;-------------------# Any documents, such as manuscripts being written
 ├── exp  &lt;-------------------#  The main experiments folder
@@ -118,19 +117,25 @@ look like right now:</p>
 │   │   ├── log   &lt;----------# Log files from workflow runs (lower level than audit logs)
 │   │   ├── raw   &lt;----------# Raw-data to be used in the experiment (not to be changed)
 │   │   ├── res  &lt;-----------# Results from workflow runs
-│   │   ├── run   &lt;----------# All files rel. to running experiment: Workflows, run confs/scripts...
+│   │   ├── run   &lt;----------# All files rel to running experiment: Workflows, conf, scripts ...
 │   │   └── tmp   &lt;----------# Any temporary files not supposed to be saved
 ├── raw  &lt;-------------------# Project-wide raw data
 ├── res  &lt;-------------------# Project-wide results
 └── src  &lt;-------------------# Project-wide source code (that needs to be compiled)
-</code></pre>
-<p>We'll see how many changes this will get when putting it into practice
+</code></pre><p>We&rsquo;ll see how many changes this will get when putting it into practice
 :) But in the meanwhile, feedback and ideas are of course welcome as
 early as possible.</p>
 <p><em><strong>EDIT 21 March 2019:</strong> More consistent use of three-letter folder
 names, when applicable.</em></p>
 
   
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/productivity/">Productivity</a></li>
+        <li><a href="/tags/bioinformatics/">Bioinformatics</a></li>
+    </ul>
+  </div>
 
 
   </main>

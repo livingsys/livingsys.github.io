@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>NGS Bioinformatics Course Day 3: New Luigi helper tool, &#34;real-world&#34; NGS pipelines | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.c11645622300898541e1ba6a090a08898a6e2a2f204875343a09f514ed41aadd.css" integrity="sha256-wRZFYiMAiYVB4bpqCQoIiYpuKi8gSHU0Ogn1FO1Bqt0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 
 
-      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+      <script src="/js/main.js"></script>
 
 
 
@@ -45,7 +45,7 @@
     <img src="ngsintro-coding.jpg" alt=""  />
 </p>
 </p>
-<p>It turned out I didn't have the time and strength to blog every day at
+<p>It turned out I didn&rsquo;t have the time and strength to blog every day at
 the NGS Bioinformatics Intro course, so here comes a wrap up with some
 random notes and tidbits from the last days, including any concluding
 remarks!</p>
@@ -56,7 +56,7 @@ analysing re-sequencing samples
 <a href="http://uppnex.se/twiki/do/view/Courses/NgsIntro1502/ResequencingAnalysis" target="_blank" rel="noopener">tutorial</a>
 ).</p>
 <h2 id="first-some-outcome-from-this-tutorial">First some outcome from this tutorial</h2>
-<p>What do I mean with &quot;outcome&quot;? Well, as I tried to manually copy and
+<p>What do I mean with &ldquo;outcome&rdquo;? Well, as I tried to manually copy and
 paste the <a href="http://uppnex.se/twiki/do/view/Courses/NgsIntro1502/ResequencingAnalysis.html" target="_blank" rel="noopener">bag of hairy nasty long bash commandline strings in the
 tutorial
 pages</a>
@@ -69,25 +69,25 @@ try to encode them in a workflow language / tool.</p>
 fact impressed by the quality and robustness of this tool, but I figured
 it would take too long to properly grok the make-inspired way of
 thinking in this tool, for me to finish the labs in time. Instead I set
-out to use <a href="https://github.com/spotify/luigi" target="_blank" rel="noopener">spotify's luigi tool</a>
+out to use <a href="https://github.com/spotify/luigi" target="_blank" rel="noopener">spotify&rsquo;s luigi tool</a>
 ,
-which I'm intimately familiar with already.</p>
+which I&rsquo;m intimately familiar with already.</p>
 <p>Only problem now, was that the relatively extreme amounts of boilerplate
-that needs to be written for each luigi task (really it's not that bad,
+that needs to be written for each luigi task (really it&rsquo;s not that bad,
 but compared to just running a shell command, it is).</p>
-<p>This resulted in that I realised some ideas I've been pondering on for
+<p>This resulted in that I realised some ideas I&rsquo;ve been pondering on for
 a long time, on how a little bit of Flow-based programming inspired
 ideas could be implemented in Luigi, and so I created a little (50 LOC)
 <a href="https://github.com/samuell/luigis_monkey_wrench" target="_blank" rel="noopener">helper library</a>
  for
-doing just this! <a href="https://github.com/samuell/luigis_monkey_wrench" target="_blank" rel="noopener">The lib, called &quot;Luigi's monkey wrench&quot; is
+doing just this! <a href="https://github.com/samuell/luigis_monkey_wrench" target="_blank" rel="noopener">The lib, called &ldquo;Luigi&rsquo;s monkey wrench&rdquo; is
 available on github</a>
 .</p>
 <p>And, of course I had to encode the tutorial in it too! You can find the
-<a href="https://gist.github.com/samuell/6da9a7c1e03912fde62e" target="_blank" rel="noopener">luigi's-monkey-wrench code for the tutorial in this
+<a href="https://gist.github.com/samuell/6da9a7c1e03912fde62e" target="_blank" rel="noopener">luigi&rsquo;s-monkey-wrench code for the tutorial in this
 gist</a>
 !</p>
-<p>Let's just include a small snippet, to give you a taste for how the
+<p>Let&rsquo;s just include a small snippet, to give you a taste for how the
 code looks with this helper:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00f">import</span> luigi
 </span></span><span style="display:flex;"><span><span style="color:#00f">from</span> luigis_monkey_wrench <span style="color:#00f">import</span> *
@@ -138,8 +138,8 @@ tutorial</a>
 <li>Setup data</li>
 <li>Map reads to a reference (generating .bam file)</li>
 <li>Re-calibrate (new .bam file)</li>
-<li>Identify (&quot;call&quot;) variants (resulting in .vcf file, &quot;variant
-calling file&quot;)</li>
+<li>Identify (&ldquo;call&rdquo;) variants (resulting in .vcf file, &ldquo;variant
+calling file&rdquo;)</li>
 </ol>
 <h3 id="the-mapping-step">The mapping step</h3>
 <p>Regarding the mapping step, it was mentioned about some popular mapping
@@ -154,11 +154,11 @@ tools:</p>
 <li><a href="https://code.google.com/p/mosaik-aligner/" target="_blank" rel="noopener">Mosaik</a>
 </li>
 </ul>
-<p>... then, interestingly, it was mentioned a bit of what kind of
+<p>&hellip; then, interestingly, it was mentioned a bit of what kind of
 computation tricks they use to do the mapping in an efficient way:</p>
 <ul>
 <li>Hashtable (Maq, Eland, SOAP, Shrimp, Zoom)</li>
-<li>Suffix trees: (BWA, ...)</li>
+<li>Suffix trees: (BWA, &hellip;)</li>
 <li>Burrows-Wheeler transofrm, for file compression (Many tools?)</li>
 </ul>
 <h3 id="the-re-calibration-step">The re-calibration step</h3>
@@ -166,9 +166,9 @@ computation tricks they use to do the mapping in an efficient way:</p>
 <ol>
 <li>Local re-aliagnment
 <ol>
-<li>(Loosely defined as: &quot;Using all the reads in a section of the
+<li>(Loosely defined as: &ldquo;Using all the reads in a section of the
 genome, to get a better hint of which variant is probably the
-'correct' one&quot;)</li>
+&lsquo;correct&rsquo; one&rdquo;)</li>
 </ol>
 </li>
 <li>Removal of duplicates</li>
@@ -218,10 +218,10 @@ want to find.</li>
 a certain sequence appear to have been sequenced) might indicate
 duplicattions etc)</em></li>
 <li>Mate pair sequencing <em>(To know the approximate distance between
-&quot;pair&quot; of known sequences, on longer distances than the typical
+&ldquo;pair&rdquo; of known sequences, on longer distances than the typical
 read length)</em></li>
 <li>Long-reads <em>(Goes without saying, that longer reads will identify
-large-scale differences easier ... the problem is just to get long
+large-scale differences easier &hellip; the problem is just to get long
 enough reads)</em></li>
 <li>De Novo assembly <em>(Really hard, but when it works, it gives a really
 clear picture)</em></li>
@@ -238,23 +238,28 @@ Introns)</li>
 </span></span><span style="display:flex;"><span>bwa sampe        <span style="color:#008000"># Generate alignments in SAM format given paired-end reads</span>
 </span></span></code></pre></div><h2 id="some-common-file-types">Some common file types</h2>
 <ul>
-<li><strong>.fastq</strong> - FASTA format with quality scores.</li>
-<li><strong>.sam</strong> - Short-read alignment file format</li>
-<li><strong>.bam</strong> - Binary SAM format (for compression)</li>
-<li><strong>.sai</strong> - SAM file index</li>
-<li><strong>.gtf / .gff / .bed</strong> - Annotation file formats</li>
+<li><code>.fastq</code> - FASTA format with quality scores.</li>
+<li><code>.sam</code> - Short-read alignment file format</li>
+<li><code>.bam</code> - Binary SAM format (for compression)</li>
+<li><code>.sai</code> - SAM file index</li>
+<li><code>.gtf / .gff / .bed</code> - Annotation file formats</li>
 </ul>
 <h2 id="see-also">See also</h2>
 <ul>
-<li><a href="/posts/ngs-intro-course-day-1/">NGS Bioinformatics Intro Course Day
-1</a>
+<li><a href="/posts/ngs-intro-course-day-1/">NGS Bioinformatics Intro Course Day 1</a>
 </li>
-<li><a href="/posts/ngs-bioinformatics-intro-course-day-2/">NGS Bioinformatics Intro Course Day
-2</a>
+<li><a href="/posts/ngs-bioinformatics-intro-course-day-2/">NGS Bioinformatics Intro Course Day 2</a>
 </li>
 </ul>
 
   
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/bioinformatics/">Bioinformatics</a></li>
+        <li><a href="/tags/genomics/">Genomics</a></li>
+    </ul>
+  </div>
 
 
   </main>

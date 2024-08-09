@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Flow-Based Programming on Living Systems</title>
+    <link>http://localhost:1313/tags/flow-based-programming/</link>
+    <description>Recent content in Flow-Based Programming on Living Systems</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 12 Feb 2021 16:24:00 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/flow-based-programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Composability in functional and flow-based programming</title>
+      <link>http://localhost:1313/posts/composability-in-functional-and-flow-based-programming/</link>
+      <pubDate>Fri, 12 Feb 2021 16:24:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/composability-in-functional-and-flow-based-programming/</guid>
+      <description>An area where I&amp;rsquo;m not so happy with some things I&amp;rsquo;ve seen in FP, is composability.&#xA;In my view, a well designed system or langauge should make functions (or other smallest unit of computation) more easily composable, not less.&#xA;What strikes me as one of the biggest elephants in the room regarding FP, is that typical functions compose fantastically as long as you are working with a single input argument, and a single output for each function application, but as soon as you start taking multiple input arguments and returned outputs though, you tend to end up with very messy trees of function application.</description>
+    </item>
+    <item>
+      <title>Structured Go-routines or framework-less Flow-Based Programming in Go</title>
+      <link>http://localhost:1313/posts/structured-go-routines-or-framework-less-flow-based-programming-in-go/</link>
+      <pubDate>Sat, 02 Mar 2019 13:52:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/structured-go-routines-or-framework-less-flow-based-programming-in-go/</guid>
+      <description>I was so happy the other day to find someone else who found the great benefits of a little pattern for how to structure pipeline-heavy programs in Go, which I described in a few posts before. I have been surprised to not find more people using this kind of pattern, which has been so extremely helpful to us, so I thought to take this opportunity to re-iterate it again, in the hopes that more people might get aware of it.</description>
+    </item>
+    <item>
+      <title>How I would like to write Go programs</title>
+      <link>http://localhost:1313/posts/how-i-would-like-to-write-golang/</link>
+      <pubDate>Sat, 18 Jul 2015 02:34:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/how-i-would-like-to-write-golang/</guid>
+      <description>Some time ago I got a post published on GopherAcademy , outlining in detail how I think a flow-based programming inspired syntax can strongly help to create clearer, easier-to-maintain, and more declarative Go programs.&#xA;These ideas have since became clearer, and we (Ola Spjuth &amp;rsquo;s research group at pharmbio ) have successfully used them to make the workflow syntax for Luigi (Spotify&amp;rsquo;s great workflow engine by Erik Bernhardsson &amp;amp; co) workflows easier, as implemented in the SciLuigi helper library .</description>
+    </item>
+    <item>
+      <title>FBP inspired data flow syntax: The missing piece for the success of functional programming?</title>
+      <link>http://localhost:1313/posts/fbp-data-flow-syntax/</link>
+      <pubDate>Thu, 16 Jul 2015 17:13:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/fbp-data-flow-syntax/</guid>
+      <description>Often when I suggest people have a look at Flow-based Programming (FBP) or Data Flow for one reason or another, people are often put off by the strong connection between these concepts and graphical programming. That is, the idea that programs will be easier to understand if expressed and developed in a visual notation.&#xA;This is unfortunate, since I think this is in no way the core benefit of FBP or Data Flow, although it is a nice side-effect for those who prefer it.</description>
+    </item>
+    <item>
+      <title>Flow-based programming and Erlang style message passing - A Biology-inspired idea of how they fit together</title>
+      <link>http://localhost:1313/posts/flowbased-vs-erlang-message-passing/</link>
+      <pubDate>Sat, 13 Jun 2015 14:25:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/flowbased-vs-erlang-message-passing/</guid>
+      <description>I think Erlang/Elixir fits great as control plane or service-to-service messaging layer for distributing services built with flow-based programming&#xA;Just back from a one day visit to Erlang User Conference . I find the Erlang virtual machine fascinating. And with the new Elixir language built on top of it to fix some of the pain points with Erlang the language, the eco-system has got even more interesting.&#xA;What I find exciting about Erlang/Elixir and its virtual machine, is its ability to utilize multiple CPU:s on computers, and doing this across multiple computers, in what is commonly referred to as &amp;ldquo;distributed computing&amp;rdquo;.</description>
+    </item>
+    <item>
+      <title>Workflow tool makers: Allow defining data flow, not just task dependencies</title>
+      <link>http://localhost:1313/posts/workflows-dataflow-not-task-deps/</link>
+      <pubDate>Wed, 10 Jun 2015 12:03:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/workflows-dataflow-not-task-deps/</guid>
+      <description>Upsurge in workflow tools There seem to be a little upsurge in light-weight - often python-based - workflow tools for data pipelines in the last couple of years: Spotify&amp;rsquo;s Luigi , OpenStack&amp;rsquo;s Mistral , Pinterest&amp;rsquo;s Pinball , and recently AirBnb&amp;rsquo;s Airflow , to name a few. These are all interesting tools, and it is an interesting trend for us at pharmbio , who try to see how we can use workflow tools to automate bio- and cheminformatics tasks on compute clusters.</description>
+    </item>
+    <item>
+      <title>Profiling and creating call graphs for Go programs</title>
+      <link>http://localhost:1313/posts/profiling-and-call-graphs-for-golang/</link>
+      <pubDate>Thu, 08 Aug 2013 01:13:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/profiling-and-call-graphs-for-golang/</guid>
+      <description>In trying to get my head around the code of the very interesting GoFlow library, (for flow-based programming in Go), and the accompanying flow-based bioinformatics library I started hacking on, I needed to get some kind of visualization (like a call graph) &amp;hellip; something like this:&#xA;(And in the end, that is what I got &amp;hellip; read on &amp;hellip; ) :)&#xA;I then found out about the go tool pprof command, for which the Go team published a blog post on here .</description>
+    </item>
+  </channel>
+</rss>

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>Installing Qubes OS | Living Systems</title>
 
-      <link rel="stylesheet" href="/css/main.min.c11645622300898541e1ba6a090a08898a6e2a2f204875343a09f514ed41aadd.css" integrity="sha256-wRZFYiMAiYVB4bpqCQoIiYpuKi8gSHU0Ogn1FO1Bqt0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 
 
-      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+      <script src="/js/main.js"></script>
 
 
 
@@ -45,27 +45,27 @@
  as operating
 system on my main work laptop (a Dell Latitude). Or in fact, one of the
 reasons was to be able to combine work and private hobby coding
-projects, that's increasinbly been happening on the same machine.
+projects, that&rsquo;s increasinbly been happening on the same machine.
 Anyways, these are my experiences and notes, as a way to document
 caveats and quirks in case I need to do this again, while possibly also
 being of use for others.</p>
 <h3 id="what-is-qubes-os">What is Qubes OS?</h3>
-<p>Qubes OS is an operating system that tries to provide &quot;reasonable
-security&quot; to users by means of compartmenalization. By using
+<p>Qubes OS is an operating system that tries to provide &ldquo;reasonable
+security&rdquo; to users by means of compartmenalization. By using
 virtualization technologies, it makes it easy to create multiple virtual
-machines that co-exist on the same computer. Now, couldn't you just use
+machines that co-exist on the same computer. Now, couldn&rsquo;t you just use
 multiple VirtualBoxes, you might ask? Well, Qubes makes the whole
 process a lot more smooth and integrated than that. For example:</p>
 <ul>
-<li>You can seamlessly have windows from multiple VMs open at the same
-time, and tile them as you want (only they will have a dedicated
-color in the outer frame to make sure you don't mix them up).</li>
-<li>Multiple so called &quot;App VMs&quot; can share the same &quot;Base VM&quot; where
-you do all the installation of software etc, which means it is a lot
-less work to keep them updated with the latest packages.</li>
-<li>Routing of various appliances such as webcams, mics, USB-keybards
-and the like is done manually (though easily) for each App VM, so as
-not to accidentally open up attack vectors ... all for increased
+<li>You can seamlessly have windows from multiple VMs open at the same time, and
+tile them as you want (only they will have a dedicated color in the outer
+frame to make sure you don&rsquo;t mix them up).</li>
+<li>Multiple so called &ldquo;App VMs&rdquo; can share the same &ldquo;Base VM&rdquo; where you do
+all the installation of software etc, which means it is a lot less work to
+keep them updated with the latest packages.</li>
+<li>Routing of various appliances such as webcams, mics, USB-keybards and the
+like is done manually (though easily) for each App VM, so as not to
+accidentally open up attack vectors &hellip; all for increased
 compartmentalization and thus security.</li>
 </ul>
 <p>If you are still not convinced, you might be when you learn that Qubes
@@ -86,13 +86,13 @@ information on supported hardware, please refer to
 "  />
 </p>
 </p>
-<p>Thus, trying out Qubes fully in VirtualBox didn't seem like an option.
+<p>Thus, trying out Qubes fully in VirtualBox didn&rsquo;t seem like an option.
 Based on this info, you should also probably go though your BIOS
 settings and make sure that these settings are turned on if you plan on
-installing it &quot;on metal&quot;. In particular VT-x use to be possible to
+installing it &ldquo;on metal&rdquo;. In particular VT-x use to be possible to
 turn on/off in BIOS I think.</p>
 <p>I still managed to install the base system in virtualbox though, but I
-reckon the actual boxes, or &quot;qubes&quot; would not work that well:</p>
+reckon the actual boxes, or &ldquo;qubes&rdquo; would not work that well:</p>
 <p><p class="image">
     <img src="qubes_vbox.jpg" alt=""  />
 </p>
@@ -109,7 +109,7 @@ might have there first!</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dd bs=4M <span style="color:#00f">if</span>=/path/to/qubesos.iso of=/dev/sdb
 </span></span></code></pre></div><p>WARNING: Check first that sdb is actually your usb drive! This can be
 done using a software such as gparted.</p>
-<h3 id="no-bootable-device-found">&quot;No bootable device found&quot;</h3>
+<h3 id="no-bootable-device-found">&ldquo;No bootable device found&rdquo;</h3>
 <p>After booting up the computer and installing Qubes OS through the
 graphical installer, with most settings set to default (a pretty easy
 and painless process), when restarting the computer, I got the message:</p>
@@ -126,30 +126,21 @@ to be done after every kernel and Xen update to ensure you use the most
 recently installed versions.</p>
 <ol>
 <li>
-<p>Copy the <code>/boot/efi/EFI/qubes/</code>{.language-plaintext
-.highlighter-rouge} directory to
-<code>/boot/efi/EFI/BOOT/</code>{.language-plaintext .highlighter-rouge} (the
-contents of <code>/boot/efi/EFI/BOOT</code>{.language-plaintext
-.highlighter-rouge} should be identical to
-<code>/boot/efi/EFI/qubes</code>{.language-plaintext .highlighter-rouge}
-besides what is described in steps 2 and 3):</p>
+<p>Copy the <code>/boot/efi/EFI/qubes/</code> directory to <code>/boot/efi/EFI/BOOT/</code> (the
+contents of <code>/boot/efi/EFI/BOOT</code> should be identical to
+<code>/boot/efi/EFI/qubes</code> besides what is described in steps 2 and 3):</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cp -r /boot/efi/EFI/qubes/. /boot/efi/EFI/BOOT
 </span></span></code></pre></div></li>
 <li>
-<p>Rename <code>/boot/efi/EFI/BOOT/xen.cfg</code>{.language-plaintext
-.highlighter-rouge} to
-<code>/boot/efi/EFI/BOOT/BOOTX64.cfg</code>{.language-plaintext
-.highlighter-rouge}:</p>
+<p>Rename <code>/boot/efi/EFI/BOOT/xen.cfg</code> to
+<code>/boot/efi/EFI/BOOT/BOOTX64.cfg</code>:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mv /boot/efi/EFI/BOOT/xen.cfg /boot/efi/EFI/BOOT/BOOTX64.cfg
 </span></span></code></pre></div></li>
 <li>
-<p>Copy <code>/boot/efi/EFI/qubes/xen-*.efi</code>{.language-plaintext
-.highlighter-rouge} to
-<code>/boot/efi/EFI/qubes/xen.efi</code>{.language-plaintext
-.highlighter-rouge} and
-<code>/boot/efi/EFI/BOOT/BOOTX64.efi</code>{.language-plaintext
-.highlighter-rouge}. For example, with Xen 4.8.3 (you may need to
-confirm file overwrite):</p>
+<p>Copy <code>/boot/efi/EFI/qubes/xen-*.efi</code> to
+<code>/boot/efi/EFI/qubes/xen.efi</code> and
+<code>/boot/efi/EFI/BOOT/BOOTX64.efi</code>. For example, with Xen 4.8.3 (you may need
+to confirm file overwrite):</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cp /boot/efi/EFI/qubes/xen-4.8.3.efi /boot/efi/EFI/qubes/xen.efi
 </span></span><span style="display:flex;"><span>cp /boot/efi/EFI/qubes/xen-4.8.3.efi /boot/efi/EFI/BOOT/BOOTX64.efi
 </span></span></code></pre></div></li>
@@ -162,22 +153,22 @@ learned that were not obvious from the start, and which can be useful to
 know though:</p>
 <ul>
 <li>I can not use my USB-connected keyboard to control the main
-interface (a.k.a. &quot;dom0&quot;). What I can do though, is to manually
+interface (a.k.a. &ldquo;dom0&rdquo;). What I can do though, is to manually
 connect the keyboard to individual boxes by clicking the status icon
 in the top right corner (the one that looks like a gzip-icon). This
 is apparently due to some security concerns. The USB mouse works
 everywhere though. For keyboard use in dom0, I have to rely on the
-laptop's built-in keyboard.</li>
+laptop&rsquo;s built-in keyboard.</li>
 <li>For switching the USB keyboard between qubes I require two clicks:
 One to disconnect it from the current qube, and one to connect it to
-the new one. This means I'll want to somehow minimize the number of
+the new one. This means I&rsquo;ll want to somehow minimize the number of
 qubes I need to switch between often. It would be nice to at least
 require just one click, or even better, be able to switch to another
 qube by e.g. right-clicking on a window belonging to that qube and
-selecting e.g. &quot;connect keyboard to this qube&quot;.</li>
-<li>Software installations have to be done in the &quot;base qubes&quot;, such
-as Fedora 32, Debian 10/11 etc. Software installations in &quot;app
-VMs&quot; won't persist after rebooting. (For content in the home
+selecting e.g. &ldquo;connect keyboard to this qube&rdquo;.</li>
+<li>Software installations have to be done in the &ldquo;base qubes&rdquo;, such
+as Fedora 32, Debian 10/11 etc. Software installations in &ldquo;app
+VMs&rdquo; won&rsquo;t persist after rebooting. (For content in the home
 folder this seems to be reversed though: Stuff in the home folder is
 kept in the app VMs, but not in the base VMs).</li>
 <li>To have the newly installed software appear in an app VM after
@@ -190,25 +181,24 @@ here</a>
 
 (I DID manage to activate dark mode, as my forum message states).
 Thus, I have had to resort to using Fedora 32 as base image rather
-than Debian 11, which is a bit disappointing, as I'm much more used
+than Debian 11, which is a bit disappointing, as I&rsquo;m much more used
 to Debian/Ubuntu-based distros.</li>
 <li>The base system is based on XFCE, and so is highly customizable. I
 was able to adjust it to be much more good-looking than the default
-config, in my opinion, using the &quot;Adwaita-dark&quot; theme, and some
-smaller fonts (More specifically: &quot;Liberation Sans 10&quot; for normal
-application content, set in the &quot;appearance&quot; app, and &quot;Sans 10&quot;
-for window titles and the like, set in the &quot;Window manager&quot; app).</li>
+config, in my opinion, using the &ldquo;Adwaita-dark&rdquo; theme, and some
+smaller fonts (More specifically: &ldquo;Liberation Sans 10&rdquo; for normal
+application content, set in the &ldquo;appearance&rdquo; app, and &ldquo;Sans 10&rdquo;
+for window titles and the like, set in the &ldquo;Window manager&rdquo; app).</li>
 </ul>
 <p>Apart from these caveats though, everything works surprisingly well! The
 whole concept and implementation is very very impressive!</p>
-<p><a href="qubes-installed.jpg"><p class="image">
-    <img src="qubes-installed.jpg" alt=""  />
+<p><p class="image">
+    <img src="qubes-installed.jpg" alt="Screenshot showing QubesOS installed"  />
 </p>
-</a>
 </p>
 <h3 id="further-reading">Further reading</h3>
 <ul>
-<li>I found Qubes founder <a href="https://blog.invisiblethings.org/2011/03/13/partitioning-my-digital-life-into.html" target="_blank" rel="noopener">Joanna Rutkowska's blog about how she set up
+<li>I found Qubes founder <a href="https://blog.invisiblethings.org/2011/03/13/partitioning-my-digital-life-into.html" target="_blank" rel="noopener">Joanna Rutkowska&rsquo;s blog about how she set up
 the OS for her own
 workflow</a>
 
@@ -217,9 +207,16 @@ for your own use cases. I have personally went with a much simpler
 set up for the time being, but the post helped me to clarify my own
 plan for this.</li>
 </ul>
-<p>Samuel</p>
 
   
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/qubes-os/">Qubes OS</a></li>
+        <li><a href="/tags/linux/">Linux</a></li>
+        <li><a href="/tags/cyber-security/">Cyber Security</a></li>
+    </ul>
+  </div>
 
 
   </main>

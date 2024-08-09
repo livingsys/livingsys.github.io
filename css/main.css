@@ -22,8 +22,8 @@ header {
 }
 
 footer {
-  border-top: 1px solid #222;
-  margin-top: 1rem;
+  border-top: 4px solid #efefef;
+  margin-top: 2em;
 }
 
 a {
@@ -76,8 +76,8 @@ pre {
     box-shadow: 4px 4px 0 #ddd;
 }
 pre:hover {
-    background: #ded!important;
-    box-shadow: 4px 4px 0 #cdc;
+    background: #E3EDDA!important;
+    box-shadow: 4px 4px 0 #cdb;
 }
 p code,
 li > code {
@@ -91,8 +91,8 @@ li > code:hover,
 li > code:active,
 p code:hover,
 p code:active {
-    background: #cec!important;
-    box-shadow: 2px 2px 0 #9a9;
+    background: #cdb!important;
+    box-shadow: 2px 2px 0 #bca;
     /* top: -1px; */
     /* left: -1px; */
 }
@@ -101,6 +101,11 @@ li > code,
 pre {
     transition-property: box-shadow, background;
     transition-duration: .5s;
+}
+
+blockquote {
+    background; #eee;
+    border-left: 4px solid #ddd;
 }
 
 
@@ -141,16 +146,25 @@ main a:link,
 main a:active,
 main a:visited {
     color: black;
-    border-bottom: 4px solid #9c6;
+    border-bottom: 4px solid #cdb;
 }
 main a:hover {
-    background: rgba(153, 204, 102, 0.3);
+    background: #cdb;
     /* border-bottom: 4px solid rgba(153, 204, 102, 0.3); */
 }
 main a {
-    transition: background 0.5s;
+    transition: background 1s;
 }
 
+main .post-card a,
+main .post-card a:link,
+main .post-card a:active,
+main .post-card a:visited,
+main .post-card a:hover {
+    border: none;
+    padding: 0;
+    background: none;
+}
 header {
     border: none;
 }

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Workflow-Tools | Living Systems</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+
+      <script src="/js/main.js"></script>
+
+<link rel="alternate" type="application/rss+xml" href="/tags/workflow-tools/index.xml" title="Living Systems">
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>Workflow-Tools</h1>
+  
+  
+    
+    <h2><a href="/posts/troubleshooting-nextflow-pipelines/">Troubleshooting Nextflow pipelines</a></h2>
+    We have been evaluating Nextflow before in my work at pharmb.io , but that was before DSL2 and the support for re-usable modules (which was one reason we needed to develop our own tools to support our challenges, as explained in the paper ). Thus, there&rsquo;s definitely some stuff to get into.
+Based on my years in bioinformatics and data science, I&rsquo;ve seen that the number one skill that you need to develop is to be able to effectively troubleshoot things, because things will invariably fail in all kinds of ways.
+  
+    
+    <h2><a href="/posts/make-your-commandline-tool-workflow-friendly/">Make your commandline tool workflow friendly</a></h2>
+    Update (May 2019): A paper incorporating the below considerations is published:
+Björn A Grüning, Samuel Lampa, Marc Vaudel, Daniel Blankenberg, &ldquo;Software engineering for scientific big data analysis &rdquo; GigaScience, Volume 8, Issue 5, May 2019, giz054, https://doi.org/10.1093/gigascience/giz054 There are a number of pitfalls that can make a commandline program really hard to integrate into a workflow (or &ldquo;pipeline&rdquo;) framework. The reason is that many workflow tools use output file paths to keep track of the state of the tasks producing these files.
+  
+    
+    <a href="/posts/what-is-a-scientific-batch-workflow/"><img src="/posts/what-is-a-scientific-batch-workflow//dependencygraphnew_without_shadow-1.png" class="post-img-list"></a>
+    
+    <h2><a href="/posts/what-is-a-scientific-batch-workflow/">What is a scientific (batch) workflow?</a></h2>
+    Workflows and DAGs - Confusion about the concepts Jörgen Brandt tweeted a comment that got me thinking again on something I&rsquo;ve pondered a lot lately:
+&ldquo;A workflow is a DAG.&rdquo; is really a weak definition. That&rsquo;s like saying &ldquo;A love letter is a sequence of characters.&rdquo; representation ≠ meaning @joergenbr Jörgen makes a good point. A Directed Acyclic Graph (DAG) does not by any means capture the full semantic content included in a computational workflow.
+  
+    
+    <a href="/posts/first-production-workflow-run-with-scipipe/"><img src="/posts/first-production-workflow-run-with-scipipe//terminal_411.png" class="post-img-list"></a>
+    
+    <h2><a href="/posts/first-production-workflow-run-with-scipipe/">First production run with SciPipe - A Go-based scientific workflow tool</a></h2>
+    Today marked the day when we ran the very first production workflow with SciPipe , the Go -based scientific workflow tool we&rsquo;ve been working on over the last couple of years. Yay! :)
+This is how it looked (no fancy GUI or such yet, sorry):
+The first result we got in this very very first job was a list of counts of ligands (chemical compounds) in the ExcapeDB dataset (download here ) interacting with the 44 protein/gene targets identified by Bowes et al as a good baseline set for identifying hazardous side-effects effects in the body (that is, any chemical compounds binding these proteins, will never become an approved drug).
+  
+    
+    <a href="/posts/luigi-tutorial/"><img src="/posts/luigi-tutorial//luigi_screenshot.png" class="post-img-list"></a>
+    
+    <h2><a href="/posts/luigi-tutorial/">Tutorial: Luigi for Scientific Workflows</a></h2>
+    This is a Luigi tutorial I held at the e-Infrastructures for Massively parallel sequencing workshop (Video archive ) at SciLifeLab Uppsala in January 2015, moved here for future reference.
+What is Luigi? Luigi is a batch workflow system written in Python and developed by Erik Bernhardson and others at Spotify , where it is used to compute machine-learning powered music recommendation lists, top lists etc.
+Luigi is one of not-too-many batch workflow systems that supports running both normal command line jobs and Hadoop jobs in the same (in this tutorial, we will focus only on the command line part).
+  
+    
+    <a href="/posts/dynamic-workflow-scheduling/"><img src="/posts/dynamic-workflow-scheduling//scheduling_unsplash-1.jpg" class="post-img-list"></a>
+    
+    <h2><a href="/posts/dynamic-workflow-scheduling/">Wanted: Dynamic workflow scheduling</a></h2>
+    Photo credits: Matthew Smith / Unsplash In our work on automating machine learning computations in cheminformatics with scientific workflow tools , we have came to realize something; Dynamic scheduling in scientific workflow tools is very important and sometimes badly needed.
+What I mean is that new tasks should be able to be scheduled during the execution of a workflow, not just in its scheduling phase.
+What is striking is that far from all workflow tools allow this.
+  
+    
+    <a href="/posts/workflows-dataflow-not-task-deps/"><img src="/posts/workflows-dataflow-not-task-deps//peptide_workflow.png" class="post-img-list"></a>
+    
+    <h2><a href="/posts/workflows-dataflow-not-task-deps/">Workflow tool makers: Allow defining data flow, not just task dependencies</a></h2>
+    Upsurge in workflow tools There seem to be a little upsurge in light-weight - often python-based - workflow tools for data pipelines in the last couple of years: Spotify&rsquo;s Luigi , OpenStack&rsquo;s Mistral , Pinterest&rsquo;s Pinball , and recently AirBnb&rsquo;s Airflow , to name a few. These are all interesting tools, and it is an interesting trend for us at pharmbio , who try to see how we can use workflow tools to automate bio- and cheminformatics tasks on compute clusters.
+  
+    
+    <a href="/posts/the-problem-with-make-for-scientific-workflows/"><img src="/posts/the-problem-with-make-for-scientific-workflows//selection_131.png" class="post-img-list"></a>
+    
+    <h2><a href="/posts/the-problem-with-make-for-scientific-workflows/">The problem with make for scientific workflows</a></h2>
+    The workflow problem solved once and for all in 1979? As soon as the topic of scientific workflows is brought up, there are always a few make fans fervently insisting that the problem of workflows is solved once and for all with GNU make , written first in the 70&rsquo;s :)
+Personally I haven&rsquo;t been so sure. On the one hand, I know the tool solves a lot of problems for many people.
+  
+    
+    <a href="/posts/our-experiences-using-spotifys-luigi-for-bioinformatics-workflows/"><img src="/posts/our-experiences-using-spotifys-luigi-for-bioinformatics-workflows//selection_047_luigi.png" class="post-img-list"></a>
+    
+    <h2><a href="/posts/our-experiences-using-spotifys-luigi-for-bioinformatics-workflows/">Links: Our experiences using Spotify&#39;s Luigi for Bioinformatics Workflows</a></h2>
+    Fig 1: A screenshot of Luigi&rsquo;s web UI, of a real-world (although rather simple) workflow implemented in Luigi:
+Update May 5, 2016: Most of the below material is more or less outdated. Our latest work has resulted in the SciLuigi helper library , which we have used in production and will be focus of further developments.
+In the Bioclipse / Pharmaceutical Bioinformatics group at Dept of Pharm. Biosciences att UU, we are quite heavy users of Spotify&rsquo;s Luigi workflow library , to automate workflows, mainly doing Machine Learning heavy lifting.
+  
+
+  </main>
+  <footer>
+    <p>Copyright &copy; 2024 Living Systems. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

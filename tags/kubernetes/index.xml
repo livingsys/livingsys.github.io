@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kubernetes on Living Systems</title>
+    <link>http://localhost:1313/tags/kubernetes/</link>
+    <description>Recent content in Kubernetes on Living Systems</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 15 Feb 2017 00:01:00 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Notes on launching kubernetes jobs from the Go API</title>
+      <link>http://localhost:1313/posts/launching-kubernetes-jobs-from-the-go-api-notes-from-a-beginner/</link>
+      <pubDate>Wed, 15 Feb 2017 00:01:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/launching-kubernetes-jobs-from-the-go-api-notes-from-a-beginner/</guid>
+      <description>This post is also published on medium My current work at pharmb.io entails adding kubernetes support to my light-weight Go-based scientific workflow engine, scipipe (kubernetes, or k8s for short, is Google&amp;rsquo;s open source project for orchestrating container based compute clusters), which should take scipipe from a simple &amp;ldquo;run it on your laptop&amp;rdquo; workflow system with HPC support still in the work, to something that can power scientific workflows on any set of networked computers that can run kubernetes, which is quite a few (AWS, GCE, Azure, your Raspberry Phi cluster etc etc).</description>
+    </item>
+  </channel>
+</rss>

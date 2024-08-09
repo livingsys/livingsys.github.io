@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Pdb | Living Systems</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+
+      <script src="/js/main.js"></script>
+
+<link rel="alternate" type="application/rss+xml" href="/tags/pdb/index.xml" title="Living Systems">
+
+
+</head>
+<body>
+  <header>
+    <h1>Living Systems</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>Pdb</h1>
+  
+  
+    
+    <a href="/posts/debugging-inside-jinja-templates-using-pdb-ipdb/"><img src="/posts/debugging-inside-jinja-templates-using-pdb-ipdb//image-1.png" class="post-img-list"></a>
+    
+    <h2><a href="/posts/debugging-inside-jinja-templates-using-pdb-ipdb/">Debugging inside Jinja templates using pdb/ipdb</a></h2>
+    I&rsquo;m working on a static reporting tool using the Jinja2 templating engine for Python.
+I was trying to figure out a way to enter into the Jinja templating code with the pdb/ipdb commandline debugger.
+I tried creating an .ipdbrc file in my local directory with the line:
+path/to/template.html:&lt;lineno&gt; &hellip; but that didn&rsquo;t work.
+What worked was to figure out the line that says :
+return self.environment.concat(self.root_render_func(ctx)) &hellip; inside the the jinja codebase, and put a breakpoint on that (which for me was on line 1299, but might vary depending on version):
+  
+
+  </main>
+  <footer>
+    <p>Copyright &copy; 2024 Living Systems. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

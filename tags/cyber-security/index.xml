@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cyber Security on Living Systems</title>
+    <link>http://localhost:1313/tags/cyber-security/</link>
+    <description>Recent content in Cyber Security on Living Systems</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 29 Dec 2021 06:59:00 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/cyber-security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Installing Qubes OS</title>
+      <link>http://localhost:1313/posts/installing-qubes-os/</link>
+      <pubDate>Wed, 29 Dec 2021 06:59:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/installing-qubes-os/</guid>
+      <description>I just switched to Qubes OS as operating system on my main work laptop (a Dell Latitude). Or in fact, one of the reasons was to be able to combine work and private hobby coding projects, that&amp;rsquo;s increasinbly been happening on the same machine. Anyways, these are my experiences and notes, as a way to document caveats and quirks in case I need to do this again, while possibly also being of use for others.</description>
+    </item>
+  </channel>
+</rss>
