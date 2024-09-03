@@ -6,8 +6,15 @@
     <description>Recent content in Reproducibility on Living Systems_</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 Nov 2023 18:38:00 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 03 Sep 2024 11:15:02 +0200</lastBuildDate>
     <atom:link href="https://livingsystems.se/tags/reproducibility/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rewrite of Scicommander (in Go) with much improved algorithm</title>
+      <link>https://livingsystems.se/posts/rewrite-of-scicommander-in-go/</link>
+      <pubDate>Tue, 03 Sep 2024 11:15:02 +0200</pubDate>
+      <guid>https://livingsystems.se/posts/rewrite-of-scicommander-in-go/</guid>
+      <description>When I presented a poster about SciCommander at the Swedish bioinformatics workshop last year, I got a lot of awesome feedback from some great people including Fredrik Boulund, Johannes Alneberg and others, of which I unfortunately lost the names (please shout out if you read this!).&#xA;For those new to SciCommander, it is my attempt at creating a tool that can track complete provenance reports also for ad-hoc shell commands, not just those included in a pipeline.</description>
+    </item>
     <item>
       <title>SciCommander - track provenance of any shell command</title>
       <link>https://livingsystems.se/posts/scicommander-0.3/</link>

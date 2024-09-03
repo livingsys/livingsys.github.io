@@ -2,8 +2,29 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://livingsystems.se/tags/conferences/</loc>
+    <lastmod>2024-09-03T11:15:02+02:00</lastmod>
+  </url><url>
+    <loc>https://livingsystems.se/tags/go/</loc>
+    <lastmod>2024-09-03T11:15:02+02:00</lastmod>
+  </url><url>
     <loc>https://livingsystems.se/posts/</loc>
-    <lastmod>2024-08-12T10:50:03+02:00</lastmod>
+    <lastmod>2024-09-03T11:15:02+02:00</lastmod>
+  </url><url>
+    <loc>https://livingsystems.se/tags/provenance/</loc>
+    <lastmod>2024-09-03T11:15:02+02:00</lastmod>
+  </url><url>
+    <loc>https://livingsystems.se/tags/reproducibility/</loc>
+    <lastmod>2024-09-03T11:15:02+02:00</lastmod>
+  </url><url>
+    <loc>https://livingsystems.se/posts/rewrite-of-scicommander-in-go/</loc>
+    <lastmod>2024-09-03T11:15:02+02:00</lastmod>
+  </url><url>
+    <loc>https://livingsystems.se/tags/scicommander/</loc>
+    <lastmod>2024-09-03T11:15:02+02:00</lastmod>
+  </url><url>
+    <loc>https://livingsystems.se/tags/</loc>
+    <lastmod>2024-09-03T11:15:02+02:00</lastmod>
   </url><url>
     <loc>https://livingsystems.se/about/</loc>
     <lastmod>2024-08-09T04:18:22+02:00</lastmod>
@@ -11,16 +32,10 @@
     <loc>https://livingsystems.se/posts/ahc2024/</loc>
     <lastmod>2024-07-05T16:23:00+02:00</lastmod>
   </url><url>
-    <loc>https://livingsystems.se/tags/conferences/</loc>
-    <lastmod>2024-07-05T16:23:00+02:00</lastmod>
-  </url><url>
     <loc>https://livingsystems.se/tags/hologenomics/</loc>
     <lastmod>2024-07-05T16:23:00+02:00</lastmod>
   </url><url>
     <loc>https://livingsystems.se/tags/microbiology/</loc>
-    <lastmod>2024-07-05T16:23:00+02:00</lastmod>
-  </url><url>
-    <loc>https://livingsystems.se/tags/</loc>
     <lastmod>2024-07-05T16:23:00+02:00</lastmod>
   </url><url>
     <loc>https://livingsystems.se/tags/bioinformatics/</loc>
@@ -31,9 +46,6 @@
   </url><url>
     <loc>https://livingsystems.se/posts/bioinformatics-recipes/</loc>
     <lastmod>2024-05-27T12:44:00+02:00</lastmod>
-  </url><url>
-    <loc>https://livingsystems.se/tags/go/</loc>
-    <lastmod>2024-05-13T17:05:00+02:00</lastmod>
   </url><url>
     <loc>https://livingsystems.se/tags/programming-languages/</loc>
     <lastmod>2024-05-13T17:05:00+02:00</lastmod>
@@ -64,12 +76,6 @@
   </url><url>
     <loc>https://livingsystems.se/tags/python/</loc>
     <lastmod>2024-03-04T14:42:00+01:00</lastmod>
-  </url><url>
-    <loc>https://livingsystems.se/tags/reproducibility/</loc>
-    <lastmod>2023-11-09T18:38:00+01:00</lastmod>
-  </url><url>
-    <loc>https://livingsystems.se/tags/scicommander/</loc>
-    <lastmod>2023-11-09T18:38:00+01:00</lastmod>
   </url><url>
     <loc>https://livingsystems.se/posts/scicommander-0.3/</loc>
     <lastmod>2023-11-09T18:38:00+01:00</lastmod>
@@ -225,9 +231,6 @@
     <lastmod>2017-10-31T10:38:00+01:00</lastmod>
   </url><url>
     <loc>https://livingsystems.se/posts/provenance-reports-in-scientific-workflows/</loc>
-    <lastmod>2017-10-19T11:44:00+02:00</lastmod>
-  </url><url>
-    <loc>https://livingsystems.se/tags/provenance/</loc>
     <lastmod>2017-10-19T11:44:00+02:00</lastmod>
   </url><url>
     <loc>https://livingsystems.se/posts/range-over-multiple-go-channels/</loc>

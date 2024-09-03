@@ -6,8 +6,15 @@
     <description>Recent content in Home on Living Systems_</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Aug 2024 04:18:22 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 03 Sep 2024 11:15:02 +0200</lastBuildDate>
     <atom:link href="https://livingsystems.se/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rewrite of Scicommander (in Go) with much improved algorithm</title>
+      <link>https://livingsystems.se/posts/rewrite-of-scicommander-in-go/</link>
+      <pubDate>Tue, 03 Sep 2024 11:15:02 +0200</pubDate>
+      <guid>https://livingsystems.se/posts/rewrite-of-scicommander-in-go/</guid>
+      <description>When I presented a poster about SciCommander at the Swedish bioinformatics workshop last year, I got a lot of awesome feedback from some great people including Fredrik Boulund, Johannes Alneberg and others, of which I unfortunately lost the names (please shout out if you read this!).&#xA;For those new to SciCommander, it is my attempt at creating a tool that can track complete provenance reports also for ad-hoc shell commands, not just those included in a pipeline.</description>
+    </item>
     <item>
       <title>About</title>
       <link>https://livingsystems.se/about/</link>
