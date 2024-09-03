@@ -9,7 +9,7 @@
     <lastBuildDate>Tue, 03 Sep 2024 11:15:02 +0200</lastBuildDate>
     <atom:link href="https://livingsystems.se/tags/scicommander/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Rewrite of Scicommander (in Go) with much improved algorithm</title>
+      <title>Rewrite of Scicommander in Go with much improved algorithm</title>
       <link>https://livingsystems.se/posts/rewrite-of-scicommander-in-go/</link>
       <pubDate>Tue, 03 Sep 2024 11:15:02 +0200</pubDate>
       <guid>https://livingsystems.se/posts/rewrite-of-scicommander-in-go/</guid>
