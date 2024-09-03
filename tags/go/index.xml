@@ -13,7 +13,7 @@
       <link>https://livingsystems.se/posts/rewrite-of-scicommander-in-go/</link>
       <pubDate>Tue, 03 Sep 2024 11:15:02 +0200</pubDate>
       <guid>https://livingsystems.se/posts/rewrite-of-scicommander-in-go/</guid>
-      <description>When I presented a poster about SciCommander at the Swedish bioinformatics workshop last year, I got a lot of awesome feedback from some great people including Fredrik Boulund, Johannes Alneberg and others, of which I unfortunately lost the names (please shout out if you read this!).&#xA;For those new to SciCommander, it is my attempt at creating a tool that can track complete provenance reports also for ad-hoc shell commands, not just those included in a pipeline.</description>
+      <description>When I presented a poster about SciCommander at the Swedish bioinformatics workshop last year, I got a lot of awesome feedback from some great people including Fredrik Boulund, Johannes Alneberg and others, of which I unfortunately lost the names (please shout out if you read this!).&#xA;(For those new to SciCommander, it is my attempt at creating a tool that can track complete provenance reports also for ad-hoc shell commands, not just those included in a pipeline.</description>
     </item>
     <item>
       <title>Why didn&#39;t Go get a breakthrough in bioinformatics (yet)?</title>
