@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Windows on Living Systems_</title>
-    <link>https://livingsystems.se/tags/windows/</link>
+    <link>https://livesys.se/tags/windows/</link>
     <description>Recent content in Windows on Living Systems_</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 29 Nov 2018 16:36:00 +0100</lastBuildDate>
-    <atom:link href="https://livingsystems.se/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livesys.se/tags/windows/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Setting up a reasonable and light-weight Linux-like (non-WSL) terminal environment on Windows</title>
-      <link>https://livingsystems.se/posts/linux-like-non-wsl-terminal-env-on-windows/</link>
+      <link>https://livesys.se/posts/linux-like-non-wsl-terminal-env-on-windows/</link>
       <pubDate>Thu, 29 Nov 2018 16:36:00 +0100</pubDate>
-      <guid>https://livingsystems.se/posts/linux-like-non-wsl-terminal-env-on-windows/</guid>
+      <guid>https://livesys.se/posts/linux-like-non-wsl-terminal-env-on-windows/</guid>
       <description>I was looking for was a no-fuss, lightweight, robust and as simple as possible solution to running my normal Bash-based workflow inside the main Windows filesystem, interacting with the Windows world. Turns out there are some solutions. Read on for more info on that.&#xA;Windows Subsystem for Linux too heavy First, I must mention the impressive work by Microsoft on the Windows Subsystem for Linux (aka. WSL) , which more or less lets you run an almost full-blown distribution of popular Linux distros like Ubuntu and Fedora.</description>
     </item>
   </channel>

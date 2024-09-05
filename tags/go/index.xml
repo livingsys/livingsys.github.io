@@ -2,122 +2,122 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Go on Living Systems_</title>
-    <link>https://livingsystems.se/tags/go/</link>
+    <link>https://livesys.se/tags/go/</link>
     <description>Recent content in Go on Living Systems_</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 03 Sep 2024 11:15:02 +0200</lastBuildDate>
-    <atom:link href="https://livingsystems.se/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livesys.se/tags/go/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Rewrite of Scicommander in Go with much improved algorithm</title>
-      <link>https://livingsystems.se/posts/rewrite-of-scicommander-in-go/</link>
+      <link>https://livesys.se/posts/rewrite-of-scicommander-in-go/</link>
       <pubDate>Tue, 03 Sep 2024 11:15:02 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/rewrite-of-scicommander-in-go/</guid>
+      <guid>https://livesys.se/posts/rewrite-of-scicommander-in-go/</guid>
       <description>When I presented a poster about SciCommander at the Swedish bioinformatics workshop last year, I got a lot of awesome feedback from some great people including Fredrik Boulund, Johannes Alneberg and others, of which I unfortunately lost the names (please shout out if you read this!).&#xA;(For those new to SciCommander, it is my attempt at creating a tool that can track complete provenance reports also for ad-hoc shell commands, not just those included in a pipeline.</description>
     </item>
     <item>
       <title>Why didn&#39;t Go get a breakthrough in bioinformatics (yet)?</title>
-      <link>https://livingsystems.se/posts/golang-for-bioinformatics/</link>
+      <link>https://livesys.se/posts/golang-for-bioinformatics/</link>
       <pubDate>Mon, 13 May 2024 17:05:00 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/golang-for-bioinformatics/</guid>
+      <guid>https://livesys.se/posts/golang-for-bioinformatics/</guid>
       <description>As we are - according to some expert opinions - living in the Century of Biology, I found it interesting to reflect on Go&amp;rsquo;s usage within the field.&#xA;Go has some great features that make it really well suited for biology, such as:&#xA;A relatively simple language that can be learned in a short time even for people without a CS background. This is super important aspect for biologists. Fantastic support for cross-compilation into all major computer architectures and operating systems, as static, self-sufficient executables making it extremely simple to deploy tools, something that can&amp;rsquo;t be said about the currently most popular bio language, Python.</description>
     </item>
     <item>
       <title>Crystal: Go-like concurrency with easier syntax</title>
-      <link>https://livingsystems.se/posts/crystal-concurrency-easier-syntax-than-golang/</link>
+      <link>https://livesys.se/posts/crystal-concurrency-easier-syntax-than-golang/</link>
       <pubDate>Sat, 05 Sep 2020 15:36:00 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/crystal-concurrency-easier-syntax-than-golang/</guid>
+      <guid>https://livesys.se/posts/crystal-concurrency-easier-syntax-than-golang/</guid>
       <description>I have been playing around a lot with concurrency in Go over the years, resulting in libraries such as SciPipe , FlowBase and rdf2smw . My main motivation for looking into Go has been the possibility to use it as a more performant, scaleable and type-safe alternative to Python for data heavy scripting tasks in bioinformatics and other fields I&amp;rsquo;ve been dabbling in. Especially as it makes it so easy to write concurrent and parallel code in it.</description>
     </item>
     <item>
       <title>Viewing Go test coverage in the browser with one command</title>
-      <link>https://livingsystems.se/posts/go-test-coverage-in-browser/</link>
+      <link>https://livesys.se/posts/go-test-coverage-in-browser/</link>
       <pubDate>Thu, 20 Aug 2020 23:47:00 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/go-test-coverage-in-browser/</guid>
+      <guid>https://livesys.se/posts/go-test-coverage-in-browser/</guid>
       <description>Go has some really nice tools for running tests and analyzing code. One of these functionalities is that you can generate coverage information when running tests, that can later be viewed in a browser using the go tool cover command. It turns out though, since doing it requires executing multiple commands after each other, it might be hard to remember the exact commands.&#xA;To this end, I created a bash alias that does everything in one command, gocov.</description>
     </item>
     <item>
       <title>Structured Go-routines or framework-less Flow-Based Programming in Go</title>
-      <link>https://livingsystems.se/posts/structured-go-routines-or-framework-less-flow-based-programming-in-go/</link>
+      <link>https://livesys.se/posts/structured-go-routines-or-framework-less-flow-based-programming-in-go/</link>
       <pubDate>Sat, 02 Mar 2019 13:52:00 +0100</pubDate>
-      <guid>https://livingsystems.se/posts/structured-go-routines-or-framework-less-flow-based-programming-in-go/</guid>
+      <guid>https://livesys.se/posts/structured-go-routines-or-framework-less-flow-based-programming-in-go/</guid>
       <description>I was so happy the other day to find someone else who found the great benefits of a little pattern for how to structure pipeline-heavy programs in Go, which I described in a few posts before. I have been surprised to not find more people using this kind of pattern, which has been so extremely helpful to us, so I thought to take this opportunity to re-iterate it again, in the hopes that more people might get aware of it.</description>
     </item>
     <item>
       <title>Parsing DrugBank XML (or any large XML file) in streaming mode in Go</title>
-      <link>https://livingsystems.se/posts/parsing-drugbank-xml-or-any-large-xml-file-in-streaming-mode-in-go/</link>
+      <link>https://livesys.se/posts/parsing-drugbank-xml-or-any-large-xml-file-in-streaming-mode-in-go/</link>
       <pubDate>Thu, 15 Mar 2018 15:19:00 +0100</pubDate>
-      <guid>https://livingsystems.se/posts/parsing-drugbank-xml-or-any-large-xml-file-in-streaming-mode-in-go/</guid>
+      <guid>https://livesys.se/posts/parsing-drugbank-xml-or-any-large-xml-file-in-streaming-mode-in-go/</guid>
       <description>I had a problem in which I thought I needed to parse the full DrugBank dataset, which comes as a (670MB) XML file (For open access papers describing DrugBank, see: [1], [2], [3] and [4]). It turned out what I needed was available as CSV files under &amp;ldquo;Structure External Links &amp;rdquo;. There is probably still some other uses of this approach though, as the XML version of DrugBank seems to contain a lot more information in a single format.</description>
     </item>
     <item>
       <title>Equation-centric dataflow programming in Go</title>
-      <link>https://livingsystems.se/posts/equation-centric-dataflow-programming-in-go/</link>
+      <link>https://livesys.se/posts/equation-centric-dataflow-programming-in-go/</link>
       <pubDate>Wed, 27 Dec 2017 14:05:00 +0100</pubDate>
-      <guid>https://livingsystems.se/posts/equation-centric-dataflow-programming-in-go/</guid>
+      <guid>https://livesys.se/posts/equation-centric-dataflow-programming-in-go/</guid>
       <description>Mathematical notation and dataflow programming Even though computations done on computers are very often based on some type of math, it is striking that the notation used in math to express equations and relations is not always very readily converted into programming code. Outside of purely symbolic programming languages like sage math or the (proprietary) Wolfram language , there seem to always be quite a divide between the mathematical notation and the numerical implementation.</description>
     </item>
     <item>
       <title>Go is growing in bioinformatics workflow tools</title>
-      <link>https://livingsystems.se/posts/golang-growing-in-bioinformatics-workflows/</link>
+      <link>https://livesys.se/posts/golang-growing-in-bioinformatics-workflows/</link>
       <pubDate>Fri, 10 Nov 2017 12:54:00 +0100</pubDate>
-      <guid>https://livingsystems.se/posts/golang-growing-in-bioinformatics-workflows/</guid>
+      <guid>https://livesys.se/posts/golang-growing-in-bioinformatics-workflows/</guid>
       <description>TL;DR: We wrote a post on gopherdata.io, about the growing ecosystem of Go-based workflow tools in bioinformatics. Go read it here It is interesting to note how Google&amp;rsquo;s Go programming language seems to increase in popularity in bioinformatics.&#xA;Just to give a sample of some of the Go based bioinformatics tools I&amp;rsquo;ve stumbled upon, there is since a few years back, the biogo library , providing common functionality for bioinformatics tasks.</description>
     </item>
     <item>
       <title>(Almost) ranging over multiple Go channels simultaneously</title>
-      <link>https://livingsystems.se/posts/range-over-multiple-go-channels/</link>
+      <link>https://livesys.se/posts/range-over-multiple-go-channels/</link>
       <pubDate>Thu, 05 Oct 2017 10:23:00 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/range-over-multiple-go-channels/</guid>
+      <guid>https://livesys.se/posts/range-over-multiple-go-channels/</guid>
       <description>Thus, optimally, one would want to use Go&amp;rsquo;s handy range keyword for looping over multiple channels, since range takes care of closing the for-loop at the right time (when the inbound channel is closed). So something like this (N.B: non-working code!):&#xA;for a, b, c := range chA, chB, chC { doSomething(a, b, c) } Unfortunately this is not possible, and probably for good reason (how would it know whether to close the loop when the first, or all of the channels are closed?</description>
     </item>
     <item>
       <title>First production run with SciPipe - A Go-based scientific workflow tool</title>
-      <link>https://livingsystems.se/posts/first-production-workflow-run-with-scipipe/</link>
+      <link>https://livesys.se/posts/first-production-workflow-run-with-scipipe/</link>
       <pubDate>Thu, 28 Sep 2017 19:32:00 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/first-production-workflow-run-with-scipipe/</guid>
+      <guid>https://livesys.se/posts/first-production-workflow-run-with-scipipe/</guid>
       <description>Today marked the day when we ran the very first production workflow with SciPipe , the Go -based scientific workflow tool we&amp;rsquo;ve been working on over the last couple of years. Yay! :)&#xA;This is how it looked (no fancy GUI or such yet, sorry):&#xA;The first result we got in this very very first job was a list of counts of ligands (chemical compounds) in the ExcapeDB dataset (download here ) interacting with the 44 protein/gene targets identified by Bowes et al as a good baseline set for identifying hazardous side-effects effects in the body (that is, any chemical compounds binding these proteins, will never become an approved drug).</description>
     </item>
     <item>
       <title>Notes on launching kubernetes jobs from the Go API</title>
-      <link>https://livingsystems.se/posts/launching-kubernetes-jobs-from-the-go-api-notes-from-a-beginner/</link>
+      <link>https://livesys.se/posts/launching-kubernetes-jobs-from-the-go-api-notes-from-a-beginner/</link>
       <pubDate>Wed, 15 Feb 2017 00:01:00 +0100</pubDate>
-      <guid>https://livingsystems.se/posts/launching-kubernetes-jobs-from-the-go-api-notes-from-a-beginner/</guid>
+      <guid>https://livesys.se/posts/launching-kubernetes-jobs-from-the-go-api-notes-from-a-beginner/</guid>
       <description>This post is also published on medium My current work at pharmb.io entails adding kubernetes support to my light-weight Go-based scientific workflow engine, scipipe (kubernetes, or k8s for short, is Google&amp;rsquo;s open source project for orchestrating container based compute clusters), which should take scipipe from a simple &amp;ldquo;run it on your laptop&amp;rdquo; workflow system with HPC support still in the work, to something that can power scientific workflows on any set of networked computers that can run kubernetes, which is quite a few (AWS, GCE, Azure, your Raspberry Phi cluster etc etc).</description>
     </item>
     <item>
       <title>Combining the best of Go, D and Rust?</title>
-      <link>https://livingsystems.se/posts/the-best-of-go-d-and-rust/</link>
+      <link>https://livesys.se/posts/the-best-of-go-d-and-rust/</link>
       <pubDate>Sat, 11 Jun 2016 14:24:00 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/the-best-of-go-d-and-rust/</guid>
+      <guid>https://livesys.se/posts/the-best-of-go-d-and-rust/</guid>
       <description>I&amp;rsquo;ve been following the development of D , Go and Rust (and also FreePascal for some use cases ) for some years (been into some benchmarking for bioinfo tasks ), and now we finally have three (four, with fpc) stable statically compiled languages with some momentum behind them, meaning they all are past 1.0.&#xA;While I have went with Go for current projects , I still have a hard time &amp;ldquo;totally falling in love&amp;rdquo; with any single of these languages.</description>
     </item>
     <item>
       <title>How I would like to write Go programs</title>
-      <link>https://livingsystems.se/posts/how-i-would-like-to-write-golang/</link>
+      <link>https://livesys.se/posts/how-i-would-like-to-write-golang/</link>
       <pubDate>Sat, 18 Jul 2015 02:34:00 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/how-i-would-like-to-write-golang/</guid>
+      <guid>https://livesys.se/posts/how-i-would-like-to-write-golang/</guid>
       <description>Some time ago I got a post published on GopherAcademy , outlining in detail how I think a flow-based programming inspired syntax can strongly help to create clearer, easier-to-maintain, and more declarative Go programs.&#xA;These ideas have since became clearer, and we (Ola Spjuth &amp;rsquo;s research group at pharmbio ) have successfully used them to make the workflow syntax for Luigi (Spotify&amp;rsquo;s great workflow engine by Erik Bernhardsson &amp;amp; co) workflows easier, as implemented in the SciLuigi helper library .</description>
     </item>
     <item>
       <title>Patterns for composable concurrent pipelines in Go</title>
-      <link>https://livingsystems.se/posts/patterns-for-composable-concurrent-pipelines-in-go/</link>
+      <link>https://livesys.se/posts/patterns-for-composable-concurrent-pipelines-in-go/</link>
       <pubDate>Mon, 01 Jun 2015 14:54:00 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/patterns-for-composable-concurrent-pipelines-in-go/</guid>
+      <guid>https://livesys.se/posts/patterns-for-composable-concurrent-pipelines-in-go/</guid>
       <description>I realize I didn&amp;rsquo;t have a link to my blog on Gopher Academy , on patterns for compoasable concurrent pipelines in Go(lang), so here it goes:&#xA;blog.gopheracademy.com/composable-pipelines-pattern </description>
     </item>
     <item>
       <title>The smallest pipeable go program</title>
-      <link>https://livingsystems.se/posts/smallest-pipeable-go-program/</link>
+      <link>https://livesys.se/posts/smallest-pipeable-go-program/</link>
       <pubDate>Thu, 18 Dec 2014 20:43:00 +0100</pubDate>
-      <guid>https://livingsystems.se/posts/smallest-pipeable-go-program/</guid>
+      <guid>https://livesys.se/posts/smallest-pipeable-go-program/</guid>
       <description>Edit: My original suggested way further below in the post is no way the &amp;ldquo;smallest pipeable&amp;rdquo; program, instead see this example (Credits: Axel Wagner ):&#xA;package main import ( &amp;#34;io&amp;#34; &amp;#34;os&amp;#34; ) func main() { io.Copy(os.Stdout, os.Stdin) } &amp;hellip; or (credits: Roger Peppe ):&#xA;package main import ( &amp;#34;bufio&amp;#34; &amp;#34;fmt&amp;#34; &amp;#34;os&amp;#34; ) func main() { for scan := bufio.NewScanner(os.Stdin); scan.Scan(); { fmt.Printf(&amp;#34;%s\n&amp;#34;, scan.Text()) } } Ah, I just realized that the &amp;ldquo;smallest pipeable&amp;rdquo; Go (lang) program is rather small, if using my little library of minimalistic streaming components .</description>
     </item>
     <item>
       <title>Profiling and creating call graphs for Go programs</title>
-      <link>https://livingsystems.se/posts/profiling-and-call-graphs-for-golang/</link>
+      <link>https://livesys.se/posts/profiling-and-call-graphs-for-golang/</link>
       <pubDate>Thu, 08 Aug 2013 01:13:00 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/profiling-and-call-graphs-for-golang/</guid>
+      <guid>https://livesys.se/posts/profiling-and-call-graphs-for-golang/</guid>
       <description>In trying to get my head around the code of the very interesting GoFlow library, (for flow-based programming in Go), and the accompanying flow-based bioinformatics library I started hacking on, I needed to get some kind of visualization (like a call graph) &amp;hellip; something like this:&#xA;(And in the end, that is what I got &amp;hellip; read on &amp;hellip; ) :)&#xA;I then found out about the go tool pprof command, for which the Go team published a blog post on here .</description>
     </item>
   </channel>

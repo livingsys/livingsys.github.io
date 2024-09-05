@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Json on Living Systems_</title>
-    <link>https://livingsystems.se/tags/json/</link>
+    <link>https://livesys.se/tags/json/</link>
     <description>Recent content in Json on Living Systems_</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 08 Dec 2015 07:10:00 +0100</lastBuildDate>
-    <atom:link href="https://livingsystems.se/tags/json/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livesys.se/tags/json/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The unexpected convenience of JSON on the commandline</title>
-      <link>https://livingsystems.se/posts/the-unexpected-usefullness-of-json-on-the-commandline/</link>
+      <link>https://livesys.se/posts/the-unexpected-usefullness-of-json-on-the-commandline/</link>
       <pubDate>Tue, 08 Dec 2015 07:10:00 +0100</pubDate>
-      <guid>https://livingsystems.se/posts/the-unexpected-usefullness-of-json-on-the-commandline/</guid>
+      <guid>https://livesys.se/posts/the-unexpected-usefullness-of-json-on-the-commandline/</guid>
       <description>I was working with a migration from drupal to processwire CMS:es, where I wanted to be able to pipe data, including the body field with HTML formatting and all, through multiple processing steps in a flexible manner. I&amp;rsquo;d start with an extraction SQL query, through a few components to replace and massage the data, and finally over to an import command using processwire&amp;rsquo;s wireshell tool . So, basically I needed a flexible format for structured data that could be sent as one &amp;ldquo;data object&amp;rdquo; per line, to work nicely with linux commandline tools like grep, sed and awk.</description>
     </item>
   </channel>

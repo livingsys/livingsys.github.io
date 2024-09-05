@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Testing on Living Systems_</title>
-    <link>https://livingsystems.se/tags/testing/</link>
+    <link>https://livesys.se/tags/testing/</link>
     <description>Recent content in Testing on Living Systems_</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 20 Aug 2020 23:47:00 +0200</lastBuildDate>
-    <atom:link href="https://livingsystems.se/tags/testing/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livesys.se/tags/testing/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Viewing Go test coverage in the browser with one command</title>
-      <link>https://livingsystems.se/posts/go-test-coverage-in-browser/</link>
+      <link>https://livesys.se/posts/go-test-coverage-in-browser/</link>
       <pubDate>Thu, 20 Aug 2020 23:47:00 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/go-test-coverage-in-browser/</guid>
+      <guid>https://livesys.se/posts/go-test-coverage-in-browser/</guid>
       <description>Go has some really nice tools for running tests and analyzing code. One of these functionalities is that you can generate coverage information when running tests, that can later be viewed in a browser using the go tool cover command. It turns out though, since doing it requires executing multiple commands after each other, it might be hard to remember the exact commands.&#xA;To this end, I created a bash alias that does everything in one command, gocov.</description>
     </item>
     <item>
       <title>Table-driven tests in C#</title>
-      <link>https://livingsystems.se/posts/table-driven-tests-in-csharp/</link>
+      <link>https://livesys.se/posts/table-driven-tests-in-csharp/</link>
       <pubDate>Sat, 02 Nov 2019 21:24:00 +0100</pubDate>
-      <guid>https://livingsystems.se/posts/table-driven-tests-in-csharp/</guid>
+      <guid>https://livesys.se/posts/table-driven-tests-in-csharp/</guid>
       <description>Folks in the Go community have championed so called table-driven tests (see e.g. this post by Dave Cheney and the Go wiki ) as a way to quickly and easily writing up a bunch of complete test cases with inputs and corresponding expected outputs, and looping over them to execute the function being tested. In short, the idea is to suggest a maximally short and convenient syntax to do this.</description>
     </item>
     <item>
       <title>The role of simplicity in testing and automation</title>
-      <link>https://livingsystems.se/posts/the-role-of-simplicity-in-testing-and-automation/</link>
+      <link>https://livesys.se/posts/the-role-of-simplicity-in-testing-and-automation/</link>
       <pubDate>Mon, 23 Mar 2015 20:46:00 +0100</pubDate>
-      <guid>https://livingsystems.se/posts/the-role-of-simplicity-in-testing-and-automation/</guid>
+      <guid>https://livesys.se/posts/the-role-of-simplicity-in-testing-and-automation/</guid>
       <description>Disclaimer: Don&amp;rsquo;t take this too seriously &amp;hellip; this is &amp;ldquo;thinking-in-progress&amp;rdquo; :)&#xA;It just struck me the other minute, how simplicity is the key theme behind two very important areas in software development, that I&amp;rsquo;ve been dabbling with quite a bit recently: Testing, and automation.&#xA;Have you thought about how testing, in its essence, is: Wrapping complex code, which you can&amp;rsquo;t mentally comprehend completely, in simple code, that you can mentally comprehend, at least one test at a time.</description>
     </item>
   </channel>

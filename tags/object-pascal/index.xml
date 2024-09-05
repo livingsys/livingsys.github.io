@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Object-Pascal on Living Systems_</title>
-    <link>https://livingsystems.se/tags/object-pascal/</link>
+    <link>https://livesys.se/tags/object-pascal/</link>
     <description>Recent content in Object-Pascal on Living Systems_</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 11 Mar 2015 20:45:00 +0100</lastBuildDate>
-    <atom:link href="https://livingsystems.se/tags/object-pascal/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livesys.se/tags/object-pascal/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Dynamic Navigation for Higher Performance</title>
-      <link>https://livingsystems.se/posts/dynamic-navigation-for-higher-performance/</link>
+      <link>https://livesys.se/posts/dynamic-navigation-for-higher-performance/</link>
       <pubDate>Wed, 11 Mar 2015 20:45:00 +0100</pubDate>
-      <guid>https://livingsystems.se/posts/dynamic-navigation-for-higher-performance/</guid>
+      <guid>https://livesys.se/posts/dynamic-navigation-for-higher-performance/</guid>
       <description>Improving performance in Delphi Bold MDA applications by replacing navigation code with derived links in the model This post on Model Driven Architecture in Delphi and Bold , by Rolf Lampa , has been previously published on howtodothings.com .&#xA;Modeling class structures takes some thinking, and when done the thinking and the drawing and after that starting up using the model, then you&amp;rsquo;ll spend awful lots of code traversing links in order to retrieve trivial info in a given object structure.</description>
     </item>
   </channel>

@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vim on Living Systems_</title>
-    <link>https://livingsystems.se/tags/vim/</link>
+    <link>https://livesys.se/tags/vim/</link>
     <description>Recent content in Vim on Living Systems_</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 15 Sep 2015 12:21:00 +0200</lastBuildDate>
-    <atom:link href="https://livingsystems.se/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livesys.se/tags/vim/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to be productive in vim in 30 minutes</title>
-      <link>https://livingsystems.se/posts/how-to-be-productive-in-vim-in-30-minutes/</link>
+      <link>https://livesys.se/posts/how-to-be-productive-in-vim-in-30-minutes/</link>
       <pubDate>Tue, 15 Sep 2015 12:21:00 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/how-to-be-productive-in-vim-in-30-minutes/</guid>
+      <guid>https://livesys.se/posts/how-to-be-productive-in-vim-in-30-minutes/</guid>
       <description>I had heard a lot of people say vim is very hard to learn, and got the impression that it will take a great investment to switch to using it.&#xA;While I have came to understand that they are right in that there is a lot of things to invest in to get really great at using vim, that will really pay back, I have also found out one thing that I see almost no-one mentioning:</description>
     </item>
     <item>
       <title>How to compile vim for use with pyenv and vim-pyenv</title>
-      <link>https://livingsystems.se/posts/how-to-compile-vim-for-use-with-pyenv-and-vim-pyenv/</link>
+      <link>https://livesys.se/posts/how-to-compile-vim-for-use-with-pyenv-and-vim-pyenv/</link>
       <pubDate>Thu, 20 Aug 2015 08:05:00 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/how-to-compile-vim-for-use-with-pyenv-and-vim-pyenv/</guid>
+      <guid>https://livesys.se/posts/how-to-compile-vim-for-use-with-pyenv-and-vim-pyenv/</guid>
       <description>This manifested itself in a bunch of error message from the python module in vim, ending with:&#xA;AttributeError: &amp;#39;module&amp;#39; object has no attribute &amp;#39;vars&amp;#39; I first thought it was an error in vim-pyenv and reported it (see that issue for more in-depth details). In summary it turns out that older versions of VIM indeed lack some attributes in its python module, so I figured I had to compile my own version, below are just my notes about how to do this, for future reference:</description>
     </item>
   </channel>

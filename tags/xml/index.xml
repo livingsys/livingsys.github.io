@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Xml on Living Systems_</title>
-    <link>https://livingsystems.se/tags/xml/</link>
+    <link>https://livesys.se/tags/xml/</link>
     <description>Recent content in Xml on Living Systems_</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 15 Mar 2018 15:19:00 +0100</lastBuildDate>
-    <atom:link href="https://livingsystems.se/tags/xml/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livesys.se/tags/xml/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Parsing DrugBank XML (or any large XML file) in streaming mode in Go</title>
-      <link>https://livingsystems.se/posts/parsing-drugbank-xml-or-any-large-xml-file-in-streaming-mode-in-go/</link>
+      <link>https://livesys.se/posts/parsing-drugbank-xml-or-any-large-xml-file-in-streaming-mode-in-go/</link>
       <pubDate>Thu, 15 Mar 2018 15:19:00 +0100</pubDate>
-      <guid>https://livingsystems.se/posts/parsing-drugbank-xml-or-any-large-xml-file-in-streaming-mode-in-go/</guid>
+      <guid>https://livesys.se/posts/parsing-drugbank-xml-or-any-large-xml-file-in-streaming-mode-in-go/</guid>
       <description>I had a problem in which I thought I needed to parse the full DrugBank dataset, which comes as a (670MB) XML file (For open access papers describing DrugBank, see: [1], [2], [3] and [4]). It turned out what I needed was available as CSV files under &amp;ldquo;Structure External Links &amp;rdquo;. There is probably still some other uses of this approach though, as the XML version of DrugBank seems to contain a lot more information in a single format.</description>
     </item>
   </channel>

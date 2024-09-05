@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Provenance on Living Systems_</title>
-    <link>https://livingsystems.se/tags/provenance/</link>
+    <link>https://livesys.se/tags/provenance/</link>
     <description>Recent content in Provenance on Living Systems_</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 03 Sep 2024 11:15:02 +0200</lastBuildDate>
-    <atom:link href="https://livingsystems.se/tags/provenance/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livesys.se/tags/provenance/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Rewrite of Scicommander in Go with much improved algorithm</title>
-      <link>https://livingsystems.se/posts/rewrite-of-scicommander-in-go/</link>
+      <link>https://livesys.se/posts/rewrite-of-scicommander-in-go/</link>
       <pubDate>Tue, 03 Sep 2024 11:15:02 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/rewrite-of-scicommander-in-go/</guid>
+      <guid>https://livesys.se/posts/rewrite-of-scicommander-in-go/</guid>
       <description>When I presented a poster about SciCommander at the Swedish bioinformatics workshop last year, I got a lot of awesome feedback from some great people including Fredrik Boulund, Johannes Alneberg and others, of which I unfortunately lost the names (please shout out if you read this!).&#xA;(For those new to SciCommander, it is my attempt at creating a tool that can track complete provenance reports also for ad-hoc shell commands, not just those included in a pipeline.</description>
     </item>
     <item>
       <title>On Provenance Reports in Scientific Workflows</title>
-      <link>https://livingsystems.se/posts/provenance-reports-in-scientific-workflows/</link>
+      <link>https://livesys.se/posts/provenance-reports-in-scientific-workflows/</link>
       <pubDate>Thu, 19 Oct 2017 11:44:00 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/provenance-reports-in-scientific-workflows/</guid>
+      <guid>https://livesys.se/posts/provenance-reports-in-scientific-workflows/</guid>
       <description>One of the more important tasks for a scientific workflow is to keep track of so called &amp;ldquo;provenance information&amp;rdquo; about its data outputs - information about how each data file was created. This is important so other researchers can easily replicate the study (re-run it with the same software and tools). It should also help for anyone wanting to reproduce it (re-run the same study design, possibly with other software and tools).</description>
     </item>
   </channel>

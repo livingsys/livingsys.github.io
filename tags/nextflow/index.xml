@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Nextflow on Living Systems_</title>
-    <link>https://livingsystems.se/tags/nextflow/</link>
+    <link>https://livesys.se/tags/nextflow/</link>
     <description>Recent content in Nextflow on Living Systems_</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 01 Nov 2023 11:47:00 +0100</lastBuildDate>
-    <atom:link href="https://livingsystems.se/tags/nextflow/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livesys.se/tags/nextflow/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Troubleshooting Nextflow pipelines</title>
-      <link>https://livingsystems.se/posts/troubleshooting-nextflow-pipelines/</link>
+      <link>https://livesys.se/posts/troubleshooting-nextflow-pipelines/</link>
       <pubDate>Wed, 01 Nov 2023 11:47:00 +0100</pubDate>
-      <guid>https://livingsystems.se/posts/troubleshooting-nextflow-pipelines/</guid>
+      <guid>https://livesys.se/posts/troubleshooting-nextflow-pipelines/</guid>
       <description>We have been evaluating Nextflow before in my work at pharmb.io , but that was before DSL2 and the support for re-usable modules (which was one reason we needed to develop our own tools to support our challenges, as explained in the paper ). Thus, there&amp;rsquo;s definitely some stuff to get into.&#xA;Based on my years in bioinformatics and data science, I&amp;rsquo;ve seen that the number one skill that you need to develop is to be able to effectively troubleshoot things, because things will invariably fail in all kinds of ways.</description>
     </item>
     <item>
       <title>First production run with SciPipe - A Go-based scientific workflow tool</title>
-      <link>https://livingsystems.se/posts/first-production-workflow-run-with-scipipe/</link>
+      <link>https://livesys.se/posts/first-production-workflow-run-with-scipipe/</link>
       <pubDate>Thu, 28 Sep 2017 19:32:00 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/first-production-workflow-run-with-scipipe/</guid>
+      <guid>https://livesys.se/posts/first-production-workflow-run-with-scipipe/</guid>
       <description>Today marked the day when we ran the very first production workflow with SciPipe , the Go -based scientific workflow tool we&amp;rsquo;ve been working on over the last couple of years. Yay! :)&#xA;This is how it looked (no fancy GUI or such yet, sorry):&#xA;The first result we got in this very very first job was a list of counts of ligands (chemical compounds) in the ExcapeDB dataset (download here ) interacting with the 44 protein/gene targets identified by Bowes et al as a good baseline set for identifying hazardous side-effects effects in the body (that is, any chemical compounds binding these proteins, will never become an approved drug).</description>
     </item>
   </channel>

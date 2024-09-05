@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Conferences on Living Systems_</title>
-    <link>https://livingsystems.se/tags/conferences/</link>
+    <link>https://livesys.se/tags/conferences/</link>
     <description>Recent content in Conferences on Living Systems_</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 03 Sep 2024 11:15:02 +0200</lastBuildDate>
-    <atom:link href="https://livingsystems.se/tags/conferences/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livesys.se/tags/conferences/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Rewrite of Scicommander in Go with much improved algorithm</title>
-      <link>https://livingsystems.se/posts/rewrite-of-scicommander-in-go/</link>
+      <link>https://livesys.se/posts/rewrite-of-scicommander-in-go/</link>
       <pubDate>Tue, 03 Sep 2024 11:15:02 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/rewrite-of-scicommander-in-go/</guid>
+      <guid>https://livesys.se/posts/rewrite-of-scicommander-in-go/</guid>
       <description>When I presented a poster about SciCommander at the Swedish bioinformatics workshop last year, I got a lot of awesome feedback from some great people including Fredrik Boulund, Johannes Alneberg and others, of which I unfortunately lost the names (please shout out if you read this!).&#xA;(For those new to SciCommander, it is my attempt at creating a tool that can track complete provenance reports also for ad-hoc shell commands, not just those included in a pipeline.</description>
     </item>
     <item>
       <title>A few notes from the Applied Hologenomics Conference 2024</title>
-      <link>https://livingsystems.se/posts/ahc2024/</link>
+      <link>https://livesys.se/posts/ahc2024/</link>
       <pubDate>Fri, 05 Jul 2024 16:23:00 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/ahc2024/</guid>
+      <guid>https://livesys.se/posts/ahc2024/</guid>
       <description>I&amp;rsquo;m just back from the Applied Hologenomics Conference in 2024 (See also #AHC2024 on Twitter ) in Copenhagen and thought to reflect a little on the conference and highlight the bits that particularly stuck with me.&#xA;The first thing I want to say is that a paradigm shift is happening here.&#xA;I think what is happening here is a step away from the reductionist view of the past that goes beyond the systems biology approach that has been establishing itself during the last 10-20 years.</description>
     </item>
   </channel>

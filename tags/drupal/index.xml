@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Drupal on Living Systems_</title>
-    <link>https://livingsystems.se/tags/drupal/</link>
+    <link>https://livesys.se/tags/drupal/</link>
     <description>Recent content in Drupal on Living Systems_</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 20 Aug 2020 17:42:00 +0200</lastBuildDate>
-    <atom:link href="https://livingsystems.se/tags/drupal/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livesys.se/tags/drupal/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Creating a static copy of a Drupal, Wordpress or other CMS website</title>
-      <link>https://livingsystems.se/posts/static-copy-of-cms-website/</link>
+      <link>https://livesys.se/posts/static-copy-of-cms-website/</link>
       <pubDate>Thu, 20 Aug 2020 17:42:00 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/static-copy-of-cms-website/</guid>
+      <guid>https://livesys.se/posts/static-copy-of-cms-website/</guid>
       <description>wget -P . -mpck --html-extension -e robots=off --wait 0.5 &amp;lt;URL&amp;gt; To understand the flags, you can check man wget of course, but some explanations follow here:&#xA;-P - Tell where to store the site -m - Create a mirror -p - Download all the required files (.css, .js) needed to properly render the page -c - Continue getting partially downloaded files -k - Convert links to enable local viewing &amp;ndash;html-extension - Add the .</description>
     </item>
   </channel>

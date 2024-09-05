@@ -2,73 +2,73 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Workflow-Tools on Living Systems_</title>
-    <link>https://livingsystems.se/tags/workflow-tools/</link>
+    <link>https://livesys.se/tags/workflow-tools/</link>
     <description>Recent content in Workflow-Tools on Living Systems_</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 01 Nov 2023 11:47:00 +0100</lastBuildDate>
-    <atom:link href="https://livingsystems.se/tags/workflow-tools/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livesys.se/tags/workflow-tools/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Troubleshooting Nextflow pipelines</title>
-      <link>https://livingsystems.se/posts/troubleshooting-nextflow-pipelines/</link>
+      <link>https://livesys.se/posts/troubleshooting-nextflow-pipelines/</link>
       <pubDate>Wed, 01 Nov 2023 11:47:00 +0100</pubDate>
-      <guid>https://livingsystems.se/posts/troubleshooting-nextflow-pipelines/</guid>
+      <guid>https://livesys.se/posts/troubleshooting-nextflow-pipelines/</guid>
       <description>We have been evaluating Nextflow before in my work at pharmb.io , but that was before DSL2 and the support for re-usable modules (which was one reason we needed to develop our own tools to support our challenges, as explained in the paper ). Thus, there&amp;rsquo;s definitely some stuff to get into.&#xA;Based on my years in bioinformatics and data science, I&amp;rsquo;ve seen that the number one skill that you need to develop is to be able to effectively troubleshoot things, because things will invariably fail in all kinds of ways.</description>
     </item>
     <item>
       <title>Make your commandline tool workflow friendly</title>
-      <link>https://livingsystems.se/posts/make-your-commandline-tool-workflow-friendly/</link>
+      <link>https://livesys.se/posts/make-your-commandline-tool-workflow-friendly/</link>
       <pubDate>Fri, 25 May 2018 23:59:00 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/make-your-commandline-tool-workflow-friendly/</guid>
+      <guid>https://livesys.se/posts/make-your-commandline-tool-workflow-friendly/</guid>
       <description>Update (May 2019): A paper incorporating the below considerations is published:&#xA;Björn A Grüning, Samuel Lampa, Marc Vaudel, Daniel Blankenberg, &amp;ldquo;Software engineering for scientific big data analysis &amp;rdquo; GigaScience, Volume 8, Issue 5, May 2019, giz054, https://doi.org/10.1093/gigascience/giz054 There are a number of pitfalls that can make a commandline program really hard to integrate into a workflow (or &amp;ldquo;pipeline&amp;rdquo;) framework. The reason is that many workflow tools use output file paths to keep track of the state of the tasks producing these files.</description>
     </item>
     <item>
       <title>What is a scientific (batch) workflow?</title>
-      <link>https://livingsystems.se/posts/what-is-a-scientific-batch-workflow/</link>
+      <link>https://livesys.se/posts/what-is-a-scientific-batch-workflow/</link>
       <pubDate>Thu, 07 Dec 2017 00:57:00 +0100</pubDate>
-      <guid>https://livingsystems.se/posts/what-is-a-scientific-batch-workflow/</guid>
+      <guid>https://livesys.se/posts/what-is-a-scientific-batch-workflow/</guid>
       <description>Workflows and DAGs - Confusion about the concepts Jörgen Brandt tweeted a comment that got me thinking again on something I&amp;rsquo;ve pondered a lot lately:&#xA;&amp;ldquo;A workflow is a DAG.&amp;rdquo; is really a weak definition. That&amp;rsquo;s like saying &amp;ldquo;A love letter is a sequence of characters.&amp;rdquo; representation ≠ meaning&#xA;&amp;ndash; @joergenbr Jörgen makes a good point. A Directed Acyclic Graph (DAG) does not by any means capture the full semantic content included in a computational workflow.</description>
     </item>
     <item>
       <title>First production run with SciPipe - A Go-based scientific workflow tool</title>
-      <link>https://livingsystems.se/posts/first-production-workflow-run-with-scipipe/</link>
+      <link>https://livesys.se/posts/first-production-workflow-run-with-scipipe/</link>
       <pubDate>Thu, 28 Sep 2017 19:32:00 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/first-production-workflow-run-with-scipipe/</guid>
+      <guid>https://livesys.se/posts/first-production-workflow-run-with-scipipe/</guid>
       <description>Today marked the day when we ran the very first production workflow with SciPipe , the Go -based scientific workflow tool we&amp;rsquo;ve been working on over the last couple of years. Yay! :)&#xA;This is how it looked (no fancy GUI or such yet, sorry):&#xA;The first result we got in this very very first job was a list of counts of ligands (chemical compounds) in the ExcapeDB dataset (download here ) interacting with the 44 protein/gene targets identified by Bowes et al as a good baseline set for identifying hazardous side-effects effects in the body (that is, any chemical compounds binding these proteins, will never become an approved drug).</description>
     </item>
     <item>
       <title>Tutorial: Luigi for Scientific Workflows</title>
-      <link>https://livingsystems.se/posts/luigi-tutorial/</link>
+      <link>https://livesys.se/posts/luigi-tutorial/</link>
       <pubDate>Tue, 21 Jun 2016 13:49:00 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/luigi-tutorial/</guid>
+      <guid>https://livesys.se/posts/luigi-tutorial/</guid>
       <description>This is a Luigi tutorial I held at the e-Infrastructures for Massively parallel sequencing workshop (Video archive ) at SciLifeLab Uppsala in January 2015, moved here for future reference.&#xA;What is Luigi? Luigi is a batch workflow system written in Python and developed by Erik Bernhardson and others at Spotify , where it is used to compute machine-learning powered music recommendation lists, top lists etc.&#xA;Luigi is one of not-too-many batch workflow systems that supports running both normal command line jobs and Hadoop jobs in the same (in this tutorial, we will focus only on the command line part).</description>
     </item>
     <item>
       <title>Wanted: Dynamic workflow scheduling</title>
-      <link>https://livingsystems.se/posts/dynamic-workflow-scheduling/</link>
+      <link>https://livesys.se/posts/dynamic-workflow-scheduling/</link>
       <pubDate>Mon, 26 Oct 2015 21:23:00 +0100</pubDate>
-      <guid>https://livingsystems.se/posts/dynamic-workflow-scheduling/</guid>
+      <guid>https://livesys.se/posts/dynamic-workflow-scheduling/</guid>
       <description>Photo credits: Matthew Smith / Unsplash In our work on automating machine learning computations in cheminformatics with scientific workflow tools , we have came to realize something; Dynamic scheduling in scientific workflow tools is very important and sometimes badly needed.&#xA;What I mean is that new tasks should be able to be scheduled during the execution of a workflow, not just in its scheduling phase.&#xA;What is striking is that far from all workflow tools allow this.</description>
     </item>
     <item>
       <title>Workflow tool makers: Allow defining data flow, not just task dependencies</title>
-      <link>https://livingsystems.se/posts/workflows-dataflow-not-task-deps/</link>
+      <link>https://livesys.se/posts/workflows-dataflow-not-task-deps/</link>
       <pubDate>Wed, 10 Jun 2015 12:03:00 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/workflows-dataflow-not-task-deps/</guid>
+      <guid>https://livesys.se/posts/workflows-dataflow-not-task-deps/</guid>
       <description>Upsurge in workflow tools There seem to be a little upsurge in light-weight - often python-based - workflow tools for data pipelines in the last couple of years: Spotify&amp;rsquo;s Luigi , OpenStack&amp;rsquo;s Mistral , Pinterest&amp;rsquo;s Pinball , and recently AirBnb&amp;rsquo;s Airflow , to name a few. These are all interesting tools, and it is an interesting trend for us at pharmbio , who try to see how we can use workflow tools to automate bio- and cheminformatics tasks on compute clusters.</description>
     </item>
     <item>
       <title>The problem with make for scientific workflows</title>
-      <link>https://livingsystems.se/posts/the-problem-with-make-for-scientific-workflows/</link>
+      <link>https://livesys.se/posts/the-problem-with-make-for-scientific-workflows/</link>
       <pubDate>Sat, 14 Mar 2015 20:46:00 +0100</pubDate>
-      <guid>https://livingsystems.se/posts/the-problem-with-make-for-scientific-workflows/</guid>
+      <guid>https://livesys.se/posts/the-problem-with-make-for-scientific-workflows/</guid>
       <description>The workflow problem solved once and for all in 1979? As soon as the topic of scientific workflows is brought up, there are always a few make fans fervently insisting that the problem of workflows is solved once and for all with GNU make , written first in the 70&amp;rsquo;s :)&#xA;Personally I haven&amp;rsquo;t been so sure. On the one hand, I know the tool solves a lot of problems for many people.</description>
     </item>
     <item>
       <title>Links: Our experiences using Spotify&#39;s Luigi for Bioinformatics Workflows</title>
-      <link>https://livingsystems.se/posts/our-experiences-using-spotifys-luigi-for-bioinformatics-workflows/</link>
+      <link>https://livesys.se/posts/our-experiences-using-spotifys-luigi-for-bioinformatics-workflows/</link>
       <pubDate>Thu, 12 Feb 2015 20:45:00 +0100</pubDate>
-      <guid>https://livingsystems.se/posts/our-experiences-using-spotifys-luigi-for-bioinformatics-workflows/</guid>
+      <guid>https://livesys.se/posts/our-experiences-using-spotifys-luigi-for-bioinformatics-workflows/</guid>
       <description>Fig 1: A screenshot of Luigi&amp;rsquo;s web UI, of a real-world (although rather simple) workflow implemented in Luigi:&#xA;Update May 5, 2016: Most of the below material is more or less outdated. Our latest work has resulted in the SciLuigi helper library , which we have used in production and will be focus of further developments.&#xA;In the Bioclipse / Pharmaceutical Bioinformatics group at Dept of Pharm. Biosciences att UU, we are quite heavy users of Spotify&amp;rsquo;s Luigi workflow library , to automate workflows, mainly doing Machine Learning heavy lifting.</description>
     </item>
   </channel>

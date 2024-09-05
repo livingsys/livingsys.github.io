@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jinja on Living Systems_</title>
-    <link>https://livingsystems.se/tags/jinja/</link>
+    <link>https://livesys.se/tags/jinja/</link>
     <description>Recent content in Jinja on Living Systems_</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 04 Mar 2024 14:42:00 +0100</lastBuildDate>
-    <atom:link href="https://livingsystems.se/tags/jinja/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livesys.se/tags/jinja/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Debugging inside Jinja templates using pdb/ipdb</title>
-      <link>https://livingsystems.se/posts/debugging-inside-jinja-templates-using-pdb-ipdb/</link>
+      <link>https://livesys.se/posts/debugging-inside-jinja-templates-using-pdb-ipdb/</link>
       <pubDate>Mon, 04 Mar 2024 14:42:00 +0100</pubDate>
-      <guid>https://livingsystems.se/posts/debugging-inside-jinja-templates-using-pdb-ipdb/</guid>
+      <guid>https://livesys.se/posts/debugging-inside-jinja-templates-using-pdb-ipdb/</guid>
       <description>I&amp;rsquo;m working on a static reporting tool using the Jinja2 templating engine for Python.&#xA;I was trying to figure out a way to enter into the Jinja templating code with the pdb/ipdb commandline debugger.&#xA;I tried creating an .ipdbrc file in my local directory with the line:&#xA;path/to/template.html:&amp;lt;lineno&amp;gt; &amp;hellip; but that didn&amp;rsquo;t work.&#xA;What worked was to figure out the line that says :&#xA;return self.environment.concat(self.root_render_func(ctx)) &amp;hellip; inside the the jinja codebase, and put a breakpoint on that (which for me was on line 1299, but might vary depending on version):</description>
     </item>
   </channel>

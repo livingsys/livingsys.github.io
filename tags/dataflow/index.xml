@@ -2,45 +2,45 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dataflow on Living Systems_</title>
-    <link>https://livingsystems.se/tags/dataflow/</link>
+    <link>https://livesys.se/tags/dataflow/</link>
     <description>Recent content in Dataflow on Living Systems_</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 27 Dec 2017 14:05:00 +0100</lastBuildDate>
-    <atom:link href="https://livingsystems.se/tags/dataflow/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livesys.se/tags/dataflow/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Equation-centric dataflow programming in Go</title>
-      <link>https://livingsystems.se/posts/equation-centric-dataflow-programming-in-go/</link>
+      <link>https://livesys.se/posts/equation-centric-dataflow-programming-in-go/</link>
       <pubDate>Wed, 27 Dec 2017 14:05:00 +0100</pubDate>
-      <guid>https://livingsystems.se/posts/equation-centric-dataflow-programming-in-go/</guid>
+      <guid>https://livesys.se/posts/equation-centric-dataflow-programming-in-go/</guid>
       <description>Mathematical notation and dataflow programming Even though computations done on computers are very often based on some type of math, it is striking that the notation used in math to express equations and relations is not always very readily converted into programming code. Outside of purely symbolic programming languages like sage math or the (proprietary) Wolfram language , there seem to always be quite a divide between the mathematical notation and the numerical implementation.</description>
     </item>
     <item>
       <title>How I would like to write Go programs</title>
-      <link>https://livingsystems.se/posts/how-i-would-like-to-write-golang/</link>
+      <link>https://livesys.se/posts/how-i-would-like-to-write-golang/</link>
       <pubDate>Sat, 18 Jul 2015 02:34:00 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/how-i-would-like-to-write-golang/</guid>
+      <guid>https://livesys.se/posts/how-i-would-like-to-write-golang/</guid>
       <description>Some time ago I got a post published on GopherAcademy , outlining in detail how I think a flow-based programming inspired syntax can strongly help to create clearer, easier-to-maintain, and more declarative Go programs.&#xA;These ideas have since became clearer, and we (Ola Spjuth &amp;rsquo;s research group at pharmbio ) have successfully used them to make the workflow syntax for Luigi (Spotify&amp;rsquo;s great workflow engine by Erik Bernhardsson &amp;amp; co) workflows easier, as implemented in the SciLuigi helper library .</description>
     </item>
     <item>
       <title>FBP inspired data flow syntax: The missing piece for the success of functional programming?</title>
-      <link>https://livingsystems.se/posts/fbp-data-flow-syntax/</link>
+      <link>https://livesys.se/posts/fbp-data-flow-syntax/</link>
       <pubDate>Thu, 16 Jul 2015 17:13:00 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/fbp-data-flow-syntax/</guid>
+      <guid>https://livesys.se/posts/fbp-data-flow-syntax/</guid>
       <description>Often when I suggest people have a look at Flow-based Programming (FBP) or Data Flow for one reason or another, people are often put off by the strong connection between these concepts and graphical programming. That is, the idea that programs will be easier to understand if expressed and developed in a visual notation.&#xA;This is unfortunate, since I think this is in no way the core benefit of FBP or Data Flow, although it is a nice side-effect for those who prefer it.</description>
     </item>
     <item>
       <title>Workflow tool makers: Allow defining data flow, not just task dependencies</title>
-      <link>https://livingsystems.se/posts/workflows-dataflow-not-task-deps/</link>
+      <link>https://livesys.se/posts/workflows-dataflow-not-task-deps/</link>
       <pubDate>Wed, 10 Jun 2015 12:03:00 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/workflows-dataflow-not-task-deps/</guid>
+      <guid>https://livesys.se/posts/workflows-dataflow-not-task-deps/</guid>
       <description>Upsurge in workflow tools There seem to be a little upsurge in light-weight - often python-based - workflow tools for data pipelines in the last couple of years: Spotify&amp;rsquo;s Luigi , OpenStack&amp;rsquo;s Mistral , Pinterest&amp;rsquo;s Pinball , and recently AirBnb&amp;rsquo;s Airflow , to name a few. These are all interesting tools, and it is an interesting trend for us at pharmbio , who try to see how we can use workflow tools to automate bio- and cheminformatics tasks on compute clusters.</description>
     </item>
     <item>
       <title>Patterns for composable concurrent pipelines in Go</title>
-      <link>https://livingsystems.se/posts/patterns-for-composable-concurrent-pipelines-in-go/</link>
+      <link>https://livesys.se/posts/patterns-for-composable-concurrent-pipelines-in-go/</link>
       <pubDate>Mon, 01 Jun 2015 14:54:00 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/patterns-for-composable-concurrent-pipelines-in-go/</guid>
+      <guid>https://livesys.se/posts/patterns-for-composable-concurrent-pipelines-in-go/</guid>
       <description>I realize I didn&amp;rsquo;t have a link to my blog on Gopher Academy , on patterns for compoasable concurrent pipelines in Go(lang), so here it goes:&#xA;blog.gopheracademy.com/composable-pipelines-pattern </description>
     </item>
   </channel>

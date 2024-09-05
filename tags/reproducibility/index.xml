@@ -2,52 +2,52 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Reproducibility on Living Systems_</title>
-    <link>https://livingsystems.se/tags/reproducibility/</link>
+    <link>https://livesys.se/tags/reproducibility/</link>
     <description>Recent content in Reproducibility on Living Systems_</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 03 Sep 2024 11:15:02 +0200</lastBuildDate>
-    <atom:link href="https://livingsystems.se/tags/reproducibility/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livesys.se/tags/reproducibility/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Rewrite of Scicommander in Go with much improved algorithm</title>
-      <link>https://livingsystems.se/posts/rewrite-of-scicommander-in-go/</link>
+      <link>https://livesys.se/posts/rewrite-of-scicommander-in-go/</link>
       <pubDate>Tue, 03 Sep 2024 11:15:02 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/rewrite-of-scicommander-in-go/</guid>
+      <guid>https://livesys.se/posts/rewrite-of-scicommander-in-go/</guid>
       <description>When I presented a poster about SciCommander at the Swedish bioinformatics workshop last year, I got a lot of awesome feedback from some great people including Fredrik Boulund, Johannes Alneberg and others, of which I unfortunately lost the names (please shout out if you read this!).&#xA;(For those new to SciCommander, it is my attempt at creating a tool that can track complete provenance reports also for ad-hoc shell commands, not just those included in a pipeline.</description>
     </item>
     <item>
       <title>SciCommander - track provenance of any shell command</title>
-      <link>https://livingsystems.se/posts/scicommander-0.3/</link>
+      <link>https://livesys.se/posts/scicommander-0.3/</link>
       <pubDate>Thu, 09 Nov 2023 18:38:00 +0100</pubDate>
-      <guid>https://livingsystems.se/posts/scicommander-0.3/</guid>
+      <guid>https://livesys.se/posts/scicommander-0.3/</guid>
       <description>I haven&amp;rsquo;t written much about a new tool I&amp;rsquo;ve been working on in some extra time: SciCommander .&#xA;I just presented a poster about it at the Swedish Bioinformatics Workshop 2023 , so perhaps let me first present you the poster instead of re-iterating what it is (click to view large version):&#xA;New version not requiring running the scicmd command I got a lot of great feedback from numerous people at the conference, most of who pointed out that it would be great if one could start scicommander as a kind of subshell, inside which one can run commands as usual, instead of running them via the scicmd -c command.</description>
     </item>
     <item>
       <title>Linked Data Science - For improved understandability of computer-aided research</title>
-      <link>https://livingsystems.se/posts/linked-data-science/</link>
+      <link>https://livesys.se/posts/linked-data-science/</link>
       <pubDate>Fri, 21 Sep 2018 01:43:00 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/linked-data-science/</guid>
+      <guid>https://livesys.se/posts/linked-data-science/</guid>
       <description>This is an excerpt from the &amp;ldquo;future outlook&amp;rdquo; section of my thesis titled &amp;ldquo;Reproducible Data Analysis in Drug Discovery with Scientific Workflows and the Semantic Web&amp;rdquo; (click for the open access full text), which aims to provide various putative ways towards improved reproducibility, understandability and verifiability of computer-aided research.&#xA;Historically, something of a divide has developed between the metadata rich datasets and approaches in the world of Semantic Web/Ontologies/Linked Data, versus in the Big Data field in particular, which has been at least initially mostly focused on large unstructured datasets.</description>
     </item>
     <item>
       <title>To make computational lab note-taking happen, make the journal into a todo-list (a &#34;Todournal&#34;)</title>
-      <link>https://livingsystems.se/posts/todournal/</link>
+      <link>https://livesys.se/posts/todournal/</link>
       <pubDate>Fri, 13 Apr 2018 16:15:00 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/todournal/</guid>
+      <guid>https://livesys.se/posts/todournal/</guid>
       <description>Good lab note-taking is hard Good note-taking is in my opinion as important for computational research as for wet lab research. For computational research it is much easier though to forget doing it, since you might not have a physical notebook lying on your desk staring at you, but rather might need to open a specific software or file, to write the notes. I think this is one reason why lab note taking seems to happen a lot less among computational scientists than among wet lab ditto.</description>
     </item>
     <item>
       <title>On Provenance Reports in Scientific Workflows</title>
-      <link>https://livingsystems.se/posts/provenance-reports-in-scientific-workflows/</link>
+      <link>https://livesys.se/posts/provenance-reports-in-scientific-workflows/</link>
       <pubDate>Thu, 19 Oct 2017 11:44:00 +0200</pubDate>
-      <guid>https://livingsystems.se/posts/provenance-reports-in-scientific-workflows/</guid>
+      <guid>https://livesys.se/posts/provenance-reports-in-scientific-workflows/</guid>
       <description>One of the more important tasks for a scientific workflow is to keep track of so called &amp;ldquo;provenance information&amp;rdquo; about its data outputs - information about how each data file was created. This is important so other researchers can easily replicate the study (re-run it with the same software and tools). It should also help for anyone wanting to reproduce it (re-run the same study design, possibly with other software and tools).</description>
     </item>
     <item>
       <title>The problem with make for scientific workflows</title>
-      <link>https://livingsystems.se/posts/the-problem-with-make-for-scientific-workflows/</link>
+      <link>https://livesys.se/posts/the-problem-with-make-for-scientific-workflows/</link>
       <pubDate>Sat, 14 Mar 2015 20:46:00 +0100</pubDate>
-      <guid>https://livingsystems.se/posts/the-problem-with-make-for-scientific-workflows/</guid>
+      <guid>https://livesys.se/posts/the-problem-with-make-for-scientific-workflows/</guid>
       <description>The workflow problem solved once and for all in 1979? As soon as the topic of scientific workflows is brought up, there are always a few make fans fervently insisting that the problem of workflows is solved once and for all with GNU make , written first in the 70&amp;rsquo;s :)&#xA;Personally I haven&amp;rsquo;t been so sure. On the one hand, I know the tool solves a lot of problems for many people.</description>
     </item>
   </channel>

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hadoop on Living Systems_</title>
-    <link>https://livingsystems.se/tags/hadoop/</link>
+    <link>https://livesys.se/tags/hadoop/</link>
     <description>Recent content in Hadoop on Living Systems_</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 19 Feb 2015 20:44:00 +0100</lastBuildDate>
-    <atom:link href="https://livingsystems.se/tags/hadoop/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livesys.se/tags/hadoop/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Random links from the Hadoop NGS Workshop</title>
-      <link>https://livingsystems.se/posts/hadoop-ngs-workshop/</link>
+      <link>https://livesys.se/posts/hadoop-ngs-workshop/</link>
       <pubDate>Thu, 19 Feb 2015 20:44:00 +0100</pubDate>
-      <guid>https://livingsystems.se/posts/hadoop-ngs-workshop/</guid>
+      <guid>https://livesys.se/posts/hadoop-ngs-workshop/</guid>
       <description>Some random links from the Hadoop for Next-Gen Sequencing workshop held at KTH in Kista, Stockholm in February 2015.&#xA;UPDATE: Slides and Videos now available !&#xA;Spark notebook Scala notebook ADAM By Big Data Genomics Tweet by Frank Nothaft on common workflow def Part of Global Alliance for &amp;hellip; Another link is ga4gh.org Tachyon in-memory file system&#xA;Cuneiform Does support multiple outputs etc Black-box vs. White-box Workflow dependency graph can be dynamically built up while you&amp;rsquo;re running Can specity tasks in any scripting languages, or in cuneiform itself Hi-Way Worklow engine for Hadoop​ Can run exported Galaxy workflows </description>
     </item>
   </channel>
