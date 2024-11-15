@@ -47,16 +47,8 @@
 <a href="/posts/learning-genomics-bioinformatics-in-2025/"><img src="/posts/learning-genomics-bioinformatics-in-2025//ngsintro.png" class="post-img-list"></a>
 
 <h2><a href="/posts/learning-genomics-bioinformatics-in-2025/">Learning Genomics and Bioinformatics in 2025</a></h2>
-<p><p class="image">
-    <img src="ngsintro.png" alt="From the NGS introductory course at SciLifeLab Uppsala in 2015. Photo by Samuel Lampa."  />
-</p>
-</p>
-<p>Bioinformatics is growing in the clinical field, and in my job in a clinical
-microbiology lab, I&rsquo;m increasingly asked for tips about how to get into
-bioinformatics or genomic data science.</p>
-<p>As I recently took the plunge into genomics from my PhD field of small
-molecular structures and machine learning, as part of getting into my current
-position, I thought to write down what I learned in the process.</p>
+ Bioinformatics is growing in the clinical field, and in my job in a clinical microbiology lab, I&rsquo;m increasingly asked for tips about how to get into bioinformatics or genomic data science.
+As I recently took the plunge into genomics from my PhD field of small molecular structures and machine learning, as part of …
 </div>
 
   
@@ -65,14 +57,7 @@ position, I thought to write down what I learned in the process.</p>
 <a href="/posts/bioinformatics-recipes/"><img src="/posts/bioinformatics-recipes//bioinformaticsrecipes.jpg" class="post-img-list"></a>
 
 <h2><a href="/posts/bioinformatics-recipes/">We need recipes for common bioinformatics tasks</a></h2>
-<p>Ad-hoc tasks in bioinformatics can contain such an immense number of operations
-and tasks that need to be performed to achieve a certain goal. Often these are
-all individually regarded as rather &ldquo;standard&rdquo; or &ldquo;routine&rdquo;. Despite this,
-it is quite hard to find an authoritative set of &ldquo;recipes&rdquo; for how to do such
-tasks.</p>
-<p>Thus I was starting to think that there needs to be a collection of
-bioinformatics &ldquo;recipes&rdquo;. A sort of &ldquo;cookbook&rdquo; for common
-bioinformatics tasks.</p>
+Ad-hoc tasks in bioinformatics can contain such an immense number of operations and tasks that need to be performed to achieve a certain goal. Often these are all individually regarded as rather &ldquo;standard&rdquo; or &ldquo;routine&rdquo;. Despite this, it is quite hard to find an authoritative set of …
 </div>
 
   
@@ -81,53 +66,9 @@ bioinformatics tasks.</p>
 <a href="/posts/golang-for-bioinformatics/"><img src="/posts/golang-for-bioinformatics//gopherbinfie.jpg" class="post-img-list"></a>
 
 <h2><a href="/posts/golang-for-bioinformatics/">Why didn&#39;t Go get a breakthrough in bioinformatics (yet)?</a></h2>
-<p><p class="image">
-    <img src="gopherbinfie.jpg" alt="A gopher doing
-bioinformatics"  />
-</p>
-</p>
-<p>As we are - <a href="https://a16z.com/the-century-of-biology/" target="_blank" rel="noopener">according to some expert
-opinions</a>
- - living in the
-Century of Biology, I found it interesting to reflect on Go&rsquo;s usage
-within the field.</p>
-<p>Go has some great features that make it really well suited for biology,
-such as:</p>
-<ul>
-<li>A relatively simple language that can be learned in a short time
-even for people without a CS background. This is super important
-aspect for biologists.</li>
-<li>Fantastic support for cross-compilation into all major computer
-architectures and operating systems, as static, self-sufficient
-executables making it extremely simple to deploy tools, something
-that can&rsquo;t be said about the currently most popular bio language,
-Python.</li>
-<li>Fantastic support for concurrency and writing code as a set of
-parallell operations that streams data between them. Again, as
-opposed to Python. More on that later.</li>
-<li>A large standard library that contains a lot of common needs, even
-for writing user interfaces and web servers.</li>
-</ul>
-<p>Go has in fact garnered some use for bioinformatics tools over the years, with
-some indications that its use is increasing. Examples of popular tools and
-toolkits are <a href="https://github.com/shenwei356/seqkit" target="_blank" rel="noopener">SeqKit</a>
- (a veritable <em>swiss
-army knife</em> for bioinformatics), the <a href="https://github.com/biogo/biogo" target="_blank" rel="noopener">BioGo
-toolkit</a>
-, the <a href="https://github.com/pbenner/gonetics" target="_blank" rel="noopener">Gonetics
-package</a>
- and lately the <a href="https://github.com/vertgenlab/gonomics" target="_blank" rel="noopener">Gonomics
-package</a>
- and finally the
-<a href="https://github.com/bebop/poly" target="_blank" rel="noopener">Poly</a>
- package for synthetic biology. And this
-is besides heavy use in infrastructure-oriented projects like the
-<a href="https://www.benthos.dev" target="_blank" rel="noopener">Benthos</a>
- stream processing tool, the <a href="https://github.com/grailbio/reflow" target="_blank" rel="noopener">Reflow pipeline
-tool</a>
- and <a href="https://pachyderm.io/" target="_blank" rel="noopener">Pachyderm orchestration
-suite</a>
-.</p>
+ As we are - according to some expert opinions - living in the Century of Biology, I found it interesting to reflect on Go&rsquo;s usage within the field.
+Go has some great features that make it really well suited for biology, such as:
+A relatively simple language that can be learned in a short time even for people …
 </div>
 
   
@@ -136,23 +77,8 @@ suite</a>
 <a href="/posts/organizing-compbio-projects/"><img src="/posts/organizing-compbio-projects//-bin-bash_251.png" class="post-img-list"></a>
 
 <h2><a href="/posts/organizing-compbio-projects/">A few thoughts on organizing computational (biology) projects</a></h2>
-<p><p class="image">
-    <img src="-bin-bash_251-1.png" alt="Screenshot of paper and a directory structure in a terminal"  />
-</p>
-</p>
-<p>I read this <a href="http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424" target="_blank" rel="noopener">excellent
-article</a>
-
-with practical recommendations on how to organize a computational project, in
-terms of directory structure.</p>
-<h2 id="directory-structure-matters">Directory structure matters</h2>
-<p>The importance of a good directory structure seems to often be
-overlooked in teaching about computational biology, but can be the
-difference between a successful project, and one where every change or
-re-run of some part of a workflow, will require days of manual fiddling
-to get hand on the right data, in the right format, in the right place,
-with the right version of the workflow, with the right parameters, and
-then succeed to run it without errors.</p>
+ I read this excellent article with practical recommendations on how to organize a computational project, in terms of directory structure.
+Directory structure matters The importance of a good directory structure seems to often be overlooked in teaching about computational biology, but can be the difference between a …
 </div>
 
   
@@ -161,28 +87,8 @@ then succeed to run it without errors.</p>
 <a href="/posts/ngs-bioinformatics-intro-course-day-3/"><img src="/posts/ngs-bioinformatics-intro-course-day-3//ngsintro-coding.jpg" class="post-img-list"></a>
 
 <h2><a href="/posts/ngs-bioinformatics-intro-course-day-3/">NGS Bioinformatics Course Day 3: New Luigi helper tool, &#34;real-world&#34; NGS pipelines</a></h2>
-<p><p class="image">
-    <img src="ngsintro-coding.jpg" alt=""  />
-</p>
-</p>
-<p>It turned out I didn&rsquo;t have the time and strength to blog every day at
-the NGS Bioinformatics Intro course, so here comes a wrap up with some
-random notes and tidbits from the last days, including any concluding
-remarks!</p>
-<p>These days we started working on a more realistic NGS pipeline, on
-analysing re-sequencing samples
-(<a href="http://uppnex.se/twiki/pub/Courses/NgsIntro1502/Schedule/NGS_course_AJ_20150211.pdf" target="_blank" rel="noopener">slides</a>
-,
-<a href="http://uppnex.se/twiki/do/view/Courses/NgsIntro1502/ResequencingAnalysis" target="_blank" rel="noopener">tutorial</a>
-).</p>
-<h2 id="first-some-outcome-from-this-tutorial">First some outcome from this tutorial</h2>
-<p>What do I mean with &ldquo;outcome&rdquo;? Well, as I tried to manually copy and
-paste the <a href="http://uppnex.se/twiki/do/view/Courses/NgsIntro1502/ResequencingAnalysis.html" target="_blank" rel="noopener">bag of hairy nasty long bash commandline strings in the
-tutorial
-pages</a>
-,
-that all depended upon each other, I got so frustrated that I decided to
-try to encode them in a workflow language / tool.</p>
+ It turned out I didn&rsquo;t have the time and strength to blog every day at the NGS Bioinformatics Intro course, so here comes a wrap up with some random notes and tidbits from the last days, including any concluding remarks!
+These days we started working on a more realistic NGS pipeline, on analysing re-sequencing …
 </div>
 
   
@@ -191,26 +97,8 @@ try to encode them in a workflow language / tool.</p>
 <a href="/posts/ngs-bioinformatics-intro-course-day-2/"><img src="/posts/ngs-bioinformatics-intro-course-day-2//4130_mini_ion_lab-copy.png" class="post-img-list"></a>
 
 <h2><a href="/posts/ngs-bioinformatics-intro-course-day-2/">NGS Bioinformatics Intro Course Day 2</a></h2>
-<p>Today was the second day of the <a href="http://uppnex.se/twiki/do/view/Courses/NgsIntro1502/" target="_blank" rel="noopener">introductory course in NGS
-bioinformatics</a>
-
-that I&rsquo;m taking as part of my PhD studies.</p>
-<p><p class="image">
-    <img src="20150210_132439.jpg" alt=""  />
-</p>
-</p>
-<p>For me it started with a substantial oversleep, probably due to a
-combination of an annoying cold and the ~2 hour commute from south
-Stockholm to Uppsala and <a href="http://www.bmc.uu.se/" target="_blank" rel="noopener">BMC</a>
-. Thus I missed
-some really interesting
-<a href="http://uppnex.se/twiki/pub/Courses/NgsIntro1502/Schedule/dahlo-filetypes.pdf" target="_blank" rel="noopener">material</a>
-
-(and
-<a href="http://uppnex.se/twiki/do/view/Courses/NgsIntro1502/FileTypes" target="_blank" rel="noopener">tutorial</a>
-)
-on file types in NGS analysis, but will make sure to go through that in
-my free time during the week.</p>
+Today was the second day of the introductory course in NGS bioinformatics that I&rsquo;m taking as part of my PhD studies.
+For me it started with a substantial oversleep, probably due to a combination of an annoying cold and the ~2 hour commute from south Stockholm to Uppsala and BMC . Thus I missed some really …
 </div>
 
   
@@ -219,34 +107,16 @@ my free time during the week.</p>
 <a href="/posts/ngs-intro-course-day-1/"><img src="/posts/ngs-intro-course-day-1//ngsintro.jpg" class="post-img-list"></a>
 
 <h2><a href="/posts/ngs-intro-course-day-1/">NGS Bioinformatics Intro Course Day 1</a></h2>
-<p>Just finished day 1 of the <a href="samuel.lampa.co/posts/introductory-course-in-bioinformatics-for-ngs-data/">introductory course on Bioinformatics for
-Next generation sequencing
-data</a>
-
-at Scilifelab Uppsala. Attaching a photo from one of the hands-on
-tutorial sessions, with the tutorial leaders, standing to the right.</p>
-<p><a href="ngsintro.jpg"><p class="image">
-    <img src="ngsintro.jpg" alt=""  />
-</p>
-</a>
-</p>
-<p>Today&rsquo;s content was mostly introductions to the linux commandline in
-general, and the <a href="http://www.uppmax.uu.se" target="_blank" rel="noopener">UPPMAX HPC environment</a>
- in
-particular, an area I&rsquo;m already very familiar with, after two years as
-a sysadmin at UPPMAX. Thus, today I mostly got to help out the other
-students a bit.</p>
+Just finished day 1 of the introductory course on Bioinformatics for Next generation sequencing data at Scilifelab Uppsala. Attaching a photo from one of the hands-on tutorial sessions, with the tutorial leaders, standing to the right.
+Today&rsquo;s content was mostly introductions to the linux commandline in general, …
 </div>
 
   
     <div class="post-card">
 
 <h2><a href="/posts/introductory-course-in-bioinformatics-for-ngs-data/">Taking a one week introductory course in Bioinformatics for NGS data</a></h2>
-<!-- raw HTML omitted -->
-<p>Right now I&rsquo;m sitting on the train and trying to get my head around
-some of the <a href="http://uppnex.se/twiki/do/view/Courses/NgsIntro1502/PrecourseMaterial" target="_blank" rel="noopener">pre-course
-materials</a>
-.</p>
+ Right now I&rsquo;m sitting on the train and trying to get my head around some of the pre-course materials .
+
 </div>
 
   

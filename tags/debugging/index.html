@@ -47,43 +47,18 @@
 <a href="/posts/debugging-inside-jinja-templates-using-pdb-ipdb/"><img src="/posts/debugging-inside-jinja-templates-using-pdb-ipdb//image-1.png" class="post-img-list"></a>
 
 <h2><a href="/posts/debugging-inside-jinja-templates-using-pdb-ipdb/">Debugging inside Jinja templates using pdb/ipdb</a></h2>
-<p>I&rsquo;m working on a static reporting tool using the Jinja2 templating
-engine for Python.</p>
-<p>I was trying to figure out a way to enter into the Jinja templating code
-with the pdb/ipdb commandline debugger.</p>
-<p>I tried creating an <code>.ipdbrc</code> file in my local directory with the line:</p>
-<pre><code>path/to/template.html:&lt;lineno&gt;
-</code></pre>
-<p>&hellip; but that didn&rsquo;t work.</p>
-<p>What worked was to figure out <a href="https://github.com/pallets/jinja/blob/main/src/jinja2/environment.py#L1301" target="_blank" rel="noopener">the line that
-says</a>
-:</p>
-<pre><code>return self.environment.concat(self.root_render_func(ctx))
-</code></pre>
-<p>&hellip; inside the the jinja codebase, and put a breakpoint on that (which
-for me was on line 1299, but might vary depending on version):</p>
+I&rsquo;m working on a static reporting tool using the Jinja2 templating engine for Python.
+I was trying to figure out a way to enter into the Jinja templating code with the pdb/ipdb commandline debugger.
+I tried creating an .ipdbrc file in my local directory with the line:
+path/to/template.html:&lt;lineno&gt; &hellip; …
 </div>
 
   
     <div class="post-card">
 
 <h2><a href="/posts/troubleshooting-nextflow-pipelines/">Troubleshooting Nextflow pipelines</a></h2>
-<!-- raw HTML omitted -->
-<p>We have been evaluating Nextflow before in my work at
-<a href="https://pharmb.io" target="_blank" rel="noopener">pharmb.io</a>
-, but that was before
-<a href="https://www.nextflow.io/docs/latest/dsl1.html" target="_blank" rel="noopener">DSL2</a>
- and the support
-for re-usable modules (which was one reason we needed to develop our own
-tools to support our challenges, as explained <a href="https://doi.org/10.1093/gigascience/giz044" target="_blank" rel="noopener">in the
-paper</a>
-). Thus, there&rsquo;s
-definitely some stuff to get into.</p>
-<p>Based on my years in bioinformatics and data science, I&rsquo;ve seen that
-the number one skill that you need to develop is to be able to
-effectively troubleshoot things, because things will invariably fail in
-all kinds of ways. And in the process, you will probably learn a lot
-about the technology stack you are using.</p>
+ We have been evaluating Nextflow before in my work at pharmb.io , but that was before DSL2 and the support for re-usable modules (which was one reason we needed to develop our own tools to support our challenges, as explained in the paper ). Thus, there&rsquo;s definitely some stuff to get into.
+Based on my years in …
 </div>
 
   

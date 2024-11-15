@@ -45,42 +45,16 @@
     <div class="post-card">
 
 <h2><a href="/posts/troubleshooting-nextflow-pipelines/">Troubleshooting Nextflow pipelines</a></h2>
-<!-- raw HTML omitted -->
-<p>We have been evaluating Nextflow before in my work at
-<a href="https://pharmb.io" target="_blank" rel="noopener">pharmb.io</a>
-, but that was before
-<a href="https://www.nextflow.io/docs/latest/dsl1.html" target="_blank" rel="noopener">DSL2</a>
- and the support
-for re-usable modules (which was one reason we needed to develop our own
-tools to support our challenges, as explained <a href="https://doi.org/10.1093/gigascience/giz044" target="_blank" rel="noopener">in the
-paper</a>
-). Thus, there&rsquo;s
-definitely some stuff to get into.</p>
-<p>Based on my years in bioinformatics and data science, I&rsquo;ve seen that
-the number one skill that you need to develop is to be able to
-effectively troubleshoot things, because things will invariably fail in
-all kinds of ways. And in the process, you will probably learn a lot
-about the technology stack you are using.</p>
+ We have been evaluating Nextflow before in my work at pharmb.io , but that was before DSL2 and the support for re-usable modules (which was one reason we needed to develop our own tools to support our challenges, as explained in the paper ). Thus, there&rsquo;s definitely some stuff to get into.
+Based on my years in …
 </div>
 
   
     <div class="post-card">
 
 <h2><a href="/posts/make-your-commandline-tool-workflow-friendly/">Make your commandline tool workflow friendly</a></h2>
-<p><em>Update (May 2019):</em> A paper incorporating the below considerations is published:</p>
-<p>Björn A Grüning, Samuel Lampa, Marc Vaudel, Daniel Blankenberg, &ldquo;<a href="https://doi.org/10.1093/gigascience/giz054" target="_blank" rel="noopener">Software
-engineering for scientific big data
-analysis</a>
-&rdquo; GigaScience, Volume 8,
-Issue 5, May 2019, giz054, <a href="https://doi.org/10.1093/gigascience/giz054" target="_blank" rel="noopener">https://doi.org/10.1093/gigascience/giz054</a>
-</p>
-<hr>
-<p>There are a number of pitfalls that can make a commandline program
-really hard to integrate into a workflow (or &ldquo;pipeline&rdquo;) framework.
-The reason is that many workflow tools use output file paths to keep
-track of the state of the tasks producing these files. This is done for
-example to know which tasks are finished and can be skipped upon a
-re-run, and which are not.</p>
+Update (May 2019): A paper incorporating the below considerations is published:
+Björn A Grüning, Samuel Lampa, Marc Vaudel, Daniel Blankenberg, &ldquo;Software engineering for scientific big data analysis &rdquo; GigaScience, Volume 8, Issue 5, May 2019, giz054, https://doi.org/10.1093/gigascience/giz054 There are a …
 </div>
 
   
@@ -89,36 +63,8 @@ re-run, and which are not.</p>
 <a href="/posts/what-is-a-scientific-batch-workflow/"><img src="/posts/what-is-a-scientific-batch-workflow//dependencygraphnew_without_shadow-1.png" class="post-img-list"></a>
 
 <h2><a href="/posts/what-is-a-scientific-batch-workflow/">What is a scientific (batch) workflow?</a></h2>
-<h2 id="dependency-graph-in-luigi---a-dag-representing-tasks-not-processes-or-workflow-stepsdependencygraphnew_without_shadow-1pngdependencygraphnew_without_shadow-1png"><a href="dependencygraphnew_without_shadow-1.png"><p class="image">
-    <img src="dependencygraphnew_without_shadow-1.png" alt="Dependency graph in Luigi - A DAG representing tasks (not processes or workflow steps)"  />
-</p>
-</a>
-</h2>
-<h2 id="workflows-and-dags---confusion-about-the-concepts">Workflows and DAGs - Confusion about the concepts</h2>
-<p><a href="https://twitter.com/joergenbr" target="_blank" rel="noopener">Jörgen Brandt</a>
- <a href="https://twitter.com/joergenbr/status/907626987333746688" target="_blank" rel="noopener">tweeted a
-comment</a>
- that
-got me thinking again on something I&rsquo;ve pondered a lot lately:</p>
-<blockquote>
-<p>&ldquo;A workflow is a DAG.&rdquo; is really a weak definition. That&rsquo;s like
-saying &ldquo;A love letter is a sequence of characters.&rdquo; representation ≠
-meaning</p>
-<p>&ndash; <a href="https://twitter.com/joergenbr/status/907626987333746688" target="_blank" rel="noopener">@joergenbr</a>
-</p>
-</blockquote>
-<p>Jörgen makes a good point. A <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph" target="_blank" rel="noopener">Directed Acyclic Graph
-(DAG)</a>
- does not by
-any means capture the full semantic content included in a computational
-workflow. I think <a href="http://www.worldscientific.com/doi/pdf/10.1142/9789814508728_0001" target="_blank" rel="noopener">Werner Gitt&rsquo;s <em>universal information</em>
-model</a>
-
-is highly relevant here, suggesting that information comes in at least
-five abstraction layers: statistics (signals, number of symbols), syntax
-(set of symbols, grammar), semantics (meaning), pragmatics (action),
-apobetics (purpose, result). A DAG seems to cover the syntax and
-semantics layers, leaving out three layers out of five.</p>
+ Workflows and DAGs - Confusion about the concepts Jörgen Brandt tweeted a comment that got me thinking again on something I&rsquo;ve pondered a lot lately:
+&ldquo;A workflow is a DAG.&rdquo; is really a weak definition. That&rsquo;s like saying &ldquo;A love letter is a sequence of characters.&rdquo; representation ≠ …
 </div>
 
   
@@ -127,31 +73,9 @@ semantics layers, leaving out three layers out of five.</p>
 <a href="/posts/first-production-workflow-run-with-scipipe/"><img src="/posts/first-production-workflow-run-with-scipipe//terminal_411.png" class="post-img-list"></a>
 
 <h2><a href="/posts/first-production-workflow-run-with-scipipe/">First production run with SciPipe - A Go-based scientific workflow tool</a></h2>
-<p>Today marked the day when we ran the very first production workflow with
-<a href="http://scipipe.org" target="_blank" rel="noopener">SciPipe</a>
-, the <a href="https://golang.org/" target="_blank" rel="noopener">Go</a>
--based
-<a href="https://en.wikipedia.org/wiki/Scientific_workflow_system" target="_blank" rel="noopener">scientific workflow
-tool</a>
- we&rsquo;ve
-been working on over the last couple of years. Yay! :)</p>
-<p>This is how it looked (no fancy GUI or such yet, sorry):</p>
-<p><p class="image">
-    <img src="terminal_411.png" alt=""  />
-</p>
-</p>
-<p>The first result we got in this very very first job was a list of counts
-of ligands (chemical compounds) in the <a href="https://jcheminf.springeropen.com/articles/10.1186/s13321-017-0203-5" target="_blank" rel="noopener">ExcapeDB
-dataset</a>
-
-(<a href="https://zenodo.org/record/173258" target="_blank" rel="noopener">download here</a>
-) interacting with the
-44 protein/gene targets <a href="http://dx.doi.org/10.1038/nrd3845" target="_blank" rel="noopener">identified by Bowes et
-al</a>
- as a good baseline set for
-identifying hazardous side-effects effects in the body (that is, any
-chemical compounds binding these proteins, will never become an approved
-drug).</p>
+Today marked the day when we ran the very first production workflow with SciPipe , the Go -based scientific workflow tool we&rsquo;ve been working on over the last couple of years. Yay! :)
+This is how it looked (no fancy GUI or such yet, sorry):
+The first result we got in this very very first job was a list of counts …
 </div>
 
   
@@ -160,33 +84,8 @@ drug).</p>
 <a href="/posts/luigi-tutorial/"><img src="/posts/luigi-tutorial//luigi_screenshot.png" class="post-img-list"></a>
 
 <h2><a href="/posts/luigi-tutorial/">Tutorial: Luigi for Scientific Workflows</a></h2>
-<p><em>This is a Luigi tutorial I held at the <a href="http://uppnex.se/events/eInfraMPS2015/" target="_blank" rel="noopener">e-Infrastructures for Massively
-parallel sequencing</a>
- workshop
-(<a href="https://www.youtube.com/channel/UCfLDx5VYn25QIZLmtybvdeQ/videos" target="_blank" rel="noopener">Video
-archive</a>
-)
-at <a href="http://scilifelab.se/" target="_blank" rel="noopener">SciLifeLab</a>
- Uppsala in January 2015, moved
-here for future reference.</em></p>
-<h2 id="luigi_screenshotpng"><p class="image">
-    <img src="luigi_screenshot.png" alt=""  />
-</p>
-</h2>
-<h2 id="what-is-luigi">What is Luigi?</h2>
-<p><a href="https://github.com/spotify/luigi" target="_blank" rel="noopener">Luigi</a>
- is a batch workflow system
-written in Python and developed by <a href="https://erikbern.com/" target="_blank" rel="noopener">Erik
-Bernhardson</a>
- and others at
-<a href="http://spotify.com/" target="_blank" rel="noopener">Spotify</a>
-, where it is used to compute
-machine-learning powered music recommendation lists, top lists etc.</p>
-<p>Luigi is one of not-too-many batch workflow systems that supports
-running both normal command line jobs and
-<a href="http://hadoop.apache.org/" target="_blank" rel="noopener">Hadoop</a>
- jobs in the same (in this tutorial,
-we will focus only on the command line part).</p>
+This is a Luigi tutorial I held at the e-Infrastructures for Massively parallel sequencing workshop (Video archive ) at SciLifeLab Uppsala in January 2015, moved here for future reference.
+What is Luigi? Luigi is a batch workflow system written in Python and developed by Erik Bernhardson and others at Spotify , where …
 </div>
 
   
@@ -195,24 +94,8 @@ we will focus only on the command line part).</p>
 <a href="/posts/dynamic-workflow-scheduling/"><img src="/posts/dynamic-workflow-scheduling//scheduling_unsplash-1.jpg" class="post-img-list"></a>
 
 <h2><a href="/posts/dynamic-workflow-scheduling/">Wanted: Dynamic workflow scheduling</a></h2>
-<p><p class="image">
-    <img src="scheduling_unsplash-1.jpg" alt=""  />
-</p>
-</p>
-<p><em>Photo credits: <a href="https://unsplash.com/whale" target="_blank" rel="noopener">Matthew Smith</a>
- /
-<a href="https://unsplash.com/photos/OiiThC8Wf68" target="_blank" rel="noopener">Unsplash</a>
-</em></p>
-<p>In <a href="https://jcheminf.springeropen.com/articles/10.1186/s13321-016-0179-6" target="_blank" rel="noopener">our work on automating machine learning computations in
-cheminformatics with scientific workflow
-tools</a>
-,
-we have came to realize something; <em>Dynamic scheduling in scientific
-workflow tools is very important and sometimes badly needed.</em></p>
-<p>What I mean is that <em>new tasks should be able to be scheduled during the
-execution of a workflow, not just in its scheduling phase.</em></p>
-<p>What is striking is that far from all workflow tools allow this. Many
-tools completely separate the execution into two stages:</p>
+ Photo credits: Matthew Smith / Unsplash In our work on automating machine learning computations in cheminformatics with scientific workflow tools , we have came to realize something; Dynamic scheduling in scientific workflow tools is very important and sometimes badly needed.
+What I mean is that new tasks should be …
 </div>
 
   
@@ -221,27 +104,7 @@ tools completely separate the execution into two stages:</p>
 <a href="/posts/workflows-dataflow-not-task-deps/"><img src="/posts/workflows-dataflow-not-task-deps//peptide_workflow.png" class="post-img-list"></a>
 
 <h2><a href="/posts/workflows-dataflow-not-task-deps/">Workflow tool makers: Allow defining data flow, not just task dependencies</a></h2>
-<h3 id="upsurge-in-workflow-tools">Upsurge in workflow tools</h3>
-<p><p class="image">
-    <img src="selection_201.png" alt="Workflow tool
-logos"  class="align_right" />
-</p>
-There
-seem to be a little upsurge in light-weight - often python-based -
-workflow tools for data pipelines in the last couple of years:
-Spotify&rsquo;s <a href="https://github.com/spotify/luigi" target="_blank" rel="noopener">Luigi</a>
-, OpenStack&rsquo;s
-<a href="https://wiki.openstack.org/wiki/Mistral" target="_blank" rel="noopener">Mistral</a>
-, Pinterest&rsquo;s
-<a href="https://github.com/pinterest/pinball" target="_blank" rel="noopener">Pinball</a>
-, and recently AirBnb&rsquo;s
-<a href="https://github.com/airbnb/airflow" target="_blank" rel="noopener">Airflow</a>
-, to name a few. These are
-all interesting tools, and it is an interesting trend for us at
-<a href="http://www.farmbio.uu.se/research/researchgroups/pb/?languageId=1" target="_blank" rel="noopener">pharmbio</a>
-,
-who try to see how we can use workflow tools to automate bio- and
-cheminformatics tasks on compute clusters.</p>
+Upsurge in workflow tools There seem to be a little upsurge in light-weight - often python-based - workflow tools for data pipelines in the last couple of years: Spotify&rsquo;s Luigi , OpenStack&rsquo;s Mistral , Pinterest&rsquo;s Pinball , and recently AirBnb&rsquo;s Airflow , to name a few. These are all interesting …
 </div>
 
   
@@ -250,21 +113,8 @@ cheminformatics tasks on compute clusters.</p>
 <a href="/posts/the-problem-with-make-for-scientific-workflows/"><img src="/posts/the-problem-with-make-for-scientific-workflows//selection_131.png" class="post-img-list"></a>
 
 <h2><a href="/posts/the-problem-with-make-for-scientific-workflows/">The problem with make for scientific workflows</a></h2>
-<h2 id="selection_131png"><p class="image">
-    <img src="selection_131.png" alt=""  />
-</p>
-</h2>
-<h2 id="the-workflow-problem-solved-once-and-for-all-in-1979">The workflow problem solved once and for all in 1979?</h2>
-<p>As soon as the topic of scientific workflows is brought up, there are
-always a few make fans fervently insisting that the problem of workflows
-is solved once and for all with <a href="http://www.gnu.org/software/make/" target="_blank" rel="noopener">GNU
-make</a>
-, written first in the 70&rsquo;s :)</p>
-<p>Personally I haven&rsquo;t been so sure. On the one hand, I know the tool
-solves a lot of problems for many people. Also, there is something very
-attractive about buildling on a tool that you can be sure will be
-available on more or less every unix-like operating system, for decades
-to come.</p>
+ The workflow problem solved once and for all in 1979? As soon as the topic of scientific workflows is brought up, there are always a few make fans fervently insisting that the problem of workflows is solved once and for all with GNU make , written first in the 70&rsquo;s :)
+Personally I haven&rsquo;t been so sure. On …
 </div>
 
   
@@ -273,26 +123,8 @@ to come.</p>
 <a href="/posts/our-experiences-using-spotifys-luigi-for-bioinformatics-workflows/"><img src="/posts/our-experiences-using-spotifys-luigi-for-bioinformatics-workflows//selection_047_luigi.png" class="post-img-list"></a>
 
 <h2><a href="/posts/our-experiences-using-spotifys-luigi-for-bioinformatics-workflows/">Links: Our experiences using Spotify&#39;s Luigi for Bioinformatics Workflows</a></h2>
-<p><p class="image">
-    <img src="selection_047_luigi.png" alt="Luigi Screenshot"  />
-</p>
-</p>
-<p><em>Fig 1: A screenshot of Luigi&rsquo;s web UI, of a real-world (although
-rather simple) workflow implemented in Luigi:</em></p>
-<p><em><strong>Update May 5, 2016:</strong> Most of the below material is more or less
-outdated. Our latest work has resulted in the <a href="https://github.com/pharmbio/sciluigi" target="_blank" rel="noopener">SciLuigi helper
-library</a>
-, which we have used in
-production and will be focus of further developments.</em></p>
-<p>In the <a href="http://bioclipse.net/" target="_blank" rel="noopener">Bioclipse</a>
- / <a href="http://www.farmbio.uu.se/forskning/researchgroups/pb/" target="_blank" rel="noopener">Pharmaceutical
-Bioinformatics
-group</a>
- at Dept of
-Pharm. Biosciences att UU, we are quite heavy users of Spotify&rsquo;s <a href="https://github.com/spotify/luigi" target="_blank" rel="noopener">Luigi
-workflow library</a>
-, to automate
-workflows, mainly doing Machine Learning heavy lifting.</p>
+ Fig 1: A screenshot of Luigi&rsquo;s web UI, of a real-world (although rather simple) workflow implemented in Luigi:
+Update May 5, 2016: Most of the below material is more or less outdated. Our latest work has resulted in the SciLuigi helper library , which we have used in production and will be focus of further …
 </div>
 
   

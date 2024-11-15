@@ -47,19 +47,7 @@
 <a href="/posts/equation-centric-dataflow-programming-in-go/"><img src="/posts/equation-centric-dataflow-programming-in-go//loan.gif" class="post-img-list"></a>
 
 <h2><a href="/posts/equation-centric-dataflow-programming-in-go/">Equation-centric dataflow programming in Go</a></h2>
-<h2 id="mathematical-notation-and-dataflow-programming">Mathematical notation and dataflow programming</h2>
-<p>Even though computations done on computers are very often based on some
-type of math, it is striking that the notation used in math to express
-equations and relations is not always very readily converted into
-programming code. Outside of purely <a href="https://en.wikipedia.org/wiki/Symbolic_programming" target="_blank" rel="noopener">symbolic
-programming</a>
-
-languages like <a href="http://www.sagemath.org/" target="_blank" rel="noopener">sage math</a>
- or the
-(proprietary) <a href="https://www.wolfram.com/language" target="_blank" rel="noopener">Wolfram language</a>
-,
-there seem to always be quite a divide between the mathematical notation
-and the numerical implementation.</p>
+Mathematical notation and dataflow programming Even though computations done on computers are very often based on some type of math, it is striking that the notation used in math to express equations and relations is not always very readily converted into programming code. Outside of purely symbolic programming …
 </div>
 
   
@@ -68,31 +56,8 @@ and the numerical implementation.</p>
 <a href="/posts/how-i-would-like-to-write-golang/"><img src="/posts/how-i-would-like-to-write-golang//selection_301.png" class="post-img-list"></a>
 
 <h2><a href="/posts/how-i-would-like-to-write-golang/">How I would like to write Go programs</a></h2>
-<p><p class="image">
-    <img src="selection_301.png" alt=""  />
-</p>
-</p>
-<p>Some time ago I got a <a href="http://blog.gopheracademy.com/composable-pipelines-pattern" target="_blank" rel="noopener">post published on
-GopherAcademy</a>
-,
-outlining in detail how I think a <a href="http://www.jpaulmorrison.com/fbp" target="_blank" rel="noopener">flow-based
-programming</a>
- inspired syntax can
-strongly help to create clearer, easier-to-maintain, and more
-declarative Go programs.</p>
-<p>These ideas have since became clearer, and we (<a href="http://twitter.com/ola_spjuth" target="_blank" rel="noopener">Ola
-Spjuth</a>
-&rsquo;s <a href="http://www.farmbio.uu.se/research/researchgroups/pb/" target="_blank" rel="noopener">research group at
-pharmbio</a>
-) have
-successfully used them to make the workflow syntax for
-<a href="https://github.com/spotify/luigi" target="_blank" rel="noopener">Luigi</a>
- (Spotify&rsquo;s great workflow
-engine by <a href="http://twitter.com/fulhack" target="_blank" rel="noopener">Erik Bernhardsson</a>
- &amp; co)
-workflows easier, as implemented in the <a href="https://github.com/samuell/sciluigi#readme" target="_blank" rel="noopener">SciLuigi helper
-library</a>
-.</p>
+ Some time ago I got a post published on GopherAcademy , outlining in detail how I think a flow-based programming inspired syntax can strongly help to create clearer, easier-to-maintain, and more declarative Go programs.
+These ideas have since became clearer, and we (Ola Spjuth &rsquo;s research group at pharmbio ) …
 </div>
 
   
@@ -101,22 +66,7 @@ library</a>
 <a href="/posts/fbp-data-flow-syntax/"><img src="/posts/fbp-data-flow-syntax//selection_288.png" class="post-img-list"></a>
 
 <h2><a href="/posts/fbp-data-flow-syntax/">FBP inspired data flow syntax: The missing piece for the success of functional programming?</a></h2>
-<p><p class="image">
-    <img src="selection_288.png" alt=""  />
-</p>
-</p>
-<p>Often when I suggest people have a look at <a href="http://www.jpaulmorrison.com/fbp/" target="_blank" rel="noopener">Flow-based
-Programming</a>
- (FBP) or <a href="https://en.wikipedia.org/wiki/Dataflow" target="_blank" rel="noopener">Data
-Flow</a>
- for one reason or another,
-people are often put off by the strong connection between these concepts
-and graphical programming. That is, the idea that programs will be
-easier to understand if expressed and developed in a visual notation.</p>
-<p>This is unfortunate, since I think this is in no way the core benefit of
-FBP or Data Flow, although it is a nice side-effect for those who prefer
-it. For example, I personally mostly prefer working with text over a
-graphical notation, for productivity reasons.</p>
+ Often when I suggest people have a look at Flow-based Programming (FBP) or Data Flow for one reason or another, people are often put off by the strong connection between these concepts and graphical programming. That is, the idea that programs will be easier to understand if expressed and developed in a visual …
 </div>
 
   
@@ -125,27 +75,7 @@ graphical notation, for productivity reasons.</p>
 <a href="/posts/workflows-dataflow-not-task-deps/"><img src="/posts/workflows-dataflow-not-task-deps//peptide_workflow.png" class="post-img-list"></a>
 
 <h2><a href="/posts/workflows-dataflow-not-task-deps/">Workflow tool makers: Allow defining data flow, not just task dependencies</a></h2>
-<h3 id="upsurge-in-workflow-tools">Upsurge in workflow tools</h3>
-<p><p class="image">
-    <img src="selection_201.png" alt="Workflow tool
-logos"  class="align_right" />
-</p>
-There
-seem to be a little upsurge in light-weight - often python-based -
-workflow tools for data pipelines in the last couple of years:
-Spotify&rsquo;s <a href="https://github.com/spotify/luigi" target="_blank" rel="noopener">Luigi</a>
-, OpenStack&rsquo;s
-<a href="https://wiki.openstack.org/wiki/Mistral" target="_blank" rel="noopener">Mistral</a>
-, Pinterest&rsquo;s
-<a href="https://github.com/pinterest/pinball" target="_blank" rel="noopener">Pinball</a>
-, and recently AirBnb&rsquo;s
-<a href="https://github.com/airbnb/airflow" target="_blank" rel="noopener">Airflow</a>
-, to name a few. These are
-all interesting tools, and it is an interesting trend for us at
-<a href="http://www.farmbio.uu.se/research/researchgroups/pb/?languageId=1" target="_blank" rel="noopener">pharmbio</a>
-,
-who try to see how we can use workflow tools to automate bio- and
-cheminformatics tasks on compute clusters.</p>
+Upsurge in workflow tools There seem to be a little upsurge in light-weight - often python-based - workflow tools for data pipelines in the last couple of years: Spotify&rsquo;s Luigi , OpenStack&rsquo;s Mistral , Pinterest&rsquo;s Pinball , and recently AirBnb&rsquo;s Airflow , to name a few. These are all interesting …
 </div>
 
   
@@ -154,18 +84,8 @@ cheminformatics tasks on compute clusters.</p>
 <a href="/posts/patterns-for-composable-concurrent-pipelines-in-go/"><img src="/posts/patterns-for-composable-concurrent-pipelines-in-go//selection_212.png" class="post-img-list"></a>
 
 <h2><a href="/posts/patterns-for-composable-concurrent-pipelines-in-go/">Patterns for composable concurrent pipelines in Go</a></h2>
-<p>I realize I didn&rsquo;t have a link to my blog on <a href="http://gopheracademy.com" target="_blank" rel="noopener">Gopher
-Academy</a>
-, on patterns for compoasable
-concurrent pipelines in Go(lang), so here it goes:</p>
-<ul>
-<li><a href="http://blog.gopheracademy.com/composable-pipelines-pattern" target="_blank" rel="noopener">blog.gopheracademy.com/composable-pipelines-pattern</a>
-</li>
-</ul>
-<p><p class="image">
-    <img src="selection_212.png" alt="Gopher academy screenshot"  />
-</p>
-</p>
+I realize I didn&rsquo;t have a link to my blog on Gopher Academy , on patterns for compoasable concurrent pipelines in Go(lang), so here it goes:
+blog.gopheracademy.com/composable-pipelines-pattern 
 </div>
 
   

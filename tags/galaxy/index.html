@@ -47,24 +47,8 @@
 <a href="/posts/dynamic-workflow-scheduling/"><img src="/posts/dynamic-workflow-scheduling//scheduling_unsplash-1.jpg" class="post-img-list"></a>
 
 <h2><a href="/posts/dynamic-workflow-scheduling/">Wanted: Dynamic workflow scheduling</a></h2>
-<p><p class="image">
-    <img src="scheduling_unsplash-1.jpg" alt=""  />
-</p>
-</p>
-<p><em>Photo credits: <a href="https://unsplash.com/whale" target="_blank" rel="noopener">Matthew Smith</a>
- /
-<a href="https://unsplash.com/photos/OiiThC8Wf68" target="_blank" rel="noopener">Unsplash</a>
-</em></p>
-<p>In <a href="https://jcheminf.springeropen.com/articles/10.1186/s13321-016-0179-6" target="_blank" rel="noopener">our work on automating machine learning computations in
-cheminformatics with scientific workflow
-tools</a>
-,
-we have came to realize something; <em>Dynamic scheduling in scientific
-workflow tools is very important and sometimes badly needed.</em></p>
-<p>What I mean is that <em>new tasks should be able to be scheduled during the
-execution of a workflow, not just in its scheduling phase.</em></p>
-<p>What is striking is that far from all workflow tools allow this. Many
-tools completely separate the execution into two stages:</p>
+ Photo credits: Matthew Smith / Unsplash In our work on automating machine learning computations in cheminformatics with scientific workflow tools , we have came to realize something; Dynamic scheduling in scientific workflow tools is very important and sometimes badly needed.
+What I mean is that new tasks should be …
 </div>
 
   
@@ -73,27 +57,7 @@ tools completely separate the execution into two stages:</p>
 <a href="/posts/workflows-dataflow-not-task-deps/"><img src="/posts/workflows-dataflow-not-task-deps//peptide_workflow.png" class="post-img-list"></a>
 
 <h2><a href="/posts/workflows-dataflow-not-task-deps/">Workflow tool makers: Allow defining data flow, not just task dependencies</a></h2>
-<h3 id="upsurge-in-workflow-tools">Upsurge in workflow tools</h3>
-<p><p class="image">
-    <img src="selection_201.png" alt="Workflow tool
-logos"  class="align_right" />
-</p>
-There
-seem to be a little upsurge in light-weight - often python-based -
-workflow tools for data pipelines in the last couple of years:
-Spotify&rsquo;s <a href="https://github.com/spotify/luigi" target="_blank" rel="noopener">Luigi</a>
-, OpenStack&rsquo;s
-<a href="https://wiki.openstack.org/wiki/Mistral" target="_blank" rel="noopener">Mistral</a>
-, Pinterest&rsquo;s
-<a href="https://github.com/pinterest/pinball" target="_blank" rel="noopener">Pinball</a>
-, and recently AirBnb&rsquo;s
-<a href="https://github.com/airbnb/airflow" target="_blank" rel="noopener">Airflow</a>
-, to name a few. These are
-all interesting tools, and it is an interesting trend for us at
-<a href="http://www.farmbio.uu.se/research/researchgroups/pb/?languageId=1" target="_blank" rel="noopener">pharmbio</a>
-,
-who try to see how we can use workflow tools to automate bio- and
-cheminformatics tasks on compute clusters.</p>
+Upsurge in workflow tools There seem to be a little upsurge in light-weight - often python-based - workflow tools for data pipelines in the last couple of years: Spotify&rsquo;s Luigi , OpenStack&rsquo;s Mistral , Pinterest&rsquo;s Pinball , and recently AirBnb&rsquo;s Airflow , to name a few. These are all interesting …
 </div>
 
   
@@ -102,82 +66,14 @@ cheminformatics tasks on compute clusters.</p>
 <a href="/posts/ebnf-parser-for-galaxy-toolconfig-syntax-with-antlr/"><img src="/posts/ebnf-parser-for-galaxy-toolconfig-syntax-with-antlr//screenshot-antlrworks_1_4_2.png" class="post-img-list"></a>
 
 <h2><a href="/posts/ebnf-parser-for-galaxy-toolconfig-syntax-with-antlr/">(E)BNF parser for parts of the Galaxy ToolConfig syntax with ANTLR</a></h2>
-<p>As
-<a href="http://saml.rilspace.com/fims-project-status-update-thinking-about-cli-wrapper-xml-formats" target="_blank" rel="noopener">blogged</a>
-
-earlier, I&rsquo;m currently into parsing the syntax of some definitions for
-the parameters and stuff of command line tools. As said in the linked
-blog post, I was pondering whether to use the <a href="https://bitbucket.org/galaxy/galaxy-central/wiki/ToolConfigSyntax" target="_blank" rel="noopener">Galaxy
-Toolconfig</a>
-
-format or the <a href="http://www.docbook.org/tdg/en/html/cmdsynopsis.html" target="_blank" rel="noopener">DocBook CmdSynopsis
-format</a>
-. It turned
-out though Well, that cmdsynopsis lacks the option to specify a list of
-valid choices, for a parameter, as is possible in the Galaxy ToolConfig
-format (see
-<a href="http://wiki.g2.bx.psu.edu/Admin/Tools/Tool%20Config%20Syntax#A.3Coptions.3E_tag_set" target="_blank" rel="noopener">here</a>
-),
-and thus can be used to generate drop-down lists in wizards etc. which
-is basically what I want to do &hellip; so, now I&rsquo;m going with the Galaxy
-format after all.</p>
+As blogged earlier, I&rsquo;m currently into parsing the syntax of some definitions for the parameters and stuff of command line tools. As said in the linked blog post, I was pondering whether to use the Galaxy Toolconfig format or the DocBook CmdSynopsis format . It turned out though Well, that cmdsynopsis lacks the …
 </div>
 
   
     <div class="post-card">
 
 <h2><a href="/posts/galaxy-toolconfig-to-docbook-cmdsynopsis/">Partial Galaxy ToolConfig to DocBook CmdSynopsis conversion with XSLT RegEx</a></h2>
-<!-- raw HTML omitted -->
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#000">&lt;tool</span> <span style="color:#836c28">id=</span><span style="color:#c41a16">&#34;sam_to_bam&#34;</span> <span style="color:#836c28">name=</span><span style="color:#c41a16">&#34;SAM-to-BAM&#34;</span> <span style="color:#836c28">version=</span><span style="color:#c41a16">&#34;1.1.1&#34;</span><span style="color:#000">&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;description&gt;</span>converts SAM format to BAM format<span style="color:#000">&lt;/description&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;requirements&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">&lt;requirement</span> <span style="color:#836c28">type=</span><span style="color:#c41a16">&#34;package&#34;</span><span style="color:#000">&gt;</span>samtools<span style="color:#000">&lt;/requirement&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;/requirements&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;command</span> <span style="color:#836c28">interpreter=</span><span style="color:#c41a16">&#34;python&#34;</span><span style="color:#000">&gt;</span>
-</span></span><span style="display:flex;"><span>    sam_to_bam.py
-</span></span><span style="display:flex;"><span>      --input1=$source.input1
-</span></span><span style="display:flex;"><span>      --dbkey=${input1.metadata.dbkey}
-</span></span><span style="display:flex;"><span>      #if $source.index_source == &#34;history&#34;:
-</span></span><span style="display:flex;"><span>        --ref_file=$source.ref_file
-</span></span><span style="display:flex;"><span>      #else
-</span></span><span style="display:flex;"><span>        --ref_file=&#34;None&#34;
-</span></span><span style="display:flex;"><span>      #end if
-</span></span><span style="display:flex;"><span>      --output1=$output1
-</span></span><span style="display:flex;"><span>      --index_dir=${GALAXY_DATA_INDEX_DIR}
-</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;/command&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;inputs&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">&lt;conditional</span> <span style="color:#836c28">name=</span><span style="color:#c41a16">&#34;source&#34;</span><span style="color:#000">&gt;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#000">&lt;param</span> <span style="color:#836c28">name=</span><span style="color:#c41a16">&#34;index_source&#34;</span> <span style="color:#836c28">type=</span><span style="color:#c41a16">&#34;select&#34;</span> <span style="color:#836c28">label=</span><span style="color:#c41a16">&#34;Choose the source for the reference list&#34;</span><span style="color:#000">&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">&lt;option</span> <span style="color:#836c28">value=</span><span style="color:#c41a16">&#34;cached&#34;</span><span style="color:#000">&gt;</span>Locally cached<span style="color:#000">&lt;/option&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">&lt;option</span> <span style="color:#836c28">value=</span><span style="color:#c41a16">&#34;history&#34;</span><span style="color:#000">&gt;</span>History<span style="color:#000">&lt;/option&gt;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#000">&lt;/param&gt;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#000">&lt;when</span> <span style="color:#836c28">value=</span><span style="color:#c41a16">&#34;cached&#34;</span><span style="color:#000">&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">&lt;param</span> <span style="color:#836c28">name=</span><span style="color:#c41a16">&#34;input1&#34;</span> <span style="color:#836c28">type=</span><span style="color:#c41a16">&#34;data&#34;</span> <span style="color:#836c28">format=</span><span style="color:#c41a16">&#34;sam&#34;</span> <span style="color:#836c28">label=</span><span style="color:#c41a16">&#34;SAM File to Convert&#34;</span><span style="color:#000">&gt;</span>
-</span></span><span style="display:flex;"><span>           <span style="color:#000">&lt;validator</span> <span style="color:#836c28">type=</span><span style="color:#c41a16">&#34;unspecified_build&#34;</span> <span style="color:#000">/&gt;</span>
-</span></span><span style="display:flex;"><span>           <span style="color:#000">&lt;validator</span> <span style="color:#836c28">type=</span><span style="color:#c41a16">&#34;dataset_metadata_in_file&#34;</span> <span style="color:#836c28">filename=</span><span style="color:#c41a16">&#34;sam_fa_indices.loc&#34;</span> <span style="color:#836c28">metadata_name=</span><span style="color:#c41a16">&#34;dbkey&#34;</span> <span style="color:#836c28">metadata_column=</span><span style="color:#c41a16">&#34;1&#34;</span> <span style="color:#836c28">message=</span><span style="color:#c41a16">&#34;Sequences are not currently available for the specified build.&#34;</span> <span style="color:#836c28">line_startswith=</span><span style="color:#c41a16">&#34;index&#34;</span> <span style="color:#000">/&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">&lt;/param&gt;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#000">&lt;/when&gt;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#000">&lt;when</span> <span style="color:#836c28">value=</span><span style="color:#c41a16">&#34;history&#34;</span><span style="color:#000">&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">&lt;param</span> <span style="color:#836c28">name=</span><span style="color:#c41a16">&#34;input1&#34;</span> <span style="color:#836c28">type=</span><span style="color:#c41a16">&#34;data&#34;</span> <span style="color:#836c28">format=</span><span style="color:#c41a16">&#34;sam&#34;</span> <span style="color:#836c28">label=</span><span style="color:#c41a16">&#34;Convert SAM file&#34;</span> <span style="color:#000">/&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">&lt;param</span> <span style="color:#836c28">name=</span><span style="color:#c41a16">&#34;ref_file&#34;</span> <span style="color:#836c28">type=</span><span style="color:#c41a16">&#34;data&#34;</span> <span style="color:#836c28">format=</span><span style="color:#c41a16">&#34;fasta&#34;</span> <span style="color:#836c28">label=</span><span style="color:#c41a16">&#34;Using reference file&#34;</span> <span style="color:#000">/&gt;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#000">&lt;/when&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">&lt;/conditional&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;/inputs&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;outputs&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">&lt;data</span> <span style="color:#836c28">format=</span><span style="color:#c41a16">&#34;bam&#34;</span> <span style="color:#836c28">name=</span><span style="color:#c41a16">&#34;output1&#34;</span> <span style="color:#836c28">label=</span><span style="color:#c41a16">&#34;${tool.name} on ${on_string}: converted BAM&#34;</span> <span style="color:#000">/&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;/outputs&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">&lt;/xml&gt;</span>
-</span></span></code></pre></div><p>&hellip; you see that in the <strong>command</strong> tag, the actual syntax of the
-command is specified in a kind of &ldquo;free text&rdquo; format &hellip; This might
-not be exactly what one might think to use XSLT transformations for, but
-together with the regex functionality in XSLT 2.0 you definitely has
-this option too. Helped by <a href="http://www.xml.com/pub/a/2003/06/04/tr.html" target="_blank" rel="noopener">this
-article</a>
- on xml.com, I put
-together this little XSLT stylesheet for parsing up the free text
-content of that command tag (haven&rsquo;t got to the more detailed config
-inside the inputs-tag in the galaxy format, but might not need either,
-if staying with the galaxy format anyway):</p>
+ &lt;tool id=&#34;sam_to_bam&#34; name=&#34;SAM-to-BAM&#34; version=&#34;1.1.1&#34;&gt; &lt;description&gt;converts SAM format to BAM format&lt;/description&gt; &lt;requirements&gt; &lt;requirement type=&#34;package&#34;&gt;samtools&lt;/requirement&gt; &lt;/requirements&gt; &lt;command interpreter=&#34;python&#34;&gt; …
 </div>
 
   

@@ -45,23 +45,7 @@
     <div class="post-card">
 
 <h2><a href="/posts/parsing-drugbank-xml-or-any-large-xml-file-in-streaming-mode-in-go/">Parsing DrugBank XML (or any large XML file) in streaming mode in Go</a></h2>
-<p>I had a problem in which I thought I needed to parse the full
-<a href="https://www.drugbank.ca" target="_blank" rel="noopener">DrugBank</a>
- dataset, which comes as a <a href="https://www.drugbank.ca/releases/5-0-11/downloads/all-full-database" target="_blank" rel="noopener">(670MB) XML file</a>
-</p>
-<p>(For open access papers describing DrugBank, see: <!-- raw HTML omitted -->[1]<!-- raw HTML omitted -->, <!-- raw HTML omitted -->[2]<!-- raw HTML omitted -->, <!-- raw HTML omitted -->[3]<!-- raw HTML omitted --> and <!-- raw HTML omitted -->[4]<!-- raw HTML omitted -->).<!-- raw HTML omitted --> It turned out what I needed was available as CSV
-files under &ldquo;<a href="https://www.drugbank.ca/releases/latest#structures" target="_blank" rel="noopener">Structure External
-Links</a>
-&rdquo;. There is probably
-still some other uses of this approach though, as the XML version of DrugBank
-seems to contain a lot more information in a single format. And in any case,
-this forced me to figure out how to parse large XML files in a streaming
-fashion in Go, as older tools like
-<a href="http://xmlstar.sourceforge.net/" target="_blank" rel="noopener">XMLStarlet</a>
- chokes for many minutes upon the
-DrugBank file (trying to read it all into memory?), killing any attempt at an
-iterative development cycle. And, it turns out Go&rsquo;s support for streaming XML
-parsing is just great!</p>
+I had a problem in which I thought I needed to parse the full DrugBank dataset, which comes as a (670MB) XML file (For open access papers describing DrugBank, see: [1], [2], [3] and [4]). It turned out what I needed was available as CSV files under &ldquo;Structure External Links &rdquo;. There is probably still some …
 </div>
 
   

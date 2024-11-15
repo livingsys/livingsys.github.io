@@ -47,18 +47,8 @@
 <a href="/posts/rewrite-of-scicommander-in-go/"><img src="/posts/rewrite-of-scicommander-in-go//scicommander-0.4.0.png" class="post-img-list"></a>
 
 <h2><a href="/posts/rewrite-of-scicommander-in-go/">Rewrite of Scicommander in Go with much improved algorithm</a></h2>
-<p>When I presented a poster about
-<a href="https://github.com/samuell/scicommander" target="_blank" rel="noopener">SciCommander</a>
- at the <a href="https://livesys.se/posts/scicommander-0.3/" target="_blank" rel="noopener">Swedish bioinformatics workshop</a>
- last year,
-I got a lot of awesome feedback from some great people including Fredrik
-Boulund, Johannes Alneberg and others, of which I unfortunately lost the names
-(please shout out if you read this!).</p>
-<p>(For those new to SciCommander, it is my attempt at creating a tool that can
-track complete provenance reports also for ad-hoc shell commands, not just
-those included in a pipeline. The grand plan is also to integrate this
-provenance tracking with those of popular pipelines, to enable seamless
-provenance report generation across pipelines and ad-hoc commands).</p>
+When I presented a poster about SciCommander at the Swedish bioinformatics workshop last year, I got a lot of awesome feedback from some great people including Fredrik Boulund, Johannes Alneberg and others, of which I unfortunately lost the names (please shout out if you read this!).
+(For those new to SciCommander, it …
 </div>
 
   
@@ -67,53 +57,9 @@ provenance report generation across pipelines and ad-hoc commands).</p>
 <a href="/posts/golang-for-bioinformatics/"><img src="/posts/golang-for-bioinformatics//gopherbinfie.jpg" class="post-img-list"></a>
 
 <h2><a href="/posts/golang-for-bioinformatics/">Why didn&#39;t Go get a breakthrough in bioinformatics (yet)?</a></h2>
-<p><p class="image">
-    <img src="gopherbinfie.jpg" alt="A gopher doing
-bioinformatics"  />
-</p>
-</p>
-<p>As we are - <a href="https://a16z.com/the-century-of-biology/" target="_blank" rel="noopener">according to some expert
-opinions</a>
- - living in the
-Century of Biology, I found it interesting to reflect on Go&rsquo;s usage
-within the field.</p>
-<p>Go has some great features that make it really well suited for biology,
-such as:</p>
-<ul>
-<li>A relatively simple language that can be learned in a short time
-even for people without a CS background. This is super important
-aspect for biologists.</li>
-<li>Fantastic support for cross-compilation into all major computer
-architectures and operating systems, as static, self-sufficient
-executables making it extremely simple to deploy tools, something
-that can&rsquo;t be said about the currently most popular bio language,
-Python.</li>
-<li>Fantastic support for concurrency and writing code as a set of
-parallell operations that streams data between them. Again, as
-opposed to Python. More on that later.</li>
-<li>A large standard library that contains a lot of common needs, even
-for writing user interfaces and web servers.</li>
-</ul>
-<p>Go has in fact garnered some use for bioinformatics tools over the years, with
-some indications that its use is increasing. Examples of popular tools and
-toolkits are <a href="https://github.com/shenwei356/seqkit" target="_blank" rel="noopener">SeqKit</a>
- (a veritable <em>swiss
-army knife</em> for bioinformatics), the <a href="https://github.com/biogo/biogo" target="_blank" rel="noopener">BioGo
-toolkit</a>
-, the <a href="https://github.com/pbenner/gonetics" target="_blank" rel="noopener">Gonetics
-package</a>
- and lately the <a href="https://github.com/vertgenlab/gonomics" target="_blank" rel="noopener">Gonomics
-package</a>
- and finally the
-<a href="https://github.com/bebop/poly" target="_blank" rel="noopener">Poly</a>
- package for synthetic biology. And this
-is besides heavy use in infrastructure-oriented projects like the
-<a href="https://www.benthos.dev" target="_blank" rel="noopener">Benthos</a>
- stream processing tool, the <a href="https://github.com/grailbio/reflow" target="_blank" rel="noopener">Reflow pipeline
-tool</a>
- and <a href="https://pachyderm.io/" target="_blank" rel="noopener">Pachyderm orchestration
-suite</a>
-.</p>
+ As we are - according to some expert opinions - living in the Century of Biology, I found it interesting to reflect on Go&rsquo;s usage within the field.
+Go has some great features that make it really well suited for biology, such as:
+A relatively simple language that can be learned in a short time even for people …
 </div>
 
   
@@ -122,18 +68,7 @@ suite</a>
 <a href="/posts/crystal-concurrency-easier-syntax-than-golang/"><img src="/posts/crystal-concurrency-easier-syntax-than-golang//selection_161-1.png" class="post-img-list"></a>
 
 <h2><a href="/posts/crystal-concurrency-easier-syntax-than-golang/">Crystal: Go-like concurrency with easier syntax</a></h2>
-<p>I have been playing around a lot with concurrency in Go over the years,
-resulting in libraries such as <a href="https://scipipe.org/" target="_blank" rel="noopener">SciPipe</a>
-,
-<a href="http://flowbase.org/" target="_blank" rel="noopener">FlowBase</a>
- and
-<a href="https://github.com/rdfio/rdf2smw/" target="_blank" rel="noopener">rdf2smw</a>
-. My main motivation for
-looking into Go has been the possibility to use it as a more performant,
-scaleable and type-safe alternative to Python for data heavy scripting
-tasks in bioinformatics and other fields I&rsquo;ve been dabbling in.
-Especially as it makes it so easy to write concurrent and parallel code
-in it. Be warned that this context is surely giving me some biases.</p>
+I have been playing around a lot with concurrency in Go over the years, resulting in libraries such as SciPipe , FlowBase and rdf2smw . My main motivation for looking into Go has been the possibility to use it as a more performant, scaleable and type-safe alternative to Python for data heavy scripting tasks in …
 </div>
 
   
@@ -142,15 +77,7 @@ in it. Be warned that this context is surely giving me some biases.</p>
 <a href="/posts/go-test-coverage-in-browser/"><img src="/posts/go-test-coverage-in-browser//selection_150.png" class="post-img-list"></a>
 
 <h2><a href="/posts/go-test-coverage-in-browser/">Viewing Go test coverage in the browser with one command</a></h2>
-<p>Go has some really nice tools for running tests and analyzing code. One
-of these functionalities is that you can generate coverage information
-when running tests, that can later be viewed in a browser using the
-<code>go tool cover</code> command. It turns out though, since doing it requires
-executing multiple commands after each other, it might be hard to
-remember the exact commands.</p>
-<p>To this end, I created a bash alias that does everything in one command,
-<code>gocov</code>. It looks like this (to be placed in your <code>~/.bash_aliases</code> file
-or similar:</p>
+Go has some really nice tools for running tests and analyzing code. One of these functionalities is that you can generate coverage information when running tests, that can later be viewed in a browser using the go tool cover command. It turns out though, since doing it requires executing multiple commands after each …
 </div>
 
   
@@ -159,36 +86,14 @@ or similar:</p>
 <a href="/posts/structured-go-routines-or-framework-less-flow-based-programming-in-go/"><img src="/posts/structured-go-routines-or-framework-less-flow-based-programming-in-go//selection_999_136.png" class="post-img-list"></a>
 
 <h2><a href="/posts/structured-go-routines-or-framework-less-flow-based-programming-in-go/">Structured Go-routines or framework-less Flow-Based Programming in Go</a></h2>
-<p>I was so happy the other day to find someone else who found the great
-benefits of a little pattern for how to structure pipeline-heavy
-programs in Go, which I described in a few posts before. I have been
-surprised to not find more people using this kind of pattern, which has
-been so extremely helpful to us, so I thought to take this opportunity
-to re-iterate it again, in the hopes that more people might get aware of
-it.</p>
+I was so happy the other day to find someone else who found the great benefits of a little pattern for how to structure pipeline-heavy programs in Go, which I described in a few posts before. I have been surprised to not find more people using this kind of pattern, which has been so extremely helpful to us, so I …
 </div>
 
   
     <div class="post-card">
 
 <h2><a href="/posts/parsing-drugbank-xml-or-any-large-xml-file-in-streaming-mode-in-go/">Parsing DrugBank XML (or any large XML file) in streaming mode in Go</a></h2>
-<p>I had a problem in which I thought I needed to parse the full
-<a href="https://www.drugbank.ca" target="_blank" rel="noopener">DrugBank</a>
- dataset, which comes as a <a href="https://www.drugbank.ca/releases/5-0-11/downloads/all-full-database" target="_blank" rel="noopener">(670MB) XML file</a>
-</p>
-<p>(For open access papers describing DrugBank, see: <!-- raw HTML omitted -->[1]<!-- raw HTML omitted -->, <!-- raw HTML omitted -->[2]<!-- raw HTML omitted -->, <!-- raw HTML omitted -->[3]<!-- raw HTML omitted --> and <!-- raw HTML omitted -->[4]<!-- raw HTML omitted -->).<!-- raw HTML omitted --> It turned out what I needed was available as CSV
-files under &ldquo;<a href="https://www.drugbank.ca/releases/latest#structures" target="_blank" rel="noopener">Structure External
-Links</a>
-&rdquo;. There is probably
-still some other uses of this approach though, as the XML version of DrugBank
-seems to contain a lot more information in a single format. And in any case,
-this forced me to figure out how to parse large XML files in a streaming
-fashion in Go, as older tools like
-<a href="http://xmlstar.sourceforge.net/" target="_blank" rel="noopener">XMLStarlet</a>
- chokes for many minutes upon the
-DrugBank file (trying to read it all into memory?), killing any attempt at an
-iterative development cycle. And, it turns out Go&rsquo;s support for streaming XML
-parsing is just great!</p>
+I had a problem in which I thought I needed to parse the full DrugBank dataset, which comes as a (670MB) XML file (For open access papers describing DrugBank, see: [1], [2], [3] and [4]). It turned out what I needed was available as CSV files under &ldquo;Structure External Links &rdquo;. There is probably still some …
 </div>
 
   
@@ -197,19 +102,7 @@ parsing is just great!</p>
 <a href="/posts/equation-centric-dataflow-programming-in-go/"><img src="/posts/equation-centric-dataflow-programming-in-go//loan.gif" class="post-img-list"></a>
 
 <h2><a href="/posts/equation-centric-dataflow-programming-in-go/">Equation-centric dataflow programming in Go</a></h2>
-<h2 id="mathematical-notation-and-dataflow-programming">Mathematical notation and dataflow programming</h2>
-<p>Even though computations done on computers are very often based on some
-type of math, it is striking that the notation used in math to express
-equations and relations is not always very readily converted into
-programming code. Outside of purely <a href="https://en.wikipedia.org/wiki/Symbolic_programming" target="_blank" rel="noopener">symbolic
-programming</a>
-
-languages like <a href="http://www.sagemath.org/" target="_blank" rel="noopener">sage math</a>
- or the
-(proprietary) <a href="https://www.wolfram.com/language" target="_blank" rel="noopener">Wolfram language</a>
-,
-there seem to always be quite a divide between the mathematical notation
-and the numerical implementation.</p>
+Mathematical notation and dataflow programming Even though computations done on computers are very often based on some type of math, it is striking that the notation used in math to express equations and relations is not always very readily converted into programming code. Outside of purely symbolic programming …
 </div>
 
   
@@ -218,59 +111,16 @@ and the numerical implementation.</p>
 <a href="/posts/golang-growing-in-bioinformatics-workflows/"><img src="/posts/golang-growing-in-bioinformatics-workflows//gopher_thinking_workflows.png" class="post-img-list"></a>
 
 <h2><a href="/posts/golang-growing-in-bioinformatics-workflows/">Go is growing in bioinformatics workflow tools</a></h2>
-<p><p class="image">
-    <img src="gopher_thinking_workflows.png" alt="Gopher thinking with logos of different workflow tools in the air"  />
-</p>
-</p>
-<ul>
-<li><strong>TL;DR: We wrote a post on gopherdata.io, about the growing ecosystem of
-Go-based workflow tools in bioinformatics. <a href="https://gopherdata.io/post/more_go_based_workflow_tools_in_bioinformatics/" target="_blank" rel="noopener">Go read it
-here</a>
-</strong></li>
-</ul>
-<p>It is interesting to note how Google&rsquo;s <a href="https://golang.org/" target="_blank" rel="noopener">Go programming
-language</a>
- seems to increase in popularity in
-bioinformatics.</p>
-<p>Just to give a sample of some of the Go based bioinformatics tools I&rsquo;ve
-stumbled upon, there is since a few years back, the <a href="https://github.com/biogo/biogo" target="_blank" rel="noopener">biogo
-library</a>
-, providing common functionality
-for bioinformatics tasks. It was recently reviewed in two great blog
-posts (<a href="https://medium.com/@boti_ka/a-gentle-introduction-to-b%C3%ADogo-part-i-65dbd40e31d4" target="_blank" rel="noopener">part
-I</a>
-,
-<a href="https://medium.com/@boti_ka/a-gentle-introduction-to-b%C3%ADogo-part-ii-1f0df1cf72f0" target="_blank" rel="noopener">part
-II</a>
-).
-Further, Brent Pedersen also wrote a little collection of Go based
-bioinfo tools, compiled down into a single static binary, called
-<a href="https://github.com/brentp/goleft" target="_blank" rel="noopener">goleft</a>
-, and finally, I there is the
-<a href="https://github.com/exascience/elprep" target="_blank" rel="noopener">elprep tool</a>
-, used to prepare
-.sam/.bam/.cram files for variant calling, which was published in a
-<a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0132868" target="_blank" rel="noopener">PLoS one
-paper</a>
-.
-Just a few examples.</p>
+ TL;DR: We wrote a post on gopherdata.io, about the growing ecosystem of Go-based workflow tools in bioinformatics. Go read it here It is interesting to note how Google&rsquo;s Go programming language seems to increase in popularity in bioinformatics.
+Just to give a sample of some of the Go based bioinformatics tools …
 </div>
 
   
     <div class="post-card">
 
 <h2><a href="/posts/range-over-multiple-go-channels/">(Almost) ranging over multiple Go channels simultaneously</a></h2>
-<!-- raw HTML omitted -->
-<p>Thus, optimally, one would want to use Go&rsquo;s handy <strong>range</strong> keyword for
-looping over multiple channels, since <strong>range</strong> takes care of closing
-the for-loop at the right time (when the inbound channel is closed). So
-something like this (<strong>N.B:</strong> non-working code!):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">for</span> <span style="color:#000">a</span>, <span style="color:#000">b</span>, <span style="color:#000">c</span> <span style="color:#000">:=</span> <span style="color:#a90d91">range</span> <span style="color:#000">chA</span>, <span style="color:#000">chB</span>, <span style="color:#000">chC</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#000">doSomething</span>(<span style="color:#000">a</span>, <span style="color:#000">b</span>, <span style="color:#000">c</span>)
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Unfortunately this is not possible, and probably for good reason (how
-would it know whether to close the loop when the first, or all of the
-channels are closed? etc).</p>
+ Thus, optimally, one would want to use Go&rsquo;s handy range keyword for looping over multiple channels, since range takes care of closing the for-loop at the right time (when the inbound channel is closed). So something like this (N.B: non-working code!):
+for a, b, c := range chA, chB, chC { doSomething(a, b, c) } …
 </div>
 
   
@@ -279,31 +129,9 @@ channels are closed? etc).</p>
 <a href="/posts/first-production-workflow-run-with-scipipe/"><img src="/posts/first-production-workflow-run-with-scipipe//terminal_411.png" class="post-img-list"></a>
 
 <h2><a href="/posts/first-production-workflow-run-with-scipipe/">First production run with SciPipe - A Go-based scientific workflow tool</a></h2>
-<p>Today marked the day when we ran the very first production workflow with
-<a href="http://scipipe.org" target="_blank" rel="noopener">SciPipe</a>
-, the <a href="https://golang.org/" target="_blank" rel="noopener">Go</a>
--based
-<a href="https://en.wikipedia.org/wiki/Scientific_workflow_system" target="_blank" rel="noopener">scientific workflow
-tool</a>
- we&rsquo;ve
-been working on over the last couple of years. Yay! :)</p>
-<p>This is how it looked (no fancy GUI or such yet, sorry):</p>
-<p><p class="image">
-    <img src="terminal_411.png" alt=""  />
-</p>
-</p>
-<p>The first result we got in this very very first job was a list of counts
-of ligands (chemical compounds) in the <a href="https://jcheminf.springeropen.com/articles/10.1186/s13321-017-0203-5" target="_blank" rel="noopener">ExcapeDB
-dataset</a>
-
-(<a href="https://zenodo.org/record/173258" target="_blank" rel="noopener">download here</a>
-) interacting with the
-44 protein/gene targets <a href="http://dx.doi.org/10.1038/nrd3845" target="_blank" rel="noopener">identified by Bowes et
-al</a>
- as a good baseline set for
-identifying hazardous side-effects effects in the body (that is, any
-chemical compounds binding these proteins, will never become an approved
-drug).</p>
+Today marked the day when we ran the very first production workflow with SciPipe , the Go -based scientific workflow tool we&rsquo;ve been working on over the last couple of years. Yay! :)
+This is how it looked (no fancy GUI or such yet, sorry):
+The first result we got in this very very first job was a list of counts …
 </div>
 
   
@@ -312,49 +140,14 @@ drug).</p>
 <a href="/posts/launching-kubernetes-jobs-from-the-go-api-notes-from-a-beginner/"><img src="/posts/launching-kubernetes-jobs-from-the-go-api-notes-from-a-beginner//selection_117.png" class="post-img-list"></a>
 
 <h2><a href="/posts/launching-kubernetes-jobs-from-the-go-api-notes-from-a-beginner/">Notes on launching kubernetes jobs from the Go API</a></h2>
-<p><em>This post is <a href="https://medium.com/@saml/launching-kubernetes-jobs-from-the-go-api-notes-from-a-beginner-2b34fbc502c0" target="_blank" rel="noopener">also published on
-medium</a>
-</em></p>
-<p>My current work at <a href="http://pharmb.io/" target="_blank" rel="noopener">pharmb.io</a>
- entails adding
-<a href="http://kubernetes.io/" target="_blank" rel="noopener">kubernetes</a>
- support to my light-weight Go-based
-scientific workflow engine,
-<a href="https://github.com/scipipe/scipipe" target="_blank" rel="noopener">scipipe</a>
- (kubernetes, or <em>k8s</em> for
-short, is Google&rsquo;s open source project for orchestrating container based
-compute clusters), which should take scipipe from a simple &ldquo;run it on
-your laptop&rdquo; workflow system with HPC support still in the work, to
-something that can power scientific workflows on any set of networked
-computers that can run kubernetes, which is quite a few (AWS, GCE,
-Azure, your Raspberry Phi cluster etc etc).</p>
+This post is also published on medium My current work at pharmb.io entails adding kubernetes support to my light-weight Go-based scientific workflow engine, scipipe (kubernetes, or k8s for short, is Google&rsquo;s open source project for orchestrating container based compute clusters), which should take scipipe from a …
 </div>
 
   
     <div class="post-card">
 
 <h2><a href="/posts/the-best-of-go-d-and-rust/">Combining the best of Go, D and Rust?</a></h2>
-<!-- raw HTML omitted -->
-<p>I&rsquo;ve been following the development of <a href="http://dlang.org" target="_blank" rel="noopener">D</a>
-,
-<a href="http://golang.org" target="_blank" rel="noopener">Go</a>
- and <a href="https://www.rust-lang.org/" target="_blank" rel="noopener">Rust</a>
- (and also
-<a href="http://www.freepascal.org/" target="_blank" rel="noopener">FreePascal</a>
- for <a href="https://github.com/NBISweden/mdc-file-export" target="_blank" rel="noopener">some use
-cases</a>
-) for some years
-(<a href="http://saml.rilspace.org/moar-languagez-gc-content-in-python-d-fpc-c-and-c" target="_blank" rel="noopener">been into some benchmarking for bioinfo
-tasks</a>
-),
-and now we finally have three (four, with fpc) stable statically
-compiled languages with some momentum behind them, meaning they all are
-past 1.0.</p>
-<p>While I have went with Go for <a href="http://scipipe.org" target="_blank" rel="noopener">current projects</a>
-, I
-still have a hard time &ldquo;totally falling in love&rdquo; with any single of
-these languages. They all fulfill different subsets of my wishlist for
-an optimal compiled data munging language.</p>
+ I&rsquo;ve been following the development of D , Go and Rust (and also FreePascal for some use cases ) for some years (been into some benchmarking for bioinfo tasks ), and now we finally have three (four, with fpc) stable statically compiled languages with some momentum behind them, meaning they all are past 1.0. …
 </div>
 
   
@@ -363,31 +156,8 @@ an optimal compiled data munging language.</p>
 <a href="/posts/how-i-would-like-to-write-golang/"><img src="/posts/how-i-would-like-to-write-golang//selection_301.png" class="post-img-list"></a>
 
 <h2><a href="/posts/how-i-would-like-to-write-golang/">How I would like to write Go programs</a></h2>
-<p><p class="image">
-    <img src="selection_301.png" alt=""  />
-</p>
-</p>
-<p>Some time ago I got a <a href="http://blog.gopheracademy.com/composable-pipelines-pattern" target="_blank" rel="noopener">post published on
-GopherAcademy</a>
-,
-outlining in detail how I think a <a href="http://www.jpaulmorrison.com/fbp" target="_blank" rel="noopener">flow-based
-programming</a>
- inspired syntax can
-strongly help to create clearer, easier-to-maintain, and more
-declarative Go programs.</p>
-<p>These ideas have since became clearer, and we (<a href="http://twitter.com/ola_spjuth" target="_blank" rel="noopener">Ola
-Spjuth</a>
-&rsquo;s <a href="http://www.farmbio.uu.se/research/researchgroups/pb/" target="_blank" rel="noopener">research group at
-pharmbio</a>
-) have
-successfully used them to make the workflow syntax for
-<a href="https://github.com/spotify/luigi" target="_blank" rel="noopener">Luigi</a>
- (Spotify&rsquo;s great workflow
-engine by <a href="http://twitter.com/fulhack" target="_blank" rel="noopener">Erik Bernhardsson</a>
- &amp; co)
-workflows easier, as implemented in the <a href="https://github.com/samuell/sciluigi#readme" target="_blank" rel="noopener">SciLuigi helper
-library</a>
-.</p>
+ Some time ago I got a post published on GopherAcademy , outlining in detail how I think a flow-based programming inspired syntax can strongly help to create clearer, easier-to-maintain, and more declarative Go programs.
+These ideas have since became clearer, and we (Ola Spjuth &rsquo;s research group at pharmbio ) …
 </div>
 
   
@@ -396,58 +166,17 @@ library</a>
 <a href="/posts/patterns-for-composable-concurrent-pipelines-in-go/"><img src="/posts/patterns-for-composable-concurrent-pipelines-in-go//selection_212.png" class="post-img-list"></a>
 
 <h2><a href="/posts/patterns-for-composable-concurrent-pipelines-in-go/">Patterns for composable concurrent pipelines in Go</a></h2>
-<p>I realize I didn&rsquo;t have a link to my blog on <a href="http://gopheracademy.com" target="_blank" rel="noopener">Gopher
-Academy</a>
-, on patterns for compoasable
-concurrent pipelines in Go(lang), so here it goes:</p>
-<ul>
-<li><a href="http://blog.gopheracademy.com/composable-pipelines-pattern" target="_blank" rel="noopener">blog.gopheracademy.com/composable-pipelines-pattern</a>
-</li>
-</ul>
-<p><p class="image">
-    <img src="selection_212.png" alt="Gopher academy screenshot"  />
-</p>
-</p>
+I realize I didn&rsquo;t have a link to my blog on Gopher Academy , on patterns for compoasable concurrent pipelines in Go(lang), so here it goes:
+blog.gopheracademy.com/composable-pipelines-pattern 
 </div>
 
   
     <div class="post-card">
 
 <h2><a href="/posts/smallest-pipeable-go-program/">The smallest pipeable go program</a></h2>
-<p>Edit: My original suggested way further below in the post is no way the
-&ldquo;smallest pipeable&rdquo; program, instead see this example (Credits: <a href="https://plus.google.com/&#43;AxelWagner_Merovius" target="_blank" rel="noopener">Axel Wagner</a>
-):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">package</span> <span style="color:#000">main</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> (
-</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;io&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;os&#34;</span>
-</span></span><span style="display:flex;"><span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">main</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#000">io</span>.<span style="color:#000">Copy</span>(<span style="color:#000">os</span>.<span style="color:#000">Stdout</span>, <span style="color:#000">os</span>.<span style="color:#000">Stdin</span>)
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>&hellip; or (credits: <a href="https://twitter.com/rogpeppe" target="_blank" rel="noopener">Roger Peppe</a>
-):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">package</span> <span style="color:#000">main</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> (
-</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;bufio&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;fmt&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;os&#34;</span>
-</span></span><span style="display:flex;"><span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">main</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">for</span> <span style="color:#000">scan</span> <span style="color:#000">:=</span> <span style="color:#000">bufio</span>.<span style="color:#000">NewScanner</span>(<span style="color:#000">os</span>.<span style="color:#000">Stdin</span>); <span style="color:#000">scan</span>.<span style="color:#000">Scan</span>(); {
-</span></span><span style="display:flex;"><span>        <span style="color:#000">fmt</span>.<span style="color:#000">Printf</span>(<span style="color:#c41a16">&#34;%s\n&#34;</span>, <span style="color:#000">scan</span>.<span style="color:#000">Text</span>())
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Ah, I just realized that the &ldquo;smallest pipeable&rdquo;
-<a href="http://golang.org" target="_blank" rel="noopener">Go</a>
-(lang) program is rather small, if using my
-<a href="https://github.com/samuell/glow" target="_blank" rel="noopener">little library of minimalistic streaming components</a>
-.
-Nothing more than:</p>
+Edit: My original suggested way further below in the post is no way the &ldquo;smallest pipeable&rdquo; program, instead see this example (Credits: Axel Wagner ):
+package main import ( &#34;io&#34; &#34;os&#34; ) func main() { io.Copy(os.Stdout, os.Stdin) } &hellip; or (credits: Roger Peppe ):
+package main import ( …
 </div>
 
   
@@ -456,24 +185,8 @@ Nothing more than:</p>
 <a href="/posts/profiling-and-call-graphs-for-golang/"><img src="/posts/profiling-and-call-graphs-for-golang//basecompl_blow_callgraph_crop.png" class="post-img-list"></a>
 
 <h2><a href="/posts/profiling-and-call-graphs-for-golang/">Profiling and creating call graphs for Go programs</a></h2>
-<p>In trying to get my head around the code of the very interesting
-<a href="https://github.com/trustmaster/goflow" target="_blank" rel="noopener">GoFlow</a>
- library, (for flow-based
-programming in Go), and the accompanying <a href="https://github.com/samuell/blow" target="_blank" rel="noopener">flow-based bioinformatics
-library</a>
- I started hacking on, I needed
-to get some kind of visualization (like a call graph) &hellip; something
-like this:</p>
-<p><p class="image">
-    <img src="basecompl_blow_callgraph_1.png" alt="Call graph"  />
-</p>
-</p>
-<p>(And in the end, that is what I got &hellip; read on &hellip; ) :)</p>
-<p>I then found out about the go tool pprof command, for which the Go team
-published a <a href="http://blog.golang.org/profiling-go-programs" target="_blank" rel="noopener">blog post</a>
- on
-<a href="http://blog.golang.org/profiling-go-programs" target="_blank" rel="noopener">here</a>
-.</p>
+In trying to get my head around the code of the very interesting GoFlow library, (for flow-based programming in Go), and the accompanying flow-based bioinformatics library I started hacking on, I needed to get some kind of visualization (like a call graph) &hellip; something like this:
+(And in the end, that is what I …
 </div>
 
   

@@ -47,15 +47,7 @@
 <a href="/posts/go-test-coverage-in-browser/"><img src="/posts/go-test-coverage-in-browser//selection_150.png" class="post-img-list"></a>
 
 <h2><a href="/posts/go-test-coverage-in-browser/">Viewing Go test coverage in the browser with one command</a></h2>
-<p>Go has some really nice tools for running tests and analyzing code. One
-of these functionalities is that you can generate coverage information
-when running tests, that can later be viewed in a browser using the
-<code>go tool cover</code> command. It turns out though, since doing it requires
-executing multiple commands after each other, it might be hard to
-remember the exact commands.</p>
-<p>To this end, I created a bash alias that does everything in one command,
-<code>gocov</code>. It looks like this (to be placed in your <code>~/.bash_aliases</code> file
-or similar:</p>
+Go has some really nice tools for running tests and analyzing code. One of these functionalities is that you can generate coverage information when running tests, that can later be viewed in a browser using the go tool cover command. It turns out though, since doing it requires executing multiple commands after each …
 </div>
 
   
@@ -64,17 +56,7 @@ or similar:</p>
 <a href="/posts/table-driven-tests-in-csharp/"><img src="/posts/table-driven-tests-in-csharp//selection_0023.png" class="post-img-list"></a>
 
 <h2><a href="/posts/table-driven-tests-in-csharp/">Table-driven tests in C#</a></h2>
-<p>Folks in the Go community have championed so called table-driven tests
-(see e.g. <a href="https://dave.cheney.net/2019/05/07/prefer-table-driven-tests" target="_blank" rel="noopener">this post by Dave
-Cheney</a>
-
-and the <a href="https://github.com/golang/go/wiki/TableDrivenTests" target="_blank" rel="noopener">Go wiki</a>
-)
-as a way to quickly and easily writing up a bunch of complete test cases
-with inputs and corresponding expected outputs, and looping over them to
-execute the function being tested. In short, the idea is to suggest a
-maximally short and convenient syntax to do this.</p>
-<p>For example, given that we have a function like this in mylibrary.go:</p>
+Folks in the Go community have championed so called table-driven tests (see e.g. this post by Dave Cheney and the Go wiki ) as a way to quickly and easily writing up a bunch of complete test cases with inputs and corresponding expected outputs, and looping over them to execute the function being tested. In short, the …
 </div>
 
   
@@ -83,17 +65,9 @@ maximally short and convenient syntax to do this.</p>
 <a href="/posts/the-role-of-simplicity-in-testing-and-automation/"><img src="/posts/the-role-of-simplicity-in-testing-and-automation//automation.png" class="post-img-list"></a>
 
 <h2><a href="/posts/the-role-of-simplicity-in-testing-and-automation/">The role of simplicity in testing and automation</a></h2>
-<p>Disclaimer: Don&rsquo;t take this too seriously &hellip; this is
-&ldquo;thinking-in-progress&rdquo; :)</p>
-<p>It just struck me the other minute, how simplicity is the key theme
-behind two very important areas in software development, that I&rsquo;ve been
-dabbling with quite a bit recently: Testing, and automation.</p>
-<p>Have you thought about how testing, in its essence, is: <em>Wrapping
-<strong>complex</strong> code, which you can&rsquo;t mentally comprehend completely, in
-<strong>simple</strong> code, that you can mentally comprehend, at least one test at
-a time.</em> Because, after all, if you can&rsquo;t easily comprehend your test
-code, as to make sure it is correct, by simply looking at it, you will
-have to <em>create even simpler tests that test your tests</em>!</p>
+Disclaimer: Don&rsquo;t take this too seriously &hellip; this is &ldquo;thinking-in-progress&rdquo; :)
+It just struck me the other minute, how simplicity is the key theme behind two very important areas in software development, that I&rsquo;ve been dabbling with quite a bit recently: Testing, and automation.
+Have you …
 </div>
 
   
