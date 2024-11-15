@@ -13,7 +13,7 @@
       <link>https://livesys.se/posts/installing-qubes-os/</link>
       <pubDate>Wed, 29 Dec 2021 06:59:00 +0100</pubDate>
       <guid>https://livesys.se/posts/installing-qubes-os/</guid>
-      <description>I just switched to Qubes OS as operating system on my main work laptop (a Dell Latitude). Or in fact, one of the reasons was to be able to combine work and private hobby coding projects, that&amp;rsquo;s increasinbly been happening on the same machine. Anyways, these are my experiences and notes, as a way to document caveats and quirks in case I need to do this again, while possibly also being of use for others.</description>
+      <description>&lt;p&gt;I just switched to &lt;a href=&#34;https://www.qubes-os.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Qubes OS&lt;/a&gt;&#xA; as operating&#xA;system on my main work laptop (a Dell Latitude). Or in fact, one of the&#xA;reasons was to be able to combine work and private hobby coding&#xA;projects, that&amp;rsquo;s increasinbly been happening on the same machine.&#xA;Anyways, these are my experiences and notes, as a way to document&#xA;caveats and quirks in case I need to do this again, while possibly also&#xA;being of use for others.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -6,28 +6,35 @@
     <description>Recent content in Genomics on Living Systems_</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 03 Mar 2015 20:45:00 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 12 Nov 2024 10:28:04 +0100</lastBuildDate>
     <atom:link href="https://livesys.se/tags/genomics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Learning Genomics and Bioinformatics in 2025</title>
+      <link>https://livesys.se/posts/learning-genomics-bioinformatics-in-2025/</link>
+      <pubDate>Tue, 12 Nov 2024 10:28:04 +0100</pubDate>
+      <guid>https://livesys.se/posts/learning-genomics-bioinformatics-in-2025/</guid>
+      <description>&lt;p&gt;Bioinformatics is growing in the clinical field, and in my job in a clinical&#xA;microbiology lab, I&amp;rsquo;m increasingly asked for tips about how to get into&#xA;bioinformatics or genomic data science.&lt;/p&gt;&#xA;&lt;p&gt;As I recently took the plunge into genomics from my PhD field of small&#xA;molecular structures and machine learning, as part of getting into my current&#xA;position, I thought to write down what I learned in the process.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-i-tried&#34;&gt;What I tried&lt;/h2&gt;&#xA;&lt;p&gt;I actually tried for years to get into genomics, and tried quite a few things,&#xA;most of which failed.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>NGS Bioinformatics Course Day 3: New Luigi helper tool, &#34;real-world&#34; NGS pipelines</title>
       <link>https://livesys.se/posts/ngs-bioinformatics-intro-course-day-3/</link>
       <pubDate>Tue, 03 Mar 2015 20:45:00 +0100</pubDate>
       <guid>https://livesys.se/posts/ngs-bioinformatics-intro-course-day-3/</guid>
-      <description>It turned out I didn&amp;rsquo;t have the time and strength to blog every day at the NGS Bioinformatics Intro course, so here comes a wrap up with some random notes and tidbits from the last days, including any concluding remarks!&#xA;These days we started working on a more realistic NGS pipeline, on analysing re-sequencing samples (slides , tutorial ).&#xA;First some outcome from this tutorial What do I mean with &amp;ldquo;outcome&amp;rdquo;?</description>
+      <description>&lt;p&gt;&lt;p class=&#34;image&#34;&gt;&#xA;    &lt;img src=&#34;ngsintro-coding.jpg&#34; alt=&#34;&#34;  /&gt;&#xA;&lt;/p&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;It turned out I didn&amp;rsquo;t have the time and strength to blog every day at&#xA;the NGS Bioinformatics Intro course, so here comes a wrap up with some&#xA;random notes and tidbits from the last days, including any concluding&#xA;remarks!&lt;/p&gt;&#xA;&lt;p&gt;These days we started working on a more realistic NGS pipeline, on&#xA;analysing re-sequencing samples&#xA;(&lt;a href=&#34;http://uppnex.se/twiki/pub/Courses/NgsIntro1502/Schedule/NGS_course_AJ_20150211.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;slides&lt;/a&gt;&#xA;,&#xA;&lt;a href=&#34;http://uppnex.se/twiki/do/view/Courses/NgsIntro1502/ResequencingAnalysis&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;tutorial&lt;/a&gt;&#xA;).&lt;/p&gt;&#xA;&lt;h2 id=&#34;first-some-outcome-from-this-tutorial&#34;&gt;First some outcome from this tutorial&lt;/h2&gt;&#xA;&lt;p&gt;What do I mean with &amp;ldquo;outcome&amp;rdquo;? Well, as I tried to manually copy and&#xA;paste the &lt;a href=&#34;http://uppnex.se/twiki/do/view/Courses/NgsIntro1502/ResequencingAnalysis.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;bag of hairy nasty long bash commandline strings in the&#xA;tutorial&#xA;pages&lt;/a&gt;&#xA;,&#xA;that all depended upon each other, I got so frustrated that I decided to&#xA;try to encode them in a workflow language / tool.&lt;/p&gt;</description>
     </item>
     <item>
       <title>NGS Bioinformatics Intro Course Day 2</title>
       <link>https://livesys.se/posts/ngs-bioinformatics-intro-course-day-2/</link>
       <pubDate>Tue, 10 Feb 2015 20:44:00 +0100</pubDate>
       <guid>https://livesys.se/posts/ngs-bioinformatics-intro-course-day-2/</guid>
-      <description>Today was the second day of the introductory course in NGS bioinformatics that I&amp;rsquo;m taking as part of my PhD studies.&#xA;For me it started with a substantial oversleep, probably due to a combination of an annoying cold and the ~2 hour commute from south Stockholm to Uppsala and BMC . Thus I missed some really interesting material (and tutorial ) on file types in NGS analysis, but will make sure to go through that in my free time during the week.</description>
+      <description>&lt;p&gt;Today was the second day of the &lt;a href=&#34;http://uppnex.se/twiki/do/view/Courses/NgsIntro1502/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;introductory course in NGS&#xA;bioinformatics&lt;/a&gt;&#xA;&#xA;that I&amp;rsquo;m taking as part of my PhD studies.&lt;/p&gt;&#xA;&lt;p&gt;&lt;p class=&#34;image&#34;&gt;&#xA;    &lt;img src=&#34;20150210_132439.jpg&#34; alt=&#34;&#34;  /&gt;&#xA;&lt;/p&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;For me it started with a substantial oversleep, probably due to a&#xA;combination of an annoying cold and the ~2 hour commute from south&#xA;Stockholm to Uppsala and &lt;a href=&#34;http://www.bmc.uu.se/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;BMC&lt;/a&gt;&#xA;. Thus I missed&#xA;some really interesting&#xA;&lt;a href=&#34;http://uppnex.se/twiki/pub/Courses/NgsIntro1502/Schedule/dahlo-filetypes.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;material&lt;/a&gt;&#xA;&#xA;(and&#xA;&lt;a href=&#34;http://uppnex.se/twiki/do/view/Courses/NgsIntro1502/FileTypes&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;tutorial&lt;/a&gt;&#xA;)&#xA;on file types in NGS analysis, but will make sure to go through that in&#xA;my free time during the week.&lt;/p&gt;</description>
     </item>
     <item>
       <title>NGS Bioinformatics Intro Course Day 1</title>
       <link>https://livesys.se/posts/ngs-intro-course-day-1/</link>
       <pubDate>Mon, 09 Feb 2015 20:44:00 +0100</pubDate>
       <guid>https://livesys.se/posts/ngs-intro-course-day-1/</guid>
-      <description>Just finished day 1 of the introductory course on Bioinformatics for Next generation sequencing data at Scilifelab Uppsala. Attaching a photo from one of the hands-on tutorial sessions, with the tutorial leaders, standing to the right.&#xA;Today&amp;rsquo;s content was mostly introductions to the linux commandline in general, and the UPPMAX HPC environment in particular, an area I&amp;rsquo;m already very familiar with, after two years as a sysadmin at UPPMAX. Thus, today I mostly got to help out the other students a bit.</description>
+      <description>&lt;p&gt;Just finished day 1 of the &lt;a href=&#34;samuel.lampa.co/posts/introductory-course-in-bioinformatics-for-ngs-data/&#34;&gt;introductory course on Bioinformatics for&#xA;Next generation sequencing&#xA;data&lt;/a&gt;&#xA;&#xA;at Scilifelab Uppsala. Attaching a photo from one of the hands-on&#xA;tutorial sessions, with the tutorial leaders, standing to the right.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;ngsintro.jpg&#34;&gt;&lt;p class=&#34;image&#34;&gt;&#xA;    &lt;img src=&#34;ngsintro.jpg&#34; alt=&#34;&#34;  /&gt;&#xA;&lt;/p&gt;&#xA;&lt;/a&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;Today&amp;rsquo;s content was mostly introductions to the linux commandline in&#xA;general, and the &lt;a href=&#34;http://www.uppmax.uu.se&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;UPPMAX HPC environment&lt;/a&gt;&#xA; in&#xA;particular, an area I&amp;rsquo;m already very familiar with, after two years as&#xA;a sysadmin at UPPMAX. Thus, today I mostly got to help out the other&#xA;students a bit.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

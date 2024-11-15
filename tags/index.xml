@@ -6,8 +6,22 @@
     <description>Recent content in Tags on Living Systems_</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 03 Sep 2024 11:15:02 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 12 Nov 2024 10:28:04 +0100</lastBuildDate>
     <atom:link href="https://livesys.se/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bioinformatics</title>
+      <link>https://livesys.se/tags/bioinformatics/</link>
+      <pubDate>Tue, 12 Nov 2024 10:28:04 +0100</pubDate>
+      <guid>https://livesys.se/tags/bioinformatics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Genomics</title>
+      <link>https://livesys.se/tags/genomics/</link>
+      <pubDate>Tue, 12 Nov 2024 10:28:04 +0100</pubDate>
+      <guid>https://livesys.se/tags/genomics/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Conferences</title>
       <link>https://livesys.se/tags/conferences/</link>
@@ -55,13 +69,6 @@
       <link>https://livesys.se/tags/microbiology/</link>
       <pubDate>Fri, 05 Jul 2024 16:23:00 +0200</pubDate>
       <guid>https://livesys.se/tags/microbiology/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Bioinformatics</title>
-      <link>https://livesys.se/tags/bioinformatics/</link>
-      <pubDate>Mon, 27 May 2024 12:44:00 +0200</pubDate>
-      <guid>https://livesys.se/tags/bioinformatics/</guid>
       <description></description>
     </item>
     <item>
@@ -489,13 +496,6 @@
       <link>https://livesys.se/tags/object-pascal/</link>
       <pubDate>Wed, 11 Mar 2015 20:45:00 +0100</pubDate>
       <guid>https://livesys.se/tags/object-pascal/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Genomics</title>
-      <link>https://livesys.se/tags/genomics/</link>
-      <pubDate>Tue, 03 Mar 2015 20:45:00 +0100</pubDate>
-      <guid>https://livesys.se/tags/genomics/</guid>
       <description></description>
     </item>
     <item>

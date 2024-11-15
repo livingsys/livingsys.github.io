@@ -45,8 +45,30 @@
     <div class="post-card">
 
 <h2><a href="/posts/static-copy-of-cms-website/">Creating a static copy of a Drupal, Wordpress or other CMS website</a></h2>
-wget -P . -mpck --html-extension -e robots=off --wait 0.5 &lt;URL&gt; To understand the flags, you can check man wget of course, but some explanations follow here:
--P - Tell where to store the site -m - Create a mirror -p - Download all the required files (.css, .js) needed to properly render the page -c - Continue getting partially downloaded files -k - Convert links to enable local viewing &ndash;html-extension - Add the .
+<!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget -P . -mpck --html-extension -e <span style="color:#000">robots</span><span style="color:#000">=</span>off --wait 0.5 &lt;URL&gt;
+</span></span></code></pre></div><p>To understand the flags, you can check <code>man wget</code> of course, but some
+explanations follow here:</p>
+<ul>
+<li>-P - Tell where to store the site</li>
+<li>-m - Create a mirror</li>
+<li>-p - Download all the required files (.css, .js) needed to properly
+render the page</li>
+<li>-c - Continue getting partially downloaded files</li>
+<li>-k - Convert links to enable local viewing</li>
+<li>&ndash;html-extension - Add the .html extension after file names. This
+is important since when serving the plain files, a web server such
+as NGinx need the .html extension to know that the files should be
+sent directly to the user&rsquo;s browser, not offered as a file to
+download. See below for how to redirect from old to new links.</li>
+<li>-e robots=off - Don&rsquo;t read the robots.txt file. Not sure exactly
+how this one works, but I got a lot of errors if not including it.</li>
+<li>&ndash;wait 0.5 - It is better to not overwhelm the web server where
+your site is hosted, by waiting a little between each page download.</li>
+</ul>
+<p>After finishing this command, you will have a folder with static
+HTML-files and other files, that you can just upload to your web server
+instead of your CMS.</p>
 </div>
 
   

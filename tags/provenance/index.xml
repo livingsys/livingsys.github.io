@@ -13,14 +13,14 @@
       <link>https://livesys.se/posts/rewrite-of-scicommander-in-go/</link>
       <pubDate>Tue, 03 Sep 2024 11:15:02 +0200</pubDate>
       <guid>https://livesys.se/posts/rewrite-of-scicommander-in-go/</guid>
-      <description>When I presented a poster about SciCommander at the Swedish bioinformatics workshop last year, I got a lot of awesome feedback from some great people including Fredrik Boulund, Johannes Alneberg and others, of which I unfortunately lost the names (please shout out if you read this!).&#xA;(For those new to SciCommander, it is my attempt at creating a tool that can track complete provenance reports also for ad-hoc shell commands, not just those included in a pipeline.</description>
+      <description>&lt;p&gt;When I presented a poster about&#xA;&lt;a href=&#34;https://github.com/samuell/scicommander&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SciCommander&lt;/a&gt;&#xA; at the &lt;a href=&#34;https://livesys.se/posts/scicommander-0.3/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Swedish bioinformatics workshop&lt;/a&gt;&#xA; last year,&#xA;I got a lot of awesome feedback from some great people including Fredrik&#xA;Boulund, Johannes Alneberg and others, of which I unfortunately lost the names&#xA;(please shout out if you read this!).&lt;/p&gt;&#xA;&lt;p&gt;(For those new to SciCommander, it is my attempt at creating a tool that can&#xA;track complete provenance reports also for ad-hoc shell commands, not just&#xA;those included in a pipeline. The grand plan is also to integrate this&#xA;provenance tracking with those of popular pipelines, to enable seamless&#xA;provenance report generation across pipelines and ad-hoc commands).&lt;/p&gt;</description>
     </item>
     <item>
       <title>On Provenance Reports in Scientific Workflows</title>
       <link>https://livesys.se/posts/provenance-reports-in-scientific-workflows/</link>
       <pubDate>Thu, 19 Oct 2017 11:44:00 +0200</pubDate>
       <guid>https://livesys.se/posts/provenance-reports-in-scientific-workflows/</guid>
-      <description>One of the more important tasks for a scientific workflow is to keep track of so called &amp;ldquo;provenance information&amp;rdquo; about its data outputs - information about how each data file was created. This is important so other researchers can easily replicate the study (re-run it with the same software and tools). It should also help for anyone wanting to reproduce it (re-run the same study design, possibly with other software and tools).</description>
+      <description>&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;One of the more important tasks for a scientific workflow is to keep&#xA;track of so called &amp;ldquo;provenance information&amp;rdquo; about its data outputs -&#xA;information about how each data file was created. This is important so&#xA;other researchers can easily replicate the study (re-run it with the&#xA;same software and tools). It should also help for anyone wanting to&#xA;reproduce it (re-run the same study design, possibly with other software&#xA;and tools).&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
