@@ -10,10 +10,10 @@
     <atom:link href="https://livesys.se/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Why is R so confusing? Because it is so hard to inspect</title>
-      <link>https://livesys.se/posts/why-is-r-so-confusion/</link>
+      <link>https://livesys.se/posts/why-is-r-so-confusing/</link>
       <pubDate>Fri, 28 Mar 2025 14:52:00 +0100</pubDate>
-      <guid>https://livesys.se/posts/why-is-r-so-confusion/</guid>
-      <description>&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;I&amp;rsquo;m not the only one who thinks the &lt;a href=&#34;https://www.r-project.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R language&lt;/a&gt;&#xA;&#xA;can be pretty frustrating at times.&lt;/p&gt;&#xA;&lt;p&gt;In fact, although I have been using it a dozen times over my career, every time&#xA;I have picked it up again after a hiatus, I have been completely lost.&lt;/p&gt;&#xA;&lt;p&gt;Many people have written about various aspects of why it is so confusing, and&#xA;some common themes are things like:&lt;/p&gt;</description>
+      <guid>https://livesys.se/posts/why-is-r-so-confusing/</guid>
+      <description>&lt;p&gt;&lt;p class=&#34;image&#34;&gt;&#xA;    &lt;img src=&#34;confused.png&#34; alt=&#34;Confused man trying to run some R code&#34;  /&gt;&#xA;&lt;/p&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;m not the only one who thinks the &lt;a href=&#34;https://www.r-project.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R language&lt;/a&gt;&#xA;&#xA;can be pretty frustrating at times.&lt;/p&gt;&#xA;&lt;p&gt;In fact, although I have been using it a dozen times over my career, every time&#xA;I have picked it up again after a hiatus, I have been completely lost.&lt;/p&gt;&#xA;&lt;p&gt;Many people have written about various aspects of why it is so confusing, and&#xA;some common themes are things like:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Learning Genomics and Bioinformatics in 2025</title>
