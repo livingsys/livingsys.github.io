@@ -6,12 +6,12 @@
     <description>Recent content in Home on Living Systems_</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 13 Feb 2025 14:24:47 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 28 Mar 2025 14:52:00 +0100</lastBuildDate>
     <atom:link href="https://livesys.se/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Why is R so confusing? Because it is so hard to inspect</title>
       <link>https://livesys.se/posts/why-is-r-so-confusion/</link>
-      <pubDate>Thu, 13 Feb 2025 14:24:47 +0100</pubDate>
+      <pubDate>Fri, 28 Mar 2025 14:52:00 +0100</pubDate>
       <guid>https://livesys.se/posts/why-is-r-so-confusion/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m not the only one who thinks the &lt;a href=&#34;https://www.r-project.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R language&lt;/a&gt;&#xA;&#xA;can be pretty frustrating at times.&lt;/p&gt;&#xA;&lt;p&gt;In fact, although I have been using it a dozen times over my career, every time&#xA;I have picked it up again after a hiatus, I have been completely lost.&lt;/p&gt;&#xA;&lt;p&gt;Many people have written about various aspects of why it is so confusing, and&#xA;some common themes are things like:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The 1-based indexing, as opposed to 0-based in Python&lt;/li&gt;&#xA;&lt;li&gt;The unusual &lt;code&gt;&amp;lt;-&lt;/code&gt; assignment operator (although &lt;code&gt;=&lt;/code&gt; works too)&lt;/li&gt;&#xA;&lt;li&gt;the fact that &lt;code&gt;.&lt;/code&gt; typically don&amp;rsquo;t mean accessing members of objects, but&#xA;rather is included in object names.&lt;/li&gt;&#xA;&lt;li&gt;The quite unusual &lt;code&gt;$&lt;/code&gt; operator to access some members of objects, such as&#xA;named columns (but not all object members, as we will see below).&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;I&amp;rsquo;m personally not very bothered by these quite surface- or syntax-level&#xA;differences though. These I can learn and just accept.&lt;/p&gt;</description>
     </item>
