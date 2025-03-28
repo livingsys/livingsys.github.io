@@ -1,0 +1,228 @@
++++
+title = "Why is R so confusing? Because it is so hard to inspect"
+date = 2025-02-13T14:24:47+01:00
+draft = false
+pid = 1200
+tags = ["rstats"]
++++
+
+I'm not the only one who thinks the [R language](https://www.r-project.org/)
+can be pretty frustrating at times.
+
+In fact, although I have been using it a dozen times over my career, every time
+I have picked it up again after a hiatus, I have been completely lost.
+
+Many people have written about various aspects of why it is so confusing, and
+some common themes are things like:
+
+- The 1-based indexing, as opposed to 0-based in Python
+- The unusual `<-` assignment operator (although `=` works too)
+- the fact that `.` typically don't mean accessing members of objects, but
+  rather is included in object names.
+- The quite unusual `$` operator to access some members of objects, such as
+  named columns (but not all object members, as we will see below).
+
+I'm personally not very bothered by these quite surface- or syntax-level
+differences though. These I can learn and just accept.
+
+After thinking quite a bit about it, I think what instead frustrates me the
+most is how hard it is to know how to inspect your objects and datatypes.
+
+That is, understanding how my data actually looks and is structured. Because
+that is what I increasingly find to be the most important thing to have a 100%
+clue about, in order to be able to verify that your or others' code does what
+you expect it to, or to understand how some new code operates.
+
+When you are not able to look at exactly what goes in and out of a function,
+you are working very much in the dark, and what you are doing is not so much
+computing as alchemy.
+
+To mention some good examples in this area to give an example, I mean how you are able
+to inspect objects very deeply in Python for example, by doing:
+
+```python
+l = [1,2,3]
+l.__dir__()
+```
+
+... to show a list of all the "public" and "internal" (starting with `__`) methods and fields
+that is available for this object.
+
+In this case, what you get is:
+
+```python
+>>> l.__dir__()
+> ['__new__', '__repr__', '__hash__', '__getattribute__', '__lt__', '__le__',
+> '__eq__', '__ne__', '__gt__', '__ge__', '__iter__', '__init__', '__len__',
+> '__getitem__', '__setitem__', '__delitem__', '__add__', '__mul__', '__rmul__',
+> '__contains__', '__iadd__', '__imul__', '__reversed__', '__sizeof__', 'clear',
+> 'copy', 'append', 'insert', 'extend', 'pop', 'remove', 'index', 'count',
+> 'reverse', 'sort', '__class_getitem__', '__doc__', '__str__', '__setattr__',
+> '__delattr__', '__reduce_ex__', '__reduce__', '__subclasshook__',
+> '__init_subclass__', '__format__', '__dir__', '__class__']
+```
+
+Here you can see that this list has a number of normal methods:
+
+```
+copy
+append
+insert
+extend
+pop
+remove
+index
+count
+reverse
+sort
+```
+
+... as well as a longer list of internal functions.
+
+In Python I feel that I can always use a few very simple techniques in order to
+inspect any data type.
+
+Granted, not all languages are as good in this regard as Python, but I feel that R
+really resides in the total opposite side of the spectrum.
+
+Below I will go into a few specific frustrations I have ran into, while also
+providing some tips for ways to work around it, based on a combination of
+techniques I've learned from others, together with some own small tricks.
+
+## Inconsistent and hard-to-read printing methods
+
+The various ways of peeking into the data of objects are:
+
+1. Not good at showing an overview of the data.
+2. Inconsistent and hard-to-read printing methods
+
+For number one, note that R is showing all the columns by default, which are
+broken up into multiple rows.  This means that even if you run a simple command
+such as `head(data)`, you will get a quite unreadable mess of broken rows.
+
+Then there is the fact that despite a flurry of methods to print overview information
+about objects such as:
+
+- `str()`
+- `head()`
+- `summary()`
+- `class()`
+- `dim()`
+- `typeof()`
+
+... these all tend to show different information, and few of them are really
+that useful for showing the structure of the data (well, `str()` does actually
+do something useful, but has a pretty confusing name. It is not for printing
+the object "as string" as in python. Rather it shows it's "structure". Good on
+you if you remember that!
+
+The `glimpse()` function from [Tidyverse package](https://www.tidyverse.org/)
+seems to do a bit of a better job actually, but the tidyverse is a rather big
+installation, and while worth it, is not something you would want to need to
+install just for very basic operations like looking at your data.
+
+## What to do about it
+
+What I found useful is to create a small custom function that shows only the
+top N colunns and rows, set to a number that keeps the output from breaking
+into multiple rows, such as this:
+
+```r
+p <- function(data) {
+    data[1:7, 1:7]
+}
+```
+
+Then you can use it on data types like ExpressionSets (from
+[Bioconductor](https://bioconductor.org/), and get an output like e.g. this:
+
+```r
+> p(edata)
+>                 ERS025098 ERS025092 ERS025085 ERS025088 ERS025089 ERS025082 ERS025081
+> ENSG00000000003      1354       216       215       924       725       125       796
+> ENSG00000000005       712       134         4      1495       119        20         7
+> ENSG00000000419       450       547       516       529       808       680       744
+> ENSG00000000457       188       368       196       386       156       259       436
+> ENSG00000000460        66        29         1        26        11         9        25
+> ENSG00000000938       104        79         7        29         0         3         1
+> ENSG00000000971         0         0         0         0         0         0         0
+```
+
+I at least personally find that this does a better job at looking into typical
+matrix-formed data structures than something like `head()`.
+
+Of course, adjust the number of rows/columns to your liking.
+
+## Lack of discoverability for function to operate on data types
+
+In R, the methods that you can apply on an object is in general not bound to
+that method. That is, you can not type `the_object.<TAB>` to get an
+auto-completion of the available methods to run for that object. And this goes
+even for methods that just exposes some parts of the datatype, for showing and
+- hold your hat - even setting this data, which is very very different from how
+most other languages work, and which can be extremely confusing at first.
+
+Typically you can find these methods mentioned in the help page of the package
+that implements the data type, but that typically requires a multi step process
+to look up since you might not immediately see which package implements a
+specific class, so you will have to figure that out, and only then can sit down
+and start reading, which might then take at least a few minutes.
+
+Needing to do this every time you want to access data from an object is simply
+outrageous.
+
+## What to do about it
+
+Somebody (reference to be added) pointed out that you can do the following
+to list the available method of a project:
+
+```r
+# Show methods
+methods = methods(class=class(your_object))
+methods
+
+# Show non-visible methods
+attr(methods, "info")
+```
+
+If the above does not work, there is also `showMethods()`, which is supposed to
+do the same thing for so called S4 classes, as opposed to S3 classes (I won't
+go into the details here, as I'm not an expert on R, and there are many other
+sources covering this much better anyways).
+
+Then of course you can create a small utility function for quickly showing the
+methods of objects too:
+
+```r
+m <- function(data) { methods(class=class(data)) }
+```
+
+...which you can then use like this (again with an ExpressionSet object as example):
+
+```r
+> m(edata)
+>  [1] annotatedDataFrameFrom anyDuplicated          as_tibble              as.data.frame
+   [5] as.raster              boxplot                coerce                 combine
+   [9] determinant            duplicated             edit                   ExpressionSet
+  [13] exprs<-                head                   initialize             isSymmetric
+  [17] Math                   Math2                  Ops                    relist
+  [21] rowMedians             rowQ                   snpCall<-              snpCallProbability<-
+  [25] subset                 summary                tail                   unique
+  see '?methods' for accessing help and source code
+```
+
+This is actually quite useful I think! Here, `exprs` is for example one of the
+core methods one will need to use to get your hands on the actual data, and it
+is listed in the output.
+
+## In summary
+
+So, in summary, indeed, R is very very confusing. But, there are also
+definitely some techniques you can put put under your belt to overcome some of
+its worst points of confusion.
+
+## Read more
+
+- [Why is R hard to learn](https://r4stats.com/articles/why-r-is-hard-to-learn/)
+- [An angry newcomers (angry) guide to R](https://arrgh.tim-smith.us/)
+- [What really makes R so hard to learn](https://www.theanalysisfactor.com/what-makes-r-so-hard-to-learn/)

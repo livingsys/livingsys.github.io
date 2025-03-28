@@ -2,6 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://livesys.se/posts/</loc>
+    <lastmod>2025-02-13T14:24:47+01:00</lastmod>
+  </url><url>
+    <loc>https://livesys.se/tags/rstats/</loc>
+    <lastmod>2025-02-13T14:24:47+01:00</lastmod>
+  </url><url>
+    <loc>https://livesys.se/tags/</loc>
+    <lastmod>2025-02-13T14:24:47+01:00</lastmod>
+  </url><url>
+    <loc>https://livesys.se/posts/why-is-r-so-confusion/</loc>
+    <lastmod>2025-02-13T14:24:47+01:00</lastmod>
+  </url><url>
     <loc>https://livesys.se/tags/bioinformatics/</loc>
     <lastmod>2024-11-12T10:28:04+01:00</lastmod>
   </url><url>
@@ -9,12 +21,6 @@
     <lastmod>2024-11-12T10:28:04+01:00</lastmod>
   </url><url>
     <loc>https://livesys.se/posts/learning-genomics-bioinformatics-in-2025/</loc>
-    <lastmod>2024-11-12T10:28:04+01:00</lastmod>
-  </url><url>
-    <loc>https://livesys.se/posts/</loc>
-    <lastmod>2024-11-12T10:28:04+01:00</lastmod>
-  </url><url>
-    <loc>https://livesys.se/tags/</loc>
     <lastmod>2024-11-12T10:28:04+01:00</lastmod>
   </url><url>
     <loc>https://livesys.se/tags/conferences/</loc>

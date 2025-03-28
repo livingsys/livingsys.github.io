@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Why is R so confusing? Because it is so hard to inspect | Living Systems_</title>
+
+      <link rel="stylesheet" href="/css/main.min.029837f0c3987a286167e526bfc9b74e9962449d138fc3d09f34d1bad58ff017.css" integrity="sha256-Apg38MOYeihhZ&#43;Umv8m3TpliRJ0Tj8PQnzTRutWP8Bc=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+
+
+</head>
+<body>
+  <header>
+    <h1><a href="/">Living Systems_</a></h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    <li>
+      <a href="/about/">About</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>Why is R so confusing? Because it is so hard to inspect</h1>
+
+  
+  
+  
+  <time datetime="2025-02-13T14:24:47&#43;01:00">February 13, 2025</time>
+
+  <p>I&rsquo;m not the only one who thinks the <a href="https://www.r-project.org/" target="_blank" rel="noopener">R language</a>
+
+can be pretty frustrating at times.</p>
+<p>In fact, although I have been using it a dozen times over my career, every time
+I have picked it up again after a hiatus, I have been completely lost.</p>
+<p>Many people have written about various aspects of why it is so confusing, and
+some common themes are things like:</p>
+<ul>
+<li>The 1-based indexing, as opposed to 0-based in Python</li>
+<li>The unusual <code>&lt;-</code> assignment operator (although <code>=</code> works too)</li>
+<li>the fact that <code>.</code> typically don&rsquo;t mean accessing members of objects, but
+rather is included in object names.</li>
+<li>The quite unusual <code>$</code> operator to access some members of objects, such as
+named columns (but not all object members, as we will see below).</li>
+</ul>
+<p>I&rsquo;m personally not very bothered by these quite surface- or syntax-level
+differences though. These I can learn and just accept.</p>
+<p>After thinking quite a bit about it, I think what instead frustrates me the
+most is how hard it is to know how to inspect your objects and datatypes.</p>
+<p>That is, understanding how my data actually looks and is structured. Because
+that is what I increasingly find to be the most important thing to have a 100%
+clue about, in order to be able to verify that your or others&rsquo; code does what
+you expect it to, or to understand how some new code operates.</p>
+<p>When you are not able to look at exactly what goes in and out of a function,
+you are working very much in the dark, and what you are doing is not so much
+computing as alchemy.</p>
+<p>To mention some good examples in this area to give an example, I mean how you are able
+to inspect objects very deeply in Python for example, by doing:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000">l</span> <span style="color:#000">=</span> [<span style="color:#1c01ce">1</span>,<span style="color:#1c01ce">2</span>,<span style="color:#1c01ce">3</span>]
+</span></span><span style="display:flex;"><span><span style="color:#000">l</span><span style="color:#000">.</span><span style="color:#000">__dir__</span>()
+</span></span></code></pre></div><p>&hellip; to show a list of all the &ldquo;public&rdquo; and &ldquo;internal&rdquo; (starting with <code>__</code>) methods and fields
+that is available for this object.</p>
+<p>In this case, what you get is:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000">&gt;&gt;&gt;</span> <span style="color:#000">l</span><span style="color:#000">.</span><span style="color:#000">__dir__</span>()
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> [<span style="color:#c41a16">&#39;__new__&#39;</span>, <span style="color:#c41a16">&#39;__repr__&#39;</span>, <span style="color:#c41a16">&#39;__hash__&#39;</span>, <span style="color:#c41a16">&#39;__getattribute__&#39;</span>, <span style="color:#c41a16">&#39;__lt__&#39;</span>, <span style="color:#c41a16">&#39;__le__&#39;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#c41a16">&#39;__eq__&#39;</span>, <span style="color:#c41a16">&#39;__ne__&#39;</span>, <span style="color:#c41a16">&#39;__gt__&#39;</span>, <span style="color:#c41a16">&#39;__ge__&#39;</span>, <span style="color:#c41a16">&#39;__iter__&#39;</span>, <span style="color:#c41a16">&#39;__init__&#39;</span>, <span style="color:#c41a16">&#39;__len__&#39;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#c41a16">&#39;__getitem__&#39;</span>, <span style="color:#c41a16">&#39;__setitem__&#39;</span>, <span style="color:#c41a16">&#39;__delitem__&#39;</span>, <span style="color:#c41a16">&#39;__add__&#39;</span>, <span style="color:#c41a16">&#39;__mul__&#39;</span>, <span style="color:#c41a16">&#39;__rmul__&#39;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#c41a16">&#39;__contains__&#39;</span>, <span style="color:#c41a16">&#39;__iadd__&#39;</span>, <span style="color:#c41a16">&#39;__imul__&#39;</span>, <span style="color:#c41a16">&#39;__reversed__&#39;</span>, <span style="color:#c41a16">&#39;__sizeof__&#39;</span>, <span style="color:#c41a16">&#39;clear&#39;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#c41a16">&#39;copy&#39;</span>, <span style="color:#c41a16">&#39;append&#39;</span>, <span style="color:#c41a16">&#39;insert&#39;</span>, <span style="color:#c41a16">&#39;extend&#39;</span>, <span style="color:#c41a16">&#39;pop&#39;</span>, <span style="color:#c41a16">&#39;remove&#39;</span>, <span style="color:#c41a16">&#39;index&#39;</span>, <span style="color:#c41a16">&#39;count&#39;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#c41a16">&#39;reverse&#39;</span>, <span style="color:#c41a16">&#39;sort&#39;</span>, <span style="color:#c41a16">&#39;__class_getitem__&#39;</span>, <span style="color:#c41a16">&#39;__doc__&#39;</span>, <span style="color:#c41a16">&#39;__str__&#39;</span>, <span style="color:#c41a16">&#39;__setattr__&#39;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#c41a16">&#39;__delattr__&#39;</span>, <span style="color:#c41a16">&#39;__reduce_ex__&#39;</span>, <span style="color:#c41a16">&#39;__reduce__&#39;</span>, <span style="color:#c41a16">&#39;__subclasshook__&#39;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#c41a16">&#39;__init_subclass__&#39;</span>, <span style="color:#c41a16">&#39;__format__&#39;</span>, <span style="color:#c41a16">&#39;__dir__&#39;</span>, <span style="color:#c41a16">&#39;__class__&#39;</span>]
+</span></span></code></pre></div><p>Here you can see that this list has a number of normal methods:</p>
+<pre tabindex="0"><code>copy
+append
+insert
+extend
+pop
+remove
+index
+count
+reverse
+sort
+</code></pre><p>&hellip; as well as a longer list of internal functions.</p>
+<p>In Python I feel that I can always use a few very simple techniques in order to
+inspect any data type.</p>
+<p>Granted, not all languages are as good in this regard as Python, but I feel that R
+really resides in the total opposite side of the spectrum.</p>
+<p>Below I will go into a few specific frustrations I have ran into, while also
+providing some tips for ways to work around it, based on a combination of
+techniques I&rsquo;ve learned from others, together with some own small tricks.</p>
+<h2 id="inconsistent-and-hard-to-read-printing-methods">Inconsistent and hard-to-read printing methods</h2>
+<p>The various ways of peeking into the data of objects are:</p>
+<ol>
+<li>Not good at showing an overview of the data.</li>
+<li>Inconsistent and hard-to-read printing methods</li>
+</ol>
+<p>For number one, note that R is showing all the columns by default, which are
+broken up into multiple rows.  This means that even if you run a simple command
+such as <code>head(data)</code>, you will get a quite unreadable mess of broken rows.</p>
+<p>Then there is the fact that despite a flurry of methods to print overview information
+about objects such as:</p>
+<ul>
+<li><code>str()</code></li>
+<li><code>head()</code></li>
+<li><code>summary()</code></li>
+<li><code>class()</code></li>
+<li><code>dim()</code></li>
+<li><code>typeof()</code></li>
+</ul>
+<p>&hellip; these all tend to show different information, and few of them are really
+that useful for showing the structure of the data (well, <code>str()</code> does actually
+do something useful, but has a pretty confusing name. It is not for printing
+the object &ldquo;as string&rdquo; as in python. Rather it shows it&rsquo;s &ldquo;structure&rdquo;. Good on
+you if you remember that!</p>
+<p>The <code>glimpse()</code> function from <a href="https://www.tidyverse.org/" target="_blank" rel="noopener">Tidyverse package</a>
+
+seems to do a bit of a better job actually, but the tidyverse is a rather big
+installation, and while worth it, is not something you would want to need to
+install just for very basic operations like looking at your data.</p>
+<h2 id="what-to-do-about-it">What to do about it</h2>
+<p>What I found useful is to create a small custom function that shows only the
+top N columns and rows, set to a number that keeps the output from breaking
+into multiple rows, such as this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">p</span> <span style="color:#000">&lt;-</span> <span style="color:#a90d91">function</span>(<span style="color:#000">data</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">data[1</span><span style="color:#000">:</span><span style="color:#1c01ce">7</span>, <span style="color:#1c01ce">1</span><span style="color:#000">:</span><span style="color:#1c01ce">7</span><span style="color:#000">]</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Then you can use it on data types like ExpressionSets (from
+<a href="https://bioconductor.org/" target="_blank" rel="noopener">Bioconductor</a>
+, and get an output like e.g. this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#000">p</span>(<span style="color:#000">edata</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span>                 <span style="color:#000">ERS025098</span> <span style="color:#000">ERS025092</span> <span style="color:#000">ERS025085</span> <span style="color:#000">ERS025088</span> <span style="color:#000">ERS025089</span> <span style="color:#000">ERS025082</span> <span style="color:#000">ERS025081</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#000">ENSG00000000003</span>      <span style="color:#1c01ce">1354</span>       <span style="color:#1c01ce">216</span>       <span style="color:#1c01ce">215</span>       <span style="color:#1c01ce">924</span>       <span style="color:#1c01ce">725</span>       <span style="color:#1c01ce">125</span>       <span style="color:#1c01ce">796</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#000">ENSG00000000005</span>       <span style="color:#1c01ce">712</span>       <span style="color:#1c01ce">134</span>         <span style="color:#1c01ce">4</span>      <span style="color:#1c01ce">1495</span>       <span style="color:#1c01ce">119</span>        <span style="color:#1c01ce">20</span>         <span style="color:#1c01ce">7</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#000">ENSG00000000419</span>       <span style="color:#1c01ce">450</span>       <span style="color:#1c01ce">547</span>       <span style="color:#1c01ce">516</span>       <span style="color:#1c01ce">529</span>       <span style="color:#1c01ce">808</span>       <span style="color:#1c01ce">680</span>       <span style="color:#1c01ce">744</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#000">ENSG00000000457</span>       <span style="color:#1c01ce">188</span>       <span style="color:#1c01ce">368</span>       <span style="color:#1c01ce">196</span>       <span style="color:#1c01ce">386</span>       <span style="color:#1c01ce">156</span>       <span style="color:#1c01ce">259</span>       <span style="color:#1c01ce">436</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#000">ENSG00000000460</span>        <span style="color:#1c01ce">66</span>        <span style="color:#1c01ce">29</span>         <span style="color:#1c01ce">1</span>        <span style="color:#1c01ce">26</span>        <span style="color:#1c01ce">11</span>         <span style="color:#1c01ce">9</span>        <span style="color:#1c01ce">25</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#000">ENSG00000000938</span>       <span style="color:#1c01ce">104</span>        <span style="color:#1c01ce">79</span>         <span style="color:#1c01ce">7</span>        <span style="color:#1c01ce">29</span>         <span style="color:#1c01ce">0</span>         <span style="color:#1c01ce">3</span>         <span style="color:#1c01ce">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#000">ENSG00000000971</span>         <span style="color:#1c01ce">0</span>         <span style="color:#1c01ce">0</span>         <span style="color:#1c01ce">0</span>         <span style="color:#1c01ce">0</span>         <span style="color:#1c01ce">0</span>         <span style="color:#1c01ce">0</span>         <span style="color:#1c01ce">0</span>
+</span></span></code></pre></div><p>I at least personally find that this does a better job at looking into typical
+matrix-formed data structures than something like <code>head()</code>.</p>
+<p>Of course, adjust the number of rows/columns to your liking.</p>
+<h2 id="lack-of-discoverability-for-function-to-operate-on-data-types">Lack of discoverability for function to operate on data types</h2>
+<p>In R, the methods that you can apply on an object is in general not bound to
+that method. That is, you can not type <code>the_object.&lt;TAB&gt;</code> to get an
+auto-completion of the available methods to run for that object. And this goes
+even for methods that just exposes some parts of the datatype, for showing and</p>
+<ul>
+<li>hold your hat - even setting this data, which is very very different from how
+most other languages work, and which can be extremely confusing at first.</li>
+</ul>
+<p>Typically you can find these methods mentioned in the help page of the package
+that implements the data type, but that typically requires a multi step process
+to look up since you might not immediately see which package implements a
+specific class, so you will have to figure that out, and only then can sit down
+and start reading, which might then take at least a few minutes.</p>
+<p>Needing to do this every time you want to access data from an object is simply
+outrageous.</p>
+<h2 id="what-to-do-about-it-1">What to do about it</h2>
+<p>Somebody (reference to be added) pointed out that you can do the following
+to list the available method of a project:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#177500"># Show methods</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">methods</span> <span style="color:#000">=</span> <span style="color:#000">methods</span>(<span style="color:#000">class</span><span style="color:#000">=</span><span style="color:#000">class</span>(<span style="color:#000">your_object</span>))
+</span></span><span style="display:flex;"><span><span style="color:#000">methods</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Show non-visible methods</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">attr</span>(<span style="color:#000">methods</span>, <span style="color:#c41a16">&#34;info&#34;</span>)
+</span></span></code></pre></div><p>If the above does not work, there is also <code>showMethods()</code>, which is supposed to
+do the same thing for so called S4 classes, as opposed to S3 classes (I won&rsquo;t
+go into the details here, as I&rsquo;m not an expert on R, and there are many other
+sources covering this much better anyways).</p>
+<p>Then of course you can create a small utility function for quickly showing the
+methods of objects too:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">m</span> <span style="color:#000">&lt;-</span> <span style="color:#a90d91">function</span>(<span style="color:#000">data</span>) { <span style="color:#000">methods</span>(<span style="color:#000">class</span><span style="color:#000">=</span><span style="color:#000">class</span>(<span style="color:#000">data</span>)) }
+</span></span></code></pre></div><p>&hellip;which you can then use like this (again with an ExpressionSet object as example):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#000">m</span>(<span style="color:#000">edata</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span>  <span style="color:#000">[1]</span> <span style="color:#000">annotatedDataFrameFrom</span> <span style="color:#000">anyDuplicated</span>          <span style="color:#000">as_tibble</span>              <span style="color:#000">as.data.frame</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#000">[5]</span> <span style="color:#000">as.raster</span>              <span style="color:#000">boxplot</span>                <span style="color:#000">coerce</span>                 <span style="color:#000">combine</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#000">[9]</span> <span style="color:#000">determinant</span>            <span style="color:#000">duplicated</span>             <span style="color:#000">edit</span>                   <span style="color:#000">ExpressionSet</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">[13]</span> <span style="color:#000">exprs</span><span style="color:#000">&lt;-</span>                <span style="color:#000">head</span>                   <span style="color:#000">initialize</span>             <span style="color:#000">isSymmetric</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">[17]</span> <span style="color:#000">Math</span>                   <span style="color:#000">Math2</span>                  <span style="color:#000">Ops</span>                    <span style="color:#000">relist</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">[21]</span> <span style="color:#000">rowMedians</span>             <span style="color:#000">rowQ</span>                   <span style="color:#000">snpCall</span><span style="color:#000">&lt;-</span>              <span style="color:#000">snpCallProbability</span><span style="color:#000">&lt;-</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">[25]</span> <span style="color:#000">subset</span>                 <span style="color:#000">summary</span>                <span style="color:#000">tail</span>                   <span style="color:#000">unique</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">see</span> <span style="color:#c41a16">&#39;?methods&#39;</span> <span style="color:#a90d91">for</span> <span style="color:#000">accessing</span> <span style="color:#000">help</span> <span style="color:#000">and</span> <span style="color:#000">source</span> <span style="color:#000">code</span>
+</span></span></code></pre></div><p>This is actually quite useful I think! Here, <code>exprs</code> is for example one of the
+core methods one will need to use to get your hands on the actual data, and it
+is listed in the output.</p>
+<h2 id="in-summary">In summary</h2>
+<p>So, in summary, indeed, R is very very confusing. But, there are also
+definitely some techniques you can put put under your belt to overcome some of
+its worst points of confusion.</p>
+<h2 id="read-more">Read more</h2>
+<ul>
+<li><a href="https://r4stats.com/articles/why-r-is-hard-to-learn/" target="_blank" rel="noopener">Why is R hard to learn</a>
+</li>
+<li><a href="https://arrgh.tim-smith.us/" target="_blank" rel="noopener">An angry newcomers (angry) guide to R</a>
+</li>
+<li><a href="https://www.theanalysisfactor.com/what-makes-r-so-hard-to-learn/" target="_blank" rel="noopener">What really makes R so hard to learn</a>
+</li>
+</ul>
+
+  
+  <div>
+    <ul class="tags">
+        <li><a href="/tags/rstats/" class="tag">Rstats</a></li>
+    </ul>
+  </div>
+
+
+  <div id="disqus_thread"></div>
+  <script>
+  
+
+  var disqus_config = function () {
+      this.page.url = "https://livesys.se/posts/why-is-r-so-confusion/";  
+      this.page.identifier =  1200 ; 
+  };
+  (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://bionicsit.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+  })();
+
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  </main>
+  <footer>
+    <p>Copyright &copy; 2025 Samuel Lampa. All rights reserved.
+Find me on <a href="https://orcid.org/0000-0001-6740-9212" target="_blank">ORCID</a>, <a href="https://github.com/samuell" target="_blank">GitHub</a>, <a href="https://twitter.com/smllmp" target="_blank">Twitter</a> or <a href="https://linkedin.com/in/smllmp" target="_blank">LinkedIn</a>.
+</p>
+
+  </footer>
+</body>
+</html>
