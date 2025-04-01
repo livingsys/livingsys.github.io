@@ -2,19 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://livesys.se/tags/linux/</loc>
-    <lastmod>2025-03-31T13:27:28+02:00</lastmod>
-  </url><url>
     <loc>https://livesys.se/posts/</loc>
     <lastmod>2025-03-31T13:27:28+02:00</lastmod>
   </url><url>
-    <loc>https://livesys.se/tags/</loc>
-    <lastmod>2025-03-31T13:27:28+02:00</lastmod>
-  </url><url>
-    <loc>https://livesys.se/posts/the-chroot-technique/</loc>
-    <lastmod>2025-03-31T13:27:28+02:00</lastmod>
-  </url><url>
     <loc>https://livesys.se/tags/rstats/</loc>
+    <lastmod>2025-03-28T14:52:00+01:00</lastmod>
+  </url><url>
+    <loc>https://livesys.se/tags/</loc>
     <lastmod>2025-03-28T14:52:00+01:00</lastmod>
   </url><url>
     <loc>https://livesys.se/posts/why-is-r-so-confusing/</loc>
@@ -111,6 +105,9 @@
     <lastmod>2023-01-01T08:00:00-07:00</lastmod>
   </url><url>
     <loc>https://livesys.se/tags/debian/</loc>
+    <lastmod>2022-03-24T04:50:00+01:00</lastmod>
+  </url><url>
+    <loc>https://livesys.se/tags/linux/</loc>
     <lastmod>2022-03-24T04:50:00+01:00</lastmod>
   </url><url>
     <loc>https://livesys.se/posts/installing-and-configuring-debian-11-into-a-great-experience/</loc>
