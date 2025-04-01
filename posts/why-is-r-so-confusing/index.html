@@ -240,7 +240,31 @@ its worst points of confusion.</p>
 <li><a href="https://www.theanalysisfactor.com/what-makes-r-so-hard-to-learn/" target="_blank" rel="noopener">What really makes R so hard to learn</a>
 </li>
 </ul>
+<h2 id="update-some-feedback">Update: Some feedback</h2>
+<p><a href="https://bsky.app/profile/johnmackintosh.bsky.social" target="_blank" rel="noopener">John MacKintosh</a>
 
+<a href="https://bsky.app/profile/johnmackintosh.bsky.social/post/3llitkvkuwk23" target="_blank" rel="noopener">suggested</a>
+
+the <code>skimr::skim()</code> method, which I found produces pretty nice output:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>  <span style="color:#000">&gt;</span> <span style="color:#000">skimr</span><span style="color:#000">::</span><span style="color:#000">skim</span>(<span style="color:#000">edata</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&gt;</span> ── <span style="color:#000">Data</span> <span style="color:#000">Summary</span> ────────────────────────
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&gt;</span>                            <span style="color:#000">Values</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&gt;</span> <span style="color:#000">Name</span>                       <span style="color:#000">edata</span> 
+</span></span><span style="display:flex;"><span><span style="color:#000">Number</span> <span style="color:#000">of</span> <span style="color:#000">rows</span>             <span style="color:#1c01ce">52580</span> 
+</span></span><span style="display:flex;"><span><span style="color:#000">Number</span> <span style="color:#000">of</span> <span style="color:#000">columns</span>          <span style="color:#1c01ce">129</span>   
+</span></span><span style="display:flex;"><span><span style="color:#000">_______________________</span>          
+</span></span><span style="display:flex;"><span><span style="color:#000">Column</span> <span style="color:#000">type</span> <span style="color:#000">frequency</span><span style="color:#000">:</span>           
+</span></span><span style="display:flex;"><span>  <span style="color:#000">numeric</span>                  <span style="color:#1c01ce">129</span>   
+</span></span><span style="display:flex;"><span>  <span style="color:#000">________________________</span>         
+</span></span><span style="display:flex;"><span>  <span style="color:#000">Group</span> <span style="color:#000">variables</span>            <span style="color:#000">None</span>  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  ── <span style="color:#000">Variable</span> <span style="color:#000">type</span><span style="color:#000">:</span> <span style="color:#000">numeric</span> ──────────────────────────────────────────────────────────────────────────
+</span></span><span style="display:flex;"><span>    <span style="color:#000">skim_variable</span> <span style="color:#000">n_missing</span> <span style="color:#000">complete_rate</span>  <span style="color:#000">mean</span>    <span style="color:#000">sd</span> <span style="color:#000">p0</span> <span style="color:#000">p25</span> <span style="color:#000">p50</span> <span style="color:#000">p75</span>  <span style="color:#000">p100</span> <span style="color:#000">hist</span> 
+</span></span><span style="display:flex;"><span>  <span style="color:#1c01ce">1</span> <span style="color:#000">NA06985</span>               <span style="color:#1c01ce">0</span>             <span style="color:#1c01ce">1</span> <span style="color:#1c01ce">21.5</span>  <span style="color:#1c01ce">232</span><span style="color:#000">. </span>  <span style="color:#1c01ce">0</span>   <span style="color:#1c01ce">0</span>   <span style="color:#1c01ce">0</span>   <span style="color:#1c01ce">0</span> <span style="color:#1c01ce">36671</span> ▇▁▁▁▁
+</span></span><span style="display:flex;"><span>  <span style="color:#1c01ce">2</span> <span style="color:#000">NA06986</span>               <span style="color:#1c01ce">0</span>             <span style="color:#1c01ce">1</span> <span style="color:#1c01ce">22.3</span>  <span style="color:#1c01ce">227</span><span style="color:#000">. </span>  <span style="color:#1c01ce">0</span>   <span style="color:#1c01ce">0</span>   <span style="color:#1c01ce">0</span>   <span style="color:#1c01ce">0</span> <span style="color:#1c01ce">36065</span> ▇▁▁▁▁
+</span></span><span style="display:flex;"><span>  <span style="color:#1c01ce">3</span> <span style="color:#000">NA06994</span>               <span style="color:#1c01ce">0</span>             <span style="color:#1c01ce">1</span> <span style="color:#1c01ce">17.0</span>  <span style="color:#1c01ce">187</span><span style="color:#000">. </span>  <span style="color:#1c01ce">0</span>   <span style="color:#1c01ce">0</span>   <span style="color:#1c01ce">0</span>   <span style="color:#1c01ce">0</span> <span style="color:#1c01ce">30852</span> ▇▁▁▁▁
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;</span><span style="color:#000">snip</span><span style="color:#000">&gt;</span>
+</span></span></code></pre></div>
   
   <div>
     <ul class="tags">
