@@ -6,8 +6,15 @@
     <description>Recent content in Home on Living Systems_</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 28 Mar 2025 14:52:00 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 31 Mar 2025 13:27:28 +0200</lastBuildDate>
     <atom:link href="https://livesys.se/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The chroot Technique - a Swiss army multitool for Linux systems</title>
+      <link>https://livesys.se/posts/the-chroot-technique/</link>
+      <pubDate>Mon, 31 Mar 2025 13:27:28 +0200</pubDate>
+      <guid>https://livesys.se/posts/the-chroot-technique/</guid>
+      <description>&lt;p&gt;Ever ran into a Linux box that just won&amp;rsquo;t boot, even after making sure that&#xA;BIOS settings are OK and that no major hardware errors are at hand?&lt;/p&gt;&#xA;&lt;p&gt;Then you need to know about the &lt;code&gt;chroot&lt;/code&gt; technique, which can be a real life&#xA;saver.&lt;/p&gt;&#xA;&lt;p&gt;I came across it only after having used Linux as my daily driver for more than&#xA;a decade, which means I think it is worthy of much more attention, given its&#xA;usefulness.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Why is R so confusing? Because it is so hard to inspect</title>
       <link>https://livesys.se/posts/why-is-r-so-confusing/</link>
