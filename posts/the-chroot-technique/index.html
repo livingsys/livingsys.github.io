@@ -56,9 +56,15 @@
 BIOS settings are OK and that no major hardware errors are at hand?</p>
 <p>Then you need to know about the <code>chroot</code> technique, which can be a real life
 saver.</p>
-<p>I came across it only after having used Linux as my daily driver for more than
-a decade, which means I think it is worthy of much more attention, given its
-usefulness.</p>
+<p>For example, I managed to repair a <a href="https://nanoporetech.com/products/sequence/gridion" target="_blank" rel="noopener">Nanopore GridION device</a>
+
+this way the other week, after the <a href="https://nanoporetech.com/document/gridion-user-manual#introduction-grid" target="_blank" rel="noopener">official method of re-installing it via an .iso file</a>
+
+failed, which reminded me to make the effort of documenting these steps.</p>
+<p>I came across the technique only after having used Linux as my daily driver for
+more than a decade, which means I think it is worthy of much more attention,
+given its usefulness. Thus I&rsquo;m hoping to spread the word a bit through this
+post.</p>
 <h2 id="tldr">TLDR</h2>
 <p>In short, the idea is that if you can access the hard drive of a broken or
 non-bootable Linux machine (this could be done e.g. by booting from a Live
@@ -113,10 +119,8 @@ filesystem size and type, whether they are already available in
 <pre tabindex="0"><code>/dev/nvme0n1p5
 </code></pre>&hellip; and that the <code>/boot</code> partition is in:
 <pre tabindex="0"><code>/dev/nvme0n1p3
-</code></pre>(These happen to be the case for a <a href="https://nanoporetech.com/products/sequence/gridion" target="_blank" rel="noopener">Nanopore GridION
-device</a>
- I repaired
-this way recently)</li>
+</code></pre>(These happen to be the case for the Nanopore GridION device I mentioned
+that I repaired this way recently).</li>
 </ul>
 </li>
 <li>Create a folder somewhere in your currently running system&rsquo;s file system, that will
@@ -161,6 +165,8 @@ which complained about some broken packages, and suggested us to run <code>sudo 
   <div>
     <ul class="tags">
         <li><a href="/tags/linux/" class="tag">Linux</a></li>
+        <li><a href="/tags/nanopore/" class="tag">Nanopore</a></li>
+        <li><a href="/tags/gridion/" class="tag">Gridion</a></li>
     </ul>
   </div>
 
