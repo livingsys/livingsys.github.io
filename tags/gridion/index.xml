@@ -6,12 +6,12 @@
     <description>Recent content in Gridion on Living Systems_</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 31 Mar 2025 13:27:28 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 08 Apr 2025 13:27:28 +0200</lastBuildDate>
     <atom:link href="https://livesys.se/tags/gridion/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The chroot Technique - a Swiss army multitool for Linux systems</title>
       <link>https://livesys.se/posts/the-chroot-technique/</link>
-      <pubDate>Mon, 31 Mar 2025 13:27:28 +0200</pubDate>
+      <pubDate>Tue, 08 Apr 2025 13:27:28 +0200</pubDate>
       <guid>https://livesys.se/posts/the-chroot-technique/</guid>
       <description>&lt;p&gt;&lt;p class=&#34;image&#34;&gt;&#xA;    &lt;img src=&#34;liveusb.png&#34; alt=&#34;Live USB stick&#34;  /&gt;&#xA;&lt;/p&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;Ever ran into a Linux box that just won&amp;rsquo;t boot, even after making sure that&#xA;BIOS settings are OK and that no major hardware errors are at hand?&lt;/p&gt;&#xA;&lt;p&gt;Then you need to know about the &lt;code&gt;chroot&lt;/code&gt; technique, which can be a real life&#xA;saver.&lt;/p&gt;&#xA;&lt;p&gt;For example, I managed to repair a &lt;a href=&#34;https://nanoporetech.com/products/sequence/gridion&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Nanopore GridION device&lt;/a&gt;&#xA;&#xA;this way the other week, after the &lt;a href=&#34;https://nanoporetech.com/document/gridion-user-manual#introduction-grid&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;official method of re-installing it via an .iso file&lt;/a&gt;&#xA;&#xA;failed, which reminded me to make the effort of documenting these steps.&lt;/p&gt;</description>
     </item>
