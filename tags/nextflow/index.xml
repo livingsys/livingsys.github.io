@@ -6,8 +6,15 @@
     <description>Recent content in Nextflow on Living Systems_</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 01 Nov 2023 11:47:00 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 16 May 2025 22:31:42 +0200</lastBuildDate>
     <atom:link href="https://livesys.se/tags/nextflow/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Setting up the Nextflow Language Server (LSP) with NeoVim</title>
+      <link>https://livesys.se/posts/nextflow-lsp-with-neovim/</link>
+      <pubDate>Fri, 16 May 2025 22:31:42 +0200</pubDate>
+      <guid>https://livesys.se/posts/nextflow-lsp-with-neovim/</guid>
+      <description>&lt;p&gt;&lt;p class=&#34;image&#34;&gt;&#xA;    &lt;img src=&#34;screenshot.png&#34; alt=&#34;Screenshot of Nextflow LSP in NeoVim in action showing a context menu&#34;  /&gt;&#xA;&lt;/p&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;It turns out it is actually super easy to get Nextflow code intelligence to&#xA;work in NeoVim now! This is thanks to the newly release language server.&lt;/p&gt;&#xA;&lt;p&gt;The focus has initially been on making this to work in VSCode, but through&#xA;some recent developments by the community, setting it up in NeoVim is also&#xA;pretty smooth.&lt;/p&gt;&#xA;&lt;p&gt;This is great for me who hardly can work outside the terminal, after having&#xA;just compounded too much effort into streamlining my workflow for terminal&#xA;based tools.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Troubleshooting Nextflow pipelines</title>
       <link>https://livesys.se/posts/troubleshooting-nextflow-pipelines/</link>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Setting up the Nextflow Language Server (LSP) with NeoVim | Living Systems_</title>
+
+      <link rel="stylesheet" href="/css/main.min.029837f0c3987a286167e526bfc9b74e9962449d138fc3d09f34d1bad58ff017.css" integrity="sha256-Apg38MOYeihhZ&#43;Umv8m3TpliRJ0Tj8PQnzTRutWP8Bc=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+
+
+
+</head>
+<body>
+  <header>
+    <h1><a href="/">Living Systems_</a></h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    <li>
+      <a href="/about/">About</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>Setting up the Nextflow Language Server (LSP) with NeoVim</h1>
+
+  
+  
+  
+  <time datetime="2025-05-16T22:31:42&#43;02:00">May 16, 2025</time>
+
+  <p><p class="image">
+    <img src="screenshot.png" alt="Screenshot of Nextflow LSP in NeoVim in action showing a context menu"  />
+</p>
+</p>
+<p>It turns out it is actually super easy to get Nextflow code intelligence to
+work in NeoVim now! This is thanks to the newly release language server.</p>
+<p>The focus has initially been on making this to work in VSCode, but through
+some recent developments by the community, setting it up in NeoVim is also
+pretty smooth.</p>
+<p>This is great for me who hardly can work outside the terminal, after having
+just compounded too much effort into streamlining my workflow for terminal
+based tools.</p>
+<p>Below is an attempt to document what steps I took to get this to work, which
+included migrating my config from classic vim, as it does not support the
+language server protocoll as far as I understand.</p>
+<h2 id="migrating-to-neovim">Migrating to NeoVim</h2>
+<p>NeoVim can be set to use classic vim config files such as <code>~/.vimrc</code>, but it stores
+these files in another location: <code>~/.config/nvim</code>. Here, you can use one of two
+possible types of config files:</p>
+<ol>
+<li><code>~/.config/nvim/init.nvim</code></li>
+<li><code>~/.config/nvim/init.lua</code></li>
+</ol>
+<p>You can use either of these locations, and write your config in classic VimScript,
+or in Lua, respectively.</p>
+<p>With option 1, you can simply copy your old <code>~/.vimrc</code> file to that location.</p>
+<p>The first caveat is that you can not use two different <code>init</code>-files simultaneously.</p>
+<p>The second caveat is that some configurations such as setting up LSP servers
+and clients, generally requires you to use the lua config.</p>
+<p>This means that if you - like me - don&rsquo;t want to re-create your classic vim
+config just yet (there&rsquo;s so much to learn), you have to do a small work-around:</p>
+<ol>
+<li>Rename your classic vim config to something else, like <code>~/.config/nvim/legacy.vim</code>.</li>
+<li>Then, inside your <code>init.lua</code>, you can start it with the following line:
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span><span style="color:#000">vim.cmd</span>(<span style="color:#c41a16">&#34;source ~/.config/nvim/levacy.vim&#34;</span>)
+</span></span></code></pre></div></li>
+<li>After that, you can add your lua-based configs for the lsp etc.</li>
+</ol>
+<h2 id="installing-the-nextflow-language-server">Installing the Nextflow language server</h2>
+<p>You need to install the Nextflow Language server next.</p>
+<p>The simplest way to do this is to just download the jar-file from the latest
+release which you can access from the <a href="https://github.com/nextflow-io/language-server/releases" target="_blank" rel="noopener">releases page</a>
+</p>
+<p>I did:</p>
+<ol>
+<li>Create a directory <code>~/opt/nfls</code></li>
+<li>Downloaded the file into this newly created directory.</li>
+</ol>
+<p>Note that running this jar file requires that you have Java installed on your
+system.</p>
+<h2 id="add-a-config-for-the-language-server-in-initlua">Add a config for the language server in <code>init.lua</code></h2>
+<p>Then, you can just add a couple of lines into your <code>init.lua</code> file, including
+a call to the Nextflow LSP jar file. I added this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span><span style="color:#000">vim.lsp</span>.<span style="color:#000">enable</span>(<span style="color:#c41a16">&#39;nextflow&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">vim.lsp</span>.<span style="color:#000">config</span>[<span style="color:#c41a16">&#39;nextflow&#39;</span>] <span style="color:#000">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#000">cmd</span> <span style="color:#000">=</span> { <span style="color:#c41a16">&#39;java&#39;</span>, <span style="color:#c41a16">&#39;-jar&#39;</span>, <span style="color:#c41a16">&#39;/home/shl/opt/nfls/language-server-all.jar&#39;</span> },
+</span></span><span style="display:flex;"><span>  <span style="color:#000">filetypes</span> <span style="color:#000">=</span> { <span style="color:#c41a16">&#39;nextflow&#39;</span>, <span style="color:#c41a16">&#39;nf&#39;</span>, <span style="color:#c41a16">&#39;groovy&#39;</span>, <span style="color:#c41a16">&#39;config&#39;</span> },
+</span></span><span style="display:flex;"><span>  <span style="color:#000">root_markers</span> <span style="color:#000">=</span> { <span style="color:#c41a16">&#39;nextflow.config&#39;</span>, <span style="color:#c41a16">&#39;.git&#39;</span> },
+</span></span><span style="display:flex;"><span>  <span style="color:#000">settings</span> <span style="color:#000">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">nextflow</span> <span style="color:#000">=</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#000">files</span> <span style="color:#000">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#000">exclude</span> <span style="color:#000">=</span> { <span style="color:#c41a16">&#39;.git&#39;</span>, <span style="color:#c41a16">&#39;.nf-test&#39;</span>, <span style="color:#c41a16">&#39;work&#39;</span> },
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Note that you need to configure the path to the <code>.jar</code>-file depending on where
+you put it.</p>
+<p>I also added a couple of keyboard shortcuts, so that I don&rsquo;t need to
+right-click with the mouse in neovim to access the code intelligence, which
+otherwise is the default:</p>
+<pre tabindex="0"><code>-- LSP keymap bindings
+vim.keymap.set(&#39;n&#39;, &#39;gd&#39;, vim.lsp.buf.definition, { desc = &#39;Go to Definition&#39; })
+vim.keymap.set(&#39;n&#39;, &#39;K&#39;, vim.lsp.buf.hover, { desc = &#39;Hover Documentation&#39; })
+vim.keymap.set(&#39;n&#39;, &#39;gi&#39;, vim.lsp.buf.implementation, { desc = &#39;Go to Implementation&#39; })
+vim.keymap.set(&#39;n&#39;, &#39;&lt;leader&gt;rn&#39;, vim.lsp.buf.rename, { desc = &#39;Rename Symbol&#39; })
+vim.keymap.set(&#39;n&#39;, &#39;gr&#39;, vim.lsp.buf.references, { desc = &#39;Find References&#39; })
+
+vim.keymap.set(&#34;n&#34;, &#34;&lt;leader&gt;d&#34;, function()
+  vim.diagnostic.open_float(0, { scope = &#39;line&#39; })
+end)
+</code></pre><h2 id="done">Done</h2>
+<p>By doing this, if you now open up a Nextflow file in NeoVim, you should now be
+able to right-click on various symbols and e.g. choose &ldquo;Go to definitions&rdquo; etc,
+or, if you have set up the keyboard shortcuts, you could use those as well.</p>
+
+  
+  <div>
+    <ul class="tags">
+        <li><a href="/tags/workflow-tools/" class="tag">Workflow-Tools</a></li>
+        <li><a href="/tags/nextflow/" class="tag">Nextflow</a></li>
+    </ul>
+  </div>
+
+
+  <div id="disqus_thread"></div>
+  <script>
+  
+
+  var disqus_config = function () {
+      this.page.url = "https://livesys.se/posts/nextflow-lsp-with-neovim/";  
+      this.page.identifier =  null ; 
+  };
+  (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://bionicsit.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+  })();
+
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  </main>
+  <footer>
+    <p>Copyright &copy; 2025 Samuel Lampa. All rights reserved.
+Find me on <a href="https://orcid.org/0000-0001-6740-9212" target="_blank">ORCID</a>, <a href="https://github.com/samuell" target="_blank">GitHub</a>, <a href="https://twitter.com/smllmp" target="_blank">Twitter</a> or <a href="https://linkedin.com/in/smllmp" target="_blank">LinkedIn</a>.
+</p>
+
+  </footer>
+</body>
+</html>

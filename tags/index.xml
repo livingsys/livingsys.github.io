@@ -6,8 +6,22 @@
     <description>Recent content in Tags on Living Systems_</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 08 Apr 2025 13:27:28 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 16 May 2025 22:31:42 +0200</lastBuildDate>
     <atom:link href="https://livesys.se/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nextflow</title>
+      <link>https://livesys.se/tags/nextflow/</link>
+      <pubDate>Fri, 16 May 2025 22:31:42 +0200</pubDate>
+      <guid>https://livesys.se/tags/nextflow/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Workflow-Tools</title>
+      <link>https://livesys.se/tags/workflow-tools/</link>
+      <pubDate>Fri, 16 May 2025 22:31:42 +0200</pubDate>
+      <guid>https://livesys.se/tags/workflow-tools/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Gridion</title>
       <link>https://livesys.se/tags/gridion/</link>
@@ -153,20 +167,6 @@
       <link>https://livesys.se/tags/python/</link>
       <pubDate>Mon, 04 Mar 2024 14:42:00 +0100</pubDate>
       <guid>https://livesys.se/tags/python/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Nextflow</title>
-      <link>https://livesys.se/tags/nextflow/</link>
-      <pubDate>Wed, 01 Nov 2023 11:47:00 +0100</pubDate>
-      <guid>https://livesys.se/tags/nextflow/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Workflow-Tools</title>
-      <link>https://livesys.se/tags/workflow-tools/</link>
-      <pubDate>Wed, 01 Nov 2023 11:47:00 +0100</pubDate>
-      <guid>https://livesys.se/tags/workflow-tools/</guid>
       <description></description>
     </item>
     <item>
