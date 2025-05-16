@@ -52,21 +52,26 @@
     <img src="screenshot.png" alt="Screenshot of Nextflow LSP in NeoVim in action showing a context menu"  />
 </p>
 </p>
-<p>It turns out it is actually super easy to get Nextflow code intelligence to
-work in NeoVim now! This is thanks to the newly release language server.</p>
-<p>The focus has initially been on making this to work in VSCode, but through
-some recent developments by the community, setting it up in NeoVim is also
-pretty smooth.</p>
-<p>This is great for me who hardly can work outside the terminal, after having
-just compounded too much effort into streamlining my workflow for terminal
-based tools.</p>
+<p>It turns out it is super easy to get Nextflow code intelligence to work in
+NeoVim now! This is thanks to the newly released <a href="https://github.com/nextflow-io/language-server" target="_blank" rel="noopener">Nextflow language server</a>
+
+following the increasingly popular Language Server Protocol (LSP).</p>
+<p>See <a href="https://seqera.io/podcasts/episode-47-nextflow-language-server/" target="_blank" rel="noopener">this episode of the Nextflow podcast</a>
+ for a
+more in-depth discussion on this new functionality.</p>
+<p>The focus has initially been on making this to work in the very popular Visual
+Studio Code editor, but through some recent developments by the community,
+setting it up in NeoVim is also pretty smooth.</p>
+<p>This is great for me who hardly can work outside the terminal after having
+compounded tons of effort into streamlining my workflow for terminal based
+tools.</p>
 <p>Below is an attempt to document what steps I took to get this to work, which
-included migrating my config from classic vim, as it does not support the
-language server protocoll as far as I understand.</p>
+included migrating my config from classic Vim, as the latter does not seem to
+support the language server protocol at all.</p>
 <h2 id="migrating-to-neovim">Migrating to NeoVim</h2>
 <p>NeoVim can be set to use classic vim config files such as <code>~/.vimrc</code>, but it stores
-these files in another location: <code>~/.config/nvim</code>. Here, you can use one of two
-possible types of config files:</p>
+these files in another location: <code>~/.config/nvim</code>. In this folder, you can use
+one of two possible types of config files:</p>
 <ol>
 <li><code>~/.config/nvim/init.nvim</code></li>
 <li><code>~/.config/nvim/init.lua</code></li>
@@ -74,17 +79,20 @@ possible types of config files:</p>
 <p>You can use either of these locations, and write your config in classic VimScript,
 or in Lua, respectively.</p>
 <p>With option 1, you can simply copy your old <code>~/.vimrc</code> file to that location.</p>
-<p>The first caveat is that you can not use two different <code>init</code>-files simultaneously.</p>
-<p>The second caveat is that some configurations such as setting up LSP servers
-and clients, generally requires you to use the lua config.</p>
-<p>This means that if you - like me - don&rsquo;t want to re-create your classic vim
-config just yet (there&rsquo;s so much to learn), you have to do a small work-around:</p>
+<p>There are two caveats to be aware of here though:</p>
+<p>The first is that you can not use two different <code>init</code>-files simultaneously.</p>
+<p>The second is that some configurations such as setting up LSP servers and
+clients generally requires you to use the lua config.</p>
+<p>This means that if you - like me - don&rsquo;t want to re-create your vim config from
+scratch in lua just yet (there&rsquo;s so much to learn), you have to do a small
+work-around:</p>
 <ol>
 <li>Rename your classic vim config to something else, like <code>~/.config/nvim/legacy.vim</code>.</li>
 <li>Then, inside your <code>init.lua</code>, you can start it with the following line:
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span><span style="color:#000">vim.cmd</span>(<span style="color:#c41a16">&#34;source ~/.config/nvim/levacy.vim&#34;</span>)
 </span></span></code></pre></div></li>
-<li>After that, you can add your lua-based configs for the lsp etc.</li>
+<li>After that, you can add the lua-based configs for the LSP, as we will go
+into below.</li>
 </ol>
 <h2 id="installing-the-nextflow-language-server">Installing the Nextflow language server</h2>
 <p>You need to install the Nextflow Language server next.</p>
@@ -99,8 +107,8 @@ release which you can access from the <a href="https://github.com/nextflow-io/la
 <p>Note that running this jar file requires that you have Java installed on your
 system.</p>
 <h2 id="add-a-config-for-the-language-server-in-initlua">Add a config for the language server in <code>init.lua</code></h2>
-<p>Then, you can just add a couple of lines into your <code>init.lua</code> file, including
-a call to the Nextflow LSP jar file. I added this:</p>
+<p>Then, you can just add a couple of lines into your <code>init.lua</code> file, including a
+call to the Nextflow LSP jar file. I added this:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span><span style="color:#000">vim.lsp</span>.<span style="color:#000">enable</span>(<span style="color:#c41a16">&#39;nextflow&#39;</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#000">vim.lsp</span>.<span style="color:#000">config</span>[<span style="color:#c41a16">&#39;nextflow&#39;</span>] <span style="color:#000">=</span> {
@@ -115,8 +123,8 @@ a call to the Nextflow LSP jar file. I added this:</p>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Note that you need to configure the path to the <code>.jar</code>-file depending on where
-you put it.</p>
+</span></span></code></pre></div><p>Note that you need to configure the path to the <code>.jar</code>-file in the <code>cmd</code>
+section, depending on where you put it.</p>
 <p>I also added a couple of keyboard shortcuts, so that I don&rsquo;t need to
 right-click with the mouse in neovim to access the code intelligence, which
 otherwise is the default:</p>
@@ -131,14 +139,14 @@ vim.keymap.set(&#34;n&#34;, &#34;&lt;leader&gt;d&#34;, function()
   vim.diagnostic.open_float(0, { scope = &#39;line&#39; })
 end)
 </code></pre><h2 id="done">Done</h2>
-<p>By doing this, if you now open up a Nextflow file in NeoVim, you should now be
-able to right-click on various symbols and e.g. choose &ldquo;Go to definitions&rdquo; etc,
-or, if you have set up the keyboard shortcuts, you could use those as well.</p>
+<p>These few steps should be enough!</p>
+<p>If you now open up a Nextflow file in NeoVim, you should now be able to
+right-click on various symbols and e.g. choose &ldquo;Go to definitions&rdquo; etc, or, if
+you have set up the keyboard shortcuts, you could use those as well.</p>
 <h2 id="one-tip-more">One tip more</h2>
-<p>If you also want syntax highlighting for Nextflow, you can have a look at <a href="https://github.com/Mxrcon/nextflow-vim" target="_blank" rel="noopener">this
-vim plugin</a>
-, which is the one I&rsquo;m
-using.</p>
+<p>If you also want syntax highlighting for Nextflow, you can have a look at <a href="https://github.com/Mxrcon/nextflow-vim" target="_blank" rel="noopener">this vim plugin</a>
+,
+which is the one I&rsquo;m using.</p>
 <h2 id="end">End</h2>
 <p>Hope you find this useful. Let me know in the comments if you have any further
 caveats to share!</p>
