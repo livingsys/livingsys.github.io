@@ -68,12 +68,17 @@ tools.</p>
 <p>Below is an attempt to document what steps I took to get this to work, which
 included migrating my config from classic Vim, as the latter does not seem to
 support the language server protocol at all.</p>
-<h2 id="adding-syntax-highlighting-support">Adding syntax highlighting support</h2>
-<p>Before starting to add the LSP functionality though, we might want to add basic
-syntax highlighting support as a foundation. This can be done through the
-<a href="https://github.com/nextflow-io/vim-language-nextflow" target="_blank" rel="noopener">official Nextflow vim plugin</a>
-,
-installed e.g. via your favourite plugin manager.</p>
+<h2 id="installing-neovim">Installing NeoVim</h2>
+<p><strong>Note:</strong> The rest of the post will assume that you are using an up to date
+version of NeoVim, of at least version v0.11. Otherwise the syntaxes will not work.</p>
+<p>As LSP support is only available in NeoVim, we need to switch to using only that,
+and thereby migrating any existing classic Vim configs.</p>
+<p>You can find information on how to install NeoVim <a href="https://github.com/neovim/neovim/blob/master/INSTALL.md" target="_blank" rel="noopener">on this page</a>
+.
+I&rsquo;m using Linux, and did use the <code>.AppImage</code> download, which I just downloaded
+into a folder that is in my path, renamed the file into <code>nvim</code>, and made it
+executable with <code>chmod u+x nvim</code>. (AppImage is a format that packs all
+dependencies into one single executable file).</p>
 <h2 id="migrating-to-neovim">Migrating to NeoVim</h2>
 <p>NeoVim can be set to use classic vim config files such as <code>~/.vimrc</code>, but it stores
 these files in another location: <code>~/.config/nvim</code>. In this folder, you can use
@@ -100,6 +105,12 @@ work-around:</p>
 <li>After that, you can add the lua-based configs for the LSP, as we will go
 into below.</li>
 </ol>
+<h2 id="adding-syntax-highlighting-support">Adding syntax highlighting support</h2>
+<p>Before starting to add the LSP functionality though, we might want to add basic
+syntax highlighting support as a foundation. This can be done through the
+<a href="https://github.com/nextflow-io/vim-language-nextflow" target="_blank" rel="noopener">official Nextflow vim plugin</a>
+,
+installed e.g. via your favourite plugin manager.</p>
 <h2 id="installing-the-nextflow-language-server">Installing the Nextflow language server</h2>
 <p>You need to install the Nextflow Language server next.</p>
 <p>The simplest way to do this is to just download the jar-file from the latest
@@ -167,6 +178,7 @@ easier to hand-create the config myself.</p>
 <li>2025-05-17, 10:13 CST: Pointing to the <a href="https://github.com/nextflow-io/vim-language-nextflow" target="_blank" rel="noopener">official vim plugin</a>
 
 for syntax highlighting support.</li>
+<li>2025-05-17, 10:58 CST: Added info on installing NeoVim, and the required NeoVim version.</li>
 </ul>
 
   
