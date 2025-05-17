@@ -68,6 +68,12 @@ tools.</p>
 <p>Below is an attempt to document what steps I took to get this to work, which
 included migrating my config from classic Vim, as the latter does not seem to
 support the language server protocol at all.</p>
+<h2 id="adding-syntax-highlighting-support">Adding syntax highlighting support</h2>
+<p>Before starting to add the LSP functionality though, we might want to add basic
+syntax highlighting support as a foundation. This can be done through the
+<a href="https://github.com/nextflow-io/vim-language-nextflow" target="_blank" rel="noopener">official Nextflow vim plugin</a>
+,
+installed e.g. via your favourite plugin manager.</p>
 <h2 id="migrating-to-neovim">Migrating to NeoVim</h2>
 <p>NeoVim can be set to use classic vim config files such as <code>~/.vimrc</code>, but it stores
 these files in another location: <code>~/.config/nvim</code>. In this folder, you can use
@@ -143,10 +149,6 @@ otherwise is the default:</p>
 <p>If you now open up a Nextflow file in NeoVim, you should now be able to
 right-click on various symbols and e.g. choose &ldquo;Go to definitions&rdquo; etc, or, if
 you have set up the keyboard shortcuts, you could use those as well.</p>
-<h2 id="one-tip-more">One tip more</h2>
-<p>If you also want syntax highlighting for Nextflow, you can have a look at <a href="https://github.com/Mxrcon/nextflow-vim" target="_blank" rel="noopener">this vim plugin</a>
-,
-which is the one I&rsquo;m using.</p>
 <h2 id="end">End</h2>
 <p>Hope you find this useful. Let me know in the comments if you have any further
 caveats to share!</p>
