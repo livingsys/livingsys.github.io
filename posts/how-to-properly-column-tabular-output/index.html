@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>How to Properly Column Tabular Output | Living Systems_</title>
+
+      <link rel="stylesheet" href="/css/main.min.029837f0c3987a286167e526bfc9b74e9962449d138fc3d09f34d1bad58ff017.css" integrity="sha256-Apg38MOYeihhZ&#43;Umv8m3TpliRJ0Tj8PQnzTRutWP8Bc=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+
+
+
+</head>
+<body>
+  <header>
+    <h1><a href="/">Living Systems_</a></h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    <li>
+      <a href="/about/">About</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>How to Properly Column Tabular Output</h1>
+
+  
+  
+  
+  <time datetime="2026-01-02T10:50:17&#43;01:00">January 2, 2026</time>
+
+  <p>In bioinformatics we are handling a lot of tabular data. Be it VCF files,
+tabular Blast output, or just creating a CSV or TSV samplesheet.</p>
+<p>Actually, one of my favorite tabular formats is by using SeqKit to convert
+Fasta or FastQ files to tabular format, as this allows to do various filtering
+operations <em>by row</em>, using standard unix tools if so wished.</p>
+<p>Scrolling through this type of data in the terminal can be messy to say the
+least though.</p>
+<p>Although CSVs can of course be imported into a spreadsheet software for
+viewing, it would be very powerful to be able to view them comfortably right
+from the terminal, isn&rsquo;t it?</p>
+<p>To take one example that fits within the code window of a blog post, let&rsquo;s take
+a selected set of columns from the CSV output from the Mykrobe tool. And to make
+it emulate another common problem with many csv formats, let&rsquo;s also use <code>tr</code> to
+convert the <code>_</code>:s in the headers into real spaces (Mykrobe does not do this,
+but many other tools do):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat SOME_SAMPLE.csv | cut -d, -f 2,3,10,14,15,17,18 | tr <span style="color:#c41a16">&#39;_&#39;</span> <span style="color:#c41a16">&#39; &#39;</span> &gt; selection.csv
+</span></span><span style="display:flex;"><span>$ cat selection.csv
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;drug&#34;</span>,<span style="color:#c41a16">&#34;susceptibility&#34;</span>,<span style="color:#c41a16">&#34;kmer size&#34;</span>,<span style="color:#c41a16">&#34;phylo group per covg&#34;</span>,<span style="color:#c41a16">&#34;species per covg&#34;</span>,<span style="color:#c41a16">&#34;phylo group depth&#34;</span>,<span style="color:#c41a16">&#34;species depth&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Amikacin&#34;</span>,<span style="color:#c41a16">&#34;S&#34;</span>,<span style="color:#c41a16">&#34;21&#34;</span>,<span style="color:#c41a16">&#34;99.672&#34;</span>,<span style="color:#c41a16">&#34;98.428&#34;</span>,<span style="color:#c41a16">&#34;372&#34;</span>,<span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Capreomycin&#34;</span>,<span style="color:#c41a16">&#34;S&#34;</span>,<span style="color:#c41a16">&#34;21&#34;</span>,<span style="color:#c41a16">&#34;99.672&#34;</span>,<span style="color:#c41a16">&#34;98.428&#34;</span>,<span style="color:#c41a16">&#34;372&#34;</span>,<span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Ciprofloxacin&#34;</span>,<span style="color:#c41a16">&#34;S&#34;</span>,<span style="color:#c41a16">&#34;21&#34;</span>,<span style="color:#c41a16">&#34;99.672&#34;</span>,<span style="color:#c41a16">&#34;98.428&#34;</span>,<span style="color:#c41a16">&#34;372&#34;</span>,<span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Delamanid&#34;</span>,<span style="color:#c41a16">&#34;S&#34;</span>,<span style="color:#c41a16">&#34;21&#34;</span>,<span style="color:#c41a16">&#34;99.672&#34;</span>,<span style="color:#c41a16">&#34;98.428&#34;</span>,<span style="color:#c41a16">&#34;372&#34;</span>,<span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Ethambutol&#34;</span>,<span style="color:#c41a16">&#34;S&#34;</span>,<span style="color:#c41a16">&#34;21&#34;</span>,<span style="color:#c41a16">&#34;99.672&#34;</span>,<span style="color:#c41a16">&#34;98.428&#34;</span>,<span style="color:#c41a16">&#34;372&#34;</span>,<span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Ethionamide&#34;</span>,<span style="color:#c41a16">&#34;S&#34;</span>,<span style="color:#c41a16">&#34;21&#34;</span>,<span style="color:#c41a16">&#34;99.672&#34;</span>,<span style="color:#c41a16">&#34;98.428&#34;</span>,<span style="color:#c41a16">&#34;372&#34;</span>,<span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Isoniazid&#34;</span>,<span style="color:#c41a16">&#34;R&#34;</span>,<span style="color:#c41a16">&#34;21&#34;</span>,<span style="color:#c41a16">&#34;99.672&#34;</span>,<span style="color:#c41a16">&#34;98.428&#34;</span>,<span style="color:#c41a16">&#34;372&#34;</span>,<span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Kanamycin&#34;</span>,<span style="color:#c41a16">&#34;S&#34;</span>,<span style="color:#c41a16">&#34;21&#34;</span>,<span style="color:#c41a16">&#34;99.672&#34;</span>,<span style="color:#c41a16">&#34;98.428&#34;</span>,<span style="color:#c41a16">&#34;372&#34;</span>,<span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Levofloxacin&#34;</span>,<span style="color:#c41a16">&#34;S&#34;</span>,<span style="color:#c41a16">&#34;21&#34;</span>,<span style="color:#c41a16">&#34;99.672&#34;</span>,<span style="color:#c41a16">&#34;98.428&#34;</span>,<span style="color:#c41a16">&#34;372&#34;</span>,<span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Linezolid&#34;</span>,<span style="color:#c41a16">&#34;S&#34;</span>,<span style="color:#c41a16">&#34;21&#34;</span>,<span style="color:#c41a16">&#34;99.672&#34;</span>,<span style="color:#c41a16">&#34;98.428&#34;</span>,<span style="color:#c41a16">&#34;372&#34;</span>,<span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Moxifloxacin&#34;</span>,<span style="color:#c41a16">&#34;S&#34;</span>,<span style="color:#c41a16">&#34;21&#34;</span>,<span style="color:#c41a16">&#34;99.672&#34;</span>,<span style="color:#c41a16">&#34;98.428&#34;</span>,<span style="color:#c41a16">&#34;372&#34;</span>,<span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Ofloxacin&#34;</span>,<span style="color:#c41a16">&#34;S&#34;</span>,<span style="color:#c41a16">&#34;21&#34;</span>,<span style="color:#c41a16">&#34;99.672&#34;</span>,<span style="color:#c41a16">&#34;98.428&#34;</span>,<span style="color:#c41a16">&#34;372&#34;</span>,<span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Pyrazinamide&#34;</span>,<span style="color:#c41a16">&#34;S&#34;</span>,<span style="color:#c41a16">&#34;21&#34;</span>,<span style="color:#c41a16">&#34;99.672&#34;</span>,<span style="color:#c41a16">&#34;98.428&#34;</span>,<span style="color:#c41a16">&#34;372&#34;</span>,<span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Rifampicin&#34;</span>,<span style="color:#c41a16">&#34;S&#34;</span>,<span style="color:#c41a16">&#34;21&#34;</span>,<span style="color:#c41a16">&#34;99.672&#34;</span>,<span style="color:#c41a16">&#34;98.428&#34;</span>,<span style="color:#c41a16">&#34;372&#34;</span>,<span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Streptomycin&#34;</span>,<span style="color:#c41a16">&#34;R&#34;</span>,<span style="color:#c41a16">&#34;21&#34;</span>,<span style="color:#c41a16">&#34;99.672&#34;</span>,<span style="color:#c41a16">&#34;98.428&#34;</span>,<span style="color:#c41a16">&#34;372&#34;</span>,<span style="color:#c41a16">&#34;347&#34;</span>
+</span></span></code></pre></div><p>As you can see, here it is really not that easy to even follow individual
+columns, much less link headers to columns.</p>
+<p>To improve the situation here a bit, we can convert the commas to tabs, using
+the <code>tr</code> command:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat selection.csv | tr <span style="color:#c41a16">&#34;,&#34;</span> <span style="color:#c41a16">&#34;\t&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;drug&#34;</span>  <span style="color:#c41a16">&#34;susceptibility&#34;</span>        <span style="color:#c41a16">&#34;kmer size&#34;</span>     <span style="color:#c41a16">&#34;phylo group per covg&#34;</span>  <span style="color:#c41a16">&#34;species per covg&#34;</span>      <span style="color:#c41a16">&#34;phylo group depth&#34;</span>     <span style="color:#c41a16">&#34;species depth&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Amikacin&#34;</span>      <span style="color:#c41a16">&#34;S&#34;</span>     <span style="color:#c41a16">&#34;21&#34;</span>    <span style="color:#c41a16">&#34;99.672&#34;</span>        <span style="color:#c41a16">&#34;98.428&#34;</span>        <span style="color:#c41a16">&#34;372&#34;</span>   <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Capreomycin&#34;</span>   <span style="color:#c41a16">&#34;S&#34;</span>     <span style="color:#c41a16">&#34;21&#34;</span>    <span style="color:#c41a16">&#34;99.672&#34;</span>        <span style="color:#c41a16">&#34;98.428&#34;</span>        <span style="color:#c41a16">&#34;372&#34;</span>   <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Ciprofloxacin&#34;</span> <span style="color:#c41a16">&#34;S&#34;</span>     <span style="color:#c41a16">&#34;21&#34;</span>    <span style="color:#c41a16">&#34;99.672&#34;</span>        <span style="color:#c41a16">&#34;98.428&#34;</span>        <span style="color:#c41a16">&#34;372&#34;</span>   <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Delamanid&#34;</span>     <span style="color:#c41a16">&#34;S&#34;</span>     <span style="color:#c41a16">&#34;21&#34;</span>    <span style="color:#c41a16">&#34;99.672&#34;</span>        <span style="color:#c41a16">&#34;98.428&#34;</span>        <span style="color:#c41a16">&#34;372&#34;</span>   <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Ethambutol&#34;</span>    <span style="color:#c41a16">&#34;S&#34;</span>     <span style="color:#c41a16">&#34;21&#34;</span>    <span style="color:#c41a16">&#34;99.672&#34;</span>        <span style="color:#c41a16">&#34;98.428&#34;</span>        <span style="color:#c41a16">&#34;372&#34;</span>   <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Ethionamide&#34;</span>   <span style="color:#c41a16">&#34;S&#34;</span>     <span style="color:#c41a16">&#34;21&#34;</span>    <span style="color:#c41a16">&#34;99.672&#34;</span>        <span style="color:#c41a16">&#34;98.428&#34;</span>        <span style="color:#c41a16">&#34;372&#34;</span>   <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Isoniazid&#34;</span>     <span style="color:#c41a16">&#34;R&#34;</span>     <span style="color:#c41a16">&#34;21&#34;</span>    <span style="color:#c41a16">&#34;99.672&#34;</span>        <span style="color:#c41a16">&#34;98.428&#34;</span>        <span style="color:#c41a16">&#34;372&#34;</span>   <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Kanamycin&#34;</span>     <span style="color:#c41a16">&#34;S&#34;</span>     <span style="color:#c41a16">&#34;21&#34;</span>    <span style="color:#c41a16">&#34;99.672&#34;</span>        <span style="color:#c41a16">&#34;98.428&#34;</span>        <span style="color:#c41a16">&#34;372&#34;</span>   <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Levofloxacin&#34;</span>  <span style="color:#c41a16">&#34;S&#34;</span>     <span style="color:#c41a16">&#34;21&#34;</span>    <span style="color:#c41a16">&#34;99.672&#34;</span>        <span style="color:#c41a16">&#34;98.428&#34;</span>        <span style="color:#c41a16">&#34;372&#34;</span>   <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Linezolid&#34;</span>     <span style="color:#c41a16">&#34;S&#34;</span>     <span style="color:#c41a16">&#34;21&#34;</span>    <span style="color:#c41a16">&#34;99.672&#34;</span>        <span style="color:#c41a16">&#34;98.428&#34;</span>        <span style="color:#c41a16">&#34;372&#34;</span>   <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Moxifloxacin&#34;</span>  <span style="color:#c41a16">&#34;S&#34;</span>     <span style="color:#c41a16">&#34;21&#34;</span>    <span style="color:#c41a16">&#34;99.672&#34;</span>        <span style="color:#c41a16">&#34;98.428&#34;</span>        <span style="color:#c41a16">&#34;372&#34;</span>   <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Ofloxacin&#34;</span>     <span style="color:#c41a16">&#34;S&#34;</span>     <span style="color:#c41a16">&#34;21&#34;</span>    <span style="color:#c41a16">&#34;99.672&#34;</span>        <span style="color:#c41a16">&#34;98.428&#34;</span>        <span style="color:#c41a16">&#34;372&#34;</span>   <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Pyrazinamide&#34;</span>  <span style="color:#c41a16">&#34;S&#34;</span>     <span style="color:#c41a16">&#34;21&#34;</span>    <span style="color:#c41a16">&#34;99.672&#34;</span>        <span style="color:#c41a16">&#34;98.428&#34;</span>        <span style="color:#c41a16">&#34;372&#34;</span>   <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Rifampicin&#34;</span>    <span style="color:#c41a16">&#34;S&#34;</span>     <span style="color:#c41a16">&#34;21&#34;</span>    <span style="color:#c41a16">&#34;99.672&#34;</span>        <span style="color:#c41a16">&#34;98.428&#34;</span>        <span style="color:#c41a16">&#34;372&#34;</span>   <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Streptomycin&#34;</span>  <span style="color:#c41a16">&#34;R&#34;</span>     <span style="color:#c41a16">&#34;21&#34;</span>    <span style="color:#c41a16">&#34;99.672&#34;</span>        <span style="color:#c41a16">&#34;98.428&#34;</span>        <span style="color:#c41a16">&#34;372&#34;</span>   <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span></code></pre></div><p>Well, now we at least can clearly follow individual columns. But the headers
+don&rsquo;t align that well.</p>
+<p>To fix this, what we can do is use the <code>column -t</code> command, which will
+straighten up the columns for us nicely:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat selection.csv | tr <span style="color:#c41a16">&#39;,&#39;</span> <span style="color:#c41a16">&#39; &#39;</span> |  column -t
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;drug&#34;</span>           <span style="color:#c41a16">&#34;susceptibility&#34;</span>  <span style="color:#c41a16">&#34;kmer  size&#34;</span>     <span style="color:#c41a16">&#34;phylo    group  per    covg&#34;</span>  <span style="color:#c41a16">&#34;species  per  covg&#34;</span>  <span style="color:#c41a16">&#34;phylo  group  depth&#34;</span>  <span style="color:#c41a16">&#34;species  depth&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Amikacin&#34;</span>       <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>   <span style="color:#c41a16">&#34;99.672&#34;</span>  <span style="color:#c41a16">&#34;98.428&#34;</span>  <span style="color:#c41a16">&#34;372&#34;</span>  <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Capreomycin&#34;</span>    <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>   <span style="color:#c41a16">&#34;99.672&#34;</span>  <span style="color:#c41a16">&#34;98.428&#34;</span>  <span style="color:#c41a16">&#34;372&#34;</span>  <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Ciprofloxacin&#34;</span>  <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>   <span style="color:#c41a16">&#34;99.672&#34;</span>  <span style="color:#c41a16">&#34;98.428&#34;</span>  <span style="color:#c41a16">&#34;372&#34;</span>  <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Delamanid&#34;</span>      <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>   <span style="color:#c41a16">&#34;99.672&#34;</span>  <span style="color:#c41a16">&#34;98.428&#34;</span>  <span style="color:#c41a16">&#34;372&#34;</span>  <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Ethambutol&#34;</span>     <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>   <span style="color:#c41a16">&#34;99.672&#34;</span>  <span style="color:#c41a16">&#34;98.428&#34;</span>  <span style="color:#c41a16">&#34;372&#34;</span>  <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Ethionamide&#34;</span>    <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>   <span style="color:#c41a16">&#34;99.672&#34;</span>  <span style="color:#c41a16">&#34;98.428&#34;</span>  <span style="color:#c41a16">&#34;372&#34;</span>  <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Isoniazid&#34;</span>      <span style="color:#c41a16">&#34;R&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>   <span style="color:#c41a16">&#34;99.672&#34;</span>  <span style="color:#c41a16">&#34;98.428&#34;</span>  <span style="color:#c41a16">&#34;372&#34;</span>  <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Kanamycin&#34;</span>      <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>   <span style="color:#c41a16">&#34;99.672&#34;</span>  <span style="color:#c41a16">&#34;98.428&#34;</span>  <span style="color:#c41a16">&#34;372&#34;</span>  <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Levofloxacin&#34;</span>   <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>   <span style="color:#c41a16">&#34;99.672&#34;</span>  <span style="color:#c41a16">&#34;98.428&#34;</span>  <span style="color:#c41a16">&#34;372&#34;</span>  <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Linezolid&#34;</span>      <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>   <span style="color:#c41a16">&#34;99.672&#34;</span>  <span style="color:#c41a16">&#34;98.428&#34;</span>  <span style="color:#c41a16">&#34;372&#34;</span>  <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Moxifloxacin&#34;</span>   <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>   <span style="color:#c41a16">&#34;99.672&#34;</span>  <span style="color:#c41a16">&#34;98.428&#34;</span>  <span style="color:#c41a16">&#34;372&#34;</span>  <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Ofloxacin&#34;</span>      <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>   <span style="color:#c41a16">&#34;99.672&#34;</span>  <span style="color:#c41a16">&#34;98.428&#34;</span>  <span style="color:#c41a16">&#34;372&#34;</span>  <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Pyrazinamide&#34;</span>   <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>   <span style="color:#c41a16">&#34;99.672&#34;</span>  <span style="color:#c41a16">&#34;98.428&#34;</span>  <span style="color:#c41a16">&#34;372&#34;</span>  <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Rifampicin&#34;</span>     <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>   <span style="color:#c41a16">&#34;99.672&#34;</span>  <span style="color:#c41a16">&#34;98.428&#34;</span>  <span style="color:#c41a16">&#34;372&#34;</span>  <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Streptomycin&#34;</span>   <span style="color:#c41a16">&#34;R&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>   <span style="color:#c41a16">&#34;99.672&#34;</span>  <span style="color:#c41a16">&#34;98.428&#34;</span>  <span style="color:#c41a16">&#34;372&#34;</span>  <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span></code></pre></div><p>As you can see, <code>column -t</code> does not handle this situation very well, as it is
+separating columns based on plain spaces by default, something we have in our
+headers in many real world files.</p>
+<p>To fix this, what we can do is make sure that <code>column -t</code> only separates based
+on real TAB characters. The problem with this is that specifying a proper TAB
+character on the commandline is not always straight-forward. Some tools, such
+as <code>awk</code> accepts a normal <code>&quot;\t&quot;</code> string for this, e.g. <code>awk -F&quot;\t&quot;</code> to tell awk
+to use TAB as a field separator, but <code>column</code> doesn&rsquo;t do that. Instead we need
+to specify it using <code>$'\t'</code>, which should work in most newer Linuxes.</p>
+<p>So all in all, we can do:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat selection.csv | tr <span style="color:#c41a16">&#39;,&#39;</span> <span style="color:#c41a16">&#39;\t&#39;</span> | column -t -s <span style="color:#c41a16">$&#39;\t&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;drug&#34;</span>           <span style="color:#c41a16">&#34;susceptibility&#34;</span>  <span style="color:#c41a16">&#34;kmer size&#34;</span>  <span style="color:#c41a16">&#34;phylo group per covg&#34;</span>  <span style="color:#c41a16">&#34;species per covg&#34;</span>  <span style="color:#c41a16">&#34;phylo group depth&#34;</span>  <span style="color:#c41a16">&#34;species depth&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Amikacin&#34;</span>       <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Capreomycin&#34;</span>    <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Ciprofloxacin&#34;</span>  <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Delamanid&#34;</span>      <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Ethambutol&#34;</span>     <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Ethionamide&#34;</span>    <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Isoniazid&#34;</span>      <span style="color:#c41a16">&#34;R&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Kanamycin&#34;</span>      <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Levofloxacin&#34;</span>   <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Linezolid&#34;</span>      <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Moxifloxacin&#34;</span>   <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Ofloxacin&#34;</span>      <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Pyrazinamide&#34;</span>   <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Rifampicin&#34;</span>     <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Streptomycin&#34;</span>   <span style="color:#c41a16">&#34;R&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span></code></pre></div><p>Since the terminal might sometimes be too small to view all the columns without breaking lines, I typically combine that with <code>less -S</code>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat selection.csv | tr <span style="color:#c41a16">&#39;,&#39;</span> <span style="color:#c41a16">&#39;\t&#39;</span> | column -t -s <span style="color:#c41a16">$&#39;\t&#39;</span> | less -S
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;drug&#34;</span>           <span style="color:#c41a16">&#34;susceptibility&#34;</span>  <span style="color:#c41a16">&#34;kmer size&#34;</span>  <span style="color:#c41a16">&#34;phylo group per covg&#34;</span>  <span style="color:#c41a16">&#34;species per covg&#34;</span>  <span style="color:#c41a16">&#34;phylo group depth&#34;</span>  <span style="color:#c41a16">&#34;species depth&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Amikacin&#34;</span>       <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Capreomycin&#34;</span>    <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Ciprofloxacin&#34;</span>  <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Delamanid&#34;</span>      <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Ethambutol&#34;</span>     <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Ethionamide&#34;</span>    <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Isoniazid&#34;</span>      <span style="color:#c41a16">&#34;R&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Kanamycin&#34;</span>      <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Levofloxacin&#34;</span>   <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Linezolid&#34;</span>      <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Moxifloxacin&#34;</span>   <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Ofloxacin&#34;</span>      <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Pyrazinamide&#34;</span>   <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Rifampicin&#34;</span>     <span style="color:#c41a16">&#34;S&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#c41a16">&#34;Streptomycin&#34;</span>   <span style="color:#c41a16">&#34;R&#34;</span>               <span style="color:#c41a16">&#34;21&#34;</span>         <span style="color:#c41a16">&#34;99.672&#34;</span>                <span style="color:#c41a16">&#34;98.428&#34;</span>            <span style="color:#c41a16">&#34;372&#34;</span>                <span style="color:#c41a16">&#34;347&#34;</span>
+</span></span></code></pre></div><p>This is quite the mess of a command though, so I have of course created some aliases in my <code>~/.bash_aliases</code> file:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#a90d91">alias</span> <span style="color:#000">colt</span><span style="color:#000">=</span><span style="color:#c41a16">&#39;column -t -s $&#39;</span><span style="color:#c41a16">\t</span><span style="color:#c41a16">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">alias s=&#39;</span>less -S<span style="color:#000">&#39;</span>
+</span></span></code></pre></div><p>So now, in these situations, I can just do:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat selection.csv | tr <span style="color:#c41a16">&#39;,&#39;</span> <span style="color:#c41a16">&#39;\t&#39;</span> | colt | s
+</span></span></code></pre></div><p>One caveat in this specific example needs to be added, and that is that <code>column -t</code> of course
+can accept <code>,</code> as separator straight away, meaning that you don&rsquo;t necessarily need to convert
+commas to tabs <em>in this specific example</em>. But tab separated output is common enough that
+you will find yourself needing the commands above anyway.</p>
+<p>Hope it helps!</p>
+
+  
+  <div>
+    <ul class="tags">
+        <li><a href="/tags/productivity/" class="tag">Productivity</a></li>
+    </ul>
+  </div>
+
+
+  <div id="disqus_thread"></div>
+  <script>
+  
+
+  var disqus_config = function () {
+      this.page.url = "https://livesys.se/posts/how-to-properly-column-tabular-output/";  
+      this.page.identifier =  null ; 
+  };
+  (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://bionicsit.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+  })();
+
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  </main>
+  <footer>
+    <p>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+
+<p>Copyright &copy; 2026 Samuel Lampa</p>
+
+<p>Find me on
+<a href="https://orcid.org/0000-0001-6740-9212" target="_blank">ORCID</a>,
+<a href="https://github.com/samuell" target="_blank">GitHub</a>,
+<a href="https://twitter.com/smllmp" target="_blank">Twitter</a>,
+<a href="https://bsky.app/profile/smllmp.bsky.social" target="_blank">BlueSky</a> or
+<a href="https://linkedin.com/in/smllmp" target="_blank">LinkedIn</a>.
+</p>
+
+  </footer>
+</body>
+</html>
