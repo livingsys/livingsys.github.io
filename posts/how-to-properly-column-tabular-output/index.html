@@ -172,9 +172,10 @@ to specify it using <code>$'\t'</code>, which should work in most newer Linuxes.
 </span></span></code></pre></div><p>So now, in these situations, I can just do:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat selection.csv | tr <span style="color:#c41a16">&#39;,&#39;</span> <span style="color:#c41a16">&#39;\t&#39;</span> | colt | s
 </span></span></code></pre></div><p>One caveat in this specific example needs to be added, and that is that <code>column -t</code> of course
-can accept <code>,</code> as separator straight away, meaning that you don&rsquo;t necessarily need to convert
-commas to tabs <em>in this specific example</em>. But tab separated output is common enough that
-you will find yourself needing the commands above anyway.</p>
+can accept <code>,</code> as separator straight away, with <code>column -t -s,</code>, meaning that
+you don&rsquo;t necessarily need to convert commas to tabs <em>in this specific
+example</em>. But tab separated output is common enough that you will find yourself
+needing the commands above anyway.</p>
 <p>Hope it helps!</p>
 
   
