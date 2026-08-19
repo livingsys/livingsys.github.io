@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Automation on Living Systems_</title>
-    <link>https://livesys.se/tags/automation/</link>
-    <description>Recent content in Automation on Living Systems_</description>
+    <title>Automation on Living_Systems</title>
+    <link>https://livingsystems.cc/tags/automation/</link>
+    <description>Recent content in Automation on Living_Systems</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 23 Mar 2015 20:46:00 +0100</lastBuildDate>
-    <atom:link href="https://livesys.se/tags/automation/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livingsystems.cc/tags/automation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The role of simplicity in testing and automation</title>
-      <link>https://livesys.se/posts/the-role-of-simplicity-in-testing-and-automation/</link>
+      <link>https://livingsystems.cc/posts/the-role-of-simplicity-in-testing-and-automation/</link>
       <pubDate>Mon, 23 Mar 2015 20:46:00 +0100</pubDate>
-      <guid>https://livesys.se/posts/the-role-of-simplicity-in-testing-and-automation/</guid>
+      <guid>https://livingsystems.cc/posts/the-role-of-simplicity-in-testing-and-automation/</guid>
       <description>&lt;p&gt;Disclaimer: Don&amp;rsquo;t take this too seriously &amp;hellip; this is&#xA;&amp;ldquo;thinking-in-progress&amp;rdquo; :)&lt;/p&gt;&#xA;&lt;p&gt;It just struck me the other minute, how simplicity is the key theme&#xA;behind two very important areas in software development, that I&amp;rsquo;ve been&#xA;dabbling with quite a bit recently: Testing, and automation.&lt;/p&gt;&#xA;&lt;p&gt;Have you thought about how testing, in its essence, is: &lt;em&gt;Wrapping&#xA;&lt;strong&gt;complex&lt;/strong&gt; code, which you can&amp;rsquo;t mentally comprehend completely, in&#xA;&lt;strong&gt;simple&lt;/strong&gt; code, that you can mentally comprehend, at least one test at&#xA;a time.&lt;/em&gt; Because, after all, if you can&amp;rsquo;t easily comprehend your test&#xA;code, as to make sure it is correct, by simply looking at it, you will&#xA;have to &lt;em&gt;create even simpler tests that test your tests&lt;/em&gt;!&lt;/p&gt;</description>
     </item>
   </channel>

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Kubernetes on Living Systems_</title>
-    <link>https://livesys.se/tags/kubernetes/</link>
-    <description>Recent content in Kubernetes on Living Systems_</description>
+    <title>Kubernetes on Living_Systems</title>
+    <link>https://livingsystems.cc/tags/kubernetes/</link>
+    <description>Recent content in Kubernetes on Living_Systems</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 15 Feb 2017 00:01:00 +0100</lastBuildDate>
-    <atom:link href="https://livesys.se/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livingsystems.cc/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Notes on launching kubernetes jobs from the Go API</title>
-      <link>https://livesys.se/posts/launching-kubernetes-jobs-from-the-go-api-notes-from-a-beginner/</link>
+      <link>https://livingsystems.cc/posts/launching-kubernetes-jobs-from-the-go-api-notes-from-a-beginner/</link>
       <pubDate>Wed, 15 Feb 2017 00:01:00 +0100</pubDate>
-      <guid>https://livesys.se/posts/launching-kubernetes-jobs-from-the-go-api-notes-from-a-beginner/</guid>
+      <guid>https://livingsystems.cc/posts/launching-kubernetes-jobs-from-the-go-api-notes-from-a-beginner/</guid>
       <description>&lt;p&gt;&lt;em&gt;This post is &lt;a href=&#34;https://medium.com/@saml/launching-kubernetes-jobs-from-the-go-api-notes-from-a-beginner-2b34fbc502c0&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;also published on&#xA;medium&lt;/a&gt;&#xA;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;My current work at &lt;a href=&#34;http://pharmb.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pharmb.io&lt;/a&gt;&#xA; entails adding&#xA;&lt;a href=&#34;http://kubernetes.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;kubernetes&lt;/a&gt;&#xA; support to my light-weight Go-based&#xA;scientific workflow engine,&#xA;&lt;a href=&#34;https://github.com/scipipe/scipipe&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;scipipe&lt;/a&gt;&#xA; (kubernetes, or &lt;em&gt;k8s&lt;/em&gt; for&#xA;short, is Google&amp;rsquo;s open source project for orchestrating container based&#xA;compute clusters), which should take scipipe from a simple &amp;ldquo;run it on&#xA;your laptop&amp;rdquo; workflow system with HPC support still in the work, to&#xA;something that can power scientific workflows on any set of networked&#xA;computers that can run kubernetes, which is quite a few (AWS, GCE,&#xA;Azure, your Raspberry Phi cluster etc etc).&lt;/p&gt;</description>
     </item>
   </channel>

@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Vim on Living Systems_</title>
-    <link>https://livesys.se/tags/vim/</link>
-    <description>Recent content in Vim on Living Systems_</description>
+    <title>Vim on Living_Systems</title>
+    <link>https://livingsystems.cc/tags/vim/</link>
+    <description>Recent content in Vim on Living_Systems</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 15 Sep 2015 12:21:00 +0200</lastBuildDate>
-    <atom:link href="https://livesys.se/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livingsystems.cc/tags/vim/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to be productive in vim in 30 minutes</title>
-      <link>https://livesys.se/posts/how-to-be-productive-in-vim-in-30-minutes/</link>
+      <link>https://livingsystems.cc/posts/how-to-be-productive-in-vim-in-30-minutes/</link>
       <pubDate>Tue, 15 Sep 2015 12:21:00 +0200</pubDate>
-      <guid>https://livesys.se/posts/how-to-be-productive-in-vim-in-30-minutes/</guid>
+      <guid>https://livingsystems.cc/posts/how-to-be-productive-in-vim-in-30-minutes/</guid>
       <description>&lt;p&gt;&lt;p class=&#34;image&#34;&gt;&#xA;    &lt;img src=&#34;selection_333-1.png&#34; alt=&#34;&#34;  /&gt;&#xA;&lt;/p&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;I had heard a lot of people say vim is very hard to learn, and got the&#xA;impression that it will take a great investment to switch to using it.&lt;/p&gt;&#xA;&lt;p&gt;While I have came to understand that they are right in that there is a&#xA;lot of things to invest in to get really great at using vim, that will&#xA;really pay back, I have also found out one thing that I see almost&#xA;no-one mentioning:&lt;/p&gt;</description>
     </item>
     <item>
       <title>How to compile vim for use with pyenv and vim-pyenv</title>
-      <link>https://livesys.se/posts/how-to-compile-vim-for-use-with-pyenv-and-vim-pyenv/</link>
+      <link>https://livingsystems.cc/posts/how-to-compile-vim-for-use-with-pyenv-and-vim-pyenv/</link>
       <pubDate>Thu, 20 Aug 2015 08:05:00 +0200</pubDate>
-      <guid>https://livesys.se/posts/how-to-compile-vim-for-use-with-pyenv-and-vim-pyenv/</guid>
+      <guid>https://livingsystems.cc/posts/how-to-compile-vim-for-use-with-pyenv-and-vim-pyenv/</guid>
       <description>&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;This manifested itself in a bunch of error message from the python&#xA;module in vim, ending with:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;AttributeError&lt;/span&gt;: &lt;span style=&#34;color:#c41a16&#34;&gt;&amp;#39;module&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#a90d91&#34;&gt;object&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;has&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;no&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;attribute&lt;/span&gt; &lt;span style=&#34;color:#c41a16&#34;&gt;&amp;#39;vars&amp;#39;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I first thought it was an error in vim-pyenv and &lt;a href=&#34;https://github.com/lambdalisue/vim-pyenv/issues/14&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;reported&#xA;it&lt;/a&gt;&#xA; (see that issue&#xA;for more in-depth details). In summary it turns out that older versions&#xA;of VIM indeed lack some attributes in its python module, so I figured I&#xA;had to compile my own version, below are just my notes about how to do&#xA;this, for future reference:&lt;/p&gt;</description>
     </item>
   </channel>

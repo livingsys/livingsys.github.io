@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Data Engineering on Living Systems_</title>
-    <link>https://livesys.se/tags/data-engineering/</link>
-    <description>Recent content in Data Engineering on Living Systems_</description>
+    <title>Data Engineering on Living_Systems</title>
+    <link>https://livingsystems.cc/tags/data-engineering/</link>
+    <description>Recent content in Data Engineering on Living_Systems</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 21 Jun 2016 13:49:00 +0200</lastBuildDate>
-    <atom:link href="https://livesys.se/tags/data-engineering/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livingsystems.cc/tags/data-engineering/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tutorial: Luigi for Scientific Workflows</title>
-      <link>https://livesys.se/posts/luigi-tutorial/</link>
+      <link>https://livingsystems.cc/posts/luigi-tutorial/</link>
       <pubDate>Tue, 21 Jun 2016 13:49:00 +0200</pubDate>
-      <guid>https://livesys.se/posts/luigi-tutorial/</guid>
+      <guid>https://livingsystems.cc/posts/luigi-tutorial/</guid>
       <description>&lt;p&gt;&lt;em&gt;This is a Luigi tutorial I held at the &lt;a href=&#34;http://uppnex.se/events/eInfraMPS2015/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;e-Infrastructures for Massively&#xA;parallel sequencing&lt;/a&gt;&#xA; workshop&#xA;(&lt;a href=&#34;https://www.youtube.com/channel/UCfLDx5VYn25QIZLmtybvdeQ/videos&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Video&#xA;archive&lt;/a&gt;&#xA;)&#xA;at &lt;a href=&#34;http://scilifelab.se/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SciLifeLab&lt;/a&gt;&#xA; Uppsala in January 2015, moved&#xA;here for future reference.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;luigi_screenshotpng&#34;&gt;&lt;p class=&#34;image&#34;&gt;&#xA;    &lt;img src=&#34;luigi_screenshot.png&#34; alt=&#34;&#34;  /&gt;&#xA;&lt;/p&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;what-is-luigi&#34;&gt;What is Luigi?&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/spotify/luigi&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Luigi&lt;/a&gt;&#xA; is a batch workflow system&#xA;written in Python and developed by &lt;a href=&#34;https://erikbern.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Erik&#xA;Bernhardson&lt;/a&gt;&#xA; and others at&#xA;&lt;a href=&#34;http://spotify.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Spotify&lt;/a&gt;&#xA;, where it is used to compute&#xA;machine-learning powered music recommendation lists, top lists etc.&lt;/p&gt;&#xA;&lt;p&gt;Luigi is one of not-too-many batch workflow systems that supports&#xA;running both normal command line jobs and&#xA;&lt;a href=&#34;http://hadoop.apache.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Hadoop&lt;/a&gt;&#xA; jobs in the same (in this tutorial,&#xA;we will focus only on the command line part).&lt;/p&gt;</description>
     </item>
   </channel>

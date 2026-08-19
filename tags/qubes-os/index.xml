@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Qubes OS on Living Systems_</title>
-    <link>https://livesys.se/tags/qubes-os/</link>
-    <description>Recent content in Qubes OS on Living Systems_</description>
+    <title>Qubes OS on Living_Systems</title>
+    <link>https://livingsystems.cc/tags/qubes-os/</link>
+    <description>Recent content in Qubes OS on Living_Systems</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 29 Dec 2021 06:59:00 +0100</lastBuildDate>
-    <atom:link href="https://livesys.se/tags/qubes-os/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://livingsystems.cc/tags/qubes-os/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Installing Qubes OS</title>
-      <link>https://livesys.se/posts/installing-qubes-os/</link>
+      <link>https://livingsystems.cc/posts/installing-qubes-os/</link>
       <pubDate>Wed, 29 Dec 2021 06:59:00 +0100</pubDate>
-      <guid>https://livesys.se/posts/installing-qubes-os/</guid>
+      <guid>https://livingsystems.cc/posts/installing-qubes-os/</guid>
       <description>&lt;p&gt;I just switched to &lt;a href=&#34;https://www.qubes-os.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Qubes OS&lt;/a&gt;&#xA; as operating&#xA;system on my main work laptop (a Dell Latitude). Or in fact, one of the&#xA;reasons was to be able to combine work and private hobby coding&#xA;projects, that&amp;rsquo;s increasinbly been happening on the same machine.&#xA;Anyways, these are my experiences and notes, as a way to document&#xA;caveats and quirks in case I need to do this again, while possibly also&#xA;being of use for others.&lt;/p&gt;</description>
     </item>
   </channel>
