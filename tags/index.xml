@@ -6,12 +6,26 @@
     <description>Recent content in Tags on Living_Systems</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 02 Jan 2026 10:50:17 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 20 Aug 2026 16:25:30 +0200</lastBuildDate>
     <atom:link href="https://livingsystems.cc/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI</title>
+      <link>https://livingsystems.cc/tags/ai/</link>
+      <pubDate>Thu, 20 Aug 2026 16:25:30 +0200</pubDate>
+      <guid>https://livingsystems.cc/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>LLMs</title>
+      <link>https://livingsystems.cc/tags/llms/</link>
+      <pubDate>Thu, 20 Aug 2026 16:25:30 +0200</pubDate>
+      <guid>https://livingsystems.cc/tags/llms/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Productivity</title>
       <link>https://livingsystems.cc/tags/productivity/</link>
-      <pubDate>Fri, 02 Jan 2026 10:50:17 +0100</pubDate>
+      <pubDate>Thu, 20 Aug 2026 16:25:30 +0200</pubDate>
       <guid>https://livingsystems.cc/tags/productivity/</guid>
       <description></description>
     </item>

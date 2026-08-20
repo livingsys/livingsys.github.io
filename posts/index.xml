@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Living_Systems</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 02 Jan 2026 10:50:17 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 20 Aug 2026 16:25:30 +0200</lastBuildDate>
     <atom:link href="https://livingsystems.cc/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>What LLMs Might Teach Us About Getting Unstuck</title>
+      <link>https://livingsystems.cc/posts/what-llms-can-teach-us-about-getting-unstuck/</link>
+      <pubDate>Thu, 20 Aug 2026 16:25:30 +0200</pubDate>
+      <guid>https://livingsystems.cc/posts/what-llms-can-teach-us-about-getting-unstuck/</guid>
+      <description>&lt;h1 id=&#34;what-llms-can-teach-us-about-getting-unstuck&#34;&gt;What LLMs can teach us about getting unstuck&lt;/h1&gt;&#xA;&lt;p&gt;Large Language Models (LLMs) which underpin tools like ChatGPT, Claude and&#xA;Gemini work by continually predicting the next token (typically a word) in a&#xA;long stream. That is, the text (if that is the medium) of what they already&#xA;started to write/say, will greatly influence what they write or say next.&lt;/p&gt;&#xA;&lt;p&gt;It struck me today that probably our brains has some similarities to this&#xA;process (that is definitely part of my experience), and thus perhaps we can&#xA;learn something from this.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>How to align columns in the terminal</title>
       <link>https://livingsystems.cc/posts/how-to-align-columns-in-the-terminal/</link>
