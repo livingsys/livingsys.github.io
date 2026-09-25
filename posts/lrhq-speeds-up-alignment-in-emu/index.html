@@ -51,12 +51,12 @@
 abundance estimator for 16S sequencing (sequencing of the 16S ribosomal RNA
 subunit, which is a common method for determining the abundance of bacteria in
 a sample, typically at the granularity of genus and/or species). We use it
-incorporated into the <a href="https://github.com/genomic-medicine-sweden/trana" target="_blank" rel="noopener">Trana pipeline</a>
+as part of the <a href="https://github.com/genomic-medicine-sweden/trana" target="_blank" rel="noopener">Trana pipeline</a>
  for a selection of
 16S sequencing samples at the Karolinska Hospital.</p>
 <p>Emu was specifically created to account for the generally lower accuracy of
-Oxford Nanopore (ONT) reads. Although this situation has drastically improved in the
-later years, with new flow cells and basecalling models, the error rate still
+Oxford Nanopore (ONT) reads. Although this situation has drastically improved in
+recent years, with new flow cells and basecalling models, the error rate still
 typically remains around 1%, which, especially for a very sensitive analysis
 like 16S sequencing, is significant.</p>
 <p>The basic idea in Emu is to start off with aligning (using <code>minimap2</code>) every
@@ -67,29 +67,29 @@ model. Based on our own informal profiling, the majority (~95%) of the
 execution time in Emu is spent in this initial alignment phase.</p>
 <p>In our work to set up a clinical pipeline for 16S sequencing we&rsquo;ve had to think
 hard about how to manage the required runtimes of Emu in order to be able to
-finish our computational pipeline together with the actual sequencing
-overnight, to keep the turn-around-time in check.</p>
+run the full pipeline in conjunction with the sequencing overnight, to keep the
+turn-around-time in check.</p>
 <p>We are <a href="https://github.com/genomic-medicine-sweden/trana-setup-gridion" target="_blank" rel="noopener">running the pipeline on the GridIon instrument itself</a>
 , and with
 downsampling all samples to 30k reads, this has allowed us to keep typical Emu
-runs for up to 24 samples into an 8 hour window on the 16 cores (64GB RAM)
+runs for up to 24 samples within an 8-hour window on the 16 cores (64GB RAM)
 available. Thus, we have so far been limiting the sequencing to 8 hours to give
-that 8 hour window for the pipeline.</p>
+that 8-hour window for the pipeline.</p>
 <p>This works, but also puts a bit of a limit on the scalability if we would
 like to, say, run more than one flow cell at a time, or connect a P2 Solo to
 run much more than 24 samples, or to increase the number of reads per sample.</p>
-<p>We are thus quite interested in anything that can speed up the Emu process. I
-was thus very interested when I read about <a href="https://mbhall88.github.io/post/minimap2-lrhq-preset-testing/" target="_blank" rel="noopener">Michael Hall&rsquo;s evaluation</a>
+<p>We are thus quite keen about learning anything that can speed up the Emu
+process. I was thus very interested when I read about <a href="https://mbhall88.github.io/post/minimap2-lrhq-preset-testing/" target="_blank" rel="noopener">Michael Hall&rsquo;s evaluation</a>
  of
 the new <code>lr:hq</code> profile for minimap2, optimized for higher quality data from
 R10 ONT flow cells, and how it seems to improve quality also of downstream
 analyses.</p>
 <p>I got interested in seeing also how it affected the performance of the
-alignment. Some initial tests immediately revealed that we hit gold here! The
-performance is actually improved with at least around one order of magnitude
-for the alignment process specifically, and even the Emu and Trana processes
-are drastically sped up, due to the fact that the alignment part has
-constituted such a big fraction of the computing time.</p>
+alignment. Some initial tests immediately revealed that we struck gold here! The
+performance is actually improved by at least an order of magnitude for the
+alignment process specifically, and even the Emu and Trana processes are
+drastically sped up, due to the fact that the alignment part has constituted
+such a big fraction of the computing time.</p>
 <h2 id="performance-comparison">Performance comparison</h2>
 <p>Below are some simple performance comparisons for running Emu with <code>lr:hq</code>
 compared with the older <code>map-ont</code> setting for the alignment, to back this up.</p>
@@ -97,7 +97,7 @@ compared with the older <code>map-ont</code> setting for the alignment, to back 
 <p>The required software, scripts and data to try out this comparison is available
 in a <a href="https://github.com/samuell/emu-lrhq-perf" target="_blank" rel="noopener">GitHub repo</a>
 , but I&rsquo;m including
-the key information here as well for future proofing.</p>
+the key information here as well for future-proofing.</p>
 <p>To create a test that is easily reproducible by anyone else, I have here used
 the publicly available Zymomock Gut mock data, available via the ONT website.</p>
 <p>The commands I&rsquo;ve used to download, extract, convert and subsample the data
@@ -133,11 +133,11 @@ database:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/treangenlab/emu.git
 </span></span></code></pre></div><p>Then for running the actual analysis, I did:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p timings;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">for</span> f in *_sub1000.fastq; *_sub5000.fastq *_sub10000.fastq; <span style="color:#a90d91">do</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">for</span> f in *_sub1000.fastq *_sub5000.fastq *_sub10000.fastq; <span style="color:#a90d91">do</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a90d91">for</span> align_type in map-ont lr:hq; <span style="color:#a90d91">do</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#000">outdir</span><span style="color:#000">=</span>out-<span style="color:#c41a16">${</span><span style="color:#000">align_type</span><span style="color:#c41a16">}</span>;
 </span></span><span style="display:flex;"><span>        mkdir -p <span style="color:#c41a16">${</span><span style="color:#000">outdir</span><span style="color:#c41a16">}</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#000">outfile_base</span><span style="color:#000">=</span><span style="color:#a90d91">$(</span>basename <span style="color:#c41a16">${</span><span style="color:#000">f</span>%.bam<span style="color:#c41a16">}</span><span style="color:#a90d91">)</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#000">outfile_base</span><span style="color:#000">=</span><span style="color:#a90d91">$(</span>basename <span style="color:#c41a16">${</span><span style="color:#000">f</span>%.fastq<span style="color:#c41a16">}</span><span style="color:#a90d91">)</span>;
 </span></span><span style="display:flex;"><span>        hyperfine <span style="color:#c41a16">\
 </span></span></span><span style="display:flex;"><span><span style="color:#c41a16"></span>            --warmup <span style="color:#1c01ce">1</span> <span style="color:#c41a16">\
 </span></span></span><span style="display:flex;"><span><span style="color:#c41a16"></span>            --runs <span style="color:#1c01ce">3</span> <span style="color:#c41a16">\
@@ -160,7 +160,7 @@ per run with one warmup run (via the hyperfine commandline timing tool).</p>
       <tr>
           <th style="text-align: left">Number of reads</th>
           <th>Alignment type</th>
-          <th style="text-align: right">Running time (s)</th>
+          <th style="text-align: right">Execution time (s)</th>
       </tr>
   </thead>
   <tbody>
@@ -202,7 +202,7 @@ although it is surely the major part.</p>
 <p>Now, this is a small, isolated test with a single dataset. But we can also say
 we have seen improvements in the same ballpark across datasets and dataset
 sizes wherever we have tried.</p>
-<p>Hope this will at least inspire you to try out the new <code>lr:hq</code> setting!</p>
+<p>Hope this inspires you to try out the new <code>lr:hq</code> setting!</p>
 
   
   <div>
