@@ -9,7 +9,7 @@
     <lastBuildDate>Fri, 25 Sep 2026 16:47:12 +0200</lastBuildDate>
     <atom:link href="https://livingsystems.cc/tags/bioinformatics/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>The lr:hq minimap2 profile speeds up Emu by a lot</title>
+      <title>The lr:hq minimap2 profile speeds up Emu by an order of magnitude for 16S data</title>
       <link>https://livingsystems.cc/posts/lrhq-speeds-up-alignment-in-emu/</link>
       <pubDate>Fri, 25 Sep 2026 16:47:12 +0200</pubDate>
       <guid>https://livingsystems.cc/posts/lrhq-speeds-up-alignment-in-emu/</guid>

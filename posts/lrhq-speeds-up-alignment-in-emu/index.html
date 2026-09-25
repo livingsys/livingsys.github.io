@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>The lr:hq minimap2 profile speeds up Emu by a lot | Living_Systems</title>
+<title>The lr:hq minimap2 profile speeds up Emu by an order of magnitude for 16S data | Living_Systems</title>
 
       <link rel="stylesheet" href="/css/main.min.7afb5fa50a2fd4677a8878f0eb62fc38d8070319c31c48ac2bae0bbafe4e8681.css" integrity="sha256-evtfpQov1Gd6iHjw62L8ONgHAxnDHEisK64Luv5OhoE=" crossorigin="anonymous">
 
@@ -39,7 +39,7 @@
   </header>
   <main>
     
-  <h1>The lr:hq minimap2 profile speeds up Emu by a lot</h1>
+  <h1>The lr:hq minimap2 profile speeds up Emu by an order of magnitude for 16S data</h1>
 
   
   
@@ -102,53 +102,107 @@ the key information here as well for future proofing.</p>
 the publicly available Zymomock Gut mock data, available via the ONT website.</p>
 <p>The commands I&rsquo;ve used to download, extract, convert and subsample the data
 in my test are:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws s3 sync --no-sign-request s3://ont-open-data/zymo_16s_2025.09 zymo_16s_2025.09
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sci run aws s3 sync --no-sign-request s3://ont-open-data/zymo_16s_2025.09 zymo_16s_2025.09
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">i</span><span style="color:#000">=</span>1;
 </span></span><span style="display:flex;"><span><span style="color:#a90d91">for</span> f in zymo_16s_2025.09/basecalls/GutMock/MAB114/sup/rep1/*.bam; <span style="color:#a90d91">do</span>
-</span></span><span style="display:flex;"><span>    samtools fastq <span style="color:#c41a16">${</span><span style="color:#000">f</span><span style="color:#c41a16">}</span> &gt; rep<span style="color:#c41a16">${</span><span style="color:#000">i</span><span style="color:#c41a16">}</span>_<span style="color:#a90d91">$(</span>basename <span style="color:#c41a16">${</span><span style="color:#000">f</span>%.bam<span style="color:#c41a16">}</span>.fastq<span style="color:#a90d91">)</span>;
+</span></span><span style="display:flex;"><span>    sci run <span style="color:#c41a16">&#34;samtools fastq </span><span style="color:#c41a16">${</span><span style="color:#000">f</span><span style="color:#c41a16">}</span><span style="color:#c41a16"> &gt; rep</span><span style="color:#c41a16">${</span><span style="color:#000">i</span><span style="color:#c41a16">}</span><span style="color:#c41a16">_</span><span style="color:#a90d91">$(</span>basename <span style="color:#c41a16">${</span><span style="color:#000">f</span>%.bam<span style="color:#c41a16">}</span>.fastq<span style="color:#a90d91">)</span><span style="color:#c41a16">&#34;</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#000">i</span><span style="color:#000">=</span><span style="color:#a90d91">$((</span>i <span style="color:#000">+</span> <span style="color:#1c01ce">1</span><span style="color:#a90d91">))</span>;
 </span></span><span style="display:flex;"><span><span style="color:#a90d91">done</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#a90d91">for</span> f in *_0.fastq; <span style="color:#a90d91">do</span>
-</span></span><span style="display:flex;"><span>    sci run <span style="color:#c41a16">&#34;seqkit sample -p 0.01 </span><span style="color:#c41a16">${</span><span style="color:#000">f</span><span style="color:#c41a16">}</span><span style="color:#c41a16"> &gt; </span><span style="color:#c41a16">${</span><span style="color:#000">f</span>%.fastq<span style="color:#c41a16">}</span><span style="color:#c41a16">_sub.fastq&#34;</span>;
+</span></span><span style="display:flex;"><span>    sci run <span style="color:#c41a16">&#34;seqkit seq -m 1200 -M 1800 </span><span style="color:#c41a16">${</span><span style="color:#000">f</span><span style="color:#c41a16">}</span><span style="color:#c41a16"> | seqkit sample -n 1000 &gt; </span><span style="color:#c41a16">${</span><span style="color:#000">f</span>%.fastq<span style="color:#c41a16">}</span><span style="color:#c41a16">_sub1000.fastq&#34;</span>;
 </span></span><span style="display:flex;"><span><span style="color:#a90d91">done</span>;
-</span></span></code></pre></div><p>As you can see I subsampled the file quite a lot, down to 1% of its initial
-number of reads, which was done to be able to finish this blog post in the
-limited time I&rsquo;ve had to write it. This left only 687 sequences to run with
-Emu.</p>
-<p>I also checked out the emu repository in order to have access to its default
-database:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/treangenlab/emu.git
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">for</span> f in *_0.fastq; <span style="color:#a90d91">do</span>
+</span></span><span style="display:flex;"><span>    sci run <span style="color:#c41a16">&#34;seqkit seq -m 1200 -M 1800 </span><span style="color:#c41a16">${</span><span style="color:#000">f</span><span style="color:#c41a16">}</span><span style="color:#c41a16"> | seqkit sample -n 5000 &gt; </span><span style="color:#c41a16">${</span><span style="color:#000">f</span>%.fastq<span style="color:#c41a16">}</span><span style="color:#c41a16">_sub5000.fastq&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">done</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">for</span> f in *_0.fastq; <span style="color:#a90d91">do</span>
+</span></span><span style="display:flex;"><span>    sci run <span style="color:#c41a16">&#34;seqkit seq -m 1200 -M 1800 </span><span style="color:#c41a16">${</span><span style="color:#000">f</span><span style="color:#c41a16">}</span><span style="color:#c41a16"> | seqkit sample -n 10000 &gt; </span><span style="color:#c41a16">${</span><span style="color:#000">f</span>%.fastq<span style="color:#c41a16">}</span><span style="color:#c41a16">_sub10000.fastq&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">done</span>;
 </span></span></code></pre></div><p>As you will see, I actually used only one of four available SUP-basecalled
 fastq files here, but I wanted to keep the script easy to extend to more
 datasets if needed, thus retaining the loop.</p>
-<p>Then for running the actual analysis, I did:</p>
+<p>As you can also see, I start with filtering for reads between 1200 to 1800 bp
+in length, to avoid serious outliers, and as this is also the setting we run in
+production, followed by downsampling into three sizes, 1000, 5000 and 10000
+reads, to get a sense for how the differences scale with size.</p>
+<p>I also checked out the emu repository in order to have access to its default
+database:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/treangenlab/emu.git
+</span></span></code></pre></div><p>Then for running the actual analysis, I did:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p timings;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">for</span> align_type in map-ont lr:hq; <span style="color:#a90d91">do</span>
-</span></span><span style="display:flex;"><span>    mkdir -p <span style="color:#c41a16">${</span><span style="color:#000">outdir</span><span style="color:#c41a16">}</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">for</span> f in *_sub.fastq; <span style="color:#a90d91">do</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">for</span> f in *_sub1000.fastq; *_sub5000.fastq *_sub10000.fastq; <span style="color:#a90d91">do</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">for</span> align_type in map-ont lr:hq; <span style="color:#a90d91">do</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#000">outdir</span><span style="color:#000">=</span>out-<span style="color:#c41a16">${</span><span style="color:#000">align_type</span><span style="color:#c41a16">}</span>;
+</span></span><span style="display:flex;"><span>        mkdir -p <span style="color:#c41a16">${</span><span style="color:#000">outdir</span><span style="color:#c41a16">}</span>;
 </span></span><span style="display:flex;"><span>        <span style="color:#000">outfile_base</span><span style="color:#000">=</span><span style="color:#a90d91">$(</span>basename <span style="color:#c41a16">${</span><span style="color:#000">f</span>%.bam<span style="color:#c41a16">}</span><span style="color:#a90d91">)</span>;
 </span></span><span style="display:flex;"><span>        hyperfine <span style="color:#c41a16">\
 </span></span></span><span style="display:flex;"><span><span style="color:#c41a16"></span>            --warmup <span style="color:#1c01ce">1</span> <span style="color:#c41a16">\
-</span></span></span><span style="display:flex;"><span><span style="color:#c41a16"></span>            --runs <span style="color:#1c01ce">10</span> <span style="color:#c41a16">\
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16"></span>            --runs <span style="color:#1c01ce">3</span> <span style="color:#c41a16">\
 </span></span></span><span style="display:flex;"><span><span style="color:#c41a16"></span>            --export-csv timings/<span style="color:#c41a16">${</span><span style="color:#000">outfile_base</span><span style="color:#c41a16">}</span>_<span style="color:#c41a16">${</span><span style="color:#000">align_type</span><span style="color:#c41a16">}</span>.csv --export-json timings/<span style="color:#c41a16">${</span><span style="color:#000">outfile_base</span><span style="color:#c41a16">}</span>_<span style="color:#c41a16">${</span><span style="color:#000">align_type</span><span style="color:#c41a16">}</span>.json <span style="color:#c41a16">\
-</span></span></span><span style="display:flex;"><span><span style="color:#c41a16"></span>            <span style="color:#c41a16">&#34;emu abundance </span><span style="color:#c41a16">${</span><span style="color:#000">f</span><span style="color:#c41a16">}</span><span style="color:#c41a16"> --type </span><span style="color:#c41a16">${</span><span style="color:#000">align_type</span><span style="color:#c41a16">}</span><span style="color:#c41a16"> --db emu/emu_database --output-dir </span><span style="color:#c41a16">${</span><span style="color:#000">outdir</span><span style="color:#c41a16">}</span><span style="color:#c41a16">/</span><span style="color:#c41a16">${</span><span style="color:#000">outfile_base</span><span style="color:#c41a16">}</span><span style="color:#c41a16"> --keep-files --keep-counts --keep-read-assignments --threads 12 --min-align-len 1200 --max-align-len 1800&#34;</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#c41a16"></span>            <span style="color:#c41a16">&#34;emu abundance </span><span style="color:#c41a16">${</span><span style="color:#000">f</span><span style="color:#c41a16">}</span><span style="color:#c41a16"> --type </span><span style="color:#c41a16">${</span><span style="color:#000">align_type</span><span style="color:#c41a16">}</span><span style="color:#c41a16"> --db emu/emu_database --output-dir </span><span style="color:#c41a16">${</span><span style="color:#000">outdir</span><span style="color:#c41a16">}</span><span style="color:#c41a16">/</span><span style="color:#c41a16">${</span><span style="color:#000">outfile_base</span><span style="color:#c41a16">}</span><span style="color:#c41a16"> --keep-files --keep-counts --keep-read-assignments --threads 12&#34;</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#a90d91">done</span>
 </span></span><span style="display:flex;"><span><span style="color:#a90d91">done</span>
-</span></span></code></pre></div><p>As you can see, we are doing some filtering here (min length 1200, and max
-length 1800), which are settings taken from our production pipeline. I included
-them as I thought this would give a relevant real world scenario here.</p>
+</span></span></code></pre></div><p>So here we are running Emu both with the original <code>map-ont</code> alignment type as
+well as <code>lr:hq</code>, for all the three sizes of dataset, and doing that three times
+per run with one warmup run (via the hyperfine commandline timing tool).</p>
 <h3 id="results">Results</h3>
-<p>The results of running the above timing, across 10 repetitions, are quite striking:</p>
-<pre tabindex="0"><code>map-ont: 19.337s (median), std dev: 0.867s
-  lr:hq:  2.963s (median), std dev: 0.048s
-</code></pre><p>That is a 6.5 times improvement right there! And since Emu adds its own calculations based
-on this, this can be expected to differ even more for larger, more realistic
-workloads.</p>
-<p>Now, this is a small, isolated test with a single dataset. But at least we can
-say we have seen improvements in the same ballpark across datasets and dataset
-sizes.</p>
+<p>The results of running the above timing are quite striking:</p>
+<p><p class="image">
+    <img src="emu-lrhq-timings.png" alt="Emu timing results with running with lr:hq vs map-ont"  />
+</p>
+</p>
+<p>In tabular format, that is:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Number of reads</th>
+          <th>Alignment type</th>
+          <th>Running time (s)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1000</td>
+          <td>lr:hq</td>
+          <td>3.881</td>
+      </tr>
+      <tr>
+          <td>1000</td>
+          <td>map-ont</td>
+          <td>29.728</td>
+      </tr>
+      <tr>
+          <td>5000</td>
+          <td>lr:hq</td>
+          <td>14.172</td>
+      </tr>
+      <tr>
+          <td>5000</td>
+          <td>map-ont</td>
+          <td>159.098</td>
+      </tr>
+      <tr>
+          <td>10000</td>
+          <td>lr:hq</td>
+          <td>27.710</td>
+      </tr>
+      <tr>
+          <td>10000</td>
+          <td>map-ont</td>
+          <td>314.376</td>
+      </tr>
+  </tbody>
+</table>
+<p>So that is pretty much an order of magnitude improvement across the board! And
+this is even though the alignment part is not the only thing taking time in Emu,
+although it is surely the major part.</p>
+<p>Now, this is a small, isolated test with a single dataset. But we can also say
+we have seen improvements in the same ballpark across datasets and dataset
+sizes wherever we have tried.</p>
+<p>Hope this will at least inspire you to try out the new <code>lr:hq</code> setting!</p>
 
   
   <div>
