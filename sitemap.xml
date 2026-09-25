@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://livingsystems.cc/tags/16s-sequencing/</loc>
+    <lastmod>2026-09-25T16:47:12+02:00</lastmod>
+  </url><url>
+    <loc>https://livingsystems.cc/tags/bioinformatics/</loc>
+    <lastmod>2026-09-25T16:47:12+02:00</lastmod>
+  </url><url>
+    <loc>https://livingsystems.cc/tags/emu/</loc>
+    <lastmod>2026-09-25T16:47:12+02:00</lastmod>
+  </url><url>
     <loc>https://livingsystems.cc/tags/minimap2/</loc>
     <lastmod>2026-09-25T16:47:12+02:00</lastmod>
   </url><url>
@@ -55,9 +64,6 @@
   </url><url>
     <loc>https://livingsystems.cc/posts/why-is-r-so-confusing/</loc>
     <lastmod>2025-03-28T14:52:00+01:00</lastmod>
-  </url><url>
-    <loc>https://livingsystems.cc/tags/bioinformatics/</loc>
-    <lastmod>2024-11-12T10:28:04+01:00</lastmod>
   </url><url>
     <loc>https://livingsystems.cc/tags/genomics/</loc>
     <lastmod>2024-11-12T10:28:04+01:00</lastmod>
