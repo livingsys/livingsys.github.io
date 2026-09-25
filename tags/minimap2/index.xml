@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Minimap2 on Living_Systems</title>
+    <link>https://livingsystems.cc/tags/minimap2/</link>
+    <description>Recent content in Minimap2 on Living_Systems</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 25 Sep 2026 16:47:12 +0200</lastBuildDate>
+    <atom:link href="https://livingsystems.cc/tags/minimap2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The lr:hq minimap2 profile speeds up Emu by a lot</title>
+      <link>https://livingsystems.cc/posts/lrhq-speeds-up-alignment-in-emu/</link>
+      <pubDate>Fri, 25 Sep 2026 16:47:12 +0200</pubDate>
+      <guid>https://livingsystems.cc/posts/lrhq-speeds-up-alignment-in-emu/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/treangenlab/emu&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Emu&lt;/a&gt;&#xA; is a popular read classifier and&#xA;abundance estimator for 16S sequencing (sequencing of the 16S ribosomal RNA&#xA;subunit, which is a common method for determining the abundance of bacteria in&#xA;a sample, typically at the granularity of genus and/or species). We use it&#xA;incorporated into the &lt;a href=&#34;https://github.com/genomic-medicine-sweden/trana&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Trana pipeline&lt;/a&gt;&#xA; for a selection of&#xA;16S sequencing samples at the Karolinska Hospital.&lt;/p&gt;&#xA;&lt;p&gt;Emu was specifically created to account for the generally lower accuracy of&#xA;Oxford Nanopore (ONT) reads. Although this situation has drastically improved in the&#xA;later years, with new flow cells and basecalling models, the error rate still&#xA;typically remains around 1%, which, especially for a very sensitive analysis&#xA;like 16S sequencing, is significant.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
