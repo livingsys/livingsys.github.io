@@ -79,10 +79,13 @@ that 8-hour window for the pipeline.</p>
 like to, say, run more than one flow cell at a time, or connect a P2 Solo to
 run much more than 24 samples, or to increase the number of reads per sample.</p>
 <p>We are thus quite keen about learning anything that can speed up the Emu
-process. I was thus very interested when I read about <a href="https://mbhall88.github.io/post/minimap2-lrhq-preset-testing/" target="_blank" rel="noopener">Michael Hall&rsquo;s evaluation</a>
- of
-the new <code>lr:hq</code> profile for minimap2, optimized for higher quality data from
-R10 ONT flow cells, and how it seems to improve quality also of downstream
+process. I was thus very interested when I read about the new <code>lr:hq</code> profile
+for minimap2, as brought up in a chat by <a href="https://bsky.app/profile/aaziz.bsky.social" target="_blank" rel="noopener">Ammar</a>
+, and evaluated in this
+<a href="https://mbhall88.github.io/post/minimap2-lrhq-preset-testing/" target="_blank" rel="noopener">this blog post by Michael Hall</a>
+. The
+<code>lr:hq</code> profile entails optimized minimap2 settings for higher quality data
+from R10 ONT flow cells, and how it seems to improve quality also of downstream
 analyses.</p>
 <p>I got interested in seeing also how it affected the performance of the
 alignment. Some initial tests immediately revealed that we struck gold here! The
