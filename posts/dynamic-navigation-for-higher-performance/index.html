@@ -3,9 +3,13 @@
 <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#0c110e">
 <title>Dynamic Navigation for Higher Performance | Living_Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap">
 
-      <link rel="stylesheet" href="/css/main.min.7afb5fa50a2fd4677a8878f0eb62fc38d8070319c31c48ac2bae0bbafe4e8681.css" integrity="sha256-evtfpQov1Gd6iHjw62L8ONgHAxnDHEisK64Luv5OhoE=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.2e85672a17645d2ef7b09940127cdcd350fb383af2a800647d7264e3b5fd45a3.css" integrity="sha256-LoVnKhdkXS73sJlAEnzc01D7ODryqABkfXJk47X9RaM=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -18,10 +22,15 @@
 
 </head>
 <body>
-  <header>
-    <h1><a href="/">Living_Systems</a></h1>
+  <img class="bg-helix" src="/img/helix-bg.jpg" alt="" aria-hidden="true">
+  <div class="grid-etch" aria-hidden="true"></div>
+  <div class="scanline" aria-hidden="true"></div>
+  <div class="top-line" aria-hidden="true"></div>
+  <div class="container">
+    <header class="site-header">
+      <a class="site-brand" href="/">Living_Systems</a>
 
-  <nav>
+  <nav class="site-nav">
     <ul>
     <li>
       <a href="/">Home</a>
@@ -39,17 +48,17 @@
   </nav>
 
 
-  </header>
-  <main>
-    
-  <h1>Dynamic Navigation for Higher Performance</h1>
-
-  
-  
-  
-  <time datetime="2015-03-11T20:45:00&#43;01:00">March 11, 2015</time>
-
-  <h3 id="improving-performance-in-delphi-bold-mda-applications-by-replacing-navigation-code-with-derived-links-in-the-model"><strong>Improving performance in Delphi Bold MDA applications by replacing navigation code with derived links in the model</strong></h3>
+    </header>
+    <main>
+      
+  <article class="article">
+    <header class="article-header">
+        <h1 class="article-title">Dynamic Navigation for Higher Performance</h1>
+        <div class="article-meta"><time datetime="2015-03-11T20:45:00&#43;01:00">2015.03.11</time><span class="post-time">14 min read</span>
+        </div>
+    </header>
+    <div class="prose article-body">
+        <h3 id="improving-performance-in-delphi-bold-mda-applications-by-replacing-navigation-code-with-derived-links-in-the-model"><strong>Improving performance in Delphi Bold MDA applications by replacing navigation code with derived links in the model</strong></h3>
 <p><em>This post on <a href="http://en.wikipedia.org/wiki/Model-driven_architecture" target="_blank" rel="noopener">Model Driven
 Architecture</a>
  in
@@ -172,8 +181,8 @@ needs navigating the structure. I would definitely add a link named
 tend to let blue color represent &ldquo;persistent&rdquo; (=&ldquo;freeze&rdquo;) and orange
 color represent &ldquo;derived&rdquo; for links).</em></p>
 <p><p class="image">
-    <img src="03_effectivetrip_jpg_bmp.png" alt="Fig 3: A link called &ldquo;effectiveTrip&rdquo; was added to the model. (I tend to let
-blue color represent &ldquo;persistent&rdquo; (=&ldquo;freeze&rdquo;) and orange to represent &ldquo;derived&rdquo;
+    <img src="03_effectivetrip_jpg_bmp.png" alt="Fig 3: A link called &amp;ldquo;effectiveTrip&amp;rdquo; was added to the model. (I tend to let
+blue color represent &amp;ldquo;persistent&amp;rdquo; (=&amp;ldquo;freeze&amp;rdquo;) and orange to represent &amp;ldquo;derived&amp;rdquo;
 for links)."  />
 </p>
 </p>
@@ -208,14 +217,14 @@ often accessing objects cross over, and when doing so the links already
 directly references the instances you would want to access. Look at the
 &ldquo;mess&rdquo; of links below&hellip;!:</em></p>
 <p><p class="image">
-    <img src="04_combination_links_bmp.png" alt="Fig 4: Doesn&rsquo;t also derived links require CPU in order to be
-evaluated&hellip;? you might ask. The answer is, yes of course - but only
-once - if the subscribed items don&rsquo;t change. And this is not very
-likely here, but the very &ldquo;hot spot&rdquo; structure here will be used in
+    <img src="04_combination_links_bmp.png" alt="Fig 4: Doesn&amp;rsquo;t also derived links require CPU in order to be
+evaluated&amp;hellip;? you might ask. The answer is, yes of course - but only
+once - if the subscribed items don&amp;rsquo;t change. And this is not very
+likely here, but the very &amp;ldquo;hot spot&amp;rdquo; structure here will be used in
 many places in the logic accessing objects cross over very often and
 when doing so the links already directly references the instances you
-want to access. Look at the &ldquo;mess&rdquo; of
-links&hellip;!:"  />
+want to access. Look at the &amp;ldquo;mess&amp;rdquo; of
+links&amp;hellip;!:"  />
 </p>
 </p>
 <p>Now this is an example of a high performance solution using the model as
@@ -247,12 +256,12 @@ trip object, starting from a <code>Parcel</code>, but we don&rsquo;t know on whi
 <code>VehicleUnit</code> we are loaded, and therefore we start looking for the trip
 using the link <code>effectiveTrip</code> which &ldquo;hides&rdquo; the logic determining
 which <code>Trip</code> object is &ldquo;mobilized&rdquo; (i.e &ldquo;effective&rdquo; front-most):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objectpascal" data-lang="objectpascal"><span style="display:flex;"><span><span style="color:#a90d91">function</span> TParcel.CalculateTrip_Something<span style="color:#000">..</span>.<span style="color:#000">:</span> <span style="color:#a90d91">Double</span>;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">var</span>
-</span></span><span style="display:flex;"><span>  TripObj <span style="color:#000">:</span> TTrip;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">begin</span>
-</span></span><span style="display:flex;"><span>  TripObj <span style="color:#000">:=</span> Self.vehicleUnit.effectiveTrip; <span style="color:#177500">// that&#39;s it! ...</span>
-</span></span></code></pre></div><p>From the Parcel, down to the vehicle platform, and then directly access
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objectpascal" data-lang="objectpascal"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">function</span><span style="color:#666"> </span>TParcel.CalculateTrip_Something...:<span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">Double</span>;
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">var</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>TripObj<span style="color:#666"> </span>:<span style="color:#666"> </span>TTrip;
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">begin</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>TripObj<span style="color:#666"> </span>:=<span style="color:#666"> </span>Self.vehicleUnit.effectiveTrip;<span style="color:#666"> </span><span style="color:#999;font-style:italic">// that&#39;s it! ...</span><span style="color:#666">
+</span></span></span></code></pre></div><p>From the Parcel, down to the vehicle platform, and then directly access
 the trip. That&rsquo;s easy, and the code is clear. The details about how we
 got hold of the correct trip object (hidden in the derived link) does
 not, and should not, be mixing up the business logic when traversing and
@@ -263,9 +272,9 @@ loaded on another vehicle, just like any other <code>parcel</code> can be loaded
 a vehicle (or in a batch of Parcels), so the code above is even simpler
 in my final generic model where the derived link is &ldquo;virtual
 overridden&rdquo; in different subclasses. My final code goes like this:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objectpascal" data-lang="objectpascal"><span style="display:flex;"><span><span style="color:#a90d91">begin</span>
-</span></span><span style="display:flex;"><span>  TripObj <span style="color:#000">:=</span> Self.effectiveTrip; <span style="color:#177500">// that&#39;s it!</span>
-</span></span></code></pre></div><p>The <code>Parcel</code> will find its valid (front-most) <code>Trip</code> using this command
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objectpascal" data-lang="objectpascal"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">begin</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>TripObj<span style="color:#666"> </span>:=<span style="color:#666"> </span>Self.effectiveTrip;<span style="color:#666"> </span><span style="color:#999;font-style:italic">// that&#39;s it!</span><span style="color:#666">
+</span></span></span></code></pre></div><p>The <code>Parcel</code> will find its valid (front-most) <code>Trip</code> using this command
 regardless of how complicated the path might be. This change in the
 model is shown in fig 5 where a new common super class (for parcels and
 vehicles) actually owns the persistent and derived link to the trip
@@ -278,7 +287,7 @@ any &ldquo;planable object&rdquo; to carry a batch of other planable objects, an
 as the model goes more generic, the role names do so too.</em></p>
 <p><p class="image">
     <img src="05_model_complete_abstract_bmp.png" alt="Fig 5: Here the model is modified to become more generic even allowing
-any &ldquo;planable object&rdquo; to carry a batch of other planable objects - and
+any &amp;ldquo;planable object&amp;rdquo; to carry a batch of other planable objects - and
 as the model goes more generic the role names do so
 too."  />
 </p>
@@ -344,138 +353,138 @@ members more than once (=&gt; avoiding repeated triggering of internal
 bold events etc). The efficiency of the entire concept discussed above
 and the detailed coding below is verified using ProDelphi profiler (very
 high accuracy <strong>(+-3%)</strong> on measuring code performance).</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objectpascal" data-lang="objectpascal"><span style="display:flex;"><span><span style="color:#177500">{ TParcel }</span>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objectpascal" data-lang="objectpascal"><span style="display:flex;"><span><span style="color:#999;font-style:italic">{ TParcel }</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">procedure</span> TParcel._effectiveTrip_DeriveAndSubscribe<span style="color:#000">(..</span>.<span style="color:#000">)</span>;
-</span></span><span style="display:flex;"><span><span style="color:#177500">// If loaded the carriers (effective) trip is returned,</span>
-</span></span><span style="display:flex;"><span><span style="color:#177500">// else the local trip (if any).</span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">var</span>
-</span></span><span style="display:flex;"><span>  CarrierObj<span style="color:#000">:</span> TVehicleUnit;
-</span></span><span style="display:flex;"><span>  ResultValue <span style="color:#000">:</span> TTrip;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">begin</span>
-</span></span><span style="display:flex;"><span>  M_batchHolder.DefaultSubscribe<span style="color:#000">(</span>Subscriber, breResubscribe<span style="color:#000">)</span>;
-</span></span><span style="display:flex;"><span>  CarrierObj <span style="color:#000">:=</span> batchHolder;
-</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">if</span> Assigned<span style="color:#000">(</span>CarrierObj<span style="color:#000">)</span> <span style="color:#a90d91">then</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">begin</span>
-</span></span><span style="display:flex;"><span>    CarrierObj.M_effectiveTrip.DefaultSubscribe<span style="color:#000">(</span>Subscriber, breResubscribe<span style="color:#000">)</span>;
-</span></span><span style="display:flex;"><span>    ResultValue <span style="color:#000">:=</span> CarrierObj.effectiveTrip;
-</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">end</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">else</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">begin</span>
-</span></span><span style="display:flex;"><span>    M_trip.DefaultSubscribe<span style="color:#000">(</span>Subscriber, breResubscribe<span style="color:#000">)</span>;
-</span></span><span style="display:flex;"><span>    ResultValue <span style="color:#000">:=</span> trip;
-</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">end</span>;
-</span></span><span style="display:flex;"><span>  M_effectiveTrip.BoldObject <span style="color:#000">:=</span> ResultValue;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">end</span>;
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">procedure</span><span style="color:#666"> </span>TParcel._effectiveTrip_DeriveAndSubscribe(...);
+</span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic">// If loaded the carriers (effective) trip is returned,</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#999;font-style:italic">// else the local trip (if any).</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#6ab825;font-weight:bold">var</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>CarrierObj:<span style="color:#666"> </span>TVehicleUnit;
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>ResultValue<span style="color:#666"> </span>:<span style="color:#666"> </span>TTrip;
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">begin</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>M_batchHolder.DefaultSubscribe(Subscriber,<span style="color:#666"> </span>breResubscribe);
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>CarrierObj<span style="color:#666"> </span>:=<span style="color:#666"> </span>batchHolder;
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span><span style="color:#6ab825;font-weight:bold">if</span><span style="color:#666"> </span>Assigned(CarrierObj)<span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span><span style="color:#6ab825;font-weight:bold">begin</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">    </span>CarrierObj.M_effectiveTrip.DefaultSubscribe(Subscriber,<span style="color:#666"> </span>breResubscribe);
+</span></span><span style="display:flex;"><span><span style="color:#666">    </span>ResultValue<span style="color:#666"> </span>:=<span style="color:#666"> </span>CarrierObj.effectiveTrip;
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span><span style="color:#6ab825;font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span><span style="color:#6ab825;font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span><span style="color:#6ab825;font-weight:bold">begin</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">    </span>M_trip.DefaultSubscribe(Subscriber,<span style="color:#666"> </span>breResubscribe);
+</span></span><span style="display:flex;"><span><span style="color:#666">    </span>ResultValue<span style="color:#666"> </span>:=<span style="color:#666"> </span>trip;
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span><span style="color:#6ab825;font-weight:bold">end</span>;
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>M_effectiveTrip.BoldObject<span style="color:#666"> </span>:=<span style="color:#666"> </span>ResultValue;
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">end</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#177500">{ TVehicleUnit }</span>
+</span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic">{ TVehicleUnit }</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">procedure</span> TVehicleUnit._effectiveTrip_DeriveAndSubscribe<span style="color:#000">(..</span>.<span style="color:#000">)</span>;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">var</span>
-</span></span><span style="display:flex;"><span>  HaulerObj<span style="color:#000">:</span> TVehicleUnit;
-</span></span><span style="display:flex;"><span>  ResultValue,
-</span></span><span style="display:flex;"><span>  TripObj<span style="color:#000">:</span> TTrip;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">begin</span>
-</span></span><span style="display:flex;"><span>  ResultValue <span style="color:#000">:=</span> <span style="color:#a90d91">nil</span>;
-</span></span><span style="display:flex;"><span>  M_combinationFirst.DefaultSubscribe<span style="color:#000">(</span>Subscriber, breResubscribe<span style="color:#000">)</span>;
-</span></span><span style="display:flex;"><span>  HaulerObj <span style="color:#000">:=</span> combinationFirst;
-</span></span><span style="display:flex;"><span>  <span style="color:#177500">// the traversing is already done here</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">if</span> Assigned<span style="color:#000">(</span>HaulerObj<span style="color:#000">)</span> <span style="color:#a90d91">then</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">begin</span>
-</span></span><span style="display:flex;"><span>    HaulerObj.M_Trip.DefaultSubscribe<span style="color:#000">(</span>Subscriber, breResubscribe<span style="color:#000">)</span>;
-</span></span><span style="display:flex;"><span>    TripObj <span style="color:#000">:=</span> HaulerObj.trip;
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">if</span> Assigned<span style="color:#000">(</span>TripObj<span style="color:#000">)</span> <span style="color:#a90d91">then</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">begin</span>
-</span></span><span style="display:flex;"><span>      TripObj.M_IsMobilized.DefaultSubscribe<span style="color:#000">(</span>Subscriber<span style="color:#000">)</span>;
-</span></span><span style="display:flex;"><span>      <span style="color:#a90d91">if</span> TripObj.IsMobilized <span style="color:#a90d91">then</span>
-</span></span><span style="display:flex;"><span>        ResultValue <span style="color:#000">:=</span> TripObj;
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">end</span>;
-</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">end</span>;
-</span></span><span style="display:flex;"><span>  M_effectiveTrip.BoldObject <span style="color:#000">:=</span> ResultValue;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">end</span>;
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">procedure</span><span style="color:#666"> </span>TVehicleUnit._effectiveTrip_DeriveAndSubscribe(...);
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">var</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>HaulerObj:<span style="color:#666"> </span>TVehicleUnit;
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>ResultValue,
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>TripObj:<span style="color:#666"> </span>TTrip;
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">begin</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>ResultValue<span style="color:#666"> </span>:=<span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">nil</span>;
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>M_combinationFirst.DefaultSubscribe(Subscriber,<span style="color:#666"> </span>breResubscribe);
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>HaulerObj<span style="color:#666"> </span>:=<span style="color:#666"> </span>combinationFirst;
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span><span style="color:#999;font-style:italic">// the traversing is already done here</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">  </span><span style="color:#6ab825;font-weight:bold">if</span><span style="color:#666"> </span>Assigned(HaulerObj)<span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span><span style="color:#6ab825;font-weight:bold">begin</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">    </span>HaulerObj.M_Trip.DefaultSubscribe(Subscriber,<span style="color:#666"> </span>breResubscribe);
+</span></span><span style="display:flex;"><span><span style="color:#666">    </span>TripObj<span style="color:#666"> </span>:=<span style="color:#666"> </span>HaulerObj.trip;
+</span></span><span style="display:flex;"><span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">if</span><span style="color:#666"> </span>Assigned(TripObj)<span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">begin</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">      </span>TripObj.M_IsMobilized.DefaultSubscribe(Subscriber);
+</span></span><span style="display:flex;"><span><span style="color:#666">      </span><span style="color:#6ab825;font-weight:bold">if</span><span style="color:#666"> </span>TripObj.IsMobilized<span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">        </span>ResultValue<span style="color:#666"> </span>:=<span style="color:#666"> </span>TripObj;
+</span></span><span style="display:flex;"><span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">end</span>;
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span><span style="color:#6ab825;font-weight:bold">end</span>;
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>M_effectiveTrip.BoldObject<span style="color:#666"> </span>:=<span style="color:#666"> </span>ResultValue;
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">end</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">procedure</span> TVehicleUnit._combinationFirst_DeriveAndSubscribe<span style="color:#000">(..</span>.<span style="color:#000">)</span>;
-</span></span><span style="display:flex;"><span><span style="color:#177500">// This link will be the fast &#34;short cut&#34; used by many many</span>
-</span></span><span style="display:flex;"><span><span style="color:#177500">// functions in this scope and other links and attributes, thus</span>
-</span></span><span style="display:flex;"><span><span style="color:#177500">// meaning optimization, not &#34;extras&#34; or &#34;candy&#34; in the model.</span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">var</span>
-</span></span><span style="display:flex;"><span>  LoopObj<span style="color:#000">:</span> TVehicleUnit;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">begin</span>
-</span></span><span style="display:flex;"><span>  LoopObj <span style="color:#000">:=</span> Self; <span style="color:#177500">// Traverse ahead</span>
-</span></span><span style="display:flex;"><span>  LoopObj.M_hauler.DefaultSubscribe<span style="color:#000">(</span>Subscriber, breResubscribe<span style="color:#000">)</span>;
-</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">while</span> Assigned<span style="color:#000">(</span>LoopObj.Hauler<span style="color:#000">)</span> <span style="color:#a90d91">do</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">begin</span>
-</span></span><span style="display:flex;"><span>    LoopObj <span style="color:#000">:=</span> LoopObj.Hauler;
-</span></span><span style="display:flex;"><span>    LoopObj.M_hauler.DefaultSubscribe<span style="color:#000">(</span>Subscriber, breResubscribe<span style="color:#000">)</span>;
-</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">end</span>;
-</span></span><span style="display:flex;"><span>  M_combinationFirst.BoldObject <span style="color:#000">:=</span> LoopObj;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">end</span>;
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">procedure</span><span style="color:#666"> </span>TVehicleUnit._combinationFirst_DeriveAndSubscribe(...);
+</span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic">// This link will be the fast &#34;short cut&#34; used by many many</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#999;font-style:italic">// functions in this scope and other links and attributes, thus</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#999;font-style:italic">// meaning optimization, not &#34;extras&#34; or &#34;candy&#34; in the model.</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#6ab825;font-weight:bold">var</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>LoopObj:<span style="color:#666"> </span>TVehicleUnit;
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">begin</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>LoopObj<span style="color:#666"> </span>:=<span style="color:#666"> </span>Self;<span style="color:#666"> </span><span style="color:#999;font-style:italic">// Traverse ahead</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">  </span>LoopObj.M_hauler.DefaultSubscribe(Subscriber,<span style="color:#666"> </span>breResubscribe);
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span><span style="color:#6ab825;font-weight:bold">while</span><span style="color:#666"> </span>Assigned(LoopObj.Hauler)<span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">do</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span><span style="color:#6ab825;font-weight:bold">begin</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">    </span>LoopObj<span style="color:#666"> </span>:=<span style="color:#666"> </span>LoopObj.Hauler;
+</span></span><span style="display:flex;"><span><span style="color:#666">    </span>LoopObj.M_hauler.DefaultSubscribe(Subscriber,<span style="color:#666"> </span>breResubscribe);
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span><span style="color:#6ab825;font-weight:bold">end</span>;
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>M_combinationFirst.BoldObject<span style="color:#666"> </span>:=<span style="color:#666"> </span>LoopObj;
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">end</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">procedure</span> TVehicleUnit._combinationLast_DeriveAndSubscribe<span style="color:#000">(</span>DerivedObject<span style="color:#000">:</span> TObject; Subscriber<span style="color:#000">:</span> TBoldSubscriber<span style="color:#000">)</span>;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">var</span>
-</span></span><span style="display:flex;"><span>  LoopObj<span style="color:#000">:</span> TVehicleUnit;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">begin</span>
-</span></span><span style="display:flex;"><span>  LoopObj <span style="color:#000">:=</span> Self;
-</span></span><span style="display:flex;"><span>  LoopObj.M_trailer.DefaultSubscribe<span style="color:#000">(</span>Subscriber, breResubscribe<span style="color:#000">)</span>;
-</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">while</span> Assigned<span style="color:#000">(</span>LoopObj.trailer<span style="color:#000">)</span> <span style="color:#a90d91">do</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">begin</span>
-</span></span><span style="display:flex;"><span>    LoopObj <span style="color:#000">:=</span> LoopObj.trailer;
-</span></span><span style="display:flex;"><span>    LoopObj.M_trailer.DefaultSubscribe<span style="color:#000">(</span>Subscriber, breResubscribe<span style="color:#000">)</span>;
-</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">end</span>;
-</span></span><span style="display:flex;"><span>  M_combinationLast.BoldObject <span style="color:#000">:=</span> LoopObj;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">end</span>;
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">procedure</span><span style="color:#666"> </span>TVehicleUnit._combinationLast_DeriveAndSubscribe(DerivedObject:<span style="color:#666"> </span>TObject;<span style="color:#666"> </span>Subscriber:<span style="color:#666"> </span>TBoldSubscriber);
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">var</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>LoopObj:<span style="color:#666"> </span>TVehicleUnit;
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">begin</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>LoopObj<span style="color:#666"> </span>:=<span style="color:#666"> </span>Self;
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>LoopObj.M_trailer.DefaultSubscribe(Subscriber,<span style="color:#666"> </span>breResubscribe);
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span><span style="color:#6ab825;font-weight:bold">while</span><span style="color:#666"> </span>Assigned(LoopObj.trailer)<span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">do</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span><span style="color:#6ab825;font-weight:bold">begin</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">    </span>LoopObj<span style="color:#666"> </span>:=<span style="color:#666"> </span>LoopObj.trailer;
+</span></span><span style="display:flex;"><span><span style="color:#666">    </span>LoopObj.M_trailer.DefaultSubscribe(Subscriber,<span style="color:#666"> </span>breResubscribe);
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span><span style="color:#6ab825;font-weight:bold">end</span>;
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>M_combinationLast.BoldObject<span style="color:#666"> </span>:=<span style="color:#666"> </span>LoopObj;
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">end</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">procedure</span> TVehicleUnit.combinationUnits_DeriveAndSubscribe<span style="color:#000">(..</span>.<span style="color:#000">)</span>;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">var</span>
-</span></span><span style="display:flex;"><span>  LoopObj<span style="color:#000">:</span> TVehicleUnit;
-</span></span><span style="display:flex;"><span>  ResultList<span style="color:#000">:</span> TBoldObjectList;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">begin</span>
-</span></span><span style="display:flex;"><span>  M_combinationUnits.Clear;
-</span></span><span style="display:flex;"><span>  ResultList <span style="color:#000">:=</span> TBoldObjectList.Create;
-</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">try</span>
-</span></span><span style="display:flex;"><span>    M_combinationFirst.DefaultSubscribe<span style="color:#000">(</span>Subscriber, breResubscribe<span style="color:#000">)</span>;
-</span></span><span style="display:flex;"><span>    LoopObj <span style="color:#000">:=</span> combinationFirst;
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">repeat</span>
-</span></span><span style="display:flex;"><span>      ResultList.Add<span style="color:#000">(</span>LoopObj<span style="color:#000">)</span>;
-</span></span><span style="display:flex;"><span>      LoopObj.M_trailer.DefaultSubscribe<span style="color:#000">(</span>Subscriber, breResubscribe<span style="color:#000">)</span>;
-</span></span><span style="display:flex;"><span>      LoopObj <span style="color:#000">:=</span> LoopObj.trailer;
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">until</span> LoopObj <span style="color:#000">=</span> <span style="color:#a90d91">nil</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">finally</span>
-</span></span><span style="display:flex;"><span>    M_combinationUnits.AddList<span style="color:#000">(</span>ResultList<span style="color:#000">)</span>;
-</span></span><span style="display:flex;"><span>    FreeAndNil<span style="color:#000">(</span>ResultList<span style="color:#000">)</span>;
-</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">end</span>;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">end</span>;
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">procedure</span><span style="color:#666"> </span>TVehicleUnit.combinationUnits_DeriveAndSubscribe(...);
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">var</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>LoopObj:<span style="color:#666"> </span>TVehicleUnit;
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>ResultList:<span style="color:#666"> </span>TBoldObjectList;
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">begin</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>M_combinationUnits.Clear;
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>ResultList<span style="color:#666"> </span>:=<span style="color:#666"> </span>TBoldObjectList.Create;
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span><span style="color:#6ab825;font-weight:bold">try</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">    </span>M_combinationFirst.DefaultSubscribe(Subscriber,<span style="color:#666"> </span>breResubscribe);
+</span></span><span style="display:flex;"><span><span style="color:#666">    </span>LoopObj<span style="color:#666"> </span>:=<span style="color:#666"> </span>combinationFirst;
+</span></span><span style="display:flex;"><span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">repeat</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">      </span>ResultList.Add(LoopObj);
+</span></span><span style="display:flex;"><span><span style="color:#666">      </span>LoopObj.M_trailer.DefaultSubscribe(Subscriber,<span style="color:#666"> </span>breResubscribe);
+</span></span><span style="display:flex;"><span><span style="color:#666">      </span>LoopObj<span style="color:#666"> </span>:=<span style="color:#666"> </span>LoopObj.trailer;
+</span></span><span style="display:flex;"><span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">until</span><span style="color:#666"> </span>LoopObj<span style="color:#666"> </span>=<span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">nil</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span><span style="color:#6ab825;font-weight:bold">finally</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">    </span>M_combinationUnits.AddList(ResultList);
+</span></span><span style="display:flex;"><span><span style="color:#666">    </span>FreeAndNil(ResultList);
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span><span style="color:#6ab825;font-weight:bold">end</span>;
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">end</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">procedure</span> TVehicleUnit._combinationLoadItems_DeriveAndSubscribe<span style="color:#000">(</span>DerivedObject<span style="color:#000">:</span> TObject; Subscriber<span style="color:#000">:</span> TBoldSubscriber<span style="color:#000">)</span>;
-</span></span><span style="display:flex;"><span><span style="color:#177500">// A list collecting all (batch)items loaded on any unit in the</span>
-</span></span><span style="display:flex;"><span><span style="color:#177500">// vehicle combination. Implemented for convenience and</span>
-</span></span><span style="display:flex;"><span><span style="color:#177500">// clarifications.</span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">var</span>
-</span></span><span style="display:flex;"><span>  UnitCnt, i<span style="color:#000">:</span> <span style="color:#a90d91">Integer</span>;
-</span></span><span style="display:flex;"><span>  UnitObj<span style="color:#000">:</span> TVehicleUnit;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">begin</span>
-</span></span><span style="display:flex;"><span>  M_combinationLoadItems.Clear;
-</span></span><span style="display:flex;"><span>  combinationUnits.DefaultSubscribe<span style="color:#000">(</span>Subscriber, breResubscribe<span style="color:#000">)</span>;
-</span></span><span style="display:flex;"><span>  UnitCnt <span style="color:#000">:=</span> combinationUnits.Count;
-</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">if</span> UnitCnt <span style="color:#000">&gt;</span> <span style="color:#1c01ce">0</span> <span style="color:#a90d91">then</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">begin</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">for</span> i <span style="color:#000">:=</span> <span style="color:#1c01ce">0</span> <span style="color:#a90d91">to</span> UnitCnt<span style="color:#000">-</span><span style="color:#1c01ce">1</span> <span style="color:#a90d91">do</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">begin</span>
-</span></span><span style="display:flex;"><span>      UnitObj <span style="color:#000">:=</span> combinationUnits[i];
-</span></span><span style="display:flex;"><span>      UnitObj.loadedItems.EnsureObjects;
-</span></span><span style="display:flex;"><span>      UnitObj.loadedItems.DefaultSubscribe<span style="color:#000">(</span>Subscriber<span style="color:#000">)</span>;
-</span></span><span style="display:flex;"><span>      <span style="color:#177500">// Collect all if UnitObj.loadedItems.Count &gt; 0 then</span>
-</span></span><span style="display:flex;"><span>      M_combinationLoadItems.AddList<span style="color:#000">(</span>UnitObj.loadedItems<span style="color:#000">)</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">end</span>;
-</span></span><span style="display:flex;"><span>  <span style="color:#a90d91">end</span>;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">end</span>;
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">procedure</span><span style="color:#666"> </span>TVehicleUnit._combinationLoadItems_DeriveAndSubscribe(DerivedObject:<span style="color:#666"> </span>TObject;<span style="color:#666"> </span>Subscriber:<span style="color:#666"> </span>TBoldSubscriber);
+</span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic">// A list collecting all (batch)items loaded on any unit in the</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#999;font-style:italic">// vehicle combination. Implemented for convenience and</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#999;font-style:italic">// clarifications.</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#6ab825;font-weight:bold">var</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>UnitCnt,<span style="color:#666"> </span>i:<span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">Integer</span>;
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>UnitObj:<span style="color:#666"> </span>TVehicleUnit;
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">begin</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>M_combinationLoadItems.Clear;
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>combinationUnits.DefaultSubscribe(Subscriber,<span style="color:#666"> </span>breResubscribe);
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span>UnitCnt<span style="color:#666"> </span>:=<span style="color:#666"> </span>combinationUnits.Count;
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span><span style="color:#6ab825;font-weight:bold">if</span><span style="color:#666"> </span>UnitCnt<span style="color:#666"> </span>&gt;<span style="color:#666"> </span><span style="color:#3677a9">0</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span><span style="color:#6ab825;font-weight:bold">begin</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">for</span><span style="color:#666"> </span>i<span style="color:#666"> </span>:=<span style="color:#666"> </span><span style="color:#3677a9">0</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">to</span><span style="color:#666"> </span>UnitCnt-<span style="color:#3677a9">1</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">do</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">begin</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">      </span>UnitObj<span style="color:#666"> </span>:=<span style="color:#666"> </span>combinationUnits[i];
+</span></span><span style="display:flex;"><span><span style="color:#666">      </span>UnitObj.loadedItems.EnsureObjects;
+</span></span><span style="display:flex;"><span><span style="color:#666">      </span>UnitObj.loadedItems.DefaultSubscribe(Subscriber);
+</span></span><span style="display:flex;"><span><span style="color:#666">      </span><span style="color:#999;font-style:italic">// Collect all if UnitObj.loadedItems.Count &gt; 0 then</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">      </span>M_combinationLoadItems.AddList(UnitObj.loadedItems);
+</span></span><span style="display:flex;"><span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">end</span>;
+</span></span><span style="display:flex;"><span><span style="color:#666">  </span><span style="color:#6ab825;font-weight:bold">end</span>;
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">end</span>;
 </span></span></code></pre></div><p><a href="https://twitter.com/rolflampa" target="_blank" rel="noopener">Rolf Lampa</a>
 ,
 Self employed consultant, <a href="http://rilpartner.com" target="_blank" rel="noopener">RIL Partner AB</a>
@@ -499,7 +508,8 @@ Source</a>
 .</li>
 </ul>
 
-  
+    </div>
+    
   <div>
     <ul class="tags">
         <li><a href="/tags/delphi/" class="tag">Delphi</a></li>
@@ -509,31 +519,34 @@ Source</a>
     </ul>
   </div>
 
-
-  <div id="disqus_thread"></div>
-  <script>
-  
-
-  var disqus_config = function () {
-      this.page.url = "https://livingsystems.cc/posts/dynamic-navigation-for-higher-performance/";  
-      this.page.identifier =  1022 ; 
-  };
-  (function() { 
-      var d = document, s = d.createElement('script');
-      s.src = 'https://bionicsit.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-  })();
-
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</article>
 
 
-  </main>
-  <footer>
-    <p>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+  <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script>
+    
 
-<p>Copyright &copy; 2026 Samuel Lampa</p>
+    var disqus_config = function () {
+        this.page.url = "https://livingsystems.cc/posts/dynamic-navigation-for-higher-performance/";  
+        this.page.identifier =  1022 ; 
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');
+        s.src = 'https://bionicsit.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </section>
+
+    </main>
+    <footer class="site-footer">
+      <p>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+
+<p class="copyright">Copyright &copy; 2026 Samuel Lampa</p>
 
 <p>Find me on
 <a href="https://orcid.org/0000-0001-6740-9212" target="_blank">ORCID</a>,
@@ -543,6 +556,7 @@ Source</a>
 <a href="https://linkedin.com/in/smllmp" target="_blank">LinkedIn</a>.
 </p>
 
-  </footer>
+    </footer>
+  </div>
 </body>
 </html>

@@ -3,9 +3,13 @@
 <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#0c110e">
 <title>Reproducibility | Living_Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap">
 
-      <link rel="stylesheet" href="/css/main.min.7afb5fa50a2fd4677a8878f0eb62fc38d8070319c31c48ac2bae0bbafe4e8681.css" integrity="sha256-evtfpQov1Gd6iHjw62L8ONgHAxnDHEisK64Luv5OhoE=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.2e85672a17645d2ef7b09940127cdcd350fb383af2a800647d7264e3b5fd45a3.css" integrity="sha256-LoVnKhdkXS73sJlAEnzc01D7ODryqABkfXJk47X9RaM=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -16,10 +20,15 @@
 
 </head>
 <body>
-  <header>
-    <h1><a href="/">Living_Systems</a></h1>
+  <img class="bg-helix" src="/img/helix-bg.jpg" alt="" aria-hidden="true">
+  <div class="grid-etch" aria-hidden="true"></div>
+  <div class="scanline" aria-hidden="true"></div>
+  <div class="top-line" aria-hidden="true"></div>
+  <div class="container">
+    <header class="site-header">
+      <a class="site-brand" href="/">Living_Systems</a>
 
-  <nav>
+  <nav class="site-nav">
     <ul>
     <li>
       <a href="/">Home</a>
@@ -37,74 +46,63 @@
   </nav>
 
 
-  </header>
-  <main>
-    
-  <h1>Reproducibility</h1>
-  
-  
-    <div class="post-card">
+    </header>
+    <main>
+      
+  <section class="archive">
+    <h2 class="section-title">Reproducibility</h2>
+    <ul class="post-list">
+      <li><a class="post-item" href="/posts/rewrite-of-scicommander-in-go/">
+    <div class="post-meta"><span class="post-index">0x01</span><span>2024.09.03</span><span class="post-tag">[Scicommander]</span><span class="post-time">3 min</span>
+    </div>
+    <h3>Rewrite of Scicommander in Go with much improved algorithm</h3>
+    <p>When I presented a poster about SciCommander at the Swedish bioinformatics workshop last year, I got a lot of awesome feedback from some great people including Fredrik Boulund, Johannes Alneberg and others, of which I unfortunately lost the names (please shout out if you read …</p>
+</a>
+</li>
+      <li><a class="post-item" href="/posts/scicommander-0.3/">
+    <div class="post-meta"><span class="post-index">0x02</span><span>2023.11.09</span><span class="post-tag">[Reproducibility]</span><span class="post-time">2 min</span>
+    </div>
+    <h3>SciCommander - track provenance of any shell command</h3>
+    <p>I haven&amp;rsquo;t written much about a new tool I&amp;rsquo;ve been working on in some extra time: SciCommander .
+I just presented a poster about it at the Swedish Bioinformatics Workshop 2023 , so perhaps let me first present you the poster instead of re-iterating what it is (click to …</p>
+</a>
+</li>
+      <li><a class="post-item" href="/posts/linked-data-science/">
+    <div class="post-meta"><span class="post-index">0x03</span><span>2018.09.21</span><span class="post-tag">[Semantic]</span><span class="post-time">4 min</span>
+    </div>
+    <h3>Linked Data Science - For improved understandability of computer-aided research</h3>
+    <p>This is an excerpt from the &amp;ldquo;future outlook&amp;rdquo; section of my thesis titled &amp;ldquo;Reproducible Data Analysis in Drug Discovery with Scientific Workflows and the Semantic Web&amp;rdquo; (click for the open access full text), which aims to provide various putative ways …</p>
+</a>
+</li>
+      <li><a class="post-item" href="/posts/todournal/">
+    <div class="post-meta"><span class="post-index">0x04</span><span>2018.04.13</span><span class="post-tag">[Productivity]</span><span class="post-time">3 min</span>
+    </div>
+    <h3>To make computational lab note-taking happen, make the journal into a todo-list (a &#34;Todournal&#34;)</h3>
+    <p>Good lab note-taking is hard Good note-taking is in my opinion as important for computational research as for wet lab research. For computational research it is much easier though to forget doing it, since you might not have a physical notebook lying on your desk staring at you, …</p>
+</a>
+</li>
+      <li><a class="post-item" href="/posts/provenance-reports-in-scientific-workflows/">
+    <div class="post-meta"><span class="post-index">0x05</span><span>2017.10.19</span><span class="post-tag">[Provenance]</span><span class="post-time">6 min</span>
+    </div>
+    <h3>On Provenance Reports in Scientific Workflows</h3>
+    <p>One of the more important tasks for a scientific workflow is to keep track of so called &amp;ldquo;provenance information&amp;rdquo; about its data outputs - information about how each data file was created. This is important so other researchers can easily replicate the study (re-run it …</p>
+</a>
+</li>
+      <li><a class="post-item" href="/posts/the-problem-with-make-for-scientific-workflows/">
+    <div class="post-meta"><span class="post-index">0x06</span><span>2015.03.14</span><span class="post-tag">[Gnu Make]</span><span class="post-time">6 min</span>
+    </div>
+    <h3>The problem with make for scientific workflows</h3>
+    <p>The workflow problem solved once and for all in 1979? As soon as the topic of scientific workflows is brought up, there are always a few make fans fervently insisting that the problem of workflows is solved once and for all with GNU make , written first in the 70&amp;rsquo;s :) …</p>
+</a>
+</li>
+    </ul>
+  </section>
 
-<a href="/posts/rewrite-of-scicommander-in-go/"><img src="/posts/rewrite-of-scicommander-in-go//scicommander-0.4.0.png" class="post-img-list"></a>
+    </main>
+    <footer class="site-footer">
+      <p>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
 
-<h2><a href="/posts/rewrite-of-scicommander-in-go/">Rewrite of Scicommander in Go with much improved algorithm</a></h2>
-When I presented a poster about SciCommander at the Swedish bioinformatics workshop last year, I got a lot of awesome feedback from some great people including Fredrik Boulund, Johannes Alneberg and others, of which I unfortunately lost the names (please shout out if you read this!).
-(For those new to SciCommander, it …
-</div>
-
-  
-    <div class="post-card">
-
-<a href="/posts/scicommander-0.3/"><img src="/posts/scicommander-0.3//scicmd-poster-export-007.png" class="post-img-list"></a>
-
-<h2><a href="/posts/scicommander-0.3/">SciCommander - track provenance of any shell command</a></h2>
-I haven&rsquo;t written much about a new tool I&rsquo;ve been working on in some extra time: SciCommander .
-I just presented a poster about it at the Swedish Bioinformatics Workshop 2023 , so perhaps let me first present you the poster instead of re-iterating what it is (click to view large version):
-New version not …
-</div>
-
-  
-    <div class="post-card">
-
-<a href="/posts/linked-data-science/"><img src="/posts/linked-data-science//linkeddatascience.png" class="post-img-list"></a>
-
-<h2><a href="/posts/linked-data-science/">Linked Data Science - For improved understandability of computer-aided research</a></h2>
-This is an excerpt from the &ldquo;future outlook&rdquo; section of my thesis titled &ldquo;Reproducible Data Analysis in Drug Discovery with Scientific Workflows and the Semantic Web&rdquo; (click for the open access full text), which aims to provide various putative ways towards improved reproducibility, …
-</div>
-
-  
-    <div class="post-card">
-
-<a href="/posts/todournal/"><img src="/posts/todournal//journal_md_-_ptp_-_visual_studio_code_624-1.png" class="post-img-list"></a>
-
-<h2><a href="/posts/todournal/">To make computational lab note-taking happen, make the journal into a todo-list (a &#34;Todournal&#34;)</a></h2>
-Good lab note-taking is hard Good note-taking is in my opinion as important for computational research as for wet lab research. For computational research it is much easier though to forget doing it, since you might not have a physical notebook lying on your desk staring at you, but rather might need to open a specific …
-</div>
-
-  
-    <div class="post-card">
-
-<h2><a href="/posts/provenance-reports-in-scientific-workflows/">On Provenance Reports in Scientific Workflows</a></h2>
- One of the more important tasks for a scientific workflow is to keep track of so called &ldquo;provenance information&rdquo; about its data outputs - information about how each data file was created. This is important so other researchers can easily replicate the study (re-run it with the same software and tools). It …
-</div>
-
-  
-    <div class="post-card">
-
-<a href="/posts/the-problem-with-make-for-scientific-workflows/"><img src="/posts/the-problem-with-make-for-scientific-workflows//selection_131.png" class="post-img-list"></a>
-
-<h2><a href="/posts/the-problem-with-make-for-scientific-workflows/">The problem with make for scientific workflows</a></h2>
- The workflow problem solved once and for all in 1979? As soon as the topic of scientific workflows is brought up, there are always a few make fans fervently insisting that the problem of workflows is solved once and for all with GNU make , written first in the 70&rsquo;s :)
-Personally I haven&rsquo;t been so sure. On …
-</div>
-
-  
-
-  </main>
-  <footer>
-    <p>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
-
-<p>Copyright &copy; 2026 Samuel Lampa</p>
+<p class="copyright">Copyright &copy; 2026 Samuel Lampa</p>
 
 <p>Find me on
 <a href="https://orcid.org/0000-0001-6740-9212" target="_blank">ORCID</a>,
@@ -114,6 +112,7 @@ Personally I haven&rsquo;t been so sure. On …
 <a href="https://linkedin.com/in/smllmp" target="_blank">LinkedIn</a>.
 </p>
 
-  </footer>
+    </footer>
+  </div>
 </body>
 </html>

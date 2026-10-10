@@ -4,7 +4,7 @@
     <title>Simulation on Living_Systems</title>
     <link>https://livingsystems.cc/tags/simulation/</link>
     <description>Recent content in Simulation on Living_Systems</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 17 Feb 2010 01:45:00 +0100</lastBuildDate>
     <atom:link href="https://livingsystems.cc/tags/simulation/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>https://livingsystems.cc/posts/answering-questions-by-wrapping-simulations-in-semantics/</link>
       <pubDate>Wed, 17 Feb 2010 01:45:00 +0100</pubDate>
       <guid>https://livingsystems.cc/posts/answering-questions-by-wrapping-simulations-in-semantics/</guid>
-      <description>&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;There are lots of things that can&amp;rsquo;t be answered by a computer from data&#xA;alone. Maybe the majority of what we humans perceive as knowledge is&#xA;inferred from a combination of data (simple fact statements about&#xA;reality) and rules that tell how facts can be combined together to allow&#xA;making &lt;em&gt;implicit&lt;/em&gt; knowledge (knowledge that is not persisted as facts&#xA;anywhere, but has to be &lt;em&gt;inferred&lt;/em&gt; from other facts and rules) become&#xA;&lt;em&gt;explicit&lt;/em&gt;.&lt;/p&gt;</description>
+      <description>There are lots of things that can&amp;rsquo;t be answered by a computer from data alone. Maybe the majority of what we humans perceive as knowledge is inferred from a combination of data (simple fact statements about reality) and rules that tell how facts can be combined together to allow making implicit knowledge (knowledge that is not persisted as facts anywhere, but has to be inferred from other facts and rules) become explicit.</description>
     </item>
   </channel>
 </rss>

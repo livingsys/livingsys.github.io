@@ -3,9 +3,13 @@
 <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#0c110e">
 <title>(E)BNF parser for parts of the Galaxy ToolConfig syntax with ANTLR | Living_Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap">
 
-      <link rel="stylesheet" href="/css/main.min.7afb5fa50a2fd4677a8878f0eb62fc38d8070319c31c48ac2bae0bbafe4e8681.css" integrity="sha256-evtfpQov1Gd6iHjw62L8ONgHAxnDHEisK64Luv5OhoE=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.2e85672a17645d2ef7b09940127cdcd350fb383af2a800647d7264e3b5fd45a3.css" integrity="sha256-LoVnKhdkXS73sJlAEnzc01D7ODryqABkfXJk47X9RaM=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -18,10 +22,15 @@
 
 </head>
 <body>
-  <header>
-    <h1><a href="/">Living_Systems</a></h1>
+  <img class="bg-helix" src="/img/helix-bg.jpg" alt="" aria-hidden="true">
+  <div class="grid-etch" aria-hidden="true"></div>
+  <div class="scanline" aria-hidden="true"></div>
+  <div class="top-line" aria-hidden="true"></div>
+  <div class="container">
+    <header class="site-header">
+      <a class="site-brand" href="/">Living_Systems</a>
 
-  <nav>
+  <nav class="site-nav">
     <ul>
     <li>
       <a href="/">Home</a>
@@ -39,17 +48,17 @@
   </nav>
 
 
-  </header>
-  <main>
-    
-  <h1>(E)BNF parser for parts of the Galaxy ToolConfig syntax with ANTLR</h1>
-
-  
-  
-  
-  <time datetime="2011-07-28T09:46:00&#43;02:00">July 28, 2011</time>
-
-  <p>As
+    </header>
+    <main>
+      
+  <article class="article">
+    <header class="article-header">
+        <h1 class="article-title">(E)BNF parser for parts of the Galaxy ToolConfig syntax with ANTLR</h1>
+        <div class="article-meta"><time datetime="2011-07-28T09:46:00&#43;02:00">2011.07.28</time><span class="post-time">6 min read</span>
+        </div>
+    </header>
+    <div class="prose article-body">
+        <p>As
 <a href="http://saml.rilspace.com/fims-project-status-update-thinking-about-cli-wrapper-xml-formats" target="_blank" rel="noopener">blogged</a>
 
 earlier, I&rsquo;m currently into parsing the syntax of some definitions for
@@ -69,12 +78,12 @@ and thus can be used to generate drop-down lists in wizards etc. which
 is basically what I want to do &hellip; so, now I&rsquo;m going with the Galaxy
 format after all.</p>
 <p>Enter the Galaxy format then. Look at an example code snippet:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#000">&lt;tool</span> <span style="color:#836c28">id=</span><span style="color:#c41a16">&#34;sam_to_bam&#34;</span> <span style="color:#836c28">name=</span><span style="color:#c41a16">&#34;SAM-to-BAM&#34;</span> <span style="color:#836c28">version=</span><span style="color:#c41a16">&#34;1.1.1&#34;</span><span style="color:#000">&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;description&gt;</span>converts SAM format to BAM format<span style="color:#000">&lt;/description&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;requirements&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">&lt;requirement</span> <span style="color:#836c28">type=</span><span style="color:#c41a16">&#34;package&#34;</span><span style="color:#000">&gt;</span>samtools<span style="color:#000">&lt;/requirement&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;/requirements&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;command</span> <span style="color:#836c28">interpreter=</span><span style="color:#c41a16">&#34;python&#34;</span><span style="color:#000">&gt;</span>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">&lt;tool</span> <span style="color:#bbb">id=</span><span style="color:#ed9d13">&#34;sam_to_bam&#34;</span> <span style="color:#bbb">name=</span><span style="color:#ed9d13">&#34;SAM-to-BAM&#34;</span> <span style="color:#bbb">version=</span><span style="color:#ed9d13">&#34;1.1.1&#34;</span><span style="color:#6ab825;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">&lt;description&gt;</span>converts SAM format to BAM format<span style="color:#6ab825;font-weight:bold">&lt;/description&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">&lt;requirements&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">&lt;requirement</span> <span style="color:#bbb">type=</span><span style="color:#ed9d13">&#34;package&#34;</span><span style="color:#6ab825;font-weight:bold">&gt;</span>samtools<span style="color:#6ab825;font-weight:bold">&lt;/requirement&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">&lt;/requirements&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">&lt;command</span> <span style="color:#bbb">interpreter=</span><span style="color:#ed9d13">&#34;python&#34;</span><span style="color:#6ab825;font-weight:bold">&gt;</span>
 </span></span><span style="display:flex;"><span>    sam_to_bam.py
 </span></span><span style="display:flex;"><span>      --input1=$source.input1
 </span></span><span style="display:flex;"><span>      --dbkey=${input1.metadata.dbkey}
@@ -85,14 +94,14 @@ format after all.</p>
 </span></span><span style="display:flex;"><span>      #end if
 </span></span><span style="display:flex;"><span>      --output1=$output1
 </span></span><span style="display:flex;"><span>      --index_dir=${GALAXY_DATA_INDEX_DIR}
-</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;/command&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;inputs&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">&lt;conditional</span> <span style="color:#836c28">name=</span><span style="color:#c41a16">&#34;source&#34;</span><span style="color:#000">&gt;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#000">&lt;param</span> <span style="color:#836c28">name=</span><span style="color:#c41a16">&#34;index_source&#34;</span> <span style="color:#836c28">type=</span><span style="color:#c41a16">&#34;select&#34;</span> <span style="color:#836c28">label=</span><span style="color:#c41a16">&#34;Choose the source for the reference list&#34;</span><span style="color:#000">&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">&lt;option</span> <span style="color:#836c28">value=</span><span style="color:#c41a16">&#34;cached&#34;</span><span style="color:#000">&gt;</span>Locally cached<span style="color:#000">&lt;/option&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">&lt;option</span> <span style="color:#836c28">value=</span><span style="color:#c41a16">&#34;history&#34;</span><span style="color:#000">&gt;</span>History<span style="color:#000">&lt;/option&gt;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#000">&lt;/param&gt;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#000">&lt;when</span> <span style="color:#836c28">value=</span><span style="color:#c41a16">&#34;cached&#34;</span><span style="color:#000">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">&lt;/command&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">&lt;inputs&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">&lt;conditional</span> <span style="color:#bbb">name=</span><span style="color:#ed9d13">&#34;source&#34;</span><span style="color:#6ab825;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#6ab825;font-weight:bold">&lt;param</span> <span style="color:#bbb">name=</span><span style="color:#ed9d13">&#34;index_source&#34;</span> <span style="color:#bbb">type=</span><span style="color:#ed9d13">&#34;select&#34;</span> <span style="color:#bbb">label=</span><span style="color:#ed9d13">&#34;Choose the source for the reference list&#34;</span><span style="color:#6ab825;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6ab825;font-weight:bold">&lt;option</span> <span style="color:#bbb">value=</span><span style="color:#ed9d13">&#34;cached&#34;</span><span style="color:#6ab825;font-weight:bold">&gt;</span>Locally cached<span style="color:#6ab825;font-weight:bold">&lt;/option&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6ab825;font-weight:bold">&lt;option</span> <span style="color:#bbb">value=</span><span style="color:#ed9d13">&#34;history&#34;</span><span style="color:#6ab825;font-weight:bold">&gt;</span>History<span style="color:#6ab825;font-weight:bold">&lt;/option&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#6ab825;font-weight:bold">&lt;/param&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#6ab825;font-weight:bold">&lt;when</span> <span style="color:#bbb">value=</span><span style="color:#ed9d13">&#34;cached&#34;</span><span style="color:#6ab825;font-weight:bold">&gt;</span>
 </span></span><span style="display:flex;"><span>      ... cont ...
 </span></span></code></pre></div><p>Here I&rsquo;ve got some challenges. XML parsing is easy, even in Java (I use
 the Java XPath libs for that). But look inside the <code>&lt;command&gt;</code> tag &hellip;
@@ -119,7 +128,7 @@ GitHub</a>
 
 &hellip; and below (in condensed syntax to save some space), for you
 convenience :)</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bnf" data-lang="bnf"><span style="display:flex;"><span>grammar GalaxyToolConfig;
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bnf" data-lang="bnf"><span style="display:flex;"><span>grammar GalaxyToolConfig;
 </span></span><span style="display:flex;"><span>options {output=AST;}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>command    : binary (ifstatement param+ (ELSE param+)? ENDIF | param)*;
@@ -158,71 +167,71 @@ path of it, and then ran the <strong>Test</strong>.java file that comes with the
 output.</p>
 <p>I wanted to do a little more parsing in my test though, so I ended up
 with this little test code:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a90d91">package</span> <span style="color:#000">net.bioclipse.uppmax.galaxytoolconfigparser</span>;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">org.antlr.grammar.v3.*</span>;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">org.antlr.runtime.ANTLRStringStream</span>;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">org.antlr.runtime.CharStream</span>;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">org.antlr.runtime.CommonTokenStream</span>;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">org.antlr.runtime.RecognitionException</span>;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">org.antlr.runtime.TokenStream</span>;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">org.antlr.runtime.tree.CommonTree</span>;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">org.antlr.runtime.tree.DOTTreeGenerator</span>;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">org.antlr.runtime.tree.Tree</span>;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">org.antlr.runtime.tree.TreeAdaptor</span>;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">org.antlr.stringtemplate.StringTemplate</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">public</span> <span style="color:#a90d91">class</span> <span style="color:#3f6e75">ParseTest</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Generated stuff from ANTLR, which I can use to recognize token types</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">public</span> <span style="color:#a90d91">static</span> <span style="color:#a90d91">final</span> <span style="color:#a90d91">int</span> <span style="color:#000">EOF</span><span style="color:#000">=-</span><span style="color:#000">1</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">public</span> <span style="color:#a90d91">static</span> <span style="color:#a90d91">final</span> <span style="color:#a90d91">int</span> <span style="color:#000">ELSE</span><span style="color:#000">=</span><span style="color:#000">4</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">public</span> <span style="color:#a90d91">static</span> <span style="color:#a90d91">final</span> <span style="color:#a90d91">int</span> <span style="color:#000">ENDIF</span><span style="color:#000">=</span><span style="color:#000">5</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">public</span> <span style="color:#a90d91">static</span> <span style="color:#a90d91">final</span> <span style="color:#a90d91">int</span> <span style="color:#000">WORD</span><span style="color:#000">=</span><span style="color:#000">6</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">public</span> <span style="color:#a90d91">static</span> <span style="color:#a90d91">final</span> <span style="color:#a90d91">int</span> <span style="color:#000">IF</span><span style="color:#000">=</span><span style="color:#000">7</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">public</span> <span style="color:#a90d91">static</span> <span style="color:#a90d91">final</span> <span style="color:#a90d91">int</span> <span style="color:#000">STRING</span><span style="color:#000">=</span><span style="color:#000">8</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">public</span> <span style="color:#a90d91">static</span> <span style="color:#a90d91">final</span> <span style="color:#a90d91">int</span> <span style="color:#000">VARIABLE</span><span style="color:#000">=</span><span style="color:#000">9</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">public</span> <span style="color:#a90d91">static</span> <span style="color:#a90d91">final</span> <span style="color:#a90d91">int</span> <span style="color:#000">EQTEST</span><span style="color:#000">=</span><span style="color:#000">10</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">public</span> <span style="color:#a90d91">static</span> <span style="color:#a90d91">final</span> <span style="color:#a90d91">int</span> <span style="color:#000">COLON</span><span style="color:#000">=</span><span style="color:#000">11</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">public</span> <span style="color:#a90d91">static</span> <span style="color:#a90d91">final</span> <span style="color:#a90d91">int</span> <span style="color:#000">DBLDASH</span><span style="color:#000">=</span><span style="color:#000">12</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">public</span> <span style="color:#a90d91">static</span> <span style="color:#a90d91">final</span> <span style="color:#a90d91">int</span> <span style="color:#000">EQ</span><span style="color:#000">=</span><span style="color:#000">13</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">public</span> <span style="color:#a90d91">static</span> <span style="color:#a90d91">final</span> <span style="color:#a90d91">int</span> <span style="color:#000">WS</span><span style="color:#000">=</span><span style="color:#000">14</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">public</span> <span style="color:#a90d91">static</span> <span style="color:#a90d91">void</span> <span style="color:#000">main</span>(<span style="color:#000">String</span><span style="color:#000">[]</span> <span style="color:#000">args</span>) <span style="color:#a90d91">throws</span> <span style="color:#000">RecognitionException</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#000">String</span> <span style="color:#000">testString</span> <span style="color:#000">=</span> <span style="color:#c41a16">&#34;    sam_to_bam.py&#34;</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#000">+</span> <span style="color:#c41a16">&#34;      --input1=$source.input1\n&#34;</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#000">+</span> <span style="color:#c41a16">&#34;      --dbkey=${input1.metadata.dbkey}\n&#34;</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#000">+</span> <span style="color:#c41a16">&#34;      #if $source.index_source == &#34;</span><span style="color:#000">history</span><span style="color:#c41a16">&#34;:\n&#34;</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#000">+</span> <span style="color:#c41a16">&#34;        --ref_file=$source.ref_file\n&#34;</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#000">+</span> <span style="color:#c41a16">&#34;      #else\n&#34;</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#000">+</span> <span style="color:#c41a16">&#34;        --ref_file=&#34;</span><span style="color:#000">None</span><span style="color:#c41a16">&#34;\n&#34;</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#000">+</span> <span style="color:#c41a16">&#34;      #end if\n&#34;</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#000">+</span> <span style="color:#c41a16">&#34;      --output1=$output1\n&#34;</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#000">+</span> <span style="color:#c41a16">&#34;      --index_dir=${GALAXY_DATA_INDEX_DIR}\n&#34;</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#000">CharStream</span> <span style="color:#000">charStream</span> <span style="color:#000">=</span> <span style="color:#a90d91">new</span> <span style="color:#000">ANTLRStringStream</span>(<span style="color:#000">testString</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#000">GalaxyToolConfigLexer</span> <span style="color:#000">lexer</span> <span style="color:#000">=</span> <span style="color:#a90d91">new</span> <span style="color:#000">GalaxyToolConfigLexer</span>(<span style="color:#000">charStream</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#000">TokenStream</span> <span style="color:#000">tokenStream</span> <span style="color:#000">=</span> <span style="color:#a90d91">new</span> <span style="color:#000">CommonTokenStream</span>(<span style="color:#000">lexer</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#000">GalaxyToolConfigParser</span> <span style="color:#000">parser</span> <span style="color:#000">=</span> <span style="color:#a90d91">new</span> <span style="color:#000">GalaxyToolConfigParser</span>(<span style="color:#000">tokenStream</span>, <span style="color:#a90d91">null</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">System</span>.<span style="color:#836c28">out</span>.<span style="color:#836c28">println</span>(<span style="color:#c41a16">&#34;Starting to parse ...&#34;</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#177500">// GalaxyToolConfigParser.command_return command = parser.command();</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">CommonTree</span> <span style="color:#000">tree</span> <span style="color:#000">=</span> (<span style="color:#000">CommonTree</span>)<span style="color:#000">parser</span>.<span style="color:#836c28">command</span>().<span style="color:#836c28">getTree</span>();
-</span></span><span style="display:flex;"><span>        <span style="color:#000">System</span>.<span style="color:#836c28">out</span>.<span style="color:#836c28">println</span>(<span style="color:#c41a16">&#34;Done parsing ...&#34;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">int</span> <span style="color:#000">i</span> <span style="color:#000">=</span> <span style="color:#000">0</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">while</span> (<span style="color:#000">i</span><span style="color:#000">&lt;</span><span style="color:#000">tree</span>.<span style="color:#836c28">getChildCount</span>()) {
-</span></span><span style="display:flex;"><span>            <span style="color:#000">Tree</span> <span style="color:#000">subTree</span> <span style="color:#000">=</span> <span style="color:#000">tree</span>.<span style="color:#836c28">getChild</span>(<span style="color:#000">i</span>);
-</span></span><span style="display:flex;"><span>            <span style="color:#000">System</span>.<span style="color:#836c28">out</span>.<span style="color:#836c28">println</span>(<span style="color:#c41a16">&#34;Tree child: &#34;</span> <span style="color:#000">+</span> <span style="color:#000">subTree</span>.<span style="color:#836c28">getText</span>() <span style="color:#000">+</span> <span style="color:#c41a16">&#34;, (Token type: &#34;</span> <span style="color:#000">+</span> <span style="color:#000">subTree</span>.<span style="color:#836c28">getType</span>() <span style="color:#000">+</span> <span style="color:#c41a16">&#34;)&#34;</span>);
-</span></span><span style="display:flex;"><span>            <span style="color:#000">i</span><span style="color:#000">++</span>;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#177500">// Generate DOT Syntax tree</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#177500">//DOTTreeGenerator gen = new DOTTreeGenerator();</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#177500">//StringTemplate st = gen.toDOT(tree);</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#177500">//System.out.println(&#34;Tree: \n&#34; + st);</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000">System</span>.<span style="color:#836c28">out</span>.<span style="color:#836c28">println</span>(<span style="color:#c41a16">&#34;Done!&#34;</span>);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>&hellip; generating this output:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">package</span><span style="color:#666"> </span><span style="color:#447fcf;text-decoration:underline">net.bioclipse.uppmax.galaxytoolconfigparser</span>;<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#6ab825;font-weight:bold">import</span><span style="color:#666"> </span><span style="color:#447fcf;text-decoration:underline">org.antlr.grammar.v3.*</span>;<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#6ab825;font-weight:bold">import</span><span style="color:#666"> </span><span style="color:#447fcf;text-decoration:underline">org.antlr.runtime.ANTLRStringStream</span>;<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#6ab825;font-weight:bold">import</span><span style="color:#666"> </span><span style="color:#447fcf;text-decoration:underline">org.antlr.runtime.CharStream</span>;<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#6ab825;font-weight:bold">import</span><span style="color:#666"> </span><span style="color:#447fcf;text-decoration:underline">org.antlr.runtime.CommonTokenStream</span>;<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#6ab825;font-weight:bold">import</span><span style="color:#666"> </span><span style="color:#447fcf;text-decoration:underline">org.antlr.runtime.RecognitionException</span>;<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#6ab825;font-weight:bold">import</span><span style="color:#666"> </span><span style="color:#447fcf;text-decoration:underline">org.antlr.runtime.TokenStream</span>;<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#6ab825;font-weight:bold">import</span><span style="color:#666"> </span><span style="color:#447fcf;text-decoration:underline">org.antlr.runtime.tree.CommonTree</span>;<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#6ab825;font-weight:bold">import</span><span style="color:#666"> </span><span style="color:#447fcf;text-decoration:underline">org.antlr.runtime.tree.DOTTreeGenerator</span>;<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#6ab825;font-weight:bold">import</span><span style="color:#666"> </span><span style="color:#447fcf;text-decoration:underline">org.antlr.runtime.tree.Tree</span>;<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#6ab825;font-weight:bold">import</span><span style="color:#666"> </span><span style="color:#447fcf;text-decoration:underline">org.antlr.runtime.tree.TreeAdaptor</span>;<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#6ab825;font-weight:bold">import</span><span style="color:#666"> </span><span style="color:#447fcf;text-decoration:underline">org.antlr.stringtemplate.StringTemplate</span>;<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#6ab825;font-weight:bold">public</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">class</span> <span style="color:#447fcf;text-decoration:underline">ParseTest</span><span style="color:#666"> </span>{<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">    </span><span style="color:#999;font-style:italic">// Generated stuff from ANTLR, which I can use to recognize token types</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">public</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">static</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">final</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">int</span><span style="color:#666"> </span>EOF=-1;<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">public</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">static</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">final</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">int</span><span style="color:#666"> </span>ELSE=4;<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">public</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">static</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">final</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">int</span><span style="color:#666"> </span>ENDIF=5;<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">public</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">static</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">final</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">int</span><span style="color:#666"> </span>WORD=6;<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">public</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">static</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">final</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">int</span><span style="color:#666"> </span>IF=7;<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">public</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">static</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">final</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">int</span><span style="color:#666"> </span>STRING=8;<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">public</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">static</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">final</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">int</span><span style="color:#666"> </span>VARIABLE=9;<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">public</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">static</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">final</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">int</span><span style="color:#666"> </span>EQTEST=10;<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">public</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">static</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">final</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">int</span><span style="color:#666"> </span>COLON=11;<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">public</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">static</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">final</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">int</span><span style="color:#666"> </span>DBLDASH=12;<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">public</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">static</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">final</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">int</span><span style="color:#666"> </span>EQ=13;<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">public</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">static</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">final</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">int</span><span style="color:#666"> </span>WS=14;<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">public</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">static</span><span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">void</span><span style="color:#666"> </span><span style="color:#447fcf">main</span>(String[]<span style="color:#666"> </span>args)<span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">throws</span><span style="color:#666"> </span>RecognitionException<span style="color:#666"> </span>{<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">        </span>String<span style="color:#666"> </span>testString<span style="color:#666"> </span>=<span style="color:#666"> </span><span style="color:#ed9d13">&#34;    sam_to_bam.py&#34;</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">                </span>+<span style="color:#666"> </span><span style="color:#ed9d13">&#34;      --input1=$source.input1\n&#34;</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">                </span>+<span style="color:#666"> </span><span style="color:#ed9d13">&#34;      --dbkey=${input1.metadata.dbkey}\n&#34;</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">                </span>+<span style="color:#666"> </span><span style="color:#ed9d13">&#34;      #if $source.index_source == &#34;</span>history<span style="color:#ed9d13">&#34;:\n&#34;</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">                </span>+<span style="color:#666"> </span><span style="color:#ed9d13">&#34;        --ref_file=$source.ref_file\n&#34;</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">                </span>+<span style="color:#666"> </span><span style="color:#ed9d13">&#34;      #else\n&#34;</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">                </span>+<span style="color:#666"> </span><span style="color:#ed9d13">&#34;        --ref_file=&#34;</span>None<span style="color:#ed9d13">&#34;\n&#34;</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">                </span>+<span style="color:#666"> </span><span style="color:#ed9d13">&#34;      #end if\n&#34;</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">                </span>+<span style="color:#666"> </span><span style="color:#ed9d13">&#34;      --output1=$output1\n&#34;</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">                </span>+<span style="color:#666"> </span><span style="color:#ed9d13">&#34;      --index_dir=${GALAXY_DATA_INDEX_DIR}\n&#34;</span>;<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">        </span>CharStream<span style="color:#666"> </span>charStream<span style="color:#666"> </span>=<span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">new</span><span style="color:#666"> </span>ANTLRStringStream(testString);<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">        </span>GalaxyToolConfigLexer<span style="color:#666"> </span>lexer<span style="color:#666"> </span>=<span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">new</span><span style="color:#666"> </span>GalaxyToolConfigLexer(charStream);<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">        </span>TokenStream<span style="color:#666"> </span>tokenStream<span style="color:#666"> </span>=<span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">new</span><span style="color:#666"> </span>CommonTokenStream(lexer);<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">        </span>GalaxyToolConfigParser<span style="color:#666"> </span>parser<span style="color:#666"> </span>=<span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">new</span><span style="color:#666"> </span>GalaxyToolConfigParser(tokenStream,<span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">null</span>);<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">        </span>System.<span style="color:#bbb">out</span>.<span style="color:#bbb">println</span>(<span style="color:#ed9d13">&#34;Starting to parse ...&#34;</span>);<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">        </span><span style="color:#999;font-style:italic">// GalaxyToolConfigParser.command_return command = parser.command();</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">        </span>CommonTree<span style="color:#666"> </span>tree<span style="color:#666"> </span>=<span style="color:#666"> </span>(CommonTree)parser.<span style="color:#bbb">command</span>().<span style="color:#bbb">getTree</span>();<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">        </span>System.<span style="color:#bbb">out</span>.<span style="color:#bbb">println</span>(<span style="color:#ed9d13">&#34;Done parsing ...&#34;</span>);<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">        </span><span style="color:#6ab825;font-weight:bold">int</span><span style="color:#666"> </span>i<span style="color:#666"> </span>=<span style="color:#666"> </span>0;<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">        </span><span style="color:#6ab825;font-weight:bold">while</span><span style="color:#666"> </span>(i&lt;tree.<span style="color:#bbb">getChildCount</span>())<span style="color:#666"> </span>{<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">            </span>Tree<span style="color:#666"> </span>subTree<span style="color:#666"> </span>=<span style="color:#666"> </span>tree.<span style="color:#bbb">getChild</span>(i);<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">            </span>System.<span style="color:#bbb">out</span>.<span style="color:#bbb">println</span>(<span style="color:#ed9d13">&#34;Tree child: &#34;</span><span style="color:#666"> </span>+<span style="color:#666"> </span>subTree.<span style="color:#bbb">getText</span>()<span style="color:#666"> </span>+<span style="color:#666"> </span><span style="color:#ed9d13">&#34;, (Token type: &#34;</span><span style="color:#666"> </span>+<span style="color:#666"> </span>subTree.<span style="color:#bbb">getType</span>()<span style="color:#666"> </span>+<span style="color:#666"> </span><span style="color:#ed9d13">&#34;)&#34;</span>);<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">            </span>i++;<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">        </span>}<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">        </span><span style="color:#999;font-style:italic">// Generate DOT Syntax tree</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">        </span><span style="color:#999;font-style:italic">//DOTTreeGenerator gen = new DOTTreeGenerator();</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">        </span><span style="color:#999;font-style:italic">//StringTemplate st = gen.toDOT(tree);</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">        </span><span style="color:#999;font-style:italic">//System.out.println(&#34;Tree: \n&#34; + st);</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">        </span>System.<span style="color:#bbb">out</span>.<span style="color:#bbb">println</span>(<span style="color:#ed9d13">&#34;Done!&#34;</span>);<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">    </span>}<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span>}<span style="color:#666">
+</span></span></span></code></pre></div><p>&hellip; generating this output:</p>
 <pre tabindex="0"><code class="language-log" data-lang="log">Starting ...
 Done executing command ...
 Subtree text: sam_to_bam.py, (Token type: 6)
@@ -287,7 +296,8 @@ too</a>
 (Though in another github project)</li>
 </ul>
 
-  
+    </div>
+    
   <div>
     <ul class="tags">
         <li><a href="/tags/galaxy/" class="tag">Galaxy</a></li>
@@ -295,31 +305,34 @@ too</a>
     </ul>
   </div>
 
-
-  <div id="disqus_thread"></div>
-  <script>
-  
-
-  var disqus_config = function () {
-      this.page.url = "https://livingsystems.cc/posts/ebnf-parser-for-galaxy-toolconfig-syntax-with-antlr/";  
-      this.page.identifier =  1102 ; 
-  };
-  (function() { 
-      var d = document, s = d.createElement('script');
-      s.src = 'https://bionicsit.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-  })();
-
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</article>
 
 
-  </main>
-  <footer>
-    <p>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+  <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script>
+    
 
-<p>Copyright &copy; 2026 Samuel Lampa</p>
+    var disqus_config = function () {
+        this.page.url = "https://livingsystems.cc/posts/ebnf-parser-for-galaxy-toolconfig-syntax-with-antlr/";  
+        this.page.identifier =  1102 ; 
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');
+        s.src = 'https://bionicsit.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </section>
+
+    </main>
+    <footer class="site-footer">
+      <p>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+
+<p class="copyright">Copyright &copy; 2026 Samuel Lampa</p>
 
 <p>Find me on
 <a href="https://orcid.org/0000-0001-6740-9212" target="_blank">ORCID</a>,
@@ -329,6 +342,7 @@ too</a>
 <a href="https://linkedin.com/in/smllmp" target="_blank">LinkedIn</a>.
 </p>
 
-  </footer>
+    </footer>
+  </div>
 </body>
 </html>

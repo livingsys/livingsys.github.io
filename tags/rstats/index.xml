@@ -4,7 +4,7 @@
     <title>Rstats on Living_Systems</title>
     <link>https://livingsystems.cc/tags/rstats/</link>
     <description>Recent content in Rstats on Living_Systems</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 28 Mar 2025 14:52:00 +0100</lastBuildDate>
     <atom:link href="https://livingsystems.cc/tags/rstats/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>https://livingsystems.cc/posts/why-is-r-so-confusing/</link>
       <pubDate>Fri, 28 Mar 2025 14:52:00 +0100</pubDate>
       <guid>https://livingsystems.cc/posts/why-is-r-so-confusing/</guid>
-      <description>&lt;p&gt;&lt;p class=&#34;image&#34;&gt;&#xA;    &lt;img src=&#34;confused.png&#34; alt=&#34;Confused man trying to run some R code&#34;  /&gt;&#xA;&lt;/p&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;m not the only one who thinks the &lt;a href=&#34;https://www.r-project.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R language&lt;/a&gt;&#xA;&#xA;can be pretty frustrating at times.&lt;/p&gt;&#xA;&lt;p&gt;In fact, although I have been using it a dozen times over my career, every time&#xA;I have picked it up again after a hiatus, I have been completely lost.&lt;/p&gt;&#xA;&lt;p&gt;Many people have written about various aspects of why it is so confusing, and&#xA;some common themes are things like:&lt;/p&gt;</description>
+      <description>I&amp;rsquo;m not the only one who thinks the R language can be pretty frustrating at times.&#xA;In fact, although I have been using it a dozen times over my career, every time I have picked it up again after a hiatus, I have been completely lost.&#xA;Many people have written about various aspects of why it is so confusing, and some common themes are things like:&#xA;The 1-based indexing, as opposed to 0-based in Python The unusual &amp;lt;- assignment operator (although = works too) the fact that .</description>
     </item>
   </channel>
 </rss>

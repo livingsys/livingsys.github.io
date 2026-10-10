@@ -3,9 +3,13 @@
 <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#0c110e">
 <title>Luigi | Living_Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap">
 
-      <link rel="stylesheet" href="/css/main.min.7afb5fa50a2fd4677a8878f0eb62fc38d8070319c31c48ac2bae0bbafe4e8681.css" integrity="sha256-evtfpQov1Gd6iHjw62L8ONgHAxnDHEisK64Luv5OhoE=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.2e85672a17645d2ef7b09940127cdcd350fb383af2a800647d7264e3b5fd45a3.css" integrity="sha256-LoVnKhdkXS73sJlAEnzc01D7ODryqABkfXJk47X9RaM=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -16,10 +20,15 @@
 
 </head>
 <body>
-  <header>
-    <h1><a href="/">Living_Systems</a></h1>
+  <img class="bg-helix" src="/img/helix-bg.jpg" alt="" aria-hidden="true">
+  <div class="grid-etch" aria-hidden="true"></div>
+  <div class="scanline" aria-hidden="true"></div>
+  <div class="top-line" aria-hidden="true"></div>
+  <div class="container">
+    <header class="site-header">
+      <a class="site-brand" href="/">Living_Systems</a>
 
-  <nav>
+  <nav class="site-nav">
     <ul>
     <li>
       <a href="/">Home</a>
@@ -37,57 +46,50 @@
   </nav>
 
 
-  </header>
-  <main>
-    
-  <h1>Luigi</h1>
-  
-  
-    <div class="post-card">
+    </header>
+    <main>
+      
+  <section class="archive">
+    <h2 class="section-title">Luigi</h2>
+    <ul class="post-list">
+      <li><a class="post-item" href="/posts/luigi-tutorial/">
+    <div class="post-meta"><span class="post-index">0x01</span><span>2016.06.21</span><span class="post-tag">[Luigi]</span><span class="post-time">20 min</span>
+    </div>
+    <h3>Tutorial: Luigi for Scientific Workflows</h3>
+    <p>This is a Luigi tutorial I held at the e-Infrastructures for Massively parallel sequencing workshop (Video archive ) at SciLifeLab Uppsala in January 2015, moved here for future reference.
+What is Luigi? Luigi is a batch workflow system written in Python and developed by Erik …</p>
+</a>
+</li>
+      <li><a class="post-item" href="/posts/dynamic-workflow-scheduling/">
+    <div class="post-meta"><span class="post-index">0x02</span><span>2015.10.26</span><span class="post-tag">[Workflow-Tools]</span><span class="post-time">3 min</span>
+    </div>
+    <h3>Wanted: Dynamic workflow scheduling</h3>
+    <p>Photo credits: Matthew Smith / Unsplash In our work on automating machine learning computations in cheminformatics with scientific workflow tools , we have came to realize something; Dynamic scheduling in scientific workflow tools is very important and sometimes badly needed. …</p>
+</a>
+</li>
+      <li><a class="post-item" href="/posts/workflows-dataflow-not-task-deps/">
+    <div class="post-meta"><span class="post-index">0x03</span><span>2015.06.10</span><span class="post-tag">[Dataflow]</span><span class="post-time">6 min</span>
+    </div>
+    <h3>Workflow tool makers: Allow defining data flow, not just task dependencies</h3>
+    <p>Upsurge in workflow tools There seem to be a little upsurge in light-weight - often python-based - workflow tools for data pipelines in the last couple of years: Spotify&amp;rsquo;s Luigi , OpenStack&amp;rsquo;s Mistral , Pinterest&amp;rsquo;s Pinball , and recently AirBnb&amp;rsquo;s Airflow , …</p>
+</a>
+</li>
+      <li><a class="post-item" href="/posts/our-experiences-using-spotifys-luigi-for-bioinformatics-workflows/">
+    <div class="post-meta"><span class="post-index">0x04</span><span>2015.02.12</span><span class="post-tag">[Luigi]</span><span class="post-time">2 min</span>
+    </div>
+    <h3>Links: Our experiences using Spotify&#39;s Luigi for Bioinformatics Workflows</h3>
+    <p>Fig 1: A screenshot of Luigi&amp;rsquo;s web UI, of a real-world (although rather simple) workflow implemented in Luigi:
+Update May 5, 2016: Most of the below material is more or less outdated. Our latest work has resulted in the SciLuigi helper library , which we have used in …</p>
+</a>
+</li>
+    </ul>
+  </section>
 
-<a href="/posts/luigi-tutorial/"><img src="/posts/luigi-tutorial//luigi_screenshot.png" class="post-img-list"></a>
+    </main>
+    <footer class="site-footer">
+      <p>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
 
-<h2><a href="/posts/luigi-tutorial/">Tutorial: Luigi for Scientific Workflows</a></h2>
-This is a Luigi tutorial I held at the e-Infrastructures for Massively parallel sequencing workshop (Video archive ) at SciLifeLab Uppsala in January 2015, moved here for future reference.
-What is Luigi? Luigi is a batch workflow system written in Python and developed by Erik Bernhardson and others at Spotify , where …
-</div>
-
-  
-    <div class="post-card">
-
-<a href="/posts/dynamic-workflow-scheduling/"><img src="/posts/dynamic-workflow-scheduling//scheduling_unsplash-1.jpg" class="post-img-list"></a>
-
-<h2><a href="/posts/dynamic-workflow-scheduling/">Wanted: Dynamic workflow scheduling</a></h2>
- Photo credits: Matthew Smith / Unsplash In our work on automating machine learning computations in cheminformatics with scientific workflow tools , we have came to realize something; Dynamic scheduling in scientific workflow tools is very important and sometimes badly needed.
-What I mean is that new tasks should be …
-</div>
-
-  
-    <div class="post-card">
-
-<a href="/posts/workflows-dataflow-not-task-deps/"><img src="/posts/workflows-dataflow-not-task-deps//peptide_workflow.png" class="post-img-list"></a>
-
-<h2><a href="/posts/workflows-dataflow-not-task-deps/">Workflow tool makers: Allow defining data flow, not just task dependencies</a></h2>
-Upsurge in workflow tools There seem to be a little upsurge in light-weight - often python-based - workflow tools for data pipelines in the last couple of years: Spotify&rsquo;s Luigi , OpenStack&rsquo;s Mistral , Pinterest&rsquo;s Pinball , and recently AirBnb&rsquo;s Airflow , to name a few. These are all interesting …
-</div>
-
-  
-    <div class="post-card">
-
-<a href="/posts/our-experiences-using-spotifys-luigi-for-bioinformatics-workflows/"><img src="/posts/our-experiences-using-spotifys-luigi-for-bioinformatics-workflows//selection_047_luigi.png" class="post-img-list"></a>
-
-<h2><a href="/posts/our-experiences-using-spotifys-luigi-for-bioinformatics-workflows/">Links: Our experiences using Spotify&#39;s Luigi for Bioinformatics Workflows</a></h2>
- Fig 1: A screenshot of Luigi&rsquo;s web UI, of a real-world (although rather simple) workflow implemented in Luigi:
-Update May 5, 2016: Most of the below material is more or less outdated. Our latest work has resulted in the SciLuigi helper library , which we have used in production and will be focus of further …
-</div>
-
-  
-
-  </main>
-  <footer>
-    <p>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
-
-<p>Copyright &copy; 2026 Samuel Lampa</p>
+<p class="copyright">Copyright &copy; 2026 Samuel Lampa</p>
 
 <p>Find me on
 <a href="https://orcid.org/0000-0001-6740-9212" target="_blank">ORCID</a>,
@@ -97,6 +99,7 @@ Update May 5, 2016: Most of the below material is more or less outdated. Our lat
 <a href="https://linkedin.com/in/smllmp" target="_blank">LinkedIn</a>.
 </p>
 
-  </footer>
+    </footer>
+  </div>
 </body>
 </html>
