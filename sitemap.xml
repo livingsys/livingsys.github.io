@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://livingsystems.cc/about/</loc>
+    <lastmod>2026-10-10T16:57:22+02:00</lastmod>
+  </url><url>
     <loc>https://livingsystems.cc/tags/16s-sequencing/</loc>
     <lastmod>2026-09-25T16:47:12+02:00</lastmod>
   </url><url>
@@ -88,9 +91,6 @@
   </url><url>
     <loc>https://livingsystems.cc/tags/scicommander/</loc>
     <lastmod>2024-09-03T11:15:02+02:00</lastmod>
-  </url><url>
-    <loc>https://livingsystems.cc/about/</loc>
-    <lastmod>2024-08-09T04:18:22+02:00</lastmod>
   </url><url>
     <loc>https://livingsystems.cc/posts/ahc2024/</loc>
     <lastmod>2024-07-05T16:23:00+02:00</lastmod>
