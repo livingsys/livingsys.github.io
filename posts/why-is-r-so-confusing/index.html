@@ -3,13 +3,9 @@
 <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#0c110e">
 <title>Why is R so confusing? Because it is so hard to inspect | Living_Systems</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap">
 
-      <link rel="stylesheet" href="/css/main.min.76cff45d7af66ece9b7ede310dd71bde69fb8ed11585ba68c54307a940ccb0bf.css" integrity="sha256-ds/0XXr2bs6bft4xDdcb3mn7jtEVhbpoxUMHqUDMsL8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.7afb5fa50a2fd4677a8878f0eb62fc38d8070319c31c48ac2bae0bbafe4e8681.css" integrity="sha256-evtfpQov1Gd6iHjw62L8ONgHAxnDHEisK64Luv5OhoE=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -22,15 +18,10 @@
 
 </head>
 <body>
-  <img class="bg-helix" src="/img/helix-bg.jpg" alt="" aria-hidden="true">
-  <div class="grid-etch" aria-hidden="true"></div>
-  <div class="scanline" aria-hidden="true"></div>
-  <div class="top-line" aria-hidden="true"></div>
-  <div class="container">
-    <header class="site-header">
-      <a class="site-brand" href="/">Living_Systems</a>
+  <header>
+    <h1><a href="/">Living_Systems</a></h1>
 
-  <nav class="site-nav">
+  <nav>
     <ul>
     <li>
       <a href="/">Home</a>
@@ -48,17 +39,17 @@
   </nav>
 
 
-    </header>
-    <main>
-      
-  <article class="article">
-    <header class="article-header">
-        <h1 class="article-title">Why is R so confusing? Because it is so hard to inspect</h1>
-        <div class="article-meta"><time datetime="2025-03-28T14:52:00&#43;01:00">2025.03.28</time><span class="post-time">8 min read</span>
-        </div>
-    </header>
-    <div class="prose article-body">
-        <p><p class="image">
+  </header>
+  <main>
+    
+  <h1>Why is R so confusing? Because it is so hard to inspect</h1>
+
+  
+  
+  
+  <time datetime="2025-03-28T14:52:00&#43;01:00">March 28, 2025</time>
+
+  <p><p class="image">
     <img src="confused.png" alt="Confused man trying to run some R code"  />
 </p>
 </p>
@@ -90,20 +81,20 @@ you are working very much in the dark, and what you are doing is not so much
 computing as alchemy.</p>
 <p>To mention some good examples in this area to give an example, I mean how you are able
 to inspect objects very deeply in Python for example, by doing:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>l = [<span style="color:#3677a9">1</span>,<span style="color:#3677a9">2</span>,<span style="color:#3677a9">3</span>]
-</span></span><span style="display:flex;"><span>l.__dir__()
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000">l</span> <span style="color:#000">=</span> [<span style="color:#1c01ce">1</span>,<span style="color:#1c01ce">2</span>,<span style="color:#1c01ce">3</span>]
+</span></span><span style="display:flex;"><span><span style="color:#000">l</span><span style="color:#000">.</span><span style="color:#000">__dir__</span>()
 </span></span></code></pre></div><p>&hellip; to show a list of all the &ldquo;public&rdquo; and &ldquo;internal&rdquo; (starting with <code>__</code>) methods and fields
 that is available for this object.</p>
 <p>In this case, what you get is:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>&gt;&gt;&gt; l.__dir__()
-</span></span><span style="display:flex;"><span>&gt; [<span style="color:#ed9d13">&#39;__new__&#39;</span>, <span style="color:#ed9d13">&#39;__repr__&#39;</span>, <span style="color:#ed9d13">&#39;__hash__&#39;</span>, <span style="color:#ed9d13">&#39;__getattribute__&#39;</span>, <span style="color:#ed9d13">&#39;__lt__&#39;</span>, <span style="color:#ed9d13">&#39;__le__&#39;</span>,
-</span></span><span style="display:flex;"><span>&gt; <span style="color:#ed9d13">&#39;__eq__&#39;</span>, <span style="color:#ed9d13">&#39;__ne__&#39;</span>, <span style="color:#ed9d13">&#39;__gt__&#39;</span>, <span style="color:#ed9d13">&#39;__ge__&#39;</span>, <span style="color:#ed9d13">&#39;__iter__&#39;</span>, <span style="color:#ed9d13">&#39;__init__&#39;</span>, <span style="color:#ed9d13">&#39;__len__&#39;</span>,
-</span></span><span style="display:flex;"><span>&gt; <span style="color:#ed9d13">&#39;__getitem__&#39;</span>, <span style="color:#ed9d13">&#39;__setitem__&#39;</span>, <span style="color:#ed9d13">&#39;__delitem__&#39;</span>, <span style="color:#ed9d13">&#39;__add__&#39;</span>, <span style="color:#ed9d13">&#39;__mul__&#39;</span>, <span style="color:#ed9d13">&#39;__rmul__&#39;</span>,
-</span></span><span style="display:flex;"><span>&gt; <span style="color:#ed9d13">&#39;__contains__&#39;</span>, <span style="color:#ed9d13">&#39;__iadd__&#39;</span>, <span style="color:#ed9d13">&#39;__imul__&#39;</span>, <span style="color:#ed9d13">&#39;__reversed__&#39;</span>, <span style="color:#ed9d13">&#39;__sizeof__&#39;</span>, <span style="color:#ed9d13">&#39;clear&#39;</span>,
-</span></span><span style="display:flex;"><span>&gt; <span style="color:#ed9d13">&#39;copy&#39;</span>, <span style="color:#ed9d13">&#39;append&#39;</span>, <span style="color:#ed9d13">&#39;insert&#39;</span>, <span style="color:#ed9d13">&#39;extend&#39;</span>, <span style="color:#ed9d13">&#39;pop&#39;</span>, <span style="color:#ed9d13">&#39;remove&#39;</span>, <span style="color:#ed9d13">&#39;index&#39;</span>, <span style="color:#ed9d13">&#39;count&#39;</span>,
-</span></span><span style="display:flex;"><span>&gt; <span style="color:#ed9d13">&#39;reverse&#39;</span>, <span style="color:#ed9d13">&#39;sort&#39;</span>, <span style="color:#ed9d13">&#39;__class_getitem__&#39;</span>, <span style="color:#ed9d13">&#39;__doc__&#39;</span>, <span style="color:#ed9d13">&#39;__str__&#39;</span>, <span style="color:#ed9d13">&#39;__setattr__&#39;</span>,
-</span></span><span style="display:flex;"><span>&gt; <span style="color:#ed9d13">&#39;__delattr__&#39;</span>, <span style="color:#ed9d13">&#39;__reduce_ex__&#39;</span>, <span style="color:#ed9d13">&#39;__reduce__&#39;</span>, <span style="color:#ed9d13">&#39;__subclasshook__&#39;</span>,
-</span></span><span style="display:flex;"><span>&gt; <span style="color:#ed9d13">&#39;__init_subclass__&#39;</span>, <span style="color:#ed9d13">&#39;__format__&#39;</span>, <span style="color:#ed9d13">&#39;__dir__&#39;</span>, <span style="color:#ed9d13">&#39;__class__&#39;</span>]
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000">&gt;&gt;&gt;</span> <span style="color:#000">l</span><span style="color:#000">.</span><span style="color:#000">__dir__</span>()
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> [<span style="color:#c41a16">&#39;__new__&#39;</span>, <span style="color:#c41a16">&#39;__repr__&#39;</span>, <span style="color:#c41a16">&#39;__hash__&#39;</span>, <span style="color:#c41a16">&#39;__getattribute__&#39;</span>, <span style="color:#c41a16">&#39;__lt__&#39;</span>, <span style="color:#c41a16">&#39;__le__&#39;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#c41a16">&#39;__eq__&#39;</span>, <span style="color:#c41a16">&#39;__ne__&#39;</span>, <span style="color:#c41a16">&#39;__gt__&#39;</span>, <span style="color:#c41a16">&#39;__ge__&#39;</span>, <span style="color:#c41a16">&#39;__iter__&#39;</span>, <span style="color:#c41a16">&#39;__init__&#39;</span>, <span style="color:#c41a16">&#39;__len__&#39;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#c41a16">&#39;__getitem__&#39;</span>, <span style="color:#c41a16">&#39;__setitem__&#39;</span>, <span style="color:#c41a16">&#39;__delitem__&#39;</span>, <span style="color:#c41a16">&#39;__add__&#39;</span>, <span style="color:#c41a16">&#39;__mul__&#39;</span>, <span style="color:#c41a16">&#39;__rmul__&#39;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#c41a16">&#39;__contains__&#39;</span>, <span style="color:#c41a16">&#39;__iadd__&#39;</span>, <span style="color:#c41a16">&#39;__imul__&#39;</span>, <span style="color:#c41a16">&#39;__reversed__&#39;</span>, <span style="color:#c41a16">&#39;__sizeof__&#39;</span>, <span style="color:#c41a16">&#39;clear&#39;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#c41a16">&#39;copy&#39;</span>, <span style="color:#c41a16">&#39;append&#39;</span>, <span style="color:#c41a16">&#39;insert&#39;</span>, <span style="color:#c41a16">&#39;extend&#39;</span>, <span style="color:#c41a16">&#39;pop&#39;</span>, <span style="color:#c41a16">&#39;remove&#39;</span>, <span style="color:#c41a16">&#39;index&#39;</span>, <span style="color:#c41a16">&#39;count&#39;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#c41a16">&#39;reverse&#39;</span>, <span style="color:#c41a16">&#39;sort&#39;</span>, <span style="color:#c41a16">&#39;__class_getitem__&#39;</span>, <span style="color:#c41a16">&#39;__doc__&#39;</span>, <span style="color:#c41a16">&#39;__str__&#39;</span>, <span style="color:#c41a16">&#39;__setattr__&#39;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#c41a16">&#39;__delattr__&#39;</span>, <span style="color:#c41a16">&#39;__reduce_ex__&#39;</span>, <span style="color:#c41a16">&#39;__reduce__&#39;</span>, <span style="color:#c41a16">&#39;__subclasshook__&#39;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#c41a16">&#39;__init_subclass__&#39;</span>, <span style="color:#c41a16">&#39;__format__&#39;</span>, <span style="color:#c41a16">&#39;__dir__&#39;</span>, <span style="color:#c41a16">&#39;__class__&#39;</span>]
 </span></span></code></pre></div><p>Here you can see that this list has a number of normal methods:</p>
 <pre tabindex="0"><code>copy
 append
@@ -133,23 +124,23 @@ techniques I&rsquo;ve learned from others, together with some own small tricks.<
 broken up into multiple rows.  This means that even if you run a simple
 command such as <code>head(data)</code>, you will get a quite unreadable mess of
 broken rows, like something like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>&lt;<span style="color:#6ab825;font-weight:bold">...</span> clipping because goes many pages outside of window <span style="color:#6ab825;font-weight:bold">...</span>&gt;
-</span></span><span style="display:flex;"><span>ENSG00000000460       <span style="color:#3677a9">9</span>      <span style="color:#3677a9">15</span>      <span style="color:#3677a9">17</span>       <span style="color:#3677a9">8</span>      <span style="color:#3677a9">28</span>      <span style="color:#3677a9">10</span>       <span style="color:#3677a9">5</span>
-</span></span><span style="display:flex;"><span>ENSG00000000938      <span style="color:#3677a9">73</span>      <span style="color:#3677a9">12</span>     <span style="color:#3677a9">100</span>      <span style="color:#3677a9">71</span>      <span style="color:#3677a9">55</span>      <span style="color:#3677a9">28</span>      <span style="color:#3677a9">35</span>
-</span></span><span style="display:flex;"><span>NA19201 NA19203 NA19204 NA19209 NA19210 NA19222 NA19225
-</span></span><span style="display:flex;"><span>ENSG00000000003       <span style="color:#3677a9">2</span>       <span style="color:#3677a9">0</span>       <span style="color:#3677a9">0</span>       <span style="color:#3677a9">0</span>       <span style="color:#3677a9">0</span>       <span style="color:#3677a9">0</span>       <span style="color:#3677a9">0</span>
-</span></span><span style="display:flex;"><span>ENSG00000000005       <span style="color:#3677a9">0</span>       <span style="color:#3677a9">0</span>       <span style="color:#3677a9">0</span>       <span style="color:#3677a9">0</span>       <span style="color:#3677a9">0</span>       <span style="color:#3677a9">0</span>       <span style="color:#3677a9">0</span>
-</span></span><span style="display:flex;"><span>ENSG00000000419      <span style="color:#3677a9">77</span>      <span style="color:#3677a9">82</span>      <span style="color:#3677a9">57</span>      <span style="color:#3677a9">63</span>      <span style="color:#3677a9">89</span>      <span style="color:#3677a9">60</span>      <span style="color:#3677a9">76</span>
-</span></span><span style="display:flex;"><span>ENSG00000000457      <span style="color:#3677a9">96</span>      <span style="color:#3677a9">58</span>      <span style="color:#3677a9">86</span>     <span style="color:#3677a9">113</span>      <span style="color:#3677a9">48</span>      <span style="color:#3677a9">71</span>      <span style="color:#3677a9">81</span>
-</span></span><span style="display:flex;"><span>ENSG00000000460      <span style="color:#3677a9">16</span>      <span style="color:#3677a9">10</span>      <span style="color:#3677a9">19</span>      <span style="color:#3677a9">17</span>      <span style="color:#3677a9">12</span>      <span style="color:#3677a9">12</span>       <span style="color:#3677a9">7</span>
-</span></span><span style="display:flex;"><span>ENSG00000000938      <span style="color:#3677a9">50</span>      <span style="color:#3677a9">14</span>      <span style="color:#3677a9">59</span>      <span style="color:#3677a9">27</span>      <span style="color:#3677a9">32</span>      <span style="color:#3677a9">25</span>      <span style="color:#3677a9">19</span>
-</span></span><span style="display:flex;"><span>NA19238 NA19239 NA19257
-</span></span><span style="display:flex;"><span>ENSG00000000003       <span style="color:#3677a9">0</span>       <span style="color:#3677a9">0</span>       <span style="color:#3677a9">0</span>
-</span></span><span style="display:flex;"><span>ENSG00000000005       <span style="color:#3677a9">0</span>       <span style="color:#3677a9">0</span>       <span style="color:#3677a9">0</span>
-</span></span><span style="display:flex;"><span>ENSG00000000419      <span style="color:#3677a9">69</span>      <span style="color:#3677a9">84</span>      <span style="color:#3677a9">76</span>
-</span></span><span style="display:flex;"><span>ENSG00000000457      <span style="color:#3677a9">73</span>      <span style="color:#3677a9">87</span>      <span style="color:#3677a9">81</span>
-</span></span><span style="display:flex;"><span>ENSG00000000460      <span style="color:#3677a9">21</span>      <span style="color:#3677a9">35</span>      <span style="color:#3677a9">11</span>
-</span></span><span style="display:flex;"><span>ENSG00000000938      <span style="color:#3677a9">59</span>      <span style="color:#3677a9">58</span>      <span style="color:#3677a9">34</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">&lt;</span><span style="color:#a90d91">...</span> <span style="color:#000">clipping</span> <span style="color:#000">because</span> <span style="color:#000">goes</span> <span style="color:#000">many</span> <span style="color:#000">pages</span> <span style="color:#000">outside</span> <span style="color:#000">of</span> <span style="color:#000">window</span> <span style="color:#a90d91">...</span><span style="color:#000">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">ENSG00000000460</span>       <span style="color:#1c01ce">9</span>      <span style="color:#1c01ce">15</span>      <span style="color:#1c01ce">17</span>       <span style="color:#1c01ce">8</span>      <span style="color:#1c01ce">28</span>      <span style="color:#1c01ce">10</span>       <span style="color:#1c01ce">5</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">ENSG00000000938</span>      <span style="color:#1c01ce">73</span>      <span style="color:#1c01ce">12</span>     <span style="color:#1c01ce">100</span>      <span style="color:#1c01ce">71</span>      <span style="color:#1c01ce">55</span>      <span style="color:#1c01ce">28</span>      <span style="color:#1c01ce">35</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">NA19201</span> <span style="color:#000">NA19203</span> <span style="color:#000">NA19204</span> <span style="color:#000">NA19209</span> <span style="color:#000">NA19210</span> <span style="color:#000">NA19222</span> <span style="color:#000">NA19225</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">ENSG00000000003</span>       <span style="color:#1c01ce">2</span>       <span style="color:#1c01ce">0</span>       <span style="color:#1c01ce">0</span>       <span style="color:#1c01ce">0</span>       <span style="color:#1c01ce">0</span>       <span style="color:#1c01ce">0</span>       <span style="color:#1c01ce">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">ENSG00000000005</span>       <span style="color:#1c01ce">0</span>       <span style="color:#1c01ce">0</span>       <span style="color:#1c01ce">0</span>       <span style="color:#1c01ce">0</span>       <span style="color:#1c01ce">0</span>       <span style="color:#1c01ce">0</span>       <span style="color:#1c01ce">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">ENSG00000000419</span>      <span style="color:#1c01ce">77</span>      <span style="color:#1c01ce">82</span>      <span style="color:#1c01ce">57</span>      <span style="color:#1c01ce">63</span>      <span style="color:#1c01ce">89</span>      <span style="color:#1c01ce">60</span>      <span style="color:#1c01ce">76</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">ENSG00000000457</span>      <span style="color:#1c01ce">96</span>      <span style="color:#1c01ce">58</span>      <span style="color:#1c01ce">86</span>     <span style="color:#1c01ce">113</span>      <span style="color:#1c01ce">48</span>      <span style="color:#1c01ce">71</span>      <span style="color:#1c01ce">81</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">ENSG00000000460</span>      <span style="color:#1c01ce">16</span>      <span style="color:#1c01ce">10</span>      <span style="color:#1c01ce">19</span>      <span style="color:#1c01ce">17</span>      <span style="color:#1c01ce">12</span>      <span style="color:#1c01ce">12</span>       <span style="color:#1c01ce">7</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">ENSG00000000938</span>      <span style="color:#1c01ce">50</span>      <span style="color:#1c01ce">14</span>      <span style="color:#1c01ce">59</span>      <span style="color:#1c01ce">27</span>      <span style="color:#1c01ce">32</span>      <span style="color:#1c01ce">25</span>      <span style="color:#1c01ce">19</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">NA19238</span> <span style="color:#000">NA19239</span> <span style="color:#000">NA19257</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">ENSG00000000003</span>       <span style="color:#1c01ce">0</span>       <span style="color:#1c01ce">0</span>       <span style="color:#1c01ce">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">ENSG00000000005</span>       <span style="color:#1c01ce">0</span>       <span style="color:#1c01ce">0</span>       <span style="color:#1c01ce">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">ENSG00000000419</span>      <span style="color:#1c01ce">69</span>      <span style="color:#1c01ce">84</span>      <span style="color:#1c01ce">76</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">ENSG00000000457</span>      <span style="color:#1c01ce">73</span>      <span style="color:#1c01ce">87</span>      <span style="color:#1c01ce">81</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">ENSG00000000460</span>      <span style="color:#1c01ce">21</span>      <span style="color:#1c01ce">35</span>      <span style="color:#1c01ce">11</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">ENSG00000000938</span>      <span style="color:#1c01ce">59</span>      <span style="color:#1c01ce">58</span>      <span style="color:#1c01ce">34</span>
 </span></span></code></pre></div><p>Then there is the fact that despite a flurry of methods to print overview information
 about objects such as:</p>
 <ul>
@@ -174,21 +165,21 @@ install just for very basic operations like looking at your data.</p>
 <p>What I found useful is to create a small custom function that shows only the
 top N columns and rows, set to a number that keeps the output from breaking
 into multiple rows, such as this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>p &lt;- <span style="color:#6ab825;font-weight:bold">function</span>(data) {
-</span></span><span style="display:flex;"><span>    data[1:<span style="color:#3677a9">7</span>, <span style="color:#3677a9">1</span>:<span style="color:#3677a9">7</span>]
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">p</span> <span style="color:#000">&lt;-</span> <span style="color:#a90d91">function</span>(<span style="color:#000">data</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">data[1</span><span style="color:#000">:</span><span style="color:#1c01ce">7</span>, <span style="color:#1c01ce">1</span><span style="color:#000">:</span><span style="color:#1c01ce">7</span><span style="color:#000">]</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Then you can use it on data types like ExpressionSets (from
 <a href="https://bioconductor.org/" target="_blank" rel="noopener">Bioconductor</a>
 , and get an output like e.g. this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>&gt; <span style="color:#447fcf">p</span>(edata)
-</span></span><span style="display:flex;"><span>&gt;                 ERS025098 ERS025092 ERS025085 ERS025088 ERS025089 ERS025082 ERS025081
-</span></span><span style="display:flex;"><span>&gt; ENSG00000000003      <span style="color:#3677a9">1354</span>       <span style="color:#3677a9">216</span>       <span style="color:#3677a9">215</span>       <span style="color:#3677a9">924</span>       <span style="color:#3677a9">725</span>       <span style="color:#3677a9">125</span>       <span style="color:#3677a9">796</span>
-</span></span><span style="display:flex;"><span>&gt; ENSG00000000005       <span style="color:#3677a9">712</span>       <span style="color:#3677a9">134</span>         <span style="color:#3677a9">4</span>      <span style="color:#3677a9">1495</span>       <span style="color:#3677a9">119</span>        <span style="color:#3677a9">20</span>         <span style="color:#3677a9">7</span>
-</span></span><span style="display:flex;"><span>&gt; ENSG00000000419       <span style="color:#3677a9">450</span>       <span style="color:#3677a9">547</span>       <span style="color:#3677a9">516</span>       <span style="color:#3677a9">529</span>       <span style="color:#3677a9">808</span>       <span style="color:#3677a9">680</span>       <span style="color:#3677a9">744</span>
-</span></span><span style="display:flex;"><span>&gt; ENSG00000000457       <span style="color:#3677a9">188</span>       <span style="color:#3677a9">368</span>       <span style="color:#3677a9">196</span>       <span style="color:#3677a9">386</span>       <span style="color:#3677a9">156</span>       <span style="color:#3677a9">259</span>       <span style="color:#3677a9">436</span>
-</span></span><span style="display:flex;"><span>&gt; ENSG00000000460        <span style="color:#3677a9">66</span>        <span style="color:#3677a9">29</span>         <span style="color:#3677a9">1</span>        <span style="color:#3677a9">26</span>        <span style="color:#3677a9">11</span>         <span style="color:#3677a9">9</span>        <span style="color:#3677a9">25</span>
-</span></span><span style="display:flex;"><span>&gt; ENSG00000000938       <span style="color:#3677a9">104</span>        <span style="color:#3677a9">79</span>         <span style="color:#3677a9">7</span>        <span style="color:#3677a9">29</span>         <span style="color:#3677a9">0</span>         <span style="color:#3677a9">3</span>         <span style="color:#3677a9">1</span>
-</span></span><span style="display:flex;"><span>&gt; ENSG00000000971         <span style="color:#3677a9">0</span>         <span style="color:#3677a9">0</span>         <span style="color:#3677a9">0</span>         <span style="color:#3677a9">0</span>         <span style="color:#3677a9">0</span>         <span style="color:#3677a9">0</span>         <span style="color:#3677a9">0</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#000">p</span>(<span style="color:#000">edata</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span>                 <span style="color:#000">ERS025098</span> <span style="color:#000">ERS025092</span> <span style="color:#000">ERS025085</span> <span style="color:#000">ERS025088</span> <span style="color:#000">ERS025089</span> <span style="color:#000">ERS025082</span> <span style="color:#000">ERS025081</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#000">ENSG00000000003</span>      <span style="color:#1c01ce">1354</span>       <span style="color:#1c01ce">216</span>       <span style="color:#1c01ce">215</span>       <span style="color:#1c01ce">924</span>       <span style="color:#1c01ce">725</span>       <span style="color:#1c01ce">125</span>       <span style="color:#1c01ce">796</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#000">ENSG00000000005</span>       <span style="color:#1c01ce">712</span>       <span style="color:#1c01ce">134</span>         <span style="color:#1c01ce">4</span>      <span style="color:#1c01ce">1495</span>       <span style="color:#1c01ce">119</span>        <span style="color:#1c01ce">20</span>         <span style="color:#1c01ce">7</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#000">ENSG00000000419</span>       <span style="color:#1c01ce">450</span>       <span style="color:#1c01ce">547</span>       <span style="color:#1c01ce">516</span>       <span style="color:#1c01ce">529</span>       <span style="color:#1c01ce">808</span>       <span style="color:#1c01ce">680</span>       <span style="color:#1c01ce">744</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#000">ENSG00000000457</span>       <span style="color:#1c01ce">188</span>       <span style="color:#1c01ce">368</span>       <span style="color:#1c01ce">196</span>       <span style="color:#1c01ce">386</span>       <span style="color:#1c01ce">156</span>       <span style="color:#1c01ce">259</span>       <span style="color:#1c01ce">436</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#000">ENSG00000000460</span>        <span style="color:#1c01ce">66</span>        <span style="color:#1c01ce">29</span>         <span style="color:#1c01ce">1</span>        <span style="color:#1c01ce">26</span>        <span style="color:#1c01ce">11</span>         <span style="color:#1c01ce">9</span>        <span style="color:#1c01ce">25</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#000">ENSG00000000938</span>       <span style="color:#1c01ce">104</span>        <span style="color:#1c01ce">79</span>         <span style="color:#1c01ce">7</span>        <span style="color:#1c01ce">29</span>         <span style="color:#1c01ce">0</span>         <span style="color:#1c01ce">3</span>         <span style="color:#1c01ce">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#000">ENSG00000000971</span>         <span style="color:#1c01ce">0</span>         <span style="color:#1c01ce">0</span>         <span style="color:#1c01ce">0</span>         <span style="color:#1c01ce">0</span>         <span style="color:#1c01ce">0</span>         <span style="color:#1c01ce">0</span>         <span style="color:#1c01ce">0</span>
 </span></span></code></pre></div><p>I at least personally find that this does a better job at looking into typical
 matrix-formed data structures than something like <code>head()</code>.</p>
 <p>Of course, adjust the number of rows/columns to your liking.</p>
@@ -211,29 +202,29 @@ outrageous.</p>
 <h2 id="what-to-do-about-it-1">What to do about it</h2>
 <p>Somebody (reference to be added) pointed out that you can do the following
 to list the available method of a project:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#999;font-style:italic"># Show methods</span>
-</span></span><span style="display:flex;"><span>methods = <span style="color:#447fcf">methods</span>(class=<span style="color:#447fcf">class</span>(your_object))
-</span></span><span style="display:flex;"><span>methods
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#177500"># Show methods</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">methods</span> <span style="color:#000">=</span> <span style="color:#000">methods</span>(<span style="color:#000">class</span><span style="color:#000">=</span><span style="color:#000">class</span>(<span style="color:#000">your_object</span>))
+</span></span><span style="display:flex;"><span><span style="color:#000">methods</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"># Show non-visible methods</span>
-</span></span><span style="display:flex;"><span><span style="color:#447fcf">attr</span>(methods, <span style="color:#ed9d13">&#34;info&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#177500"># Show non-visible methods</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">attr</span>(<span style="color:#000">methods</span>, <span style="color:#c41a16">&#34;info&#34;</span>)
 </span></span></code></pre></div><p>If the above does not work, there is also <code>showMethods()</code>, which is supposed to
 do the same thing for so called S4 classes, as opposed to S3 classes (I won&rsquo;t
 go into the details here, as I&rsquo;m not an expert on R, and there are many other
 sources covering this much better anyways).</p>
 <p>Then of course you can create a small utility function for quickly showing the
 methods of objects too:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>m &lt;- <span style="color:#6ab825;font-weight:bold">function</span>(data) { <span style="color:#447fcf">methods</span>(class=<span style="color:#447fcf">class</span>(data)) }
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">m</span> <span style="color:#000">&lt;-</span> <span style="color:#a90d91">function</span>(<span style="color:#000">data</span>) { <span style="color:#000">methods</span>(<span style="color:#000">class</span><span style="color:#000">=</span><span style="color:#000">class</span>(<span style="color:#000">data</span>)) }
 </span></span></code></pre></div><p>&hellip;which you can then use like this (again with an ExpressionSet object as example):</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>&gt; <span style="color:#447fcf">m</span>(edata)
-</span></span><span style="display:flex;"><span>&gt;  [1] annotatedDataFrameFrom anyDuplicated          as_tibble              as.data.frame
-</span></span><span style="display:flex;"><span>   [5] as.raster              boxplot                coerce                 combine
-</span></span><span style="display:flex;"><span>   [9] determinant            duplicated             edit                   ExpressionSet
-</span></span><span style="display:flex;"><span>  [13] exprs&lt;-                head                   initialize             isSymmetric
-</span></span><span style="display:flex;"><span>  [17] Math                   Math2                  Ops                    relist
-</span></span><span style="display:flex;"><span>  [21] rowMedians             rowQ                   snpCall&lt;-              snpCallProbability&lt;-
-</span></span><span style="display:flex;"><span>  [25] subset                 summary                tail                   unique
-</span></span><span style="display:flex;"><span>  see <span style="color:#ed9d13">&#39;?methods&#39;</span> <span style="color:#6ab825;font-weight:bold">for</span> accessing help and source code
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#000">&gt;</span> <span style="color:#000">m</span>(<span style="color:#000">edata</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000">&gt;</span>  <span style="color:#000">[1]</span> <span style="color:#000">annotatedDataFrameFrom</span> <span style="color:#000">anyDuplicated</span>          <span style="color:#000">as_tibble</span>              <span style="color:#000">as.data.frame</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#000">[5]</span> <span style="color:#000">as.raster</span>              <span style="color:#000">boxplot</span>                <span style="color:#000">coerce</span>                 <span style="color:#000">combine</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#000">[9]</span> <span style="color:#000">determinant</span>            <span style="color:#000">duplicated</span>             <span style="color:#000">edit</span>                   <span style="color:#000">ExpressionSet</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">[13]</span> <span style="color:#000">exprs</span><span style="color:#000">&lt;-</span>                <span style="color:#000">head</span>                   <span style="color:#000">initialize</span>             <span style="color:#000">isSymmetric</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">[17]</span> <span style="color:#000">Math</span>                   <span style="color:#000">Math2</span>                  <span style="color:#000">Ops</span>                    <span style="color:#000">relist</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">[21]</span> <span style="color:#000">rowMedians</span>             <span style="color:#000">rowQ</span>                   <span style="color:#000">snpCall</span><span style="color:#000">&lt;-</span>              <span style="color:#000">snpCallProbability</span><span style="color:#000">&lt;-</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">[25]</span> <span style="color:#000">subset</span>                 <span style="color:#000">summary</span>                <span style="color:#000">tail</span>                   <span style="color:#000">unique</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">see</span> <span style="color:#c41a16">&#39;?methods&#39;</span> <span style="color:#a90d91">for</span> <span style="color:#000">accessing</span> <span style="color:#000">help</span> <span style="color:#000">and</span> <span style="color:#000">source</span> <span style="color:#000">code</span>
 </span></span></code></pre></div><p>This is actually quite useful I think! Here, <code>exprs</code> is for example one of the
 core methods one will need to use to get your hands on the actual data, and it
 is listed in the output.</p>
@@ -257,78 +248,68 @@ its worst points of confusion.</p>
 <a href="https://bsky.app/profile/johnmackintosh.bsky.social/post/3llitkvkuwk23" target="_blank" rel="noopener">suggested</a>
 
 the <code>skimr::skim()</code> method, which I found produces pretty nice output!
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>  &gt; skimr::<span style="color:#447fcf">skim</span>(edata)
-</span></span><span style="display:flex;"><span>  &gt; ── Data Summary ────────────────────────
-</span></span><span style="display:flex;"><span>  &gt;                            Values
-</span></span><span style="display:flex;"><span>  &gt; Name                       edata
-</span></span><span style="display:flex;"><span>Number of rows             <span style="color:#3677a9">52580</span>
-</span></span><span style="display:flex;"><span>Number of columns          <span style="color:#3677a9">129</span>
-</span></span><span style="display:flex;"><span>_______________________
-</span></span><span style="display:flex;"><span>Column type frequency:
-</span></span><span style="display:flex;"><span>  numeric                  <span style="color:#3677a9">129</span>
-</span></span><span style="display:flex;"><span>  ________________________
-</span></span><span style="display:flex;"><span>  Group variables            None
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>  <span style="color:#000">&gt;</span> <span style="color:#000">skimr</span><span style="color:#000">::</span><span style="color:#000">skim</span>(<span style="color:#000">edata</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&gt;</span> ── <span style="color:#000">Data</span> <span style="color:#000">Summary</span> ────────────────────────
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&gt;</span>                            <span style="color:#000">Values</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&gt;</span> <span style="color:#000">Name</span>                       <span style="color:#000">edata</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">Number</span> <span style="color:#000">of</span> <span style="color:#000">rows</span>             <span style="color:#1c01ce">52580</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">Number</span> <span style="color:#000">of</span> <span style="color:#000">columns</span>          <span style="color:#1c01ce">129</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">_______________________</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">Column</span> <span style="color:#000">type</span> <span style="color:#000">frequency</span><span style="color:#000">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">numeric</span>                  <span style="color:#1c01ce">129</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">________________________</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">Group</span> <span style="color:#000">variables</span>            <span style="color:#000">None</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  ── Variable type: numeric ──────────────────────────────────────────────────────────────────────────
-</span></span><span style="display:flex;"><span>    skim_variable n_missing complete_rate  mean    sd p0 p25 p50 p75  p100 hist
-</span></span><span style="display:flex;"><span>  <span style="color:#3677a9">1</span> NA06985               <span style="color:#3677a9">0</span>             <span style="color:#3677a9">1</span> <span style="color:#3677a9">21.5</span>  <span style="color:#3677a9">232</span>.   <span style="color:#3677a9">0</span>   <span style="color:#3677a9">0</span>   <span style="color:#3677a9">0</span>   <span style="color:#3677a9">0</span> <span style="color:#3677a9">36671</span> ▇▁▁▁▁
-</span></span><span style="display:flex;"><span>  <span style="color:#3677a9">2</span> NA06986               <span style="color:#3677a9">0</span>             <span style="color:#3677a9">1</span> <span style="color:#3677a9">22.3</span>  <span style="color:#3677a9">227</span>.   <span style="color:#3677a9">0</span>   <span style="color:#3677a9">0</span>   <span style="color:#3677a9">0</span>   <span style="color:#3677a9">0</span> <span style="color:#3677a9">36065</span> ▇▁▁▁▁
-</span></span><span style="display:flex;"><span>  <span style="color:#3677a9">3</span> NA06994               <span style="color:#3677a9">0</span>             <span style="color:#3677a9">1</span> <span style="color:#3677a9">17.0</span>  <span style="color:#3677a9">187</span>.   <span style="color:#3677a9">0</span>   <span style="color:#3677a9">0</span>   <span style="color:#3677a9">0</span>   <span style="color:#3677a9">0</span> <span style="color:#3677a9">30852</span> ▇▁▁▁▁
-</span></span><span style="display:flex;"><span>  &lt;snip&gt;
+</span></span><span style="display:flex;"><span>  ── <span style="color:#000">Variable</span> <span style="color:#000">type</span><span style="color:#000">:</span> <span style="color:#000">numeric</span> ──────────────────────────────────────────────────────────────────────────
+</span></span><span style="display:flex;"><span>    <span style="color:#000">skim_variable</span> <span style="color:#000">n_missing</span> <span style="color:#000">complete_rate</span>  <span style="color:#000">mean</span>    <span style="color:#000">sd</span> <span style="color:#000">p0</span> <span style="color:#000">p25</span> <span style="color:#000">p50</span> <span style="color:#000">p75</span>  <span style="color:#000">p100</span> <span style="color:#000">hist</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#1c01ce">1</span> <span style="color:#000">NA06985</span>               <span style="color:#1c01ce">0</span>             <span style="color:#1c01ce">1</span> <span style="color:#1c01ce">21.5</span>  <span style="color:#1c01ce">232</span><span style="color:#000">. </span>  <span style="color:#1c01ce">0</span>   <span style="color:#1c01ce">0</span>   <span style="color:#1c01ce">0</span>   <span style="color:#1c01ce">0</span> <span style="color:#1c01ce">36671</span> ▇▁▁▁▁
+</span></span><span style="display:flex;"><span>  <span style="color:#1c01ce">2</span> <span style="color:#000">NA06986</span>               <span style="color:#1c01ce">0</span>             <span style="color:#1c01ce">1</span> <span style="color:#1c01ce">22.3</span>  <span style="color:#1c01ce">227</span><span style="color:#000">. </span>  <span style="color:#1c01ce">0</span>   <span style="color:#1c01ce">0</span>   <span style="color:#1c01ce">0</span>   <span style="color:#1c01ce">0</span> <span style="color:#1c01ce">36065</span> ▇▁▁▁▁
+</span></span><span style="display:flex;"><span>  <span style="color:#1c01ce">3</span> <span style="color:#000">NA06994</span>               <span style="color:#1c01ce">0</span>             <span style="color:#1c01ce">1</span> <span style="color:#1c01ce">17.0</span>  <span style="color:#1c01ce">187</span><span style="color:#000">. </span>  <span style="color:#1c01ce">0</span>   <span style="color:#1c01ce">0</span>   <span style="color:#1c01ce">0</span>   <span style="color:#1c01ce">0</span> <span style="color:#1c01ce">30852</span> ▇▁▁▁▁
+</span></span><span style="display:flex;"><span>  <span style="color:#000">&lt;</span><span style="color:#000">snip</span><span style="color:#000">&gt;</span>
 </span></span></code></pre></div></li>
 </ul>
 
-    </div>
-    
+  
   <div>
     <ul class="tags">
         <li><a href="/tags/rstats/" class="tag">Rstats</a></li>
     </ul>
   </div>
 
-</article>
+
+  <div id="disqus_thread"></div>
+  <script>
+  
+
+  var disqus_config = function () {
+      this.page.url = "https://livingsystems.cc/posts/why-is-r-so-confusing/";  
+      this.page.identifier =  1200 ; 
+  };
+  (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://bionicsit.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+  })();
+
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
-  <section class="disqus">
-    <div id="disqus_thread"></div>
-    <script>
-    
+  </main>
+  <footer>
+    <p>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
 
-    var disqus_config = function () {
-        this.page.url = "https://livingsystems.cc/posts/why-is-r-so-confusing/";  
-        this.page.identifier =  1200 ; 
-    };
-    (function() { 
-        var d = document, s = d.createElement('script');
-        s.src = 'https://bionicsit.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </section>
-
-    </main>
-    <footer class="site-footer">
-      <p>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
-
-<p class="copyright">Copyright &copy; 2026 Samuel Lampa</p>
+<p>Copyright &copy; 2026 Samuel Lampa</p>
 
 <p>Find me on
 <a href="https://orcid.org/0000-0001-6740-9212" target="_blank">ORCID</a>,
 <a href="https://github.com/samuell" target="_blank">GitHub</a>,
 <a href="https://twitter.com/smllmp" target="_blank">Twitter</a>,
-<a href="https://bsky.app/profile/smllmp.bsky.social" target="_blank">BlueSky</a>,
-<a href="https://livingsystems.substack.com/" target="_blank">Substack</a> or
- <a href="https://linkedin.com/in/smllmp" target="_blank">LinkedIn</a>.
+<a href="https://bsky.app/profile/smllmp.bsky.social" target="_blank">BlueSky</a> or
+<a href="https://linkedin.com/in/smllmp" target="_blank">LinkedIn</a>.
 </p>
 
-<p>Subscribe via
-<a href="/index.xml">RSS</a>.
-</p>
-
-    </footer>
-  </div>
+  </footer>
 </body>
 </html>

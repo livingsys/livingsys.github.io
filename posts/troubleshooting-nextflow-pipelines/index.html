@@ -3,13 +3,9 @@
 <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#0c110e">
 <title>Troubleshooting Nextflow pipelines | Living_Systems</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap">
 
-      <link rel="stylesheet" href="/css/main.min.76cff45d7af66ece9b7ede310dd71bde69fb8ed11585ba68c54307a940ccb0bf.css" integrity="sha256-ds/0XXr2bs6bft4xDdcb3mn7jtEVhbpoxUMHqUDMsL8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.7afb5fa50a2fd4677a8878f0eb62fc38d8070319c31c48ac2bae0bbafe4e8681.css" integrity="sha256-evtfpQov1Gd6iHjw62L8ONgHAxnDHEisK64Luv5OhoE=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -19,15 +15,10 @@
 
 </head>
 <body>
-  <img class="bg-helix" src="/img/helix-bg.jpg" alt="" aria-hidden="true">
-  <div class="grid-etch" aria-hidden="true"></div>
-  <div class="scanline" aria-hidden="true"></div>
-  <div class="top-line" aria-hidden="true"></div>
-  <div class="container">
-    <header class="site-header">
-      <a class="site-brand" href="/">Living_Systems</a>
+  <header>
+    <h1><a href="/">Living_Systems</a></h1>
 
-  <nav class="site-nav">
+  <nav>
     <ul>
     <li>
       <a href="/">Home</a>
@@ -45,17 +36,17 @@
   </nav>
 
 
-    </header>
-    <main>
-      
-  <article class="article">
-    <header class="article-header">
-        <h1 class="article-title">Troubleshooting Nextflow pipelines</h1>
-        <div class="article-meta"><time datetime="2023-11-01T11:47:00&#43;01:00">2023.11.01</time><span class="post-time">9 min read</span>
-        </div>
-    </header>
-    <div class="prose article-body">
-        <!-- raw HTML omitted -->
+  </header>
+  <main>
+    
+  <h1>Troubleshooting Nextflow pipelines</h1>
+
+  
+  
+  
+  <time datetime="2023-11-01T11:47:00&#43;01:00">November 1, 2023</time>
+
+  <!-- raw HTML omitted -->
 <p>We have been evaluating Nextflow before in my work at
 <a href="https://pharmb.io" target="_blank" rel="noopener">pharmb.io</a>
 , but that was before
@@ -145,7 +136,7 @@ always find the latest log in a file named <code>.nextflow.log</code> inside you
 execution folder.</p>
 <p>To scroll through this file in a searchable way, without wrapping long
 lines, I recommend to use the <code>less -S</code> command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>less -S ~/.nextflow.log
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>less -S ~/.nextflow.log
 </span></span></code></pre></div><p>Using less, you can search by typing <code>/</code> followed by the search phrase,
 step through the search results with <code>n</code> for next find, and <code>N</code> for
 previous find, scroll using arrows or PageDown/PageUp, or vim commands
@@ -153,7 +144,7 @@ for the same, as well as quit using <code>q</code>.</p>
 <p>Sometimes it is easier to just &ldquo;grep&rdquo; through the file, for example
 searching case-insensitively for &ldquo;error&rdquo;, and perhaps piping that to
 <code>less -S</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>grep -i error .nextflow.log | less -S
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>grep -i error .nextflow.log | less -S
 </span></span></code></pre></div><h4 id="2-the-work-folder">2. The work folder</h4>
 <p>At least for jobs executed locally, in the execution log mentioned
 above, Nextflow typically points out the path to the &ldquo;work folder&rdquo;.
@@ -162,7 +153,7 @@ and ends with a long random string of letters and numbers called a
 &ldquo;hash&rdquo;, for example <code>/tmp/nf/work/a3/0e2ea68c421ced4797e00de9e73155</code>.
 It is a good idea to cd into this folder and exploring it, when you have
 a hard to track down-bug, so in this example:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#24909d">cd</span> /tmp/nf/work/a3/0e2ea68c421ced4797e00de9e73155
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#a90d91">cd</span> /tmp/nf/work/a3/0e2ea68c421ced4797e00de9e73155
 </span></span><span style="display:flex;"><span>ls -1a
 </span></span></code></pre></div><p>The <code>-1a</code> flags, or in particular <code>-1tra</code> are very useful, and have the
 following function:</p>
@@ -183,7 +174,7 @@ below though for simplicity.</p>
 <p>As you will see, the folder contains a number of hidden files, viewable
 only with the <code>-a</code> flag to <code>ls</code>, that contain some key information on
 how the job is being executed:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ls -1a
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ls -1a
 </span></span><span style="display:flex;"><span>.
 </span></span><span style="display:flex;"><span>..
 </span></span><span style="display:flex;"><span>.command.begin
@@ -229,7 +220,7 @@ script, which in turn executes <code>.command.sh</code>, since the former will
 create the temporary directories, stage files etc that is needed for the
 task to run properly.</p>
 <p>So, you would do:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bash .command.run
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bash .command.run
 </span></span></code></pre></div><p>&hellip; and watch for any detailed output that might give you hints.</p>
 <h4 id="make-all-commands-visible-with-set--x">Make all commands visible with set -x</h4>
 <p>The problem with the above is that the <code>.command.run</code> script does a lot
@@ -241,16 +232,16 @@ is available on most systems, and is more user-friendly than vim for new
 users: <code>nano .command.run</code> &hellip; save with <code>Ctrl+W</code>, and exit with
 <code>Ctrl+X</code>).</p>
 <p>Then you can execute it again:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bash .command.run
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bash .command.run
 </span></span></code></pre></div><p>But even better is, if you pipe all the output to a file, so that you
 can later read this at your own pace:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bash .command.run &amp;&gt; out.log
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bash .command.run &amp;&gt; out.log
 </span></span></code></pre></div><p>(The <code>&amp;</code> in <code>&amp;&gt;</code> will make sure that both stdout and stderr are
 redirected to the file)</p>
 <p>Even better, is to BOTH redirect to a file, but also pipe it to
 something like <code>less -S</code>, so you can see and scroll the output
 immediately:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bash .command.run |&amp; tee out.log | less -S
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bash .command.run |&amp; tee out.log | less -S
 </span></span></code></pre></div><p>Here, the <code>|&amp;</code> will pipe both stderr and stdout to the next command,
 which less <code>tee</code>, which will both take a filename where it writes its
 output, and also forward the output to the next command, which is here
@@ -264,17 +255,17 @@ temporary folders manually.</p>
 .command.run file before running it (In bash, you can comment it out by
 adding a <code>#</code> - character at the beginning of the line).</p>
 <p>In particular, check the <code>on_exit()</code> function, which might look like so:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>on_exit() {
-</span></span><span style="display:flex;"><span>    <span style="color:#40ffff">exit_status</span>=<span style="color:#ed9d13">${</span><span style="color:#40ffff">nxf_main_ret</span>:=<span style="color:#40ffff">$?</span><span style="color:#ed9d13">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#24909d">printf</span> <span style="color:#40ffff">$exit_status</span> &gt; /tmp/nf/work/a3/0e2ea68c421ced4797e00de9e73155/.exitcode
-</span></span><span style="display:flex;"><span>    <span style="color:#24909d">set</span> +u
-</span></span><span style="display:flex;"><span>    [[ <span style="color:#ed9d13">&#34;</span><span style="color:#40ffff">$tee1</span><span style="color:#ed9d13">&#34;</span> ]] &amp;&amp; <span style="color:#24909d">kill</span> <span style="color:#40ffff">$tee1</span> 2&gt;/dev/null
-</span></span><span style="display:flex;"><span>    [[ <span style="color:#ed9d13">&#34;</span><span style="color:#40ffff">$tee2</span><span style="color:#ed9d13">&#34;</span> ]] &amp;&amp; <span style="color:#24909d">kill</span> <span style="color:#40ffff">$tee2</span> 2&gt;/dev/null
-</span></span><span style="display:flex;"><span>    [[ <span style="color:#ed9d13">&#34;</span><span style="color:#40ffff">$ctmp</span><span style="color:#ed9d13">&#34;</span> ]] &amp;&amp; rm -rf <span style="color:#40ffff">$ctmp</span> || <span style="color:#24909d">true</span>
-</span></span><span style="display:flex;"><span>    rm -rf <span style="color:#40ffff">$NXF_SCRATCH</span> || <span style="color:#24909d">true</span>
-</span></span><span style="display:flex;"><span>    sync || <span style="color:#24909d">true</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#24909d">exit</span> <span style="color:#40ffff">$exit_status</span>
-</span></span><span style="display:flex;"><span>}
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>on_exit<span style="color:#000">()</span> <span style="color:#000">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">exit_status</span><span style="color:#000">=</span><span style="color:#c41a16">${</span><span style="color:#000">nxf_main_ret</span>:=<span style="color:#000">$?</span><span style="color:#c41a16">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">printf</span> <span style="color:#000">$exit_status</span> &gt; /tmp/nf/work/a3/0e2ea68c421ced4797e00de9e73155/.exitcode
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">set</span> +u
+</span></span><span style="display:flex;"><span>    <span style="color:#000">[[</span> <span style="color:#c41a16">&#34;</span><span style="color:#000">$tee1</span><span style="color:#c41a16">&#34;</span> <span style="color:#000">]]</span> <span style="color:#000">&amp;&amp;</span> <span style="color:#a90d91">kill</span> <span style="color:#000">$tee1</span> 2&gt;/dev/null
+</span></span><span style="display:flex;"><span>    <span style="color:#000">[[</span> <span style="color:#c41a16">&#34;</span><span style="color:#000">$tee2</span><span style="color:#c41a16">&#34;</span> <span style="color:#000">]]</span> <span style="color:#000">&amp;&amp;</span> <span style="color:#a90d91">kill</span> <span style="color:#000">$tee2</span> 2&gt;/dev/null
+</span></span><span style="display:flex;"><span>    <span style="color:#000">[[</span> <span style="color:#c41a16">&#34;</span><span style="color:#000">$ctmp</span><span style="color:#c41a16">&#34;</span> <span style="color:#000">]]</span> <span style="color:#000">&amp;&amp;</span> rm -rf <span style="color:#000">$ctmp</span> <span style="color:#000">||</span> <span style="color:#a90d91">true</span>
+</span></span><span style="display:flex;"><span>    rm -rf <span style="color:#000">$NXF_SCRATCH</span> <span style="color:#000">||</span> <span style="color:#a90d91">true</span>
+</span></span><span style="display:flex;"><span>    sync <span style="color:#000">||</span> <span style="color:#a90d91">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">exit</span> <span style="color:#000">$exit_status</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">}</span>
 </span></span></code></pre></div><p>Here, you could comment our for example the
 <code>rm -rf $NXF_SCRATCH || true</code> line, if you want the temporary folder to
 remain existing (typically put in <code>/tmp</code> and named something like
@@ -295,10 +286,10 @@ manually!</p>
 <p>If you want to be able to quickly enable these two adjustments when in a
 work folder, you can add the following bash function to your
 <code>~/.bash_aliases</code> file:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">function</span> debugnf() {
-</span></span><span style="display:flex;"><span>    sed -i <span style="color:#ed9d13">&#39;2s/^/set -x\n/&#39;</span> .command.{run,sh};
-</span></span><span style="display:flex;"><span>    sed -i <span style="color:#ed9d13">&#39;s/rm /#rm /g&#39;</span> .command.run;
-</span></span><span style="display:flex;"><span>}
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#a90d91">function</span> debugnf<span style="color:#000">()</span> <span style="color:#000">{</span>
+</span></span><span style="display:flex;"><span>    sed -i <span style="color:#c41a16">&#39;2s/^/set -x\n/&#39;</span> .command.<span style="color:#000">{</span>run,sh<span style="color:#000">}</span>;
+</span></span><span style="display:flex;"><span>    sed -i <span style="color:#c41a16">&#39;s/rm /#rm /g&#39;</span> .command.run;
+</span></span><span style="display:flex;"><span><span style="color:#000">}</span>
 </span></span></code></pre></div><p>Then, when in a work folder, you can just run <code>debugnf</code> before running
 any of the .command.run or .command.sh files manually.</p>
 <h3 id="summary">Summary</h3>
@@ -316,8 +307,7 @@ to explore temporary folders&rdquo;</li>
 Nextflow Training website.</li>
 </ul>
 
-    </div>
-    
+  
   <div>
     <ul class="tags">
         <li><a href="/tags/nextflow/" class="tag">Nextflow</a></li>
@@ -326,49 +316,40 @@ Nextflow Training website.</li>
     </ul>
   </div>
 
-</article>
+
+  <div id="disqus_thread"></div>
+  <script>
+  
+
+  var disqus_config = function () {
+      this.page.url = "https://livingsystems.cc/posts/troubleshooting-nextflow-pipelines/";  
+      this.page.identifier =  1115 ; 
+  };
+  (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://bionicsit.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+  })();
+
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
-  <section class="disqus">
-    <div id="disqus_thread"></div>
-    <script>
-    
+  </main>
+  <footer>
+    <p>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
 
-    var disqus_config = function () {
-        this.page.url = "https://livingsystems.cc/posts/troubleshooting-nextflow-pipelines/";  
-        this.page.identifier =  1115 ; 
-    };
-    (function() { 
-        var d = document, s = d.createElement('script');
-        s.src = 'https://bionicsit.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </section>
-
-    </main>
-    <footer class="site-footer">
-      <p>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
-
-<p class="copyright">Copyright &copy; 2026 Samuel Lampa</p>
+<p>Copyright &copy; 2026 Samuel Lampa</p>
 
 <p>Find me on
 <a href="https://orcid.org/0000-0001-6740-9212" target="_blank">ORCID</a>,
 <a href="https://github.com/samuell" target="_blank">GitHub</a>,
 <a href="https://twitter.com/smllmp" target="_blank">Twitter</a>,
-<a href="https://bsky.app/profile/smllmp.bsky.social" target="_blank">BlueSky</a>,
-<a href="https://livingsystems.substack.com/" target="_blank">Substack</a> or
- <a href="https://linkedin.com/in/smllmp" target="_blank">LinkedIn</a>.
+<a href="https://bsky.app/profile/smllmp.bsky.social" target="_blank">BlueSky</a> or
+<a href="https://linkedin.com/in/smllmp" target="_blank">LinkedIn</a>.
 </p>
 
-<p>Subscribe via
-<a href="/index.xml">RSS</a>.
-</p>
-
-    </footer>
-  </div>
+  </footer>
 </body>
 </html>

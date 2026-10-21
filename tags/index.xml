@@ -4,7 +4,7 @@
     <title>Tags on Living_Systems</title>
     <link>https://livingsystems.cc/tags/</link>
     <description>Recent content in Tags on Living_Systems</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 25 Sep 2026 16:47:12 +0200</lastBuildDate>
     <atom:link href="https://livingsystems.cc/tags/index.xml" rel="self" type="application/rss+xml" />
@@ -283,9 +283,9 @@
     </item>
     <item>
       <title>C#</title>
-      <link>https://livingsystems.cc/tags/c</link>
+      <link>https://livingsystems.cc/tags/c%23/</link>
       <pubDate>Sat, 02 Nov 2019 21:24:00 +0100</pubDate>
-      <guid>https://livingsystems.cc/tags/c</guid>
+      <guid>https://livingsystems.cc/tags/c%23/</guid>
       <description></description>
     </item>
     <item>
