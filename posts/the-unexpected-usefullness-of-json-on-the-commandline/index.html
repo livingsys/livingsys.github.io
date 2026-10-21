@@ -3,9 +3,13 @@
 <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#0c110e">
 <title>The unexpected convenience of JSON on the commandline | Living_Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap">
 
-      <link rel="stylesheet" href="/css/main.min.7afb5fa50a2fd4677a8878f0eb62fc38d8070319c31c48ac2bae0bbafe4e8681.css" integrity="sha256-evtfpQov1Gd6iHjw62L8ONgHAxnDHEisK64Luv5OhoE=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.76cff45d7af66ece9b7ede310dd71bde69fb8ed11585ba68c54307a940ccb0bf.css" integrity="sha256-ds/0XXr2bs6bft4xDdcb3mn7jtEVhbpoxUMHqUDMsL8=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -18,10 +22,15 @@
 
 </head>
 <body>
-  <header>
-    <h1><a href="/">Living_Systems</a></h1>
+  <img class="bg-helix" src="/img/helix-bg.jpg" alt="" aria-hidden="true">
+  <div class="grid-etch" aria-hidden="true"></div>
+  <div class="scanline" aria-hidden="true"></div>
+  <div class="top-line" aria-hidden="true"></div>
+  <div class="container">
+    <header class="site-header">
+      <a class="site-brand" href="/">Living_Systems</a>
 
-  <nav>
+  <nav class="site-nav">
     <ul>
     <li>
       <a href="/">Home</a>
@@ -39,17 +48,17 @@
   </nav>
 
 
-  </header>
-  <main>
-    
-  <h1>The unexpected convenience of JSON on the commandline</h1>
-
-  
-  
-  
-  <time datetime="2015-12-08T07:10:00&#43;01:00">December 8, 2015</time>
-
-  <p>I was working with a migration from <a href="http://drupal.org" target="_blank" rel="noopener">drupal</a>
+    </header>
+    <main>
+      
+  <article class="article">
+    <header class="article-header">
+        <h1 class="article-title">The unexpected convenience of JSON on the commandline</h1>
+        <div class="article-meta"><time datetime="2015-12-08T07:10:00&#43;01:00">2015.12.08</time><span class="post-time">3 min read</span>
+        </div>
+    </header>
+    <div class="prose article-body">
+        <p>I was working with a migration from <a href="http://drupal.org" target="_blank" rel="noopener">drupal</a>
  to
 <a href="http://processwire.com" target="_blank" rel="noopener">processwire</a>
  CMS:es, where I wanted to be able
@@ -80,47 +89,47 @@ structure to and from a JSON string.</p>
 wranglers, I just wanted to illustrate just how easy this is:</p>
 <p>So, for example, reading some basic info and the body field (of Drupal
 7) from MySQL is as easy as:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">MySQLdb</span> <span style="color:#a90d91">as</span> <span style="color:#000">mdb</span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">json</span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">from</span> <span style="color:#000">sys</span> <span style="color:#a90d91">import</span> <span style="color:#000">stdout</span>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">import</span> <span style="color:#447fcf;text-decoration:underline">MySQLdb</span> <span style="color:#6ab825;font-weight:bold">as</span> <span style="color:#447fcf;text-decoration:underline">mdb</span>
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">import</span> <span style="color:#447fcf;text-decoration:underline">json</span>
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">from</span> <span style="color:#447fcf;text-decoration:underline">sys</span> <span style="color:#6ab825;font-weight:bold">import</span> stdout
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000">con</span> <span style="color:#000">=</span> <span style="color:#000">mdb</span><span style="color:#000">.</span><span style="color:#000">connect</span>([<span style="color:#000">HOST</span>], [<span style="color:#000">USER</span>], [<span style="color:#000">PASS</span>], [<span style="color:#000">DB</span>])
-</span></span><span style="display:flex;"><span><span style="color:#000">cur</span> <span style="color:#000">=</span> <span style="color:#000">con</span><span style="color:#000">.</span><span style="color:#000">cursor</span>()
-</span></span><span style="display:flex;"><span><span style="color:#000">query</span> <span style="color:#000">=</span> <span style="color:#c41a16">&#39;&#39;&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">        SELECT n.nid, n.type, n.created, n.title, fdb.body_value
-</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">        FROM node AS n
-</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">        LEFT JOIN field_data_body AS fdb ON n.vid = fdb.revision_id
-</span></span></span><span style="display:flex;"><span><span style="color:#c41a16">        &#39;&#39;&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">cur</span><span style="color:#000">.</span><span style="color:#000">execute</span>(<span style="color:#000">query</span>)
-</span></span><span style="display:flex;"><span><span style="color:#000">rows</span> <span style="color:#000">=</span> <span style="color:#000">cur</span><span style="color:#000">.</span><span style="color:#000">fetchall</span>()
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">for</span> <span style="color:#000">row</span> <span style="color:#000">in</span> <span style="color:#000">rows</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#000">rowinfo</span> <span style="color:#000">=</span> [<span style="color:#000">i</span><span style="color:#000">.</span><span style="color:#000">decode</span>(<span style="color:#c41a16">&#39;latin-1&#39;</span>) <span style="color:#a90d91">if</span> <span style="color:#a90d91">type</span>(<span style="color:#000">i</span>) <span style="color:#000">is</span> <span style="color:#a90d91">str</span> <span style="color:#a90d91">else</span> <span style="color:#000">i</span> <span style="color:#a90d91">for</span> <span style="color:#000">i</span> <span style="color:#000">in</span> <span style="color:#000">row</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#000">pageinfo</span> <span style="color:#000">=</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#c41a16">&#39;Nid&#39;</span>: <span style="color:#000">rowinfo</span>[<span style="color:#1c01ce">0</span>],
-</span></span><span style="display:flex;"><span>            <span style="color:#c41a16">&#39;NodeType&#39;</span>: <span style="color:#000">rowinfo</span>[<span style="color:#1c01ce">1</span>],
-</span></span><span style="display:flex;"><span>            <span style="color:#c41a16">&#39;Created&#39;</span>: <span style="color:#000">rowinfo</span>[<span style="color:#1c01ce">2</span>],
-</span></span><span style="display:flex;"><span>            <span style="color:#c41a16">&#39;Title&#39;</span>: <span style="color:#000">rowinfo</span>[<span style="color:#1c01ce">3</span>],
-</span></span><span style="display:flex;"><span>            <span style="color:#c41a16">&#39;Body&#39;</span>: <span style="color:#000">rowinfo</span>[<span style="color:#1c01ce">4</span>],
+</span></span><span style="display:flex;"><span>con = mdb.connect([HOST], [USER], [PASS], [DB])
+</span></span><span style="display:flex;"><span>cur = con.cursor()
+</span></span><span style="display:flex;"><span>query = <span style="color:#ed9d13">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13">        SELECT n.nid, n.type, n.created, n.title, fdb.body_value
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13">        FROM node AS n
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13">        LEFT JOIN field_data_body AS fdb ON n.vid = fdb.revision_id
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13">        &#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>cur.execute(query)
+</span></span><span style="display:flex;"><span>rows = cur.fetchall()
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">for</span> row <span style="color:#6ab825;font-weight:bold">in</span> rows:
+</span></span><span style="display:flex;"><span>    rowinfo = [i.decode(<span style="color:#ed9d13">&#39;latin-1&#39;</span>) <span style="color:#6ab825;font-weight:bold">if</span> <span style="color:#24909d">type</span>(i) <span style="color:#6ab825;font-weight:bold">is</span> <span style="color:#24909d">str</span> <span style="color:#6ab825;font-weight:bold">else</span> i <span style="color:#6ab825;font-weight:bold">for</span> i <span style="color:#6ab825;font-weight:bold">in</span> row]
+</span></span><span style="display:flex;"><span>    pageinfo = {
+</span></span><span style="display:flex;"><span>            <span style="color:#ed9d13">&#39;Nid&#39;</span>: rowinfo[<span style="color:#3677a9">0</span>],
+</span></span><span style="display:flex;"><span>            <span style="color:#ed9d13">&#39;NodeType&#39;</span>: rowinfo[<span style="color:#3677a9">1</span>],
+</span></span><span style="display:flex;"><span>            <span style="color:#ed9d13">&#39;Created&#39;</span>: rowinfo[<span style="color:#3677a9">2</span>],
+</span></span><span style="display:flex;"><span>            <span style="color:#ed9d13">&#39;Title&#39;</span>: rowinfo[<span style="color:#3677a9">3</span>],
+</span></span><span style="display:flex;"><span>            <span style="color:#ed9d13">&#39;Body&#39;</span>: rowinfo[<span style="color:#3677a9">4</span>],
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#000">stdout</span><span style="color:#000">.</span><span style="color:#000">write</span>(<span style="color:#000">json</span><span style="color:#000">.</span><span style="color:#000">dumps</span>(<span style="color:#000">pageinfo</span>) <span style="color:#000">+</span> <span style="color:#c41a16">&#39;</span><span style="color:#c41a16">\n</span><span style="color:#c41a16">&#39;</span>) <span style="color:#177500"># The newline is important here!</span>
+</span></span><span style="display:flex;"><span>    stdout.write(json.dumps(pageinfo) + <span style="color:#ed9d13">&#39;</span><span style="color:#ed9d13">\n</span><span style="color:#ed9d13">&#39;</span>) <span style="color:#999;font-style:italic"># The newline is important here!</span>
 </span></span></code></pre></div><p>But now, this is mostly MySQL stuff, so a smaller component might better
 demonstrate how little is needed to read from json. So, say that we want
 to change all occurances of &ldquo;node&rdquo; in NodeType to &ldquo;page&rdquo; (which is
 the more commonly used term for what Drupal calls a node):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a90d91">from</span> <span style="color:#000">sys</span> <span style="color:#a90d91">import</span> <span style="color:#000">stdin</span>, <span style="color:#000">stdout</span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#000">json</span>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">from</span> <span style="color:#447fcf;text-decoration:underline">sys</span> <span style="color:#6ab825;font-weight:bold">import</span> stdin, stdout
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">import</span> <span style="color:#447fcf;text-decoration:underline">json</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">for</span> <span style="color:#000">row</span> <span style="color:#000">in</span> <span style="color:#000">stdin</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#000">r</span> <span style="color:#000">=</span> <span style="color:#000">json</span><span style="color:#000">.</span><span style="color:#000">loads</span>(<span style="color:#000">row</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#000">r</span>[<span style="color:#c41a16">&#39;NodeType&#39;</span>] <span style="color:#000">=</span> <span style="color:#000">r</span>[<span style="color:#c41a16">&#39;NodeType&#39;</span>]<span style="color:#000">.</span><span style="color:#000">replace</span>(<span style="color:#c41a16">&#39;node&#39;</span>, <span style="color:#c41a16">&#39;page&#39;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#000">stdout</span><span style="color:#000">.</span><span style="color:#000">write</span>(<span style="color:#000">json</span><span style="color:#000">.</span><span style="color:#000">dumps</span>(<span style="color:#000">r</span>) <span style="color:#000">+</span> <span style="color:#c41a16">&#39;</span><span style="color:#c41a16">\n</span><span style="color:#c41a16">&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">for</span> row <span style="color:#6ab825;font-weight:bold">in</span> stdin:
+</span></span><span style="display:flex;"><span>    r = json.loads(row)
+</span></span><span style="display:flex;"><span>    r[<span style="color:#ed9d13">&#39;NodeType&#39;</span>] = r[<span style="color:#ed9d13">&#39;NodeType&#39;</span>].replace(<span style="color:#ed9d13">&#39;node&#39;</span>, <span style="color:#ed9d13">&#39;page&#39;</span>)
+</span></span><span style="display:flex;"><span>    stdout.write(json.dumps(r) + <span style="color:#ed9d13">&#39;</span><span style="color:#ed9d13">\n</span><span style="color:#ed9d13">&#39;</span>)
 </span></span></code></pre></div><p>So, this is what little is required to create a pipeable component
 working with JSON data, using python!</p>
 <p>So, now, we can use these two components together by just piping them,
 and using the normal linux commandline tools for convenient browsing on
 the commandline (such as my favorite <strong>less -Si</strong> for scrolling without
 wrapping lines:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>python extractsql.py | python replace.py | less -Si
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>python extractsql.py | python replace.py | less -Si
 </span></span></code></pre></div><p>But, even better than custom python components, is that you have the <a href="https://stedolan.github.io/jq/" target="_blank" rel="noopener">jq
 tool</a>
  available, which fits perfectly
@@ -130,7 +139,7 @@ grep, in one combined package for working with json objects.</p>
 just a simple example that would be usable here is to filter out just
 the NodeType field, to see that it became correctly replaced. This is
 easily achieved with jq:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>python extractsql.py | python replace.py | jq <span style="color:#c41a16">&#39;.NodeType&#39;</span> | less -Si
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>python extractsql.py | python replace.py | jq <span style="color:#ed9d13">&#39;.NodeType&#39;</span> | less -Si
 </span></span></code></pre></div><p>As simple as that. Check the <a href="https://stedolan.github.io/jq/manual/" target="_blank" rel="noopener">jq
 manual</a>
  for more usage info on
@@ -138,7 +147,8 @@ jq.</p>
 <p>I&rsquo;m sure I will use JSON for piping structured data on the commandline
 a lot more from now on.</p>
 
-  
+    </div>
+    
   <div>
     <ul class="tags">
         <li><a href="/tags/json/" class="tag">Json</a></li>
@@ -146,40 +156,49 @@ a lot more from now on.</p>
     </ul>
   </div>
 
-
-  <div id="disqus_thread"></div>
-  <script>
-  
-
-  var disqus_config = function () {
-      this.page.url = "https://livingsystems.cc/posts/the-unexpected-usefullness-of-json-on-the-commandline/";  
-      this.page.identifier =  1064 ; 
-  };
-  (function() { 
-      var d = document, s = d.createElement('script');
-      s.src = 'https://bionicsit.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-  })();
-
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</article>
 
 
-  </main>
-  <footer>
-    <p>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+  <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script>
+    
 
-<p>Copyright &copy; 2026 Samuel Lampa</p>
+    var disqus_config = function () {
+        this.page.url = "https://livingsystems.cc/posts/the-unexpected-usefullness-of-json-on-the-commandline/";  
+        this.page.identifier =  1064 ; 
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');
+        s.src = 'https://bionicsit.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </section>
+
+    </main>
+    <footer class="site-footer">
+      <p>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+
+<p class="copyright">Copyright &copy; 2026 Samuel Lampa</p>
 
 <p>Find me on
 <a href="https://orcid.org/0000-0001-6740-9212" target="_blank">ORCID</a>,
 <a href="https://github.com/samuell" target="_blank">GitHub</a>,
 <a href="https://twitter.com/smllmp" target="_blank">Twitter</a>,
-<a href="https://bsky.app/profile/smllmp.bsky.social" target="_blank">BlueSky</a> or
-<a href="https://linkedin.com/in/smllmp" target="_blank">LinkedIn</a>.
+<a href="https://bsky.app/profile/smllmp.bsky.social" target="_blank">BlueSky</a>,
+<a href="https://livingsystems.substack.com/" target="_blank">Substack</a> or
+ <a href="https://linkedin.com/in/smllmp" target="_blank">LinkedIn</a>.
 </p>
 
-  </footer>
+<p>Subscribe via
+<a href="/index.xml">RSS</a>.
+</p>
+
+    </footer>
+  </div>
 </body>
 </html>

@@ -3,9 +3,13 @@
 <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#0c110e">
 <title>Compiling RDFHDT C&#43;&#43; tools on UPPMAX (RHEL/CentOS 7) | Living_Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap">
 
-      <link rel="stylesheet" href="/css/main.min.7afb5fa50a2fd4677a8878f0eb62fc38d8070319c31c48ac2bae0bbafe4e8681.css" integrity="sha256-evtfpQov1Gd6iHjw62L8ONgHAxnDHEisK64Luv5OhoE=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.76cff45d7af66ece9b7ede310dd71bde69fb8ed11585ba68c54307a940ccb0bf.css" integrity="sha256-ds/0XXr2bs6bft4xDdcb3mn7jtEVhbpoxUMHqUDMsL8=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -15,10 +19,15 @@
 
 </head>
 <body>
-  <header>
-    <h1><a href="/">Living_Systems</a></h1>
+  <img class="bg-helix" src="/img/helix-bg.jpg" alt="" aria-hidden="true">
+  <div class="grid-etch" aria-hidden="true"></div>
+  <div class="scanline" aria-hidden="true"></div>
+  <div class="top-line" aria-hidden="true"></div>
+  <div class="container">
+    <header class="site-header">
+      <a class="site-brand" href="/">Living_Systems</a>
 
-  <nav>
+  <nav class="site-nav">
     <ul>
     <li>
       <a href="/">Home</a>
@@ -36,17 +45,17 @@
   </nav>
 
 
-  </header>
-  <main>
-    
-  <h1>Compiling RDFHDT C&#43;&#43; tools on UPPMAX (RHEL/CentOS 7)</h1>
-
-  
-  
-  
-  <time datetime="2017-09-13T18:04:00&#43;02:00">September 13, 2017</time>
-
-  <!-- raw HTML omitted -->
+    </header>
+    <main>
+      
+  <article class="article">
+    <header class="article-header">
+        <h1 class="article-title">Compiling RDFHDT C&#43;&#43; tools on UPPMAX (RHEL/CentOS 7)</h1>
+        <div class="article-meta"><time datetime="2017-09-13T18:04:00&#43;02:00">2017.09.13</time><span class="post-time">3 min read</span>
+        </div>
+    </header>
+    <div class="prose article-body">
+        <!-- raw HTML omitted -->
 <p>At <a href="http://pharmb.io" target="_blank" rel="noopener">pharmb.io</a>
  we are researching how to use semantic
 technologies to push the boundaries for what can be done with
@@ -68,8 +77,8 @@ suite</a>
 <p>Firstly, we should specify the system on which we are running this. We
 are running on CentOS 7.3, or more exactly, 7.3.1611, which can be seen
 with this command:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat /etc/redhat-release
-</span></span><span style="display:flex;"><span>CentOS Linux release 7.3.1611 <span style="color:#000">(</span>Core<span style="color:#000">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat /etc/redhat-release
+</span></span><span style="display:flex;"><span>CentOS Linux release 7.3.1611 (Core)
 </span></span></code></pre></div><p>You will also need the following yum packages installed (install with
 yum install <!-- raw HTML omitted -->):</p>
 <ul>
@@ -80,79 +89,79 @@ yum install <!-- raw HTML omitted -->):</p>
 <ol>
 <li>Clone from git</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/rdfhdt/hdt-cpp.git
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/rdfhdt/hdt-cpp.git
 </span></span></code></pre></div><ol start="2">
 <li>Go into hdt-lib inside the cloned directory:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#a90d91">cd</span> hdt-cpp/hdt-lib
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#24909d">cd</span> hdt-cpp/hdt-lib
 </span></span></code></pre></div><ol start="3">
 <li>Download raptor and yalj libraries:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yumdownloader raptor2.x86_64 raptor2-devel.x86_64 yajl.x86_64 yajl-devel.x86_64
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yumdownloader raptor2.x86_64 raptor2-devel.x86_64 yajl.x86_64 yajl-devel.x86_64
 </span></span></code></pre></div><ol start="4">
 <li>Unpack all the .rpm files:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#a90d91">for</span> f in *.rpm; <span style="color:#a90d91">do</span>
-</span></span><span style="display:flex;"><span>   rpm2cpio <span style="color:#000">$f</span> | cpio -idmv;
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">done</span>;
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">for</span> f in *.rpm; <span style="color:#6ab825;font-weight:bold">do</span>
+</span></span><span style="display:flex;"><span>   rpm2cpio <span style="color:#40ffff">$f</span> | cpio -idmv;
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">done</span>;
 </span></span></code></pre></div><ol start="5">
 <li>Download the serd library:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget http://download.drobilla.net/serd-0.28.0.tar.bz2
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget http://download.drobilla.net/serd-0.28.0.tar.bz2
 </span></span></code></pre></div><ol start="6">
 <li>Unpack the serd library:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -jxvf serd-0.28.0.tar.bz2
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -jxvf serd-0.28.0.tar.bz2
 </span></span></code></pre></div><ol start="7">
 <li>Rename the serd folder to serd-0:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mv serd-0.28.0 serd-0
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mv serd-0.28.0 serd-0
 </span></span></code></pre></div><ol start="8">
 <li>Enter the serd folder:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#a90d91">cd</span> serd-0
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#24909d">cd</span> serd-0
 </span></span></code></pre></div><ol start="9">
 <li>Compile the serd library:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./waf configure
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./waf configure
 </span></span><span style="display:flex;"><span>./waf
 </span></span></code></pre></div><p>(The generated .so file will be put in a &ldquo;build&rdquo; folder under the serd
 folder)</p>
 <ol start="10">
 <li>Exit the serd folder, back into the hdt-lib folder:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#a90d91">cd</span> ..
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#24909d">cd</span> ..
 </span></span></code></pre></div><ol start="11">
 <li>Then edit the Makefile as follows:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>--- a/hdt-lib/Makefile
-</span></span><span style="display:flex;"><span>+++ b/hdt-lib/Makefile
-</span></span><span style="display:flex;"><span>@@ -17,14 +17,14 @@ FLAGS=-O3 -Wno-deprecated -Wall -Wextra -Wno-unused-parameter -Wno-sign-compare
-</span></span><span style="display:flex;"><span> endif
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span><span style="color:#d22323">--- a/hdt-lib/Makefile
+</span></span></span><span style="display:flex;"><span><span style="color:#d22323"></span><span style="color:#589819">+++ b/hdt-lib/Makefile
+</span></span></span><span style="display:flex;"><span><span style="color:#589819"></span><span style="color:#fff;text-decoration:underline">@@ -17,14 +17,14 @@ FLAGS=-O3 -Wno-deprecated -Wall -Wextra -Wno-unused-parameter -Wno-sign-compare
+</span></span></span><span style="display:flex;"><span><span style="color:#fff;text-decoration:underline"></span> endif
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span> INCLUDES=-I $(LIBCDSPATH)/includes/ -I /usr/local/include -I ./include -I /opt/local/include -I /usr/include
-</span></span><span style="display:flex;"><span>-LDFLAGS=
-</span></span><span style="display:flex;"><span>+LDFLAGS=-Lusr/lib64 -Lserd-0/build
-</span></span><span style="display:flex;"><span> DOXYGEN=doxygen
+</span></span><span style="display:flex;"><span><span style="color:#d22323">-LDFLAGS=
+</span></span></span><span style="display:flex;"><span><span style="color:#d22323"></span><span style="color:#589819">+LDFLAGS=-Lusr/lib64 -Lserd-0/build
+</span></span></span><span style="display:flex;"><span><span style="color:#589819"></span> DOXYGEN=doxygen
 </span></span><span style="display:flex;"><span> DEFINES= -DHAVE_CDS
 </span></span><span style="display:flex;"><span> LIB=$(LIBCDSPATH)/lib/libcds.a -L/usr/local/lib -lstdc++
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span> ifeq ($(RAPTOR_SUPPORT), true)
 </span></span><span style="display:flex;"><span> DEFINES:=$(DEFINES) -DHAVE_RAPTOR
-</span></span><span style="display:flex;"><span>-LIB:=$(LIB) -lraptor2
-</span></span><span style="display:flex;"><span>+LIB:=$(LIB) -lraptor2 -lyajl
-</span></span><span style="display:flex;"><span> endif
+</span></span><span style="display:flex;"><span><span style="color:#d22323">-LIB:=$(LIB) -lraptor2
+</span></span></span><span style="display:flex;"><span><span style="color:#d22323"></span><span style="color:#589819">+LIB:=$(LIB) -lraptor2 -lyajl
+</span></span></span><span style="display:flex;"><span><span style="color:#589819"></span> endif
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span> ifeq ($(KYOTO_SUPPORT), true)
 </span></span></code></pre></div><ol start="12">
 <li>Compile the RDF HDT tools:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>make
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>make
 </span></span></code></pre></div><ol start="13">
 <li>Done! The generated tools should now be available in the &ldquo;tools&rdquo;
 folder under your &ldquo;hdt-lib&rdquo; folder:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ls -1X tools/
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ls -1X tools/
 </span></span><span style="display:flex;"><span>hdt2rdf
 </span></span><span style="display:flex;"><span>hdtInfo
 </span></span><span style="display:flex;"><span>hdtSearch
@@ -178,11 +187,11 @@ that:</p>
 <li>Copy the usr folder created in the hdt-lib folder when unpacking the
 .rpm files, into your home folder:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cp -r usr ~/
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cp -r usr ~/
 </span></span></code></pre></div><ol start="2">
 <li>Put the newly compiled HDT tools into the ~/usr/bin folder too:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cp tools/* ~/usr/bin/
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cp tools/* ~/usr/bin/
 </span></span></code></pre></div><ol start="3">
 <li>Add the following lines to the end of your ~/.bashrc file (adapted
 from <a href="https://unix.stackexchange.com/questions/2117/install-development-files-locally-to-build-on-system-without-root-access" target="_blank" rel="noopener">this
@@ -192,33 +201,34 @@ so that the binary and library search paths are always accessible in
 your shell, so that you can run the hdt tools from anywhere on the file
 system:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#177500"># Load local bin and library directories</span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">export</span> <span style="color:#000">PATH</span><span style="color:#000">=</span>~/usr/bin:<span style="color:#000">$PATH</span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">export</span> <span style="color:#000">LD_LIBRARY_PATH</span><span style="color:#000">=</span>~/usr/lib:<span style="color:#000">$LD_LIBRARY_PATH</span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">export</span> <span style="color:#000">LD_LIBRARY_PATH</span><span style="color:#000">=</span>~/usr/lib64:<span style="color:#000">$LD_LIBRARY_PATH</span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">export</span> <span style="color:#000">C_INCLUDE_PATH</span><span style="color:#000">=</span>~/usr/include:<span style="color:#000">$C_INCLUDE_PATH</span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">export</span> <span style="color:#000">CPLUS_INCLUDE_PATH</span><span style="color:#000">=</span>~/usr/include:<span style="color:#000">$CPLUS_INCLUDE_PATH</span>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#999;font-style:italic"># Load local bin and library directories</span>
+</span></span><span style="display:flex;"><span><span style="color:#24909d">export</span> <span style="color:#40ffff">PATH</span>=~/usr/bin:<span style="color:#40ffff">$PATH</span>
+</span></span><span style="display:flex;"><span><span style="color:#24909d">export</span> <span style="color:#40ffff">LD_LIBRARY_PATH</span>=~/usr/lib:<span style="color:#40ffff">$LD_LIBRARY_PATH</span>
+</span></span><span style="display:flex;"><span><span style="color:#24909d">export</span> <span style="color:#40ffff">LD_LIBRARY_PATH</span>=~/usr/lib64:<span style="color:#40ffff">$LD_LIBRARY_PATH</span>
+</span></span><span style="display:flex;"><span><span style="color:#24909d">export</span> <span style="color:#40ffff">C_INCLUDE_PATH</span>=~/usr/include:<span style="color:#40ffff">$C_INCLUDE_PATH</span>
+</span></span><span style="display:flex;"><span><span style="color:#24909d">export</span> <span style="color:#40ffff">CPLUS_INCLUDE_PATH</span>=~/usr/include:<span style="color:#40ffff">$CPLUS_INCLUDE_PATH</span>
 </span></span></code></pre></div><ol start="4">
 <li>Reload the ~/.bashrc file:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#a90d91">source</span> ~/.bashrc
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#24909d">source</span> ~/.bashrc
 </span></span></code></pre></div><ol start="5">
 <li>Done! Now you should be able to run a tool like rdf2hdt (for
 converting RDF dat to HDT format) from anywhere in the file system:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ rdf2hdt
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ rdf2hdt
 </span></span><span style="display:flex;"><span>ERROR: You must supply an input and output
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>$ rdf2hdt <span style="color:#000">[</span>options<span style="color:#000">]</span> &lt;rdf input file&gt; &lt;hdt output file&gt;
-</span></span><span style="display:flex;"><span>        -h                      This <span style="color:#a90d91">help</span>
+</span></span><span style="display:flex;"><span>$ rdf2hdt [options] &lt;rdf input file&gt; &lt;hdt output file&gt;
+</span></span><span style="display:flex;"><span>        -h                      This <span style="color:#24909d">help</span>
 </span></span><span style="display:flex;"><span>        -i              Also generate index to solve all triple patterns.
 </span></span><span style="display:flex;"><span>        -c      &lt;configfile&gt;    HDT Config options file
-</span></span><span style="display:flex;"><span>        -o      &lt;options&gt;       HDT Additional options <span style="color:#000">(</span><span style="color:#000">option1</span><span style="color:#000">=</span>value1;<span style="color:#000">option2</span><span style="color:#000">=</span>value2;...<span style="color:#000">)</span>
-</span></span><span style="display:flex;"><span>        -f      &lt;format&gt;        Format of the RDF input <span style="color:#000">(</span>ntriples, nquad, n3, turtle, rdfxml<span style="color:#000">)</span>
-</span></span><span style="display:flex;"><span>        -B      <span style="color:#c41a16">&#34;&lt;base URI&gt;&#34;</span>    Base URI of the dataset.
+</span></span><span style="display:flex;"><span>        -o      &lt;options&gt;       HDT Additional options (<span style="color:#40ffff">option1</span>=value1;<span style="color:#40ffff">option2</span>=value2;...)
+</span></span><span style="display:flex;"><span>        -f      &lt;format&gt;        Format of the RDF input (ntriples, nquad, n3, turtle, rdfxml)
+</span></span><span style="display:flex;"><span>        -B      <span style="color:#ed9d13">&#34;&lt;base URI&gt;&#34;</span>    Base URI of the dataset.
 </span></span><span style="display:flex;"><span>        -V      Prints the HDT version number
 </span></span></code></pre></div>
-  
+    </div>
+    
   <div>
     <ul class="tags">
         <li><a href="/tags/semantic/" class="tag">Semantic</a></li>
@@ -228,40 +238,49 @@ converting RDF dat to HDT format) from anywhere in the file system:</li>
     </ul>
   </div>
 
-
-  <div id="disqus_thread"></div>
-  <script>
-  
-
-  var disqus_config = function () {
-      this.page.url = "https://livingsystems.cc/posts/compiling-rdfhdt-c-tools-on-uppmax-rhel-centos-7/";  
-      this.page.identifier =  1073 ; 
-  };
-  (function() { 
-      var d = document, s = d.createElement('script');
-      s.src = 'https://bionicsit.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-  })();
-
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</article>
 
 
-  </main>
-  <footer>
-    <p>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+  <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script>
+    
 
-<p>Copyright &copy; 2026 Samuel Lampa</p>
+    var disqus_config = function () {
+        this.page.url = "https://livingsystems.cc/posts/compiling-rdfhdt-c-tools-on-uppmax-rhel-centos-7/";  
+        this.page.identifier =  1073 ; 
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');
+        s.src = 'https://bionicsit.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </section>
+
+    </main>
+    <footer class="site-footer">
+      <p>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+
+<p class="copyright">Copyright &copy; 2026 Samuel Lampa</p>
 
 <p>Find me on
 <a href="https://orcid.org/0000-0001-6740-9212" target="_blank">ORCID</a>,
 <a href="https://github.com/samuell" target="_blank">GitHub</a>,
 <a href="https://twitter.com/smllmp" target="_blank">Twitter</a>,
-<a href="https://bsky.app/profile/smllmp.bsky.social" target="_blank">BlueSky</a> or
-<a href="https://linkedin.com/in/smllmp" target="_blank">LinkedIn</a>.
+<a href="https://bsky.app/profile/smllmp.bsky.social" target="_blank">BlueSky</a>,
+<a href="https://livingsystems.substack.com/" target="_blank">Substack</a> or
+ <a href="https://linkedin.com/in/smllmp" target="_blank">LinkedIn</a>.
 </p>
 
-  </footer>
+<p>Subscribe via
+<a href="/index.xml">RSS</a>.
+</p>
+
+    </footer>
+  </div>
 </body>
 </html>

@@ -3,9 +3,13 @@
 <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#0c110e">
 <title>The smallest pipeable go program | Living_Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap">
 
-      <link rel="stylesheet" href="/css/main.min.7afb5fa50a2fd4677a8878f0eb62fc38d8070319c31c48ac2bae0bbafe4e8681.css" integrity="sha256-evtfpQov1Gd6iHjw62L8ONgHAxnDHEisK64Luv5OhoE=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.76cff45d7af66ece9b7ede310dd71bde69fb8ed11585ba68c54307a940ccb0bf.css" integrity="sha256-ds/0XXr2bs6bft4xDdcb3mn7jtEVhbpoxUMHqUDMsL8=" crossorigin="anonymous">
 
 
       <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
@@ -15,10 +19,15 @@
 
 </head>
 <body>
-  <header>
-    <h1><a href="/">Living_Systems</a></h1>
+  <img class="bg-helix" src="/img/helix-bg.jpg" alt="" aria-hidden="true">
+  <div class="grid-etch" aria-hidden="true"></div>
+  <div class="scanline" aria-hidden="true"></div>
+  <div class="top-line" aria-hidden="true"></div>
+  <div class="container">
+    <header class="site-header">
+      <a class="site-brand" href="/">Living_Systems</a>
 
-  <nav>
+  <nav class="site-nav">
     <ul>
     <li>
       <a href="/">Home</a>
@@ -36,42 +45,42 @@
   </nav>
 
 
-  </header>
-  <main>
-    
-  <h1>The smallest pipeable go program</h1>
-
-  
-  
-  
-  <time datetime="2014-12-18T20:43:00&#43;01:00">December 18, 2014</time>
-
-  <p>Edit: My original suggested way further below in the post is no way the
+    </header>
+    <main>
+      
+  <article class="article">
+    <header class="article-header">
+        <h1 class="article-title">The smallest pipeable go program</h1>
+        <div class="article-meta"><time datetime="2014-12-18T20:43:00&#43;01:00">2014.12.18</time><span class="post-time">1 min read</span>
+        </div>
+    </header>
+    <div class="prose article-body">
+        <p>Edit: My original suggested way further below in the post is no way the
 &ldquo;smallest pipeable&rdquo; program, instead see this example (Credits: <a href="https://plus.google.com/&#43;AxelWagner_Merovius" target="_blank" rel="noopener">Axel Wagner</a>
 ):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">package</span> <span style="color:#000">main</span>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">package</span> main
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> (
-</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;io&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;os&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#ed9d13">&#34;io&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ed9d13">&#34;os&#34;</span>
 </span></span><span style="display:flex;"><span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">main</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#000">io</span>.<span style="color:#000">Copy</span>(<span style="color:#000">os</span>.<span style="color:#000">Stdout</span>, <span style="color:#000">os</span>.<span style="color:#000">Stdin</span>)
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">func</span> <span style="color:#447fcf">main</span>() {
+</span></span><span style="display:flex;"><span>    io.<span style="color:#447fcf">Copy</span>(os.Stdout, os.Stdin)
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>&hellip; or (credits: <a href="https://twitter.com/rogpeppe" target="_blank" rel="noopener">Roger Peppe</a>
 ):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">package</span> <span style="color:#000">main</span>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">package</span> main
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> (
-</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;bufio&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;fmt&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;os&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#ed9d13">&#34;bufio&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ed9d13">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ed9d13">&#34;os&#34;</span>
 </span></span><span style="display:flex;"><span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">main</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">for</span> <span style="color:#000">scan</span> <span style="color:#000">:=</span> <span style="color:#000">bufio</span>.<span style="color:#000">NewScanner</span>(<span style="color:#000">os</span>.<span style="color:#000">Stdin</span>); <span style="color:#000">scan</span>.<span style="color:#000">Scan</span>(); {
-</span></span><span style="display:flex;"><span>        <span style="color:#000">fmt</span>.<span style="color:#000">Printf</span>(<span style="color:#c41a16">&#34;%s\n&#34;</span>, <span style="color:#000">scan</span>.<span style="color:#000">Text</span>())
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">func</span> <span style="color:#447fcf">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">for</span> scan := bufio.<span style="color:#447fcf">NewScanner</span>(os.Stdin); scan.<span style="color:#447fcf">Scan</span>(); {
+</span></span><span style="display:flex;"><span>        fmt.<span style="color:#447fcf">Printf</span>(<span style="color:#ed9d13">&#34;%s\n&#34;</span>, scan.<span style="color:#447fcf">Text</span>())
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Ah, I just realized that the &ldquo;smallest pipeable&rdquo;
@@ -80,71 +89,81 @@
 <a href="https://github.com/samuell/glow" target="_blank" rel="noopener">little library of minimalistic streaming components</a>
 .
 Nothing more than:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">package</span> <span style="color:#000">main</span>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">package</span> main
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> (
-</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;fmt&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;github.com/samuell/glow&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#ed9d13">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ed9d13">&#34;github.com/samuell/glow&#34;</span>
 </span></span><span style="display:flex;"><span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">main</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#000">inchan</span> <span style="color:#000">:=</span> <span style="color:#a90d91">make</span>(<span style="color:#a90d91">chan</span> []<span style="color:#a90d91">byte</span>, <span style="color:#1c01ce">16</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#000">glow</span>.<span style="color:#000">NewStdInReader</span>(<span style="color:#000">inchan</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">for</span> <span style="color:#000">line</span> <span style="color:#000">:=</span> <span style="color:#a90d91">range</span> <span style="color:#000">inchan</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#000">fmt</span>.<span style="color:#000">Println</span>(<span style="color:#a90d91">string</span>(<span style="color:#000">line</span>))
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">func</span> <span style="color:#447fcf">main</span>() {
+</span></span><span style="display:flex;"><span>    inchan := <span style="color:#24909d">make</span>(<span style="color:#6ab825;font-weight:bold">chan</span> []<span style="color:#6ab825;font-weight:bold">byte</span>, <span style="color:#3677a9">16</span>)
+</span></span><span style="display:flex;"><span>    glow.<span style="color:#447fcf">NewStdInReader</span>(inchan)
+</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">for</span> line := <span style="color:#6ab825;font-weight:bold">range</span> inchan {
+</span></span><span style="display:flex;"><span>        fmt.<span style="color:#447fcf">Println</span>(<span style="color:#24909d">string</span>(line))
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Naturally, you would want ot fill in the doSomething() function with
 something more fancy.</p>
 <p>But then, you can pipe any output through the program, and it will
 process the input (in this case just forward it):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ go build glowtest.go
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ go build glowtest.go
 </span></span><span style="display:flex;"><span>$ ls -l | ./glowtest
 </span></span><span style="display:flex;"><span>total 2,0M
-</span></span><span style="display:flex;"><span>-rwxrwxr-x <span style="color:#1c01ce">1</span> samuel samuel 2,0M dec <span style="color:#1c01ce">18</span> 19:04 glowtest
-</span></span><span style="display:flex;"><span>-rw-rw-r-- <span style="color:#1c01ce">1</span> samuel samuel  <span style="color:#1c01ce">291</span> dec <span style="color:#1c01ce">18</span> 19:03 glowtest.go
+</span></span><span style="display:flex;"><span>-rwxrwxr-x <span style="color:#3677a9">1</span> samuel samuel 2,0M dec <span style="color:#3677a9">18</span> 19:04 glowtest
+</span></span><span style="display:flex;"><span>-rw-rw-r-- <span style="color:#3677a9">1</span> samuel samuel  <span style="color:#3677a9">291</span> dec <span style="color:#3677a9">18</span> 19:03 glowtest.go
 </span></span></code></pre></div>
-  
+    </div>
+    
   <div>
     <ul class="tags">
         <li><a href="/tags/go/" class="tag">Go</a></li>
     </ul>
   </div>
 
-
-  <div id="disqus_thread"></div>
-  <script>
-  
-
-  var disqus_config = function () {
-      this.page.url = "https://livingsystems.cc/posts/smallest-pipeable-go-program/";  
-      this.page.identifier =  1013 ; 
-  };
-  (function() { 
-      var d = document, s = d.createElement('script');
-      s.src = 'https://bionicsit.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-  })();
-
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</article>
 
 
-  </main>
-  <footer>
-    <p>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+  <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script>
+    
 
-<p>Copyright &copy; 2026 Samuel Lampa</p>
+    var disqus_config = function () {
+        this.page.url = "https://livingsystems.cc/posts/smallest-pipeable-go-program/";  
+        this.page.identifier =  1013 ; 
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');
+        s.src = 'https://bionicsit.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </section>
+
+    </main>
+    <footer class="site-footer">
+      <p>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+
+<p class="copyright">Copyright &copy; 2026 Samuel Lampa</p>
 
 <p>Find me on
 <a href="https://orcid.org/0000-0001-6740-9212" target="_blank">ORCID</a>,
 <a href="https://github.com/samuell" target="_blank">GitHub</a>,
 <a href="https://twitter.com/smllmp" target="_blank">Twitter</a>,
-<a href="https://bsky.app/profile/smllmp.bsky.social" target="_blank">BlueSky</a> or
-<a href="https://linkedin.com/in/smllmp" target="_blank">LinkedIn</a>.
+<a href="https://bsky.app/profile/smllmp.bsky.social" target="_blank">BlueSky</a>,
+<a href="https://livingsystems.substack.com/" target="_blank">Substack</a> or
+ <a href="https://linkedin.com/in/smllmp" target="_blank">LinkedIn</a>.
 </p>
 
-  </footer>
+<p>Subscribe via
+<a href="/index.xml">RSS</a>.
+</p>
+
+    </footer>
+  </div>
 </body>
 </html>
