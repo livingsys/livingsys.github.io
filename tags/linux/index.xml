@@ -6,8 +6,15 @@
     <description>Recent content in Linux on Living_Systems</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 08 Apr 2025 13:27:28 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 12 Nov 2026 17:30:28 +0100</lastBuildDate>
     <atom:link href="https://livingsystems.cc/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Setting Up an AI Sandbox for Ollama With Lima</title>
+      <link>https://livingsystems.cc/posts/setting-up-an-ai-sandbox-for-ollama-with-lima/</link>
+      <pubDate>Thu, 12 Nov 2026 17:30:28 +0100</pubDate>
+      <guid>https://livingsystems.cc/posts/setting-up-an-ai-sandbox-for-ollama-with-lima/</guid>
+      <description>&lt;p&gt;In order to let a coding agent loose on your computer, it is recommended to run&#xA;models in a sandbox.&lt;/p&gt;&#xA;&lt;p&gt;This is because, even if you give strict permissions to models, they can still&#xA;find ways around that, and there have been cases where people have deleted&#xA;their whole hard disk or similar, because agents did something stupid by mistake.&lt;/p&gt;&#xA;&lt;p&gt;There are various ways of running sandbox, and after some research, I have came to the&#xA;conclusion that for me, running Linux Mint on my development machine, a sandbox running&#xA;in a virtual machine is a good compromise between safety and ease of use.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>The chroot Technique - a Swiss army multitool for Linux systems</title>
       <link>https://livingsystems.cc/posts/the-chroot-technique/</link>
