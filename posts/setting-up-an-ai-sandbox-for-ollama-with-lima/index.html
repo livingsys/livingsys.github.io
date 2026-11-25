@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#0c110e">
+<title>Setting Up an AI Sandbox for Ollama With Lima | Living_Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap">
+
+      <link rel="stylesheet" href="/css/main.min.76cff45d7af66ece9b7ede310dd71bde69fb8ed11585ba68c54307a940ccb0bf.css" integrity="sha256-ds/0XXr2bs6bft4xDdcb3mn7jtEVhbpoxUMHqUDMsL8=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+
+
+
+</head>
+<body>
+  <img class="bg-helix" src="/img/helix-bg.jpg" alt="" aria-hidden="true">
+  <div class="grid-etch" aria-hidden="true"></div>
+  <div class="scanline" aria-hidden="true"></div>
+  <div class="top-line" aria-hidden="true"></div>
+  <div class="container">
+    <header class="site-header">
+      <a class="site-brand" href="/">Living_Systems</a>
+
+  <nav class="site-nav">
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    <li>
+      <a href="/about/">About</a>
+    </li>
+    </ul>
+  </nav>
+
+
+    </header>
+    <main>
+      
+  <article class="article">
+    <header class="article-header">
+        <h1 class="article-title">Setting Up an AI Sandbox for Ollama With Lima</h1>
+        <div class="article-meta"><time datetime="2026-11-12T17:30:28&#43;01:00">2026.11.12</time><span class="post-time">3 min read</span>
+        </div>
+    </header>
+    <div class="prose article-body">
+        <p>In order to let a coding agent loose on your computer, it is recommended to run
+models in a sandbox.</p>
+<p>This is because, even if you give strict permissions to models, they can still
+find ways around that, and there have been cases where people have deleted
+their whole hard disk or similar, because agents did something stupid by mistake.</p>
+<p>There are various ways of running sandbox, and after some research, I have came to the
+conclusion that for me, running Linux Mint on my development machine, a sandbox running
+in a virtual machine is a good compromise between safety and ease of use.</p>
+<p>I have fond memories of using Vagrant in the past, where one could easily
+configure and get up a virtual machine from a code based repository.</p>
+<p>HashiCorp, the company behind Vagrant, has changed the license terms recently though and
+so Vagrant doesn&rsquo;t seem to be maintained as well in the future, and is also quite clunky
+as depending on VirtualBox.</p>
+<p>Turns out there is a new solution out there called <a href="https://lima-vm.io" target="_blank" rel="noopener">Lima</a>
+,
+which is based on the Qemu virtualization technology, which is ligher than
+VirtualBox. It is also a <a href="https://cncf.io" target="_blank" rel="noopener">Cloud Native Computing Foundation</a>
+
+incubation project, which is promising for future maintenance.</p>
+<p>In this guide I will succinctly document how I set up a Lima-based sandbox on
+my computer, for running Ollama (I&rsquo;ve got a subscription there) cloud based
+open weight models like DeepSeek 4.1 Flash on my computer.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>These steps were run on Linux Mint 21.1 Vera, but should be largely similar on
+most recent Ubuntu-based distros.</p>
+<h3 id="install-some-dependencies">Install some dependencies</h3>
+<p>Run this in a terminal:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update -y
+</span></span><span style="display:flex;"><span>sudo apt install -y <span style="color:#ed9d13">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13"></span>    qemu-system-x86 <span style="color:#ed9d13">\h</span>ttps://lima-vm.io/
+</span></span><span style="display:flex;"><span>    qemu-utils <span style="color:#ed9d13">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13"></span>    uidmap <span style="color:#ed9d13">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13"></span>    socat <span style="color:#ed9d13">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13"></span>    jq <span style="color:#ed9d13">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13"></span>    curl <span style="color:#ed9d13">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13"></span>    git
+</span></span></code></pre></div><h2 id="pull-down-an-image">Pull down an image</h2>
+<p>Inside a folder created for the purpose, run this in a terminal:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -fL <span style="color:#ed9d13">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13"></span>    https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img <span style="color:#ed9d13">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13"></span>    -o noble-server-cloudimg-amd64.img
+</span></span></code></pre></div><h2 id="add-this-to-a-file-opencode-ollama-sandboxyaml">Add this to a file, <code>opencode-ollama-sandbox.yaml</code></h2>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#999;font-style:italic"># Ubuntu 24.04 sandbox</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#6ab825;font-weight:bold">vmType</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;qemu&#34;</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#6ab825;font-weight:bold">arch</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;x86_64&#34;</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#6ab825;font-weight:bold">images</span>:<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">  </span>- <span style="color:#6ab825;font-weight:bold">location</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;./noble-server-cloudimg-amd64.img&#34;</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">arch</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;x86_64&#34;</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#6ab825;font-weight:bold">cpus</span>:<span style="color:#666"> </span><span style="color:#3677a9">2</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#6ab825;font-weight:bold">memory</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;4GiB&#34;</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#6ab825;font-weight:bold">disk</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;40GiB&#34;</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#999;font-style:italic"># Only expose the dedicated workspace.</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#6ab825;font-weight:bold">mounts</span>:<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">  </span>- <span style="color:#6ab825;font-weight:bold">location</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;~/wrk&#34;</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">mountPoint</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;/wrk&#34;</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">writable</span>:<span style="color:#666"> </span><span style="color:#6ab825;font-weight:bold">true</span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666"></span><span style="color:#6ab825;font-weight:bold">provision</span>:<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">  </span>- <span style="color:#6ab825;font-weight:bold">mode</span>:<span style="color:#666"> </span>system<span style="color:#666">
+</span></span></span><span style="display:flex;"><span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">script</span>:<span style="color:#666"> </span>|<span style="color:#ed9d13">
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13">      #!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13">      set -eux
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13">
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13">      apt-get update
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13">      apt-get install -y \
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13">        ca-certificates \
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13">        curl \
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13">        git \
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13">        build-essential \
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13">        jq \
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13">        unzip \
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13">        python3 \
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13">        python3-venv
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13">
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13">      # Install Ollama.
+</span></span></span><span style="display:flex;"><span><span style="color:#ed9d13">      curl -fsSL https://ollama.com/install.sh | sh</span><span style="color:#666">      
+</span></span></span></code></pre></div><h3 id="create-the-vm">Create the VM</h3>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>limactl create --name &lt;vmname&gt; opencode-ollama-sandbox.yaml
+</span></span></code></pre></div><h3 id="start-opencode-via-ollama-inside-the-lima-container">Start OpenCode via Ollama inside the Lima container</h3>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>limactl shell &lt;vmname&gt; -- ollama launch opencode
+</span></span></code></pre></div><p>This is of course great to put in an alias in <code>~/.bash_aliases</code>, e.g:</p>
+<pre tabindex="0"><code>alias looc=&#39;limactl shell olcode -- ollama launch opencode
+</code></pre><p>You can also always just use the interactive Lima shell tool to
+navigate into the options. To do this, just run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>limactl
+</span></span></code></pre></div><p>&hellip; and you will be presented with your currently set up images
+that you can then enter, with a shell, or other actions.</p>
+<p>Try it out!</p>
+
+    </div>
+    
+
+</article>
+
+
+  <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script>
+    
+
+    var disqus_config = function () {
+        this.page.url = "https://livingsystems.cc/posts/setting-up-an-ai-sandbox-for-ollama-with-lima/";  
+        this.page.identifier =  null ; 
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');
+        s.src = 'https://bionicsit.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </section>
+
+    </main>
+    <footer class="site-footer">
+      <p>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+
+<p class="copyright">Copyright &copy; 2026 Samuel Lampa</p>
+
+<p>Find me on
+<a href="https://orcid.org/0000-0001-6740-9212" target="_blank">ORCID</a>,
+<a href="https://github.com/samuell" target="_blank">GitHub</a>,
+<a href="https://twitter.com/smllmp" target="_blank">Twitter</a>,
+<a href="https://bsky.app/profile/smllmp.bsky.social" target="_blank">BlueSky</a>,
+<a href="https://livingsystems.substack.com/" target="_blank">Substack</a> or
+ <a href="https://linkedin.com/in/smllmp" target="_blank">LinkedIn</a>.
+</p>
+
+<p>Subscribe via
+<a href="/index.xml">RSS</a>.
+</p>
+
+    </footer>
+  </div>
+</body>
+</html>
